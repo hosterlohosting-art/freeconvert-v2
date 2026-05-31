@@ -8,27 +8,31 @@
     <meta name="description" content="Shrink and optimize image sizes under 200KB. Clean browser-based compression.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
-    <!-- Fonts -->
+    <!-- Fonts & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
     <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
 
     <!-- SEO Canonical -->
     <link rel="canonical" href="https://freeconvert.cloud/compress-image-to-200kb/" />
 
     <!-- Open Graph tags -->
-    <meta property="og:title" content="Compress Image to 200KB Free - Online Photo Optimizer">
+    <meta property="og:title" content="Compress Image to 200KB Free - Online Photo Optimizer | freeconvert.cloud">
     <meta property="og:description" content="Shrink and optimize image sizes under 200KB. Clean browser-based compression.">
-    <meta property="og:image" content="https://freeconvert.cloud/assets/logo.png">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
     <meta property="og:url" content="https://freeconvert.cloud/compress-image-to-200kb/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="freeconvert.cloud">
 
     <!-- Twitter tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Compress Image to 200KB Free - Online Photo Optimizer">
+    <meta name="twitter:title" content="Compress Image to 200KB Free - Online Photo Optimizer | freeconvert.cloud">
     <meta name="twitter:description" content="Shrink and optimize image sizes under 200KB. Clean browser-based compression.">
-    <meta name="twitter:image" content="https://freeconvert.cloud/assets/logo.png">
+    <meta name="twitter:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
+    <meta name="twitter:site" content="@freeconvertcloud">
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Compress Image to 200KB", "operatingSystem": "Any", "applicationCategory": "Image", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Reduce image files strictly under 200KB footprint."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this Compress Image to 200KB tool upload my files to any server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All conversions for Compress Image to 200KB occur locally on your computer inside the browser memory. Your files are completely safe and never touch our servers."}}, {"@type": "Question", "name": "What is the benefit of using client-side Compress Image to 200KB processing?", "acceptedAnswer": {"@type": "Answer", "text": "Because it runs client-side, the Compress Image to 200KB process is exceptionally fast, respects your privacy, and saves you network bandwidth since you do not have to upload files."}}, {"@type": "Question", "name": "Can I use this responsive Compress Image to 200KB converter on my mobile phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our interface is fully optimized for mobile devices. The Compress Image to 200KB tool works perfectly on Safari, Chrome, and Firefox on iOS and Android."}}, {"@type": "Question", "name": "How is E-E-A-T trust maintained?", "acceptedAnswer": {"@type": "Answer", "text": "All tools are fact-checked and maintained under strict data safety protocols by the freeconvert.cloud Editorial Team."}}, {"@type": "Question", "name": "What is the file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend keeping batch uploads under 50MB to ensure fluid, fast rendering in local memory."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeconvert.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Image Converter", "item": "https://freeconvert.cloud/image-converter/"}, {"@type": "ListItem", "position": 3, "name": "Compress Image to 200KB", "item": "https://freeconvert.cloud/compress-image-to-200kb/"}]}]}</script>
 </head>
@@ -38,12 +42,7 @@
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <span class="logo-text">freeconvert<span class="logo-dot">.cloud</span></span>
+                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;">
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -257,13 +256,45 @@
             </div>
         </article>
 
-        <!-- Related Converter Links -->
-        <div style="text-align: center;">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Related Converter Tools</h3>
-            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;" id="related-tools-box">
-                <a href="/heic-to-jpg/" class="category-tab" style="box-shadow:none; text-decoration:none;">🍏 HEIC to JPG</a><a href="/svg-to-png/" class="category-tab" style="box-shadow:none; text-decoration:none;">📐 SVG to PNG</a><a href="/palette-extractor/" class="category-tab" style="box-shadow:none; text-decoration:none;">🎨 Color Palette Extractor</a><a href="/ico-converter/" class="category-tab" style="box-shadow:none; text-decoration:none;">⭐ ICO Converter</a>
+        <!-- Related & Category Tools (internal linking) -->
+        <section style="margin-top:3rem;">
+            <h2 style="margin-bottom:1.2rem;font-size:1.35rem;">Related Tools You May Like</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;" id="related-tools-box">
+                <a href="/heic-to-jpg/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">🍏</span>
+  <strong style="font-size:0.88rem;">HEIC to JPG</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Convert iPhone HEIC photos to generic JPG....</span>
+</a><a href="/svg-to-png/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">📐</span>
+  <strong style="font-size:0.88rem;">SVG to PNG</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Render SVG files as high-quality PNG images....</span>
+</a><a href="/palette-extractor/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">🎨</span>
+  <strong style="font-size:0.88rem;">Color Palette Extractor</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Extract dominant colors from any image....</span>
+</a><a href="/ico-converter/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">⭐</span>
+  <strong style="font-size:0.88rem;">ICO Converter</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Create standard Favicons (.ico) from images....</span>
+</a><a href="/image-compressor/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">🤐</span>
+  <strong style="font-size:0.88rem;">Image Compressor</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Reduce image file size with zero quality loss....</span>
+</a><a href="/compress-image-to-100kb/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">🗜️</span>
+  <strong style="font-size:0.88rem;">Compress Image to 100KB</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Reduce image files strictly under 100KB footprint....</span>
+</a>
             </div>
-        </div>
+        </section>
+
+        <!-- Blog Resources (internal linking to articles) -->
+        <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-light);border-radius:14px;border:1px solid var(--border-color);">
+            <h3 style="margin-bottom:1rem;font-size:1.1rem;">📖 Learn More — Guides & Resources</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:0.6rem;" id="blog-links-box">
+                <a href="/blog/how-to-compress-an-image-to-100kb/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 How to Compress an Image to 100KB</a><a href="/blog/how-to-compress-images-online-without-losing-quality/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 Compress Images Without Losing Quality</a><a href="/blog/webp-vs-jpg-which-image-format-should-you-use/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 WebP vs JPG Explained</a>
+            </div>
+        </section>
     </main>
 
     <!-- Competitor-level Footer -->
@@ -278,7 +309,7 @@
 
         <div class="footer-content">
             <div class="footer-brand">
-                <h2 class="logo-text">freeconvert<span class="logo-dot">.cloud</span></h2>
+                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;"></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Process documents, images, video, audio, and archives instantly.</p>
             </div>
             <div class="footer-col">

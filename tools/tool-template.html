@@ -8,27 +8,31 @@
     <meta name="description" content="{{SEO_DESC}}">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
-    <!-- Fonts -->
+    <!-- Fonts & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
     <link rel="stylesheet" href="/style.css">
+    <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
 
     <!-- SEO Canonical -->
     {{CANONICAL}}
 
     <!-- Open Graph tags -->
-    <meta property="og:title" content="{{SEO_TITLE}}">
+    <meta property="og:title" content="{{SEO_TITLE}} | freeconvert.cloud">
     <meta property="og:description" content="{{SEO_DESC}}">
-    <meta property="og:image" content="https://freeconvert.cloud/assets/logo.png">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
     <meta property="og:url" content="https://freeconvert.cloud/{{CLEAN_URL}}/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="freeconvert.cloud">
 
     <!-- Twitter tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{SEO_TITLE}}">
+    <meta name="twitter:title" content="{{SEO_TITLE}} | freeconvert.cloud">
     <meta name="twitter:description" content="{{SEO_DESC}}">
-    <meta name="twitter:image" content="https://freeconvert.cloud/assets/logo.png">
+    <meta name="twitter:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
+    <meta name="twitter:site" content="@freeconvertcloud">
 
     {{SCHEMA}}
 </head>
@@ -38,12 +42,7 @@
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
-                <span class="logo-text">freeconvert<span class="logo-dot">.cloud</span></span>
+                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;">
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -160,13 +159,21 @@
             </div>
         </article>
 
-        <!-- Related Converter Links -->
-        <div style="text-align: center;">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Related Converter Tools</h3>
-            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;" id="related-tools-box">
+        <!-- Related & Category Tools (internal linking) -->
+        <section style="margin-top:3rem;">
+            <h2 style="margin-bottom:1.2rem;font-size:1.35rem;">Related Tools You May Like</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;" id="related-tools-box">
                 {{RELATED_LINKS}}
             </div>
-        </div>
+        </section>
+
+        <!-- Blog Resources (internal linking to articles) -->
+        <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-light);border-radius:14px;border:1px solid var(--border-color);">
+            <h3 style="margin-bottom:1rem;font-size:1.1rem;">📖 Learn More — Guides & Resources</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:0.6rem;" id="blog-links-box">
+                {{BLOG_LINKS}}
+            </div>
+        </section>
     </main>
 
     <!-- Competitor-level Footer -->
@@ -181,7 +188,7 @@
 
         <div class="footer-content">
             <div class="footer-brand">
-                <h2 class="logo-text">freeconvert<span class="logo-dot">.cloud</span></h2>
+                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;"></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Process documents, images, video, audio, and archives instantly.</p>
             </div>
             <div class="footer-col">
