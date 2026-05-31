@@ -6,428 +6,328 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/png-to-jpg.html</loc>
+    <loc>https://freeconvert.cloud/pricing/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/api/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/image-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/jpg-to-png.html</loc>
+    <loc>https://freeconvert.cloud/video-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/word-counter.html</loc>
+    <loc>https://freeconvert.cloud/audio-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/password-generator.html</loc>
+    <loc>https://freeconvert.cloud/document-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/case-converter.html</loc>
+    <loc>https://freeconvert.cloud/pdf-tools/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/image-resizer.html</loc>
+    <loc>https://freeconvert.cloud/archive-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/image-compressor.html</loc>
+    <loc>https://freeconvert.cloud/ebook-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/qr-generator.html</loc>
+    <loc>https://freeconvert.cloud/unit-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/webp-to-jpg.html</loc>
+    <loc>https://freeconvert.cloud/png-to-jpg/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/json-to-csv.html</loc>
+    <loc>https://freeconvert.cloud/jpg-to-png/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/base64-tool.html</loc>
+    <loc>https://freeconvert.cloud/word-counter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/sql-formatter.html</loc>
+    <loc>https://freeconvert.cloud/password-generator/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/markdown-editor.html</loc>
+    <loc>https://freeconvert.cloud/case-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/diff-checker.html</loc>
+    <loc>https://freeconvert.cloud/image-resizer/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/heic-to-jpg.html</loc>
+    <loc>https://freeconvert.cloud/image-compressor/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/svg-to-png.html</loc>
+    <loc>https://freeconvert.cloud/qr-generator/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/palette-extractor.html</loc>
+    <loc>https://freeconvert.cloud/webp-to-jpg/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/ico-converter.html</loc>
+    <loc>https://freeconvert.cloud/json-to-csv/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/lorem-ipsum.html</loc>
+    <loc>https://freeconvert.cloud/base64-tool/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/unit-converter.html</loc>
+    <loc>https://freeconvert.cloud/sql-formatter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/speed-test.html</loc>
+    <loc>https://freeconvert.cloud/markdown-editor/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/stopwatch.html</loc>
+    <loc>https://freeconvert.cloud/diff-checker/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/password-strength.html</loc>
+    <loc>https://freeconvert.cloud/heic-to-jpg/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/html-formatter.html</loc>
+    <loc>https://freeconvert.cloud/svg-to-png/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/css-formatter.html</loc>
+    <loc>https://freeconvert.cloud/palette-extractor/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/js-formatter.html</loc>
+    <loc>https://freeconvert.cloud/ico-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/url-encoder-decoder.html</loc>
+    <loc>https://freeconvert.cloud/lorem-ipsum/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/binary-text-converter.html</loc>
+    <loc>https://freeconvert.cloud/unit-converter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/image-to-base64.html</loc>
+    <loc>https://freeconvert.cloud/speed-test/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/aspect-ratio-calculator.html</loc>
+    <loc>https://freeconvert.cloud/stopwatch/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/rgb-hex-converter.html</loc>
+    <loc>https://freeconvert.cloud/password-strength/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/csv-to-json.html</loc>
+    <loc>https://freeconvert.cloud/html-formatter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/hash-generator.html</loc>
+    <loc>https://freeconvert.cloud/css-formatter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/unicode-converter.html</loc>
+    <loc>https://freeconvert.cloud/js-formatter/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/tools/morse-code.html</loc>
+    <loc>https://freeconvert.cloud/url-encoder-decoder/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/base64-encode-image-data.html</loc>
+    <loc>https://freeconvert.cloud/binary-text-converter/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/image-to-base64/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/aspect-ratio-calculator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/rgb-hex-converter/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/csv-to-json/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/hash-generator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/unicode-converter/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/morse-code/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/privacy/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/terms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/security/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/dmca/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/contact/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/cookies/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/how-to-convert-jpg-to-pdf-online/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/best-free-json-to-csv-converter-for-windows.html</loc>
+    <loc>https://freeconvert.cloud/blog/how-to-convert-png-to-jpg-without-losing-quality/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/best-free-tools-for-developers-2026.html</loc>
+    <loc>https://freeconvert.cloud/blog/jpg-vs-png-which-format-should-you-use/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/character-counter-for-tweets.html</loc>
+    <loc>https://freeconvert.cloud/blog/pdf-vs-docx-what-is-the-difference/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/check-internet-speed-for-zoom-calls.html</loc>
+    <loc>https://freeconvert.cloud/blog/how-to-compress-images-for-websites/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/check-my-internet-speed.html</loc>
+    <loc>https://freeconvert.cloud/blog/how-to-convert-json-to-csv-for-spreadsheets/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/check-password-security-level.html</loc>
+    <loc>https://freeconvert.cloud/blog/mp3-vs-wav-which-audio-format-is-better/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/compare-text-differences-online.html</loc>
+    <loc>https://freeconvert.cloud/blog/mp4-vs-webm-best-video-format-for-the-web/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/compress-images-for-website-speed-optimization.html</loc>
+    <loc>https://freeconvert.cloud/blog/how-to-keep-files-secure-when-using-online-converters/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/compress-jpg-files-for-email.html</loc>
+    <loc>https://freeconvert.cloud/blog/best-free-online-file-conversion-tools-for-students-and-professionals/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-celsius-to-fahrenheit-quickly.html</loc>
+    <loc>https://freeconvert.cloud/llms.txt</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-heic-photos-to-jpg-on-pc.html</loc>
+    <loc>https://freeconvert.cloud/humans.txt</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-json-to-excel-csv.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-kilograms-to-pounds.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-logo-svg-to-transparent-png.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-meters-to-feet-online.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/convert-unix-timestamp.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/count-words-in-essay-online.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/create-favicon-from-png.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/decode-base64-string-to-text.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/extract-color-palette-from-image-url.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/find-hex-code-from-image.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/format-sql-online-for-free.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/free-online-file-converters.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/free-online-svg-to-png-converter.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/generate-qr-code-for-wifi-password.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/generate-strong-passwords-for-gmail.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/generate-text-from-lorem-ipsum.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/how-to-check-password-strength.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/how-to-convert-png-to-jpg-on-mac.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/how-to-open-heic-files-on-android.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/lorem-ipsum-generator-for-ui-design.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/make-ico-file-for-website.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/markdown-editor-with-real-time-preview.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/markdown-to-html-converter.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/online-code-diff-tool.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/online-timer-with-alarm.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/qr-code-generator-for-vcard.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/random-password-generator-with-symbols.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/reduce-png-size-for-mobile.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/resize-image-for-facebook-cover.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/resize-image-for-instagram-stories.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/resize-photo-for-passport.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/sql-query-prettifier.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/stopwatch-for-study-sessions.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/test-network-speed-for-gaming.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/title-case-converter-for-headlines.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/uppercase-to-lowercase-converter.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/webp-to-jpg-bulk-converter.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://freeconvert.cloud/blog/hub-pages/webp-to-jpg-converter-for-chrome.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

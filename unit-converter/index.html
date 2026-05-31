@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Unit Converter - Length, Weight, aspect ratio | freeconvert.cloud</title>
+    <meta name="description" content="Convert metrics instantly. Fast and precise calculation viewport simulator included.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <link rel="canonical" href="https://freeconvert.cloud/unit-converter/" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "name": "Online Unit Converter - Length, Weight, aspect ratio", "description": "Convert metrics instantly. Fast and precise calculation viewport simulator included."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are the Unit Converter converters completely free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity."}}, {"@type": "Question", "name": "How does freeconvert.cloud guarantee the security of my files?", "acceptedAnswer": {"@type": "Answer", "text": "Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours."}}, {"@type": "Question", "name": "Can I use these {cat_name} tools on my smartphone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software."}}]}]}</script>
+</head>
+
+<body>
+    
+    <!-- SaaS Header -->
+    <header class="header-glass">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">freeconvert<span class="logo-dot">.cloud</span></span>
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="/image-converter/" class="nav-link">🔄 Convert</a>
+                    <div class="nav-dropdown">
+                        <a href="/image-converter/">🖼️ Image Converter</a>
+                        <a href="/video-converter/">🎥 Video Converter</a>
+                        <a href="/audio-converter/">🎵 Audio Converter</a>
+                        <a href="/document-converter/">📄 Document Converter</a>
+                        <a href="/pdf-tools/">🛡️ PDF Tools</a>
+                        <a href="/archive-converter/">🗜️ Archive Converter</a>
+                        <a href="/ebook-converter/">📚 eBook Converter</a>
+                        <a href="/unit-converter/">📏 Unit Converter</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/image-compressor/" class="nav-link">🗜️ Compress</a>
+                    <div class="nav-dropdown">
+                        <a href="/image-compressor/">🖼️ Image Compressor</a>
+                        <a href="/pdf-tools/">📄 PDF Compressor</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="/pdf-tools/" class="nav-link">📄 PDF Tools</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/pricing/" class="nav-link">💎 Pricing</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/api/" class="nav-link">⚡ API</a>
+                </div>
+                <a href="/pricing/" class="btn primary" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; text-transform: none; border-radius: 8px;">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="tool-content">
+        <!-- Visual Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <span>&gt;</span>
+            <span style="color: var(--text-muted);">Unit Converter</span>
+        </nav>
+
+        <section class="tool-header">
+            <h1>Unit Converter</h1>
+            <p style="margin-top: 0.5rem;">Convert between length, weight, temperature, and aspect ratios.</p>
+        </section>
+
+        <!-- Dynamic Category upload block -->
+        <section class="upload-section" id="tool-container">
+            
+<div class="upload-wrapper" style="padding: 0;">
+    <div id="drop-zone" class="drop-zone">
+        <div class="drop-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            </svg>
+        </div>
+        <p class="drop-text">Drag & drop files here</p>
+        <span class="or-separator">or</span>
+        <button type="button" class="btn primary choose-btn">Choose Files</button>
+        <input type="file" id="file-input" hidden>
+    </div>
+    
+    <!-- Cloud options marked coming soon/inactive -->
+    <div class="cloud-uploads">
+        <button class="cloud-btn" disabled>☁️ Google Drive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>📦 Dropbox <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>📂 OneDrive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>🔗 URL Upload <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+    </div>
+
+    <!-- Active preview states -->
+    <div id="preview-container" class="preview-container" style="display: none;">
+        <div class="file-info-card">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <span id="file-type-icon" style="font-size: 2.2rem; display: flex; align-items: center; justify-content: center;">📄</span>
+                <div>
+                    <span class="file-name" id="selected-file-name">-</span>
+                    <span class="file-size" id="selected-file-size">-</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted);">Convert to:</label>
+                <select id="output-format" class="glass-input" style="width: auto; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: bold; background: white;"></select>
+            </div>
+        </div>
+        <div id="sandbox-badge" style="margin-top: 0.8rem; margin-bottom: 1.2rem; font-size: 0.82rem; font-weight: 700; text-align: left; display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.2rem; border-radius: 12px; background: rgba(99, 102, 241, 0.03); border: 1px solid var(--border-color); line-height: 1.4;"></div>
+
+        <!-- Advanced settings dropdown accordion -->
+        <div class="accordion" id="adv-accordion" style="display: none; margin-bottom: 1.5rem;">
+            <div class="accordion-header">⚙️ Advanced Conversion Settings</div>
+            <div class="accordion-content">
+                <div id="advanced-settings-controls" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Controls will be injected dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container" id="sw-progress-wrap" style="display: none;">
+            <div class="progress-bar" id="sw-progress-bar"></div>
+        </div>
+        <div id="sw-progress-text" style="display: none; text-align: center; font-weight: bold;">Converting file...</div>
+
+        <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+            <button id="convert-btn" class="btn primary">🚀 Convert Now</button>
+            <button id="reset-btn" class="btn secondary">Reset</button>
+        </div>
+    </div>
+</div>
+
+        </section>
+
+        <!-- Category Grid of Tools -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 2rem; letter-spacing: -0.03em;">Available Unit Converter Tools</h2>
+            <div class="tool-grid" style="padding: 0; margin-bottom: 3rem;">
+                
+            <a href="/lorem-ipsum/" class="tool-card">
+                <div class="tool-icon">📜</div>
+                <h3>Lorem Ipsum Generator</h3>
+                <p>Generate dummy text for your designs.</p>
+            </a>
+            <a href="/unit-converter/" class="tool-card">
+                <div class="tool-icon">📏</div>
+                <h3>Unit Converter</h3>
+                <p>Convert Length, Weight, and Temperature.</p>
+            </a>
+            <a href="/speed-test/" class="tool-card">
+                <div class="tool-icon">🚀</div>
+                <h3>Internet Speed Test</h3>
+                <p>Estimate your internet download speed.</p>
+            </a>
+            <a href="/stopwatch/" class="tool-card">
+                <div class="tool-icon">⏱️</div>
+                <h3>Stopwatch & Timer</h3>
+                <p>Track time with a clean, dark-mode stopwatch.</p>
+            </a>
+            <a href="/aspect-ratio-calculator/" class="tool-card">
+                <div class="tool-icon">📏</div>
+                <h3>Aspect Ratio Calculator</h3>
+                <p>Calculate perfect aspect ratios for design.</p>
+            </a>
+            <a href="/rgb-hex-converter/" class="tool-card">
+                <div class="tool-icon">🌈</div>
+                <h3>RGB to HEX Converter</h3>
+                <p>Convert between RGB and HEX color codes.</p>
+            </a>
+            <a href="/hash-generator/" class="tool-card">
+                <div class="tool-icon">🔐</div>
+                <h3>Hash Generator</h3>
+                <p>Generate MD5, SHA1, and SHA256 hashes.</p>
+            </a>
+            <a href="/morse-code/" class="tool-card">
+                <div class="tool-icon">📟</div>
+                <h3>Morse Code Converter</h3>
+                <p>Translate text to Morse code and back.</p>
+            </a>
+            </div>
+        </section>
+
+        <!-- AdSense Slot: Category Page Mid Content -->
+        <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
+            <span class="adsense-label">Advertisement</span>
+            <div class="adsense-placeholder-box leaderboard-ad">
+                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
+            </div>
+        </div>
+
+        <!-- Help articles -->
+        <article class="seo-content">
+            <h2>About our Unit Converter Hub</h2>
+            <p>Welcome to the high-performance Unit Converter directory on freeconvert.cloud. Our platform is engineered to deliver enterprise-grade conversion, calculation, formatting, and compression tools. Navigating incompatible file extensions, heavy media payloads, or complex coding scripts represents a daily productivity bottleneck for professionals and students alike. We optimize this workflow by offering client-side browser local tools and secure edge server sandboxes, unlocking lightning-fast transcoding speeds while respecting your data privacy.</p>
+            
+            
+        <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📝 Unit Converter Glossary & Standards</h3>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
+        </div>
+
+            <h2>Why Choose freeconvert.cloud for Unit Converter?</h2>
+            <p>At freeconvert.cloud, we monetize strictly through non-intrusive AdSense advertising. Unlike spammy online tools directories, we maintain a clean visual separation between ad layouts and converter modules, completely eliminating accidental clicks or deceptive download redirect pathways. We believe in providing original, human-written content layers, detailed use cases, and robust guides that deliver real value to our visitors.</p>
+
+            <h2>Primary Use Cases</h2>
+            <ul style="padding-left:1.5rem; margin-top:0.8rem; display:flex; flex-direction:column; gap:0.6rem; font-size:0.95rem; line-height:1.6;">
+                <li>Transcoding dynamic Unit Converter containers to highly optimized formats to accelerate page load speeds and decrease mobile bandwidth usage.</li><li>Migrating structured database arrays and developer records safely in a client-side sandbox environment.</li><li>Configuring advanced options like bitrate structures, quality parameters, and dimensions locally.</li><li>Compressing heavy attachments to ensure compatibility under standard email client size limits.</li>
+            </ul>
+
+            <h2>Supported Formats and Guides</h2>
+            <p>We support a wide array of formats inside the Unit Converter directory, including images, document files, media tracks, and developer code structures. The converters page layouts adapt dynamically to any desktop or mobile screen size.</p>
+
+            <h2>How does our Unit Converter tool work?</h2>
+            <ol><li>Input your initial values.</li><li>Select metric units or dimensions.</li><li>See live calculations immediately.</li></ol>
+            
+            <h2>Frequently Asked Questions</h2>
+            <p style="margin-bottom:1rem;">Have questions about converting files inside our Unit Converter directory? Read our comprehensive FAQ below:</p>
+            
+        <div class="accordion">
+            <div class="accordion-header">❓ Are the Unit Converter converters completely free to use?</div>
+            <div class="accordion-content">
+                <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">❓ How does freeconvert.cloud guarantee the security of my files?</div>
+            <div class="accordion-content">
+                <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">❓ Can I use these {cat_name} tools on my smartphone?</div>
+            <div class="accordion-content">
+                <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software.</p>
+            </div>
+        </div>
+        </article>
+
+        <!-- Related categories section -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing:-0.02em;">Explore Related Categories</h3>
+            <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/image-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">🖼️ Image Converter</a>
+                <a href="/pdf-tools/" class="category-tab active" style="box-shadow:none; text-decoration:none;">📄 PDF Tools</a>
+                <a href="/document-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">📄 Document Converter</a>
+                <a href="/video-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">🎥 Video Converter</a>
+            </div>
+        </div>
+    </main>
+
+    
+    <!-- Competitor-level Footer -->
+    <footer class="footer-mega">
+        <!-- AdSense Slot: Footer Optional -->
+        <div class="adsense-placeholder-wrap footer-ad-wrap">
+            <span class="adsense-label">Sponsored Links</span>
+            <div class="adsense-placeholder-box leaderboard-ad">
+                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2 class="logo-text">freeconvert<span class="logo-dot">.cloud</span></h2>
+                <p>The world's most beautiful, privacy-first SaaS conversion platform. Process documents, images, video, audio, and archives instantly.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Converters</h4>
+                <div class="footer-links">
+                    <a href="/jpg-to-pdf/">JPG to PDF</a>
+                    <a href="/pdf-to-word/">PDF to Word</a>
+                    <a href="/png-to-jpg/">PNG to JPG</a>
+                    <a href="/mp4-to-mp3/">MP4 to MP3</a>
+                    <a href="/csv-to-json/">CSV to JSON</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Category Guides</h4>
+                <div class="footer-links">
+                    <a href="/image-converter/">Image Converter</a>
+                    <a href="/video-converter/">Video Converter</a>
+                    <a href="/audio-converter/">Audio Converter</a>
+                    <a href="/document-converter/">Document Tools</a>
+                    <a href="/pdf-tools/">PDF Tools Grid</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Company & Legal</h4>
+                <div class="footer-links">
+                    <a href="/about/">About Us</a>
+                    <a href="/pricing/">Plan Pricing</a>
+                    <a href="/api/">Developer API</a>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/security/">File Security</a>
+                    <a href="/cookies/">Cookie Policy</a>
+                    <a href="/contact/">Contact Us</a>
+                    <a href="/dmca/">DMCA Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 freeconvert.cloud. All rights reserved.</span>
+            <span>Designed & Developed by <a href="https://hosterlo.com" target="_blank" class="hosterlo-link">Hosterlo</a></span>
+        </div>
+    </footer>
+
+
+    <script src="/tools/tool-logic.js"></script>
+    <script>
+        
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const previewContainer = document.getElementById('preview-container');
+const fileNameEl = document.getElementById('selected-file-name');
+const fileSizeEl = document.getElementById('selected-file-size');
+const formatSelect = document.getElementById('output-format');
+const convertBtn = document.getElementById('convert-btn');
+const resetBtn = document.getElementById('reset-btn');
+const accordion = document.getElementById('adv-accordion');
+const controlsBox = document.getElementById('advanced-settings-controls');
+const progWrap = document.getElementById('sw-progress-wrap');
+const progBar = document.getElementById('sw-progress-bar');
+const progText = document.getElementById('sw-progress-text');
+const sandboxBadge = document.getElementById('sandbox-badge');
+const fileTypeIcon = document.getElementById('file-type-icon');
+
+dropZone.onclick = () => fileInput.click();
+fileInput.onchange = (e) => handleFiles(e.target.files);
+dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('active'); };
+dropZone.ondragleave = () => dropZone.classList.remove('active');
+dropZone.ondrop = (e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); };
+
+let activeFile = null;
+
+function getFileIcon(fileName) {
+    const ext = fileName.split('.').pop().toLowerCase();
+    const imageExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg', 'heic'];
+    const videoExts = ['mp4', 'mov', 'avi', 'mkv', 'webm'];
+    const audioExts = ['mp3', 'wav', 'ogg', 'flac', 'm4a'];
+    const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
+    const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
+    
+    if (imageExts.includes(ext)) return '🖼️';
+    if (videoExts.includes(ext)) return '🎥';
+    if (audioExts.includes(ext)) return '🎵';
+    if (documentExts.includes(ext)) return '📄';
+    if (archiveExts.includes(ext)) return '🗜️';
+    return '📄';
+}
+
+function updateSandboxBadge(sourceExt, targetExt) {
+    const isClient = window.ConversionAdapter.isClientSideTool(sourceExt, targetExt);
+    const isBackendConnected = window.ConversionAdapter.config.isBackendConnected;
+    if (isClient) {
+        sandboxBadge.innerHTML = `🛡️ <span style="color: var(--brand-accent);">100% In-Browser Secure Sandbox (No file upload required - mathematically private)</span>`;
+    } else {
+        if (isBackendConnected) {
+            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine (Secure 256-bit SSL Tunnel - Permanent deletion after 2 hours)</span>`;
+        } else {
+            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine <span style="background: rgba(139, 92, 246, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-left: 5px;">Secure Sandbox Demo</span> (Fallback offline processing)</span>`;
+        }
+    }
+}
+
+function handleFiles(files) {
+    if (files.length === 0) return;
+    activeFile = files[0];
+    dropZone.style.display = 'none';
+    previewContainer.style.display = 'block';
+    
+    fileNameEl.textContent = activeFile.name;
+    fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+    fileTypeIcon.textContent = getFileIcon(activeFile.name);
+
+    // Dynamic output format mapping
+    const formats = window.ConversionAdapter.getOutputFormats(activeFile.name);
+    formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+
+    const ext = activeFile.name.split('.').pop().toLowerCase();
+    updateSandboxBadge(ext, formatSelect.value);
+    formatSelect.onchange = () => updateSandboxBadge(ext, formatSelect.value);
+
+    // Inject advanced options if image tool
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
+        accordion.style.display = 'block';
+        controlsBox.innerHTML = `
+            <div style="display: flex; gap: 1rem; width: 100%;">
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Width (px): <input type="number" id="opt-width" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Height (px): <input type="number" id="opt-height" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+            </div>
+            <label style="font-weight: 700; font-size: 0.85rem;">Image Quality: <input type="range" id="opt-quality" min="10" max="100" value="90" style="width: 100%; margin-top: 5px;"> <span id="qual-label" style="color:var(--brand-primary);">90%</span></label>
+        `;
+        const slider = document.getElementById('opt-quality');
+        if (slider) {
+            slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
+        }
+    } else {
+        accordion.style.display = 'none';
+    }
+}
+
+convertBtn.onclick = async () => {
+    if (!activeFile) return;
+    
+    convertBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    progWrap.style.display = 'block';
+    progText.style.display = 'block';
+    
+    // Simulate multi-stage upload states
+    const stages = [
+        { progress: 20, label: "🛰️ Connecting to edge server..." },
+        { progress: 40, label: "📤 Uploading file to security sandbox..." },
+        { progress: 65, label: "⚙️ Converting formats..." },
+        { progress: 85, label: "🗜️ Optimizing layout parameters..." },
+        { progress: 100, label: "✅ Finalizing secure download link..." }
+    ];
+
+    for (let stage of stages) {
+        progText.textContent = stage.label;
+        progBar.style.width = stage.progress + '%';
+        await new Promise(r => setTimeout(r, 400));
+    }
+
+    try {
+        const targetFormat = formatSelect.value;
+        
+        // Gather custom options
+        const opts = {};
+        const qEl = document.getElementById('opt-quality');
+        const wEl = document.getElementById('opt-width');
+        const hEl = document.getElementById('opt-height');
+        
+        if (qEl) opts.quality = parseFloat(qEl.value) / 100;
+        if (wEl && wEl.value) opts.width = parseInt(wEl.value);
+        if (hEl && hEl.value) opts.height = parseInt(hEl.value);
+
+        const resultBlob = await window.ConversionAdapter.convert(activeFile, targetFormat, opts);
+        
+        // Render completed download state with beautiful success alerts and checklist animations
+        progWrap.style.display = 'none';
+        
+        progText.innerHTML = `
+            <div class="success-alert">
+                <div class="success-icon-wrap">
+                    <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <div class="success-message">
+                    <h4>Conversion Completed Successfully!</h4>
+                    <p>Your file has been securely processed and is ready for download.</p>
+                </div>
+            </div>
+        `;
+        
+        const dLink = document.createElement('a');
+        dLink.className = "btn primary";
+        dLink.style.marginTop = "1rem";
+        dLink.textContent = "📥 Download Converted File";
+        dLink.href = URL.createObjectURL(resultBlob);
+        
+        const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
+        dLink.download = `${cleanName}-converted.${targetFormat}`;
+        
+        // Insert download button cleanly
+        const actButtons = document.querySelector('.action-buttons');
+        actButtons.innerHTML = '';
+        actButtons.appendChild(dLink);
+        
+        const anotherBtn = document.createElement('button');
+        anotherBtn.className = "btn secondary";
+        anotherBtn.style.marginTop = "1rem";
+        anotherBtn.textContent = "Convert Another File";
+        anotherBtn.onclick = () => location.reload();
+        actButtons.appendChild(anotherBtn);
+        
+    } catch (e) {
+        progText.textContent = "❌ Error: " + e.message;
+        progText.style.color = "var(--brand-danger)";
+        convertBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'inline-block';
+    }
+};
+
+resetBtn.onclick = () => location.reload();
+
+    </script>
+</body>
+
+</html>

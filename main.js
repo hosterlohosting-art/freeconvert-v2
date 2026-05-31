@@ -52,13 +52,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const allTools = await loadTools();
+    let activeCategory = 'all';
 
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = allTools.filter(tool =>
-            tool.name.toLowerCase().includes(term) ||
-            tool.description.toLowerCase().includes(term)
-        );
+    function filterAndRender() {
+        const term = searchInput.value.toLowerCase();
+        const filtered = allTools.filter(tool => {
+            // Search text match
+            const matchesSearch = tool.name.toLowerCase().includes(term) || 
+                                  tool.description.toLowerCase().includes(term);
+            
+            // Category match
+            let matchesCat = false;
+            const toolCat = tool.category ? tool.category.toLowerCase() : '';
+            if (activeCategory === 'all') {
+                matchesCat = true;
+            } else if (activeCategory === 'utility') {
+                matchesCat = (toolCat === 'utility' || toolCat === 'text');
+            } else {
+                matchesCat = (toolCat === activeCategory);
+            }
+
+            return matchesSearch && matchesCat;
+        });
         renderTools(filtered);
+    }
+
+    // Search input listener
+    searchInput.addEventListener('input', filterAndRender);
+
+    // Category tabs click listeners
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeCategory = tab.getAttribute('data-category');
+            filterAndRender();
+        });
     });
 });

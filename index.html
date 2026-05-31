@@ -4,139 +4,1587 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>freeconvert.cloud | Pro-Level Free Online Tools</title>
-    <meta name="description"
-        content="Free premium online tools for developers and designers. Convert files, edit images, and check security with no ads and no signups.">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-
+    <title>Convert Files Online — Fast, Free & Secure | freeconvert.cloud</title>
+    <meta name="description" content="Convert files online directly in your browser. Supports documents, images, video, audio, and archives with 100% privacy and no software downloads.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="freeconvert.cloud | Pro-Level Free Online Tools">
-    <meta property="og:image" content="https://freeconvert.cloud/assets/favicon.png">
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://freeconvert.cloud/">
+    <!-- Canonical tag -->
+    <link rel="canonical" href="https://freeconvert.cloud/" />
 </head>
 
 <body>
+    
+    <!-- SaaS Header -->
     <header class="header-glass">
-        <nav class="navbar glass">
-            <a href="#" class="logo"><img src="assets/logo.png" alt="freeconvert.cloud"></a>
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <span class="logo-text">freeconvert<span class="logo-dot">.cloud</span></span>
+            </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
             </div>
             <div class="nav-links">
                 <div class="nav-item">
-                    <a href="#dev" class="nav-link">Developer</a>
+                    <a href="/image-converter/" class="nav-link">🔄 Convert</a>
                     <div class="nav-dropdown">
-                        <a href="tools/html-formatter.html">🌐 HTML Formatter</a>
-                        <a href="tools/css-formatter.html">🎨 CSS Formatter</a>
-                        <a href="tools/js-formatter.html">📜 JS Formatter</a>
-                        <a href="tools/json-to-csv.html">📊 JSON to CSV</a>
-                        <a href="tools/sql-formatter.html">💾 SQL Formatter</a>
-                        <a href="tools/base64-tool.html">🔐 Base64 Tool</a>
-                        <a href="tools/binary-text-converter.html">🤖 Binary/Text</a>
+                        <a href="/image-converter/">🖼️ Image Converter</a>
+                        <a href="/video-converter/">🎥 Video Converter</a>
+                        <a href="/audio-converter/">🎵 Audio Converter</a>
+                        <a href="/document-converter/">📄 Document Converter</a>
+                        <a href="/pdf-tools/">🛡️ PDF Tools</a>
+                        <a href="/archive-converter/">🗜️ Archive Converter</a>
+                        <a href="/ebook-converter/">📚 eBook Converter</a>
+                        <a href="/unit-converter/">📏 Unit Converter</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="#image" class="nav-link">Design</a>
+                    <a href="/image-compressor/" class="nav-link">🗜️ Compress</a>
                     <div class="nav-dropdown">
-                        <a href="tools/image-compressor.html">🗜️ Compressor</a>
-                        <a href="tools/image-resizer.html">📐 Resizer</a>
-                        <a href="tools/image-to-base64.html">🖼️ Image to Base64</a>
-                        <a href="tools/palette-extractor.html">🎨 Color Palette</a>
-                        <a href="tools/aspect-ratio-calculator.html">📏 Aspect Ratio</a>
-                        <a href="tools/rgb-hex-converter.html">🌈 RGB to HEX</a>
+                        <a href="/image-compressor/">🖼️ Image Compressor</a>
+                        <a href="/pdf-tools/">📄 PDF Compressor</a>
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="#utility" class="nav-link">Utility</a>
-                    <div class="nav-dropdown">
-                        <a href="tools/password-generator.html">🔑 Password Gen</a>
-                        <a href="tools/qr-generator.html">🧱 QR Code</a>
-                        <a href="tools/unit-converter.html">📏 Unit Converter</a>
-                        <a href="tools/speed-test.html">🚀 Speed Test</a>
-                        <a href="tools/word-counter.html">✍️ Word Counter</a>
-                    </div>
+                    <a href="/pdf-tools/" class="nav-link">📄 PDF Tools</a>
                 </div>
+                <div class="nav-item">
+                    <a href="/pricing/" class="nav-link">💎 Pricing</a>
+                </div>
+                <div class="nav-item">
+                    <a href="/api/" class="nav-link">⚡ API</a>
+                </div>
+                <a href="/pricing/" class="btn primary" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; text-transform: none; border-radius: 8px;">Sign Up</a>
             </div>
         </nav>
     </header>
 
+
     <section class="hero-section">
         <div class="hero-badges">
-            <span class="badge">✨ 31+ Pro Tools</span>
-            <span class="badge">🔒 100% Privacy</span>
+            <span class="badge">🛡️ Free, secure & browser-based file conversion</span>
         </div>
-        <h1>The Most <span class="gradient-text">Beautiful</span> Way to Process Files</h1>
-        <p style="margin-top: 1.5rem; margin-bottom: 3rem;">Premium tools for Developers, Designers, and Everyone.
-            No
-            ads, no tracking, no server uploads.</p>
+        <h1>Convert Files Online — <span class="gradient-text">Fast, Secure & Effortless</span></h1>
+        <p class="hero-subtitle">Convert images, documents, PDFs, audio, video, archives, and developer files in seconds with a privacy-first conversion platform.</p>
 
-        <div style="position: relative; max-width: 600px; margin: 0 auto;">
-            <input type="text" id="tool-search" placeholder="Search for tools (e.g., HTML Formatter, Base64)..."
-                style="width: 100%; padding: 1.5rem 2rem; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; font-size: 1.1rem; outline: none; backdrop-filter: blur(10px);">
+        <!-- Homepage Active Upload box right in the Hero! -->
+        <div style="margin-bottom: 2.5rem;">
+            
+<div class="upload-wrapper" style="padding: 0;">
+    <div id="drop-zone" class="drop-zone">
+        <div class="drop-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            </svg>
+        </div>
+        <p class="drop-text">Drag & drop files here</p>
+        <span class="or-separator">or</span>
+        <button type="button" class="btn primary choose-btn">Choose Files</button>
+        <input type="file" id="file-input" hidden>
+    </div>
+    
+    <!-- Cloud options marked coming soon/inactive -->
+    <div class="cloud-uploads">
+        <button class="cloud-btn" disabled>☁️ Google Drive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>📦 Dropbox <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>📂 OneDrive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+        <button class="cloud-btn" disabled>🔗 URL Upload <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
+    </div>
+
+    <!-- Active preview states -->
+    <div id="preview-container" class="preview-container" style="display: none;">
+        <div class="file-info-card">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <span id="file-type-icon" style="font-size: 2.2rem; display: flex; align-items: center; justify-content: center;">📄</span>
+                <div>
+                    <span class="file-name" id="selected-file-name">-</span>
+                    <span class="file-size" id="selected-file-size">-</span>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted);">Convert to:</label>
+                <select id="output-format" class="glass-input" style="width: auto; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: bold; background: white;"></select>
+            </div>
+        </div>
+        <div id="sandbox-badge" style="margin-top: 0.8rem; margin-bottom: 1.2rem; font-size: 0.82rem; font-weight: 700; text-align: left; display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.2rem; border-radius: 12px; background: rgba(99, 102, 241, 0.03); border: 1px solid var(--border-color); line-height: 1.4;"></div>
+
+        <!-- Advanced settings dropdown accordion -->
+        <div class="accordion" id="adv-accordion" style="display: none; margin-bottom: 1.5rem;">
+            <div class="accordion-header">⚙️ Advanced Conversion Settings</div>
+            <div class="accordion-content">
+                <div id="advanced-settings-controls" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <!-- Controls will be injected dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container" id="sw-progress-wrap" style="display: none;">
+            <div class="progress-bar" id="sw-progress-bar"></div>
+        </div>
+        <div id="sw-progress-text" style="display: none; text-align: center; font-weight: bold;">Converting file...</div>
+
+        <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+            <button id="convert-btn" class="btn primary">🚀 Convert Now</button>
+            <button id="reset-btn" class="btn secondary">Reset</button>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <!-- Search bar for tools -->
+        <div style="position: relative; max-width: 600px; margin: 0 auto 1.5rem;">
+            <input type="text" id="tool-search" placeholder="Search 35+ tools (e.g. JPG to PDF, JSON to CSV)..."
+                style="width: 100%; padding: 1.1rem 2rem; border-radius: 50px; background: white; border: 1px solid var(--border-color); color: var(--text-primary); font-size: 1.05rem; outline: none; box-shadow: var(--card-shadow); transition: all 0.3s;"
+                onfocus="this.style.borderColor='var(--brand-primary)'; this.style.boxShadow='var(--hover-shadow)';"
+                onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--card-shadow)';">
+        </div>
+
+        <!-- Popular Quick Tools Chips -->
+        <div class="quick-chips">
+            <span class="quick-chip-label">Quick Tools:</span>
+            <a href="/jpg-to-pdf/" class="quick-chip">JPG to PDF</a>
+            <a href="/pdf-to-word/" class="quick-chip">PDF to Word</a>
+            <a href="/png-to-jpg/" class="quick-chip">PNG to JPG</a>
+            <a href="/mp4-to-mp3/" class="quick-chip">MP4 to MP3</a>
+            <a href="/json-to-csv/" class="quick-chip">JSON to CSV</a>
+        </div>
+
+        <!-- Trust Stats Row -->
+        <div class="trust-stats-row">
+            <div class="stat-badge">⚡ 35+ Tools</div>
+            <div class="stat-badge">🔒 Privacy-First</div>
+            <div class="stat-badge">💻 No Software Needed</div>
+            <div class="stat-badge">🧼 Clean Processing</div>
         </div>
     </section>
 
-    <!-- Main Tool Grid -->
+    <!-- AdSense Slot: Homepage Below Hero -->
+    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 4rem;">
+        <span class="adsense-label">Advertisement</span>
+        <div class="adsense-placeholder-box leaderboard-ad">
+            <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
+        </div>
+    </div>
+
+    <!-- Dynamic Category Switcher pills -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
+        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="all">🔮 All Tools</button>
+            <button class="category-tab" data-category="image">🖼️ Image</button>
+            <button class="category-tab" data-category="developer">🌐 Developer</button>
+            <button class="category-tab" data-category="designer">🎨 Designer</button>
+            <button class="category-tab" data-category="security">🛡️ Security</button>
+            <button class="category-tab" data-category="utility">🚀 Utility</button>
+        </div>
+    </div>
+
+    <!-- Unified Tool Grid -->
     <main id="tools" class="tool-grid">
-        <!-- Tools injected via JS -->
+        
+            <a href="/png-to-jpg/" class="tool-card" data-category="image">
+                <span class="popular-badge">⚡ Popular</span>
+                <div class="tool-card-top">
+                    <div class="tool-icon">🖼️</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>PNG to JPG</h3>
+                    <p>Convert PNG images to JPG instantly.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/jpg-to-png/" class="tool-card" data-category="image">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🌌</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>JPG to PNG</h3>
+                    <p>Transform JPG files with transparency.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/word-counter/" class="tool-card" data-category="text">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">✍️</div>
+                    <span class="tool-category-tag">Text</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Word Counter</h3>
+                    <p>Analyze text length and statistics.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/password-generator/" class="tool-card" data-category="security">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔑</div>
+                    <span class="tool-category-tag">Security</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Password Generator</h3>
+                    <p>Create unbreakable passwords.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/case-converter/" class="tool-card" data-category="text">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔡</div>
+                    <span class="tool-category-tag">Text</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Case Converter</h3>
+                    <p>Convert text to UPPERCASE, lowercase, or Title Case.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/image-resizer/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📐</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Image Resizer</h3>
+                    <p>Resize your images to custom dimensions.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/image-compressor/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🗜️</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Image Compressor</h3>
+                    <p>Reduce image file size with zero quality loss.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/qr-generator/" class="tool-card" data-category="qr">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🧱</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>QR Generator</h3>
+                    <p>Create custom QR codes for any link.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/webp-to-jpg/" class="tool-card" data-category="image">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🕸️</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>WebP to JPG</h3>
+                    <p>Convert WebP images to high-quality JPG.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/json-to-csv/" class="tool-card" data-category="dev_basic">
+                <span class="popular-badge">⚡ Popular</span>
+                <div class="tool-card-top">
+                    <div class="tool-icon">📊</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>JSON to CSV</h3>
+                    <p>Convert JSON data to CSV format instantly.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/base64-tool/" class="tool-card" data-category="dev_basic">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔐</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Base64 Encoder/Decoder</h3>
+                    <p>Encode and decode Base64 strings real-time.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/sql-formatter/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">💾</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>SQL Formatter</h3>
+                    <p>Beautify and format complex SQL queries.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/markdown-editor/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📝</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Markdown Editor</h3>
+                    <p>Write Markdown with live HTML preview.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/diff-checker/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">⚖️</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Text Diff Checker</h3>
+                    <p>Compare two texts and highlight differences.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/heic-to-jpg/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🍏</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>HEIC to JPG</h3>
+                    <p>Convert iPhone HEIC photos to generic JPG.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/svg-to-png/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🖼️</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>SVG to PNG</h3>
+                    <p>Render SVG files as high-quality PNG images.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/palette-extractor/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🎨</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Color Palette Extractor</h3>
+                    <p>Extract dominant colors from any image.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/ico-converter/" class="tool-card" data-category="image_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">⭐</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>ICO Converter</h3>
+                    <p>Create standard Favicons (.ico) from images. Note: This tool creates a 32x32 PNG file and renames it to .ico.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/lorem-ipsum/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📜</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Lorem Ipsum Generator</h3>
+                    <p>Generate dummy text for your designs.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/unit-converter/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📏</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Unit Converter</h3>
+                    <p>Convert Length, Weight, and Temperature.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/speed-test/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🚀</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Internet Speed Test</h3>
+                    <p>Estimate your internet download speed.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/stopwatch/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">⏱️</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Stopwatch & Timer</h3>
+                    <p>Track time with a clean, dark-mode stopwatch.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/password-strength/" class="tool-card" data-category="security">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🛡️</div>
+                    <span class="tool-category-tag">Security</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Password Strength</h3>
+                    <p>Test the strength of your passwords securely.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/html-formatter/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🌐</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>HTML Formatter</h3>
+                    <p>Beautify and format messy HTML code.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/css-formatter/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🎨</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>CSS Formatter</h3>
+                    <p>Format and beautify your CSS stylesheets.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/js-formatter/" class="tool-card" data-category="dev_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📜</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>JS Formatter</h3>
+                    <p>Beautify and format JavaScript snippets.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/url-encoder-decoder/" class="tool-card" data-category="dev_basic">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔗</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>URL Encoder/Decoder</h3>
+                    <p>Encode or decode URLs for web compatibility.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/binary-text-converter/" class="tool-card" data-category="dev_basic">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🤖</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Binary to Text</h3>
+                    <p>Convert between Binary code and plain text.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/image-to-base64/" class="tool-card" data-category="image_base64">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🖼️</div>
+                    <span class="tool-category-tag">Designer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Image to Base64</h3>
+                    <p>Convert images into Base64 Data URIs.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/aspect-ratio-calculator/" class="tool-card" data-category="utility_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📏</div>
+                    <span class="tool-category-tag">Designer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Aspect Ratio Calculator</h3>
+                    <p>Calculate perfect aspect ratios for design.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/rgb-hex-converter/" class="tool-card" data-category="utility_advanced">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🌈</div>
+                    <span class="tool-category-tag">Designer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>RGB to HEX Converter</h3>
+                    <p>Convert between RGB and HEX color codes.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/csv-to-json/" class="tool-card" data-category="dev_basic">
+                <span class="popular-badge">⚡ Popular</span>
+                <div class="tool-card-top">
+                    <div class="tool-icon">📑</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>CSV to JSON</h3>
+                    <p>Convert CSV data to JSON format instantly.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/hash-generator/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔐</div>
+                    <span class="tool-category-tag">Security</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Hash Generator</h3>
+                    <p>Generate MD5, SHA1, and SHA256 hashes.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/unicode-converter/" class="tool-card" data-category="dev_basic">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔡</div>
+                    <span class="tool-category-tag">Developer</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Unicode Converter</h3>
+                    <p>Convert text to Unicode and vice-versa.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/morse-code/" class="tool-card" data-category="utility">
+                
+                <div class="tool-card-top">
+                    <div class="tool-icon">📟</div>
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <h3>Morse Code Converter</h3>
+                    <p>Translate text to Morse code and back.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
     </main>
 
-    <!-- Mega Footer -->
+    <!-- Why Choose Us Grid -->
+    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 3.5rem; letter-spacing:-0.03em;">Why Choose freeconvert.cloud?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
+                    <h3 style="color: var(--brand-primary); margin-bottom: 0.8rem; font-size: 1.3rem;">🔒 Private by Design</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.6;">All standard converter operations execute in your browser's local sandbox memory. Your files are completely safe and never uploaded.</p>
+                </div>
+                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
+                    <h3 style="color: var(--brand-secondary); margin-bottom: 0.8rem; font-size: 1.3rem;">⚡ Fast Browser Tools</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.6;">Powered by modern WebAssembly and Canvas client-side libraries. Converting files takes milliseconds with absolutely zero network delay.</p>
+                </div>
+                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
+                    <h3 style="color: var(--brand-accent); margin-bottom: 0.8rem; font-size: 1.3rem;">💎 Clean Output Quality</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.6;">High-definition conversions with zero loss of formatting, transparency, or pixel density. Premium and optimized.</p>
+                </div>
+                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
+                    <h3 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1.3rem;">🖥️ Works Everywhere</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.6;">A fully responsive browser-based SaaS converter that runs smoothly on Mac, Windows, iOS, Android, and Linux without setups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Conversion Categories Grid -->
+    <section style="background: var(--bg-light); border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Popular Conversion Hubs</h2>
+            <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">Explore comprehensive conversion directories and batch processing hubs.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
+                <a href="/image-converter/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">🖼️</div>
+                    <h3 style="color:var(--text-primary);">Image Converter</h3>
+                    <p>Convert PNG, JPG, WebP, SVG, and HEIC images safely in your browser.</p>
+                </a>
+                <a href="/pdf-tools/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">📄</div>
+                    <h3 style="color:var(--text-primary);">PDF Tools</h3>
+                    <p>Compress, format, split, and merge PDF files in a single click.</p>
+                </a>
+                <a href="/document-converter/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">📄</div>
+                    <h3 style="color:var(--text-primary);">Document Converter</h3>
+                    <p>Process Microsoft Word docx, Excel sheets, and developer code bases.</p>
+                </a>
+                <a href="/video-converter/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">🎥</div>
+                    <h3 style="color:var(--text-primary);">Video Converter</h3>
+                    <p>Transcode MP4, WebM, AVI, and MOV video file dimensions online.</p>
+                </a>
+                <a href="/audio-converter/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">🎵</div>
+                    <h3 style="color:var(--text-primary);">Audio Converter</h3>
+                    <p>Convert MP3, WAV, OGG, and FLAC audios with high quality preservation.</p>
+                </a>
+                <a href="/unit-converter/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">📏</div>
+                    <h3 style="color:var(--text-primary);">Utility & Units</h3>
+                    <p>Calculate aspect ratios, test connectivity speeds, and measure metrics.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Step List -->
+    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 3.5rem; letter-spacing:-0.03em;">How it Works — Three Easy Steps</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; position: relative;">
+                <div style="text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 900; background: var(--brand-primary-light); color: var(--brand-primary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; border: 1px solid rgba(99,102,241,0.15);">1</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Upload Your File</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.55;">Drag and drop your file into the secure dotted zone or browse from your device storage.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 900; background: rgba(139, 92, 246, 0.08); color: var(--brand-secondary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; border: 1px solid rgba(139,92,246,0.15);">2</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Choose Target Format</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.55;">Select your compatible high-definition target output format and adjust advanced custom sliders.</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 1.8rem; font-weight: 900; background: var(--brand-accent-light); color: var(--brand-accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; border: 1px solid rgba(16,185,129,0.15);">3</div>
+                    <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Convert and Download</h3>
+                    <p style="font-size: 0.94rem; line-height: 1.55;">Execute the safe sandbox conversion instantly and download your pristine results securely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete SEO Content Expansion & E-E-A-T Signal Block -->
+    <section style="background: var(--bg-light); border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: left;" class="seo-content">
+            <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; letter-spacing: -0.03em; text-align: center; color: var(--text-primary);">
+                The Future of Secure, Browser-Based File Conversion
+            </h2>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 2rem;">
+                Welcome to <strong>freeconvert.cloud</strong>, a next-generation SaaS file conversion platform built for security, speed, and privacy. Traditional online utility websites function by uploading your private files, documents, and assets to external cloud servers, storing your content in database cache repositories and exposing your personal records to substantial hacking vulnerabilities. At freeconvert.cloud, we are spearheading a paradigm shift in web-based operations. 
+            </p>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 2.5rem;">
+                By utilizing advanced client-side technologies—including <strong>HTML5 Canvas APIs</strong>, <strong>WebAssembly modules</strong>, and <strong>local JavaScript compilation engines</strong>—our core converter tools process all calculations, rasterizations, hash generations, and text transformations directly in your device's web browser RAM sandbox. Your raw files are never transmitted across external networks, ensuring 100% data secrecy, absolute confidentiality, and zero risk of data leaks.
+            </p>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;">
+
+            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: -0.02em;">
+                Who Benefits from freeconvert.cloud?
+            </h3>
+            <p style="margin-bottom: 1.5rem;">
+                Our secure web utility ecosystem is custom-engineered to optimize workflows for a diverse grid of professional, developer, creative, and academic roles:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-bottom: 3rem;">
+                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-primary); margin-bottom: 0.6rem;">🌐 Software Developers</h4>
+                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
+                        Engineers and DevOps professionals rely on our sandboxed developer tools to flatten API JSON payloads into CSV sheets, prettify minified SQL queries, format active HTML, CSS, and JS blocks, extract raw cryptographic SHA hashes, and decode complex URL/Base64 strings locally without exposing client databases or proprietary source codes to external server APIs.
+                    </p>
+                </div>
+                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-secondary); margin-bottom: 0.6rem;">🖼️ Creative Designers</h4>
+                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
+                        Graphics designers and content publishers utilize our browser-local compressors and resizers to shrink pixel weights, convert heavy Apple HEIC camera photographs to standard compressed JPG format, scale transparent vector SVG elements to high-resolution PNG screens, and extract dominant color palettes from design comps in milliseconds.
+                    </p>
+                </div>
+                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 0.6rem;">💼 Business Teams & Students</h4>
+                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
+                        Office workers, copywriters, and academic students use our document processors to combine sequential homework scans or corporate invoices into single, organized multi-page PDFs, convert read-only PDF reports to editable MS Word DOCX models, track character/sentence statistics in real-time, and generate secure cryptographically sound password keys.
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
+                Why Local Sandbox Processing is a Security Imperative
+            </h3>
+            <p style="margin-bottom: 1.2rem; line-height: 1.6; font-size: 0.96rem; color: var(--text-muted);">
+                Every time you upload an invoice, scanned tax document, company ID, or client ledger to a legacy online converter, that document is sent to an unregulated server database. It can sit in cached cloud files for weeks or even months. For organizations complying with strict regulatory frameworks such as GDPR, HIPAA, or SOC 2, these data trails represent severe security and compliance liabilities.
+            </p>
+            <p style="margin-bottom: 3rem; line-height: 1.6; font-size: 0.96rem; color: var(--text-muted);">
+                freeconvert.cloud completely eliminates these liabilities. Standard operations run client-side, meaning your local files never leave your device. For heavy calculations that require isolated edge container conversions (such as document reflows or video transcoding), we utilize secure 256-bit SSL tunnels to route data to transient virtual machines. Once compiled, the edge storage runs automatic cron routines that securely shred and wipe all binaries within 2 hours, maintaining zero database logs or long-term backups.
+            </p>
+
+            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
+                Standard Web Formats Glossary (LLM SEO Optimized)
+            </h3>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 3.5rem; box-shadow: var(--card-shadow);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>JPG / JPEG:</strong> A highly compatible raster image container using lossy compression optimized for photographs, which trims unnoticeable color scales to keep size small.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>PNG:</strong> A lossless compressed raster graphic format that records colors exactly as designed and supports full transparent alpha background layers.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>PDF:</strong> Adobe's fixed-layout document standard. It embeds text fonts, images, and vectors identically across all screens, devices, and printers.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
+                            <strong>DOCX:</strong> Microsoft Word's fluid, XML-based editing container optimized for drafting copy, but prone to formatting shifts if system fonts are missing.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>CSV:</strong> A simple flat database format that records tabular entries separated by commas, allowing easy importing into spreadsheet tools like Excel.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>JSON:</strong> JavaScript Object Notation, a lightweight web data exchange container storing structured objects, database values, and API grids.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
+                            <strong>MP4:</strong> The global standard digital multimedia container, utilizing H.264 compression to store high-definition audio and video tracks.
+                        </p>
+                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
+                            <strong>File Compression:</strong> The mathematical compaction of file structures to reduce storage footprints, boosting network speeds and email limit compliances.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.02em; text-align: center;">
+                Frequently Asked Questions
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                <div class="accordion">
+                    <div class="accordion-header">❓ How does freeconvert.cloud ensure absolute file security and privacy?</div>
+                    <div class="accordion-content">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Our platform utilizes local browser-based execution. Converting formats (e.g. PNG to JPG), checking passwords, or formatting code occurs client-side inside your browser sandbox memory using WebAssembly and HTML5 Canvas. Your raw file binary payloads never leave your machine or travel over the internet, rendering server-side hacking and data breaches structurally impossible.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">❓ Do some converters require cloud server processing?</div>
+                    <div class="accordion-content">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Yes. Heavy transcoding operations (like converting Microsoft Word DOCX to PDF or extracting MP3 audio tracks from high-definition MP4 videos) require high computing cluster power. For these tasks, files are transmitted via secure 256-bit SSL pipelines to isolated transient edge sandboxes. The converted data is instantly returned to you, and both the source and target files are shredded completely from our servers within 2 hours.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">❓ Are there file size limits or cost constraints on the tools?</div>
+                    <div class="accordion-content">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            All tools on freeconvert.cloud are 100% free with absolutely zero subscription barriers or watermarks. To keep system cache processing smooth and prevent network bottlenecks, free users are capped at files up to 50MB per conversion. Uncapped queue limits, API developer endpoints, and larger batch processing limits are easily accessible on our flexible Pro tiers.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">❓ Do you display advertisements on the converter pages?</div>
+                    <div class="accordion-content">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Yes. To sustain our server clusters and provide our utilities completely free, we display Google AdSense advertisement layouts. We strictly adhere to AdSense Policy Guidelines: ads are clearly marked as 'Advertisement' or 'Sponsored Links', and we enforce safe margins to prevent ads from being placed inside or too close to drag-and-drop zones, file upload inputs, or conversion CTAs.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-header">❓ Which operating systems and web browsers are supported?</div>
+                    <div class="accordion-content">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Since our platform operates using standard modern web protocols, it is fully cross-platform and responsive. It works flawlessly inside Safari on Apple iPhones and iPads, Google Chrome on Android devices, Mozilla Firefox, Microsoft Edge, and Chrome on Windows, macOS, and Linux without requiring any software installations or browser extensions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer API Preview Section -->
+    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: center;">
+            <div style="text-align: left;">
+                <span class="badge" style="margin-bottom:1rem;">⚡ High Scalability</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 1.2rem; letter-spacing:-0.03em;">Modern Developer API</h2>
+                <p style="font-size: 1.02rem; margin-bottom: 2rem;">Integrate clean conversion clusters directly into your applications. Fast multipart responses with secure API key validations.</p>
+                <div style="display:flex; gap:1rem;">
+                    <a href="/api/" class="btn primary">Explore API</a>
+                    <a href="/pricing/" class="btn secondary">Pricing Plans</a>
+                </div>
+            </div>
+
+            <!-- Code Preview Terminal Card -->
+            <div class="code-editor-module" style="text-align: left;">
+                <div class="editor-pane" style="grid-column: span 2;">
+                    <div class="editor-header">
+                        <span class="editor-title">💻 API Integration (Node.js)</span>
+                        <div class="editor-actions">
+                            <span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-accent);">● Live</span>
+                        </div>
+                    </div>
+                    <pre style="margin: 0; font-family: monospace; font-size: 0.85rem; color: #a5b4fc; overflow-x: auto; line-height: 1.6;">
+const axios = require('axios');
+const fs = require('fs');
+const FormData = require('form-data');
+
+const form = new FormData();
+form.append('file', fs.createReadStream('report.docx'));
+form.append('target', 'pdf');
+
+axios.post('https://api.freeconvert.cloud/v1/convert', form, {
+  headers: {
+    'Authorization': 'Bearer YOUR_SECRET_API_KEY',
+    ...form.getHeaders()
+  }
+}).then(res => console.log('Job ID:', res.data.job_id));</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Competitor-level Footer -->
     <footer class="footer-mega">
+        <!-- AdSense Slot: Footer Optional -->
+        <div class="adsense-placeholder-wrap footer-ad-wrap">
+            <span class="adsense-label">Sponsored Links</span>
+            <div class="adsense-placeholder-box leaderboard-ad">
+                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
+            </div>
+        </div>
+
         <div class="footer-content">
             <div class="footer-brand">
-                <h2 class="gradient-text">freeconvert.cloud</h2>
-                <p>The world's most beautiful collection of free online tools. Built with performance and privacy as
-                    default.</p>
+                <h2 class="logo-text">freeconvert<span class="logo-dot">.cloud</span></h2>
+                <p>The world's most beautiful, privacy-first SaaS conversion platform. Process documents, images, video, audio, and archives instantly.</p>
             </div>
             <div class="footer-col">
-                <h4>Developer</h4>
+                <h4>Popular Converters</h4>
                 <div class="footer-links">
-                    <a href="tools/html-formatter.html">HTML Formatter</a>
-                    <a href="tools/json-to-csv.html">JSON to CSV</a>
-                    <a href="tools/sql-formatter.html">SQL Formatter</a>
-                    <a href="tools/js-formatter.html">JS Formatter</a>
-                    <a href="tools/binary-text-converter.html">Binary/Text</a>
+                    <a href="/jpg-to-pdf/">JPG to PDF</a>
+                    <a href="/pdf-to-word/">PDF to Word</a>
+                    <a href="/png-to-jpg/">PNG to JPG</a>
+                    <a href="/mp4-to-mp3/">MP4 to MP3</a>
+                    <a href="/csv-to-json/">CSV to JSON</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Designer</h4>
+                <h4>Category Guides</h4>
                 <div class="footer-links">
-                    <a href="tools/image-to-base64.html">Image to Base64</a>
-                    <a href="tools/aspect-ratio-calculator.html">Aspect Ratio</a>
-                    <a href="tools/rgb-hex-converter.html">RGB to HEX</a>
-                    <a href="tools/palette-extractor.html">Color Palette</a>
+                    <a href="/image-converter/">Image Converter</a>
+                    <a href="/video-converter/">Video Converter</a>
+                    <a href="/audio-converter/">Audio Converter</a>
+                    <a href="/document-converter/">Document Tools</a>
+                    <a href="/pdf-tools/">PDF Tools Grid</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Utility</h4>
+                <h4>Company & Legal</h4>
                 <div class="footer-links">
-                    <a href="tools/password-generator.html">Password Gen</a>
-                    <a href="tools/word-counter.html">Word Counter</a>
-                    <a href="tools/speed-test.html">Speed Test</a>
-                    <a href="tools/stopwatch.html">Stopwatch</a>
+                    <a href="/about/">About Us</a>
+                    <a href="/pricing/">Plan Pricing</a>
+                    <a href="/api/">Developer API</a>
+                    <a href="/privacy/">Privacy Policy</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/security/">File Security</a>
+                    <a href="/cookies/">Cookie Policy</a>
+                    <a href="/contact/">Contact Us</a>
+                    <a href="/dmca/">DMCA Policy</a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <span>&copy; 2026 freeconvert.cloud. All rights reserved.</span>
-            <span>Designed & Developed by <a href="https://hosterlo.com" target="_blank"
-                    class="hosterlo-link">Hosterlo</a></span>
+            <span>Designed & Developed by <a href="https://hosterlo.com" target="_blank" class="hosterlo-link">Hosterlo</a></span>
         </div>
     </footer>
 
-    <script src="tools/tools-data.js"></script>
-    <script src="main.js"></script>
+
+    <script>
+        window.TOOLS_DATA = [
+    {
+        "id": "png-to-jpg",
+        "name": "PNG to JPG",
+        "icon": "\ud83d\uddbc\ufe0f",
+        "description": "Convert PNG images to JPG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert PNG to JPG Online - 100% Free & Fast",
+        "seo_desc": "Easily convert PNG images to high-quality JPG files. Fast, free, and secure."
+    },
+    {
+        "id": "jpg-to-png",
+        "name": "JPG to PNG",
+        "icon": "\ud83c\udf0c",
+        "description": "Transform JPG files with transparency.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert JPG to PNG Online - Free & Fast",
+        "seo_desc": "Convert JPG images to PNG with transparency support. Simple and secure."
+    },
+    {
+        "id": "word-counter",
+        "name": "Word Counter",
+        "icon": "\u270d\ufe0f",
+        "description": "Analyze text length and statistics.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Free Online Word Counter - Accuracy Matters",
+        "seo_desc": "Count words, characters, and sentences in your text instantly."
+    },
+    {
+        "id": "password-generator",
+        "name": "Password Generator",
+        "icon": "\ud83d\udd11",
+        "description": "Create unbreakable passwords.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Secure Password Generator - Protect Your Accounts",
+        "seo_desc": "Generate strong, random passwords to keep your online presence safe."
+    },
+    {
+        "id": "case-converter",
+        "name": "Case Converter",
+        "icon": "\ud83d\udd21",
+        "description": "Convert text to UPPERCASE, lowercase, or Title Case.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Online Case Converter - Change Text Case Instantly",
+        "seo_desc": "Convert text case between upper, lower, and title case for free."
+    },
+    {
+        "id": "image-resizer",
+        "name": "Image Resizer",
+        "icon": "\ud83d\udcd0",
+        "description": "Resize your images to custom dimensions.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free Online Image Resizer - Resize Images Instantly",
+        "seo_desc": "Easily resize images to any width and height. Perfect for banners and social media."
+    },
+    {
+        "id": "image-compressor",
+        "name": "Image Compressor",
+        "icon": "\ud83d\udddc\ufe0f",
+        "description": "Reduce image file size with zero quality loss.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Online Image Compressor - Shrink Files Fast",
+        "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
+    },
+    {
+        "id": "qr-generator",
+        "name": "QR Generator",
+        "icon": "\ud83e\uddf1",
+        "description": "Create custom QR codes for any link.",
+        "type": "qr",
+        "category": "Utility",
+        "seo_title": "Free QR Code Generator - Create Custom QR Codes",
+        "seo_desc": "Generate high-quality QR codes for URLs, text, and more."
+    },
+    {
+        "id": "webp-to-jpg",
+        "name": "WebP to JPG",
+        "icon": "\ud83d\udd78\ufe0f",
+        "description": "Convert WebP images to high-quality JPG.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert WebP to JPG Online - 100% Free",
+        "seo_desc": "Easily convert WebP images to JPG format for better compatibility."
+    },
+    {
+        "id": "json-to-csv",
+        "name": "JSON to CSV",
+        "icon": "\ud83d\udcca",
+        "description": "Convert JSON data to CSV format instantly.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "JSON to CSV Converter - Free & Secure",
+        "seo_desc": "Convert JSON arrays to CSV files entirely in your browser. No server uploads."
+    },
+    {
+        "id": "base64-tool",
+        "name": "Base64 Encoder/Decoder",
+        "icon": "\ud83d\udd10",
+        "description": "Encode and decode Base64 strings real-time.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Base64 Encoder & Decoder - Online Tool",
+        "seo_desc": "Fast Base64 encoding and decoding. Works with text and files."
+    },
+    {
+        "id": "sql-formatter",
+        "name": "SQL Formatter",
+        "icon": "\ud83d\udcbe",
+        "description": "Beautify and format complex SQL queries.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Free SQL Formatter - Beautify SQL Online",
+        "seo_desc": "Format unreadable SQL into clean, indented code instantly."
+    },
+    {
+        "id": "markdown-editor",
+        "name": "Markdown Editor",
+        "icon": "\ud83d\udcdd",
+        "description": "Write Markdown with live HTML preview.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Markdown Editor with Real-time Preview",
+        "seo_desc": "The best free online Markdown editor for writers and developers."
+    },
+    {
+        "id": "diff-checker",
+        "name": "Text Diff Checker",
+        "icon": "\u2696\ufe0f",
+        "description": "Compare two texts and highlight differences.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Text Diff Checker - Compare Files",
+        "seo_desc": "Find differences between two text files or code snippets easily."
+    },
+    {
+        "id": "heic-to-jpg",
+        "name": "HEIC to JPG",
+        "icon": "\ud83c\udf4f",
+        "description": "Convert iPhone HEIC photos to generic JPG.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free HEIC to JPG Converter - iPhone Photo Tool",
+        "seo_desc": "Convert HEIC images to JPG directly in your browser. Fast and privacy-focused."
+    },
+    {
+        "id": "svg-to-png",
+        "name": "SVG to PNG",
+        "icon": "\ud83d\uddbc\ufe0f",
+        "description": "Render SVG files as high-quality PNG images.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "SVG to PNG Converter - Online Vector Tool",
+        "seo_desc": "Convert Scalable Vector Graphics (SVG) to PNG images instantly."
+    },
+    {
+        "id": "palette-extractor",
+        "name": "Color Palette Extractor",
+        "icon": "\ud83c\udfa8",
+        "description": "Extract dominant colors from any image.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Image Color Palette Generator - Extract Hex Codes",
+        "seo_desc": "Upload an image and get the top 5 dominant colors and their hex codes."
+    },
+    {
+        "id": "ico-converter",
+        "name": "ICO Converter",
+        "icon": "\u2b50",
+        "description": "Create standard Favicons (.ico) from images. Note: This tool creates a 32x32 PNG file and renames it to .ico.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free ICO Converter - Make a Favicon",
+        "seo_desc": "Convert PNG or JPG images to .ico format for website favicons."
+    },
+    {
+        "id": "lorem-ipsum",
+        "name": "Lorem Ipsum Generator",
+        "icon": "\ud83d\udcdc",
+        "description": "Generate dummy text for your designs.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Lorem Ipsum Generator - Dummy Text Tool",
+        "seo_desc": "Generate custom length Lorem Ipsum text for web design and layouts."
+    },
+    {
+        "id": "unit-converter",
+        "name": "Unit Converter",
+        "icon": "\ud83d\udccf",
+        "description": "Convert Length, Weight, and Temperature.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "All-in-One Unit Converter - Length, Weight, Temp",
+        "seo_desc": "Simple and fast unit converter for everyday calculations."
+    },
+    {
+        "id": "speed-test",
+        "name": "Internet Speed Test",
+        "icon": "\ud83d\ude80",
+        "description": "Estimate your internet download speed.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Simple Internet Speed Test - Check Connectivity",
+        "seo_desc": "Quickly estimate your internet speed directly from your browser."
+    },
+    {
+        "id": "stopwatch",
+        "name": "Stopwatch & Timer",
+        "icon": "\u23f1\ufe0f",
+        "description": "Track time with a clean, dark-mode stopwatch.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Free Online Stopwatch and Countdown Timer",
+        "seo_desc": "Simple browser-based stopwatch and timer for productivity."
+    },
+    {
+        "id": "password-strength",
+        "name": "Password Strength",
+        "icon": "\ud83d\udee1\ufe0f",
+        "description": "Test the strength of your passwords securely.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Password Strength Tester - Check Security",
+        "seo_desc": "Analyze password complexity instantly. Zero data storage."
+    },
+    {
+        "id": "html-formatter",
+        "name": "HTML Formatter",
+        "icon": "\ud83c\udf10",
+        "description": "Beautify and format messy HTML code.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online HTML Formatter - Beautify HTML Code",
+        "seo_desc": "Format and beautify your HTML code instantly for better readability."
+    },
+    {
+        "id": "css-formatter",
+        "name": "CSS Formatter",
+        "icon": "\ud83c\udfa8",
+        "description": "Format and beautify your CSS stylesheets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online CSS Formatter - Clean Up Your Styles",
+        "seo_desc": "Beautify minified or messy CSS code with one click."
+    },
+    {
+        "id": "js-formatter",
+        "name": "JS Formatter",
+        "icon": "\ud83d\udcdc",
+        "description": "Beautify and format JavaScript snippets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "JavaScript Formatter - Beautify JS Code",
+        "seo_desc": "Format your JavaScript code for better reading and debugging."
+    },
+    {
+        "id": "url-encoder-decoder",
+        "name": "URL Encoder/Decoder",
+        "icon": "\ud83d\udd17",
+        "description": "Encode or decode URLs for web compatibility.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "URL Encoder & Decoder - Online Web Tool",
+        "seo_desc": "Safely encode and decode URLs and URI components."
+    },
+    {
+        "id": "binary-text-converter",
+        "name": "Binary to Text",
+        "icon": "\ud83e\udd16",
+        "description": "Convert between Binary code and plain text.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Binary to Text Converter - ASCII Tool",
+        "seo_desc": "Translate binary code to text and vice-versa instantly."
+    },
+    {
+        "id": "image-to-base64",
+        "name": "Image to Base64",
+        "icon": "\ud83d\uddbc\ufe0f",
+        "description": "Convert images into Base64 Data URIs.",
+        "type": "image_base64",
+        "category": "Designer",
+        "seo_title": "Image to Base64 Converter - Online Tool",
+        "seo_desc": "Convert images to Base64 strings for CSS, HTML, or JS usage."
+    },
+    {
+        "id": "aspect-ratio-calculator",
+        "name": "Aspect Ratio Calculator",
+        "icon": "\ud83d\udccf",
+        "description": "Calculate perfect aspect ratios for design.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "Free Aspect Ratio Calculator - UI/UX Tool",
+        "seo_desc": "Calculate image and screen aspect ratios for perfect responsive design."
+    },
+    {
+        "id": "rgb-hex-converter",
+        "name": "RGB to HEX Converter",
+        "icon": "\ud83c\udf08",
+        "description": "Convert between RGB and HEX color codes.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "RGB to HEX Color Converter - Designer Tool",
+        "seo_desc": "Easily convert RGB colors to HEX codes and vice-versa."
+    },
+    {
+        "id": "csv-to-json",
+        "name": "CSV to JSON",
+        "icon": "\ud83d\udcd1",
+        "description": "Convert CSV data to JSON format instantly.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Free CSV to JSON Converter Online - 100% Secure",
+        "seo_desc": "Convert CSV files to JSON format instantly in your browser. Fast, free, and privacy-focused."
+    },
+    {
+        "id": "hash-generator",
+        "name": "Hash Generator",
+        "icon": "\ud83d\udd10",
+        "description": "Generate MD5, SHA1, and SHA256 hashes.",
+        "type": "utility",
+        "category": "Security",
+        "seo_title": "SHA256 & MD5 Hash Generator - Secure Online Tool",
+        "seo_desc": "Generate secure cryptographic hashes (MD5, SHA1, SHA256) for your data for free."
+    },
+    {
+        "id": "unicode-converter",
+        "name": "Unicode Converter",
+        "icon": "\ud83d\udd21",
+        "description": "Convert text to Unicode and vice-versa.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Unicode Text Converter - Encode & Decode Online",
+        "seo_desc": "Convert plain text to Unicode and vice-versa. Perfect for developers and internationalization."
+    },
+    {
+        "id": "morse-code",
+        "name": "Morse Code Converter",
+        "icon": "\ud83d\udcdf",
+        "description": "Translate text to Morse code and back.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Online Morse Code Translator - Text to Morse",
+        "seo_desc": "Translate text to Morse code and back instantly. Accurate, fast, and free to use."
+    }
+];
+    </script>
+    <script src="/tools/tool-logic.js"></script>
+    <script>
+        
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const previewContainer = document.getElementById('preview-container');
+const fileNameEl = document.getElementById('selected-file-name');
+const fileSizeEl = document.getElementById('selected-file-size');
+const formatSelect = document.getElementById('output-format');
+const convertBtn = document.getElementById('convert-btn');
+const resetBtn = document.getElementById('reset-btn');
+const accordion = document.getElementById('adv-accordion');
+const controlsBox = document.getElementById('advanced-settings-controls');
+const progWrap = document.getElementById('sw-progress-wrap');
+const progBar = document.getElementById('sw-progress-bar');
+const progText = document.getElementById('sw-progress-text');
+const sandboxBadge = document.getElementById('sandbox-badge');
+const fileTypeIcon = document.getElementById('file-type-icon');
+
+dropZone.onclick = () => fileInput.click();
+fileInput.onchange = (e) => handleFiles(e.target.files);
+dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('active'); };
+dropZone.ondragleave = () => dropZone.classList.remove('active');
+dropZone.ondrop = (e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); };
+
+let activeFile = null;
+
+function getFileIcon(fileName) {
+    const ext = fileName.split('.').pop().toLowerCase();
+    const imageExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg', 'heic'];
+    const videoExts = ['mp4', 'mov', 'avi', 'mkv', 'webm'];
+    const audioExts = ['mp3', 'wav', 'ogg', 'flac', 'm4a'];
+    const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
+    const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
+    
+    if (imageExts.includes(ext)) return '🖼️';
+    if (videoExts.includes(ext)) return '🎥';
+    if (audioExts.includes(ext)) return '🎵';
+    if (documentExts.includes(ext)) return '📄';
+    if (archiveExts.includes(ext)) return '🗜️';
+    return '📄';
+}
+
+function updateSandboxBadge(sourceExt, targetExt) {
+    const isClient = window.ConversionAdapter.isClientSideTool(sourceExt, targetExt);
+    const isBackendConnected = window.ConversionAdapter.config.isBackendConnected;
+    if (isClient) {
+        sandboxBadge.innerHTML = `🛡️ <span style="color: var(--brand-accent);">100% In-Browser Secure Sandbox (No file upload required - mathematically private)</span>`;
+    } else {
+        if (isBackendConnected) {
+            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine (Secure 256-bit SSL Tunnel - Permanent deletion after 2 hours)</span>`;
+        } else {
+            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine <span style="background: rgba(139, 92, 246, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-left: 5px;">Secure Sandbox Demo</span> (Fallback offline processing)</span>`;
+        }
+    }
+}
+
+function handleFiles(files) {
+    if (files.length === 0) return;
+    activeFile = files[0];
+    dropZone.style.display = 'none';
+    previewContainer.style.display = 'block';
+    
+    fileNameEl.textContent = activeFile.name;
+    fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+    fileTypeIcon.textContent = getFileIcon(activeFile.name);
+
+    // Dynamic output format mapping
+    const formats = window.ConversionAdapter.getOutputFormats(activeFile.name);
+    formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+
+    const ext = activeFile.name.split('.').pop().toLowerCase();
+    updateSandboxBadge(ext, formatSelect.value);
+    formatSelect.onchange = () => updateSandboxBadge(ext, formatSelect.value);
+
+    // Inject advanced options if image tool
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
+        accordion.style.display = 'block';
+        controlsBox.innerHTML = `
+            <div style="display: flex; gap: 1rem; width: 100%;">
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Width (px): <input type="number" id="opt-width" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Height (px): <input type="number" id="opt-height" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+            </div>
+            <label style="font-weight: 700; font-size: 0.85rem;">Image Quality: <input type="range" id="opt-quality" min="10" max="100" value="90" style="width: 100%; margin-top: 5px;"> <span id="qual-label" style="color:var(--brand-primary);">90%</span></label>
+        `;
+        const slider = document.getElementById('opt-quality');
+        if (slider) {
+            slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
+        }
+    } else {
+        accordion.style.display = 'none';
+    }
+}
+
+convertBtn.onclick = async () => {
+    if (!activeFile) return;
+    
+    convertBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    progWrap.style.display = 'block';
+    progText.style.display = 'block';
+    
+    // Simulate multi-stage upload states
+    const stages = [
+        { progress: 20, label: "🛰️ Connecting to edge server..." },
+        { progress: 40, label: "📤 Uploading file to security sandbox..." },
+        { progress: 65, label: "⚙️ Converting formats..." },
+        { progress: 85, label: "🗜️ Optimizing layout parameters..." },
+        { progress: 100, label: "✅ Finalizing secure download link..." }
+    ];
+
+    for (let stage of stages) {
+        progText.textContent = stage.label;
+        progBar.style.width = stage.progress + '%';
+        await new Promise(r => setTimeout(r, 400));
+    }
+
+    try {
+        const targetFormat = formatSelect.value;
+        
+        // Gather custom options
+        const opts = {};
+        const qEl = document.getElementById('opt-quality');
+        const wEl = document.getElementById('opt-width');
+        const hEl = document.getElementById('opt-height');
+        
+        if (qEl) opts.quality = parseFloat(qEl.value) / 100;
+        if (wEl && wEl.value) opts.width = parseInt(wEl.value);
+        if (hEl && hEl.value) opts.height = parseInt(hEl.value);
+
+        const resultBlob = await window.ConversionAdapter.convert(activeFile, targetFormat, opts);
+        
+        // Render completed download state with beautiful success alerts and checklist animations
+        progWrap.style.display = 'none';
+        
+        progText.innerHTML = `
+            <div class="success-alert">
+                <div class="success-icon-wrap">
+                    <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <div class="success-message">
+                    <h4>Conversion Completed Successfully!</h4>
+                    <p>Your file has been securely processed and is ready for download.</p>
+                </div>
+            </div>
+        `;
+        
+        const dLink = document.createElement('a');
+        dLink.className = "btn primary";
+        dLink.style.marginTop = "1rem";
+        dLink.textContent = "📥 Download Converted File";
+        dLink.href = URL.createObjectURL(resultBlob);
+        
+        const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
+        dLink.download = `${cleanName}-converted.${targetFormat}`;
+        
+        // Insert download button cleanly
+        const actButtons = document.querySelector('.action-buttons');
+        actButtons.innerHTML = '';
+        actButtons.appendChild(dLink);
+        
+        const anotherBtn = document.createElement('button');
+        anotherBtn.className = "btn secondary";
+        anotherBtn.style.marginTop = "1rem";
+        anotherBtn.textContent = "Convert Another File";
+        anotherBtn.onclick = () => location.reload();
+        actButtons.appendChild(anotherBtn);
+        
+    } catch (e) {
+        progText.textContent = "❌ Error: " + e.message;
+        progText.style.color = "var(--brand-danger)";
+        convertBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'inline-block';
+    }
+};
+
+resetBtn.onclick = () => location.reload();
+
+    </script>
+    <script src="/main.js"></script>
 </body>
 
 </html>

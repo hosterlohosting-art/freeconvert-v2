@@ -1,0 +1,16 @@
+/* TEAM */
+Project Name: freeconvert.cloud
+Purpose: Secure, browser-based online file conversion SaaS
+Editorial Team: freeconvert.cloud Editorial Team
+Contact Email: support@freeconvert.cloud
+Responsible Advertising: Labeled AdSense placeholders, zero popups or fake buttons
+
+/* SITE SECTIONS */
+Homepage: https://freeconvert.cloud/
+Image Converter Hub: https://freeconvert.cloud/image-converter/
+PDF Tools Suite: https://freeconvert.cloud/pdf-tools/
+Document Tools Hub: https://freeconvert.cloud/document-converter/
+Developer API: https://freeconvert.cloud/api/
+Resource Tutorials Hub: https://freeconvert.cloud/blog/
+Pricing Plans: https://freeconvert.cloud/pricing/
+File Security Integrity: https://freeconvert.cloud/security/

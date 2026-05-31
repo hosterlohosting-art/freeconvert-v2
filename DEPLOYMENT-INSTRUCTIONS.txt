@@ -1,0 +1,99 @@
+========================================================================
+             freeconvert.cloud — FINAL PRODUCTION DEPLOYMENT GUIDE
+========================================================================
+
+This guide provides instructions to deploy the final, high-fidelity,
+SEO-expanded build of freeconvert.cloud to your cPanel hosting environment.
+
+------------------------------------------------------------------------
+1. UPLOAD INSTRUCTIONS FOR cPANEL public_html
+------------------------------------------------------------------------
+A production-ready zip package has been created at:
+/freeconvert-production-package.zip
+
+To upload and deploy using cPanel:
+Step 1: Log in to your cPanel Dashboard.
+Step 2: Open the "File Manager" and navigate to your main domain directory,
+        typically: "public_html" (or the root directory of freeconvert.cloud).
+Step 3: Click the "Upload" button at the top of the File Manager.
+Step 4: Drag and drop the "freeconvert-production-package.zip" file.
+Step 5: Once the upload reaches 100%, return to public_html, select the zip
+        file, right-click, and select "Extract".
+Step 6: Confirm extraction in "public_html/".
+Step 7: Delete the zip file from your server to keep your filesystem clean.
+Step 8: Verify that .htaccess, index.html, robots.txt, sitemap.xml, llms.txt,
+        and humans.txt are all present in the root.
+
+------------------------------------------------------------------------
+2. IMPORTANT URLS TO TEST
+------------------------------------------------------------------------
+Once the files are extracted, open a browser window and test the following
+routes. Verify that they load correctly and carry canonical HTTPS URLs:
+
+- Main Homepage: https://freeconvert.cloud/
+- Blog Hub index: https://freeconvert.cloud/blog/
+- Priority guide: https://freeconvert.cloud/blog/how-to-convert-jpg-to-pdf-online/
+- Priority tool:   https://freeconvert.cloud/json-to-csv/
+- Category Hub:    https://freeconvert.cloud/pdf-tools/
+- About Us:        https://freeconvert.cloud/about/
+- Contact Us:      https://freeconvert.cloud/contact/
+- Sitemap XML:     https://freeconvert.cloud/sitemap.xml
+- Robots crawler:  https://freeconvert.cloud/robots.txt
+- LLM metadata:    https://freeconvert.cloud/llms.txt
+- Humans profile:  https://freeconvert.cloud/humans.txt
+
+------------------------------------------------------------------------
+3. HOW TO SUBMIT SITEMAP IN GOOGLE SEARCH CONSOLE
+------------------------------------------------------------------------
+Step 1: Open Google Search Console (https://search.google.com/search-console).
+Step 2: Add your domain "https://freeconvert.cloud/" as a property (if not
+        already done) and verify ownership using standard DNS or file upload.
+Step 3: Select the property from the dropdown.
+Step 4: Click on "Sitemaps" in the left sidebar navigation under "Indexing".
+Step 5: In the "Add a new sitemap" input box, type: "sitemap.xml"
+Step 6: Click "Submit". Google will schedule a crawl. Verify that the status
+        reads "Success" within a few hours.
+
+------------------------------------------------------------------------
+4. HOW TO VERIFY robots.txt
+------------------------------------------------------------------------
+Step 1: Visit https://freeconvert.cloud/robots.txt directly in your browser.
+Step 2: Confirm it contains exactly:
+        User-agent: *
+        Allow: /
+        Sitemap: https://freeconvert.cloud/sitemap.xml
+Step 3: Test individual URL blocks in Google Search Console's "robots.txt tester"
+        to ensure no active routes are accidentally blocked.
+
+------------------------------------------------------------------------
+5. TOOL CLASSIFICATIONS: BROWSER vs BACKEND
+------------------------------------------------------------------------
+The platform is pre-structured with a "conversion engine adapter" design.
+Here is the current operational classification:
+
+A. 100% BROWSER-BASED CLIENT-SIDE TOOLS (Local RAM, 0% Upload Server Cost):
+   - PNG to JPG, JPG to PNG, WebP to JPG, HEIC to JPG, SVG to PNG, ICO Converter
+   - Image Compressor, Image Resizer, Palette Extractor, Image to Base64
+   - JSON to CSV, CSV to JSON, Base64 Tool, URL Encoder/Decoder, Unicode Converter
+   - Binary/Text Converter, Morse Code, Case Converter, Word Counter
+   - Password Generator, Password Strength, Hash Generator, QR Generator
+   - Stopwatch, Speed Test, Aspect Ratio Calculator, RGB to HEX, Unit Converter
+
+B. BACKEND-REQUIRED/CLOUD QUEUE FALLBACK TOOLS (SSL edge sandboxes needed later):
+   - PDF to Word, DOCX to PDF, MP4 to MP3, PDF Tools Suite, Document Tools Hub,
+     Video Converter, Audio Converter, Archive Converter, eBook Converter.
+   - Note: The UI for these tools is fully functional with an active drag-and-drop
+     and simulated conversion adapter. To connect a live backend conversion later,
+     simply update the API endpoint inside "tools/tool-logic.js" under the respective
+     tool id branch (e.g. FFmpeg backend, LibreOffice endpoint, CloudConvert API).
+
+------------------------------------------------------------------------
+6. GOOGLE ADSENSE READY REMINDER
+------------------------------------------------------------------------
+* IMPORTANT: Do not add AdSense code scripts until the site is completely
+  indexed, has accumulated initial organic traffic, and is officially approved.
+* The codebase contains fully styled static placeholders (e.g. "Advertisement" or
+  "Sponsored Links") matching layout sizes. This ensures a professional SaaS look
+  for reviewers and keeps the site policy-compliant.
+* Once approved, simply replace the placeholder divs in `tools/tool-template.html`,
+  `index.html`, and `blog/blog-template.html` with your actual AdSense `<ins>` tag.

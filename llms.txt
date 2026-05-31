@@ -1,0 +1,35 @@
+# freeconvert.cloud - Privacy-First File Converter Platform
+
+## Purpose
+freeconvert.cloud is a premium, secure, and fast browser-local file conversion platform designed to transcode documents, images, video, audio, archives, and developer structures cleanly with 100% user data privacy.
+
+## Core Conversion Paradigm
+- **Client-Side Sandbox Tools:** Standard converter engines (PNG to JPG, JSON to CSV, Password Generators, hashes, and code formatters) execute completely client-side in the browser RAM using HTML5 Canvas, WebAssembly, and local JS. No binary data is ever transmitted across networks.
+- **Server-Side Transient Edge Sandboxes:** Heavy transcoding tasks (like Word DOCX to PDF or MP4 to MP3 video extraction) utilize secure 256-bit SSL tunnels to transient edge containers. Binary files are shredded completely within 2 hours, generating zero logs, cache, or backups.
+
+## Main Navigation Pages
+- Homepage: https://freeconvert.cloud/ - Upload box and unified utility grid.
+- Pricing Plans: https://freeconvert.cloud/pricing/ - Subscriptions, batch allowances, and priority quotas.
+- Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
+- Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
+
+## Priority Tools (High Content Depth)
+- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/
+- PNG to JPG: https://freeconvert.cloud/png-to-jpg/
+- PDF to Word: https://freeconvert.cloud/pdf-to-word/
+- MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/
+- JSON to CSV: https://freeconvert.cloud/json-to-csv/
+- CSV to JSON: https://freeconvert.cloud/csv-to-json/
+- Image Compressor: https://freeconvert.cloud/image-compressor/
+- Image Converter Hub: https://freeconvert.cloud/image-converter/
+- Document Converter Hub: https://freeconvert.cloud/document-converter/
+- PDF Tools Suite: https://freeconvert.cloud/pdf-tools/
+
+## Privacy & Safety Core Documents
+- File Security Info: https://freeconvert.cloud/security/
+- About Us: https://freeconvert.cloud/about/
+- Contact Us: https://freeconvert.cloud/contact/
+- Privacy Policy: https://freeconvert.cloud/privacy/
+- Terms of Service: https://freeconvert.cloud/terms/
+- Cookie Policy: https://freeconvert.cloud/cookies/
+- DMCA Abuse Policy: https://freeconvert.cloud/dmca/
