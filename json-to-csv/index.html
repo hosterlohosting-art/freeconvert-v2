@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON to CSV Converter - Free & Secure | freeconvert.cloud</title>
-    <meta name="description" content="Convert JSON arrays to CSV files entirely in your browser. No server uploads.">
+    <meta name="description" content="Convert JSON arrays to flat CSV tables entirely in your browser.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
     <!-- Fonts -->
@@ -19,7 +19,7 @@
 
     <!-- Open Graph tags -->
     <meta property="og:title" content="JSON to CSV Converter - Free & Secure">
-    <meta property="og:description" content="Convert JSON arrays to CSV files entirely in your browser. No server uploads.">
+    <meta property="og:description" content="Convert JSON arrays to flat CSV tables entirely in your browser.">
     <meta property="og:image" content="https://freeconvert.cloud/assets/logo.png">
     <meta property="og:url" content="https://freeconvert.cloud/json-to-csv/">
     <meta property="og:type" content="website">
@@ -27,10 +27,10 @@
     <!-- Twitter tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JSON to CSV Converter - Free & Secure">
-    <meta name="twitter:description" content="Convert JSON arrays to CSV files entirely in your browser. No server uploads.">
+    <meta name="twitter:description" content="Convert JSON arrays to flat CSV tables entirely in your browser.">
     <meta name="twitter:image" content="https://freeconvert.cloud/assets/logo.png">
 
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "JSON to CSV", "operatingSystem": "Any", "applicationCategory": "Developer", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Convert JSON data to CSV format instantly."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this tool support nested JSON structures?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our parser automatically flattens nested objects into dot-separated column headers (e.g. user.address.city) for clean representation in CSV tables."}}, {"@type": "Question", "name": "Is my confidential JSON data uploaded to the server?", "acceptedAnswer": {"@type": "Answer", "text": "No, never. The conversion engine runs purely inside your browser window. Your sensitive customer lists, database records, and proprietary objects are entirely safe and private."}}, {"@type": "Question", "name": "Can I import the CSV file directly into Microsoft Excel?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. The generated CSV is completely compliant with RFC-4180 standards and can be opened immediately by Excel, Google Sheets, and other standard data tools."}}, {"@type": "Question", "name": "Is there a file limit for developer tool inputs?", "acceptedAnswer": {"@type": "Answer", "text": "Our JSON parser is optimized to process files client-side. Large scripts exceeding 10MB of raw text might cause a brief tab lag, but everything executes in RAM safely."}}, {"@type": "Question", "name": "Does freeconvert.cloud offer a reverse CSV to JSON converter?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We provide an active browser-local <a href='/csv-to-json/' style='color:var(--brand-primary); text-decoration:none;'>CSV to JSON Converter</a> that flattens cells back to clean arrays."}}]}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "JSON to CSV", "operatingSystem": "Any", "applicationCategory": "Developer", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Convert JSON data to CSV format instantly."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this tool support nested JSON structures?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our parser automatically flattens nested objects into dot-separated column headers (e.g. user.address.city) for clean representation in CSV tables."}}, {"@type": "Question", "name": "Is my confidential JSON data uploaded to the server?", "acceptedAnswer": {"@type": "Answer", "text": "No, never. The conversion engine runs purely inside your browser window. Your sensitive customer lists, database records, and proprietary objects are entirely safe and private."}}, {"@type": "Question", "name": "Can I import the CSV file directly into Microsoft Excel?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. The generated CSV is completely compliant with RFC-4180 standards and can be opened immediately by Excel, Google Sheets, and other standard data tools."}}, {"@type": "Question", "name": "Is there a file limit for developer tool inputs?", "acceptedAnswer": {"@type": "Answer", "text": "Our JSON parser is optimized to process files client-side. Large scripts exceeding 10MB of raw text might cause a brief tab lag, but everything executes in RAM safely."}}, {"@type": "Question", "name": "Does freeconvert.cloud offer a reverse CSV to JSON converter?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We provide an active browser-local <a href='/csv-to-json/' style='color:var(--brand-primary); text-decoration:none;'>CSV to JSON Converter</a> that flattens cells back to clean arrays."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeconvert.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Document Converter", "item": "https://freeconvert.cloud/document-converter/"}, {"@type": "ListItem", "position": 3, "name": "JSON to CSV", "item": "https://freeconvert.cloud/json-to-csv/"}]}]}</script>
 </head>
 
 <body>
@@ -144,7 +144,13 @@
                 </div>
             </div>
 
-            {{GLOSSARY_BOX}}
+            
+        <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📝 Document Converter Glossary & Standards</h3>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
+        </div>
 
             <h2>Why use our JSON to CSV converter?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
@@ -222,7 +228,7 @@
         <div style="text-align: center;">
             <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Related Converter Tools</h3>
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;" id="related-tools-box">
-                <a href="/base64-tool/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔐 Base64 Encoder/Decoder</a><a href="/url-encoder-decoder/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔗 URL Encoder/Decoder</a><a href="/binary-text-converter/" class="category-tab" style="box-shadow:none; text-decoration:none;">🤖 Binary to Text</a><a href="/csv-to-json/" class="category-tab" style="box-shadow:none; text-decoration:none;">📑 CSV to JSON</a>
+                <a href="/csv-to-json/" class="category-tab" style="box-shadow:none; text-decoration:none;">📊 CSV to JSON</a><a href="/base64-encode/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔐 Base64 Encode</a><a href="/base64-decode/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔓 Base64 Decode</a><a href="/url-encoder/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔗 URL Encoder</a>
             </div>
         </div>
     </main>

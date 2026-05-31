@@ -24,9 +24,10 @@ class ConversionEngineAdapter {
             'heic': ['jpg', 'png'],
             'doc': ['docx', 'pdf', 'txt'],
             'docx': ['doc', 'pdf', 'txt'],
-            'pdf': ['docx', 'doc', 'jpg', 'png', 'txt'],
-            'mp4': ['mp3', 'wav', 'avi', 'mov', 'webm'],
+            'pdf': ['pdf', 'docx', 'doc', 'jpg', 'png', 'txt'],
+            'mp4': ['mp4', 'mp3', 'wav', 'avi', 'mov', 'webm'],
             'mp3': ['wav', 'ogg', 'm4a', 'flac'],
+            'webm': ['mp4', 'webm', 'avi', 'mov'],
             'txt': ['pdf', 'base64', 'binary', 'csv', 'json']
         };
     }
@@ -85,7 +86,7 @@ class ConversionEngineAdapter {
      * 100% private, 0ms queue latency, mathematically secure.
      */
     async executeClientSideConversion(file, targetFormat, options) {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (targetFormat === 'base64') {
                 const reader = new FileReader();
                 reader.onload = (e) => resolve(new Blob([e.target.result], {type: 'text/plain'}));
@@ -97,31 +98,63 @@ class ConversionEngineAdapter {
             // Image conversions using dynamic HTML5 Canvas rasterization
             const img = new Image();
             img.src = URL.createObjectURL(file);
-            img.onload = () => {
+            img.onload = async () => {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
                 
-                // Read optional advanced dimensions or default to original aspect ratio
-                const width = options.width || img.naturalWidth;
-                const height = options.height || img.naturalHeight;
-                canvas.width = width;
-                canvas.height = height;
+                let width = options.width || img.naturalWidth;
+                let height = options.height || img.naturalHeight;
                 
-                ctx.drawImage(img, 0, 0, width, height);
+                const path = window.location.pathname.replace(/\//g, '');
+                let sizeLimit = 0;
+                if (path === 'compress-image-to-100kb') sizeLimit = 100 * 1024;
+                if (path === 'compress-image-to-200kb') sizeLimit = 200 * 1024;
                 
                 let mimeType = 'image/png';
                 if (targetFormat === 'jpg' || targetFormat === 'jpeg') mimeType = 'image/jpeg';
                 if (targetFormat === 'webp') mimeType = 'image/webp';
                 
-                const quality = options.quality ? parseFloat(options.quality) : 0.9;
+                if (sizeLimit > 0 && mimeType === 'image/png') {
+                    mimeType = 'image/jpeg'; // Force lossy mode for footprint limits
+                }
+
+                let currentQuality = options.quality ? parseFloat(options.quality) : 0.9;
+                let scale = 1.0;
                 
-                canvas.toBlob((blob) => {
+                const tryCompress = () => {
+                    return new Promise((resBlob) => {
+                        canvas.width = width * scale;
+                        canvas.height = height * scale;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        canvas.toBlob((blob) => {
+                            resBlob(blob);
+                        }, mimeType, currentQuality);
+                    });
+                };
+                
+                try {
+                    let blob = await tryCompress();
+                    if (sizeLimit > 0) {
+                        let attempts = 0;
+                        while (blob && blob.size > sizeLimit && attempts < 15) {
+                            attempts++;
+                            if (currentQuality > 0.15) {
+                                currentQuality -= 0.15;
+                            } else {
+                                scale *= 0.8;
+                                currentQuality = 0.9;
+                            }
+                            blob = await tryCompress();
+                        }
+                    }
                     if (blob) {
                         resolve(blob);
                     } else {
                         reject(new Error('Canvas rasterization failed.'));
                     }
-                }, mimeType, quality);
+                } catch(err) {
+                    reject(err);
+                }
             };
             img.onerror = () => reject(new Error('Invalid image file.'));
         });
@@ -206,7 +239,6 @@ window.loadSampleData = () => {
     
     if (!input) return;
     
-    // Determine the current tool ID from URL path or page context
     const path = window.location.pathname.replace(/\//g, '');
     let sample = "";
     let sample2 = "";
@@ -215,10 +247,14 @@ window.loadSampleData = () => {
         sample = `[\n  {\n    "id": 1,\n    "name": "Leanne Graham",\n    "username": "Bret",\n    "email": "Sincere@april.biz",\n    "city": "Gwenborough"\n  },\n  {\n    "id": 2,\n    "name": "Ervin Howell",\n    "username": "Antonette",\n    "email": "Shanna@melissa.tv",\n    "city": "Wisokyburgh"\n  }\n]`;
     } else if (path === 'csv-to-json') {
         sample = `id,name,username,email,city\n1,Leanne Graham,Bret,Sincere@april.biz,Gwenborough\n2,Ervin Howell,Antonette,Shanna@melissa.tv,Wisokyburgh`;
-    } else if (path === 'base64-tool') {
+    } else if (path === 'base64-tool' || path === 'base64-encode') {
         sample = `freeconvert.cloud is the world's most beautiful, privacy-first SaaS conversion platform. 🚀`;
-    } else if (path === 'url-encoder-decoder') {
+    } else if (path === 'base64-decode') {
+        sample = `ZnJlZWNvbnZlcnQuY2xvdWQgaXMgdGhlIHdvcmxkJ3MgbW9zdCBiZWF1dGlmdWwsIHByaXZhY3ktZmlyc3QgU2FhUyBjb252ZXJzaW9uIHBsYXRmb3JtLiA🚀`;
+    } else if (path === 'url-encoder-decoder' || path === 'url-encoder') {
         sample = `https://freeconvert.cloud/search?q=premium saas file converter&secure=true&adsense=safe`;
+    } else if (path === 'url-decoder') {
+        sample = `https%3A%2F%2Ffreeconvert.cloud%2Fsearch%3Fq%3Dpremium%20saas%20file%20converter%26secure%3Dtrue%26adsense%3Dsafe`;
     } else if (path === 'binary-text-converter') {
         sample = `SaaS File Converter`;
     } else if (path === 'unicode-converter') {
@@ -229,21 +265,30 @@ window.loadSampleData = () => {
         sample = `<div class="saas-card"><div class="card-header"><h3 class="title">freeconvert.cloud</h3><span class="badge">SaaS</span></div><div class="card-body"><p>Convert files online securely inside your browser local sandbox.</p><a href="/pricing/" class="btn-link">View Plans</a></div></div>`;
     } else if (path === 'css-formatter') {
         sample = `.saas-card { background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(99, 102, 241, 0.08); border-radius: 24px; padding: 2.5rem; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); } .saas-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.08); }`;
-    } else if (path === 'js-formatter') {
+    } else if (path === 'js-formatter' || path === 'javascript-formatter') {
         sample = `const convertFile=async(file,format)=>{const ext=file.name.split('.').pop().toLowerCase();if(window.ConversionAdapter.isClientSideTool(ext,format)){return await window.ConversionAdapter.executeClientSideConversion(file,format)}else{return await window.ConversionAdapter.executeBackendConversion(file,format)}};`;
+    } else if (path === 'json-formatter' || path === 'json-validator') {
+        sample = `{"id":1,"name":"Leanne Graham","username":"Bret","email":"Sincere@april.biz","address":{"street":"Kulas Light","suite":"Apt. 556","city":"Gwenborough"}}`;
     } else if (path === 'diff-checker') {
         sample = `The quick brown fox jumps over the lazy dog.\nAll conversions run securely.\n100% data privacy.`;
         sample2 = `The fast brown fox jumps over the active dog.\nAll conversions run safely.\n100% client-side privacy.`;
     } else if (path === 'hash-generator') {
         sample = `Secure Sandbox Conversion 🔒`;
-    } else if (path === 'word-counter') {
+    } else if (path === 'word-counter' || path === 'character-counter' || path === 'meta-title-checker' || path === 'meta-description-checker') {
         sample = `freeconvert.cloud is a premium SaaS-level conversion platform. It operates securely inside your local browser memory where possible, guaranteeing maximum privacy and blazing-fast performance. Standard images and text transformations execute offline, ensuring that your records are kept entirely isolated from external servers.`;
     } else if (path === 'case-converter') {
         sample = `the quick brown fox jumps over the lazy dog. convert files online easily.`;
-    } else if (path === 'qr-generator' || path === 'qr') {
+    } else if (path === 'slug-generator') {
+        sample = `How to Convert JPG to PDF Online Free in 2026!`;
+    } else if (path === 'remove-duplicate-lines') {
+        sample = `Leanne Graham\nErvin Howell\nLeanne Graham\nClementine Bauch\nErvin Howell`;
+    } else if (path === 'text-cleaner') {
+        sample = `<p>  Hello, <b>World</b>!   This is a   messy text blocks.  \n\n\n  Let's clean it up!   </p>`;
+    } else if (path === 'qr-generator' || path === 'qr' || path === 'qr-code-generator') {
         sample = `https://freeconvert.cloud/`;
-    } else if (path === 'lorem-ipsum') {
-        // Handled internally by lorem tool count, but let's set count
+    } else if (path === 'barcode-generator') {
+        sample = `freeconvert`;
+    } else if (path === 'lorem-ipsum' || path === 'lorem-ipsum-generator') {
         const countInput = document.getElementById('lorem-count');
         if (countInput) countInput.value = 5;
         if (window.generateLorem) window.generateLorem();
@@ -260,7 +305,6 @@ window.loadSampleData = () => {
         input2.value = sample2;
     }
     
-    // Trigger input event to update char counter, live previews, etc.
     input.dispatchEvent(new Event('input'));
 };
 

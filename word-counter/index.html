@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online Word Counter - Accuracy Matters | freeconvert.cloud</title>
-    <meta name="description" content="Count words, characters, and sentences in your text instantly.">
+    <meta name="description" content="Calculate real-time word counts, letter densities, and paragraph limits.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
     <!-- Fonts -->
@@ -19,7 +19,7 @@
 
     <!-- Open Graph tags -->
     <meta property="og:title" content="Free Online Word Counter - Accuracy Matters">
-    <meta property="og:description" content="Count words, characters, and sentences in your text instantly.">
+    <meta property="og:description" content="Calculate real-time word counts, letter densities, and paragraph limits.">
     <meta property="og:image" content="https://freeconvert.cloud/assets/logo.png">
     <meta property="og:url" content="https://freeconvert.cloud/word-counter/">
     <meta property="og:type" content="website">
@@ -27,10 +27,10 @@
     <!-- Twitter tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Free Online Word Counter - Accuracy Matters">
-    <meta name="twitter:description" content="Count words, characters, and sentences in your text instantly.">
+    <meta name="twitter:description" content="Calculate real-time word counts, letter densities, and paragraph limits.">
     <meta name="twitter:image" content="https://freeconvert.cloud/assets/logo.png">
 
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Word Counter", "operatingSystem": "Any", "applicationCategory": "Text", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Analyze text length and statistics."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this word counter include spaces in the character count?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our tool provides a comprehensive statistics dashboard detailing both 'Total Characters with Spaces' and 'Total Characters without Spaces' to fulfill any editor criteria."}}, {"@type": "Question", "name": "Is the text I type or paste stored anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No, never. All text calculations, metrics, and paragraph counting occur in real-time on your local machine. Closed browser tabs permanently purge your data. We do not store or transmit anything."}}, {"@type": "Question", "name": "Does this count paragraph breaks and sentence statistics?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! The word counter dynamically calculates word counts, character counts, average sentence length, paragraph counts, and estimated reading time."}}, {"@type": "Question", "name": "Can I download or copy my analyzed text statistics?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we display a clear visual overview of all text statistics that you can easily copy alongside the text editor tools."}}, {"@type": "Question", "name": "Does the word counter support non-English scripts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our client-side parser reads Unicode characters, analyzing Latin, Cyrillic, Arabic, and Asian scripts correctly."}}]}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "name": "Word Counter", "operatingSystem": "Any", "applicationCategory": "Text", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Analyze document lengths and keyword densities."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this word counter include spaces in the character count?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our tool provides a comprehensive statistics dashboard detailing both 'Total Characters with Spaces' and 'Total Characters without Spaces' to fulfill any editor criteria."}}, {"@type": "Question", "name": "Is the text I type or paste stored anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No, never. All text calculations, metrics, and paragraph counting occur in real-time on your local machine. Closed browser tabs permanently purge your data. We do not store or transmit anything."}}, {"@type": "Question", "name": "Does this count paragraph breaks and sentence statistics?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! The word counter dynamically calculates word counts, character counts, average sentence length, paragraph counts, and estimated reading time."}}, {"@type": "Question", "name": "Can I download or copy my analyzed text statistics?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we display a clear visual overview of all text statistics that you can easily copy alongside the text editor tools."}}, {"@type": "Question", "name": "Does the word counter support non-English scripts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our client-side parser reads Unicode characters, analyzing Latin, Cyrillic, Arabic, and Asian scripts correctly."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeconvert.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Document Converter", "item": "https://freeconvert.cloud/document-converter/"}, {"@type": "ListItem", "position": 3, "name": "Word Counter", "item": "https://freeconvert.cloud/word-counter/"}]}]}</script>
 </head>
 
 <body>
@@ -95,26 +95,58 @@
 
         <section class="tool-header">
             <h1>Word Counter</h1>
-            <p style="margin-top: 0.5rem;">Analyze text length and statistics.</p>
+            <p style="margin-top: 0.5rem;">Analyze document lengths and keyword densities.</p>
         </section>
 
         <!-- Dynamic Conversion UI Box -->
         <section class="upload-section" id="tool-container">
             
-<div class="editor-pane" style="width: 100%;">
-    <div class="editor-header">
-        <span class="editor-title">📥 Input Text</span>
-        <div class="editor-actions">
-            <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-            <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+<div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
+    <div class="editor-pane" style="width: 100%;">
+        <div class="editor-header">
+            <span class="editor-title">📥 Input Text</span>
+            <div class="editor-actions">
+                <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
+                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+            </div>
+        </div>
+        <textarea id="text-input" class="code-editor-textarea" style="height: 220px;" placeholder="Paste your text here..."></textarea>
+    </div>
+    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">WORDS</span>
+            <h3 id="word-count" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-primary);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">CHARACTERS (WITH SPACES)</span>
+            <h3 id="char-count-spaces" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-secondary);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">CHARACTERS (NO SPACES)</span>
+            <h3 id="char-count-nospaces" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-accent);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">SENTENCES</span>
+            <h3 id="sentence-count" style="font-size:2rem; font-weight:900; margin:0; color:#06b6d4;">0</h3>
         </div>
     </div>
-    <textarea id="text-input" class="code-editor-textarea" style="height: 250px;" placeholder="Paste your text or script contents here..."></textarea>
-</div>
-<div class="stats-grid" style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Words: <span id="word-count" style="color:var(--brand-primary);">0</span></div>
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Characters: <span id="char-count" style="color:var(--brand-secondary);">0</span></div>
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Sentences: <span id="sentence-count" style="color:var(--brand-accent);">0</span></div>
+    <div style="background: white; border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem; margin-top: 1rem;">
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;">📌 Common Social Media Limits</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; font-size: 0.85rem; text-align: center;">
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-tw">
+                <strong>Twitter (X)</strong><br><span style="color:var(--brand-primary); font-weight:800;" id="tw-fill">0 / 280</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-sms">
+                <strong>SMS Text</strong><br><span style="color:var(--brand-secondary); font-weight:800;" id="sms-fill">0 / 160</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-li">
+                <strong>LinkedIn Post</strong><br><span style="color:var(--brand-accent); font-weight:800;" id="li-fill">0 / 3000</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-ig">
+                <strong>Instagram Caption</strong><br><span style="color:#06b6d4; font-weight:800;" id="ig-fill">0 / 2200</span>
+            </div>
+        </div>
+    </div>
 </div>
 
         </section>
@@ -132,7 +164,13 @@
                 </div>
             </div>
 
-            {{GLOSSARY_BOX}}
+            
+        <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📝 Document Converter Glossary & Standards</h3>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
+        </div>
 
             <h2>Why use our Word Counter converter?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
@@ -210,7 +248,7 @@
         <div style="text-align: center;">
             <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Related Converter Tools</h3>
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;" id="related-tools-box">
-                <a href="/case-converter/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔡 Case Converter</a><a href="/png-to-jpg/" class="category-tab" style="box-shadow:none; text-decoration:none;">🖼️ PNG to JPG</a><a href="/jpg-to-png/" class="category-tab" style="box-shadow:none; text-decoration:none;">🌌 JPG to PNG</a><a href="/password-generator/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔑 Password Generator</a>
+                <a href="/character-counter/" class="category-tab" style="box-shadow:none; text-decoration:none;">✍️ Character Counter</a><a href="/meta-title-checker/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔍 Meta Title Checker</a><a href="/meta-description-checker/" class="category-tab" style="box-shadow:none; text-decoration:none;">🔍 Meta Description Checker</a><a href="/slug-generator/" class="category-tab" style="box-shadow:none; text-decoration:none;">🐌 Slug Generator</a>
             </div>
         </div>
     </main>
@@ -276,15 +314,31 @@
     <script>
         
 const textInput = document.getElementById('text-input');
-const wordCount = document.getElementById('word-count');
-const charCount = document.getElementById('char-count');
-const sentenceCount = document.getElementById('sentence-count');
-
 textInput.addEventListener('input', () => {
-    const text = textInput.value.trim();
-    wordCount.textContent = text ? text.split(/\s+/).length : 0;
-    charCount.textContent = text.length;
-    sentenceCount.textContent = text ? text.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+    const text = textInput.value;
+    const cleanText = text.trim();
+    
+    const words = cleanText ? cleanText.split(/\s+/).length : 0;
+    const charsWithSpaces = text.length;
+    const charsNoSpaces = text.replace(/\s/g, '').length;
+    const sentences = cleanText ? cleanText.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+    
+    document.getElementById('word-count').textContent = words;
+    document.getElementById('char-count-spaces').textContent = charsWithSpaces;
+    document.getElementById('char-count-nospaces').textContent = charsNoSpaces;
+    document.getElementById('sentence-count').textContent = sentences;
+    
+    document.getElementById('tw-fill').textContent = charsWithSpaces + ' / 280';
+    document.getElementById('tw-fill').style.color = charsWithSpaces > 280 ? 'var(--brand-danger)' : 'var(--brand-primary)';
+    
+    document.getElementById('sms-fill').textContent = charsWithSpaces + ' / 160';
+    document.getElementById('sms-fill').style.color = charsWithSpaces > 160 ? 'var(--brand-danger)' : 'var(--brand-secondary)';
+    
+    document.getElementById('li-fill').textContent = charsWithSpaces + ' / 3000';
+    document.getElementById('li-fill').style.color = charsWithSpaces > 3000 ? 'var(--brand-danger)' : 'var(--brand-accent)';
+    
+    document.getElementById('ig-fill').textContent = charsWithSpaces + ' / 2200';
+    document.getElementById('ig-fill').style.color = charsWithSpaces > 2200 ? 'var(--brand-danger)' : '#06b6d4';
 });
 
     </script>

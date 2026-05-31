@@ -2,7 +2,7 @@
     {
         "id": "png-to-jpg",
         "name": "PNG to JPG",
-        "icon": "\ud83d\uddbc\ufe0f",
+        "icon": "🖼️",
         "description": "Convert PNG images to JPG instantly.",
         "type": "image",
         "category": "Image",
@@ -12,7 +12,7 @@
     {
         "id": "jpg-to-png",
         "name": "JPG to PNG",
-        "icon": "\ud83c\udf0c",
+        "icon": "🌌",
         "description": "Transform JPG files with transparency.",
         "type": "image",
         "category": "Image",
@@ -20,69 +20,9 @@
         "seo_desc": "Convert JPG images to PNG with transparency support. Simple and secure."
     },
     {
-        "id": "word-counter",
-        "name": "Word Counter",
-        "icon": "\u270d\ufe0f",
-        "description": "Analyze text length and statistics.",
-        "type": "text",
-        "category": "Text",
-        "seo_title": "Free Online Word Counter - Accuracy Matters",
-        "seo_desc": "Count words, characters, and sentences in your text instantly."
-    },
-    {
-        "id": "password-generator",
-        "name": "Password Generator",
-        "icon": "\ud83d\udd11",
-        "description": "Create unbreakable passwords.",
-        "type": "security",
-        "category": "Security",
-        "seo_title": "Secure Password Generator - Protect Your Accounts",
-        "seo_desc": "Generate strong, random passwords to keep your online presence safe."
-    },
-    {
-        "id": "case-converter",
-        "name": "Case Converter",
-        "icon": "\ud83d\udd21",
-        "description": "Convert text to UPPERCASE, lowercase, or Title Case.",
-        "type": "text",
-        "category": "Text",
-        "seo_title": "Online Case Converter - Change Text Case Instantly",
-        "seo_desc": "Convert text case between upper, lower, and title case for free."
-    },
-    {
-        "id": "image-resizer",
-        "name": "Image Resizer",
-        "icon": "\ud83d\udcd0",
-        "description": "Resize your images to custom dimensions.",
-        "type": "image_advanced",
-        "category": "Image",
-        "seo_title": "Free Online Image Resizer - Resize Images Instantly",
-        "seo_desc": "Easily resize images to any width and height. Perfect for banners and social media."
-    },
-    {
-        "id": "image-compressor",
-        "name": "Image Compressor",
-        "icon": "\ud83d\udddc\ufe0f",
-        "description": "Reduce image file size with zero quality loss.",
-        "type": "image_advanced",
-        "category": "Image",
-        "seo_title": "Online Image Compressor - Shrink Files Fast",
-        "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
-    },
-    {
-        "id": "qr-generator",
-        "name": "QR Generator",
-        "icon": "\ud83e\uddf1",
-        "description": "Create custom QR codes for any link.",
-        "type": "qr",
-        "category": "Utility",
-        "seo_title": "Free QR Code Generator - Create Custom QR Codes",
-        "seo_desc": "Generate high-quality QR codes for URLs, text, and more."
-    },
-    {
         "id": "webp-to-jpg",
         "name": "WebP to JPG",
-        "icon": "\ud83d\udd78\ufe0f",
+        "icon": "🕸️",
         "description": "Convert WebP images to high-quality JPG.",
         "type": "image",
         "category": "Image",
@@ -90,59 +30,9 @@
         "seo_desc": "Easily convert WebP images to JPG format for better compatibility."
     },
     {
-        "id": "json-to-csv",
-        "name": "JSON to CSV",
-        "icon": "\ud83d\udcca",
-        "description": "Convert JSON data to CSV format instantly.",
-        "type": "dev_basic",
-        "category": "Developer",
-        "seo_title": "JSON to CSV Converter - Free & Secure",
-        "seo_desc": "Convert JSON arrays to CSV files entirely in your browser. No server uploads."
-    },
-    {
-        "id": "base64-tool",
-        "name": "Base64 Encoder/Decoder",
-        "icon": "\ud83d\udd10",
-        "description": "Encode and decode Base64 strings real-time.",
-        "type": "dev_basic",
-        "category": "Developer",
-        "seo_title": "Base64 Encoder & Decoder - Online Tool",
-        "seo_desc": "Fast Base64 encoding and decoding. Works with text and files."
-    },
-    {
-        "id": "sql-formatter",
-        "name": "SQL Formatter",
-        "icon": "\ud83d\udcbe",
-        "description": "Beautify and format complex SQL queries.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "Free SQL Formatter - Beautify SQL Online",
-        "seo_desc": "Format unreadable SQL into clean, indented code instantly."
-    },
-    {
-        "id": "markdown-editor",
-        "name": "Markdown Editor",
-        "icon": "\ud83d\udcdd",
-        "description": "Write Markdown with live HTML preview.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "Online Markdown Editor with Real-time Preview",
-        "seo_desc": "The best free online Markdown editor for writers and developers."
-    },
-    {
-        "id": "diff-checker",
-        "name": "Text Diff Checker",
-        "icon": "\u2696\ufe0f",
-        "description": "Compare two texts and highlight differences.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "Online Text Diff Checker - Compare Files",
-        "seo_desc": "Find differences between two text files or code snippets easily."
-    },
-    {
         "id": "heic-to-jpg",
         "name": "HEIC to JPG",
-        "icon": "\ud83c\udf4f",
+        "icon": "🍏",
         "description": "Convert iPhone HEIC photos to generic JPG.",
         "type": "image_advanced",
         "category": "Image",
@@ -152,7 +42,7 @@
     {
         "id": "svg-to-png",
         "name": "SVG to PNG",
-        "icon": "\ud83d\uddbc\ufe0f",
+        "icon": "📐",
         "description": "Render SVG files as high-quality PNG images.",
         "type": "image_advanced",
         "category": "Image",
@@ -162,7 +52,7 @@
     {
         "id": "palette-extractor",
         "name": "Color Palette Extractor",
-        "icon": "\ud83c\udfa8",
+        "icon": "🎨",
         "description": "Extract dominant colors from any image.",
         "type": "image_advanced",
         "category": "Image",
@@ -172,117 +62,17 @@
     {
         "id": "ico-converter",
         "name": "ICO Converter",
-        "icon": "\u2b50",
-        "description": "Create standard Favicons (.ico) from images. Note: This tool creates a 32x32 PNG file and renames it to .ico.",
+        "icon": "⭐",
+        "description": "Create standard Favicons (.ico) from images.",
         "type": "image_advanced",
         "category": "Image",
         "seo_title": "Free ICO Converter - Make a Favicon",
         "seo_desc": "Convert PNG or JPG images to .ico format for website favicons."
     },
     {
-        "id": "lorem-ipsum",
-        "name": "Lorem Ipsum Generator",
-        "icon": "\ud83d\udcdc",
-        "description": "Generate dummy text for your designs.",
-        "type": "utility",
-        "category": "Utility",
-        "seo_title": "Lorem Ipsum Generator - Dummy Text Tool",
-        "seo_desc": "Generate custom length Lorem Ipsum text for web design and layouts."
-    },
-    {
-        "id": "unit-converter",
-        "name": "Unit Converter",
-        "icon": "\ud83d\udccf",
-        "description": "Convert Length, Weight, and Temperature.",
-        "type": "utility",
-        "category": "Utility",
-        "seo_title": "All-in-One Unit Converter - Length, Weight, Temp",
-        "seo_desc": "Simple and fast unit converter for everyday calculations."
-    },
-    {
-        "id": "speed-test",
-        "name": "Internet Speed Test",
-        "icon": "\ud83d\ude80",
-        "description": "Estimate your internet download speed.",
-        "type": "utility",
-        "category": "Utility",
-        "seo_title": "Simple Internet Speed Test - Check Connectivity",
-        "seo_desc": "Quickly estimate your internet speed directly from your browser."
-    },
-    {
-        "id": "stopwatch",
-        "name": "Stopwatch & Timer",
-        "icon": "\u23f1\ufe0f",
-        "description": "Track time with a clean, dark-mode stopwatch.",
-        "type": "utility",
-        "category": "Utility",
-        "seo_title": "Free Online Stopwatch and Countdown Timer",
-        "seo_desc": "Simple browser-based stopwatch and timer for productivity."
-    },
-    {
-        "id": "password-strength",
-        "name": "Password Strength",
-        "icon": "\ud83d\udee1\ufe0f",
-        "description": "Test the strength of your passwords securely.",
-        "type": "security",
-        "category": "Security",
-        "seo_title": "Password Strength Tester - Check Security",
-        "seo_desc": "Analyze password complexity instantly. Zero data storage."
-    },
-    {
-        "id": "html-formatter",
-        "name": "HTML Formatter",
-        "icon": "\ud83c\udf10",
-        "description": "Beautify and format messy HTML code.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "Online HTML Formatter - Beautify HTML Code",
-        "seo_desc": "Format and beautify your HTML code instantly for better readability."
-    },
-    {
-        "id": "css-formatter",
-        "name": "CSS Formatter",
-        "icon": "\ud83c\udfa8",
-        "description": "Format and beautify your CSS stylesheets.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "Online CSS Formatter - Clean Up Your Styles",
-        "seo_desc": "Beautify minified or messy CSS code with one click."
-    },
-    {
-        "id": "js-formatter",
-        "name": "JS Formatter",
-        "icon": "\ud83d\udcdc",
-        "description": "Beautify and format JavaScript snippets.",
-        "type": "dev_advanced",
-        "category": "Developer",
-        "seo_title": "JavaScript Formatter - Beautify JS Code",
-        "seo_desc": "Format your JavaScript code for better reading and debugging."
-    },
-    {
-        "id": "url-encoder-decoder",
-        "name": "URL Encoder/Decoder",
-        "icon": "\ud83d\udd17",
-        "description": "Encode or decode URLs for web compatibility.",
-        "type": "dev_basic",
-        "category": "Developer",
-        "seo_title": "URL Encoder & Decoder - Online Web Tool",
-        "seo_desc": "Safely encode and decode URLs and URI components."
-    },
-    {
-        "id": "binary-text-converter",
-        "name": "Binary to Text",
-        "icon": "\ud83e\udd16",
-        "description": "Convert between Binary code and plain text.",
-        "type": "dev_basic",
-        "category": "Developer",
-        "seo_title": "Binary to Text Converter - ASCII Tool",
-        "seo_desc": "Translate binary code to text and vice-versa instantly."
-    },
-    {
         "id": "image-to-base64",
         "name": "Image to Base64",
-        "icon": "\ud83d\uddbc\ufe0f",
+        "icon": "🖼️",
         "description": "Convert images into Base64 Data URIs.",
         "type": "image_base64",
         "category": "Designer",
@@ -290,63 +80,603 @@
         "seo_desc": "Convert images to Base64 strings for CSS, HTML, or JS usage."
     },
     {
-        "id": "aspect-ratio-calculator",
-        "name": "Aspect Ratio Calculator",
-        "icon": "\ud83d\udccf",
-        "description": "Calculate perfect aspect ratios for design.",
-        "type": "utility_advanced",
-        "category": "Designer",
-        "seo_title": "Free Aspect Ratio Calculator - UI/UX Tool",
-        "seo_desc": "Calculate image and screen aspect ratios for perfect responsive design."
+        "id": "image-compressor",
+        "name": "Image Compressor",
+        "icon": "🤐",
+        "description": "Reduce image file size with zero quality loss.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Online Image Compressor - Shrink Files Fast",
+        "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
     },
     {
-        "id": "rgb-hex-converter",
-        "name": "RGB to HEX Converter",
-        "icon": "\ud83c\udf08",
-        "description": "Convert between RGB and HEX color codes.",
-        "type": "utility_advanced",
-        "category": "Designer",
-        "seo_title": "RGB to HEX Color Converter - Designer Tool",
-        "seo_desc": "Easily convert RGB colors to HEX codes and vice-versa."
+        "id": "compress-image-to-100kb",
+        "name": "Compress Image to 100KB",
+        "icon": "🗜️",
+        "description": "Reduce image files strictly under 100KB footprint.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Compress Image to 100KB Online Free - Photo Size Reducer",
+        "seo_desc": "Compress and shrink images strictly under 100KB in size. Maintains visual quality in your browser."
+    },
+    {
+        "id": "compress-image-to-200kb",
+        "name": "Compress Image to 200KB",
+        "icon": "🗜️",
+        "description": "Reduce image files strictly under 200KB footprint.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Compress Image to 200KB Free - Online Photo Optimizer",
+        "seo_desc": "Shrink and optimize image sizes under 200KB. Clean browser-based compression."
+    },
+    {
+        "id": "resize-image",
+        "name": "Resize Image",
+        "icon": "📐",
+        "description": "Resize your images to custom dimensions.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Free Online Image Resizer - Custom Image Dimensions",
+        "seo_desc": "Scale and resize images to precise pixel widths and heights online free."
+    },
+    {
+        "id": "resize-image-for-instagram",
+        "name": "Resize Image for Instagram",
+        "icon": "📸",
+        "description": "Resize photos for Instagram Stories and Post grids.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Resize Image for Instagram Online - Preset Ratio Converter",
+        "seo_desc": "Crop or scale photos for Instagram posts, square grids, and stories without distortion."
+    },
+    {
+        "id": "passport-photo-size-converter",
+        "name": "Passport Photo Size Converter",
+        "icon": "🛂",
+        "description": "Resize photos to standard passport size requirements.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Passport Photo Size Converter Online - Custom Maker",
+        "seo_desc": "Convert photo dimensions to official US, UK, and EU passport standards (2x2 inches or 35x45mm)."
+    },
+    {
+        "id": "compress-pdf",
+        "name": "Compress PDF",
+        "icon": "🤐",
+        "description": "Reduce PDF byte footprint securely in browser.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Compress PDF Online Free - Reduce PDF File Size",
+        "seo_desc": "Reduce PDF footprint under 1MB easily. Optimized secure browser-based compression."
+    },
+    {
+        "id": "pdf-to-jpg",
+        "name": "PDF to JPG",
+        "icon": "🖼️",
+        "description": "Extract PDF pages as high-quality JPG images.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Convert PDF to JPG Online - Extract PDF Pages",
+        "seo_desc": "Convert PDF pages to separate JPG files instantly. Safe, fast, and 100% free."
+    },
+    {
+        "id": "jpg-to-pdf",
+        "name": "JPG to PDF",
+        "icon": "📄",
+        "description": "Compile multiple images into a clean PDF document.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Convert JPG to PDF Online Free - Compile Photos",
+        "seo_desc": "Merge multiple JPG or PNG images into a clean, multi-page PDF document online."
+    },
+    {
+        "id": "merge-pdf",
+        "name": "Merge PDF",
+        "icon": "🔗",
+        "description": "Combine multiple PDF files into one sequential document.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Merge PDF Online Free - Combine PDF Files",
+        "seo_desc": "Join multiple PDF documents in exact order. Fast, free, and completely secure."
+    },
+    {
+        "id": "split-pdf",
+        "name": "Split PDF",
+        "icon": "✂️",
+        "description": "Extract selected pages from any PDF document.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Split PDF Online Free - Extract Pages",
+        "seo_desc": "Split PDF chapters or extract specific pages to new PDF files easily."
+    },
+    {
+        "id": "pdf-to-word",
+        "name": "PDF to Word",
+        "icon": "📝",
+        "description": "Convert PDF documents to editable Microsoft Word files.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Convert PDF to Word Online - Editable DOCX",
+        "seo_desc": "Transform PDFs into editable Word (.docx) files with maximum layout preservation."
+    },
+    {
+        "id": "word-to-pdf",
+        "name": "Word to PDF",
+        "icon": "📄",
+        "description": "Convert DOCX documents to professional PDF files.",
+        "type": "pdf",
+        "category": "PDF Tools",
+        "seo_title": "Convert Word to PDF Online - Free DOCX to PDF",
+        "seo_desc": "Convert Microsoft Word files to standard PDF format instantly and securely."
+    },
+    {
+        "id": "json-formatter",
+        "name": "JSON Formatter",
+        "icon": "👁️",
+        "description": "Beautify and indent raw minified JSON structures.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "JSON Formatter Online - Beautify and Clean JSON Data",
+        "seo_desc": "Format, beautify, and indent raw JSON files and text lists for easy reading."
+    },
+    {
+        "id": "json-validator",
+        "name": "JSON Validator",
+        "icon": "🛡️",
+        "description": "Lint and validate JSON syntax in real-time.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "JSON Validator - Real-time JSON Syntax Lint",
+        "seo_desc": "Validate JSON strings instantly. Detects missing commas, tags, or keys."
+    },
+    {
+        "id": "json-to-csv",
+        "name": "JSON to CSV",
+        "icon": "📊",
+        "description": "Convert JSON data to CSV format instantly.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "JSON to CSV Converter - Free & Secure",
+        "seo_desc": "Convert JSON arrays to flat CSV tables entirely in your browser."
     },
     {
         "id": "csv-to-json",
         "name": "CSV to JSON",
-        "icon": "\ud83d\udcd1",
-        "description": "Convert CSV data to JSON format instantly.",
+        "icon": "📊",
+        "description": "Convert CSV rows to JSON objects instantly.",
         "type": "dev_basic",
         "category": "Developer",
-        "seo_title": "Free CSV to JSON Converter Online - 100% Secure",
-        "seo_desc": "Convert CSV files to JSON format instantly in your browser. Fast, free, and privacy-focused."
+        "seo_title": "Free CSV to JSON Converter Online - Secure",
+        "seo_desc": "Convert comma-separated CSV rows to structured JSON arrays."
     },
     {
-        "id": "hash-generator",
-        "name": "Hash Generator",
-        "icon": "\ud83d\udd10",
-        "description": "Generate MD5, SHA1, and SHA256 hashes.",
-        "type": "utility",
-        "category": "Security",
-        "seo_title": "SHA256 & MD5 Hash Generator - Secure Online Tool",
-        "seo_desc": "Generate secure cryptographic hashes (MD5, SHA1, SHA256) for your data for free."
+        "id": "base64-encode",
+        "name": "Base64 Encode",
+        "icon": "🔐",
+        "description": "Encode plain text to safe Base64 strings.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Base64 Encode Online - Convert Text to Base64",
+        "seo_desc": "Encode custom text, strings, and inputs into Base64 format client-side."
+    },
+    {
+        "id": "base64-decode",
+        "name": "Base64 Decode",
+        "icon": "🔓",
+        "description": "Decode Base64 strings back to plain text.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Base64 Decode Online - Convert Base64 back to Text",
+        "seo_desc": "Decode secure Base64 data grids into readable plain text instantly."
+    },
+    {
+        "id": "url-encoder",
+        "name": "URL Encoder",
+        "icon": "🔗",
+        "description": "Encode text into percent-encoded URL formats.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "URL Encoder Online - Percent-Encode Strings",
+        "seo_desc": "Safely encode URL queries, scripts, and URI strings into valid web containers."
+    },
+    {
+        "id": "url-decoder",
+        "name": "URL Decoder",
+        "icon": "🔓",
+        "description": "Decode percent-encoded strings back to plain URLs.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "URL Decoder Online - Decode Percent-Encoded URLs",
+        "seo_desc": "Translate encoded URI characters and parameters back to clean strings."
+    },
+    {
+        "id": "html-formatter",
+        "name": "HTML Formatter",
+        "icon": "🌐",
+        "description": "Beautify and format messy HTML markup code.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online HTML Formatter - Beautify HTML Code",
+        "seo_desc": "Clean and indent chaotic HTML elements and lists with standard sizes."
+    },
+    {
+        "id": "css-formatter",
+        "name": "CSS Formatter",
+        "icon": "🎨",
+        "description": "Format and beautify CSS stylesheets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online CSS Formatter - Clean Up Your Styles",
+        "seo_desc": "Beautify compressed CSS blocks with customizable syntax tabs."
+    },
+    {
+        "id": "javascript-formatter",
+        "name": "JavaScript Formatter",
+        "icon": "📜",
+        "description": "Beautify minified JS files and code snippets.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "JavaScript Formatter - Beautify JS Code Online",
+        "seo_desc": "Format messy or compact JS script arrays with custom line spacing."
+    },
+    {
+        "id": "sql-formatter",
+        "name": "SQL Formatter",
+        "icon": "💾",
+        "description": "Beautify and format complex database queries.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Free SQL Formatter - Beautify SQL Online",
+        "seo_desc": "Beautify unformatted SELECT queries and complex SQL schemas instantly."
+    },
+    {
+        "id": "markdown-editor",
+        "name": "Markdown Editor",
+        "icon": "✍️",
+        "description": "Write Markdown text with real-time HTML preview.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Markdown Editor with Real-time Preview",
+        "seo_desc": "Write Markdown directly in your browser with real-time live preview rendering."
+    },
+    {
+        "id": "diff-checker",
+        "name": "Text Diff Checker",
+        "icon": "⚖️",
+        "description": "Compare two texts to spot differences.",
+        "type": "dev_advanced",
+        "category": "Developer",
+        "seo_title": "Online Text Diff Checker - Compare Files",
+        "seo_desc": "Identify differences, changes, and duplicate lines between two text blocks."
+    },
+    {
+        "id": "binary-text-converter",
+        "name": "Binary to Text",
+        "icon": "🤖",
+        "description": "Convert text characters to Binary code.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "Binary to Text Converter - ASCII Tool",
+        "seo_desc": "Translate text inputs to raw binary rows, and binary back to text."
     },
     {
         "id": "unicode-converter",
         "name": "Unicode Converter",
-        "icon": "\ud83d\udd21",
-        "description": "Convert text to Unicode and vice-versa.",
+        "icon": "🔡",
+        "description": "Convert plain characters to Unicode blocks.",
         "type": "dev_basic",
         "category": "Developer",
         "seo_title": "Unicode Text Converter - Encode & Decode Online",
-        "seo_desc": "Convert plain text to Unicode and vice-versa. Perfect for developers and internationalization."
+        "seo_desc": "Safely encode standard characters into Unicode character entities."
+    },
+    {
+        "id": "word-counter",
+        "name": "Word Counter",
+        "icon": "✍️",
+        "description": "Analyze document lengths and keyword densities.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Free Online Word Counter - Accuracy Matters",
+        "seo_desc": "Calculate real-time word counts, letter densities, and paragraph limits."
+    },
+    {
+        "id": "character-counter",
+        "name": "Character Counter",
+        "icon": "✍️",
+        "description": "Count total letters with and without spaces.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Character Counter Online - Letter and Word Counter",
+        "seo_desc": "Monitor exact text constraints, character boundaries, and visual spaces."
+    },
+    {
+        "id": "meta-title-checker",
+        "name": "Meta Title Checker",
+        "icon": "🔍",
+        "description": "Optimize SEO titles for Google visual constraints.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Google Meta Title Length Checker - SERP Optimizer",
+        "seo_desc": "Inspect if meta titles stay under Google visual limits (60 chars / 600px)."
+    },
+    {
+        "id": "meta-description-checker",
+        "name": "Meta Description Checker",
+        "icon": "🔍",
+        "description": "Optimize search description widths in real-time.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Meta Description Length Checker - Google SERP Preview",
+        "seo_desc": "Validate search desc length limits under standard 160 characters (960px)."
+    },
+    {
+        "id": "slug-generator",
+        "name": "Slug Generator",
+        "icon": "🐌",
+        "description": "Convert titles into SEO clean URL paths.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "SEO Slug Generator Online - Create Clean URLs",
+        "seo_desc": "Translate sentences and headings into lowercase, hyphenated URL slugs."
+    },
+    {
+        "id": "case-converter",
+        "name": "Case Converter",
+        "icon": "🔤",
+        "description": "Change text layout formats (UPPERCASE, lowercase).",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Online Case Converter - Change Text Case Instantly",
+        "seo_desc": "Change typography casing into upper, lower, title, or sentence cases."
+    },
+    {
+        "id": "remove-duplicate-lines",
+        "name": "Remove Duplicate Lines",
+        "icon": "🧼",
+        "description": "Clean lists by removing identical repeating rows.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Remove Duplicate Lines Online - Text Clean Tool",
+        "seo_desc": "Filter redundant repeating list values out of spreadsheets instantly."
+    },
+    {
+        "id": "text-cleaner",
+        "name": "Text Cleaner",
+        "icon": "🧼",
+        "description": "Clean spaces, HTML elements, and layout symbols.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Text Cleaner Online - Strip HTML & Trim Spaces",
+        "seo_desc": "Clean empty fields, strip HTML, trim rows, and normalize breaks."
+    },
+    {
+        "id": "lorem-ipsum-generator",
+        "name": "Lorem Ipsum Generator",
+        "icon": "📜",
+        "description": "Generate design placeholder text in bulk.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Lorem Ipsum Generator - Free Dummy Text Creator",
+        "seo_desc": "Generate customizable dummy text for layouts, brochures, and grids."
+    },
+    {
+        "id": "hashtag-generator",
+        "name": "Hashtag Generator",
+        "icon": "#",
+        "description": "Create relevant social tags from sentences.",
+        "type": "text",
+        "category": "Text",
+        "seo_title": "Hashtag Generator Free - Instagram & Social Media Tags",
+        "seo_desc": "Compile social media tag grids from keywords automatically."
+    },
+    {
+        "id": "qr-code-generator",
+        "name": "QR Code Generator",
+        "icon": "🧱",
+        "description": "Create custom high-definition QR codes.",
+        "type": "qr",
+        "category": "Utility",
+        "seo_title": "Free QR Code Generator - Create Custom QR Codes",
+        "seo_desc": "Compile high-quality custom QR codes with color sliders and logos."
+    },
+    {
+        "id": "barcode-generator",
+        "name": "Barcode Generator",
+        "icon": "🪪",
+        "description": "Render standard Code 128 visual barcodes.",
+        "type": "qr",
+        "category": "Utility",
+        "seo_title": "Free Barcode Generator - Create Code 128 Barcodes",
+        "seo_desc": "Generate Code 128 standard retail barcode graphics instantly."
+    },
+    {
+        "id": "password-generator",
+        "name": "Password Generator",
+        "icon": "🔑",
+        "description": "Create secure cryptographically randomized keys.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Secure Password Generator - Protect Your Accounts",
+        "seo_desc": "Assemble unbreakable unique keys with strong entropy scales."
+    },
+    {
+        "id": "password-strength",
+        "name": "Password Strength",
+        "icon": "🛡️",
+        "description": "Evaluate password entropy grids in real-time.",
+        "type": "security",
+        "category": "Security",
+        "seo_title": "Password Strength Tester - Check Security",
+        "seo_desc": "Analyze passphrase vulnerabilities against dictionary attacks."
+    },
+    {
+        "id": "random-number-generator",
+        "name": "Random Number Generator",
+        "icon": "🎲",
+        "description": "Roll randomized numbers within custom bounds.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Random Number Generator - Pick Numbers Online",
+        "seo_desc": "Generate secure randomized integer results between custom bounds."
+    },
+    {
+        "id": "uuid-generator",
+        "name": "UUID Generator",
+        "icon": "🔑",
+        "description": "Create bulk cryptographically secure v4 UUIDs.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Bulk UUID Generator - Cryptographic v4 UUID Maker",
+        "seo_desc": "Generate unique RFC 4122 compliant version 4 UUIDs instantly."
+    },
+    {
+        "id": "timestamp-converter",
+        "name": "Timestamp Converter",
+        "icon": "⏱️",
+        "description": "Convert human calendar dates to Unix time.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Unix Timestamp Converter - Epoch Date Tool",
+        "seo_desc": "Translate Epoch seconds into human readable UTC dates instantly."
+    },
+    {
+        "id": "unix-time-converter",
+        "name": "Unix Time Converter",
+        "icon": "⏱️",
+        "description": "Convert Unix time seconds to humans calendar.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Unix Time Converter - Human Date to Epoch",
+        "seo_desc": "Convert calendar date layouts to raw Epoch integers instantly."
+    },
+    {
+        "id": "time-zone-converter",
+        "name": "Time Zone Converter",
+        "icon": "🌎",
+        "description": "Compare global clock times across zones.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Time Zone Converter - Compare Global Times",
+        "seo_desc": "Calculate accurate time conversions between international regions."
+    },
+    {
+        "id": "age-calculator",
+        "name": "Age Calculator",
+        "icon": "🎂",
+        "description": "Calculate exact age in years, days and hours.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Age Calculator - Calculate Exact Age Online",
+        "seo_desc": "Find exact lifespans down to hours and minutes instantly."
+    },
+    {
+        "id": "percentage-calculator",
+        "name": "Percentage Calculator",
+        "icon": "📊",
+        "description": "Calculate mathematical percentage increases.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Percentage Calculator - Free Online Math Tool",
+        "seo_desc": "Solve percent increases, ratios, and fractional equations."
+    },
+    {
+        "id": "hash-generator",
+        "name": "Hash Generator",
+        "icon": "🔒",
+        "description": "Generate SHA256 and MD5 hashes securely.",
+        "type": "utility",
+        "category": "Security",
+        "seo_title": "SHA256 & MD5 Hash Generator - Secure Online Tool",
+        "seo_desc": "Calculate cryptographic SHA1, SHA256 and MD5 outputs locally."
     },
     {
         "id": "morse-code",
         "name": "Morse Code Converter",
-        "icon": "\ud83d\udcdf",
-        "description": "Translate text to Morse code and back.",
+        "icon": "📟",
+        "description": "Translate letters to Morse code and back.",
         "type": "utility",
         "category": "Utility",
         "seo_title": "Online Morse Code Translator - Text to Morse",
-        "seo_desc": "Translate text to Morse code and back instantly. Accurate, fast, and free to use."
+        "seo_desc": "Translate characters into visual or audio dots and dashes."
+    },
+    {
+        "id": "unit-converter",
+        "name": "Unit Converter",
+        "icon": "📏",
+        "description": "Convert weights, distances and lengths.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "All-in-One Unit Converter - Length, Weight, Temp",
+        "seo_desc": "Translate metrics between imperial and metric systems easily."
+    },
+    {
+        "id": "speed-test",
+        "name": "Internet Speed Test",
+        "icon": "🚀",
+        "description": "Test connection latency and bandwidth.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Simple Internet Speed Test - Check Connectivity",
+        "seo_desc": "Evaluate download throughput rates directly inside the browser."
+    },
+    {
+        "id": "stopwatch",
+        "name": "Stopwatch & Timer",
+        "icon": "⏱️",
+        "description": "Accurate stopwatch with lap tracker.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Free Online Stopwatch and Countdown Timer",
+        "seo_desc": "Track elapsed times with standard millisecond dials."
+    },
+    {
+        "id": "aspect-ratio-calculator",
+        "name": "Aspect Ratio Calculator",
+        "icon": "📏",
+        "description": "Resolve pixel aspect ratio scaling visual grids.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "Free Aspect Ratio Calculator - UI/UX Tool",
+        "seo_desc": "Resolve dimension ratios for digital banners and mobile viewports."
+    },
+    {
+        "id": "rgb-hex-converter",
+        "name": "RGB to HEX Converter",
+        "icon": "🌈",
+        "description": "Translate colors between RGB and HEX codes.",
+        "type": "utility_advanced",
+        "category": "Designer",
+        "seo_title": "RGB to HEX Color Converter - Designer Tool",
+        "seo_desc": "Convert color systems instantly for designs and CSS styles."
+    },
+    {
+        "id": "mp4-to-mp3",
+        "name": "MP4 to MP3",
+        "icon": "🎵",
+        "description": "Extract raw audio tracks from video files.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Convert MP4 to MP3 Online - Free Audio Extractor",
+        "seo_desc": "Convert heavy video files into lightweight audio format instantly."
+    },
+    {
+        "id": "video-compressor",
+        "name": "Video Compressor",
+        "icon": "🎥",
+        "description": "Reduce video clip sizes and bitrates.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Online Video Compressor - Shrink Video Files",
+        "seo_desc": "Optimize and shrink video file dimensions with secure edge limits."
+    },
+    {
+        "id": "webm-to-mp4",
+        "name": "WebM to MP4",
+        "icon": "🎥",
+        "description": "Transcode WebM assets to standard MP4 videos.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Convert WebM to MP4 Online Free - Fast Transcoder",
+        "seo_desc": "Convert lightweight WebM files into universal MP4 files safely."
     }
 ]

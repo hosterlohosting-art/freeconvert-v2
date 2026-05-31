@@ -502,10 +502,27 @@ if (toolId === 'diff-checker') {
 
 btn.onclick = () => {
     const val = input.value;
-    if (toolId === 'sql-formatter') {
+            if (toolId === 'sql-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
         output.value = sqlFormatter.format(val);
+    } else if (toolId === 'json-formatter') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        try {
+            output.value = JSON.stringify(JSON.parse(val), null, 2);
+        } catch (err) {
+            output.value = "Error: Invalid JSON syntax. " + err.message;
+        }
+    } else if (toolId === 'json-validator') {
+        output.style.display = 'block';
+        preview.style.display = 'none';
+        try {
+            JSON.parse(val);
+            output.value = "🟢 Valid JSON! The syntax is correct and well-formed.";
+        } catch (err) {
+            output.value = "🔴 Invalid JSON syntax:\n" + err.message;
+        }
     } else if (toolId === 'html-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
@@ -1098,36 +1115,194 @@ if (toolId === 'lorem-ipsum') {
 """
 
 TEXT_UI = """
-<div class="editor-pane" style="width: 100%;">
-    <div class="editor-header">
-        <span class="editor-title">📥 Input Text</span>
-        <div class="editor-actions">
-            <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-            <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+<div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
+    <div class="editor-pane" style="width: 100%;">
+        <div class="editor-header">
+            <span class="editor-title">📥 Input Text</span>
+            <div class="editor-actions">
+                <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
+                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+            </div>
+        </div>
+        <textarea id="text-input" class="code-editor-textarea" style="height: 220px;" placeholder="Paste your text here..."></textarea>
+    </div>
+    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">WORDS</span>
+            <h3 id="word-count" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-primary);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">CHARACTERS (WITH SPACES)</span>
+            <h3 id="char-count-spaces" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-secondary);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">CHARACTERS (NO SPACES)</span>
+            <h3 id="char-count-nospaces" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-accent);">0</h3>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">SENTENCES</span>
+            <h3 id="sentence-count" style="font-size:2rem; font-weight:900; margin:0; color:#06b6d4;">0</h3>
         </div>
     </div>
-    <textarea id="text-input" class="code-editor-textarea" style="height: 250px;" placeholder="Paste your text or script contents here..."></textarea>
-</div>
-<div class="stats-grid" style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Words: <span id="word-count" style="color:var(--brand-primary);">0</span></div>
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Characters: <span id="char-count" style="color:var(--brand-secondary);">0</span></div>
-    <div class="stat-item" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:10px; padding:0.8rem 1.5rem; font-weight:600;">Sentences: <span id="sentence-count" style="color:var(--brand-accent);">0</span></div>
+    <div style="background: white; border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem; margin-top: 1rem;">
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;">📌 Common Social Media Limits</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; font-size: 0.85rem; text-align: center;">
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-tw">
+                <strong>Twitter (X)</strong><br><span style="color:var(--brand-primary); font-weight:800;" id="tw-fill">0 / 280</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-sms">
+                <strong>SMS Text</strong><br><span style="color:var(--brand-secondary); font-weight:800;" id="sms-fill">0 / 160</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-li">
+                <strong>LinkedIn Post</strong><br><span style="color:var(--brand-accent); font-weight:800;" id="li-fill">0 / 3000</span>
+            </div>
+            <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-ig">
+                <strong>Instagram Caption</strong><br><span style="color:#06b6d4; font-weight:800;" id="ig-fill">0 / 2200</span>
+            </div>
+        </div>
+    </div>
 </div>
 """
 
 TEXT_SCRIPT = """
 const textInput = document.getElementById('text-input');
-const wordCount = document.getElementById('word-count');
-const charCount = document.getElementById('char-count');
-const sentenceCount = document.getElementById('sentence-count');
-
 textInput.addEventListener('input', () => {
-    const text = textInput.value.trim();
-    wordCount.textContent = text ? text.split(/\\s+/).length : 0;
-    charCount.textContent = text.length;
-    sentenceCount.textContent = text ? text.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+    const text = textInput.value;
+    const cleanText = text.trim();
+    
+    const words = cleanText ? cleanText.split(/\\s+/).length : 0;
+    const charsWithSpaces = text.length;
+    const charsNoSpaces = text.replace(/\\s/g, '').length;
+    const sentences = cleanText ? cleanText.split(/[.!?]+/).filter(s => s.trim()).length : 0;
+    
+    document.getElementById('word-count').textContent = words;
+    document.getElementById('char-count-spaces').textContent = charsWithSpaces;
+    document.getElementById('char-count-nospaces').textContent = charsNoSpaces;
+    document.getElementById('sentence-count').textContent = sentences;
+    
+    document.getElementById('tw-fill').textContent = charsWithSpaces + ' / 280';
+    document.getElementById('tw-fill').style.color = charsWithSpaces > 280 ? 'var(--brand-danger)' : 'var(--brand-primary)';
+    
+    document.getElementById('sms-fill').textContent = charsWithSpaces + ' / 160';
+    document.getElementById('sms-fill').style.color = charsWithSpaces > 160 ? 'var(--brand-danger)' : 'var(--brand-secondary)';
+    
+    document.getElementById('li-fill').textContent = charsWithSpaces + ' / 3000';
+    document.getElementById('li-fill').style.color = charsWithSpaces > 3000 ? 'var(--brand-danger)' : 'var(--brand-accent)';
+    
+    document.getElementById('ig-fill').textContent = charsWithSpaces + ' / 2200';
+    document.getElementById('ig-fill').style.color = charsWithSpaces > 2200 ? 'var(--brand-danger)' : '#06b6d4';
 });
 """
+
+METACHECKER_UI = """
+<div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 0 auto; text-align: left;">
+    <div class="editor-pane" style="width: 100%;">
+        <div class="editor-header">
+            <span class="editor-title" id="checker-input-title">📥 Enter SEO Title</span>
+            <div class="editor-actions">
+                <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
+                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+            </div>
+        </div>
+        <textarea id="checker-input" class="code-editor-textarea" style="height: 100px;" placeholder="Type your text here..."></textarea>
+    </div>
+    <div style="background: white; border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem;">
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;">🔍 Google SERP Desktop Preview</h4>
+        <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: #fff; font-family: arial, sans-serif; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.02); overflow: hidden;">
+            <div style="font-size: 12px; color: #202124; line-height: 1.3; display: flex; align-items: center; gap: 4px; margin-bottom: 4px;">
+                <span>https://freeconvert.cloud</span><span style="font-size:10px; color:#5f6368;">› ...</span>
+            </div>
+            <h3 id="serp-title" style="font-size: 20px; color: #1a0dab; font-weight: 400; line-height: 1.3; margin: 0 0 4px 0; font-family: arial, sans-serif; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;">Please enter title...</h3>
+            <p id="serp-desc" style="font-size: 14px; color: #4d5156; line-height: 1.58; margin: 0; font-family: arial, sans-serif; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Please enter descriptive text...</p>
+        </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;" id="char-limit-box">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">CHARACTER LENGTH</span>
+            <h3 id="checker-char-count" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-primary);">0</h3>
+            <span style="font-size:0.7rem; font-weight:bold; color:var(--text-muted); margin-top:5px;" id="checker-char-limit">Limit: 60 Chars</span>
+        </div>
+        <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background:white; padding: 1rem;" id="pixel-limit-box">
+            <span style="font-size:0.75rem; font-weight:bold; color:var(--text-muted);">VISUAL PIXEL WIDTH</span>
+            <h3 id="checker-pixel-count" style="font-size:2rem; font-weight:900; margin:0; color:var(--brand-secondary);">0px</h3>
+            <span style="font-size:0.7rem; font-weight:bold; color:var(--text-muted); margin-top:5px;" id="checker-pixel-limit">Limit: 600px</span>
+        </div>
+    </div>
+    <div id="checker-status-alert" style="padding: 0.8rem 1.2rem; border-radius: 10px; font-weight: bold; text-align: center; font-size: 0.9rem; display: none;"></div>
+</div>
+"""
+
+METACHECKER_SCRIPT = """
+const chInput = document.getElementById('checker-input');
+const chCharCount = document.getElementById('checker-char-count');
+const chPixelCount = document.getElementById('checker-pixel-count');
+const serpTitle = document.getElementById('serp-title');
+const serpDesc = document.getElementById('serp-desc');
+const statusAlert = document.getElementById('checker-status-alert');
+
+const path = window.location.pathname.replace(/\\//g, '');
+const isTitle = path === 'meta-title-checker';
+
+if (isTitle) {
+    document.getElementById('checker-input-title').textContent = "📥 Enter Meta Title";
+    chInput.placeholder = "Enter your meta title here (e.g. Free File Converter Online)...";
+    document.getElementById('checker-char-limit').textContent = "Limit: 60 Chars";
+    document.getElementById('checker-pixel-limit').textContent = "Limit: 600px";
+} else {
+    document.getElementById('checker-input-title').textContent = "📥 Enter Meta Description";
+    chInput.placeholder = "Enter your meta description here (e.g. Convert documents, images, video and archives safely inside your browser)...";
+    document.getElementById('checker-char-limit').textContent = "Limit: 160 Chars";
+    document.getElementById('checker-pixel-limit').textContent = "Limit: 960px";
+}
+
+const getPixelWidth = (text, isDesc = false) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.font = isDesc ? "14px arial" : "20px arial";
+    return Math.round(ctx.measureText(text).width);
+};
+
+chInput.addEventListener('input', () => {
+    const val = chInput.value;
+    const count = val.length;
+    const pxWidth = getPixelWidth(val, !isTitle);
+    
+    chCharCount.textContent = count;
+    chPixelCount.textContent = pxWidth + 'px';
+    
+    let maxChars = isTitle ? 60 : 160;
+    let maxPx = isTitle ? 600 : 960;
+    
+    if (isTitle) {
+        serpTitle.textContent = val || "Please enter title...";
+        if (val) serpTitle.style.color = '#1a0dab';
+        else serpTitle.style.color = '#777';
+    } else {
+        serpDesc.textContent = val || "Please enter descriptive text...";
+    }
+    
+    if (count === 0) {
+        statusAlert.style.display = 'none';
+        return;
+    }
+    
+    statusAlert.style.display = 'block';
+    if (count <= maxChars && pxWidth <= maxPx) {
+        statusAlert.className = 'glass-input';
+        statusAlert.style.color = 'var(--brand-accent)';
+        statusAlert.style.background = 'rgba(16,185,129,0.05)';
+        statusAlert.style.borderColor = 'rgba(16,185,129,0.15)';
+        statusAlert.textContent = "🟢 Perfect Length! Your meta tag fits beautifully in Google's SERP container.";
+    } else {
+        statusAlert.className = 'glass-input';
+        statusAlert.style.color = 'var(--brand-danger)';
+        statusAlert.style.background = 'rgba(239,68,68,0.05)';
+        statusAlert.style.borderColor = 'rgba(239,68,68,0.15)';
+        statusAlert.textContent = `🔴 Too Long! Exceeds standard limits (${count}/${maxChars} chars, ${pxWidth}/${maxPx}px). Google will truncate it with "..."`;
+    }
+});
+"""
+
 
 CASE_UI = """
 <div class="editor-pane" style="width: 100%;">
@@ -1978,6 +2153,23 @@ def build_categories(tools):
                 {
                     "@type": "FAQPage",
                     "mainEntity": faq_schema
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://freeconvert.cloud/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": cat['name'],
+                            "item": f"https://freeconvert.cloud/{cat['slug']}/"
+                        }
+                    ]
                 }
             ]
         }
@@ -2849,6 +3041,20 @@ def build_blog():
         content = article['content']
         faqs = article.get('faqs', [])
 
+        # Dynamic E-E-A-T Author/Reviewer box prepend
+        if "author-box" not in content:
+            author_box_html = f"""
+        <div class="author-box" style="background: rgba(99, 102, 241, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem;">✍️</div>
+            <div>
+                <strong>Author / Reviewer:</strong> freeconvert.cloud Editorial Team<br>
+                <small><strong>Editorial Note:</strong> This guide was created by the freeconvert.cloud Editorial Team to help users understand file conversion, file privacy, and safe online tools. We review our guides regularly to keep them accurate, useful, and beginner-friendly.</small><br>
+                <small><strong>Last Updated:</strong> {date} | <strong>Fact-Checked:</strong> Yes | <strong>Links:</strong> <a href="/about/">About Us</a> | <a href="/contact/">Contact Us</a> | <a href="/security/">File Security</a></small>
+            </div>
+        </div>
+"""
+            content = author_box_html + content
+
         # Build schema FAQPage entities
         faq_entities = []
         for f_item in faqs:
@@ -3060,11 +3266,23 @@ def build():
             ui = UPLOAD_BOX_UI
             script = UPLOAD_BOX_SCRIPT
             how_to = f"<ol><li>Upload your {t_id.split('-to-')[0].upper()} file in the dotted drag-and-drop zone.</li><li>Choose {t_id.split('-to-')[1].upper()} as target output.</li><li>Adjust optional dimensions or quality scale in advanced settings.</li><li>Click Convert and wait for edge process completion.</li></ol>"
+        elif t_type in ['pdf', 'video', 'audio', 'archive', 'ebook']:
+            ui = UPLOAD_BOX_UI
+            script = UPLOAD_BOX_SCRIPT
+            how_to = f"<ol><li>Select or drag your input file into the upload box.</li><li>Adjust formatting settings and parameters if available.</li><li>Click the Convert button to begin secure edge processing.</li><li>Wait for the download link to download your converted file.</li></ol>"
         elif t_type == 'text':
-            if t_id == 'word-counter':
+            if t_id in ['word-counter', 'character-counter']:
                 ui = TEXT_UI
                 script = TEXT_SCRIPT
                 how_to = "<ol><li>Paste or type your script inside the glass-input textarea.</li><li>See character, word, and sentence statistics immediately.</li></ol>"
+            elif t_id in ['meta-title-checker', 'meta-description-checker']:
+                ui = METACHECKER_UI
+                script = METACHECKER_SCRIPT
+                how_to = "<ol><li>Paste or type your meta title or description in the box.</li><li>Observe character count and visual pixel width scaling.</li><li>Review the simulated Google SERP desktop snippet preview.</li></ol>"
+            elif t_id in ['slug-generator', 'remove-duplicate-lines', 'text-cleaner', 'hashtag-generator']:
+                ui = UTILITY_UI
+                script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
+                how_to = "<ol><li>Enter or paste text inside the input textarea.</li><li>Interact with the option checkboxes or parameters.</li><li>Process results and copy/download clean text output instantly.</li></ol>"
             else:
                 ui = CASE_UI
                 script = CASE_SCRIPT
@@ -3083,9 +3301,14 @@ def build():
             script = UPLOAD_BOX_SCRIPT
             how_to = "<ol><li>Select your target picture file.</li><li>Set specific dimensions or compression levels.</li><li>Execute conversion and download file.</li></ol>"
         elif t_type == 'qr':
-            ui = QR_UI
-            script = QR_SCRIPT
-            how_to = "<ol><li>Enter your destination link or text in the search container.</li><li>Generate QR.</li><li>Download or share image code.</li></ol>"
+            if t_id in ['qr-code-generator', 'qr-generator']:
+                ui = QR_UI
+                script = QR_SCRIPT
+                how_to = "<ol><li>Enter your destination link or text in the search container.</li><li>Generate QR.</li><li>Download or share image code.</li></ol>"
+            else: # barcode-generator
+                ui = UTILITY_UI
+                script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
+                how_to = "<ol><li>Enter code number or characters in the input field.</li><li>Click generate barcode to render SVG.</li><li>Download barcode vector cleanly.</li></ol>"
         elif t_type == 'dev_basic':
             ui = DEV_BASIC_UI
             script = DEV_BASIC_SCRIPT.replace('{{ID}}', t_id)
@@ -3130,6 +3353,10 @@ def build():
         html = html.replace('{{USE_CASES}}', use_cases_html)
         html = html.replace('{{LIMITATIONS}}', limitations)
         html = html.replace('{{FAQ_SECTION}}', faq_html)
+        
+        # Inject Glossary box
+        _, cat_glossary, _, _, _, _, _ = generate_category_seo_content(cat_slug, cat_name)
+        html = html.replace('{{GLOSSARY_BOX}}', cat_glossary)
         
         # SEO Injection
         canonical_tag = f'<link rel="canonical" href="https://freeconvert.cloud/{t_id}/" />'
@@ -3183,6 +3410,29 @@ def build():
                 {
                     "@type": "FAQPage",
                     "mainEntity": faq_entities
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://freeconvert.cloud/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": cat_name,
+                            "item": f"https://freeconvert.cloud/{cat_slug}/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": tool['name'],
+                            "item": f"https://freeconvert.cloud/{t_id}/"
+                        }
+                    ]
                 }
             ]
         }
