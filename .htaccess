@@ -30,6 +30,17 @@ AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # 301 Redirects for Google Search Console 404 / Crawled Exclusions
+  Redirect 301 /Image-resizer/ https://freeconvert.cloud/image-resizer/
+  Redirect 301 /about-freeconvert/ https://freeconvert.cloud/about/
+  Redirect 301 /contact-us/ https://freeconvert.cloud/contact/
+  Redirect 301 /2025/12/18/qr-codes-on-business-cards/ https://freeconvert.cloud/blog/
+  Redirect 301 /2025/11/02/hello-world/ https://freeconvert.cloud/blog/
+  Redirect 301 /blog/hub-pages/online-timer-with-alarm.html https://freeconvert.cloud/stopwatch/
+  Redirect 301 /blog/hub-pages/markdown-editor-with-real-time-preview.html https://freeconvert.cloud/markdown-editor/
+  Redirect 301 /blog/hub-pages/lorem-ipsum-generator-for-ui-design.html https://freeconvert.cloud/lorem-ipsum/
+  Redirect 301 /blog/hub-pages/convert-json-to-excel-csv.html https://freeconvert.cloud/blog/how-to-convert-json-to-csv-for-spreadsheets/
+
   # A. Redirect Non-HTTPS to HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://freeconvert.cloud/$1 [R=301,L]
