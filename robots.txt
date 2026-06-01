@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /tools/tool-template.html
+Disallow: /blog/blog-template.html
+Disallow: /*?*
 Sitemap: https://freeconvert.cloud/sitemap.xml
+Host: freeconvert.cloud

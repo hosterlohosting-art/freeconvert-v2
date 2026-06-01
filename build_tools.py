@@ -1,11 +1,175 @@
 import os
 import json
+from pathlib import Path
 from blog_data import BLOG_ARTICLES
 
 
 # Compile Destination Constants
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
+SITE_URL = 'https://freeconvert.cloud'
+TODAY_ISO = '2026-06-01'
+BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
+
+
+def public_url_for_html(path):
+    rel = Path(path).as_posix()
+    if rel == 'index.html':
+        return f'{SITE_URL}/'
+    if rel.endswith('/index.html'):
+        return f'{SITE_URL}/{rel[:-10]}/'
+    return f'{SITE_URL}/{rel}'
+
+
+def iter_public_html_files():
+    excluded = {
+        Path('tools/tool-template.html'),
+        Path('blog/blog-template.html'),
+    }
+    for html_path in Path('.').rglob('*.html'):
+        if html_path in excluded:
+            continue
+        if any(part in {'__pycache__', '.git'} for part in html_path.parts):
+            continue
+        yield html_path
+
+
+def derive_meta_description(html, title):
+    marker = 'property="og:description" content="'
+    if marker in html:
+        return html.split(marker, 1)[1].split('"', 1)[0]
+    clean_title = title.replace(' | freeconvert.cloud', '').replace(' | freeconvert.cloud Blog', '')
+    return f'{clean_title} from freeconvert.cloud. Fast, free, privacy-first online tools for everyday file conversion and productivity tasks.'
+
+
+def normalize_generated_html_seo():
+    """Apply site-wide technical SEO tags to generated and legacy HTML pages."""
+    for html_path in iter_public_html_files():
+        html = html_path.read_text(encoding='utf-8')
+        original = html
+        page_url = public_url_for_html(html_path)
+        title = html.split('<title>', 1)[1].split('</title>', 1)[0] if '<title>' in html else 'freeconvert.cloud'
+
+        if '<meta name="description"' not in html:
+            description = derive_meta_description(html, title)
+            html = html.replace('<title>' + title + '</title>', '<title>' + title + '</title>\n    <meta name="description" content="' + description + '">', 1)
+
+        if 'rel="canonical"' not in html:
+            html = html.replace('</head>', f'    <link rel="canonical" href="{page_url}" />\n\n</head>', 1)
+
+        if 'property="og:url"' not in html:
+            html = html.replace('</head>', f'    <meta property="og:url" content="{page_url}">\n\n</head>', 1)
+
+        if 'property="og:site_name"' not in html:
+            html = html.replace('</head>', '    <meta property="og:site_name" content="freeconvert.cloud">\n\n</head>', 1)
+
+        if 'property="og:locale"' not in html:
+            html = html.replace('</head>', '    <meta property="og:locale" content="en_US">\n\n</head>', 1)
+
+        if 'name="twitter:site"' not in html:
+            html = html.replace('</head>', '    <meta name="twitter:site" content="@freeconvertcloud">\n\n</head>', 1)
+
+        if 'name="robots"' not in html:
+            html = html.replace(
+                '</head>',
+                '    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">\n'
+                '    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">\n\n</head>',
+                1
+            )
+
+        if 'name="theme-color"' not in html:
+            html = html.replace('</head>', '    <meta name="theme-color" content="#6366f1">\n    <meta name="format-detection" content="telephone=no">\n\n</head>', 1)
+
+        if 'rel="manifest"' not in html:
+            html = html.replace('</head>', '    <link rel="manifest" href="/site.webmanifest">\n    <link rel="apple-touch-icon" href="/assets/favicon.png">\n\n</head>', 1)
+
+        if 'property="og:updated_time"' not in html:
+            html = html.replace('</head>', f'    <meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">\n\n</head>', 1)
+
+        if html != original:
+            html_path.write_text(html, encoding='utf-8')
+    print("Normalized site-wide HTML SEO tags")
+
+
+def sitemap_url_entry(loc, changefreq, priority, include_image=True):
+    image_block = ''
+    if include_image:
+        image_block = f'\n    <image:image>\n      <image:loc>{BRAND_IMAGE}</image:loc>\n      <image:title>freeconvert.cloud online file converter</image:title>\n    </image:image>'
+    return (
+        '  <url>\n'
+        f'    <loc>{loc}</loc>\n'
+        f'    <lastmod>{TODAY_ISO}</lastmod>\n'
+        f'    <changefreq>{changefreq}</changefreq>\n'
+        f'    <priority>{priority}</priority>{image_block}\n'
+        '  </url>\n'
+    )
+
+
+def build_sitemap(tools):
+    seen = set()
+    entries = []
+
+    def add(loc, changefreq, priority, include_image=True):
+        if loc in seen:
+            return
+        seen.add(loc)
+        entries.append(sitemap_url_entry(loc, changefreq, priority, include_image))
+
+    add(f'{SITE_URL}/', 'daily', '1.0')
+    for slug in ['pricing', 'api']:
+        add(f'{SITE_URL}/{slug}/', 'weekly', '0.9')
+    for _, cat in CATEGORIES.items():
+        add(f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
+    for tool in tools:
+        add(f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
+    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies']:
+        add(f'{SITE_URL}/{leg}/', 'monthly', '0.5')
+    add(f'{SITE_URL}/blog/', 'weekly', '0.8')
+    for article in BLOG_ARTICLES:
+        add(f'{SITE_URL}/blog/{article["slug"]}/', 'weekly', '0.7')
+    for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
+        add(public_url_for_html(hub_page), 'monthly', '0.6')
+    add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
+    add(f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
+
+    sitemap_content = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+        + ''.join(entries)
+        + '</urlset>'
+    )
+    Path('sitemap.xml').write_text(sitemap_content, encoding='utf-8')
+    print(f"Generated enhanced sitemap.xml with {len(entries)} URLs")
+
+
+def build_static_seo_assets():
+    manifest = {
+        "name": "freeconvert.cloud",
+        "short_name": "FreeConvert",
+        "description": "Fast, free, privacy-first online file converters and productivity tools.",
+        "start_url": "/",
+        "scope": "/",
+        "display": "standalone",
+        "background_color": "#ffffff",
+        "theme_color": "#6366f1",
+        "icons": [
+            {"src": "/assets/favicon.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/assets/freeconvert-logo.png", "sizes": "512x512", "type": "image/png"}
+        ]
+    }
+    Path('site.webmanifest').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+
+    security_txt = (
+        "Contact: mailto:support@freeconvert.cloud\n"
+        "Preferred-Languages: en\n"
+        f"Canonical: {SITE_URL}/.well-known/security.txt\n"
+        f"Expires: 2027-06-01T00:00:00Z\n"
+    )
+    well_known = Path('.well-known')
+    well_known.mkdir(exist_ok=True)
+    (well_known / 'security.txt').write_text(security_txt, encoding='utf-8')
+    print("Generated site.webmanifest and .well-known/security.txt")
 
 # Categories configurations
 CATEGORIES = {
@@ -3816,37 +3980,10 @@ def build():
     # Generate discovery files (llms.txt & humans.txt)
     build_discovery_files()
 
-    # Generate Sitemap
-    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    # Homepage
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
-    # Core pages
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/pricing/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n'
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/api/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n'
-    # Categories
-    for key, cat in CATEGORIES.items():
-        sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/{cat["slug"]}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
-    # Tools
-    for tool in tools:
-        sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/{tool["id"]}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
-    # Legal
-    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies']:
-        sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/{leg}/</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>\n'
-    # Blog Hub
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/blog/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n'
-    # Blog Articles
-    for article in BLOG_ARTICLES:
-        sitemap_content += f'  <url>\n    <loc>https://freeconvert.cloud/blog/{article["slug"]}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n'
-
-    # Discovery files
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/llms.txt</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n'
-    sitemap_content += '  <url>\n    <loc>https://freeconvert.cloud/humans.txt</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n'
-
-    sitemap_content += '</urlset>'
-    
-    with open('sitemap.xml', 'w', encoding='utf-8') as f:
-        f.write(sitemap_content)
-    print("Generated sitemap.xml")
+    # Generate enhanced technical SEO assets
+    normalize_generated_html_seo()
+    build_static_seo_assets()
+    build_sitemap(tools)
 
     # Generate tools-data.js
     frontend_data = []
@@ -3865,7 +4002,14 @@ def build():
     print("Updated tools/tools-data.js")
 
     # Generate Robots.txt
-    robots_content = "User-agent: *\nAllow: /\nSitemap: https://freeconvert.cloud/sitemap.xml"
+    robots_content = """User-agent: *
+Allow: /
+Disallow: /tools/tool-template.html
+Disallow: /blog/blog-template.html
+Disallow: /*?*
+Sitemap: https://freeconvert.cloud/sitemap.xml
+Host: freeconvert.cloud
+"""
     with open('robots.txt', 'w', encoding='utf-8') as f:
         f.write(robots_content)
     print("Generated robots.txt")
