@@ -53,7 +53,7 @@ AddType text/plain .txt
   Redirect 301 /blog/hub-pages/convert-json-to-excel-csv.html https://freeconvert.cloud/blog/how-to-convert-json-to-csv-for-spreadsheets/
 
   # Legacy homepage/tool-card URLs from older deployments
-  RewriteRule ^tools/([^/]+)\.html$ https://freeconvert.cloud/$1/ [R=301,L,NE]
+  RewriteRule ^tools/([^/]+)\.html/?$ https://freeconvert.cloud/$1/ [R=301,L,NE]
 
   # A. Redirect Non-HTTPS to HTTPS
   RewriteCond %{HTTPS} off
