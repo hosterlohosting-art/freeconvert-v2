@@ -1226,7 +1226,7 @@ if (toolId === 'lorem-ipsum') {
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"><\/script>
     `;
     const hInput = document.getElementById('hash-input');
     hInput.oninput = () => {
