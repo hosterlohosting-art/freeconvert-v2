@@ -1824,7 +1824,7 @@ def build_homepage(tools):
             latest_guides_html += f"""
                 <a href="/blog/{article['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
                     <div class="tool-card-top">
-                        <div class="tool-icon">ðŸ“</div>
+                        <div class="tool-icon">Guide</div>
                         <span class="tool-category-tag">SEO Guide</span>
                     </div>
                     <div class="tool-card-body">
@@ -1833,7 +1833,7 @@ def build_homepage(tools):
                     </div>
                     <div class="tool-card-footer">
                         <span class="explore-text">Read Guide</span>
-                        <span class="arrow-icon">â†’</span>
+                        <span class="arrow-icon">-&gt;</span>
                     </div>
                 </a>"""
 
@@ -2122,7 +2122,7 @@ def build_homepage(tools):
     <!-- Latest Guides Internal Linking Section -->
     <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
         <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <span class="badge" style="margin-bottom:1rem;">ðŸ“ˆ Fresh SEO Guides</span>
+            <span class="badge" style="margin-bottom:1rem;">Fresh SEO Guides</span>
             <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Latest Conversion Guides</h2>
             <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">High-intent tutorials for PDF compression, image resizing, WebP conversion, passport photos, Base64, and search snippet optimization.</p>
             <div class="tool-grid" style="padding:0;">
