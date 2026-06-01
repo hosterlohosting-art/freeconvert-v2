@@ -3425,6 +3425,14 @@ BLOG_TOOL_MAP = {
     'best-free-online-tools-for-bloggers-and-students': [('word-counter','Word Counter'),('character-counter','Character Counter'),('qr-code-generator','QR Code Generator'),('meta-title-checker','Meta Title Checker')],
     'how-to-use-a-json-formatter-and-validator': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('base64-encode','Base64 Encoder')],
     'what-is-a-qr-code-and-how-to-generate-one-safely': [('qr-code-generator','QR Code Generator'),('barcode-generator','Barcode Generator'),('url-encoder','URL Encoder')],
+    'how-to-compress-pdf-under-1mb-online': [('compress-pdf','Compress PDF'),('jpg-to-pdf','JPG to PDF'),('pdf-to-jpg','PDF to JPG'),('image-compressor','Image Compressor')],
+    'convert-pdf-to-jpg-high-quality-online': [('pdf-to-jpg','PDF to JPG'),('jpg-to-pdf','JPG to PDF'),('compress-pdf','Compress PDF'),('image-compressor','Image Compressor')],
+    'convert-word-to-pdf-online-free': [('word-to-pdf','Word to PDF'),('pdf-to-word','PDF to Word'),('compress-pdf','Compress PDF'),('document-converter','Document Converter')],
+    'webp-to-jpg-converter-guide': [('webp-to-jpg','WebP to JPG'),('png-to-jpg','PNG to JPG'),('image-compressor','Image Compressor'),('compress-image-to-200kb','Compress Image to 200KB')],
+    'resize-image-for-instagram-without-cropping': [('resize-image-for-instagram','Resize Image for Instagram'),('resize-image','Resize Image'),('image-compressor','Image Compressor'),('compress-image-to-200kb','Compress Image to 200KB')],
+    'passport-photo-size-converter-online-guide': [('passport-photo-size-converter','Passport Photo Size Converter'),('resize-image','Resize Image'),('compress-image-to-100kb','Compress Image to 100KB'),('image-compressor','Image Compressor')],
+    'meta-title-description-checker-google-serp-guide': [('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
+    'base64-encode-decode-online-guide': [('base64-encode','Base64 Encode'),('base64-decode','Base64 Decode'),('image-to-base64','Image to Base64'),('url-encoder','URL Encoder')],
 }
 
 def build_blog():

@@ -1056,6 +1056,302 @@ BLOG_ARTICLES = [
             {"q": "What is the maximum data limit for a single QR code?", "a": "Standard v40 QR codes can hold up to 4,296 alphanumeric characters or 7,089 numeric digits, which is more than enough for long web links and raw text cards."},
             {"q": "How does QR error correction help printed materials?", "a": "By using high Reed-Solomon error correction, scanners can reconstruct lost data arrays even if the QR printout is scratched, smudged, or partially ripped, up to a 30% surface loss."}
         ]
+    },
+    {
+        "slug": "how-to-compress-pdf-under-1mb-online",
+        "title": "How to Compress PDF Under 1MB Online Without Losing Quality",
+        "description": "Learn how to reduce PDF file size under 1MB for email, job portals, school forms, and government uploads while keeping pages readable.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#why-1mb'>Why PDF portals ask for files under 1MB</a></li><li><a href='#best-settings'>Best compression settings</a></li><li><a href='#steps'>Step-by-step PDF compression</a></li><li><a href='#quality'>How to keep text readable</a></li><li><a href='#privacy'>Privacy checklist</a></li></ul>",
+        "content": """
+        <h2 id="why-1mb">Why many websites require PDFs under 1MB</h2>
+        <p>Searches like "compress PDF under 1MB", "reduce PDF size for upload", and "make PDF smaller for email" are popular because many portals enforce strict upload limits. Job application systems, visa portals, school admission forms, tax dashboards, and email clients often reject documents larger than 1MB, 2MB, or 5MB. The problem is that PDFs can contain high-resolution scanned pages, embedded fonts, thumbnails, and hidden metadata that make the file much heavier than it looks on screen.</p>
+
+        <h2 id="best-settings">Best settings to reduce PDF size</h2>
+        <p>The best PDF compression settings depend on the type of document. A text-based contract can usually be reduced safely because fonts and metadata can be optimized. A scanned PDF needs image compression because every page is effectively a photo. For readable results, keep scanned text sharp, avoid extreme image downscaling, and check the final PDF at 100% zoom before uploading it.</p>
+        <ul>
+            <li><strong>For scanned documents:</strong> use balanced compression so signatures and small text remain readable.</li>
+            <li><strong>For forms and certificates:</strong> preserve page dimensions and avoid cropping margins.</li>
+            <li><strong>For email attachments:</strong> target the smallest file that still looks professional on desktop and mobile.</li>
+        </ul>
+
+        <h2 id="steps">How to compress a PDF online</h2>
+        <ol>
+            <li>Open the <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Compress PDF</a> tool.</li>
+            <li>Choose or drag your PDF into the upload area.</li>
+            <li>Select a compression mode that matches your need: balanced for readability or stronger compression for strict portals.</li>
+            <li>Download the compressed PDF and confirm it opens correctly before submitting it.</li>
+        </ol>
+
+        <h2 id="quality">How to keep quality while compressing PDFs</h2>
+        <p>To avoid blurry results, compress only as much as your upload limit requires. If a document is 1.3MB and the limit is 1MB, a moderate reduction is enough. Do not repeatedly compress the same scanned file because each pass can compound image artifacts. If your source PDF is made from photos, try resizing or compressing the original images first with our <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a>, then create the PDF again.</p>
+
+        <h2 id="privacy">PDF privacy checklist</h2>
+        <p>Before uploading any passport scan, bank statement, ID card, or contract to a third-party tool, check the site's privacy policy and file retention rules. freeconvert.cloud is built around privacy-first workflows and clear file handling guidance. For sensitive files, avoid public computers and always delete downloaded copies from shared devices after submission.</p>
+        """,
+        "faqs": [
+            {"q": "Can I compress a PDF under 1MB online?", "a": "Yes. Use the Compress PDF tool and choose a balanced compression level. The final size depends on how many pages, images, and scanned elements are inside the PDF."},
+            {"q": "Will PDF compression make text blurry?", "a": "Text-based PDFs usually stay sharp. Scanned PDFs can lose quality if image compression is too strong, so use only the amount needed for your upload limit."},
+            {"q": "Why is my PDF still large after compression?", "a": "It may contain high-resolution scans, embedded images, fonts, or hidden metadata. For scanned documents, image optimization has the biggest impact."},
+            {"q": "What tools should I use with PDF compression?", "a": "Use Compress PDF first, then JPG to PDF or PDF to JPG if you need to rebuild pages from optimized images."}
+        ]
+    },
+    {
+        "slug": "convert-pdf-to-jpg-high-quality-online",
+        "title": "Convert PDF to JPG High Quality Online: Complete Guide",
+        "description": "Convert PDF pages to JPG images online for previews, thumbnails, forms, and sharing while preserving resolution and page clarity.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#use-cases'>When to convert PDF to JPG</a></li><li><a href='#resolution'>Best resolution settings</a></li><li><a href='#steps'>How to convert PDF pages to JPG</a></li><li><a href='#seo-images'>Image SEO tips</a></li><li><a href='#privacy'>Privacy and security</a></li></ul>",
+        "content": """
+        <h2 id="use-cases">When should you convert PDF to JPG?</h2>
+        <p>PDF to JPG conversion is useful when you need image previews instead of document files. Students convert PDF slides into JPG images for presentations. Designers convert PDF mockups into preview images for clients. Website owners convert PDF pages into thumbnails for blog posts, landing pages, documentation, and help centers. JPG is also easier to share in chat apps and social platforms that do not preview PDFs well.</p>
+
+        <h2 id="resolution">Best resolution for PDF to JPG conversion</h2>
+        <p>For readable results, keep the output resolution high enough for the page content. A low-resolution JPG may look fine as a thumbnail but become blurry when zoomed. For documents with tiny text, charts, or signatures, use a high-quality output and compress afterward only if file size is too large.</p>
+
+        <h2 id="steps">How to convert PDF to JPG online</h2>
+        <ol>
+            <li>Open the <a href="/pdf-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PDF to JPG</a> converter.</li>
+            <li>Upload your PDF file.</li>
+            <li>Choose JPG as the output format.</li>
+            <li>Convert the file and download each page as an image.</li>
+            <li>If needed, use the <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> to reduce image size for websites or email.</li>
+        </ol>
+
+        <h2 id="seo-images">Image SEO tips after converting PDF pages</h2>
+        <p>If you plan to upload converted pages to a website, rename the image with a descriptive filename, such as <strong>product-catalog-page-1.jpg</strong> instead of <strong>scan123.jpg</strong>. Add helpful alt text, reduce unnecessary file weight, and use the right image dimensions. Smaller, relevant images can improve user experience and Core Web Vitals.</p>
+
+        <h2 id="privacy">Privacy and secure document handling</h2>
+        <p>PDFs often contain personal data, financial details, medical files, school forms, or legal pages. Before converting documents, make sure you trust the tool and understand whether files are uploaded. For sensitive documents, use a private network, avoid shared computers, and remove local downloads after you finish.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert every PDF page into a separate JPG?", "a": "Yes. PDF to JPG conversion typically exports each PDF page as an individual JPG image so you can share, preview, or compress pages separately."},
+            {"q": "Is JPG better than PNG for PDF pages?", "a": "JPG is usually better for scanned pages and photographic content because it keeps file sizes smaller. PNG can be better for sharp screenshots or transparent graphics."},
+            {"q": "Can I convert JPG images back into one PDF?", "a": "Yes. After exporting pages as JPG, use the JPG to PDF tool to combine images into a single PDF again."},
+            {"q": "Will links inside my PDF remain clickable after JPG conversion?", "a": "No. JPG is an image format, so links, selectable text, forms, and bookmarks become flattened pixels."}
+        ]
+    },
+    {
+        "slug": "convert-word-to-pdf-online-free",
+        "title": "Convert Word to PDF Online Free: DOCX to PDF Guide",
+        "description": "Learn how to convert Word documents to PDF online for resumes, invoices, assignments, contracts, and printable documents.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert Word to PDF</a></li><li><a href='#formatting'>How to preserve formatting</a></li><li><a href='#steps'>DOCX to PDF steps</a></li><li><a href='#resume'>Resume and assignment tips</a></li><li><a href='#security'>Document privacy</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert Word documents to PDF?</h2>
+        <p>Word files are editable and flexible, but that flexibility can create problems when sharing final documents. Fonts may change, spacing may shift, headers can move, and page breaks may not match on another device. PDF is designed for final delivery because it preserves the layout across Windows, macOS, iPhone, Android, Chrome, and print workflows.</p>
+
+        <h2 id="formatting">How to preserve formatting when converting DOCX to PDF</h2>
+        <p>Before converting, review the Word file carefully. Use standard fonts, check margins, inspect tables, and make sure images are not floating in unexpected positions. If your file includes a resume, certificate, letterhead, invoice, or legal section, export one test PDF and review the result before sending it professionally.</p>
+
+        <h2 id="steps">How to convert Word to PDF online</h2>
+        <ol>
+            <li>Open the <a href="/word-to-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Word to PDF</a> converter.</li>
+            <li>Upload your DOC or DOCX file.</li>
+            <li>Choose PDF as the output format.</li>
+            <li>Convert and download the final PDF.</li>
+            <li>Open the PDF to confirm fonts, margins, images, and page breaks look correct.</li>
+        </ol>
+
+        <h2 id="resume">Resume, invoice, and assignment tips</h2>
+        <p>For resumes and job applications, always send PDF unless the employer specifically requests DOCX. PDF protects your layout and looks more polished. For school assignments, PDF prevents accidental editing and keeps citations and tables stable. For invoices, PDF is easier to archive and print.</p>
+
+        <h2 id="security">Privacy when converting documents</h2>
+        <p>Word files may contain names, emails, addresses, company details, hidden comments, and revision history. Before uploading or converting any document, remove private comments and confirm the tool's file handling policy. For confidential contracts, use trusted networks and avoid converting on public computers.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert DOCX to PDF online for free?", "a": "Yes. Use the Word to PDF converter to transform DOC or DOCX documents into standard PDF files for sharing, printing, or submission."},
+            {"q": "Will my Word formatting stay the same in PDF?", "a": "PDF is designed to preserve layout, but complex documents should always be reviewed after conversion to confirm fonts, tables, and images render correctly."},
+            {"q": "Is PDF better than Word for resumes?", "a": "Usually yes. PDF keeps your resume layout stable across devices unless an employer specifically asks for an editable Word file."},
+            {"q": "Can I convert PDF back to Word later?", "a": "Yes. Use the PDF to Word tool if you need to edit a PDF document again."}
+        ]
+    },
+    {
+        "slug": "webp-to-jpg-converter-guide",
+        "title": "WebP to JPG Converter Guide for Chrome, Windows, Mac, and Mobile",
+        "description": "Convert WebP images to JPG for compatibility with older apps, email attachments, CMS uploads, and social platforms.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#what-is-webp'>What is WebP?</a></li><li><a href='#why-jpg'>Why convert WebP to JPG?</a></li><li><a href='#steps'>How to convert WebP to JPG</a></li><li><a href='#quality'>Quality and background tips</a></li><li><a href='#compatibility'>Compatibility checklist</a></li></ul>",
+        "content": """
+        <h2 id="what-is-webp">What is WebP?</h2>
+        <p>WebP is a modern image format created for smaller web images. It supports lossy compression, lossless compression, animation, and transparency, which makes it excellent for fast websites. However, many older apps, upload forms, document editors, email tools, and business systems still expect JPG or PNG files.</p>
+
+        <h2 id="why-jpg">Why convert WebP to JPG?</h2>
+        <p>People often search for "WebP to JPG converter" when they download an image from Chrome and cannot upload it elsewhere. Some CMS dashboards, school portals, marketplace listings, and print shops reject WebP. JPG is still one of the most universal formats for photos, making it the safest compatibility choice.</p>
+
+        <h2 id="steps">How to convert WebP to JPG online</h2>
+        <ol>
+            <li>Open the <a href="/webp-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">WebP to JPG</a> converter.</li>
+            <li>Upload your .webp image.</li>
+            <li>Choose JPG as the output format.</li>
+            <li>Convert and download the new JPG file.</li>
+            <li>Use <a href="/compress-image-to-200kb/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Compress Image to 200KB</a> if the resulting file must meet a portal limit.</li>
+        </ol>
+
+        <h2 id="quality">Quality and transparency tips</h2>
+        <p>WebP can contain transparency, but JPG cannot. When converting transparent WebP images to JPG, the transparent regions need a solid background. For logos or graphics that must stay transparent, convert WebP to PNG instead. For photos, JPG is usually the right output because it keeps compatibility high and file size reasonable.</p>
+
+        <h2 id="compatibility">Compatibility checklist</h2>
+        <p>After converting, check that the file opens in your target app, uploads successfully, and keeps the expected dimensions. If the image is for a website, compress it after conversion so the page remains fast. If it is for printing, avoid over-compressing because visible artifacts can appear in gradients and skin tones.</p>
+        """,
+        "faqs": [
+            {"q": "Why did Chrome save my image as WebP?", "a": "Many websites serve WebP because it is smaller and faster for browsers. Converting it to JPG makes it easier to use in older apps and upload forms."},
+            {"q": "Does WebP to JPG lose quality?", "a": "JPG is lossy, so some compression is applied. Use high-quality settings when you need a clean photo or product image."},
+            {"q": "Can JPG keep transparent backgrounds?", "a": "No. Use PNG if you need transparency. JPG will replace transparent areas with a solid background."},
+            {"q": "Is WebP better than JPG for websites?", "a": "WebP can be smaller for websites, but JPG remains more compatible across apps, upload forms, and older systems."}
+        ]
+    },
+    {
+        "slug": "resize-image-for-instagram-without-cropping",
+        "title": "Resize Image for Instagram Without Cropping: Posts, Stories, and Reels",
+        "description": "Resize photos for Instagram posts, stories, reels covers, and profile layouts without stretching faces, logos, or important edges.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#sizes'>Common Instagram sizes</a></li><li><a href='#no-crop'>How no-crop resizing works</a></li><li><a href='#steps'>Resize steps</a></li><li><a href='#quality'>Quality tips</a></li><li><a href='#workflow'>Creator workflow</a></li></ul>",
+        "content": """
+        <h2 id="sizes">Common Instagram image sizes</h2>
+        <p>Instagram uses different aspect ratios for square posts, portrait posts, landscape posts, stories, reels covers, and profile images. If you upload the wrong shape, Instagram may crop faces, text, product edges, or logos. That is why searches like "resize image for Instagram without cropping" and "Instagram photo size converter" are so common.</p>
+
+        <h2 id="no-crop">How no-crop resizing works</h2>
+        <p>No-crop resizing fits the full photo inside the target canvas instead of cutting edges away. The empty space can be filled with a background color, blurred version of the image, or clean border. This is especially useful for portraits, product photos, event posters, restaurant menus, and quote graphics.</p>
+
+        <h2 id="steps">How to resize an image for Instagram</h2>
+        <ol>
+            <li>Open <a href="/resize-image-for-instagram/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image for Instagram</a>.</li>
+            <li>Upload your photo.</li>
+            <li>Select the target layout such as square post, story, or portrait post.</li>
+            <li>Preview the resized image and make sure faces, text, and logos are safe.</li>
+            <li>Download and upload to Instagram.</li>
+        </ol>
+
+        <h2 id="quality">Quality tips for Instagram uploads</h2>
+        <p>Start with the highest-quality source image you have, then resize once. Avoid screenshotting your photo because screenshots often reduce quality and add extra compression. If the final file is too large, use a light image compressor instead of repeatedly exporting from multiple apps.</p>
+
+        <h2 id="workflow">Creator workflow</h2>
+        <p>A fast creator workflow is: edit the original photo, resize for the target Instagram placement, compress lightly if needed, and save a named export for future reuse. This keeps your posts consistent and reduces the chance of uploading the wrong dimensions.</p>
+        """,
+        "faqs": [
+            {"q": "Can I resize an image for Instagram without cropping?", "a": "Yes. Use a no-crop resize mode that fits the entire image inside the target Instagram aspect ratio."},
+            {"q": "What is the best size for Instagram stories?", "a": "A 9:16 vertical layout is standard for stories and reels-style full-screen content."},
+            {"q": "Why does Instagram crop my photo?", "a": "Instagram crops when your image aspect ratio does not match the selected post format. Resize first to control the final composition."},
+            {"q": "Should I compress images before uploading to Instagram?", "a": "Use light compression only if needed. Too much compression can create artifacts before Instagram applies its own processing."}
+        ]
+    },
+    {
+        "slug": "passport-photo-size-converter-online-guide",
+        "title": "Passport Photo Size Converter Online: 2x2, 35x45mm, and Visa Photos",
+        "description": "Resize passport and visa photos online for common dimensions like 2x2 inches, 35x45mm, and digital application uploads.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#requirements'>Passport photo requirements</a></li><li><a href='#sizes'>Common photo sizes</a></li><li><a href='#steps'>How to resize passport photos</a></li><li><a href='#mistakes'>Common mistakes</a></li><li><a href='#privacy'>Privacy tips</a></li></ul>",
+        "content": """
+        <h2 id="requirements">Why passport photo size matters</h2>
+        <p>Passport and visa portals often reject photos if dimensions, background, face position, file size, or format are wrong. Common searches include "passport photo size converter", "resize photo to 2x2", and "35x45mm photo converter" because users need an exact output quickly without installing desktop editing software.</p>
+
+        <h2 id="sizes">Common passport and visa photo sizes</h2>
+        <p>Different countries and portals use different requirements. A 2x2 inch photo is common for US-style documents, while 35x45mm is common in many passport and visa systems. Always confirm the official requirement for your application before submitting.</p>
+
+        <h2 id="steps">How to resize a passport photo online</h2>
+        <ol>
+            <li>Open the <a href="/passport-photo-size-converter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Passport Photo Size Converter</a>.</li>
+            <li>Upload a clear front-facing photo.</li>
+            <li>Choose the required output size, such as 2x2 inches or 35x45mm.</li>
+            <li>Preview the crop and confirm the face is centered.</li>
+            <li>Download the resized photo and check file size before uploading.</li>
+        </ol>
+
+        <h2 id="mistakes">Common passport photo mistakes</h2>
+        <ul>
+            <li>Using a selfie with shadows or filters.</li>
+            <li>Cropping too close to the face or cutting hair/head edges.</li>
+            <li>Uploading the wrong file format or a file that is too large.</li>
+            <li>Using a busy background instead of a plain, light background.</li>
+        </ul>
+
+        <h2 id="privacy">Privacy tips for ID photos</h2>
+        <p>Passport and visa photos are sensitive identity documents. Use trusted tools, avoid shared computers, and delete downloaded copies when finished. Never upload ID images to random sites that do not explain file handling or privacy.</p>
+        """,
+        "faqs": [
+            {"q": "Can I resize a passport photo to 2x2 online?", "a": "Yes. Choose a 2x2 inch preset in the Passport Photo Size Converter and export the resized image."},
+            {"q": "Can I make a 35x45mm passport photo?", "a": "Yes. Select the 35x45mm option if that matches your application requirements."},
+            {"q": "Will this guarantee government approval?", "a": "No online tool can guarantee approval because each authority has its own rules. Always compare the output with the official requirements."},
+            {"q": "Should I compress passport photos?", "a": "Only compress enough to meet the portal limit. Over-compression can blur facial details and cause rejection."}
+        ]
+    },
+    {
+        "slug": "meta-title-description-checker-google-serp-guide",
+        "title": "Meta Title and Description Checker: Google SERP Preview Guide",
+        "description": "Use a meta title checker and meta description checker to preview Google snippets, avoid truncation, and improve organic click-through rates.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#why'>Why SERP previews matter</a></li><li><a href='#title'>Meta title best practices</a></li><li><a href='#description'>Meta description tips</a></li><li><a href='#steps'>How to check snippets</a></li><li><a href='#mistakes'>Common SEO mistakes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why SERP previews matter</h2>
+        <p>A page can rank but still receive fewer clicks if the title or description is unclear, too long, or poorly matched to search intent. A meta title checker and meta description checker help you preview how a page may appear in Google-style search results before publishing.</p>
+
+        <h2 id="title">Meta title best practices</h2>
+        <p>A strong title should describe the page clearly, include the main keyword naturally, and give users a reason to click. Avoid stuffing repeated phrases. Put the most important term near the beginning and keep the title readable. Pixel width matters because wide letters can truncate earlier than character count alone suggests.</p>
+
+        <h2 id="description">Meta description tips</h2>
+        <p>The meta description should summarize the page and match the user's search intent. It is not a direct ranking shortcut, but it can influence click-through rate when Google displays it. Include the main benefit, tool type, or answer in a natural sentence.</p>
+
+        <h2 id="steps">How to check a Google snippet preview</h2>
+        <ol>
+            <li>Open the <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>.</li>
+            <li>Paste your draft page title and review character count and visual width.</li>
+            <li>Open the <a href="/meta-description-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Description Checker</a>.</li>
+            <li>Paste your description and refine it until the preview looks complete and compelling.</li>
+        </ol>
+
+        <h2 id="mistakes">Common SEO snippet mistakes</h2>
+        <ul>
+            <li>Repeating the same keyword three or four times.</li>
+            <li>Writing a title that does not match the page content.</li>
+            <li>Using generic descriptions like "best tool online" without a clear benefit.</li>
+            <li>Ignoring mobile users and writing snippets that are too long.</li>
+        </ul>
+        """,
+        "faqs": [
+            {"q": "Does meta title length affect SEO?", "a": "A clear title helps users and search engines understand the page. Length matters because overly long titles can be truncated in search results."},
+            {"q": "What is a good meta description length?", "a": "Many descriptions work well around 140 to 160 characters, but visual width and search intent matter more than a fixed number."},
+            {"q": "Can Google rewrite my title or description?", "a": "Yes. Google may rewrite snippets if it thinks another page element better answers the search query."},
+            {"q": "Should I put keywords in meta descriptions?", "a": "Use keywords naturally when they help explain the page. Avoid stuffing or repeated phrases."}
+        ]
+    },
+    {
+        "slug": "base64-encode-decode-online-guide",
+        "title": "Base64 Encode and Decode Online: Text, Images, and Data URI Guide",
+        "description": "Understand Base64 encoding, decoding, image data URIs, and safe browser-based conversion for developers and content teams.",
+        "date": "June 1, 2026",
+        "toc": "<ul><li><a href='#what'>What is Base64?</a></li><li><a href='#uses'>Common Base64 uses</a></li><li><a href='#steps'>Encode and decode steps</a></li><li><a href='#images'>Image to Base64</a></li><li><a href='#security'>Security notes</a></li></ul>",
+        "content": """
+        <h2 id="what">What is Base64?</h2>
+        <p>Base64 is an encoding method that converts binary data into plain text characters. Developers use it when data must travel through systems that expect text, such as JSON payloads, HTML attributes, CSS files, and email formats. Base64 is not encryption; it simply represents data in a different form.</p>
+
+        <h2 id="uses">Common Base64 uses</h2>
+        <ul>
+            <li>Embedding small images as data URIs in HTML or CSS.</li>
+            <li>Encoding API tokens or payload parts for transport.</li>
+            <li>Decoding sample strings during debugging.</li>
+            <li>Testing webhooks, JSON fields, and developer documentation examples.</li>
+        </ul>
+
+        <h2 id="steps">How to encode and decode Base64 online</h2>
+        <ol>
+            <li>Use <a href="/base64-encode/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Base64 Encode</a> to convert text into a Base64 string.</li>
+            <li>Use <a href="/base64-decode/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Base64 Decode</a> to convert a Base64 string back into readable text.</li>
+            <li>Copy the output and test it in your app, API, or content workflow.</li>
+        </ol>
+
+        <h2 id="images">Image to Base64 data URIs</h2>
+        <p>Small icons, logos, or placeholder images can be converted into Base64 data URIs and embedded directly in code. This can reduce extra HTTP requests, but it is not ideal for large images because Base64 strings can be heavier than the original file. For large images, optimize with <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> instead.</p>
+
+        <h2 id="security">Security notes</h2>
+        <p>Because Base64 is reversible, never treat it as a way to hide passwords or secrets. Anyone can decode a Base64 string. For sensitive content, use proper encryption and secure storage, not simple encoding.</p>
+        """,
+        "faqs": [
+            {"q": "Is Base64 encryption?", "a": "No. Base64 is encoding, not encryption. It is reversible and should not be used to protect secrets."},
+            {"q": "Can I convert images to Base64?", "a": "Yes. Use the Image to Base64 tool to create a data URI for small images or icons."},
+            {"q": "Why is my Base64 output longer than the original?", "a": "Base64 commonly increases size because binary data is represented with text characters."},
+            {"q": "Can I decode Base64 safely in the browser?", "a": "Yes. Browser-based decoding is useful for development because the conversion can happen locally on your device."}
+        ]
     }
 
 ]
