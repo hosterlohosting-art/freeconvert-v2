@@ -1,5 +1,6 @@
 import os
 import json
+import html
 from pathlib import Path
 from blog_data import BLOG_ARTICLES
 
@@ -83,6 +84,9 @@ def normalize_generated_html_seo():
         if 'rel="manifest"' not in html:
             html = html.replace('</head>', '    <link rel="manifest" href="/site.webmanifest">\n    <link rel="apple-touch-icon" href="/assets/favicon.png">\n\n</head>', 1)
 
+        if 'application/rss+xml' not in html:
+            html = html.replace('</head>', '    <link rel="alternate" type="application/rss+xml" title="freeconvert.cloud Guides" href="/feed.xml">\n\n</head>', 1)
+
         if 'property="og:updated_time"' not in html:
             html = html.replace('</head>', f'    <meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">\n\n</head>', 1)
 
@@ -131,6 +135,7 @@ def build_sitemap(tools):
         add(public_url_for_html(hub_page), 'monthly', '0.6')
     add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add(f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
+    add(f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
 
     sitemap_content = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -170,6 +175,38 @@ def build_static_seo_assets():
     well_known.mkdir(exist_ok=True)
     (well_known / 'security.txt').write_text(security_txt, encoding='utf-8')
     print("Generated site.webmanifest and .well-known/security.txt")
+
+
+def build_rss_feed():
+    items = []
+    for article in reversed(BLOG_ARTICLES[-20:]):
+        url = f'{SITE_URL}/blog/{article["slug"]}/'
+        title = html.escape(article['title'])
+        description = html.escape(article['description'])
+        items.append(
+            '    <item>\n'
+            f'      <title>{title}</title>\n'
+            f'      <link>{url}</link>\n'
+            f'      <guid>{url}</guid>\n'
+            f'      <description>{description}</description>\n'
+            f'      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>\n'
+            '    </item>\n'
+        )
+    feed = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        '  <channel>\n'
+        '    <title>freeconvert.cloud Guides</title>\n'
+        f'    <link>{SITE_URL}/blog/</link>\n'
+        '    <description>Latest file conversion, image optimization, PDF, SEO, and developer tool guides from freeconvert.cloud.</description>\n'
+        '    <language>en-us</language>\n'
+        '    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 GMT</lastBuildDate>\n'
+        + ''.join(items) +
+        '  </channel>\n'
+        '</rss>'
+    )
+    Path('feed.xml').write_text(feed, encoding='utf-8')
+    print("Generated feed.xml")
 
 # Categories configurations
 CATEGORIES = {
@@ -1782,6 +1819,24 @@ def build_homepage(tools):
                 </div>
             </a>"""
 
+        latest_guides_html = ""
+        for article in reversed(BLOG_ARTICLES[-8:]):
+            latest_guides_html += f"""
+                <a href="/blog/{article['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
+                    <div class="tool-card-top">
+                        <div class="tool-icon">ðŸ“</div>
+                        <span class="tool-category-tag">SEO Guide</span>
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>{article['title']}</h3>
+                        <p>{article['description']}</p>
+                    </div>
+                    <div class="tool-card-footer">
+                        <span class="explore-text">Read Guide</span>
+                        <span class="arrow-icon">â†’</span>
+                    </div>
+                </a>"""
+
         html_content = """<!DOCTYPE html>
 <html lang="en">
 
@@ -2064,6 +2119,21 @@ def build_homepage(tools):
         </div>
     </section>
 
+    <!-- Latest Guides Internal Linking Section -->
+    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <span class="badge" style="margin-bottom:1rem;">ðŸ“ˆ Fresh SEO Guides</span>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Latest Conversion Guides</h2>
+            <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">High-intent tutorials for PDF compression, image resizing, WebP conversion, passport photos, Base64, and search snippet optimization.</p>
+            <div class="tool-grid" style="padding:0;">
+                {LATEST_GUIDES_HTML}
+            </div>
+            <div style="margin-top:2rem;">
+                <a href="/blog/" class="btn secondary">Explore All Guides</a>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works Step List -->
     <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
@@ -2278,7 +2348,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -3410,7 +3480,7 @@ File Security Integrity: https://freeconvert.cloud/security/
 BLOG_TOOL_MAP = {
     'how-to-convert-jpg-to-pdf-online': [('jpg-to-pdf','JPG to PDF'),('compress-pdf','Compress PDF'),('pdf-to-word','PDF to Word')],
     'how-to-convert-png-to-jpg-without-losing-quality': [('png-to-jpg','PNG to JPG'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
-    'jpg-vs-png-which-format-should-you-use': [('png-to-jpg','PNG to JPG'),('jpg-to-webp','JPG to WebP'),('image-compressor','Compress Image')],
+    'jpg-vs-png-which-format-should-you-use': [('png-to-jpg','PNG to JPG'),('jpg-to-png','JPG to PNG'),('image-compressor','Compress Image')],
     'pdf-vs-docx-what-is-the-difference': [('pdf-to-word','PDF to Word'),('compress-pdf','Compress PDF'),('jpg-to-pdf','JPG to PDF')],
     'how-to-compress-images-for-websites': [('image-compressor','Image Compressor'),('compress-image-to-100kb','Compress to 100KB'),('resize-image','Resize Image')],
     'how-to-convert-json-to-csv-for-spreadsheets': [('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON'),('json-formatter','JSON Formatter')],
@@ -3420,7 +3490,7 @@ BLOG_TOOL_MAP = {
     'best-free-online-file-conversion-tools-for-students-and-professionals': [('jpg-to-pdf','JPG to PDF'),('json-to-csv','JSON to CSV'),('image-compressor','Image Compressor'),('word-counter','Word Counter')],
     'how-to-compress-images-online-without-losing-quality': [('image-compressor','Image Compressor'),('compress-image-to-100kb','Compress to 100KB'),('compress-image-to-200kb','Compress to 200KB'),('resize-image','Resize Image')],
     'how-to-compress-an-image-to-100kb': [('compress-image-to-100kb','Compress to 100KB'),('compress-image-to-200kb','Compress to 200KB'),('image-compressor','Image Compressor')],
-    'webp-vs-jpg-which-image-format-should-you-use': [('webp-to-jpg','WebP to JPG'),('jpg-to-webp','JPG to WebP'),('png-to-jpg','PNG to JPG')],
+    'webp-vs-jpg-which-image-format-should-you-use': [('webp-to-jpg','WebP to JPG'),('png-to-jpg','PNG to JPG'),('jpg-to-png','JPG to PNG')],
     'heic-to-jpg-how-to-convert-iphone-photos-online': [('png-to-jpg','PNG to JPG'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
     'best-free-online-tools-for-bloggers-and-students': [('word-counter','Word Counter'),('character-counter','Character Counter'),('qr-code-generator','QR Code Generator'),('meta-title-checker','Meta Title Checker')],
     'how-to-use-a-json-formatter-and-validator': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('base64-encode','Base64 Encoder')],
@@ -3991,6 +4061,7 @@ def build():
     # Generate enhanced technical SEO assets
     normalize_generated_html_seo()
     build_static_seo_assets()
+    build_rss_feed()
     build_sitemap(tools)
 
     # Generate tools-data.js
