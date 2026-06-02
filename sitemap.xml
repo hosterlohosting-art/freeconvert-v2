@@ -1171,6 +1171,66 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/blog/pdf-to-word-converter-editable-docx-guide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/svg-to-png-converter-transparent-background-guide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/strong-password-generator-symbols-guide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/word-counter-for-essays-seo-and-social-posts/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/extract-color-palette-from-image-online-guide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/markdown-editor-online-preview-guide/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/blog/top-5-tools-for-image-optimization/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1707,5 +1767,11 @@
     <lastmod>2026-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/opensearch.xml</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

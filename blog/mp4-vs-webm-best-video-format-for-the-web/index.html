@@ -48,6 +48,8 @@
 
     <link rel="alternate" type="application/rss+xml" title="freeconvert.cloud Guides" href="/feed.xml">
 
+    <link rel="search" type="application/opensearchdescription+xml" title="freeconvert.cloud Search" href="/opensearch.xml">
+
     <meta property="og:updated_time" content="2026-06-02T00:00:00+00:00">
 
 </head>
@@ -216,8 +218,8 @@
         <p>The primary factor in the MP4 vs WebM choice is browser compatibility. Because H.264 is a licensed codec, it is natively decoded by hardware chips inside almost every smartphone, tablet, computer, and smart television. WebM, using the royalty-free VP9 codec, provides up to 30% greater compression efficiency than standard H.264 MP4s. However, older Apple Safari versions struggled with WebM playback, which has recently been resolved in newer releases. To cover all bases, web developers frequently deploy an HTML5 video fallback system:</p>
         <pre style="background:#0f172a; color:#a5b4fc; padding:1.2rem; border-radius:8px; overflow-x:auto; font-size:0.85rem; font-family:monospace; margin-bottom:1.5rem;">
 &lt;video controls&gt;
-  &lt;source src="video.webm" type="video/webm"&gt;
-  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src=&quot;video.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
   Your browser does not support HTML5 video.
 &lt;/video&gt;</pre>
 

@@ -565,8 +565,8 @@ BLOG_ARTICLES = [
         <p>The primary factor in the MP4 vs WebM choice is browser compatibility. Because H.264 is a licensed codec, it is natively decoded by hardware chips inside almost every smartphone, tablet, computer, and smart television. WebM, using the royalty-free VP9 codec, provides up to 30% greater compression efficiency than standard H.264 MP4s. However, older Apple Safari versions struggled with WebM playback, which has recently been resolved in newer releases. To cover all bases, web developers frequently deploy an HTML5 video fallback system:</p>
         <pre style="background:#0f172a; color:#a5b4fc; padding:1.2rem; border-radius:8px; overflow-x:auto; font-size:0.85rem; font-family:monospace; margin-bottom:1.5rem;">
 &lt;video controls&gt;
-  &lt;source src="video.webm" type="video/webm"&gt;
-  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;source src=&quot;video.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
   Your browser does not support HTML5 video.
 &lt;/video&gt;</pre>
 
@@ -1536,6 +1536,189 @@ BLOG_ARTICLES = [
             {"q": "Does the first CSV row become JSON keys?", "a": "Usually yes. The first row is commonly treated as the header row for object field names."},
             {"q": "Can I validate the JSON after converting?", "a": "Yes. Use the JSON Validator to check the output before using it in an API or app."},
             {"q": "Can I convert JSON back to CSV?", "a": "Yes. Use JSON to CSV when you need spreadsheet-friendly output."}
+        ]
+    },
+    {
+        "slug": "pdf-to-word-converter-editable-docx-guide",
+        "title": "PDF to Word Converter: Make Editable DOCX Files Online",
+        "description": "Convert PDF to Word online, understand layout limits, preserve readable formatting, and edit reports, forms, resumes, and business documents.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert PDF to Word?</a></li><li><a href='#editable'>What becomes editable?</a></li><li><a href='#steps'>Conversion steps</a></li><li><a href='#layout'>Layout tips</a></li><li><a href='#privacy'>Privacy checklist</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert PDF to Word?</h2>
+        <p>PDF files are excellent for final sharing, but they are not always easy to edit. If you need to update text, change a resume, revise a report, copy sections into a proposal, or correct a form, converting PDF to Word can save time. DOCX files are flexible and editable, making them better for drafting and revisions.</p>
+        <h2 id="editable">What becomes editable?</h2>
+        <p>Text-based PDFs usually convert into editable text more cleanly than scanned PDFs. Scanned files are images of pages, so they may require OCR to become truly editable. Complex tables, columns, headers, and floating images can shift during conversion, so always review the final Word file before sending it.</p>
+        <h2 id="steps">How to convert PDF to Word online</h2>
+        <ol>
+            <li>Open the <a href="/pdf-to-word/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PDF to Word</a> converter.</li>
+            <li>Upload your PDF document.</li>
+            <li>Select Word or DOCX as the output format.</li>
+            <li>Convert and download the editable file.</li>
+            <li>Open the DOCX and check headings, tables, images, and page breaks.</li>
+        </ol>
+        <h2 id="layout">Layout tips</h2>
+        <p>For best results, use clean PDFs with selectable text. If the output looks uneven, simplify the layout after conversion by adjusting margins, fonts, and tables in Word. For final delivery, convert the edited file back using <a href="/word-to-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Word to PDF</a>.</p>
+        <h2 id="privacy">Privacy checklist</h2>
+        <p>PDF documents can contain contracts, employee records, invoices, personal addresses, or legal details. Before converting sensitive files, remove unnecessary pages and use trusted workflows. Avoid converting private documents on public computers.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert PDF to editable Word online?", "a": "Yes. Use the PDF to Word converter to create a DOCX file you can edit in Microsoft Word or compatible editors."},
+            {"q": "Will all formatting stay perfect?", "a": "Simple PDFs convert well, but complex tables, columns, and scanned pages may need manual cleanup after conversion."},
+            {"q": "Can scanned PDFs become editable?", "a": "Scanned PDFs are images and may require OCR before text becomes fully editable."},
+            {"q": "Can I convert Word back to PDF?", "a": "Yes. After editing, use the Word to PDF converter to create a final fixed-layout file."}
+        ]
+    },
+    {
+        "slug": "svg-to-png-converter-transparent-background-guide",
+        "title": "SVG to PNG Converter: Transparent Background and Logo Export Guide",
+        "description": "Convert SVG to PNG online for logos, icons, websites, presentations, and social graphics while preserving clean edges and transparency.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#svg'>What is SVG?</a></li><li><a href='#png'>Why export PNG?</a></li><li><a href='#steps'>SVG to PNG steps</a></li><li><a href='#transparent'>Transparency tips</a></li><li><a href='#sizes'>Sizing and quality</a></li></ul>",
+        "content": """
+        <h2 id="svg">What is SVG?</h2>
+        <p>SVG is a vector format. Instead of storing pixels, it stores shapes, paths, text, and colors mathematically. This makes SVG perfect for logos, icons, line art, charts, and interface illustrations. However, many apps, marketplaces, email tools, and presentation platforms ask for PNG instead.</p>
+        <h2 id="png">Why export SVG as PNG?</h2>
+        <p>PNG is widely supported and preserves sharp edges for graphics. It is a good output format for social posts, favicons, website assets, app icons, slides, and documents. PNG also supports transparency, which is important when exporting logos for different backgrounds.</p>
+        <h2 id="steps">How to convert SVG to PNG online</h2>
+        <ol>
+            <li>Open the <a href="/svg-to-png/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">SVG to PNG</a> converter.</li>
+            <li>Upload your SVG file.</li>
+            <li>Choose output dimensions if needed.</li>
+            <li>Convert and download the PNG.</li>
+            <li>Compress the PNG with <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> if it is for a website.</li>
+        </ol>
+        <h2 id="transparent">Transparent background tips</h2>
+        <p>If your SVG has no background shape, the PNG can remain transparent. If your output shows an unwanted background, check whether the SVG includes a white rectangle or background layer. Remove that layer before exporting for a clean transparent logo.</p>
+        <h2 id="sizes">Sizing and quality</h2>
+        <p>Because SVG is vector-based, you can export at larger PNG dimensions without the source becoming blurry. For retina screens, export at 2x size, then scale down in your layout. This keeps logos and icons sharp.</p>
+        """,
+        "faqs": [
+            {"q": "Can PNG keep SVG transparency?", "a": "Yes. PNG supports transparency if the SVG does not include a solid background layer."},
+            {"q": "Will SVG to PNG lose quality?", "a": "Vector SVG can be rendered at high resolution, so export at the dimensions you need for best quality."},
+            {"q": "Is SVG better than PNG for websites?", "a": "SVG is often better for scalable icons and logos. PNG is useful when a platform does not support SVG."},
+            {"q": "Can I compress PNG after conversion?", "a": "Yes. Use Image Compressor to reduce file size after exporting PNG."}
+        ]
+    },
+    {
+        "slug": "strong-password-generator-symbols-guide",
+        "title": "Strong Password Generator with Symbols: Security Guide",
+        "description": "Generate strong passwords with symbols, numbers, uppercase letters, and safer length choices for email, banking, business, and admin accounts.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why strong passwords matter</a></li><li><a href='#length'>Length vs complexity</a></li><li><a href='#steps'>Generate password steps</a></li><li><a href='#storage'>Storage tips</a></li><li><a href='#mistakes'>Common mistakes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why strong passwords matter</h2>
+        <p>Weak passwords are one of the easiest ways for attackers to access email, banking, hosting, admin dashboards, and business accounts. A strong password should be long, unique, and hard to guess. Reusing one password across many websites is risky because one data leak can expose every account.</p>
+        <h2 id="length">Length vs complexity</h2>
+        <p>Password length matters more than people think. A long password with mixed uppercase letters, lowercase letters, numbers, and symbols is much harder to brute-force. For important accounts, use at least 16 characters when possible. For admin or hosting accounts, longer is better.</p>
+        <h2 id="steps">How to generate a strong password</h2>
+        <ol>
+            <li>Open the <a href="/password-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Password Generator</a>.</li>
+            <li>Choose a secure length.</li>
+            <li>Enable symbols, numbers, uppercase, and lowercase characters.</li>
+            <li>Generate a random password.</li>
+            <li>Save it in a trusted password manager.</li>
+        </ol>
+        <h2 id="storage">Password storage tips</h2>
+        <p>Do not store passwords in plain text notes, chat messages, or spreadsheets. Use a password manager and enable two-factor authentication for important accounts. Change reused passwords immediately if a website reports a data breach.</p>
+        <h2 id="mistakes">Common mistakes</h2>
+        <p>Avoid names, birthdays, phone numbers, repeated words, keyboard patterns, and simple substitutions like replacing "a" with "@". Attackers know those tricks. Random generation is safer.</p>
+        """,
+        "faqs": [
+            {"q": "How long should a strong password be?", "a": "Use at least 12 characters for normal accounts and 16 or more for important accounts when possible."},
+            {"q": "Should I use symbols in passwords?", "a": "Symbols can improve complexity, especially when combined with length and random generation."},
+            {"q": "Can I reuse a strong password?", "a": "No. Every important account should have its own unique password."},
+            {"q": "Where should I store passwords?", "a": "Use a trusted password manager rather than notes, chats, or spreadsheets."}
+        ]
+    },
+    {
+        "slug": "word-counter-for-essays-seo-and-social-posts",
+        "title": "Word Counter for Essays, SEO Content, and Social Posts",
+        "description": "Use a word counter online to measure essays, blog posts, meta copy, social captions, reading time, and content length targets.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why word count matters</a></li><li><a href='#essays'>Essay word counts</a></li><li><a href='#seo'>SEO content length</a></li><li><a href='#steps'>How to count words</a></li><li><a href='#editing'>Editing tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why word count matters</h2>
+        <p>Word count affects school assignments, article drafts, product descriptions, social posts, newsletters, and SEO content. Too short, and the content may lack detail. Too long, and readers may lose focus. A word counter helps you stay inside the target range quickly.</p>
+        <h2 id="essays">Essay word counts</h2>
+        <p>Students often need to meet strict word count requirements. A 1,000-word essay should be close enough to the assignment brief while still being clear and complete. Counting words before submission helps avoid penalties and last-minute editing panic.</p>
+        <h2 id="seo">SEO content length</h2>
+        <p>For SEO, word count is not a magic ranking number. Search intent matters more. A short answer can rank if it solves the query, while a guide may need more detail. Use word count as a planning signal, not as a stuffing target.</p>
+        <h2 id="steps">How to count words online</h2>
+        <ol>
+            <li>Open the <a href="/word-counter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Word Counter</a>.</li>
+            <li>Paste your text into the input box.</li>
+            <li>Review word count, character count, and related metrics.</li>
+            <li>Edit the draft until it matches your target.</li>
+        </ol>
+        <h2 id="editing">Editing tips</h2>
+        <p>If you are over the limit, remove repeated points, long introductions, and filler phrases. If you are under the limit, add examples, definitions, steps, or FAQs that genuinely help the reader.</p>
+        """,
+        "faqs": [
+            {"q": "Can I count words online for free?", "a": "Yes. Use the Word Counter to measure text length instantly."},
+            {"q": "Does word count matter for SEO?", "a": "It can help planning, but satisfying search intent is more important than hitting a fixed number."},
+            {"q": "Can I count characters too?", "a": "Yes. Use Character Counter when character limits matter for titles, descriptions, or posts."},
+            {"q": "What should I do if my essay is too long?", "a": "Remove repetition, tighten sentences, and keep only points that support the assignment brief."}
+        ]
+    },
+    {
+        "slug": "extract-color-palette-from-image-online-guide",
+        "title": "Extract Color Palette from Image Online: Hex Code Guide",
+        "description": "Extract dominant colors and hex codes from images for branding, web design, UI palettes, social graphics, and creative projects.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why extract palettes?</a></li><li><a href='#hex'>What are hex codes?</a></li><li><a href='#steps'>Palette extraction steps</a></li><li><a href='#design'>Design workflow</a></li><li><a href='#accessibility'>Accessibility tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why extract color palettes?</h2>
+        <p>Designers, marketers, developers, and content creators often need to identify colors from a photo, logo, product image, poster, or website screenshot. A palette extractor finds dominant colors so you can reuse matching hex codes in CSS, branding, slides, and social graphics.</p>
+        <h2 id="hex">What are hex codes?</h2>
+        <p>Hex codes are six-character color values used in web design, such as <strong>#6366f1</strong>. They represent red, green, and blue channels. Using exact hex codes helps keep brand colors consistent across websites, graphics, and UI components.</p>
+        <h2 id="steps">How to extract colors from an image</h2>
+        <ol>
+            <li>Open the <a href="/palette-extractor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Color Palette Extractor</a>.</li>
+            <li>Upload your image.</li>
+            <li>Review the dominant colors and hex values.</li>
+            <li>Copy the colors into CSS, design tools, or brand notes.</li>
+        </ol>
+        <h2 id="design">Design workflow</h2>
+        <p>Use extracted colors as a starting point, then build a balanced palette with primary, secondary, accent, background, and text colors. For websites, keep enough contrast between text and backgrounds.</p>
+        <h2 id="accessibility">Accessibility tips</h2>
+        <p>Beautiful colors are not enough if text is hard to read. Always test contrast for buttons, headings, and body text. Strong contrast improves usability and can support better engagement.</p>
+        """,
+        "faqs": [
+            {"q": "Can I get hex codes from an image?", "a": "Yes. Upload an image to the Color Palette Extractor to identify dominant colors and hex codes."},
+            {"q": "Can I use extracted colors for CSS?", "a": "Yes. Copy the hex values into CSS variables, stylesheets, or design tools."},
+            {"q": "Are dominant colors always brand-safe?", "a": "Not always. Use extracted colors as inspiration, then adjust for contrast and readability."},
+            {"q": "Can I extract colors from a logo?", "a": "Yes. Logos are a common use case for palette extraction."}
+        ]
+    },
+    {
+        "slug": "markdown-editor-online-preview-guide",
+        "title": "Markdown Editor Online with Live Preview: Writing Guide",
+        "description": "Write Markdown online with live preview for README files, documentation, blog drafts, notes, changelogs, and developer content.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#markdown'>What is Markdown?</a></li><li><a href='#uses'>Common uses</a></li><li><a href='#steps'>Editor steps</a></li><li><a href='#syntax'>Basic syntax</a></li><li><a href='#workflow'>Writing workflow</a></li></ul>",
+        "content": """
+        <h2 id="markdown">What is Markdown?</h2>
+        <p>Markdown is a lightweight writing format that turns plain text into structured content. It is popular for README files, documentation, changelogs, notes, static sites, and developer blogs because it is readable before and after formatting.</p>
+        <h2 id="uses">Common Markdown uses</h2>
+        <p>Developers use Markdown for GitHub READMEs, API docs, release notes, and technical writing. Writers use it for outlines, blog drafts, checklists, and notes. A live preview helps catch formatting mistakes before publishing.</p>
+        <h2 id="steps">How to use a Markdown editor online</h2>
+        <ol>
+            <li>Open the <a href="/markdown-editor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Markdown Editor</a>.</li>
+            <li>Write or paste Markdown text.</li>
+            <li>Review the live preview.</li>
+            <li>Copy the final Markdown or rendered output into your project.</li>
+        </ol>
+        <h2 id="syntax">Basic Markdown syntax</h2>
+        <p>Use <strong>#</strong> for headings, <strong>**bold**</strong> for bold text, brackets for links, and hyphens for bullet lists. Keep formatting simple so content remains portable between platforms.</p>
+        <h2 id="workflow">Writing workflow</h2>
+        <p>Draft the structure first, preview formatting, then polish wording. For technical docs, include examples, headings, and concise steps so readers can scan quickly.</p>
+        """,
+        "faqs": [
+            {"q": "Can I preview Markdown online?", "a": "Yes. Use the Markdown Editor to write text and review a live preview."},
+            {"q": "What is Markdown used for?", "a": "Markdown is commonly used for README files, documentation, blog drafts, notes, and changelogs."},
+            {"q": "Is Markdown the same as HTML?", "a": "No. Markdown is simpler plain-text syntax that can be converted into HTML."},
+            {"q": "Can I use Markdown for GitHub?", "a": "Yes. GitHub READMEs, issues, and many docs support Markdown formatting."}
         ]
     }
 

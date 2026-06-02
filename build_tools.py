@@ -98,6 +98,9 @@ def normalize_generated_html_seo():
         if 'application/rss+xml' not in html:
             html = html.replace('</head>', '    <link rel="alternate" type="application/rss+xml" title="freeconvert.cloud Guides" href="/feed.xml">\n\n</head>', 1)
 
+        if 'application/opensearchdescription+xml' not in html:
+            html = html.replace('</head>', '    <link rel="search" type="application/opensearchdescription+xml" title="freeconvert.cloud Search" href="/opensearch.xml">\n\n</head>', 1)
+
         if 'property="og:updated_time"' not in html:
             html = html.replace('</head>', f'    <meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">\n\n</head>', 1)
 
@@ -151,6 +154,7 @@ def build_sitemap(tools):
     add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add(f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
     add(f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
+    add(f'{SITE_URL}/opensearch.xml', 'monthly', '0.3', include_image=False)
 
     sitemap_content = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -222,6 +226,19 @@ def build_rss_feed():
     )
     Path('feed.xml').write_text(feed, encoding='utf-8')
     print("Generated feed.xml")
+
+
+def build_opensearch_file():
+    opensearch = f'''<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>freeconvert.cloud</ShortName>
+  <Description>Search freeconvert.cloud tools and conversion guides.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="16" width="16" type="image/png">{SITE_URL}/assets/favicon.png</Image>
+  <Url type="text/html" template="{SITE_URL}/?q={{searchTerms}}"/>
+</OpenSearchDescription>'''
+    Path('opensearch.xml').write_text(opensearch, encoding='utf-8')
+    print("Generated opensearch.xml")
 
 # Categories configurations
 CATEGORIES = {
@@ -3631,6 +3648,12 @@ BLOG_TOOL_MAP = {
     'qr-code-for-wifi-password-guide': [('qr-code-generator','QR Code Generator'),('barcode-generator','Barcode Generator'),('url-encoder','URL Encoder'),('password-generator','Password Generator')],
     'compress-image-to-200kb-online-guide': [('compress-image-to-200kb','Compress Image to 200KB'),('image-compressor','Image Compressor'),('png-to-jpg','PNG to JPG'),('webp-to-jpg','WebP to JPG')],
     'csv-to-json-converter-online-guide': [('csv-to-json','CSV to JSON'),('json-to-csv','JSON to CSV'),('json-validator','JSON Validator'),('json-formatter','JSON Formatter')],
+    'pdf-to-word-converter-editable-docx-guide': [('pdf-to-word','PDF to Word'),('word-to-pdf','Word to PDF'),('compress-pdf','Compress PDF'),('document-converter','Document Converter')],
+    'svg-to-png-converter-transparent-background-guide': [('svg-to-png','SVG to PNG'),('image-compressor','Image Compressor'),('png-to-jpg','PNG to JPG'),('resize-image','Resize Image')],
+    'strong-password-generator-symbols-guide': [('password-generator','Password Generator'),('password-strength','Password Strength'),('hash-generator','Hash Generator'),('security','File Security')],
+    'word-counter-for-essays-seo-and-social-posts': [('word-counter','Word Counter'),('character-counter','Character Counter'),('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker')],
+    'extract-color-palette-from-image-online-guide': [('palette-extractor','Color Palette Extractor'),('rgb-hex-converter','RGB HEX Converter'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
+    'markdown-editor-online-preview-guide': [('markdown-editor','Markdown Editor'),('html-formatter','HTML Formatter'),('word-counter','Word Counter'),('slug-generator','Slug Generator')],
 }
 
 def build_blog():
@@ -4199,6 +4222,7 @@ def build():
     normalize_generated_html_seo()
     build_static_seo_assets()
     build_rss_feed()
+    build_opensearch_file()
     build_sitemap(tools)
 
     # Generate tools-data.js
