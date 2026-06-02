@@ -11,6 +11,13 @@ TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
 TODAY_ISO = '2026-06-02'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
+LEGACY_ROUTE_MAP = {
+    '/image-resizer/': '/resize-image/',
+    '/base64-tool/': '/base64-encode/',
+    '/qr-generator/': '/qr-code-generator/',
+    '/lorem-ipsum/': '/lorem-ipsum-generator/',
+    '/dev_basic/': '/document-converter/',
+}
 
 
 def public_url_for_html(path):
@@ -50,6 +57,10 @@ def normalize_generated_html_seo():
         original = html
         page_url = public_url_for_html(html_path)
         title = html.split('<title>', 1)[1].split('</title>', 1)[0] if '<title>' in html else 'freeconvert.cloud'
+
+        for old_route, new_route in LEGACY_ROUTE_MAP.items():
+            html = html.replace(f'href="{old_route}"', f'href="{new_route}"')
+            html = html.replace(f"href='{old_route}'", f"href='{new_route}'")
 
         if '<meta name="description"' not in html:
             description = derive_meta_description(html, title)
@@ -3614,6 +3625,12 @@ BLOG_TOOL_MAP = {
     'passport-photo-size-converter-online-guide': [('passport-photo-size-converter','Passport Photo Size Converter'),('resize-image','Resize Image'),('compress-image-to-100kb','Compress Image to 100KB'),('image-compressor','Image Compressor')],
     'meta-title-description-checker-google-serp-guide': [('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
     'base64-encode-decode-online-guide': [('base64-encode','Base64 Encode'),('base64-decode','Base64 Decode'),('image-to-base64','Image to Base64'),('url-encoder','URL Encoder')],
+    'merge-pdf-files-online-without-losing-pages': [('merge-pdf','Merge PDF'),('compress-pdf','Compress PDF'),('split-pdf','Split PDF'),('pdf-tools','PDF Tools')],
+    'split-pdf-extract-pages-online': [('split-pdf','Split PDF'),('merge-pdf','Merge PDF'),('compress-pdf','Compress PDF'),('pdf-to-jpg','PDF to JPG')],
+    'html-css-javascript-formatter-online-guide': [('html-formatter','HTML Formatter'),('css-formatter','CSS Formatter'),('javascript-formatter','JavaScript Formatter'),('json-formatter','JSON Formatter')],
+    'qr-code-for-wifi-password-guide': [('qr-code-generator','QR Code Generator'),('barcode-generator','Barcode Generator'),('url-encoder','URL Encoder'),('password-generator','Password Generator')],
+    'compress-image-to-200kb-online-guide': [('compress-image-to-200kb','Compress Image to 200KB'),('image-compressor','Image Compressor'),('png-to-jpg','PNG to JPG'),('webp-to-jpg','WebP to JPG')],
+    'csv-to-json-converter-online-guide': [('csv-to-json','CSV to JSON'),('json-to-csv','JSON to CSV'),('json-validator','JSON Validator'),('json-formatter','JSON Formatter')],
 }
 
 def build_blog():

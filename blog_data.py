@@ -1352,6 +1352,191 @@ BLOG_ARTICLES = [
             {"q": "Why is my Base64 output longer than the original?", "a": "Base64 commonly increases size because binary data is represented with text characters."},
             {"q": "Can I decode Base64 safely in the browser?", "a": "Yes. Browser-based decoding is useful for development because the conversion can happen locally on your device."}
         ]
+    },
+    {
+        "slug": "merge-pdf-files-online-without-losing-pages",
+        "title": "Merge PDF Files Online Without Losing Pages or Order",
+        "description": "Learn how to combine multiple PDF files online, keep page order correct, and prepare clean merged documents for school, work, invoices, and forms.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why-merge'>Why merge PDF files?</a></li><li><a href='#order'>How to keep page order correct</a></li><li><a href='#steps'>Merge PDF steps</a></li><li><a href='#quality'>Quality and file size tips</a></li><li><a href='#privacy'>Privacy checklist</a></li></ul>",
+        "content": """
+        <h2 id="why-merge">Why merge PDF files?</h2>
+        <p>People often need to merge PDF files when scanned documents, invoices, certificates, receipts, contracts, or assignment pages are saved separately. Sending ten PDFs creates confusion and makes page order harder to track. A single merged PDF looks cleaner, is easier to email, and is simpler for schools, offices, clients, and government portals to review.</p>
+        <h2 id="order">How to keep page order correct</h2>
+        <p>Before combining PDFs, rename your files in sequence, for example <strong>01-cover.pdf</strong>, <strong>02-form.pdf</strong>, and <strong>03-attachments.pdf</strong>. This reduces mistakes when building a final document. After merging, open the PDF and quickly review the first page, middle pages, and final page to confirm nothing shifted.</p>
+        <h2 id="steps">How to merge PDF files online</h2>
+        <ol>
+            <li>Open the <a href="/merge-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Merge PDF</a> tool.</li>
+            <li>Upload the PDF files you want to combine.</li>
+            <li>Arrange the files in the correct order.</li>
+            <li>Merge and download the final single PDF.</li>
+            <li>If the file is too large, run it through <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Compress PDF</a>.</li>
+        </ol>
+        <h2 id="quality">Quality and file size tips</h2>
+        <p>Merging files does not automatically make a document smaller. If your merged PDF contains scanned photos, the final file can become large. Compress after merging only if needed. If pages are image-heavy, optimize source images before rebuilding the final PDF.</p>
+        <h2 id="privacy">Privacy checklist</h2>
+        <p>PDF bundles can contain sensitive details such as addresses, signatures, ID numbers, bank records, and customer information. Use trusted tools, avoid shared computers, and delete local downloads from public devices after submission.</p>
+        """,
+        "faqs": [
+            {"q": "Can I merge multiple PDFs into one file?", "a": "Yes. Use the Merge PDF tool to combine separate PDF documents into one organized file."},
+            {"q": "Will merging PDFs change page quality?", "a": "Merging normally keeps page content intact. Compression after merging may reduce file size and can affect scanned image quality if set too strongly."},
+            {"q": "Can I compress a merged PDF?", "a": "Yes. After merging, use the Compress PDF tool if the final document is too large for email or portal upload."},
+            {"q": "Should I merge before or after compressing?", "a": "Usually merge first, then compress the final PDF once so the entire document is optimized together."}
+        ]
+    },
+    {
+        "slug": "split-pdf-extract-pages-online",
+        "title": "Split PDF and Extract Pages Online: Simple Secure Guide",
+        "description": "Split PDF files, extract selected pages, separate chapters, and prepare smaller documents for sharing without rebuilding the whole file.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why-split'>Why split a PDF?</a></li><li><a href='#page-ranges'>How page ranges work</a></li><li><a href='#steps'>Split PDF steps</a></li><li><a href='#use-cases'>Best use cases</a></li><li><a href='#privacy'>Privacy notes</a></li></ul>",
+        "content": """
+        <h2 id="why-split">Why split a PDF?</h2>
+        <p>Splitting a PDF is useful when one large document contains pages that should be shared separately. You might extract a single certificate from a large application, separate one invoice from a monthly report, remove extra pages from a scanned packet, or send only a selected chapter to a teammate.</p>
+        <h2 id="page-ranges">How page ranges work</h2>
+        <p>Most split PDF workflows use page ranges. For example, pages 1-3 can become one file, page 4 can become a separate attachment, and pages 5-10 can become another document. Always check page numbering in the PDF viewer because cover pages can shift the page number you expect.</p>
+        <h2 id="steps">How to split a PDF online</h2>
+        <ol>
+            <li>Open the <a href="/split-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Split PDF</a> tool.</li>
+            <li>Upload your PDF file.</li>
+            <li>Select the page or page range you want to extract.</li>
+            <li>Generate the smaller PDF and download it.</li>
+            <li>Use <a href="/merge-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Merge PDF</a> later if you need to combine selected pages again.</li>
+        </ol>
+        <h2 id="use-cases">Best use cases for extracting PDF pages</h2>
+        <p>Common use cases include separating assignment pages, extracting one signed form, sending only a quote from a proposal, creating a small sample from an ebook, and removing unnecessary pages before uploading to a strict portal.</p>
+        <h2 id="privacy">Privacy notes</h2>
+        <p>When splitting PDFs with private documents, review the extracted file before sending. Make sure hidden pages, extra attachments, or unrelated records are not included in the final output.</p>
+        """,
+        "faqs": [
+            {"q": "Can I extract one page from a PDF?", "a": "Yes. Use the Split PDF tool and choose the exact page you want to extract."},
+            {"q": "Can I split a PDF into multiple files?", "a": "Yes. You can create separate PDFs from selected page ranges depending on your workflow."},
+            {"q": "Will splitting a PDF remove text or images?", "a": "No. The extracted pages should preserve their existing text, images, and layout."},
+            {"q": "Can I merge extracted pages again?", "a": "Yes. Use the Merge PDF tool to combine selected pages or separate files into a new PDF."}
+        ]
+    },
+    {
+        "slug": "html-css-javascript-formatter-online-guide",
+        "title": "HTML, CSS, and JavaScript Formatter Online: Clean Code Guide",
+        "description": "Format messy HTML, CSS, and JavaScript online for readable code, cleaner debugging, better snippets, and safer front-end workflows.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why-format'>Why format code?</a></li><li><a href='#html'>HTML formatting</a></li><li><a href='#css-js'>CSS and JS formatting</a></li><li><a href='#steps'>Formatter steps</a></li><li><a href='#privacy'>Code privacy</a></li></ul>",
+        "content": """
+        <h2 id="why-format">Why format code?</h2>
+        <p>Minified or messy code is hard to debug. Developers, bloggers, students, and WordPress users often paste snippets from themes, plugins, page builders, or API examples and need to make them readable again. A formatter adds indentation, line breaks, and structure so mistakes become easier to see.</p>
+        <h2 id="html">HTML formatting</h2>
+        <p>Formatting HTML helps identify missing closing tags, deeply nested containers, malformed attributes, and layout blocks. It is especially useful when editing landing pages, email templates, product cards, and blog embeds.</p>
+        <h2 id="css-js">CSS and JavaScript formatting</h2>
+        <p>CSS formatting makes selectors, media queries, and declarations easier to scan. JavaScript formatting helps reveal functions, event handlers, and object structures. Clean code is faster to debug and safer to share with teammates.</p>
+        <h2 id="steps">How to format code online</h2>
+        <ol>
+            <li>Open <a href="/html-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">HTML Formatter</a>, <a href="/css-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">CSS Formatter</a>, or <a href="/javascript-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JavaScript Formatter</a>.</li>
+            <li>Paste your code into the editor.</li>
+            <li>Run the formatter and review the clean output.</li>
+            <li>Copy the result back into your project.</li>
+        </ol>
+        <h2 id="privacy">Code privacy</h2>
+        <p>Do not paste private API keys, passwords, or production secrets into any public tool. For normal snippets, browser-local formatting is useful because it can process text without exposing your code to unnecessary storage.</p>
+        """,
+        "faqs": [
+            {"q": "Can I format minified HTML online?", "a": "Yes. Paste the minified HTML into the HTML Formatter to add indentation and line breaks."},
+            {"q": "Does formatting code change how it works?", "a": "Formatting should only change whitespace and layout, not the meaning of valid code."},
+            {"q": "Can I format CSS and JavaScript too?", "a": "Yes. Use the CSS Formatter and JavaScript Formatter for front-end code cleanup."},
+            {"q": "Should I paste secret keys into a formatter?", "a": "No. Never paste API keys, passwords, or private credentials into any online tool."}
+        ]
+    },
+    {
+        "slug": "qr-code-for-wifi-password-guide",
+        "title": "Generate QR Code for WiFi Password: Safe Sharing Guide",
+        "description": "Create a QR code for WiFi password sharing so guests can scan and connect without typing long network credentials.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why use a WiFi QR code?</a></li><li><a href='#format'>WiFi QR code format</a></li><li><a href='#steps'>Generation steps</a></li><li><a href='#printing'>Printing tips</a></li><li><a href='#security'>Security tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why use a WiFi QR code?</h2>
+        <p>WiFi passwords are often long, mixed-case, and annoying to type. A QR code lets guests scan once and connect quickly. This is useful for cafes, offices, rental apartments, classrooms, clinics, studios, events, and home guest networks.</p>
+        <h2 id="format">WiFi QR code format</h2>
+        <p>A WiFi QR code stores the network name, password, and encryption type in a structured text format. When a phone scans it, the device recognizes the WiFi payload and offers to join the network. Use a guest network when possible so visitors do not access private devices.</p>
+        <h2 id="steps">How to generate a WiFi QR code</h2>
+        <ol>
+            <li>Open the <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a>.</li>
+            <li>Enter the WiFi payload or network details.</li>
+            <li>Generate the QR code and preview it.</li>
+            <li>Test it on your phone before printing.</li>
+            <li>Print or display it where guests can scan it easily.</li>
+        </ol>
+        <h2 id="printing">Printing tips</h2>
+        <p>Keep the QR code high contrast, leave enough white space around it, and avoid placing it on reflective or busy backgrounds. For restaurants and offices, laminate the printed QR code so it stays clean and scannable.</p>
+        <h2 id="security">Security tips</h2>
+        <p>Use a separate guest WiFi network, update the password regularly, and do not display private admin network credentials publicly. If the code is for an event, remove or replace it after the event ends.</p>
+        """,
+        "faqs": [
+            {"q": "Can I make a QR code for my WiFi password?", "a": "Yes. A WiFi QR code can store network name, password, and security type for quick scanning."},
+            {"q": "Should I use my main WiFi network?", "a": "A guest network is safer because it limits access to private devices and admin systems."},
+            {"q": "Will WiFi QR codes work on phones?", "a": "Most modern phones can scan WiFi QR codes and offer to connect automatically."},
+            {"q": "Can I print a WiFi QR code?", "a": "Yes. Print it with high contrast and enough quiet space around the code."}
+        ]
+    },
+    {
+        "slug": "compress-image-to-200kb-online-guide",
+        "title": "Compress Image to 200KB Online for Forms, Email, and Websites",
+        "description": "Reduce image size to 200KB online for upload portals, email attachments, profile photos, website speed, and document forms.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why-200kb'>Why 200KB limits exist</a></li><li><a href='#settings'>Best compression settings</a></li><li><a href='#steps'>Compression steps</a></li><li><a href='#quality'>Quality tips</a></li><li><a href='#formats'>JPG, PNG, and WebP notes</a></li></ul>",
+        "content": """
+        <h2 id="why-200kb">Why do portals ask for images under 200KB?</h2>
+        <p>Many application forms, job portals, government services, school systems, and profile dashboards limit images to 200KB so uploads stay fast and storage stays manageable. The challenge is reducing file size without making faces, text, logos, or documents blurry.</p>
+        <h2 id="settings">Best compression settings</h2>
+        <p>For photos, JPG compression usually works best. For logos or screenshots with text, PNG may preserve edges better but can stay larger. WebP can be very efficient, but some portals still reject it, so JPG is often safest for compatibility.</p>
+        <h2 id="steps">How to compress an image to 200KB</h2>
+        <ol>
+            <li>Open <a href="/compress-image-to-200kb/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Compress Image to 200KB</a>.</li>
+            <li>Upload your image.</li>
+            <li>Compress the file and check the output size.</li>
+            <li>If the image is still too large, reduce dimensions slightly and try again.</li>
+            <li>Download and test the file in your target portal.</li>
+        </ol>
+        <h2 id="quality">How to keep image quality</h2>
+        <p>Start with a clean source image, compress once, and avoid repeatedly recompressing the same output. If the image is very large, resize it before compressing. For passport or ID photos, do not over-compress facial details.</p>
+        <h2 id="formats">JPG, PNG, and WebP notes</h2>
+        <p>Use JPG for photos, PNG for graphics with sharp text, and WebP for websites when supported. If the portal says JPG or JPEG only, convert first with <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a> or <a href="/webp-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">WebP to JPG</a>.</p>
+        """,
+        "faqs": [
+            {"q": "Can I compress any image to 200KB?", "a": "Most images can be reduced to 200KB, but very detailed or large photos may need resizing as well as compression."},
+            {"q": "Which format is best for 200KB images?", "a": "JPG is usually best for photos and upload portals because it balances quality and compatibility."},
+            {"q": "Will compression make my image blurry?", "a": "Moderate compression should keep the image readable. Very strong compression can create visible artifacts."},
+            {"q": "Can I compress passport photos to 200KB?", "a": "Yes, but avoid over-compression. Passport and visa photos must keep facial details clear."}
+        ]
+    },
+    {
+        "slug": "csv-to-json-converter-online-guide",
+        "title": "CSV to JSON Converter Online: Spreadsheet to API Data Guide",
+        "description": "Convert CSV files to JSON online for APIs, JavaScript apps, dashboards, automation workflows, and developer data imports.",
+        "date": "June 2, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert CSV to JSON?</a></li><li><a href='#headers'>Headers and fields</a></li><li><a href='#steps'>CSV to JSON steps</a></li><li><a href='#errors'>Common errors</a></li><li><a href='#privacy'>Data privacy</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert CSV to JSON?</h2>
+        <p>CSV is excellent for spreadsheets, but JSON is the natural format for APIs, JavaScript applications, dashboards, and automation tools. Converting CSV to JSON turns rows into structured objects that developers can import into apps, scripts, and web services.</p>
+        <h2 id="headers">Headers and fields</h2>
+        <p>The first row of a CSV usually becomes the JSON object keys. Clean headers make better JSON. For example, use <strong>first_name</strong> instead of vague labels like <strong>Column 1</strong>. Remove duplicate headers before conversion so the output is predictable.</p>
+        <h2 id="steps">How to convert CSV to JSON online</h2>
+        <ol>
+            <li>Open the <a href="/csv-to-json/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">CSV to JSON</a> converter.</li>
+            <li>Paste CSV text or load your data.</li>
+            <li>Convert the table into JSON objects.</li>
+            <li>Validate the output with <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a>.</li>
+            <li>Copy the JSON into your app, API, or automation workflow.</li>
+        </ol>
+        <h2 id="errors">Common CSV to JSON errors</h2>
+        <p>Common issues include missing headers, commas inside quoted values, inconsistent column counts, extra blank rows, and invalid character encoding. Review the first few output objects before using the data in production.</p>
+        <h2 id="privacy">Data privacy</h2>
+        <p>CSV files may contain customer data, emails, order lists, or internal reports. Use browser-local tools for safer processing and avoid pasting private credentials or regulated personal data into unknown services.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert CSV to JSON online?", "a": "Yes. Use CSV to JSON to turn spreadsheet rows into structured JSON objects."},
+            {"q": "Does the first CSV row become JSON keys?", "a": "Usually yes. The first row is commonly treated as the header row for object field names."},
+            {"q": "Can I validate the JSON after converting?", "a": "Yes. Use the JSON Validator to check the output before using it in an API or app."},
+            {"q": "Can I convert JSON back to CSV?", "a": "Yes. Use JSON to CSV when you need spreadsheet-friendly output."}
+        ]
     }
 
 ]

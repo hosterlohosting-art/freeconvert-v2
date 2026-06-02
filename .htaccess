@@ -57,6 +57,11 @@ AddType text/plain .txt
   Redirect 301 /blog/hub-pages/markdown-editor-with-real-time-preview.html https://freeconvert.cloud/markdown-editor/
   Redirect 301 /blog/hub-pages/lorem-ipsum-generator-for-ui-design.html https://freeconvert.cloud/lorem-ipsum/
   Redirect 301 /blog/hub-pages/convert-json-to-excel-csv.html https://freeconvert.cloud/blog/how-to-convert-json-to-csv-for-spreadsheets/
+  Redirect 301 /image-resizer/ https://freeconvert.cloud/resize-image/
+  Redirect 301 /base64-tool/ https://freeconvert.cloud/base64-encode/
+  Redirect 301 /qr-generator/ https://freeconvert.cloud/qr-code-generator/
+  Redirect 301 /lorem-ipsum/ https://freeconvert.cloud/lorem-ipsum-generator/
+  Redirect 301 /dev_basic/ https://freeconvert.cloud/document-converter/
 
   # Legacy homepage/tool-card URLs from older deployments
   RewriteRule ^tools/([^/]+)\.html/?$ https://freeconvert.cloud/$1/ [R=301,L,NE]
