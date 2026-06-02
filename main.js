@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function renderTools(tools) {
         toolGrid.innerHTML = tools.map(tool => `
-            <a href="tools/${tool.id}.html" class="tool-card glass">
+            <a href="/${tool.id}/" class="tool-card glass">
                 <div class="tool-icon">${tool.icon}</div>
                 <h3>${tool.name}</h3>
                 <p>${tool.description}</p>
