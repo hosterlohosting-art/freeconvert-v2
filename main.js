@@ -90,4 +90,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             filterAndRender();
         });
     });
+
+    // High-performance spotlight hover tracking using event delegation
+    document.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.tool-card');
+        if (card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        }
+    });
 });

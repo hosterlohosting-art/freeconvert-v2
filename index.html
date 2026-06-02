@@ -163,6 +163,13 @@
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     
     <!-- SaaS Header -->
     <header class="header-glass">
@@ -309,12 +316,50 @@
     </section>
 
     <!-- AdSense Slot: Homepage Below Hero -->
-    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 4rem;">
+    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
         <span class="adsense-label">Advertisement</span>
         <div class="adsense-placeholder-box leaderboard-ad">
             <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
         </div>
     </div>
+
+    <!-- 📈 Personal secure Productivity Dashboard & Log -->
+    <section class="dashboard-section">
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <h3 class="dashboard-title">📈 Your Local Sandbox Analytics</h3>
+                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()">🗑️ Reset Logs</button>
+            </div>
+            
+            <div class="dashboard-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-num" id="dash-files-count">0</div>
+                    <div class="stat-label">Files Processed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" id="dash-savings-count">0.00 KB</div>
+                    <div class="stat-label">Storage Saved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" style="color: var(--brand-accent); background: linear-gradient(135deg, var(--brand-accent) 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">100%</div>
+                    <div class="stat-label">Privacy Score</div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h4 class="history-title">🕒 Recent Operations History</h4>
+                <div class="history-list" id="dash-history-list">
+                    <div class="empty-history-state">
+                        🌱 Your secure operations log is clean. Start converting files to see metrics in real-time!
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top: 1rem; line-height: 1.4;">
+                🔒 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
+            </p>
+        </div>
+    </section>
 
     <!-- Dynamic Category Switcher pills -->
     <div style="text-align: center; margin-bottom: 2rem;">
@@ -2651,6 +2696,38 @@ convertBtn.onclick = async () => {
         
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
         dLink.download = `${cleanName}-converted.${targetFormat}`;
+        
+        // Record conversion history
+        if (window.recordConversionHistory) {
+            let activeToolId = '';
+            let activeToolName = '';
+            if (!activeToolId || activeToolId === '') {
+                const srcExt = activeFile.name.split('.').pop().toLowerCase();
+                const tgtExt = targetFormat.toLowerCase();
+                activeToolId = `${srcExt}-to-${tgtExt}`;
+                activeToolName = `${srcExt.toUpperCase()} to ${tgtExt.toUpperCase()} Converter`;
+            }
+            window.recordConversionHistory(
+                activeToolId,
+                activeToolName,
+                activeFile.name,
+                activeFile.size,
+                resultBlob.size
+            );
+        }
+        
+        // Trigger delight particles!
+        if (window.triggerBrandParticles) {
+            setTimeout(() => {
+                const checkmark = document.querySelector('.success-checkmark');
+                if (checkmark) {
+                    const rect = checkmark.getBoundingClientRect();
+                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                } else {
+                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
+                }
+            }, 100);
+        }
         
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');

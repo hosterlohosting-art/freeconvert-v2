@@ -363,8 +363,172 @@ window.copyOutputText = () => {
     navigator.clipboard.writeText(textToCopy).then(() => {
         // Briefly show a success message or alert
         alert('📋 Copied output data securely to clipboard!');
+        
+        // Trigger delight particles!
+        const activeBtn = document.activeElement;
+        if (activeBtn) {
+            const rect = activeBtn.getBoundingClientRect();
+            window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        }
     }).catch(err => {
         console.error('Clipboard copy failed:', err);
     });
 };
+
+/* 🎉 Delight Confetti Particle Burst Trigger */
+window.triggerBrandParticles = (x, y) => {
+    const colors = ['#6366f1', '#8b5cf6', '#10b981', '#4f46e5', '#7c3aed', '#059669'];
+    const particleCount = 28;
+    const body = document.body;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'delight-particle';
+        
+        // Randomized color and sizes
+        const size = Math.random() * 8 + 6;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.backgroundColor = color;
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        
+        // Generate random vector angle & travel distance
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 120 + 60;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        body.appendChild(particle);
+        
+        // Clean up DOM after animation completes
+        setTimeout(() => {
+            particle.remove();
+        }, 750);
+    }
+};
+
+/* 📈 Browser-Local Conversion History Dashboard Tracker */
+window.recordConversionHistory = (toolId, toolName, fileName, originalBytes, convertedBytes) => {
+    try {
+        let history = JSON.parse(localStorage.getItem('freeconvert_history') || '[]');
+        let totalFiles = parseInt(localStorage.getItem('freeconvert_total_files') || '0');
+        let totalSavings = parseInt(localStorage.getItem('freeconvert_total_savings') || '0');
+
+        // Increment stats
+        totalFiles += 1;
+        
+        let savingsBytes = 0;
+        if (originalBytes && convertedBytes && originalBytes > convertedBytes) {
+            savingsBytes = originalBytes - convertedBytes;
+            totalSavings += savingsBytes;
+        }
+
+        // Keep last 15 entries
+        const newEntry = {
+            id: Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            toolId: toolId,
+            toolName: toolName,
+            fileName: fileName,
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            originalSize: originalBytes,
+            convertedSize: convertedBytes,
+            savingsBytes: savingsBytes
+        };
+
+        history.unshift(newEntry);
+        if (history.length > 15) {
+            history = history.slice(0, 15);
+        }
+
+        localStorage.setItem('freeconvert_history', JSON.stringify(history));
+        localStorage.setItem('freeconvert_total_files', totalFiles.toString());
+        localStorage.setItem('freeconvert_total_savings', totalSavings.toString());
+
+        // Update dashboard UI dynamically in the DOM
+        window.updateDashboardUI();
+    } catch (e) {
+        console.error("Failed to record conversion history", e);
+    }
+};
+
+window.updateDashboardUI = () => {
+    const filesNumEl = document.getElementById('dash-files-count');
+    const savingsEl = document.getElementById('dash-savings-count');
+    const historyListEl = document.getElementById('dash-history-list');
+
+    if (!filesNumEl && !historyListEl) return; // Not on page with dashboard
+
+    const totalFiles = localStorage.getItem('freeconvert_total_files') || '0';
+    const totalSavingsBytes = parseInt(localStorage.getItem('freeconvert_total_savings') || '0');
+    
+    // Convert bytes saved to human readable string
+    let savingsStr = "0.00 KB";
+    if (totalSavingsBytes > 0) {
+        if (totalSavingsBytes < 1024 * 1024) {
+            savingsStr = (totalSavingsBytes / 1024).toFixed(2) + " KB";
+        } else {
+            savingsStr = (totalSavingsBytes / 1024 / 1024).toFixed(2) + " MB";
+        }
+    }
+
+    // Dynamic stats text updates
+    if (filesNumEl) filesNumEl.textContent = totalFiles;
+    if (savingsEl) savingsEl.textContent = savingsStr;
+
+    if (historyListEl) {
+        const history = JSON.parse(localStorage.getItem('freeconvert_history') || '[]');
+        if (history.length === 0) {
+            historyListEl.innerHTML = `
+                <div class="empty-history-state">
+                    🌱 Your secure operations log is clean. Start converting files to see metrics in real-time!
+                </div>
+            `;
+        } else {
+            historyListEl.innerHTML = history.map(item => {
+                let savingsPercentStr = "";
+                if (item.savingsBytes > 0 && item.originalSize > 0) {
+                    const percent = ((item.savingsBytes / item.originalSize) * 100).toFixed(0);
+                    savingsPercentStr = `<span class="savings-badge">-${percent}%</span>`;
+                }
+
+                return `
+                    <div class="history-card">
+                        <div class="history-card-left">
+                            <div class="history-card-icon">⚡</div>
+                            <div class="history-card-details">
+                                <span class="history-file-name" title="${item.fileName}">${item.fileName}</span>
+                                <span class="history-file-meta">${item.toolName} • ${item.timestamp}</span>
+                            </div>
+                        </div>
+                        <div class="history-card-right">
+                            ${savingsPercentStr}
+                            <button class="history-action-btn" title="Open Tool" onclick="location.href='/${item.toolId}/'">➔</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    }
+};
+
+window.resetDashboardStats = () => {
+    if (confirm("Are you sure you want to clear your local secure activity log? This cannot be undone.")) {
+        localStorage.removeItem('freeconvert_history');
+        localStorage.removeItem('freeconvert_total_files');
+        localStorage.removeItem('freeconvert_total_savings');
+        window.updateDashboardUI();
+    }
+};
+
+// Initialize Dashboard UI if present
+document.addEventListener('DOMContentLoaded', () => {
+    window.updateDashboardUI();
+});
+
 

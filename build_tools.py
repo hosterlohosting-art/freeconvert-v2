@@ -535,6 +535,38 @@ convertBtn.onclick = async () => {
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
         dLink.download = `${cleanName}-converted.${targetFormat}`;
         
+        // Record conversion history
+        if (window.recordConversionHistory) {
+            let activeToolId = '{{ID}}';
+            let activeToolName = '{{NAME}}';
+            if (!activeToolId || activeToolId === '{{ID}}') {
+                const srcExt = activeFile.name.split('.').pop().toLowerCase();
+                const tgtExt = targetFormat.toLowerCase();
+                activeToolId = `${srcExt}-to-${tgtExt}`;
+                activeToolName = `${srcExt.toUpperCase()} to ${tgtExt.toUpperCase()} Converter`;
+            }
+            window.recordConversionHistory(
+                activeToolId,
+                activeToolName,
+                activeFile.name,
+                activeFile.size,
+                resultBlob.size
+            );
+        }
+        
+        // Trigger delight particles!
+        if (window.triggerBrandParticles) {
+            setTimeout(() => {
+                const checkmark = document.querySelector('.success-checkmark');
+                if (checkmark) {
+                    const rect = checkmark.getBoundingClientRect();
+                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                } else {
+                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
+                }
+            }, 100);
+        }
+        
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');
         actButtons.innerHTML = '';
@@ -1989,6 +2021,13 @@ def build_homepage(tools):
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <section class="hero-section">
@@ -2031,12 +2070,50 @@ def build_homepage(tools):
     </section>
 
     <!-- AdSense Slot: Homepage Below Hero -->
-    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 4rem;">
+    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
         <span class="adsense-label">Advertisement</span>
         <div class="adsense-placeholder-box leaderboard-ad">
             <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
         </div>
     </div>
+
+    <!-- 📈 Personal secure Productivity Dashboard & Log -->
+    <section class="dashboard-section">
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <h3 class="dashboard-title">📈 Your Local Sandbox Analytics</h3>
+                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()">🗑️ Reset Logs</button>
+            </div>
+            
+            <div class="dashboard-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-num" id="dash-files-count">0</div>
+                    <div class="stat-label">Files Processed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" id="dash-savings-count">0.00 KB</div>
+                    <div class="stat-label">Storage Saved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" style="color: var(--brand-accent); background: linear-gradient(135deg, var(--brand-accent) 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">100%</div>
+                    <div class="stat-label">Privacy Score</div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h4 class="history-title">🕒 Recent Operations History</h4>
+                <div class="history-list" id="dash-history-list">
+                    <div class="empty-history-state">
+                        🌱 Your secure operations log is clean. Start converting files to see metrics in real-time!
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top: 1rem; line-height: 1.4;">
+                🔒 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
+            </p>
+        </div>
+    </section>
 
     <!-- Dynamic Category Switcher pills -->
     <div style="text-align: center; margin-bottom: 2rem;">
@@ -2352,7 +2429,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -2676,7 +2753,7 @@ def build_categories(tools):
     </script>
 </body>
 
-</html>""".replace('{SEO_TITLE}', cat['seo_title']).replace('{SEO_DESC}', cat['seo_desc']).replace('{CAT_SLUG}', cat['slug']).replace('{SCHEMA_TAG}', schema_tag).replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{CAT_NAME}', cat['name']).replace('{CAT_INTRO}', cat['intro']).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{GRID_HTML}', grid_html).replace('{CAT_HOW_TO}', cat['how_to']).replace('{FAQ_ACC_HTML}', faq_acc_html).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT).replace('{CAT_SEO_INTRO}', cat_seo_intro).replace('{CAT_GLOSSARY}', cat_glossary).replace('{CAT_WHY_SECTION}', cat_why_section).replace('{CAT_USE_CASES}', cat_use_cases).replace('{CAT_FORMATS_GUIDE}', cat_formats_guide)
+</html>""".replace('{SEO_TITLE}', cat['seo_title']).replace('{SEO_DESC}', cat['seo_desc']).replace('{CAT_SLUG}', cat['slug']).replace('{SCHEMA_TAG}', schema_tag).replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{CAT_NAME}', cat['name']).replace('{CAT_INTRO}', cat['intro']).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{GRID_HTML}', grid_html).replace('{CAT_HOW_TO}', cat['how_to']).replace('{FAQ_ACC_HTML}', faq_acc_html).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{CAT_SEO_INTRO}', cat_seo_intro).replace('{CAT_GLOSSARY}', cat_glossary).replace('{CAT_WHY_SECTION}', cat_why_section).replace('{CAT_USE_CASES}', cat_use_cases).replace('{CAT_FORMATS_GUIDE}', cat_formats_guide)
         with open(f"{cat['slug']}/index.html", 'w', encoding='utf-8') as f:
             f.write(html_content)
         print(f"Generated category page: /{cat['slug']}/index.html")
@@ -3864,8 +3941,9 @@ def build():
         html = html.replace('{{CLEAN_URL}}', t_id)
         
         # Robust replacement
-        html = html.replace('{{SPECIFIC_SCRIPT}}', script)
-        html = html.replace('{ { SPECIFIC_SCRIPT } }', script)
+        script_custom = script.replace('{{ID}}', t_id).replace('{{NAME}}', tool['name'].replace("'", "\\'"))
+        html = html.replace('{{SPECIFIC_SCRIPT}}', script_custom)
+        html = html.replace('{ { SPECIFIC_SCRIPT } }', script_custom)
         html = html.replace('{{ID}}', t_id)
         
         # Call generate_tool_adsense_content helper

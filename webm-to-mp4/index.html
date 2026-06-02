@@ -53,6 +53,13 @@
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     <!-- SaaS Header -->
     <header class="header-glass">
         <nav class="navbar">
@@ -526,6 +533,38 @@ convertBtn.onclick = async () => {
         
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
         dLink.download = `${cleanName}-converted.${targetFormat}`;
+        
+        // Record conversion history
+        if (window.recordConversionHistory) {
+            let activeToolId = 'webm-to-mp4';
+            let activeToolName = 'WebM to MP4';
+            if (!activeToolId || activeToolId === 'webm-to-mp4') {
+                const srcExt = activeFile.name.split('.').pop().toLowerCase();
+                const tgtExt = targetFormat.toLowerCase();
+                activeToolId = `${srcExt}-to-${tgtExt}`;
+                activeToolName = `${srcExt.toUpperCase()} to ${tgtExt.toUpperCase()} Converter`;
+            }
+            window.recordConversionHistory(
+                activeToolId,
+                activeToolName,
+                activeFile.name,
+                activeFile.size,
+                resultBlob.size
+            );
+        }
+        
+        // Trigger delight particles!
+        if (window.triggerBrandParticles) {
+            setTimeout(() => {
+                const checkmark = document.querySelector('.success-checkmark');
+                if (checkmark) {
+                    const rect = checkmark.getBoundingClientRect();
+                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                } else {
+                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
+                }
+            }, 100);
+        }
         
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');

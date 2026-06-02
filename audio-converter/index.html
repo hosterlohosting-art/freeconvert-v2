@@ -474,6 +474,38 @@ convertBtn.onclick = async () => {
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
         dLink.download = `${cleanName}-converted.${targetFormat}`;
         
+        // Record conversion history
+        if (window.recordConversionHistory) {
+            let activeToolId = '';
+            let activeToolName = '';
+            if (!activeToolId || activeToolId === '') {
+                const srcExt = activeFile.name.split('.').pop().toLowerCase();
+                const tgtExt = targetFormat.toLowerCase();
+                activeToolId = `${srcExt}-to-${tgtExt}`;
+                activeToolName = `${srcExt.toUpperCase()} to ${tgtExt.toUpperCase()} Converter`;
+            }
+            window.recordConversionHistory(
+                activeToolId,
+                activeToolName,
+                activeFile.name,
+                activeFile.size,
+                resultBlob.size
+            );
+        }
+        
+        // Trigger delight particles!
+        if (window.triggerBrandParticles) {
+            setTimeout(() => {
+                const checkmark = document.querySelector('.success-checkmark');
+                if (checkmark) {
+                    const rect = checkmark.getBoundingClientRect();
+                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                } else {
+                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
+                }
+            }, 100);
+        }
+        
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');
         actButtons.innerHTML = '';
