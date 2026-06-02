@@ -9,7 +9,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-01'
+TODAY_ISO = '2026-06-02'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 
 
@@ -193,7 +193,7 @@ def build_rss_feed():
             f'      <link>{url}</link>\n'
             f'      <guid>{url}</guid>\n'
             f'      <description>{description}</description>\n'
-            f'      <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>\n'
+            f'      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>\n'
             '    </item>\n'
         )
     feed = (
@@ -204,7 +204,7 @@ def build_rss_feed():
         f'    <link>{SITE_URL}/blog/</link>\n'
         '    <description>Latest file conversion, image optimization, PDF, SEO, and developer tool guides from freeconvert.cloud.</description>\n'
         '    <language>en-us</language>\n'
-        '    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 GMT</lastBuildDate>\n'
+        '    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>\n'
         + ''.join(items) +
         '  </channel>\n'
         '</rss>'
@@ -2671,6 +2671,13 @@ def build_categories(tools):
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <main class="tool-content">
@@ -2800,6 +2807,13 @@ def build_pricing_page():
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px;">
@@ -2931,6 +2945,13 @@ def build_api_page():
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px;">
@@ -3037,6 +3058,7 @@ print("Conversion Job ID:", response.json().get('job_id'))`;
             }
         };
     </script>
+    <script src="/tools/tool-logic.js"></script>
 </body>
 
 </html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET)
@@ -3187,6 +3209,13 @@ def build_legal_pages():
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <main class="tool-content">
@@ -3216,6 +3245,7 @@ def build_legal_pages():
     </main>
 
     {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
 </body>
 
 </html>"""
@@ -3777,6 +3807,13 @@ def build_blog():
 </head>
 
 <body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem 5% 5.5rem;">
@@ -3825,6 +3862,7 @@ def build_blog():
     </main>
 
     {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
 </body>
 
 </html>
