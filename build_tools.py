@@ -131,6 +131,10 @@ def build_sitemap(tools):
     add(f'{SITE_URL}/blog/', 'weekly', '0.8')
     for article in BLOG_ARTICLES:
         add(f'{SITE_URL}/blog/{article["slug"]}/', 'weekly', '0.7')
+    for blog_dir in Path('blog').glob('*/index.html'):
+        rel = blog_dir.parent.name
+        if rel != 'hub-pages':
+            add(f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
     for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
         add(public_url_for_html(hub_page), 'monthly', '0.6')
     add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)

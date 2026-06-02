@@ -42,7 +42,13 @@ AddType text/plain .txt
   RewriteEngine On
 
   # 301 Redirects for Google Search Console 404 / Crawled Exclusions
-  Redirect 301 /Image-resizer/ https://freeconvert.cloud/image-resizer/
+  Redirect 301 /base64-tool/ https://freeconvert.cloud/base64-encode/
+  Redirect 301 /image-resizer/ https://freeconvert.cloud/resize-image/
+  Redirect 301 /Image-resizer/ https://freeconvert.cloud/resize-image/
+  Redirect 301 /js-formatter/ https://freeconvert.cloud/javascript-formatter/
+  Redirect 301 /lorem-ipsum/ https://freeconvert.cloud/lorem-ipsum-generator/
+  Redirect 301 /qr-generator/ https://freeconvert.cloud/qr-code-generator/
+  Redirect 301 /url-encoder-decoder/ https://freeconvert.cloud/url-encoder/
   Redirect 301 /about-freeconvert/ https://freeconvert.cloud/about/
   Redirect 301 /contact-us/ https://freeconvert.cloud/contact/
   Redirect 301 /2025/12/18/qr-codes-on-business-cards/ https://freeconvert.cloud/blog/
