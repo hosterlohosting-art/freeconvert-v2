@@ -590,5 +590,21 @@ window.TOOLS_DATA = [
         "description": "Convert Base64 code strings into visual images locally.",
         "type": "utility",
         "category": "Utility"
+    },
+    {
+        "id": "robots-txt-generator",
+        "name": "Robots.txt Generator",
+        "icon": "\ud83e\udd16",
+        "description": "Generate custom robots.txt crawl directives for SEO optimization.",
+        "type": "utility",
+        "category": "Utility"
+    },
+    {
+        "id": "html-minifier",
+        "name": "HTML Minifier",
+        "icon": "\ud83d\udddc\ufe0f",
+        "description": "Compress and minify HTML code footprint for faster page speeds.",
+        "type": "utility",
+        "category": "Utility"
     }
 ];

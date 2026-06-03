@@ -314,7 +314,17 @@ window.loadSampleData = () => {
     } else if (path === 'youtube-thumbnail-downloader') {
         sample = `https://www.youtube.com/watch?v=dQw4w9WgXcQ`;
     } else if (path === 'base64-to-image') {
-        sample = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACeklEQVR4nO2WsUtVURzHP8+tMkgchEuhRRAhRdAUtDSWGoJpDk1hEERbNBS0tUVD/4HQEIJBi9DkIBBEXRDEkRBEEqJFEEpE0tQgnlPv6/AeXl/ee7z3eM+5t/sDx+Wee8893/u75/f7nXN/MDCVigCmgc/AU+AvMBV+m0LzZcAMsAYsAEvApvA5tEAlYBNYEx4xLpxXhM8plX6XAWvAEnAHuAfcD5//E8XACvAEeA5sAi3grHDSVPoC1oAl4AFwN3wOFX0+D5gFFoCFUKeX+l0erANLwB3gbqPPr8qCLeAJ8BxYNPoZ6XdFsAYsAbeAe+G8qX7VwW2wBCyE8zZqvNbnS4G1YJno51V9/qps2AreKvoFqfFaX8cW2ArWC31V9PlS2TADloNlovXWv0/h9yVw9Y3yT9FnvT9mYAasBO8Wrbemz1nZMIffW/96y/d/A5Y/yv1Yx55sGIeD20a/KPs2y4Z14eCOYp3S/1k2bAEnY31aIus2yoatsWFT2bAJ2bAF2fD/Gz6UjdhwLtaH2fBfbKTPe9nwhWzYhWzY/2zY/k7b/39X5M8s8AW4bOyz6PPtS6bM1O4G258N/3/bKTu3/7G58P+mUnZq/2tz4f81pazY/m/a5V7091/aT5OqXeyFz61K+6j2t/aC53elZ4j2teZ/W8Gz2m8aP1c23AbW4w9+G5k+9wZ/uQOexX61/k8s/f7l1qB/Bv19UjY8AZ7X9tPz0aPab3t+b2XDXuX2Y9/P6v+vH4uA1Q3Y7gI47gP6v17a9o+e0xU9v0mD28DGsP40/F51wZz+F1/w36F9p1kI97vE/D567gP6/6Fsv1X+G+x3Gf3fGv/167sM3P4a/+3zXbH/h8h/V237LfY/P+2z2/eP/v+K/P/k9jfa/1L8V/1+9d5V3xP73yT/h/D7P/k/C591n2v6v9TvL/+Vyn8G5uDfgDk4NmAODuAAv5gA8PvgAAAAAElFTkSuQmCC`;
+        sample = `data:image/png;base64,iVBORw0KGgoAAAANS1wYWdlc0NvdW50IDAgMCAwIDAgMCAtIDAgRklMRV9TWVNURU0_Pz8_Pz8_Pz8_Pz8_Pz8_Pz8_Pz8_c2FtcGxlX2NhbnZhc19maWxlX3JlcHJlc2VudGF0aW9uX29mX3RlbXBvcmFyeV9wYXR0ZXJuX3BuZw`;
+    } else if (path === 'robots-txt-generator') {
+        document.getElementById('robots-sitemap').value = 'https://freeconvert.cloud/sitemap.xml';
+        document.getElementById('robots-disallowed').value = '/admin/\n/tmp/\n/private/';
+        return;
+    } else if (path === 'html-minifier') {
+        const inputHTML = document.getElementById('html-raw-input');
+        if (inputHTML) {
+            inputHTML.value = `<!-- HTML Minification Demo -->\n<div class="card">\n  <div class="card-header">\n    <h3 class="title">freeconvert.cloud</h3>\n  </div>\n  <div class="card-body">\n    <p>Convert and compress files locally inside your browser sandbox.</p>\n  </div>\n</div>`;
+        }
+        return;
     } else if (path === 'image-to-base64') {
         alert('Please choose an image file to convert to Base64.');
         return;

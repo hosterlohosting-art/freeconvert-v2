@@ -738,5 +738,25 @@
         "category": "Utility",
         "seo_title": "Base64 to Image Converter - Online Free Decoder",
         "seo_desc": "Convert Base64 strings directly into visual PNG/JPG images. 100% private client-side decoding with instant download."
+    },
+    {
+        "id": "robots-txt-generator",
+        "name": "Robots.txt Generator",
+        "icon": "🤖",
+        "description": "Generate custom robots.txt crawl directives for SEO optimization.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Robots.txt Generator Online Free - Custom SEO Crawler Rules",
+        "seo_desc": "Create keyword-optimized Robots.txt files to manage search engine crawler access (Googlebot, Bingbot). Define custom Allow, Disallow, and Sitemap rules."
+    },
+    {
+        "id": "html-minifier",
+        "name": "HTML Minifier",
+        "icon": "🗜️",
+        "description": "Compress and minify HTML code footprint for faster page speeds.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "HTML Minifier & Compressor - Optimize Page Speeds Online",
+        "seo_desc": "Compress your HTML markup code by stripping extra whitespace, HTML comments, and inline code scripts. Improves Core Web Vitals loading metrics instantly."
     }
 ]
