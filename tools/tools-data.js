@@ -542,5 +542,45 @@ window.TOOLS_DATA = [
         "description": "Transcode WebM assets to standard MP4 videos.",
         "type": "video",
         "category": "Video Converter"
+    },
+    {
+        "id": "jpg-to-webp",
+        "name": "JPG to WebP",
+        "icon": "\ud83d\udd78\ufe0f",
+        "description": "Convert JPG images to next-gen WebP format locally.",
+        "type": "image",
+        "category": "Image"
+    },
+    {
+        "id": "png-to-webp",
+        "name": "PNG to WebP",
+        "icon": "\ud83d\udd78\ufe0f",
+        "description": "Convert PNG images to next-gen WebP format locally.",
+        "type": "image",
+        "category": "Image"
+    },
+    {
+        "id": "youtube-thumbnail-downloader",
+        "name": "YouTube Thumbnail Downloader",
+        "icon": "\ud83d\udcfa",
+        "description": "Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free.",
+        "type": "utility",
+        "category": "Utility"
+    },
+    {
+        "id": "yaml-to-json",
+        "name": "YAML to JSON",
+        "icon": "\ud83d\udcdc",
+        "description": "Convert YAML configs to clean JSON format online.",
+        "type": "dev_basic",
+        "category": "Developer"
+    },
+    {
+        "id": "json-to-yaml",
+        "name": "JSON to YAML",
+        "icon": "\ud83d\udcdc",
+        "description": "Convert JSON strings to readable YAML blocks.",
+        "type": "dev_basic",
+        "category": "Developer"
     }
 ];

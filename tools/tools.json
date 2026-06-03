@@ -678,5 +678,55 @@
         "category": "Video Converter",
         "seo_title": "Convert WebM to MP4 Online Free - Fast Transcoder",
         "seo_desc": "Convert lightweight WebM files into universal MP4 files safely."
+    },
+    {
+        "id": "jpg-to-webp",
+        "name": "JPG to WebP",
+        "icon": "🕸️",
+        "description": "Convert JPG images to next-gen WebP format locally.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert JPG to WebP Online Free - 100% Secure & Fast",
+        "seo_desc": "Convert JPG images to WebP format instantly in your browser. Blazing fast, 100% private, no server uploads."
+    },
+    {
+        "id": "png-to-webp",
+        "name": "PNG to WebP",
+        "icon": "🕸️",
+        "description": "Convert PNG images to next-gen WebP format locally.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "Convert PNG to WebP Online - Free, Secure & Transparent",
+        "seo_desc": "Convert PNG images to WebP online with transparency support. Safe browser-local processing, no uploads required."
+    },
+    {
+        "id": "youtube-thumbnail-downloader",
+        "name": "YouTube Thumbnail Downloader",
+        "icon": "📺",
+        "description": "Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "YouTube Thumbnail Downloader - Free HD Image Grabber",
+        "seo_desc": "Extract and download YouTube video thumbnails in 1080p Full HD, Standard, and Mobile sizes instantly in your browser."
+    },
+    {
+        "id": "yaml-to-json",
+        "name": "YAML to JSON",
+        "icon": "📜",
+        "description": "Convert YAML configs to clean JSON format online.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "YAML to JSON Converter - Free & Secure",
+        "seo_desc": "Convert YAML configs and data tables to clean, formatted JSON files in-browser with zero data uploads."
+    },
+    {
+        "id": "json-to-yaml",
+        "name": "JSON to YAML",
+        "icon": "📜",
+        "description": "Convert JSON strings to readable YAML blocks.",
+        "type": "dev_basic",
+        "category": "Developer",
+        "seo_title": "JSON to YAML Converter - Convert JSON to YAML Online",
+        "seo_desc": "Transform structured JSON arrays and keys into clean, indented YAML blocks easily and securely in your browser."
     }
 ]

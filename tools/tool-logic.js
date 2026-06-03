@@ -307,6 +307,12 @@ window.loadSampleData = () => {
         return;
     } else if (path === 'password-strength') {
         sample = `p@$$w0rd_Str0ng_99!`;
+    } else if (path === 'yaml-to-json') {
+        sample = `name: Leanne Graham\nusername: Bret\nemail: Sincere@april.biz\naddress:\n  street: Kulas Light\n  city: Gwenborough`;
+    } else if (path === 'json-to-yaml') {
+        sample = `{\n  "name": "Leanne Graham",\n  "username": "Bret",\n  "email": "Sincere@april.biz",\n  "address": {\n    "street": "Kulas Light",\n    "city": "Gwenborough"\n  }\n}`;
+    } else if (path === 'youtube-thumbnail-downloader') {
+        sample = `https://www.youtube.com/watch?v=dQw4w9WgXcQ`;
     } else if (path === 'image-to-base64') {
         alert('Please choose an image file to convert to Base64.');
         return;

@@ -713,6 +713,12 @@ btn.onclick = () => {
                     return '\\u' + ('0000' + code).slice(-4);
                 }).join('');
             }
+        } else if (toolId === 'yaml-to-json') {
+            const obj = jsyaml.load(val);
+            output.value = JSON.stringify(obj, null, 2);
+        } else if (toolId === 'json-to-yaml') {
+            const obj = JSON.parse(val);
+            output.value = jsyaml.dump(obj);
         }
     } catch (e) {
         output.value = "Error: " + e.message;
@@ -1376,6 +1382,61 @@ if (toolId === 'lorem-ipsum') {
     document.getElementById('from-morse').onclick = () => {
         mInput.value = mInput.value.split(' ').map(c => reverseMap[c] || c).join('').trim();
     };
+} else if (toolId === 'youtube-thumbnail-downloader') {
+    container.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; text-align: left;">
+                <label style="font-weight: 800; font-size: 0.94rem; color: var(--text-muted);">Enter YouTube Video Link:</label>
+                <input type="text" id="yt-url" class="glass-input" placeholder="e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="width: 100%;">
+            </div>
+            
+            <button class="btn primary" onclick="getThumbnails()" style="justify-content: center;">⚡ Get Thumbnails</button>
+            
+            <div id="yt-thumbs-preview" style="display: none; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
+                <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1.5rem; gap: 1rem;">
+                    <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);">MAX RESOLUTION (1080p Full HD)</span>
+                    <img id="thumb-max" style="width: 100%; max-width: 480px; border-radius: 8px; border: 1px solid var(--border-color);" src="" alt="Max Res Thumbnail">
+                    <a id="link-max" class="btn secondary" href="" download target="_blank">📥 Download HD Thumbnail</a>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
+                        <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-secondary);">HIGH QUALITY (640x480)</span>
+                        <img id="thumb-hq" style="width: 100%; border-radius: 6px;" src="" alt="HQ Thumbnail">
+                        <a id="link-hq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download HQ</a>
+                    </div>
+                    <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
+                        <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-accent);">MEDIUM QUALITY (320x180)</span>
+                        <img id="thumb-mq" style="width: 100%; border-radius: 6px;" src="" alt="MQ Thumbnail">
+                        <a id="link-mq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download MQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    window.getThumbnails = () => {
+        const urlVal = document.getElementById('yt-url').value.trim();
+        let videoId = "";
+        
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = urlVal.match(regExp);
+        
+        if (match && match[2].length === 11) {
+            videoId = match[2];
+        } else {
+            alert("Please enter a valid YouTube Video URL.");
+            return;
+        }
+        
+        document.getElementById('yt-thumbs-preview').style.display = 'flex';
+        
+        document.getElementById('thumb-max').src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        document.getElementById('thumb-hq').src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        document.getElementById('thumb-mq').src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        
+        document.getElementById('link-max').href = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        document.getElementById('link-hq').href = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        document.getElementById('link-mq').href = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+    };
 }
 """
 
@@ -1707,6 +1768,7 @@ DEV_BASIC_UI = """
         <textarea id="dev-output" class="code-editor-textarea output-area" placeholder="Converted results will appear here..." readonly></textarea>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
 """
 
 DEV_ADVANCED_UI = """
@@ -1812,34 +1874,61 @@ FOOTER_SNIPPET = """
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;"></a>
-                <p>The world's most beautiful, privacy-first SaaS conversion platform. Process documents, images, video, audio, and archives instantly.</p>
+                <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
+                <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
+                    <a href="/pricing/" style="color:var(--brand-primary);text-decoration:none;">💎 Upgrade to Pro</a>
+                </div>
             </div>
             <div class="footer-col">
-                <h4>Popular Converters</h4>
+                <h4>Popular Tools</h4>
                 <div class="footer-links">
                     <a href="/jpg-to-pdf/">JPG to PDF</a>
                     <a href="/pdf-to-word/">PDF to Word</a>
                     <a href="/png-to-jpg/">PNG to JPG</a>
                     <a href="/mp4-to-mp3/">MP4 to MP3</a>
                     <a href="/csv-to-json/">CSV to JSON</a>
+                    <a href="/json-to-csv/">JSON to CSV</a>
+                    <a href="/compress-pdf/">Compress PDF</a>
+                    <a href="/image-compressor/">Image Compressor</a>
+                    <a href="/compress-image-to-100kb/">Compress to 100KB</a>
+                    <a href="/webp-to-jpg/">WebP to JPG</a>
+                    <a href="/jpg-to-webp/">JPG to WebP</a>
+                    <a href="/merge-pdf/">Merge PDF</a>
+                    <a href="/qr-code-generator/">QR Code Generator</a>
+                    <a href="/password-generator/">Password Generator</a>
+                    <a href="/json-formatter/">JSON Formatter</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Category Guides</h4>
+                <h4>Tool Categories</h4>
                 <div class="footer-links">
                     <a href="/image-converter/">Image Converter</a>
                     <a href="/video-converter/">Video Converter</a>
                     <a href="/audio-converter/">Audio Converter</a>
                     <a href="/document-converter/">Document Tools</a>
-                    <a href="/pdf-tools/">PDF Tools Grid</a>
+                    <a href="/pdf-tools/">PDF Tools</a>
+                    <a href="/archive-converter/">Archive Tools</a>
+                    <a href="/ebook-converter/">eBook Converter</a>
+                    <a href="/unit-converter/">Unit Converter</a>
+                </div>
+                <h4 style="margin-top:1.2rem;">New Tools</h4>
+                <div class="footer-links">
+                    <a href="/word-counter/">Word Counter</a>
+                    <a href="/base64-encode/">Base64 Encoder</a>
+                    <a href="/url-encoder/">URL Encoder</a>
+                    <a href="/markdown-editor/">Markdown Editor</a>
+                    <a href="/diff-checker/">Diff Checker</a>
+                    <a href="/uuid-generator/">UUID Generator</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Company & Legal</h4>
+                <h4>Company &amp; Legal</h4>
                 <div class="footer-links">
                     <a href="/about/">About Us</a>
                     <a href="/pricing/">Plan Pricing</a>
                     <a href="/api/">Developer API</a>
+                    <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
@@ -3767,6 +3856,29 @@ def build_blog():
                 {
                     "@type": "FAQPage",
                     "mainEntity": faq_entities
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://freeconvert.cloud/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Blog",
+                            "item": "https://freeconvert.cloud/blog/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": title,
+                            "item": f"https://freeconvert.cloud/blog/{slug}/"
+                        }
+                    ]
                 }
             ]
         }
@@ -3781,6 +3893,7 @@ def build_blog():
         html = html.replace('{{CONTENT}}', full_content)
         html = html.replace('{{SCHEMA}}', schema_tag)
         html = html.replace('{{RELATED_BLOGS}}', related_blogs_html)
+        html = html.replace('{{FOOTER_SNIPPET}}', FOOTER_SNIPPET)
 
         # Write inside dynamic subfolder index.html for Clean URL routing!
         os.makedirs(f"blog/{slug}", exist_ok=True)
@@ -4189,6 +4302,7 @@ def build():
             for url, label in blog_links_list
         )
         html = html.replace('{{BLOG_LINKS}}', blog_links_html)
+        html = html.replace('{{FOOTER_SNIPPET}}', FOOTER_SNIPPET)
 
         # Write inside dynamic subfolder index.html for Clean URL routing!
         os.makedirs(f"{t_id}", exist_ok=True)
