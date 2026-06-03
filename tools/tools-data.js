@@ -582,5 +582,13 @@ window.TOOLS_DATA = [
         "description": "Convert JSON strings to readable YAML blocks.",
         "type": "dev_basic",
         "category": "Developer"
+    },
+    {
+        "id": "base64-to-image",
+        "name": "Base64 to Image",
+        "icon": "\ud83d\uddbc\ufe0f",
+        "description": "Convert Base64 code strings into visual images locally.",
+        "type": "utility",
+        "category": "Utility"
     }
 ];

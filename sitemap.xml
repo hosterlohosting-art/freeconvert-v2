@@ -831,6 +831,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/base64-to-image/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/privacy/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -1282,6 +1292,16 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-download-youtube-thumbnails-in-full-hd-free-fast/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/how-to-convert-base64-to-image-online-guide/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

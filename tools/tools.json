@@ -728,5 +728,15 @@
         "category": "Developer",
         "seo_title": "JSON to YAML Converter - Convert JSON to YAML Online",
         "seo_desc": "Transform structured JSON arrays and keys into clean, indented YAML blocks easily and securely in your browser."
+    },
+    {
+        "id": "base64-to-image",
+        "name": "Base64 to Image",
+        "icon": "🖼️",
+        "description": "Convert Base64 code strings into visual images locally.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Base64 to Image Converter - Online Free Decoder",
+        "seo_desc": "Convert Base64 strings directly into visual PNG/JPG images. 100% private client-side decoding with instant download."
     }
 ]
