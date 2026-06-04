@@ -74,18 +74,21 @@ def normalize_generated_html_seo():
         page_url = public_url_for_html(html_path)
         title = html.split('<title>', 1)[1].split('</title>', 1)[0] if '<title>' in html else 'freeconvert.cloud'
 
-        if 'G-KYX3224LE0' not in html:
-            google_tag = (
-                '<!-- Google tag (gtag.js) -->\n'
-                '    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYX3224LE0"></script>\n'
-                '    <script>\n'
-                '      window.dataLayer = window.dataLayer || [];\n'
-                '      function gtag(){dataLayer.push(arguments);}\n'
-                '      gtag(\'js\', new Date());\n\n'
-                '      gtag(\'config\', \'G-KYX3224LE0\');\n'
-                '    </script>'
-            )
-            html = html.replace('<head>', f'<head>\n    {google_tag}', 1)
+        if 'G-8XCZT6R7PL' not in html:
+            if 'G-KYX3224LE0' in html:
+                html = html.replace('G-KYX3224LE0', 'G-8XCZT6R7PL')
+            else:
+                google_tag = (
+                    '<!-- Google tag (gtag.js) -->\n'
+                    '    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XCZT6R7PL"></script>\n'
+                    '    <script>\n'
+                    '      window.dataLayer = window.dataLayer || [];\n'
+                    '      function gtag(){dataLayer.push(arguments);}\n'
+                    '      gtag(\'js\', new Date());\n\n'
+                    '      gtag(\'config\', \'G-8XCZT6R7PL\');\n'
+                    '    </script>'
+                )
+                html = html.replace('<head>', f'<head>\n    {google_tag}', 1)
 
         for old_route, new_route in LEGACY_ROUTE_MAP.items():
             html = html.replace(f'href="{old_route}"', f'href="{new_route}"')
