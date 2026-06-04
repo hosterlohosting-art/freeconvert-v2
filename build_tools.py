@@ -1,6 +1,7 @@
 import os
 import json
 import html
+from datetime import datetime, timezone
 from pathlib import Path
 from blog_data import BLOG_ARTICLES
 
@@ -9,7 +10,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-02'
+TODAY_ISO = '2026-06-04'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -18,6 +19,21 @@ LEGACY_ROUTE_MAP = {
     '/lorem-ipsum/': '/lorem-ipsum-generator/',
     '/dev_basic/': '/document-converter/',
 }
+
+
+def article_date_iso(date_text):
+    for fmt in ('%B %d, %Y', '%B %Y'):
+        try:
+            parsed = datetime.strptime(date_text, fmt)
+            return parsed.date().isoformat()
+        except ValueError:
+            continue
+    return TODAY_ISO
+
+
+def article_date_rfc822(date_text):
+    parsed = datetime.fromisoformat(article_date_iso(date_text)).replace(tzinfo=timezone.utc)
+    return parsed.strftime('%a, %d %b %Y 00:00:00 GMT')
 
 
 def public_url_for_html(path):
@@ -208,7 +224,7 @@ def build_rss_feed():
             f'      <link>{url}</link>\n'
             f'      <guid>{url}</guid>\n'
             f'      <description>{description}</description>\n'
-            f'      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>\n'
+            f'      <pubDate>{article_date_rfc822(article["date"])}</pubDate>\n'
             '    </item>\n'
         )
     feed = (
@@ -4017,6 +4033,14 @@ BLOG_TOOL_MAP = {
     'word-counter-for-essays-seo-and-social-posts': [('word-counter','Word Counter'),('character-counter','Character Counter'),('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker')],
     'extract-color-palette-from-image-online-guide': [('palette-extractor','Color Palette Extractor'),('rgb-hex-converter','RGB HEX Converter'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
     'markdown-editor-online-preview-guide': [('markdown-editor','Markdown Editor'),('html-formatter','HTML Formatter'),('word-counter','Word Counter'),('slug-generator','Slug Generator')],
+    'mp4-to-mp3-converter-online-audio-extraction-guide': [('mp4-to-mp3','MP4 to MP3'),('audio-converter','Audio Converter'),('video-compressor','Video Compressor'),('webm-to-mp4','WebM to MP4')],
+    'webm-to-mp4-converter-compatibility-guide': [('webm-to-mp4','WebM to MP4'),('video-compressor','Video Compressor'),('mp4-to-mp3','MP4 to MP3'),('video-converter','Video Converter')],
+    'json-validator-fix-errors-online-guide': [('json-validator','JSON Validator'),('json-formatter','JSON Formatter'),('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON')],
+    'url-encoder-decoder-safe-links-guide': [('url-encoder','URL Encoder'),('url-decoder','URL Decoder'),('base64-encode','Base64 Encode'),('qr-code-generator','QR Code Generator')],
+    'hash-generator-checksum-md5-sha-guide': [('hash-generator','Hash Generator'),('password-generator','Password Generator'),('password-strength','Password Strength'),('security','File Security')],
+    'aspect-ratio-calculator-resize-video-image-guide': [('aspect-ratio-calculator','Aspect Ratio Calculator'),('resize-image','Resize Image'),('resize-image-for-instagram','Resize Image for Instagram'),('image-compressor','Image Compressor')],
+    'remove-duplicate-lines-clean-text-guide': [('remove-duplicate-lines','Remove Duplicate Lines'),('text-cleaner','Text Cleaner'),('case-converter','Case Converter'),('word-counter','Word Counter')],
+    'timestamp-converter-unix-time-guide': [('timestamp-converter','Timestamp Converter'),('unix-time-converter','Unix Time Converter'),('time-zone-converter','Time Zone Converter'),('age-calculator','Age Calculator')],
 }
 
 def build_blog():
@@ -4112,8 +4136,9 @@ def build_blog():
                     "@type": "Article",
                     "headline": title,
                     "description": description,
-                    "datePublished": "2026-05-01",
-                    "dateModified": "2026-05-31",
+                    "datePublished": article_date_iso(date),
+                    "dateModified": TODAY_ISO,
+                    "mainEntityOfPage": f"{SITE_URL}/blog/{slug}/",
                     "author": {
                         "@type": "Organization",
                         "name": "freeconvert.cloud Editorial Team"
