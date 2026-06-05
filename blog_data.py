@@ -2405,5 +2405,245 @@ BLOG_ARTICLES = [
             {"q": "Can I convert timestamps to dates?", "a": "Yes. Use Timestamp Converter to turn Unix time into readable dates."},
             {"q": "Do time zones affect timestamps?", "a": "The timestamp is usually based on UTC, but displayed local time can vary by time zone."}
         ]
+    },
+    {
+        "slug": "png-to-webp-converter-page-speed-guide",
+        "title": "PNG to WebP Converter: Smaller Images for Faster Websites",
+        "description": "Convert PNG to WebP online for smaller website images, transparent graphics, faster Core Web Vitals, and cleaner page speed workflows.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert PNG to WebP?</a></li><li><a href='#transparent'>Transparency support</a></li><li><a href='#steps'>Conversion steps</a></li><li><a href='#seo'>SEO and speed</a></li><li><a href='#fallbacks'>Fallback tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert PNG to WebP?</h2>
+        <p>PNG is excellent for transparency and crisp graphics, but PNG files can be heavy. WebP often keeps similar visual quality at a smaller file size, which helps websites load faster on mobile connections.</p>
+        <h2 id="transparent">Transparency support</h2>
+        <p>WebP supports transparency, so logos, icons, UI graphics, and product cutouts can keep transparent backgrounds after conversion. Always preview the result over light and dark backgrounds before publishing.</p>
+        <h2 id="steps">How to convert PNG to WebP online</h2>
+        <ol>
+            <li>Open the <a href="/png-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to WebP</a> converter.</li>
+            <li>Upload your PNG image.</li>
+            <li>Convert and download the WebP output.</li>
+            <li>Compress or resize if the file is still too large.</li>
+        </ol>
+        <h2 id="seo">SEO and speed</h2>
+        <p>Smaller image files can improve Largest Contentful Paint, reduce bandwidth, and support better page experience. Image format is not a magic ranking factor, but fast pages give users and crawlers a better experience.</p>
+        <h2 id="fallbacks">Fallback tips</h2>
+        <p>Most modern browsers support WebP. For older compatibility workflows, keep the original PNG archived and use <a href="/webp-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">WebP to JPG</a> when a portal requires JPG.</p>
+        """,
+        "faqs": [
+            {"q": "Can WebP keep PNG transparency?", "a": "Yes. WebP supports transparent backgrounds when the source image uses transparency."},
+            {"q": "Is WebP smaller than PNG?", "a": "Often yes. WebP can reduce file size while keeping good visual quality."},
+            {"q": "Should I replace every PNG with WebP?", "a": "Use WebP for website delivery, but keep original PNG files for editing and fallback workflows."},
+            {"q": "Does WebP help SEO?", "a": "It can support SEO indirectly by improving page speed and user experience."}
+        ]
+    },
+    {
+        "slug": "jpg-to-webp-converter-seo-image-guide",
+        "title": "JPG to WebP Converter: SEO Image Optimization Guide",
+        "description": "Convert JPG to WebP online to reduce photo file size, improve website speed, optimize product images, and support Core Web Vitals.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert JPG to WebP?</a></li><li><a href='#photos'>Photo quality tips</a></li><li><a href='#steps'>JPG to WebP steps</a></li><li><a href='#commerce'>Product image workflow</a></li><li><a href='#audit'>Image audit checklist</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert JPG to WebP?</h2>
+        <p>JPG is widely compatible, but WebP can make photos smaller for website delivery. This is useful for blogs, landing pages, portfolios, product galleries, and mobile-first pages where image weight affects load time.</p>
+        <h2 id="photos">Photo quality tips</h2>
+        <p>Start with a clean JPG source, avoid repeated recompression, and compare the WebP output at real display size. Faces, product edges, and text overlays should stay clear.</p>
+        <h2 id="steps">How to convert JPG to WebP online</h2>
+        <ol>
+            <li>Open <a href="/jpg-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JPG to WebP</a>.</li>
+            <li>Upload the JPG photo.</li>
+            <li>Convert it to WebP.</li>
+            <li>Use the WebP image in your website or CMS.</li>
+        </ol>
+        <h2 id="commerce">Product image workflow</h2>
+        <p>For ecommerce, keep original JPG masters and publish optimized WebP versions. Use consistent dimensions, descriptive filenames, and meaningful alt text for product images.</p>
+        <h2 id="audit">Image audit checklist</h2>
+        <p>Check file size, dimensions, visual clarity, lazy loading behavior, and whether the image is actually visible above the fold. If a WebP is still large, use <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a>.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert JPG photos to WebP?", "a": "Yes. JPG to WebP is a common workflow for website image optimization."},
+            {"q": "Will WebP reduce quality?", "a": "Conversion can affect quality, so preview important photos before publishing."},
+            {"q": "Is WebP good for product images?", "a": "Yes, WebP can reduce product image weight while keeping clear visual detail."},
+            {"q": "Should I keep original JPG files?", "a": "Yes. Keep source files for editing, backup, and compatibility."}
+        ]
+    },
+    {
+        "slug": "yaml-to-json-converter-config-guide",
+        "title": "YAML to JSON Converter: Config, API, and DevOps Guide",
+        "description": "Convert YAML to JSON online for API payloads, app config files, DevOps workflows, CI files, and structured data validation.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert YAML to JSON?</a></li><li><a href='#syntax'>Syntax differences</a></li><li><a href='#steps'>Conversion steps</a></li><li><a href='#errors'>Common errors</a></li><li><a href='#workflow'>Developer workflow</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert YAML to JSON?</h2>
+        <p>YAML is readable for configuration files, while JSON is common for APIs, JavaScript apps, and validation tools. Converting YAML to JSON helps teams move between human-friendly config and machine-friendly data.</p>
+        <h2 id="syntax">Syntax differences</h2>
+        <p>YAML uses indentation, while JSON uses braces, brackets, commas, and double quotes. Small indentation mistakes in YAML can change the data structure, so always validate converted output.</p>
+        <h2 id="steps">How to convert YAML to JSON online</h2>
+        <ol>
+            <li>Open <a href="/yaml-to-json/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">YAML to JSON</a>.</li>
+            <li>Paste the YAML config.</li>
+            <li>Convert it into JSON.</li>
+            <li>Check the result with <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a>.</li>
+        </ol>
+        <h2 id="errors">Common errors</h2>
+        <p>Watch for tabs, inconsistent indentation, missing list markers, unquoted special characters, and duplicate keys. These issues can produce unexpected JSON output.</p>
+        <h2 id="workflow">Developer workflow</h2>
+        <p>Use YAML for editable team config, convert to JSON for API testing, and format the output before committing changes. Keep secrets out of browser-based tools and sample docs.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert YAML to JSON online?", "a": "Yes. Paste YAML into the YAML to JSON converter and review the output."},
+            {"q": "Why does YAML indentation matter?", "a": "Indentation defines nesting in YAML, so spacing mistakes can change the structure."},
+            {"q": "Can I validate converted JSON?", "a": "Yes. Use JSON Validator after converting."},
+            {"q": "Should I paste secrets into converters?", "a": "No. Avoid pasting API keys, passwords, and private secrets into any online workflow."}
+        ]
+    },
+    {
+        "slug": "json-to-yaml-converter-devops-guide",
+        "title": "JSON to YAML Converter: Clean Config Files for DevOps",
+        "description": "Convert JSON to YAML online for readable config files, DevOps docs, CI pipelines, Kubernetes examples, and technical writing.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert JSON to YAML?</a></li><li><a href='#readability'>Readability benefits</a></li><li><a href='#steps'>Conversion steps</a></li><li><a href='#review'>Review checklist</a></li><li><a href='#docs'>Documentation uses</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert JSON to YAML?</h2>
+        <p>JSON is strict and portable, but YAML is easier to read in many configuration files. Converting JSON to YAML can make examples, docs, and config snippets easier for humans to scan.</p>
+        <h2 id="readability">Readability benefits</h2>
+        <p>YAML removes many braces and quotes, so nested data can look cleaner. This is helpful for tutorials, DevOps notes, and config examples where readability matters.</p>
+        <h2 id="steps">How to convert JSON to YAML online</h2>
+        <ol>
+            <li>Validate the source with <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a>.</li>
+            <li>Open <a href="/json-to-yaml/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON to YAML</a>.</li>
+            <li>Paste the JSON.</li>
+            <li>Convert and review indentation.</li>
+        </ol>
+        <h2 id="review">Review checklist</h2>
+        <p>Check arrays, nested objects, boolean values, numbers, and strings containing special characters. If a value looks ambiguous, quote it in YAML.</p>
+        <h2 id="docs">Documentation uses</h2>
+        <p>YAML snippets are common in README files, CI examples, and infrastructure tutorials. Pair the converter with <a href="/markdown-editor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Markdown Editor</a> when preparing docs.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert JSON to YAML online?", "a": "Yes. Use JSON to YAML to create readable YAML from valid JSON."},
+            {"q": "Should JSON be valid before conversion?", "a": "Yes. Validate JSON first to avoid broken or incomplete output."},
+            {"q": "Is YAML easier to read than JSON?", "a": "Often yes, especially for configuration examples and documentation."},
+            {"q": "Can I convert YAML back to JSON?", "a": "Yes. Use YAML to JSON for the reverse workflow."}
+        ]
+    },
+    {
+        "slug": "uuid-generator-online-unique-id-guide",
+        "title": "UUID Generator Online: Unique IDs for Apps, Databases, and Testing",
+        "description": "Generate UUIDs online for databases, API testing, sample data, logs, events, records, and developer workflows.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#uuid'>What is a UUID?</a></li><li><a href='#uses'>Common uses</a></li><li><a href='#steps'>Generate UUID steps</a></li><li><a href='#testing'>Testing workflow</a></li><li><a href='#tips'>Safety tips</a></li></ul>",
+        "content": """
+        <h2 id="uuid">What is a UUID?</h2>
+        <p>A UUID is a universally unique identifier used to label records, sessions, events, files, or test data without relying on simple sequential numbers.</p>
+        <h2 id="uses">Common uses</h2>
+        <p>Developers use UUIDs in databases, API requests, logs, analytics events, import scripts, mock data, and distributed systems where unique IDs are needed across machines.</p>
+        <h2 id="steps">How to generate a UUID online</h2>
+        <ol>
+            <li>Open <a href="/uuid-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">UUID Generator</a>.</li>
+            <li>Generate one or more IDs.</li>
+            <li>Copy the UUID into your test data, code, or database seed.</li>
+            <li>Keep production ID generation inside your application when required.</li>
+        </ol>
+        <h2 id="testing">Testing workflow</h2>
+        <p>UUIDs are useful for mock records and sample payloads. Combine them with timestamps when creating realistic test events or logs.</p>
+        <h2 id="tips">Safety tips</h2>
+        <p>UUIDs are identifiers, not passwords. Do not use them as secret tokens unless your security design explicitly supports that workflow.</p>
+        """,
+        "faqs": [
+            {"q": "What is a UUID used for?", "a": "UUIDs are used to create unique identifiers for records, events, files, and test data."},
+            {"q": "Are UUIDs passwords?", "a": "No. UUIDs are identifiers and should not be treated as passwords."},
+            {"q": "Can I use UUIDs in databases?", "a": "Yes. Many databases and applications use UUIDs as record identifiers."},
+            {"q": "Can I generate UUIDs for testing?", "a": "Yes. UUID Generator is useful for mock data and API testing."}
+        ]
+    },
+    {
+        "slug": "sql-formatter-online-query-readable-guide",
+        "title": "SQL Formatter Online: Make Queries Readable Before Debugging",
+        "description": "Format SQL online to clean SELECT queries, joins, WHERE clauses, migrations, analytics snippets, and database debugging workflows.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why format SQL?</a></li><li><a href='#readability'>Readable query structure</a></li><li><a href='#steps'>SQL formatting steps</a></li><li><a href='#debug'>Debugging workflow</a></li><li><a href='#safe'>Safety notes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why format SQL?</h2>
+        <p>Long SQL queries become hard to review when everything is on one line. Formatting separates SELECT fields, joins, filters, groups, and ordering so mistakes are easier to spot.</p>
+        <h2 id="readability">Readable query structure</h2>
+        <p>Good SQL formatting makes intent visible. Align clauses, break long joins into readable lines, and keep nested queries indented so teammates can review them quickly.</p>
+        <h2 id="steps">How to format SQL online</h2>
+        <ol>
+            <li>Open <a href="/sql-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">SQL Formatter</a>.</li>
+            <li>Paste your query.</li>
+            <li>Format the SQL.</li>
+            <li>Review joins, filters, aliases, and limits before running it.</li>
+        </ol>
+        <h2 id="debug">Debugging workflow</h2>
+        <p>After formatting, compare query versions with <a href="/diff-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Diff Checker</a>. This helps identify exactly what changed before a migration or report update.</p>
+        <h2 id="safe">Safety notes</h2>
+        <p>Do not paste production passwords, tokens, or private customer data into query examples. Replace sensitive values with placeholders before formatting.</p>
+        """,
+        "faqs": [
+            {"q": "Can I format SQL online?", "a": "Yes. Paste a query into SQL Formatter to make it easier to read."},
+            {"q": "Does formatting change SQL behavior?", "a": "Formatting should only change spacing and line breaks, but always review before running important queries."},
+            {"q": "Can formatted SQL help debugging?", "a": "Yes. It makes joins, filters, and nested logic easier to inspect."},
+            {"q": "Should I paste sensitive database data?", "a": "No. Replace secrets and private data before using any online workflow."}
+        ]
+    },
+    {
+        "slug": "diff-checker-compare-text-code-guide",
+        "title": "Diff Checker Online: Compare Text, Code, Lists, and Drafts",
+        "description": "Compare text online with a diff checker for code snippets, SEO copy, keyword lists, config files, article drafts, and changelog review.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#why'>Why compare text?</a></li><li><a href='#use-cases'>Common use cases</a></li><li><a href='#steps'>Diff checker steps</a></li><li><a href='#seo'>SEO content review</a></li><li><a href='#cleanup'>Cleanup workflow</a></li></ul>",
+        "content": """
+        <h2 id="why">Why compare text?</h2>
+        <p>A diff checker highlights exactly what changed between two versions. This is useful when reviewing code, copy, lists, documentation, config files, or rewritten content.</p>
+        <h2 id="use-cases">Common use cases</h2>
+        <p>Use a diff checker for article edits, title tag changes, meta descriptions, SQL queries, JSON snippets, redirect lists, email drafts, and developer handoffs.</p>
+        <h2 id="steps">How to compare text online</h2>
+        <ol>
+            <li>Open <a href="/diff-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Diff Checker</a>.</li>
+            <li>Paste the original text on one side.</li>
+            <li>Paste the revised text on the other side.</li>
+            <li>Review added, removed, and changed lines.</li>
+        </ol>
+        <h2 id="seo">SEO content review</h2>
+        <p>When editing SEO pages, compare old and new copy to confirm you did not remove important entities, internal links, FAQs, or conversion calls to action.</p>
+        <h2 id="cleanup">Cleanup workflow</h2>
+        <p>Before comparing messy lists, use <a href="/text-cleaner/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Text Cleaner</a> or <a href="/remove-duplicate-lines/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Remove Duplicate Lines</a>.</p>
+        """,
+        "faqs": [
+            {"q": "Can I compare two text blocks online?", "a": "Yes. Paste both versions into Diff Checker to see changes."},
+            {"q": "Can I compare code snippets?", "a": "Yes. Diff Checker is useful for reviewing code changes and config edits."},
+            {"q": "Is diff checking useful for SEO?", "a": "Yes. It helps verify that important copy, links, and FAQs were not removed during edits."},
+            {"q": "Can I clean text before comparing?", "a": "Yes. Use Text Cleaner or Remove Duplicate Lines first."}
+        ]
+    },
+    {
+        "slug": "barcode-generator-online-product-labels-guide",
+        "title": "Barcode Generator Online: Product Labels, Inventory, and Retail Codes",
+        "description": "Generate barcodes online for product labels, inventory lists, warehouse workflows, retail mockups, IDs, and printable code testing.",
+        "date": "June 5, 2026",
+        "toc": "<ul><li><a href='#barcode'>What is a barcode?</a></li><li><a href='#uses'>Where barcodes help</a></li><li><a href='#steps'>Generate barcode steps</a></li><li><a href='#printing'>Printing tips</a></li><li><a href='#qr'>Barcode vs QR code</a></li></ul>",
+        "content": """
+        <h2 id="barcode">What is a barcode?</h2>
+        <p>A barcode is a machine-readable visual code used to represent numbers or text. It is common in retail, inventory, shipping, libraries, tickets, and product labeling.</p>
+        <h2 id="uses">Where barcodes help</h2>
+        <p>Barcodes help teams scan product SKUs, warehouse bins, sample IDs, packaging drafts, and internal assets. They reduce manual typing and support faster lookup workflows.</p>
+        <h2 id="steps">How to generate a barcode online</h2>
+        <ol>
+            <li>Open <a href="/barcode-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Barcode Generator</a>.</li>
+            <li>Enter the product code, ID, or test value.</li>
+            <li>Generate the barcode.</li>
+            <li>Download or print it for testing.</li>
+        </ol>
+        <h2 id="printing">Printing tips</h2>
+        <p>Keep enough white space around the barcode, print with high contrast, and test scanning before using labels in production. Avoid stretching the image because scanners need clean bars.</p>
+        <h2 id="qr">Barcode vs QR code</h2>
+        <p>Barcodes are simple and good for short IDs. QR codes can store more data such as URLs, WiFi details, and contact cards. Use <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a> when you need richer encoded data.</p>
+        """,
+        "faqs": [
+            {"q": "Can I generate a barcode online?", "a": "Yes. Enter a value into Barcode Generator and create a printable barcode."},
+            {"q": "What are barcodes used for?", "a": "They are used for products, inventory, shipping, tickets, IDs, and asset labels."},
+            {"q": "Can I print generated barcodes?", "a": "Yes, but test scanning quality before using labels operationally."},
+            {"q": "Should I use a barcode or QR code?", "a": "Use barcodes for short IDs and QR codes for URLs or richer data."}
+        ]
     }
 ]

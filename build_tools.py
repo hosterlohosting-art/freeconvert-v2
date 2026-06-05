@@ -10,7 +10,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-04'
+TODAY_ISO = '2026-06-05'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -4057,6 +4057,14 @@ BLOG_TOOL_MAP = {
     'aspect-ratio-calculator-resize-video-image-guide': [('aspect-ratio-calculator','Aspect Ratio Calculator'),('resize-image','Resize Image'),('resize-image-for-instagram','Resize Image for Instagram'),('image-compressor','Image Compressor')],
     'remove-duplicate-lines-clean-text-guide': [('remove-duplicate-lines','Remove Duplicate Lines'),('text-cleaner','Text Cleaner'),('case-converter','Case Converter'),('word-counter','Word Counter')],
     'timestamp-converter-unix-time-guide': [('timestamp-converter','Timestamp Converter'),('unix-time-converter','Unix Time Converter'),('time-zone-converter','Time Zone Converter'),('age-calculator','Age Calculator')],
+    'png-to-webp-converter-page-speed-guide': [('png-to-webp','PNG to WebP'),('image-compressor','Image Compressor'),('resize-image','Resize Image'),('webp-to-jpg','WebP to JPG')],
+    'jpg-to-webp-converter-seo-image-guide': [('jpg-to-webp','JPG to WebP'),('image-compressor','Image Compressor'),('compress-image-to-200kb','Compress Image to 200KB'),('png-to-webp','PNG to WebP')],
+    'yaml-to-json-converter-config-guide': [('yaml-to-json','YAML to JSON'),('json-validator','JSON Validator'),('json-formatter','JSON Formatter'),('json-to-yaml','JSON to YAML')],
+    'json-to-yaml-converter-devops-guide': [('json-to-yaml','JSON to YAML'),('yaml-to-json','YAML to JSON'),('json-validator','JSON Validator'),('json-formatter','JSON Formatter')],
+    'uuid-generator-online-unique-id-guide': [('uuid-generator','UUID Generator'),('random-number-generator','Random Number Generator'),('hash-generator','Hash Generator'),('timestamp-converter','Timestamp Converter')],
+    'sql-formatter-online-query-readable-guide': [('sql-formatter','SQL Formatter'),('json-formatter','JSON Formatter'),('diff-checker','Diff Checker'),('html-formatter','HTML Formatter')],
+    'diff-checker-compare-text-code-guide': [('diff-checker','Diff Checker'),('text-cleaner','Text Cleaner'),('remove-duplicate-lines','Remove Duplicate Lines'),('word-counter','Word Counter')],
+    'barcode-generator-online-product-labels-guide': [('barcode-generator','Barcode Generator'),('qr-code-generator','QR Code Generator'),('url-encoder','URL Encoder'),('uuid-generator','UUID Generator')],
 }
 
 def build_blog():
