@@ -2324,7 +2324,7 @@ def build_homepage(tools):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convert Files Online — Fast, Free & Secure | freeconvert.cloud</title>
+    <title>Free Online File Converter | freeconvert.cloud</title>
     <meta name="description" content="Convert files online directly in your browser. Supports documents, images, video, audio, and archives with 100% privacy and no software downloads.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
