@@ -1,6 +1,7 @@
 import os
 import json
 import html
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from blog_data import BLOG_ARTICLES
@@ -10,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-05'
+TODAY_ISO = '2026-06-08'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -64,6 +65,21 @@ def derive_meta_description(html, title):
         return html.split(marker, 1)[1].split('"', 1)[0]
     clean_title = title.replace(' | freeconvert.cloud', '').replace(' | freeconvert.cloud Blog', '')
     return f'{clean_title} from freeconvert.cloud. Fast, free, privacy-first online tools for everyday file conversion and productivity tasks.'
+
+
+def website_search_schema_tag():
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "freeconvert.cloud",
+        "url": f"{SITE_URL}/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": f"{SITE_URL}/?q={{search_term_string}}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    return f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
 
 
 def normalize_generated_html_seo():
@@ -133,8 +149,14 @@ def normalize_generated_html_seo():
         if 'application/opensearchdescription+xml' not in html:
             html = html.replace('</head>', '    <link rel="search" type="application/opensearchdescription+xml" title="freeconvert.cloud Search" href="/opensearch.xml">\n\n</head>', 1)
 
-        if 'property="og:updated_time"' not in html:
-            html = html.replace('</head>', f'    <meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">\n\n</head>', 1)
+        updated_time_tag = f'<meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">'
+        if 'property="og:updated_time"' in html:
+            html = re.sub(r'<meta property="og:updated_time" content="[^"]*">', updated_time_tag, html, count=1)
+        else:
+            html = html.replace('</head>', f'    {updated_time_tag}\n\n</head>', 1)
+
+        if '"@type":"SearchAction"' not in html and '"@type": "SearchAction"' not in html:
+            html = html.replace('</head>', f'    {website_search_schema_tag()}\n\n</head>', 1)
 
         if html != original:
             html_path.write_text(html, encoding='utf-8')
@@ -984,7 +1006,7 @@ if (toolId === 'lorem-ipsum') {
                     </defs>
                 </svg>
                 <div style="text-align: center; z-index: 2;">
-                    <h1 id="timer" style="font-size: 2.8rem; font-family: monospace; font-weight: bold; background: linear-gradient(135deg, var(--text-primary), #1e1b4b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0;">00:00:00</h1>
+                    <div id="timer" role="timer" aria-live="polite" style="font-size: 2.8rem; font-family: monospace; font-weight: bold; background: linear-gradient(135deg, var(--text-primary), #1e1b4b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0;">00:00:00</div>
                     <div id="ms-display" style="color: var(--brand-secondary); font-family: monospace; font-size: 1.1rem; font-weight: bold; margin-top: -5px;">.000</div>
                 </div>
             </div>
@@ -4065,6 +4087,14 @@ BLOG_TOOL_MAP = {
     'sql-formatter-online-query-readable-guide': [('sql-formatter','SQL Formatter'),('json-formatter','JSON Formatter'),('diff-checker','Diff Checker'),('html-formatter','HTML Formatter')],
     'diff-checker-compare-text-code-guide': [('diff-checker','Diff Checker'),('text-cleaner','Text Cleaner'),('remove-duplicate-lines','Remove Duplicate Lines'),('word-counter','Word Counter')],
     'barcode-generator-online-product-labels-guide': [('barcode-generator','Barcode Generator'),('qr-code-generator','QR Code Generator'),('url-encoder','URL Encoder'),('uuid-generator','UUID Generator')],
+    'meta-description-checker-serp-ctr-guide': [('meta-description-checker','Meta Description Checker'),('meta-title-checker','Meta Title Checker'),('word-counter','Word Counter'),('slug-generator','Slug Generator')],
+    'meta-title-checker-seo-title-length-guide': [('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('case-converter','Case Converter')],
+    'slug-generator-seo-friendly-url-guide': [('slug-generator','Slug Generator'),('case-converter','Case Converter'),('url-encoder','URL Encoder'),('meta-title-checker','Meta Title Checker')],
+    'case-converter-title-case-headline-guide': [('case-converter','Case Converter'),('meta-title-checker','Meta Title Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
+    'qr-code-generator-vcard-event-menu-guide': [('qr-code-generator','QR Code Generator'),('barcode-generator','Barcode Generator'),('url-encoder','URL Encoder'),('password-generator','Password Generator')],
+    'percentage-calculator-discount-growth-guide': [('percentage-calculator','Percentage Calculator'),('random-number-generator','Random Number Generator'),('unit-converter','Unit Converter'),('age-calculator','Age Calculator')],
+    'unit-converter-metric-imperial-guide': [('unit-converter','Unit Converter'),('percentage-calculator','Percentage Calculator'),('aspect-ratio-calculator','Aspect Ratio Calculator'),('time-zone-converter','Time Zone Converter')],
+    'stopwatch-online-productivity-guide': [('stopwatch','Stopwatch'),('timestamp-converter','Timestamp Converter'),('time-zone-converter','Time Zone Converter'),('word-counter','Word Counter')],
 }
 
 def build_blog():

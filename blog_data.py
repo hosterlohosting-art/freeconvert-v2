@@ -2645,5 +2645,245 @@ BLOG_ARTICLES = [
             {"q": "Can I print generated barcodes?", "a": "Yes, but test scanning quality before using labels operationally."},
             {"q": "Should I use a barcode or QR code?", "a": "Use barcodes for short IDs and QR codes for URLs or richer data."}
         ]
+    },
+    {
+        "slug": "meta-description-checker-serp-ctr-guide",
+        "title": "Meta Description Checker: Improve Google Snippets and CTR",
+        "description": "Check meta descriptions online for length, clarity, search intent, click-through rate, truncation risk, and better SERP snippets.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#why'>Why meta descriptions matter</a></li><li><a href='#length'>Length and truncation</a></li><li><a href='#steps'>Checker steps</a></li><li><a href='#ctr'>CTR writing tips</a></li><li><a href='#mistakes'>Common mistakes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why meta descriptions matter</h2>
+        <p>A meta description is often used as the search snippet under a page title. It does not guarantee rankings by itself, but strong snippet copy can improve clicks when the page already appears in search results.</p>
+        <h2 id="length">Length and truncation</h2>
+        <p>Search results can truncate long descriptions, especially on mobile. Write concise copy that explains the page, matches search intent, and includes a clear reason to click.</p>
+        <h2 id="steps">How to check a meta description online</h2>
+        <ol>
+            <li>Open the <a href="/meta-description-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Description Checker</a>.</li>
+            <li>Paste your draft description.</li>
+            <li>Review length and readability.</li>
+            <li>Pair it with a strong title using <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>.</li>
+        </ol>
+        <h2 id="ctr">CTR writing tips</h2>
+        <p>Lead with the user benefit, include the main keyword naturally, and avoid vague phrases. Good descriptions explain exactly what the page helps users do.</p>
+        <h2 id="mistakes">Common mistakes</h2>
+        <p>Avoid duplicate descriptions across many pages, keyword stuffing, clickbait claims, and descriptions that do not match the actual page content.</p>
+        """,
+        "faqs": [
+            {"q": "Does a meta description directly improve rankings?", "a": "Not directly, but it can improve click-through rate when shown in search results."},
+            {"q": "Can Google rewrite my meta description?", "a": "Yes. Google may generate a different snippet if it thinks another text passage better matches the query."},
+            {"q": "Should every page have a unique description?", "a": "Yes. Unique descriptions help searchers understand each page's specific value."},
+            {"q": "Can I check description length online?", "a": "Yes. Use Meta Description Checker to review length and truncation risk."}
+        ]
+    },
+    {
+        "slug": "meta-title-checker-seo-title-length-guide",
+        "title": "Meta Title Checker: SEO Title Length and SERP Preview Guide",
+        "description": "Check meta title length online, preview SERP truncation, improve page titles, and write clickable SEO titles for tools and articles.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#title'>What is a meta title?</a></li><li><a href='#length'>Title length</a></li><li><a href='#steps'>Checker steps</a></li><li><a href='#patterns'>Title patterns</a></li><li><a href='#quality'>Quality checklist</a></li></ul>",
+        "content": """
+        <h2 id="title">What is a meta title?</h2>
+        <p>The meta title is the page title search engines may show in results and browsers may show in tabs. It should clearly describe the page and include the primary search intent.</p>
+        <h2 id="length">Title length</h2>
+        <p>Very long titles can be truncated in search results. A title checker helps you spot titles that are too long, vague, duplicated, or missing the main topic.</p>
+        <h2 id="steps">How to check a title online</h2>
+        <ol>
+            <li>Open <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>.</li>
+            <li>Paste your draft title.</li>
+            <li>Review length and preview risk.</li>
+            <li>Rewrite for clarity, keyword relevance, and click appeal.</li>
+        </ol>
+        <h2 id="patterns">Title patterns</h2>
+        <p>Useful patterns include "Tool Name: Benefit", "How to Do Task Online", and "Format A to Format B Converter". Keep branding short so the main query remains visible.</p>
+        <h2 id="quality">Quality checklist</h2>
+        <p>Use one clear primary keyword, avoid repeating words, match the page content, and write for humans first. Use <a href="/case-converter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Case Converter</a> when cleaning title capitalization.</p>
+        """,
+        "faqs": [
+            {"q": "What is a good SEO title?", "a": "A good title is clear, specific, concise, and aligned with the page's search intent."},
+            {"q": "Can titles be truncated?", "a": "Yes. Long titles can be shortened in search results."},
+            {"q": "Should every page title be unique?", "a": "Yes. Unique titles help distinguish pages for users and search engines."},
+            {"q": "Can I preview a title online?", "a": "Yes. Use Meta Title Checker to review title length and truncation risk."}
+        ]
+    },
+    {
+        "slug": "slug-generator-seo-friendly-url-guide",
+        "title": "Slug Generator: Create SEO-Friendly URLs Online",
+        "description": "Generate clean URL slugs online for blog posts, product pages, landing pages, documentation, and SEO-friendly website structures.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#slug'>What is a URL slug?</a></li><li><a href='#seo'>Why slugs matter</a></li><li><a href='#steps'>Slug generator steps</a></li><li><a href='#rules'>Slug rules</a></li><li><a href='#redirects'>Changing old slugs</a></li></ul>",
+        "content": """
+        <h2 id="slug">What is a URL slug?</h2>
+        <p>A slug is the readable part of a URL that identifies a page, such as <strong>/png-to-webp/</strong> or <strong>/blog/seo-title-guide/</strong>. A clean slug helps users understand the page before clicking.</p>
+        <h2 id="seo">Why slugs matter</h2>
+        <p>Slugs are a small but useful SEO signal. They should be short, descriptive, lowercase, and aligned with the page topic. Avoid random IDs when a readable slug is possible.</p>
+        <h2 id="steps">How to generate a slug online</h2>
+        <ol>
+            <li>Open <a href="/slug-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Slug Generator</a>.</li>
+            <li>Paste your page title.</li>
+            <li>Generate a lowercase hyphenated slug.</li>
+            <li>Review it before publishing.</li>
+        </ol>
+        <h2 id="rules">Slug rules</h2>
+        <p>Use hyphens between words, remove filler words when possible, avoid special characters, and keep the slug stable after publishing.</p>
+        <h2 id="redirects">Changing old slugs</h2>
+        <p>If you must change an existing URL, create a redirect from the old slug to the new one. Broken old links can waste crawl signals and frustrate users.</p>
+        """,
+        "faqs": [
+            {"q": "What is an SEO-friendly slug?", "a": "It is a short, readable URL segment that describes the page topic."},
+            {"q": "Should slugs use hyphens?", "a": "Yes. Hyphens are the standard separator for readable URLs."},
+            {"q": "Can I change a slug later?", "a": "Yes, but use a redirect from the old URL to the new URL."},
+            {"q": "Can I generate slugs online?", "a": "Yes. Use Slug Generator to turn titles into clean URL slugs."}
+        ]
+    },
+    {
+        "slug": "case-converter-title-case-headline-guide",
+        "title": "Case Converter: Title Case, Uppercase, Lowercase, and SEO Headlines",
+        "description": "Convert text case online for headlines, title tags, product names, spreadsheet cleanup, social captions, and SEO copy formatting.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#why'>Why text case matters</a></li><li><a href='#types'>Common case types</a></li><li><a href='#steps'>Conversion steps</a></li><li><a href='#seo'>SEO headline workflow</a></li><li><a href='#cleanup'>Cleanup tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why text case matters</h2>
+        <p>Inconsistent capitalization makes titles, lists, product names, and headings look messy. A case converter helps standardize copy quickly without manually retyping everything.</p>
+        <h2 id="types">Common case types</h2>
+        <p>Uppercase works for labels, lowercase helps normalize data, title case suits many headlines, and sentence case often feels cleaner in UI text.</p>
+        <h2 id="steps">How to convert text case online</h2>
+        <ol>
+            <li>Open <a href="/case-converter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Case Converter</a>.</li>
+            <li>Paste your text.</li>
+            <li>Choose title case, lowercase, uppercase, or sentence case.</li>
+            <li>Copy the cleaned result.</li>
+        </ol>
+        <h2 id="seo">SEO headline workflow</h2>
+        <p>After converting headline case, test the result with <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>. Make sure the headline still reads naturally and does not become too long.</p>
+        <h2 id="cleanup">Cleanup tips</h2>
+        <p>Use case conversion after removing duplicate lines or cleaning copied spreadsheet text. Review acronyms and brand names manually because automatic tools may change them incorrectly.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert lowercase to title case?", "a": "Yes. Paste text into Case Converter and choose title case."},
+            {"q": "Is title case good for SEO titles?", "a": "It can be, but clarity and search intent matter more than capitalization style."},
+            {"q": "Can case conversion fix brand names?", "a": "Review brand names manually because automated conversion may not know exact styling."},
+            {"q": "Can I convert bulk text?", "a": "Yes. Paste multiple lines and convert them together."}
+        ]
+    },
+    {
+        "slug": "qr-code-generator-vcard-event-menu-guide",
+        "title": "QR Code Generator for Links, vCards, Menus, Events, and WiFi",
+        "description": "Generate QR codes online for URLs, contact cards, restaurant menus, event pages, WiFi access, product packaging, and print materials.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#uses'>QR code uses</a></li><li><a href='#steps'>Generator steps</a></li><li><a href='#print'>Printing tips</a></li><li><a href='#tracking'>Tracking notes</a></li><li><a href='#security'>Security tips</a></li></ul>",
+        "content": """
+        <h2 id="uses">QR code uses</h2>
+        <p>QR codes can connect offline materials to online destinations. They are useful for menus, flyers, business cards, event pages, product packaging, WiFi access, and support pages.</p>
+        <h2 id="steps">How to generate a QR code online</h2>
+        <ol>
+            <li>Open <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a>.</li>
+            <li>Enter the URL, text, or supported data.</li>
+            <li>Generate the code.</li>
+            <li>Download and test it with multiple phones.</li>
+        </ol>
+        <h2 id="print">Printing tips</h2>
+        <p>Use high contrast, leave enough quiet space around the code, and avoid placing it on reflective or busy backgrounds. Test printed codes at the final size.</p>
+        <h2 id="tracking">Tracking notes</h2>
+        <p>If you need campaign tracking, use a clean tracking URL before generating the QR code. Keep the destination stable so printed materials do not become stale.</p>
+        <h2 id="security">Security tips</h2>
+        <p>Only link to trusted domains. For WiFi codes, prefer guest networks instead of private admin networks.</p>
+        """,
+        "faqs": [
+            {"q": "Can I generate a QR code for a URL?", "a": "Yes. Paste a link into QR Code Generator and download the code."},
+            {"q": "Can QR codes be printed?", "a": "Yes, but test the printed version before distributing it."},
+            {"q": "Can I use QR codes for menus?", "a": "Yes. QR codes are commonly used for restaurant menus and event pages."},
+            {"q": "Should I test QR codes before publishing?", "a": "Always test QR codes on multiple devices before printing or sharing."}
+        ]
+    },
+    {
+        "slug": "percentage-calculator-discount-growth-guide",
+        "title": "Percentage Calculator: Discounts, Growth, Margins, and Change",
+        "description": "Calculate percentages online for discounts, price increases, growth rates, margins, grades, conversion rates, and business reports.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#uses'>Common percentage uses</a></li><li><a href='#steps'>Calculator steps</a></li><li><a href='#business'>Business examples</a></li><li><a href='#marketing'>Marketing metrics</a></li><li><a href='#checks'>Accuracy checks</a></li></ul>",
+        "content": """
+        <h2 id="uses">Common percentage uses</h2>
+        <p>Percentages appear in discounts, tax estimates, growth rates, profit margins, school grades, conversion rates, analytics reports, and financial comparisons.</p>
+        <h2 id="steps">How to calculate percentages online</h2>
+        <ol>
+            <li>Open <a href="/percentage-calculator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Percentage Calculator</a>.</li>
+            <li>Enter the base value and percentage.</li>
+            <li>Review the calculated result.</li>
+            <li>Double-check important business or finance numbers before publishing.</li>
+        </ol>
+        <h2 id="business">Business examples</h2>
+        <p>Use percentage calculations for sale prices, stock changes, invoice adjustments, product margins, and month-over-month reporting.</p>
+        <h2 id="marketing">Marketing metrics</h2>
+        <p>Marketers use percentages for click-through rates, conversion rates, open rates, bounce rates, and traffic growth. Keep raw counts nearby so the percentage has context.</p>
+        <h2 id="checks">Accuracy checks</h2>
+        <p>For important decisions, verify the formula and source numbers. Small input errors can create large reporting mistakes.</p>
+        """,
+        "faqs": [
+            {"q": "Can I calculate discounts online?", "a": "Yes. Use Percentage Calculator to calculate discounts, increases, and percentage changes."},
+            {"q": "What is percentage change?", "a": "It compares the difference between old and new values relative to the old value."},
+            {"q": "Can percentages help marketing reports?", "a": "Yes. Metrics like CTR and conversion rate are percentage-based."},
+            {"q": "Should I verify important percentages?", "a": "Yes. Always double-check source numbers for business or financial use."}
+        ]
+    },
+    {
+        "slug": "unit-converter-metric-imperial-guide",
+        "title": "Unit Converter Online: Metric, Imperial, Length, Weight, and Temperature",
+        "description": "Convert units online for length, weight, temperature, distance, everyday measurements, school work, travel, and business tasks.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#why'>Why convert units?</a></li><li><a href='#types'>Common unit types</a></li><li><a href='#steps'>Converter steps</a></li><li><a href='#travel'>Travel and shopping</a></li><li><a href='#accuracy'>Accuracy tips</a></li></ul>",
+        "content": """
+        <h2 id="why">Why convert units?</h2>
+        <p>Different countries and industries use different measurement systems. Unit conversion helps translate metric and imperial values for school, work, travel, shopping, recipes, fitness, and engineering notes.</p>
+        <h2 id="types">Common unit types</h2>
+        <p>Common conversions include meters to feet, kilograms to pounds, Celsius to Fahrenheit, kilometers to miles, and inches to centimeters.</p>
+        <h2 id="steps">How to convert units online</h2>
+        <ol>
+            <li>Open <a href="/unit-converter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Unit Converter</a>.</li>
+            <li>Choose the measurement category.</li>
+            <li>Enter the source value.</li>
+            <li>Review the converted result.</li>
+        </ol>
+        <h2 id="travel">Travel and shopping</h2>
+        <p>Unit conversion is especially useful for luggage weight, weather temperatures, clothing measurements, fuel economy, and distance estimates when traveling.</p>
+        <h2 id="accuracy">Accuracy tips</h2>
+        <p>Round results appropriately for your task. Scientific or construction work may need more precision than everyday shopping or travel planning.</p>
+        """,
+        "faqs": [
+            {"q": "Can I convert metric to imperial online?", "a": "Yes. Use Unit Converter for common metric and imperial conversions."},
+            {"q": "Can I convert Celsius to Fahrenheit?", "a": "Yes. Temperature conversion is a common unit conversion task."},
+            {"q": "Are converted values exact?", "a": "Some conversions are exact, while rounded display values may be approximate."},
+            {"q": "Can unit conversion help travel?", "a": "Yes. It helps with distance, luggage, weather, and shopping measurements."}
+        ]
+    },
+    {
+        "slug": "stopwatch-online-productivity-guide",
+        "title": "Stopwatch Online: Time Tasks, Study Sessions, Workouts, and Sprints",
+        "description": "Use an online stopwatch for study sessions, workouts, productivity sprints, meetings, cooking, experiments, and simple time tracking.",
+        "date": "June 8, 2026",
+        "toc": "<ul><li><a href='#uses'>Stopwatch uses</a></li><li><a href='#steps'>How to use it</a></li><li><a href='#productivity'>Productivity workflow</a></li><li><a href='#study'>Study and workouts</a></li><li><a href='#records'>Recording results</a></li></ul>",
+        "content": """
+        <h2 id="uses">Stopwatch uses</h2>
+        <p>A stopwatch is useful for timing focused work, study sessions, workouts, cooking steps, experiments, meetings, practice drills, and support tasks.</p>
+        <h2 id="steps">How to use an online stopwatch</h2>
+        <ol>
+            <li>Open <a href="/stopwatch/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Stopwatch</a>.</li>
+            <li>Start the timer when the task begins.</li>
+            <li>Pause or reset as needed.</li>
+            <li>Record the final time if you need a history.</li>
+        </ol>
+        <h2 id="productivity">Productivity workflow</h2>
+        <p>Use a stopwatch for short focus sprints, task estimates, and meeting timeboxes. Tracking actual time can reveal which tasks take longer than expected.</p>
+        <h2 id="study">Study and workouts</h2>
+        <p>Students can time practice tests, reading blocks, and revision sessions. Athletes can time intervals, sets, and recovery periods.</p>
+        <h2 id="records">Recording results</h2>
+        <p>For logs and events, pair stopwatch results with <a href="/timestamp-converter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Timestamp Converter</a> when you need exact date and time context.</p>
+        """,
+        "faqs": [
+            {"q": "Can I use a stopwatch online?", "a": "Yes. Open Stopwatch and start timing immediately."},
+            {"q": "Is a stopwatch useful for productivity?", "a": "Yes. It helps timebox tasks and measure actual work duration."},
+            {"q": "Can I time study sessions?", "a": "Yes. A stopwatch works well for revision blocks and practice tests."},
+            {"q": "Should I record stopwatch results?", "a": "Record results when you need a history for work, training, or experiments."}
+        ]
     }
 ]
