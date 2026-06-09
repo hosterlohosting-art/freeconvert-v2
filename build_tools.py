@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-08'
+TODAY_ISO = '2026-06-09'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -20,6 +20,169 @@ LEGACY_ROUTE_MAP = {
     '/lorem-ipsum/': '/lorem-ipsum-generator/',
     '/dev_basic/': '/document-converter/',
 }
+
+TOP_KEYWORD_TARGETS = [
+    {
+        'keyword': 'pdf to jpg',
+        'tool_id': 'pdf-to-jpg',
+        'intent': 'Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.',
+        'cluster': 'PDF conversion',
+        'priority': 1,
+        'modifiers': ['pdf to jpg converter', 'convert pdf to jpg online', 'pdf pages to jpg']
+    },
+    {
+        'keyword': 'jpg to pdf',
+        'tool_id': 'jpg-to-pdf',
+        'intent': 'Combine photos, scans, receipts, and screenshots into one PDF document.',
+        'cluster': 'PDF creation',
+        'priority': 2,
+        'modifiers': ['jpg to pdf converter', 'convert jpg to pdf online', 'image to pdf']
+    },
+    {
+        'keyword': 'png to jpg',
+        'tool_id': 'png-to-jpg',
+        'intent': 'Turn PNG images into smaller, widely supported JPG files.',
+        'cluster': 'Image conversion',
+        'priority': 3,
+        'modifiers': ['png to jpg converter', 'convert png to jpg online', 'png image to jpeg']
+    },
+    {
+        'keyword': 'jpg to png',
+        'tool_id': 'jpg-to-png',
+        'intent': 'Convert JPG photos into lossless PNG images for editing and design workflows.',
+        'cluster': 'Image conversion',
+        'priority': 4,
+        'modifiers': ['jpg to png converter', 'convert jpg to png online', 'jpeg to png']
+    },
+    {
+        'keyword': 'webp to jpg',
+        'tool_id': 'webp-to-jpg',
+        'intent': 'Make modern WebP images compatible with older apps, CMS uploads, and editors.',
+        'cluster': 'Image conversion',
+        'priority': 5,
+        'modifiers': ['webp to jpg converter', 'convert webp to jpg online', 'webp image to jpeg']
+    },
+    {
+        'keyword': 'heic to jpg',
+        'tool_id': 'heic-to-jpg',
+        'intent': 'Convert iPhone HEIC photos into universal JPG files.',
+        'cluster': 'Image conversion',
+        'priority': 6,
+        'modifiers': ['heic to jpg converter', 'iphone photo to jpg', 'convert heic to jpeg']
+    },
+    {
+        'keyword': 'compress pdf',
+        'tool_id': 'compress-pdf',
+        'intent': 'Reduce PDF file size for email, uploads, storage, and document sharing.',
+        'cluster': 'PDF compression',
+        'priority': 7,
+        'modifiers': ['compress pdf online', 'reduce pdf file size', 'pdf compressor']
+    },
+    {
+        'keyword': 'pdf to word',
+        'tool_id': 'pdf-to-word',
+        'intent': 'Convert PDF documents into editable Word DOCX files.',
+        'cluster': 'Document conversion',
+        'priority': 8,
+        'modifiers': ['pdf to word converter', 'pdf to docx', 'convert pdf to editable word']
+    },
+    {
+        'keyword': 'word to pdf',
+        'tool_id': 'word-to-pdf',
+        'intent': 'Export DOCX and Word documents into clean PDF files.',
+        'cluster': 'Document conversion',
+        'priority': 9,
+        'modifiers': ['word to pdf converter', 'docx to pdf', 'convert word document to pdf']
+    },
+    {
+        'keyword': 'merge pdf',
+        'tool_id': 'merge-pdf',
+        'intent': 'Combine multiple PDF files into one organized document.',
+        'cluster': 'PDF editing',
+        'priority': 10,
+        'modifiers': ['merge pdf online', 'combine pdf files', 'pdf merger']
+    },
+    {
+        'keyword': 'split pdf',
+        'tool_id': 'split-pdf',
+        'intent': 'Extract selected pages or split a PDF into smaller files.',
+        'cluster': 'PDF editing',
+        'priority': 11,
+        'modifiers': ['split pdf online', 'extract pdf pages', 'pdf splitter']
+    },
+    {
+        'keyword': 'image compressor',
+        'tool_id': 'image-compressor',
+        'intent': 'Shrink JPG, PNG, and WebP images while keeping useful visual quality.',
+        'cluster': 'Image compression',
+        'priority': 12,
+        'modifiers': ['compress image online', 'reduce image size', 'photo compressor']
+    },
+    {
+        'keyword': 'compress image to 100kb',
+        'tool_id': 'compress-image-to-100kb',
+        'intent': 'Reduce photos under 100KB for forms, job portals, and application uploads.',
+        'cluster': 'Image compression',
+        'priority': 13,
+        'modifiers': ['image compressor to 100kb', 'photo size reducer 100kb', 'compress jpg to 100kb']
+    },
+    {
+        'keyword': 'resize image',
+        'tool_id': 'resize-image',
+        'intent': 'Resize images to exact pixel dimensions for websites, social media, and forms.',
+        'cluster': 'Image editing',
+        'priority': 14,
+        'modifiers': ['image resizer online', 'resize photo online', 'change image dimensions']
+    },
+    {
+        'keyword': 'png to webp',
+        'tool_id': 'png-to-webp',
+        'intent': 'Convert PNG graphics to WebP for faster pages and smaller image delivery.',
+        'cluster': 'Image conversion',
+        'priority': 15,
+        'modifiers': ['png to webp converter', 'convert png to webp online', 'png webp optimizer']
+    },
+    {
+        'keyword': 'jpg to webp',
+        'tool_id': 'jpg-to-webp',
+        'intent': 'Convert JPG photos into lightweight WebP images for SEO speed gains.',
+        'cluster': 'Image conversion',
+        'priority': 16,
+        'modifiers': ['jpg to webp converter', 'convert jpg to webp online', 'jpeg to webp']
+    },
+    {
+        'keyword': 'mp4 to mp3',
+        'tool_id': 'mp4-to-mp3',
+        'intent': 'Extract audio from MP4 videos into MP3 files.',
+        'cluster': 'Media conversion',
+        'priority': 17,
+        'modifiers': ['mp4 to mp3 converter', 'extract audio from mp4', 'video to mp3']
+    },
+    {
+        'keyword': 'webm to mp4',
+        'tool_id': 'webm-to-mp4',
+        'intent': 'Convert WebM videos into widely compatible MP4 files.',
+        'cluster': 'Media conversion',
+        'priority': 18,
+        'modifiers': ['webm to mp4 converter', 'convert webm to mp4 online', 'webm video to mp4']
+    },
+    {
+        'keyword': 'json to csv',
+        'tool_id': 'json-to-csv',
+        'intent': 'Flatten JSON data into CSV rows for Excel, Sheets, and data imports.',
+        'cluster': 'Developer conversion',
+        'priority': 19,
+        'modifiers': ['json to csv converter', 'convert json to csv online', 'json array to csv']
+    },
+    {
+        'keyword': 'qr code generator',
+        'tool_id': 'qr-code-generator',
+        'intent': 'Create QR codes for links, menus, contact cards, events, and WiFi access.',
+        'cluster': 'Utility tools',
+        'priority': 20,
+        'modifiers': ['free qr code generator', 'create qr code online', 'qr generator']
+    },
+]
 
 
 def article_date_iso(date_text):
@@ -80,6 +243,104 @@ def website_search_schema_tag():
         }
     }
     return f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
+
+
+def keyword_target_for_tool(tool_id):
+    for target in TOP_KEYWORD_TARGETS:
+        if target['tool_id'] == tool_id:
+            return target
+    return None
+
+
+def homepage_keyword_hub_html(tools):
+    tools_by_id = {tool['id']: tool for tool in tools}
+    cards = []
+    for target in TOP_KEYWORD_TARGETS:
+        tool = tools_by_id.get(target['tool_id'])
+        if not tool:
+            continue
+        modifiers = ', '.join(target['modifiers'][:2])
+        cards.append(f"""
+                <a href="/{target['tool_id']}/" class="tool-card" style="text-align:left;text-decoration:none;">
+                    <div class="tool-card-top">
+                        <div class="tool-icon">{target['priority']}</div>
+                        <span class="tool-category-tag">{html.escape(target['cluster'])}</span>
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>{html.escape(target['keyword'].title())}</h3>
+                        <p>{html.escape(target['intent'])}</p>
+                        <p style="font-size:0.82rem;margin-top:0.7rem;color:var(--text-light);">Also targets: {html.escape(modifiers)}</p>
+                    </div>
+                    <div class="tool-card-footer">
+                        <span class="explore-text">Open {html.escape(tool['name'])}</span>
+                        <span class="arrow-icon">-&gt;</span>
+                    </div>
+                </a>""")
+    return f"""
+    <section style="background:white;border-top:1px solid var(--border-color);padding:5rem 5%;">
+        <div style="max-width:1440px;margin:0 auto;">
+            <div style="text-align:center;max-width:820px;margin:0 auto 2.5rem;">
+                <span class="badge">Top Searched Converter Keywords</span>
+                <h2 style="font-size:2.2rem;margin-top:1rem;margin-bottom:0.8rem;">High-intent file conversion keywords we target</h2>
+                <p style="font-size:1rem;color:var(--text-muted);">These are the core transactional searches for free online converters: PDF to JPG, JPG to PDF, PNG to JPG, image compression, document conversion, video extraction, and developer data tools.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;">
+                {''.join(cards)}
+            </div>
+        </div>
+    </section>"""
+
+
+def tool_keyword_content_html(tool, tools):
+    target = keyword_target_for_tool(tool['id'])
+    if not target:
+        return ''
+    tools_by_id = {item['id']: item for item in tools}
+    related_targets = [
+        item for item in TOP_KEYWORD_TARGETS
+        if item['tool_id'] != tool['id'] and (
+            item['cluster'] == target['cluster']
+            or item['cluster'].split()[0] == target['cluster'].split()[0]
+        )
+    ][:6]
+    modifier_links = ''.join(
+        f'<li><strong>{html.escape(mod)}</strong> - a close variant of the main "{html.escape(target["keyword"])}" search intent.</li>'
+        for mod in target['modifiers']
+    )
+    related_links = ''.join(
+        f'<a href="/{rel["tool_id"]}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(tools_by_id.get(rel["tool_id"], {}).get("name", rel["keyword"].title()))}</a>'
+        for rel in related_targets
+    )
+    return f"""
+            <section style="margin-top:2.2rem;padding:1.8rem;border:1px solid rgba(99,102,241,0.12);border-radius:16px;background:rgba(99,102,241,0.025);">
+                <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Keyword target: {html.escape(target['keyword'])}</h2>
+                <p style="font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">This page is optimized for people searching <strong>{html.escape(target['keyword'])}</strong> and close converter phrases. The intent is simple: {html.escape(target['intent'])}</p>
+                <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Close keyword variants covered</h3>
+                <ul style="padding-left:1.4rem;display:flex;flex-direction:column;gap:0.45rem;font-size:0.9rem;line-height:1.55;margin-bottom:1rem;">
+                    {modifier_links}
+                </ul>
+                <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Related converter searches</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
+            </section>"""
+
+
+def build_keyword_research_file(tools):
+    tools_by_id = {tool['id']: tool for tool in tools}
+    payload = []
+    for target in TOP_KEYWORD_TARGETS:
+        tool = tools_by_id.get(target['tool_id'], {})
+        payload.append({
+            'priority': target['priority'],
+            'keyword': target['keyword'],
+            'target_url': f'{SITE_URL}/{target["tool_id"]}/',
+            'page_title': tool.get('seo_title', tool.get('name', target['keyword'].title())),
+            'intent': target['intent'],
+            'cluster': target['cluster'],
+            'modifiers': target['modifiers'],
+            'source_note': 'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09.'
+        })
+    Path('seo-keyword-targets.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
+    print("Generated seo-keyword-targets.json with top 20 targets")
 
 
 def normalize_generated_html_seo():
@@ -2318,6 +2579,8 @@ def build_homepage(tools):
                     </div>
                 </a>"""
 
+        keyword_hub_html = homepage_keyword_hub_html(tools)
+
         html_content = """<!DOCTYPE html>
 <html lang="en">
 
@@ -2578,6 +2841,8 @@ def build_homepage(tools):
     <main id="tools" class="tool-grid">
         {tools_html}
     </main>
+
+    {KEYWORD_HUB_HTML}
 
     <!-- Why Choose Us Grid -->
     <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
@@ -2874,7 +3139,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -4496,6 +4761,7 @@ def build():
         html = html.replace('{{USE_CASES}}', use_cases_html)
         html = html.replace('{{LIMITATIONS}}', limitations)
         html = html.replace('{{FAQ_SECTION}}', faq_html)
+        html = html.replace('{{KEYWORD_CONTENT}}', tool_keyword_content_html(tool, tools))
         
         # Inject Glossary box
         _, cat_glossary, _, _, _, _, _ = generate_category_seo_content(cat_slug, cat_name)
@@ -4535,21 +4801,26 @@ def build():
                     }
                 })
 
+        keyword_target = keyword_target_for_tool(t_id)
+        software_app_schema = {
+            "@type": "SoftwareApplication",
+            "name": tool['name'],
+            "operatingSystem": "Any",
+            "applicationCategory": tool.get('category', 'Utility'),
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "description": tool['description']
+        }
+        if keyword_target:
+            software_app_schema["keywords"] = ', '.join([keyword_target['keyword']] + keyword_target['modifiers'])
+
         schema_data = {
             "@context": "https://schema.org",
             "@graph": [
-                {
-                    "@type": "SoftwareApplication",
-                    "name": tool['name'],
-                    "operatingSystem": "Any",
-                    "applicationCategory": tool.get('category', 'Utility'),
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    },
-                    "description": tool['description']
-                },
+                software_app_schema,
                 {
                     "@type": "FAQPage",
                     "mainEntity": faq_entities
@@ -4587,7 +4858,27 @@ def build():
         # Smart Related Tools (category-aware, card style, 6 links)
         same_cat = [t for t in tools if t['type'] == t_type and t['id'] != t_id]
         cross_cat = [t for t in tools if t['id'] != t_id and t not in same_cat]
-        matched_tools = (same_cat + cross_cat)[:6]
+        keyword_target = keyword_target_for_tool(t_id)
+        keyword_related_ids = []
+        if keyword_target:
+            keyword_related_ids = [
+                target['tool_id'] for target in TOP_KEYWORD_TARGETS
+                if target['tool_id'] != t_id and (
+                    target['cluster'] == keyword_target['cluster']
+                    or target['cluster'].split()[0] == keyword_target['cluster'].split()[0]
+                )
+            ]
+        keyword_related = [t for t in tools if t['id'] in keyword_related_ids]
+        combined_related = keyword_related + same_cat + cross_cat
+        matched_tools = []
+        seen_related_ids = set()
+        for candidate in combined_related:
+            if candidate['id'] in seen_related_ids:
+                continue
+            seen_related_ids.add(candidate['id'])
+            matched_tools.append(candidate)
+            if len(matched_tools) == 6:
+                break
         related_html = ""
         for r_tool in matched_tools:
             related_html += f"""<a href="/{r_tool['id']}/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
@@ -4691,6 +4982,7 @@ def build():
     build_rss_feed()
     build_opensearch_file()
     build_sitemap(tools)
+    build_keyword_research_file(tools)
 
     # Generate tools-data.js
     frontend_data = []

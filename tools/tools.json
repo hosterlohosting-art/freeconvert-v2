@@ -6,7 +6,7 @@
         "description": "Convert PNG images to JPG instantly.",
         "type": "image",
         "category": "Image",
-        "seo_title": "Convert PNG to JPG Online - 100% Free & Fast",
+        "seo_title": "PNG to JPG Converter Online",
         "seo_desc": "Easily convert PNG images to high-quality JPG files. Fast, free, and secure."
     },
     {
@@ -16,7 +16,7 @@
         "description": "Transform JPG files with transparency.",
         "type": "image",
         "category": "Image",
-        "seo_title": "Convert JPG to PNG Online - Free & Fast",
+        "seo_title": "JPG to PNG Converter Online",
         "seo_desc": "Convert JPG images to PNG with transparency support. Simple and secure."
     },
     {
@@ -26,7 +26,7 @@
         "description": "Convert WebP images to high-quality JPG.",
         "type": "image",
         "category": "Image",
-        "seo_title": "Convert WebP to JPG Online - 100% Free",
+        "seo_title": "WebP to JPG Converter Online",
         "seo_desc": "Easily convert WebP images to JPG format for better compatibility."
     },
     {
@@ -36,7 +36,7 @@
         "description": "Convert iPhone HEIC photos to generic JPG.",
         "type": "image_advanced",
         "category": "Image",
-        "seo_title": "Free HEIC to JPG Converter - iPhone Photo Tool",
+        "seo_title": "HEIC to JPG Converter Online",
         "seo_desc": "Convert HEIC images to JPG directly in your browser. Fast and privacy-focused."
     },
     {
@@ -86,7 +86,7 @@
         "description": "Reduce image file size with zero quality loss.",
         "type": "image_advanced",
         "category": "Image",
-        "seo_title": "Online Image Compressor - Shrink Files Fast",
+        "seo_title": "Image Compressor Online Free",
         "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
     },
     {
@@ -96,7 +96,7 @@
         "description": "Reduce image files strictly under 100KB footprint.",
         "type": "image_advanced",
         "category": "Image",
-        "seo_title": "Compress Image to 100KB Online Free - Photo Size Reducer",
+        "seo_title": "Compress Image to 100KB",
         "seo_desc": "Compress and shrink images strictly under 100KB in size. Maintains visual quality in your browser."
     },
     {
@@ -116,7 +116,7 @@
         "description": "Resize your images to custom dimensions.",
         "type": "image_advanced",
         "category": "Image",
-        "seo_title": "Free Online Image Resizer - Custom Image Dimensions",
+        "seo_title": "Resize Image Online Free",
         "seo_desc": "Scale and resize images to precise pixel widths and heights online free."
     },
     {
@@ -146,7 +146,7 @@
         "description": "Reduce PDF byte footprint securely in browser.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Compress PDF Online Free - Reduce PDF File Size",
+        "seo_title": "Compress PDF Online Free",
         "seo_desc": "Reduce PDF footprint under 1MB easily. Optimized secure browser-based compression."
     },
     {
@@ -156,7 +156,7 @@
         "description": "Extract PDF pages as high-quality JPG images.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Convert PDF to JPG Online - Extract PDF Pages",
+        "seo_title": "PDF to JPG Converter Online",
         "seo_desc": "Convert PDF pages to separate JPG files instantly. Safe, fast, and 100% free."
     },
     {
@@ -166,7 +166,7 @@
         "description": "Compile multiple images into a clean PDF document.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Convert JPG to PDF Online Free - Compile Photos",
+        "seo_title": "JPG to PDF Converter Online",
         "seo_desc": "Merge multiple JPG or PNG images into a clean, multi-page PDF document online."
     },
     {
@@ -176,7 +176,7 @@
         "description": "Combine multiple PDF files into one sequential document.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Merge PDF Online Free - Combine PDF Files",
+        "seo_title": "Merge PDF Online Free",
         "seo_desc": "Join multiple PDF documents in exact order. Fast, free, and completely secure."
     },
     {
@@ -186,7 +186,7 @@
         "description": "Extract selected pages from any PDF document.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Split PDF Online Free - Extract Pages",
+        "seo_title": "Split PDF Online Free",
         "seo_desc": "Split PDF chapters or extract specific pages to new PDF files easily."
     },
     {
@@ -196,7 +196,7 @@
         "description": "Convert PDF documents to editable Microsoft Word files.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Convert PDF to Word Online - Editable DOCX",
+        "seo_title": "PDF to Word Converter Online",
         "seo_desc": "Transform PDFs into editable Word (.docx) files with maximum layout preservation."
     },
     {
@@ -206,7 +206,7 @@
         "description": "Convert DOCX documents to professional PDF files.",
         "type": "pdf",
         "category": "PDF Tools",
-        "seo_title": "Convert Word to PDF Online - Free DOCX to PDF",
+        "seo_title": "Word to PDF Converter Online",
         "seo_desc": "Convert Microsoft Word files to standard PDF format instantly and securely."
     },
     {
@@ -236,7 +236,7 @@
         "description": "Convert JSON data to CSV format instantly.",
         "type": "dev_basic",
         "category": "Developer",
-        "seo_title": "JSON to CSV Converter - Free & Secure",
+        "seo_title": "JSON to CSV Converter Online",
         "seo_desc": "Convert JSON arrays to flat CSV tables entirely in your browser."
     },
     {
@@ -476,7 +476,7 @@
         "description": "Create custom high-definition QR codes.",
         "type": "qr",
         "category": "Utility",
-        "seo_title": "Free QR Code Generator - Create Custom QR Codes",
+        "seo_title": "QR Code Generator Online Free",
         "seo_desc": "Compile high-quality custom QR codes with color sliders and logos."
     },
     {
@@ -656,7 +656,7 @@
         "description": "Extract raw audio tracks from video files.",
         "type": "video",
         "category": "Video Converter",
-        "seo_title": "Convert MP4 to MP3 Online - Free Audio Extractor",
+        "seo_title": "MP4 to MP3 Converter Online",
         "seo_desc": "Convert heavy video files into lightweight audio format instantly."
     },
     {
@@ -676,7 +676,7 @@
         "description": "Transcode WebM assets to standard MP4 videos.",
         "type": "video",
         "category": "Video Converter",
-        "seo_title": "Convert WebM to MP4 Online Free - Fast Transcoder",
+        "seo_title": "WebM to MP4 Converter Online",
         "seo_desc": "Convert lightweight WebM files into universal MP4 files safely."
     },
     {
@@ -686,7 +686,7 @@
         "description": "Convert JPG images to next-gen WebP format locally.",
         "type": "image",
         "category": "Image",
-        "seo_title": "Convert JPG to WebP Online Free - 100% Secure & Fast",
+        "seo_title": "JPG to WebP Converter Online",
         "seo_desc": "Convert JPG images to WebP format instantly in your browser. Blazing fast, 100% private, no server uploads."
     },
     {
@@ -696,7 +696,7 @@
         "description": "Convert PNG images to next-gen WebP format locally.",
         "type": "image",
         "category": "Image",
-        "seo_title": "Convert PNG to WebP Online - Free, Secure & Transparent",
+        "seo_title": "PNG to WebP Converter Online",
         "seo_desc": "Convert PNG images to WebP online with transparency support. Safe browser-local processing, no uploads required."
     },
     {

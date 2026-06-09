@@ -1,0 +1,282 @@
+[
+  {
+    "priority": 1,
+    "keyword": "pdf to jpg",
+    "target_url": "https://freeconvert.cloud/pdf-to-jpg/",
+    "page_title": "PDF to JPG Converter Online",
+    "intent": "Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.",
+    "cluster": "PDF conversion",
+    "modifiers": [
+      "pdf to jpg converter",
+      "convert pdf to jpg online",
+      "pdf pages to jpg"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 2,
+    "keyword": "jpg to pdf",
+    "target_url": "https://freeconvert.cloud/jpg-to-pdf/",
+    "page_title": "JPG to PDF Converter Online",
+    "intent": "Combine photos, scans, receipts, and screenshots into one PDF document.",
+    "cluster": "PDF creation",
+    "modifiers": [
+      "jpg to pdf converter",
+      "convert jpg to pdf online",
+      "image to pdf"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 3,
+    "keyword": "png to jpg",
+    "target_url": "https://freeconvert.cloud/png-to-jpg/",
+    "page_title": "PNG to JPG Converter Online",
+    "intent": "Turn PNG images into smaller, widely supported JPG files.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "png to jpg converter",
+      "convert png to jpg online",
+      "png image to jpeg"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 4,
+    "keyword": "jpg to png",
+    "target_url": "https://freeconvert.cloud/jpg-to-png/",
+    "page_title": "JPG to PNG Converter Online",
+    "intent": "Convert JPG photos into lossless PNG images for editing and design workflows.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "jpg to png converter",
+      "convert jpg to png online",
+      "jpeg to png"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 5,
+    "keyword": "webp to jpg",
+    "target_url": "https://freeconvert.cloud/webp-to-jpg/",
+    "page_title": "WebP to JPG Converter Online",
+    "intent": "Make modern WebP images compatible with older apps, CMS uploads, and editors.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "webp to jpg converter",
+      "convert webp to jpg online",
+      "webp image to jpeg"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 6,
+    "keyword": "heic to jpg",
+    "target_url": "https://freeconvert.cloud/heic-to-jpg/",
+    "page_title": "HEIC to JPG Converter Online",
+    "intent": "Convert iPhone HEIC photos into universal JPG files.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "heic to jpg converter",
+      "iphone photo to jpg",
+      "convert heic to jpeg"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 7,
+    "keyword": "compress pdf",
+    "target_url": "https://freeconvert.cloud/compress-pdf/",
+    "page_title": "Compress PDF Online Free",
+    "intent": "Reduce PDF file size for email, uploads, storage, and document sharing.",
+    "cluster": "PDF compression",
+    "modifiers": [
+      "compress pdf online",
+      "reduce pdf file size",
+      "pdf compressor"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 8,
+    "keyword": "pdf to word",
+    "target_url": "https://freeconvert.cloud/pdf-to-word/",
+    "page_title": "PDF to Word Converter Online",
+    "intent": "Convert PDF documents into editable Word DOCX files.",
+    "cluster": "Document conversion",
+    "modifiers": [
+      "pdf to word converter",
+      "pdf to docx",
+      "convert pdf to editable word"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 9,
+    "keyword": "word to pdf",
+    "target_url": "https://freeconvert.cloud/word-to-pdf/",
+    "page_title": "Word to PDF Converter Online",
+    "intent": "Export DOCX and Word documents into clean PDF files.",
+    "cluster": "Document conversion",
+    "modifiers": [
+      "word to pdf converter",
+      "docx to pdf",
+      "convert word document to pdf"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 10,
+    "keyword": "merge pdf",
+    "target_url": "https://freeconvert.cloud/merge-pdf/",
+    "page_title": "Merge PDF Online Free",
+    "intent": "Combine multiple PDF files into one organized document.",
+    "cluster": "PDF editing",
+    "modifiers": [
+      "merge pdf online",
+      "combine pdf files",
+      "pdf merger"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 11,
+    "keyword": "split pdf",
+    "target_url": "https://freeconvert.cloud/split-pdf/",
+    "page_title": "Split PDF Online Free",
+    "intent": "Extract selected pages or split a PDF into smaller files.",
+    "cluster": "PDF editing",
+    "modifiers": [
+      "split pdf online",
+      "extract pdf pages",
+      "pdf splitter"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 12,
+    "keyword": "image compressor",
+    "target_url": "https://freeconvert.cloud/image-compressor/",
+    "page_title": "Image Compressor Online Free",
+    "intent": "Shrink JPG, PNG, and WebP images while keeping useful visual quality.",
+    "cluster": "Image compression",
+    "modifiers": [
+      "compress image online",
+      "reduce image size",
+      "photo compressor"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 13,
+    "keyword": "compress image to 100kb",
+    "target_url": "https://freeconvert.cloud/compress-image-to-100kb/",
+    "page_title": "Compress Image to 100KB",
+    "intent": "Reduce photos under 100KB for forms, job portals, and application uploads.",
+    "cluster": "Image compression",
+    "modifiers": [
+      "image compressor to 100kb",
+      "photo size reducer 100kb",
+      "compress jpg to 100kb"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 14,
+    "keyword": "resize image",
+    "target_url": "https://freeconvert.cloud/resize-image/",
+    "page_title": "Resize Image Online Free",
+    "intent": "Resize images to exact pixel dimensions for websites, social media, and forms.",
+    "cluster": "Image editing",
+    "modifiers": [
+      "image resizer online",
+      "resize photo online",
+      "change image dimensions"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 15,
+    "keyword": "png to webp",
+    "target_url": "https://freeconvert.cloud/png-to-webp/",
+    "page_title": "PNG to WebP Converter Online",
+    "intent": "Convert PNG graphics to WebP for faster pages and smaller image delivery.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "png to webp converter",
+      "convert png to webp online",
+      "png webp optimizer"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 16,
+    "keyword": "jpg to webp",
+    "target_url": "https://freeconvert.cloud/jpg-to-webp/",
+    "page_title": "JPG to WebP Converter Online",
+    "intent": "Convert JPG photos into lightweight WebP images for SEO speed gains.",
+    "cluster": "Image conversion",
+    "modifiers": [
+      "jpg to webp converter",
+      "convert jpg to webp online",
+      "jpeg to webp"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 17,
+    "keyword": "mp4 to mp3",
+    "target_url": "https://freeconvert.cloud/mp4-to-mp3/",
+    "page_title": "MP4 to MP3 Converter Online",
+    "intent": "Extract audio from MP4 videos into MP3 files.",
+    "cluster": "Media conversion",
+    "modifiers": [
+      "mp4 to mp3 converter",
+      "extract audio from mp4",
+      "video to mp3"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 18,
+    "keyword": "webm to mp4",
+    "target_url": "https://freeconvert.cloud/webm-to-mp4/",
+    "page_title": "WebM to MP4 Converter Online",
+    "intent": "Convert WebM videos into widely compatible MP4 files.",
+    "cluster": "Media conversion",
+    "modifiers": [
+      "webm to mp4 converter",
+      "convert webm to mp4 online",
+      "webm video to mp4"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 19,
+    "keyword": "json to csv",
+    "target_url": "https://freeconvert.cloud/json-to-csv/",
+    "page_title": "JSON to CSV Converter Online",
+    "intent": "Flatten JSON data into CSV rows for Excel, Sheets, and data imports.",
+    "cluster": "Developer conversion",
+    "modifiers": [
+      "json to csv converter",
+      "convert json to csv online",
+      "json array to csv"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  },
+  {
+    "priority": 20,
+    "keyword": "qr code generator",
+    "target_url": "https://freeconvert.cloud/qr-code-generator/",
+    "page_title": "QR Code Generator Online Free",
+    "intent": "Create QR codes for links, menus, contact cards, events, and WiFi access.",
+    "cluster": "Utility tools",
+    "modifiers": [
+      "free qr code generator",
+      "create qr code online",
+      "qr generator"
+    ],
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09."
+  }
+]
