@@ -1180,4 +1180,64 @@
       <image:title>freeconvert.cloud online file converter</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/developer-tools/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/image-conversion/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/media-conversion/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/pdf-tools/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/security-utilities/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/blog/category/utility-guides/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
 </urlset>

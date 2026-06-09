@@ -205,7 +205,7 @@ def public_url_for_html(path):
     if rel == 'index.html':
         return f'{SITE_URL}/'
     if rel.endswith('/index.html'):
-        return f'{SITE_URL}/{rel[:-10]}/'
+        return f'{SITE_URL}/{rel[:-11]}/'
     return f'{SITE_URL}/{rel}'
 
 
@@ -267,7 +267,7 @@ def homepage_keyword_hub_html(tools):
                         <span class="tool-category-tag">{html.escape(target['cluster'])}</span>
                     </div>
                     <div class="tool-card-body">
-                        <h3>{html.escape(target['keyword'].title())}</h3>
+                        <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(target['keyword'].title())}</span>
                         <p>{html.escape(target['intent'])}</p>
                         <p style="font-size:0.82rem;margin-top:0.7rem;color:var(--text-light);">Also targets: {html.escape(modifiers)}</p>
                     </div>
@@ -314,8 +314,38 @@ def keyword_target_schema_tag():
 
 def tool_keyword_content_html(tool, tools):
     target = keyword_target_for_tool(tool['id'])
+    name = html.escape(tool['name'])
+    desc = html.escape(tool.get('description', ''))
+    category = html.escape(tool.get('category', 'Utility'))
+    base_intro = f"""
+            <section style="margin-top:2.2rem;">
+                <h2>What is {name}?</h2>
+                <p>{name} is built for users who need a quick, free, and private way to handle {category.lower()} workflows without installing desktop software. {desc} The page combines a working converter, practical instructions, privacy notes, related tools, and common troubleshooting guidance so visitors can complete the task and understand the format decision in the same place.</p>
+                <p>Use it for everyday document preparation, website uploads, email attachments, school work, client deliverables, developer cleanup, and mobile sharing. The experience is browser-first, which means supported local operations run inside your device memory and heavier conversion jobs use temporary secure processing only when a format requires it.</p>
+            </section>
+            <section style="margin-top:2rem;">
+                <h2>Common {name} scenarios</h2>
+                <table>
+                    <thead><tr><th>Scenario</th><th>Why it matters</th><th>Recommended action</th></tr></thead>
+                    <tbody>
+                        <tr><td>Website publishing</td><td>Smaller, compatible files improve page speed and user experience.</td><td>Convert or compress before uploading to a CMS.</td></tr>
+                        <tr><td>Email and forms</td><td>Many portals reject files that are too large or in unsupported formats.</td><td>Use the converter, then check the output size before sending.</td></tr>
+                        <tr><td>Mobile sharing</td><td>Phones often save modern formats that older apps cannot open.</td><td>Export to a common format with broad compatibility.</td></tr>
+                    </tbody>
+                </table>
+            </section>"""
+    comparison = f"""
+            <section style="margin-top:2rem;">
+                <h2>{name} format notes</h2>
+                <p>Before converting, check whether your goal is smaller file size, stronger compatibility, editable output, or better visual quality. Lossy formats usually reduce file size, while lossless or document formats may preserve more detail but create larger files. When quality matters, keep a backup of the original source file and compare the result before deleting anything.</p>
+            </section>"""
+    trust = f"""
+            <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.14);">
+                <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Privacy-first conversion promise</h2>
+                <p style="font-size:0.95rem;line-height:1.65;margin:0;">freeconvert.cloud is designed around clear privacy expectations: browser-local tools avoid uploads, server-required conversions use encrypted transfer, and user files are not treated as public content. For deeper details, read our <a href="/security/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">file security policy</a>.</p>
+            </section>"""
     if not target:
-        return ''
+        return base_intro + comparison + trust
     tools_by_id = {item['id']: item for item in tools}
     related_targets = [
         item for item in TOP_KEYWORD_TARGETS
@@ -332,7 +362,7 @@ def tool_keyword_content_html(tool, tools):
         f'<a href="/{rel["tool_id"]}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(tools_by_id.get(rel["tool_id"], {}).get("name", rel["keyword"].title()))}</a>'
         for rel in related_targets
     )
-    return f"""
+    keyword_section = f"""
             <section style="margin-top:2.2rem;padding:1.8rem;border:1px solid rgba(99,102,241,0.12);border-radius:16px;background:rgba(99,102,241,0.025);">
                 <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Keyword target: {html.escape(target['keyword'])}</h2>
                 <p style="font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">This page is optimized for people searching <strong>{html.escape(target['keyword'])}</strong> and close converter phrases. The intent is simple: {html.escape(target['intent'])}</p>
@@ -343,6 +373,7 @@ def tool_keyword_content_html(tool, tools):
                 <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Related converter searches</h3>
                 <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
             </section>"""
+    return base_intro + comparison + keyword_section + trust
 
 
 def build_keyword_research_file(tools):
@@ -406,6 +437,15 @@ def normalize_generated_html_seo():
         for old_route, new_route in LEGACY_ROUTE_MAP.items():
             html = html.replace(f'href="{old_route}"', f'href="{new_route}"')
             html = html.replace(f"href='{old_route}'", f"href='{new_route}'")
+
+        resource_hints = (
+            '    <link rel="preconnect" href="https://www.googletagmanager.com">\n'
+            '    <link rel="dns-prefetch" href="//www.googletagmanager.com">\n'
+            '    <link rel="preconnect" href="https://www.google-analytics.com">\n'
+            '    <link rel="dns-prefetch" href="//www.google-analytics.com">\n'
+        )
+        if 'https://www.googletagmanager.com" rel="preconnect"' not in html and 'rel="preconnect" href="https://www.googletagmanager.com"' not in html:
+            html = html.replace('</head>', resource_hints + '\n</head>', 1)
 
         if '<meta name="description"' not in html:
             description = derive_meta_description(html, title)
@@ -496,8 +536,9 @@ def build_sitemap(tools):
         add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
     for tool in tools:
         add('tools', f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
-    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'help']:
+    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'help', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
         add('pages', f'{SITE_URL}/{leg}/', 'monthly', '0.5')
+    add('pages', f'{SITE_URL}/tools/embed/', 'monthly', '0.5')
     add('blog', f'{SITE_URL}/blog/', 'weekly', '0.8')
     for article in BLOG_ARTICLES:
         add('blog', f'{SITE_URL}/blog/{article["slug"]}/', 'weekly', '0.7')
@@ -507,6 +548,8 @@ def build_sitemap(tools):
             add('blog', f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
     for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
         add('blog', public_url_for_html(hub_page), 'monthly', '0.6')
+    for category_page in sorted(Path('blog/category').glob('*/index.html')):
+        add('blog', public_url_for_html(category_page), 'weekly', '0.6')
     add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
@@ -548,6 +591,15 @@ def build_sitemap(tools):
 
 
 def build_static_seo_assets():
+    try:
+        from PIL import Image
+        logo_png = Path('assets/freeconvert-logo.png')
+        logo_webp = Path('assets/freeconvert-logo.webp')
+        if logo_png.exists():
+            Image.open(logo_png).save(logo_webp, 'WEBP', quality=82, method=6)
+    except Exception as exc:
+        print(f"Skipped WebP logo generation: {exc}")
+
     manifest = {
         "name": "freeconvert.cloud",
         "short_name": "FreeConvert",
@@ -559,6 +611,7 @@ def build_static_seo_assets():
         "theme_color": "#6366f1",
         "icons": [
             {"src": "/assets/favicon.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/assets/freeconvert-logo.webp", "sizes": "512x512", "type": "image/webp"},
             {"src": "/assets/freeconvert-logo.png", "sizes": "512x512", "type": "image/png"}
         ]
     }
@@ -581,6 +634,7 @@ Options -Indexes
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
   Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
@@ -615,6 +669,7 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteRule ^convert/([^/]+)/?$ /$1/ [R=301,L]
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
@@ -693,6 +748,254 @@ def build_minified_asset_aliases():
         if updated != html_content:
             html_path.write_text(updated, encoding='utf-8')
     print("Generated .min asset aliases and updated HTML references")
+
+
+def blog_category_for_article(article):
+    text = f"{article.get('slug', '')} {article.get('title', '')} {article.get('description', '')}".lower()
+    if any(term in text for term in ['pdf', 'docx', 'word']):
+        return 'pdf-tools', 'PDF Tools'
+    if any(term in text for term in ['jpg', 'png', 'webp', 'heic', 'svg', 'image', 'photo', 'color', 'palette']):
+        return 'image-conversion', 'Image Conversion'
+    if any(term in text for term in ['json', 'csv', 'yaml', 'sql', 'html', 'css', 'javascript', 'base64', 'hash', 'uuid', 'diff', 'markdown', 'url']):
+        return 'developer-tools', 'Developer Tools'
+    if any(term in text for term in ['mp4', 'mp3', 'webm', 'video', 'audio']):
+        return 'media-conversion', 'Media Conversion'
+    if any(term in text for term in ['password', 'security', 'qr', 'barcode']):
+        return 'security-utilities', 'Security Utilities'
+    return 'utility-guides', 'Utility Guides'
+
+
+def build_blog_category_pages():
+    category_map = {}
+    for article in BLOG_ARTICLES:
+        slug, name = blog_category_for_article(article)
+        category_map.setdefault(slug, {'name': name, 'articles': []})['articles'].append(article)
+
+    base = Path('blog/category')
+    base.mkdir(parents=True, exist_ok=True)
+    for slug, data in category_map.items():
+        cards = ''.join(
+            f"""
+            <a href="/blog/{article['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
+                <span class="popular-badge">Guide</span>
+                <div class="tool-card-top">
+                    <div class="tool-icon">Guide</div>
+                    <span class="tool-category-tag">{html.escape(article['date'])}</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="2" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(article['title'])}</span>
+                    <p>{html.escape(article['description'])}</p>
+                </div>
+                <div class="tool-card-footer"><span class="explore-text">Read Guide</span><span class="arrow-icon">-&gt;</span></div>
+            </a>"""
+            for article in data['articles']
+        )
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": f"{data['name']} Guides",
+            "url": f"{SITE_URL}/blog/category/{slug}/",
+            "description": f"Helpful freeconvert.cloud tutorials about {data['name'].lower()}.",
+            "dateModified": TODAY_ISO
+        }
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(data['name'])} Guides | freeconvert.cloud</title>
+    <meta name="description" content="Browse fact-checked {html.escape(data['name']).lower()} tutorials, converter tips, troubleshooting guides, and privacy-first workflow advice.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/blog/category/{slug}/">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content" style="max-width:1200px;">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><a href="/blog/">Blog</a><span>&gt;</span><span>{html.escape(data['name'])}</span></nav>
+        <section class="tool-header">
+            <span class="badge">Blog Category</span>
+            <h1>{html.escape(data['name'])} Guides</h1>
+            <p>Organized tutorials for users researching {html.escape(data['name']).lower()}, file privacy, format compatibility, and faster online workflows.</p>
+        </section>
+        <div class="tool-grid" style="padding:0;">{cards}</div>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+        out_dir = base / slug
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+    print(f"Generated {len(category_map)} blog category pages")
+
+
+def build_convert_alias_pages(tools):
+    base = Path('convert')
+    base.mkdir(exist_ok=True)
+    for tool in tools:
+        out_dir = base / tool['id']
+        out_dir.mkdir(parents=True, exist_ok=True)
+        target = f"/{tool['id']}/"
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(tool['name'])} | freeconvert.cloud</title>
+    <meta name="robots" content="noindex,follow">
+    <meta http-equiv="refresh" content="0; url={target}">
+    <link rel="canonical" href="{SITE_URL}{target}">
+</head>
+<body>
+    <p>Redirecting to <a href="{target}">{html.escape(tool['name'])}</a>.</p>
+    <script>location.replace("{target}");</script>
+</body>
+</html>"""
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+    print(f"Generated {len(tools)} /convert/ redirect alias pages")
+
+
+def build_embed_widget_page():
+    out_dir = Path('tools/embed')
+    out_dir.mkdir(parents=True, exist_ok=True)
+    widget_code = html.escape('<iframe src="https://freeconvert.cloud/png-to-jpg/" width="100%" height="680" style="border:0;border-radius:12px;" title="Free PNG to JPG Converter"></iframe>')
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Embed Free Converter Widgets",
+        "url": f"{SITE_URL}/tools/embed/",
+        "description": "Embed privacy-first freeconvert.cloud converter widgets on resource pages, tutorials, and internal documentation.",
+        "dateModified": TODAY_ISO
+    }
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Free File Converter Widgets | freeconvert.cloud</title>
+    <meta name="description" content="Add free online converter widgets to your website with clean iframe snippets and proper attribution to freeconvert.cloud.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/tools/embed/">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><span>Embed Widgets</span></nav>
+        <section class="tool-header">
+            <span class="badge">Backlink Resource</span>
+            <h1>Embed Free Converter Widgets</h1>
+            <p>Add a free file converter widget to tutorials, resource pages, school portals, and internal team documentation.</p>
+        </section>
+        <article class="seo-content">
+            <h2>Why embed a converter?</h2>
+            <p>Helpful widgets earn natural links because they solve a problem inside the article where users need it. You can point visitors to PNG to JPG, JPG to PDF, Compress PDF, WebP to JPG, or developer utilities while keeping attribution clear.</p>
+            <h2>Starter iframe code</h2>
+            <pre class="api-code-block" style="white-space:pre-wrap;">{widget_code}</pre>
+            <h2>Recommended placements</h2>
+            <ul><li>Classroom resources about digital files</li><li>Design tutorials about image optimization</li><li>PDF workflow documentation</li><li>Developer docs for JSON, CSV, Base64, and formatting tasks</li></ul>
+            <p>Please keep the iframe title descriptive and link attribution visible near the widget for accessibility and trust.</p>
+        </article>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+    (out_dir / 'index.html').write_text(page, encoding='utf-8')
+    print("Generated /tools/embed/ widget page")
+
+
+def build_growth_landing_pages():
+    pages = [
+        {
+            'slug': 'png-vs-jpg',
+            'title': 'PNG vs JPG - Which Image Format Should You Use?',
+            'desc': 'Compare PNG and JPG for websites, photos, transparency, compression, SEO, and file size before converting images online.',
+            'links': [('png-to-jpg', 'PNG to JPG'), ('jpg-to-png', 'JPG to PNG'), ('image-compressor', 'Image Compressor')],
+            'body': 'PNG is best for transparency, screenshots, logos, and lossless graphics. JPG is best for photos, smaller web images, email attachments, and broad compatibility. If your image has no transparency and file size matters, JPG is usually the better choice. If crisp edges, alpha transparency, or repeated editing matters, keep a PNG copy.'
+        },
+        {
+            'slug': 'pdf-vs-docx',
+            'title': 'PDF vs DOCX - Difference, Use Cases, and Conversion Tips',
+            'desc': 'Understand when to use PDF or DOCX, how formatting differs, and which free converter to use for editable or shareable documents.',
+            'links': [('pdf-to-word', 'PDF to Word'), ('word-to-pdf', 'Word to PDF'), ('compress-pdf', 'Compress PDF')],
+            'body': 'PDF is best for final sharing, printing, contracts, invoices, and layout preservation. DOCX is best for editing text, collaborating, and drafting content. Convert DOCX to PDF before sending a final version, and convert PDF to Word when you need an editable draft.'
+        },
+        {
+            'slug': 'convert-heic-iphone',
+            'title': 'Convert HEIC iPhone Photos to JPG Online',
+            'desc': 'Convert iPhone HEIC photos to JPG for Windows, Android, email, websites, and older apps using free browser-based tools.',
+            'links': [('heic-to-jpg', 'HEIC to JPG'), ('image-compressor', 'Image Compressor'), ('resize-image', 'Resize Image')],
+            'body': 'iPhones often save photos as HEIC because the format is efficient, but some websites and older systems still expect JPG. Converting HEIC to JPG improves compatibility for job portals, email, school submissions, CMS uploads, and photo sharing.'
+        },
+        {
+            'slug': 'compress-image-for-website',
+            'title': 'Compress Images for Website Speed Optimization',
+            'desc': 'Reduce JPG, PNG, and WebP image weight for Core Web Vitals, faster pages, and cleaner SEO performance.',
+            'links': [('image-compressor', 'Image Compressor'), ('compress-image-to-100kb', 'Compress Image to 100KB'), ('jpg-to-webp', 'JPG to WebP')],
+            'body': 'Large images slow down Largest Contentful Paint and frustrate mobile visitors. Compressing images before upload can reduce bandwidth, improve crawl efficiency, and make landing pages feel faster without redesigning the whole website.'
+        }
+    ]
+    for item in pages:
+        tool_links = ''.join(f'<a href="/{slug}/" class="btn primary" style="margin:0.3rem;">{html.escape(label)}</a>' for slug, label in item['links'])
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": item['title'],
+            "url": f"{SITE_URL}/{item['slug']}/",
+            "description": item['desc'],
+            "dateModified": TODAY_ISO
+        }
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(item['title'])} | freeconvert.cloud</title>
+    <meta name="description" content="{html.escape(item['desc'])}">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/{item['slug']}/">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><span>{html.escape(item['title'])}</span></nav>
+        <section class="tool-header"><span class="badge">Conversion Guide</span><h1>{html.escape(item['title'])}</h1><p>{html.escape(item['desc'])}</p></section>
+        <article class="seo-content">
+            <h2>Quick answer</h2>
+            <p>{html.escape(item['body'])}</p>
+            <h2>Use the right free tool</h2>
+            <p>Pick the converter below based on your goal. Each tool includes privacy notes, steps, FAQs, and related guides.</p>
+            <div>{tool_links}</div>
+            <h2>Best practice</h2>
+            <p>Keep your original file, create the converted copy, then compare quality and file size before publishing or sending. This keeps your workflow safe while improving compatibility and speed.</p>
+        </article>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+        out_dir = Path(item['slug'])
+        out_dir.mkdir(exist_ok=True)
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+    print(f"Generated {len(pages)} comparison and seasonal landing pages")
 
 
 # Categories configurations
@@ -2548,7 +2851,10 @@ HEADER_SNIPPET = """
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                <picture>
+                    <source srcset="/assets/freeconvert-logo.webp" type="image/webp">
+                    <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                </picture>
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -2602,7 +2908,7 @@ FOOTER_SNIPPET = """
 
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></a>
+                <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
                     <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
@@ -2659,6 +2965,9 @@ FOOTER_SNIPPET = """
                     <a href="/api/">Developer API</a>
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
+                    <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/blog/category/pdf-tools/">PDF Guides</a>
+                    <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
@@ -2693,7 +3002,7 @@ def build_homepage(tools):
                     <span class="tool-category-tag">{tool['category']}</span>
                 </div>
                 <div class="tool-card-body">
-                    <h3>{tool['name']}</h3>
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{tool['name']}</span>
                     <p>{tool['description']}</p>
                 </div>
                 <div class="tool-card-footer">
@@ -3410,7 +3719,7 @@ def build_categories(tools):
             grid_html += f"""
             <a href="/{tool['id']}/" class="tool-card">
                 <div class="tool-icon">{tool['icon']}</div>
-                <h3>{tool['name']}</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{tool['name']}</span>
                 <p>{tool['description']}</p>
             </a>"""
 
@@ -5279,6 +5588,10 @@ def build():
 
     # Generate blog pages and articles
     build_blog()
+    build_blog_category_pages()
+    build_embed_widget_page()
+    build_growth_landing_pages()
+    build_convert_alias_pages(tools)
 
     # Generate discovery files (llms.txt & humans.txt)
     build_discovery_files(tools)
@@ -5314,7 +5627,6 @@ def build():
 Allow: /
 Disallow: /tools/tool-template.html
 Disallow: /blog/blog-template.html
-Disallow: /*?*
 
 # AI and search discovery
 # LLM summary: https://freeconvert.cloud/llms.txt

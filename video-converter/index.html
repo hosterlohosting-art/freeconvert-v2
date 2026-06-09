@@ -45,6 +45,11 @@
     <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "name": "Online Video Converter - Convert Video Files Free", "description": "Easily convert MP4, WebM, and other video file formats with optimal conversion quality.", "url": "https://freeconvert.cloud/video-converter/"}, {"@type": "ItemList", "name": "Video Converter Tools", "description": "Easily convert MP4, WebM, and other video file formats with optimal conversion quality.", "numberOfItems": 3, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MP4 to MP3", "url": "https://freeconvert.cloud/mp4-to-mp3/"}, {"@type": "ListItem", "position": 2, "name": "Video Compressor", "url": "https://freeconvert.cloud/video-compressor/"}, {"@type": "ListItem", "position": 3, "name": "WebM to MP4", "url": "https://freeconvert.cloud/webm-to-mp4/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are the Video Converter converters completely free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity."}}, {"@type": "Question", "name": "How does freeconvert.cloud guarantee the security of my files?", "acceptedAnswer": {"@type": "Answer", "text": "Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours."}}, {"@type": "Question", "name": "Can I use these {cat_name} tools on my smartphone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeconvert.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Video Converter", "item": "https://freeconvert.cloud/video-converter/"}]}]}</script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
     <meta property="og:locale" content="en_US">
 
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -79,7 +84,10 @@
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                <picture>
+                    <source srcset="/assets/freeconvert-logo.webp" type="image/webp">
+                    <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                </picture>
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -205,17 +213,17 @@
                 
             <a href="/mp4-to-mp3/" class="tool-card">
                 <div class="tool-icon">🎵</div>
-                <h3>MP4 to MP3</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">MP4 to MP3</span>
                 <p>Extract raw audio tracks from video files.</p>
             </a>
             <a href="/video-compressor/" class="tool-card">
                 <div class="tool-icon">🎥</div>
-                <h3>Video Compressor</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Video Compressor</span>
                 <p>Reduce video clip sizes and bitrates.</p>
             </a>
             <a href="/webm-to-mp4/" class="tool-card">
                 <div class="tool-icon">🎥</div>
-                <h3>WebM to MP4</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">WebM to MP4</span>
                 <p>Transcode WebM assets to standard MP4 videos.</p>
             </a>
             </div>
@@ -304,7 +312,7 @@
 
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></a>
+                <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
                     <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
@@ -361,6 +369,9 @@
                     <a href="/api/">Developer API</a>
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
+                    <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/blog/category/pdf-tools/">PDF Guides</a>
+                    <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>

@@ -14,6 +14,11 @@
       "type": "image/png"
     },
     {
+      "src": "/assets/freeconvert-logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
       "src": "/assets/freeconvert-logo.png",
       "sizes": "512x512",
       "type": "image/png"

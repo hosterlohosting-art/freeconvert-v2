@@ -45,6 +45,11 @@
     <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "name": "Best Free Image Converter Online - Convert Photos Fast", "description": "Convert image file formats instantly for free. Supports PNG, JPG, WebP, HEIC, and vectors.", "url": "https://freeconvert.cloud/image-converter/"}, {"@type": "ItemList", "name": "Image Converter Tools", "description": "Convert image file formats instantly for free. Supports PNG, JPG, WebP, HEIC, and vectors.", "numberOfItems": 16, "itemListElement": [{"@type": "ListItem", "position": 1, "name": "PNG to JPG", "url": "https://freeconvert.cloud/png-to-jpg/"}, {"@type": "ListItem", "position": 2, "name": "JPG to PNG", "url": "https://freeconvert.cloud/jpg-to-png/"}, {"@type": "ListItem", "position": 3, "name": "WebP to JPG", "url": "https://freeconvert.cloud/webp-to-jpg/"}, {"@type": "ListItem", "position": 4, "name": "HEIC to JPG", "url": "https://freeconvert.cloud/heic-to-jpg/"}, {"@type": "ListItem", "position": 5, "name": "SVG to PNG", "url": "https://freeconvert.cloud/svg-to-png/"}, {"@type": "ListItem", "position": 6, "name": "Color Palette Extractor", "url": "https://freeconvert.cloud/palette-extractor/"}, {"@type": "ListItem", "position": 7, "name": "ICO Converter", "url": "https://freeconvert.cloud/ico-converter/"}, {"@type": "ListItem", "position": 8, "name": "Image to Base64", "url": "https://freeconvert.cloud/image-to-base64/"}, {"@type": "ListItem", "position": 9, "name": "Image Compressor", "url": "https://freeconvert.cloud/image-compressor/"}, {"@type": "ListItem", "position": 10, "name": "Compress Image to 100KB", "url": "https://freeconvert.cloud/compress-image-to-100kb/"}, {"@type": "ListItem", "position": 11, "name": "Compress Image to 200KB", "url": "https://freeconvert.cloud/compress-image-to-200kb/"}, {"@type": "ListItem", "position": 12, "name": "Resize Image", "url": "https://freeconvert.cloud/resize-image/"}, {"@type": "ListItem", "position": 13, "name": "Resize Image for Instagram", "url": "https://freeconvert.cloud/resize-image-for-instagram/"}, {"@type": "ListItem", "position": 14, "name": "Passport Photo Size Converter", "url": "https://freeconvert.cloud/passport-photo-size-converter/"}, {"@type": "ListItem", "position": 15, "name": "JPG to WebP", "url": "https://freeconvert.cloud/jpg-to-webp/"}, {"@type": "ListItem", "position": 16, "name": "PNG to WebP", "url": "https://freeconvert.cloud/png-to-webp/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is my image quality preserved during format conversions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our conversion compiler uses lossless local pixel translating algorithms. Converting between lossless formats (like PNG or SVG) preserves pixel states perfectly, while lossy exports (like WebP or JPG) can be quality-locked up to 100% using our advanced sliders."}}, {"@type": "Question", "name": "Does your image converter upload my photos to your servers?", "acceptedAnswer": {"@type": "Answer", "text": "No, never. All image conversions, resizes, and compression routines run client-side inside your browser sandbox. Your visual files never leave your computer, securing absolute confidentiality."}}, {"@type": "Question", "name": "Can I convert multiple photos simultaneously in a batch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Our drag-and-drop boxes support multi-file queues. You can select an entire collection of images, adjust standard dimensions, and batch-transcode them instantly."}}, {"@type": "Question", "name": "How does freeconvert.cloud replace transparent backgrounds during JPG conversions?", "acceptedAnswer": {"@type": "Answer", "text": "Because the JPG format does not support transparency, our local rendering context automatically overlays a solid white background layer behind transparent pixels, preventing ugly black box corruptions common in legacy converters."}}, {"@type": "Question", "name": "Do I need to sign up or install software to use these tools?", "acceptedAnswer": {"@type": "Answer", "text": "No. Our tools are 100% web-based, free, and accessible on all responsive viewports, including Safari on iPhones, Chrome on Android, macOS, and Windows."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://freeconvert.cloud/"}, {"@type": "ListItem", "position": 2, "name": "Image Converter", "item": "https://freeconvert.cloud/image-converter/"}]}]}</script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
     <meta property="og:locale" content="en_US">
 
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -79,7 +84,10 @@
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                <picture>
+                    <source srcset="/assets/freeconvert-logo.webp" type="image/webp">
+                    <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
+                </picture>
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -205,82 +213,82 @@
                 
             <a href="/png-to-jpg/" class="tool-card">
                 <div class="tool-icon">🖼️</div>
-                <h3>PNG to JPG</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">PNG to JPG</span>
                 <p>Convert PNG images to JPG instantly.</p>
             </a>
             <a href="/jpg-to-png/" class="tool-card">
                 <div class="tool-icon">🌌</div>
-                <h3>JPG to PNG</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">JPG to PNG</span>
                 <p>Transform JPG files with transparency.</p>
             </a>
             <a href="/webp-to-jpg/" class="tool-card">
                 <div class="tool-icon">🕸️</div>
-                <h3>WebP to JPG</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">WebP to JPG</span>
                 <p>Convert WebP images to high-quality JPG.</p>
             </a>
             <a href="/heic-to-jpg/" class="tool-card">
                 <div class="tool-icon">🍏</div>
-                <h3>HEIC to JPG</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">HEIC to JPG</span>
                 <p>Convert iPhone HEIC photos to generic JPG.</p>
             </a>
             <a href="/svg-to-png/" class="tool-card">
                 <div class="tool-icon">📐</div>
-                <h3>SVG to PNG</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">SVG to PNG</span>
                 <p>Render SVG files as high-quality PNG images.</p>
             </a>
             <a href="/palette-extractor/" class="tool-card">
                 <div class="tool-icon">🎨</div>
-                <h3>Color Palette Extractor</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Color Palette Extractor</span>
                 <p>Extract dominant colors from any image.</p>
             </a>
             <a href="/ico-converter/" class="tool-card">
                 <div class="tool-icon">⭐</div>
-                <h3>ICO Converter</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">ICO Converter</span>
                 <p>Create standard Favicons (.ico) from images.</p>
             </a>
             <a href="/image-to-base64/" class="tool-card">
                 <div class="tool-icon">🖼️</div>
-                <h3>Image to Base64</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Image to Base64</span>
                 <p>Convert images into Base64 Data URIs.</p>
             </a>
             <a href="/image-compressor/" class="tool-card">
                 <div class="tool-icon">🤐</div>
-                <h3>Image Compressor</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Image Compressor</span>
                 <p>Reduce image file size with zero quality loss.</p>
             </a>
             <a href="/compress-image-to-100kb/" class="tool-card">
                 <div class="tool-icon">🗜️</div>
-                <h3>Compress Image to 100KB</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Compress Image to 100KB</span>
                 <p>Reduce image files strictly under 100KB footprint.</p>
             </a>
             <a href="/compress-image-to-200kb/" class="tool-card">
                 <div class="tool-icon">🗜️</div>
-                <h3>Compress Image to 200KB</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Compress Image to 200KB</span>
                 <p>Reduce image files strictly under 200KB footprint.</p>
             </a>
             <a href="/resize-image/" class="tool-card">
                 <div class="tool-icon">📐</div>
-                <h3>Resize Image</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Resize Image</span>
                 <p>Resize your images to custom dimensions.</p>
             </a>
             <a href="/resize-image-for-instagram/" class="tool-card">
                 <div class="tool-icon">📸</div>
-                <h3>Resize Image for Instagram</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Resize Image for Instagram</span>
                 <p>Resize photos for Instagram Stories and Post grids.</p>
             </a>
             <a href="/passport-photo-size-converter/" class="tool-card">
                 <div class="tool-icon">🛂</div>
-                <h3>Passport Photo Size Converter</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Passport Photo Size Converter</span>
                 <p>Resize photos to standard passport size requirements.</p>
             </a>
             <a href="/jpg-to-webp/" class="tool-card">
                 <div class="tool-icon">🕸️</div>
-                <h3>JPG to WebP</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">JPG to WebP</span>
                 <p>Convert JPG images to next-gen WebP format locally.</p>
             </a>
             <a href="/png-to-webp/" class="tool-card">
                 <div class="tool-icon">🕸️</div>
-                <h3>PNG to WebP</h3>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">PNG to WebP</span>
                 <p>Convert PNG images to next-gen WebP format locally.</p>
             </a>
             </div>
@@ -382,7 +390,7 @@
 
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></a>
+                <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
                     <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
@@ -439,6 +447,9 @@
                     <a href="/api/">Developer API</a>
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
+                    <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/blog/category/pdf-tools/">PDF Guides</a>
+                    <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
