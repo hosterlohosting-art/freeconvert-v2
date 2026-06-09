@@ -14,16 +14,40 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
 
 ## Priority Tools (High Content Depth)
-- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/
-- PNG to JPG: https://freeconvert.cloud/png-to-jpg/
-- PDF to Word: https://freeconvert.cloud/pdf-to-word/
-- MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/
-- JSON to CSV: https://freeconvert.cloud/json-to-csv/
-- CSV to JSON: https://freeconvert.cloud/csv-to-json/
-- Image Compressor: https://freeconvert.cloud/image-compressor/
-- Image Converter Hub: https://freeconvert.cloud/image-converter/
-- Document Converter Hub: https://freeconvert.cloud/document-converter/
-- PDF Tools Suite: https://freeconvert.cloud/pdf-tools/
+- PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - targets "pdf to jpg"; intent: Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.
+- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/ - targets "jpg to pdf"; intent: Combine photos, scans, receipts, and screenshots into one PDF document.
+- PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - targets "png to jpg"; intent: Turn PNG images into smaller, widely supported JPG files.
+- JPG to PNG: https://freeconvert.cloud/jpg-to-png/ - targets "jpg to png"; intent: Convert JPG photos into lossless PNG images for editing and design workflows.
+- WebP to JPG: https://freeconvert.cloud/webp-to-jpg/ - targets "webp to jpg"; intent: Make modern WebP images compatible with older apps, CMS uploads, and editors.
+- HEIC to JPG: https://freeconvert.cloud/heic-to-jpg/ - targets "heic to jpg"; intent: Convert iPhone HEIC photos into universal JPG files.
+- Compress PDF: https://freeconvert.cloud/compress-pdf/ - targets "compress pdf"; intent: Reduce PDF file size for email, uploads, storage, and document sharing.
+- PDF to Word: https://freeconvert.cloud/pdf-to-word/ - targets "pdf to word"; intent: Convert PDF documents into editable Word DOCX files.
+- Word to PDF: https://freeconvert.cloud/word-to-pdf/ - targets "word to pdf"; intent: Export DOCX and Word documents into clean PDF files.
+- Merge PDF: https://freeconvert.cloud/merge-pdf/ - targets "merge pdf"; intent: Combine multiple PDF files into one organized document.
+- Split PDF: https://freeconvert.cloud/split-pdf/ - targets "split pdf"; intent: Extract selected pages or split a PDF into smaller files.
+- Image Compressor: https://freeconvert.cloud/image-compressor/ - targets "image compressor"; intent: Shrink JPG, PNG, and WebP images while keeping useful visual quality.
+
+## High-Intent Keyword Map
+- pdf to jpg -> https://freeconvert.cloud/pdf-to-jpg/ (PDF conversion; variants: pdf to jpg converter, convert pdf to jpg online, pdf pages to jpg)
+- jpg to pdf -> https://freeconvert.cloud/jpg-to-pdf/ (PDF creation; variants: jpg to pdf converter, convert jpg to pdf online, image to pdf)
+- png to jpg -> https://freeconvert.cloud/png-to-jpg/ (Image conversion; variants: png to jpg converter, convert png to jpg online, png image to jpeg)
+- jpg to png -> https://freeconvert.cloud/jpg-to-png/ (Image conversion; variants: jpg to png converter, convert jpg to png online, jpeg to png)
+- webp to jpg -> https://freeconvert.cloud/webp-to-jpg/ (Image conversion; variants: webp to jpg converter, convert webp to jpg online, webp image to jpeg)
+- heic to jpg -> https://freeconvert.cloud/heic-to-jpg/ (Image conversion; variants: heic to jpg converter, iphone photo to jpg, convert heic to jpeg)
+- compress pdf -> https://freeconvert.cloud/compress-pdf/ (PDF compression; variants: compress pdf online, reduce pdf file size, pdf compressor)
+- pdf to word -> https://freeconvert.cloud/pdf-to-word/ (Document conversion; variants: pdf to word converter, pdf to docx, convert pdf to editable word)
+- word to pdf -> https://freeconvert.cloud/word-to-pdf/ (Document conversion; variants: word to pdf converter, docx to pdf, convert word document to pdf)
+- merge pdf -> https://freeconvert.cloud/merge-pdf/ (PDF editing; variants: merge pdf online, combine pdf files, pdf merger)
+- split pdf -> https://freeconvert.cloud/split-pdf/ (PDF editing; variants: split pdf online, extract pdf pages, pdf splitter)
+- image compressor -> https://freeconvert.cloud/image-compressor/ (Image compression; variants: compress image online, reduce image size, photo compressor)
+- compress image to 100kb -> https://freeconvert.cloud/compress-image-to-100kb/ (Image compression; variants: image compressor to 100kb, photo size reducer 100kb, compress jpg to 100kb)
+- resize image -> https://freeconvert.cloud/resize-image/ (Image editing; variants: image resizer online, resize photo online, change image dimensions)
+- png to webp -> https://freeconvert.cloud/png-to-webp/ (Image conversion; variants: png to webp converter, convert png to webp online, png webp optimizer)
+- jpg to webp -> https://freeconvert.cloud/jpg-to-webp/ (Image conversion; variants: jpg to webp converter, convert jpg to webp online, jpeg to webp)
+- mp4 to mp3 -> https://freeconvert.cloud/mp4-to-mp3/ (Media conversion; variants: mp4 to mp3 converter, extract audio from mp4, video to mp3)
+- webm to mp4 -> https://freeconvert.cloud/webm-to-mp4/ (Media conversion; variants: webm to mp4 converter, convert webm to mp4 online, webm video to mp4)
+- json to csv -> https://freeconvert.cloud/json-to-csv/ (Developer conversion; variants: json to csv converter, convert json to csv online, json array to csv)
+- qr code generator -> https://freeconvert.cloud/qr-code-generator/ (Utility tools; variants: free qr code generator, create qr code online, qr generator)
 
 ## Privacy & Safety Core Documents
 - File Security Info: https://freeconvert.cloud/security/
@@ -33,3 +57,9 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Terms of Service: https://freeconvert.cloud/terms/
 - Cookie Policy: https://freeconvert.cloud/cookies/
 - DMCA Abuse Policy: https://freeconvert.cloud/dmca/
+
+## Machine-Readable Discovery
+- Full LLM inventory: https://freeconvert.cloud/llms-full.txt
+- AI JSON index: https://freeconvert.cloud/ai-index.json
+- Keyword targets: https://freeconvert.cloud/seo-keyword-targets.json
+- XML sitemap: https://freeconvert.cloud/sitemap.xml

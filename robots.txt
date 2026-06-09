@@ -3,5 +3,10 @@ Allow: /
 Disallow: /tools/tool-template.html
 Disallow: /blog/blog-template.html
 Disallow: /*?*
+
+# AI and search discovery
+# LLM summary: https://freeconvert.cloud/llms.txt
+# Full AI index: https://freeconvert.cloud/ai-index.json
+# Keyword map: https://freeconvert.cloud/seo-keyword-targets.json
 Sitemap: https://freeconvert.cloud/sitemap.xml
 Host: freeconvert.cloud

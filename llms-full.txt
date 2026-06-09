@@ -1,0 +1,118 @@
+# freeconvert.cloud Full LLM Inventory
+
+## Site Summary
+freeconvert.cloud provides browser-first online file converters, PDF tools, image tools, media converters, developer utilities, text tools, security generators, and practical conversion guides.
+
+## Top Keyword Targets
+- pdf to jpg -> https://freeconvert.cloud/pdf-to-jpg/ (PDF conversion; variants: pdf to jpg converter, convert pdf to jpg online, pdf pages to jpg)
+- jpg to pdf -> https://freeconvert.cloud/jpg-to-pdf/ (PDF creation; variants: jpg to pdf converter, convert jpg to pdf online, image to pdf)
+- png to jpg -> https://freeconvert.cloud/png-to-jpg/ (Image conversion; variants: png to jpg converter, convert png to jpg online, png image to jpeg)
+- jpg to png -> https://freeconvert.cloud/jpg-to-png/ (Image conversion; variants: jpg to png converter, convert jpg to png online, jpeg to png)
+- webp to jpg -> https://freeconvert.cloud/webp-to-jpg/ (Image conversion; variants: webp to jpg converter, convert webp to jpg online, webp image to jpeg)
+- heic to jpg -> https://freeconvert.cloud/heic-to-jpg/ (Image conversion; variants: heic to jpg converter, iphone photo to jpg, convert heic to jpeg)
+- compress pdf -> https://freeconvert.cloud/compress-pdf/ (PDF compression; variants: compress pdf online, reduce pdf file size, pdf compressor)
+- pdf to word -> https://freeconvert.cloud/pdf-to-word/ (Document conversion; variants: pdf to word converter, pdf to docx, convert pdf to editable word)
+- word to pdf -> https://freeconvert.cloud/word-to-pdf/ (Document conversion; variants: word to pdf converter, docx to pdf, convert word document to pdf)
+- merge pdf -> https://freeconvert.cloud/merge-pdf/ (PDF editing; variants: merge pdf online, combine pdf files, pdf merger)
+- split pdf -> https://freeconvert.cloud/split-pdf/ (PDF editing; variants: split pdf online, extract pdf pages, pdf splitter)
+- image compressor -> https://freeconvert.cloud/image-compressor/ (Image compression; variants: compress image online, reduce image size, photo compressor)
+- compress image to 100kb -> https://freeconvert.cloud/compress-image-to-100kb/ (Image compression; variants: image compressor to 100kb, photo size reducer 100kb, compress jpg to 100kb)
+- resize image -> https://freeconvert.cloud/resize-image/ (Image editing; variants: image resizer online, resize photo online, change image dimensions)
+- png to webp -> https://freeconvert.cloud/png-to-webp/ (Image conversion; variants: png to webp converter, convert png to webp online, png webp optimizer)
+- jpg to webp -> https://freeconvert.cloud/jpg-to-webp/ (Image conversion; variants: jpg to webp converter, convert jpg to webp online, jpeg to webp)
+- mp4 to mp3 -> https://freeconvert.cloud/mp4-to-mp3/ (Media conversion; variants: mp4 to mp3 converter, extract audio from mp4, video to mp3)
+- webm to mp4 -> https://freeconvert.cloud/webm-to-mp4/ (Media conversion; variants: webm to mp4 converter, convert webm to mp4 online, webm video to mp4)
+- json to csv -> https://freeconvert.cloud/json-to-csv/ (Developer conversion; variants: json to csv converter, convert json to csv online, json array to csv)
+- qr code generator -> https://freeconvert.cloud/qr-code-generator/ (Utility tools; variants: free qr code generator, create qr code online, qr generator)
+
+## Complete Tool Inventory
+- PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - Convert PNG images to JPG instantly. Category: Image.
+- JPG to PNG: https://freeconvert.cloud/jpg-to-png/ - Transform JPG files with transparency. Category: Image.
+- WebP to JPG: https://freeconvert.cloud/webp-to-jpg/ - Convert WebP images to high-quality JPG. Category: Image.
+- HEIC to JPG: https://freeconvert.cloud/heic-to-jpg/ - Convert iPhone HEIC photos to generic JPG. Category: Image.
+- SVG to PNG: https://freeconvert.cloud/svg-to-png/ - Render SVG files as high-quality PNG images. Category: Image.
+- Color Palette Extractor: https://freeconvert.cloud/palette-extractor/ - Extract dominant colors from any image. Category: Image.
+- ICO Converter: https://freeconvert.cloud/ico-converter/ - Create standard Favicons (.ico) from images. Category: Image.
+- Image to Base64: https://freeconvert.cloud/image-to-base64/ - Convert images into Base64 Data URIs. Category: Designer.
+- Image Compressor: https://freeconvert.cloud/image-compressor/ - Reduce image file size with zero quality loss. Category: Image.
+- Compress Image to 100KB: https://freeconvert.cloud/compress-image-to-100kb/ - Reduce image files strictly under 100KB footprint. Category: Image.
+- Compress Image to 200KB: https://freeconvert.cloud/compress-image-to-200kb/ - Reduce image files strictly under 200KB footprint. Category: Image.
+- Resize Image: https://freeconvert.cloud/resize-image/ - Resize your images to custom dimensions. Category: Image.
+- Resize Image for Instagram: https://freeconvert.cloud/resize-image-for-instagram/ - Resize photos for Instagram Stories and Post grids. Category: Image.
+- Passport Photo Size Converter: https://freeconvert.cloud/passport-photo-size-converter/ - Resize photos to standard passport size requirements. Category: Image.
+- Compress PDF: https://freeconvert.cloud/compress-pdf/ - Reduce PDF byte footprint securely in browser. Category: PDF Tools.
+- PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - Extract PDF pages as high-quality JPG images. Category: PDF Tools.
+- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/ - Compile multiple images into a clean PDF document. Category: PDF Tools.
+- Merge PDF: https://freeconvert.cloud/merge-pdf/ - Combine multiple PDF files into one sequential document. Category: PDF Tools.
+- Split PDF: https://freeconvert.cloud/split-pdf/ - Extract selected pages from any PDF document. Category: PDF Tools.
+- PDF to Word: https://freeconvert.cloud/pdf-to-word/ - Convert PDF documents to editable Microsoft Word files. Category: PDF Tools.
+- Word to PDF: https://freeconvert.cloud/word-to-pdf/ - Convert DOCX documents to professional PDF files. Category: PDF Tools.
+- JSON Formatter: https://freeconvert.cloud/json-formatter/ - Beautify and indent raw minified JSON structures. Category: Developer.
+- JSON Validator: https://freeconvert.cloud/json-validator/ - Lint and validate JSON syntax in real-time. Category: Developer.
+- JSON to CSV: https://freeconvert.cloud/json-to-csv/ - Convert JSON data to CSV format instantly. Category: Developer.
+- CSV to JSON: https://freeconvert.cloud/csv-to-json/ - Convert CSV rows to JSON objects instantly. Category: Developer.
+- Base64 Encode: https://freeconvert.cloud/base64-encode/ - Encode plain text to safe Base64 strings. Category: Developer.
+- Base64 Decode: https://freeconvert.cloud/base64-decode/ - Decode Base64 strings back to plain text. Category: Developer.
+- URL Encoder: https://freeconvert.cloud/url-encoder/ - Encode text into percent-encoded URL formats. Category: Developer.
+- URL Decoder: https://freeconvert.cloud/url-decoder/ - Decode percent-encoded strings back to plain URLs. Category: Developer.
+- HTML Formatter: https://freeconvert.cloud/html-formatter/ - Beautify and format messy HTML markup code. Category: Developer.
+- CSS Formatter: https://freeconvert.cloud/css-formatter/ - Format and beautify CSS stylesheets. Category: Developer.
+- JavaScript Formatter: https://freeconvert.cloud/javascript-formatter/ - Beautify minified JS files and code snippets. Category: Developer.
+- SQL Formatter: https://freeconvert.cloud/sql-formatter/ - Beautify and format complex database queries. Category: Developer.
+- Markdown Editor: https://freeconvert.cloud/markdown-editor/ - Write Markdown text with real-time HTML preview. Category: Developer.
+- Text Diff Checker: https://freeconvert.cloud/diff-checker/ - Compare two texts to spot differences. Category: Developer.
+- Binary to Text: https://freeconvert.cloud/binary-text-converter/ - Convert text characters to Binary code. Category: Developer.
+- Unicode Converter: https://freeconvert.cloud/unicode-converter/ - Convert plain characters to Unicode blocks. Category: Developer.
+- Word Counter: https://freeconvert.cloud/word-counter/ - Analyze document lengths and keyword densities. Category: Text.
+- Character Counter: https://freeconvert.cloud/character-counter/ - Count total letters with and without spaces. Category: Text.
+- Meta Title Checker: https://freeconvert.cloud/meta-title-checker/ - Optimize SEO titles for Google visual constraints. Category: Text.
+- Meta Description Checker: https://freeconvert.cloud/meta-description-checker/ - Optimize search description widths in real-time. Category: Text.
+- Slug Generator: https://freeconvert.cloud/slug-generator/ - Convert titles into SEO clean URL paths. Category: Text.
+- Case Converter: https://freeconvert.cloud/case-converter/ - Change text layout formats (UPPERCASE, lowercase). Category: Text.
+- Remove Duplicate Lines: https://freeconvert.cloud/remove-duplicate-lines/ - Clean lists by removing identical repeating rows. Category: Text.
+- Text Cleaner: https://freeconvert.cloud/text-cleaner/ - Clean spaces, HTML elements, and layout symbols. Category: Text.
+- Lorem Ipsum Generator: https://freeconvert.cloud/lorem-ipsum-generator/ - Generate design placeholder text in bulk. Category: Utility.
+- Hashtag Generator: https://freeconvert.cloud/hashtag-generator/ - Create relevant social tags from sentences. Category: Text.
+- QR Code Generator: https://freeconvert.cloud/qr-code-generator/ - Create custom high-definition QR codes. Category: Utility.
+- Barcode Generator: https://freeconvert.cloud/barcode-generator/ - Render standard Code 128 visual barcodes. Category: Utility.
+- Password Generator: https://freeconvert.cloud/password-generator/ - Create secure cryptographically randomized keys. Category: Security.
+- Password Strength: https://freeconvert.cloud/password-strength/ - Evaluate password entropy grids in real-time. Category: Security.
+- Random Number Generator: https://freeconvert.cloud/random-number-generator/ - Roll randomized numbers within custom bounds. Category: Utility.
+- UUID Generator: https://freeconvert.cloud/uuid-generator/ - Create bulk cryptographically secure v4 UUIDs. Category: Utility.
+- Timestamp Converter: https://freeconvert.cloud/timestamp-converter/ - Convert human calendar dates to Unix time. Category: Utility.
+- Unix Time Converter: https://freeconvert.cloud/unix-time-converter/ - Convert Unix time seconds to humans calendar. Category: Utility.
+- Time Zone Converter: https://freeconvert.cloud/time-zone-converter/ - Compare global clock times across zones. Category: Utility.
+- Age Calculator: https://freeconvert.cloud/age-calculator/ - Calculate exact age in years, days and hours. Category: Utility.
+- Percentage Calculator: https://freeconvert.cloud/percentage-calculator/ - Calculate mathematical percentage increases. Category: Utility.
+- Hash Generator: https://freeconvert.cloud/hash-generator/ - Generate SHA256 and MD5 hashes securely. Category: Security.
+- Morse Code Converter: https://freeconvert.cloud/morse-code/ - Translate letters to Morse code and back. Category: Utility.
+- Unit Converter: https://freeconvert.cloud/unit-converter/ - Convert weights, distances and lengths. Category: Utility.
+- Internet Speed Test: https://freeconvert.cloud/speed-test/ - Test connection latency and bandwidth. Category: Utility.
+- Stopwatch & Timer: https://freeconvert.cloud/stopwatch/ - Accurate stopwatch with lap tracker. Category: Utility.
+- Aspect Ratio Calculator: https://freeconvert.cloud/aspect-ratio-calculator/ - Resolve pixel aspect ratio scaling visual grids. Category: Designer.
+- RGB to HEX Converter: https://freeconvert.cloud/rgb-hex-converter/ - Translate colors between RGB and HEX codes. Category: Designer.
+- MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/ - Extract raw audio tracks from video files. Category: Video Converter.
+- Video Compressor: https://freeconvert.cloud/video-compressor/ - Reduce video clip sizes and bitrates. Category: Video Converter.
+- WebM to MP4: https://freeconvert.cloud/webm-to-mp4/ - Transcode WebM assets to standard MP4 videos. Category: Video Converter.
+- JPG to WebP: https://freeconvert.cloud/jpg-to-webp/ - Convert JPG images to next-gen WebP format locally. Category: Image.
+- PNG to WebP: https://freeconvert.cloud/png-to-webp/ - Convert PNG images to next-gen WebP format locally. Category: Image.
+- YouTube Thumbnail Downloader: https://freeconvert.cloud/youtube-thumbnail-downloader/ - Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free. Category: Utility.
+- YAML to JSON: https://freeconvert.cloud/yaml-to-json/ - Convert YAML configs to clean JSON format online. Category: Developer.
+- JSON to YAML: https://freeconvert.cloud/json-to-yaml/ - Convert JSON strings to readable YAML blocks. Category: Developer.
+- Base64 to Image: https://freeconvert.cloud/base64-to-image/ - Convert Base64 code strings into visual images locally. Category: Utility.
+- Robots.txt Generator: https://freeconvert.cloud/robots-txt-generator/ - Generate custom robots.txt crawl directives for SEO optimization. Category: Utility.
+- HTML Minifier: https://freeconvert.cloud/html-minifier/ - Compress and minify HTML code footprint for faster page speeds. Category: Utility.
+
+## Editorial And Trust Signals
+- Editorial team: freeconvert.cloud Editorial Team.
+- Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
+- Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
+- Update marker: 2026-06-09.
+
+## Useful Discovery URLs
+- Sitemap: https://freeconvert.cloud/sitemap.xml
+- RSS feed: https://freeconvert.cloud/feed.xml
+- OpenSearch: https://freeconvert.cloud/opensearch.xml
+- Blog hub: https://freeconvert.cloud/blog/
+- Security: https://freeconvert.cloud/security/
+- Contact: https://freeconvert.cloud/contact/

@@ -291,6 +291,27 @@ def homepage_keyword_hub_html(tools):
     </section>"""
 
 
+def keyword_target_schema_tag():
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Top free online converter keyword targets",
+        "description": "High-intent file conversion searches mapped to freeconvert.cloud converter landing pages.",
+        "numberOfItems": len(TOP_KEYWORD_TARGETS),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": target["priority"],
+                "name": target["keyword"],
+                "url": f"{SITE_URL}/{target['tool_id']}/",
+                "description": target["intent"]
+            }
+            for target in TOP_KEYWORD_TARGETS
+        ]
+    }
+    return f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
+
+
 def tool_keyword_content_html(tool, tools):
     target = keyword_target_for_tool(tool['id'])
     if not target:
@@ -341,6 +362,21 @@ def build_keyword_research_file(tools):
         })
     Path('seo-keyword-targets.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
     print("Generated seo-keyword-targets.json with top 20 targets")
+
+
+def plain_text_from_html(fragment):
+    text = re.sub(r'<[^>]+>', ' ', fragment)
+    text = html.unescape(text)
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def how_to_steps_from_html(how_to):
+    steps = []
+    for item in re.findall(r'<li>(.*?)</li>', how_to, flags=re.S | re.I):
+        clean = plain_text_from_html(item)
+        if clean:
+            steps.append(clean)
+    return steps
 
 
 def normalize_generated_html_seo():
@@ -467,6 +503,9 @@ def build_sitemap(tools):
     for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
         add(public_url_for_html(hub_page), 'monthly', '0.6')
     add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
+    add(f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
+    add(f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
+    add(f'{SITE_URL}/seo-keyword-targets.json', 'weekly', '0.5', include_image=False)
     add(f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
     add(f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
     add(f'{SITE_URL}/opensearch.xml', 'monthly', '0.3', include_image=False)
@@ -2726,6 +2765,8 @@ def build_homepage(tools):
       ]
     }
     </script>
+
+    {KEYWORD_TARGET_SCHEMA}
 </head>
 
 <body>
@@ -3139,7 +3180,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag()).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -4231,9 +4272,29 @@ def generate_tool_adsense_content(tool):
     return use_cases_html, limitations, faq_html, faqs
 
 
-def build_discovery_files():
+def build_discovery_files(tools):
+    tools_by_id = {tool['id']: tool for tool in tools}
+    priority_tool_lines = []
+    for target in TOP_KEYWORD_TARGETS:
+        tool = tools_by_id.get(target['tool_id'])
+        if not tool:
+            continue
+        priority_tool_lines.append(
+            f"- {tool['name']}: {SITE_URL}/{tool['id']}/ - targets \"{target['keyword']}\"; intent: {target['intent']}"
+        )
+
+    all_tool_lines = [
+        f"- {tool['name']}: {SITE_URL}/{tool['id']}/ - {tool['description']} Category: {tool.get('category', 'Utility')}."
+        for tool in tools
+    ]
+
+    keyword_cluster_lines = [
+        f"- {target['keyword']} -> {SITE_URL}/{target['tool_id']}/ ({target['cluster']}; variants: {', '.join(target['modifiers'])})"
+        for target in TOP_KEYWORD_TARGETS
+    ]
+
     # 1. llms.txt
-    llms_content = """# freeconvert.cloud - Privacy-First File Converter Platform
+    llms_content = f"""# freeconvert.cloud - Privacy-First File Converter Platform
 
 ## Purpose
 freeconvert.cloud is a premium, secure, and fast browser-local file conversion platform designed to transcode documents, images, video, audio, archives, and developer structures cleanly with 100% user data privacy.
@@ -4249,16 +4310,10 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
 
 ## Priority Tools (High Content Depth)
-- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/
-- PNG to JPG: https://freeconvert.cloud/png-to-jpg/
-- PDF to Word: https://freeconvert.cloud/pdf-to-word/
-- MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/
-- JSON to CSV: https://freeconvert.cloud/json-to-csv/
-- CSV to JSON: https://freeconvert.cloud/csv-to-json/
-- Image Compressor: https://freeconvert.cloud/image-compressor/
-- Image Converter Hub: https://freeconvert.cloud/image-converter/
-- Document Converter Hub: https://freeconvert.cloud/document-converter/
-- PDF Tools Suite: https://freeconvert.cloud/pdf-tools/
+{chr(10).join(priority_tool_lines[:12])}
+
+## High-Intent Keyword Map
+{chr(10).join(keyword_cluster_lines)}
 
 ## Privacy & Safety Core Documents
 - File Security Info: https://freeconvert.cloud/security/
@@ -4268,10 +4323,90 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Terms of Service: https://freeconvert.cloud/terms/
 - Cookie Policy: https://freeconvert.cloud/cookies/
 - DMCA Abuse Policy: https://freeconvert.cloud/dmca/
+
+## Machine-Readable Discovery
+- Full LLM inventory: https://freeconvert.cloud/llms-full.txt
+- AI JSON index: https://freeconvert.cloud/ai-index.json
+- Keyword targets: https://freeconvert.cloud/seo-keyword-targets.json
+- XML sitemap: https://freeconvert.cloud/sitemap.xml
 """
     with open('llms.txt', 'w', encoding='utf-8') as f:
         f.write(llms_content)
     print("Generated `/llms.txt` successfully.")
+
+    llms_full_content = f"""# freeconvert.cloud Full LLM Inventory
+
+## Site Summary
+freeconvert.cloud provides browser-first online file converters, PDF tools, image tools, media converters, developer utilities, text tools, security generators, and practical conversion guides.
+
+## Top Keyword Targets
+{chr(10).join(keyword_cluster_lines)}
+
+## Complete Tool Inventory
+{chr(10).join(all_tool_lines)}
+
+## Editorial And Trust Signals
+- Editorial team: freeconvert.cloud Editorial Team.
+- Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
+- Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
+- Update marker: {TODAY_ISO}.
+
+## Useful Discovery URLs
+- Sitemap: {SITE_URL}/sitemap.xml
+- RSS feed: {SITE_URL}/feed.xml
+- OpenSearch: {SITE_URL}/opensearch.xml
+- Blog hub: {SITE_URL}/blog/
+- Security: {SITE_URL}/security/
+- Contact: {SITE_URL}/contact/
+"""
+    Path('llms-full.txt').write_text(llms_full_content, encoding='utf-8')
+    print("Generated `/llms-full.txt` successfully.")
+
+    ai_index = {
+        "name": "freeconvert.cloud",
+        "url": f"{SITE_URL}/",
+        "updated": TODAY_ISO,
+        "description": "Privacy-first online file conversion platform with image, PDF, document, media, developer, security, and utility tools.",
+        "entity_type": "WebApplication",
+        "trust": {
+            "editorial_team": "freeconvert.cloud Editorial Team",
+            "privacy_model": "Client-side browser sandbox for standard tools; encrypted transient edge sandboxes for heavy conversion jobs.",
+            "ads_policy": "Clearly labeled ads with no fake buttons or deceptive conversion controls."
+        },
+        "keyword_targets": [
+            {
+                "priority": target["priority"],
+                "keyword": target["keyword"],
+                "url": f"{SITE_URL}/{target['tool_id']}/",
+                "intent": target["intent"],
+                "cluster": target["cluster"],
+                "variants": target["modifiers"]
+            }
+            for target in TOP_KEYWORD_TARGETS
+        ],
+        "tools": [
+            {
+                "id": tool["id"],
+                "name": tool["name"],
+                "url": f"{SITE_URL}/{tool['id']}/",
+                "category": tool.get("category", "Utility"),
+                "description": tool["description"],
+                "title": tool.get("seo_title", tool["name"]),
+                "target_keyword": (keyword_target_for_tool(tool["id"]) or {}).get("keyword")
+            }
+            for tool in tools
+        ],
+        "discovery": {
+            "sitemap": f"{SITE_URL}/sitemap.xml",
+            "rss": f"{SITE_URL}/feed.xml",
+            "opensearch": f"{SITE_URL}/opensearch.xml",
+            "llms": f"{SITE_URL}/llms.txt",
+            "llms_full": f"{SITE_URL}/llms-full.txt",
+            "keyword_targets": f"{SITE_URL}/seo-keyword-targets.json"
+        }
+    }
+    Path('ai-index.json').write_text(json.dumps(ai_index, indent=2), encoding='utf-8')
+    print("Generated `/ai-index.json` successfully.")
 
     # 2. humans.txt
     humans_content = """/* TEAM */
@@ -4817,10 +4952,58 @@ def build():
         if keyword_target:
             software_app_schema["keywords"] = ', '.join([keyword_target['keyword']] + keyword_target['modifiers'])
 
+        how_to_steps = how_to_steps_from_html(how_to)
+        web_page_schema = {
+            "@type": "WebPage",
+            "name": tool.get('seo_title', tool['name']),
+            "description": tool.get('seo_desc', tool['description']),
+            "url": f"https://freeconvert.cloud/{t_id}/",
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": "freeconvert.cloud",
+                "url": "https://freeconvert.cloud/"
+            },
+            "about": {
+                "@type": "Thing",
+                "name": tool['name']
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": BRAND_IMAGE
+            },
+            "dateModified": TODAY_ISO
+        }
+        if keyword_target:
+            web_page_schema["keywords"] = ', '.join([keyword_target['keyword']] + keyword_target['modifiers'])
+
+        how_to_schema = {
+            "@type": "HowTo",
+            "name": f"How to use {tool['name']}",
+            "description": f"Step-by-step instructions for using {tool['name']} on freeconvert.cloud.",
+            "totalTime": "PT1M",
+            "tool": [
+                {
+                    "@type": "HowToTool",
+                    "name": "Modern web browser"
+                }
+            ],
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "position": i + 1,
+                    "name": f"Step {i + 1}",
+                    "text": step
+                }
+                for i, step in enumerate(how_to_steps)
+            ]
+        }
+
         schema_data = {
             "@context": "https://schema.org",
             "@graph": [
+                web_page_schema,
                 software_app_schema,
+                how_to_schema,
                 {
                     "@type": "FAQPage",
                     "mainEntity": faq_entities
@@ -4974,7 +5157,7 @@ def build():
     build_blog()
 
     # Generate discovery files (llms.txt & humans.txt)
-    build_discovery_files()
+    build_discovery_files(tools)
 
     # Generate enhanced technical SEO assets
     normalize_generated_html_seo()
@@ -5006,6 +5189,11 @@ Allow: /
 Disallow: /tools/tool-template.html
 Disallow: /blog/blog-template.html
 Disallow: /*?*
+
+# AI and search discovery
+# LLM summary: https://freeconvert.cloud/llms.txt
+# Full AI index: https://freeconvert.cloud/ai-index.json
+# Keyword map: https://freeconvert.cloud/seo-keyword-targets.json
 Sitemap: https://freeconvert.cloud/sitemap.xml
 Host: freeconvert.cloud
 """

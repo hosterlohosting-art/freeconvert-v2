@@ -1,0 +1,948 @@
+{
+  "name": "freeconvert.cloud",
+  "url": "https://freeconvert.cloud/",
+  "updated": "2026-06-09",
+  "description": "Privacy-first online file conversion platform with image, PDF, document, media, developer, security, and utility tools.",
+  "entity_type": "WebApplication",
+  "trust": {
+    "editorial_team": "freeconvert.cloud Editorial Team",
+    "privacy_model": "Client-side browser sandbox for standard tools; encrypted transient edge sandboxes for heavy conversion jobs.",
+    "ads_policy": "Clearly labeled ads with no fake buttons or deceptive conversion controls."
+  },
+  "keyword_targets": [
+    {
+      "priority": 1,
+      "keyword": "pdf to jpg",
+      "url": "https://freeconvert.cloud/pdf-to-jpg/",
+      "intent": "Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.",
+      "cluster": "PDF conversion",
+      "variants": [
+        "pdf to jpg converter",
+        "convert pdf to jpg online",
+        "pdf pages to jpg"
+      ]
+    },
+    {
+      "priority": 2,
+      "keyword": "jpg to pdf",
+      "url": "https://freeconvert.cloud/jpg-to-pdf/",
+      "intent": "Combine photos, scans, receipts, and screenshots into one PDF document.",
+      "cluster": "PDF creation",
+      "variants": [
+        "jpg to pdf converter",
+        "convert jpg to pdf online",
+        "image to pdf"
+      ]
+    },
+    {
+      "priority": 3,
+      "keyword": "png to jpg",
+      "url": "https://freeconvert.cloud/png-to-jpg/",
+      "intent": "Turn PNG images into smaller, widely supported JPG files.",
+      "cluster": "Image conversion",
+      "variants": [
+        "png to jpg converter",
+        "convert png to jpg online",
+        "png image to jpeg"
+      ]
+    },
+    {
+      "priority": 4,
+      "keyword": "jpg to png",
+      "url": "https://freeconvert.cloud/jpg-to-png/",
+      "intent": "Convert JPG photos into lossless PNG images for editing and design workflows.",
+      "cluster": "Image conversion",
+      "variants": [
+        "jpg to png converter",
+        "convert jpg to png online",
+        "jpeg to png"
+      ]
+    },
+    {
+      "priority": 5,
+      "keyword": "webp to jpg",
+      "url": "https://freeconvert.cloud/webp-to-jpg/",
+      "intent": "Make modern WebP images compatible with older apps, CMS uploads, and editors.",
+      "cluster": "Image conversion",
+      "variants": [
+        "webp to jpg converter",
+        "convert webp to jpg online",
+        "webp image to jpeg"
+      ]
+    },
+    {
+      "priority": 6,
+      "keyword": "heic to jpg",
+      "url": "https://freeconvert.cloud/heic-to-jpg/",
+      "intent": "Convert iPhone HEIC photos into universal JPG files.",
+      "cluster": "Image conversion",
+      "variants": [
+        "heic to jpg converter",
+        "iphone photo to jpg",
+        "convert heic to jpeg"
+      ]
+    },
+    {
+      "priority": 7,
+      "keyword": "compress pdf",
+      "url": "https://freeconvert.cloud/compress-pdf/",
+      "intent": "Reduce PDF file size for email, uploads, storage, and document sharing.",
+      "cluster": "PDF compression",
+      "variants": [
+        "compress pdf online",
+        "reduce pdf file size",
+        "pdf compressor"
+      ]
+    },
+    {
+      "priority": 8,
+      "keyword": "pdf to word",
+      "url": "https://freeconvert.cloud/pdf-to-word/",
+      "intent": "Convert PDF documents into editable Word DOCX files.",
+      "cluster": "Document conversion",
+      "variants": [
+        "pdf to word converter",
+        "pdf to docx",
+        "convert pdf to editable word"
+      ]
+    },
+    {
+      "priority": 9,
+      "keyword": "word to pdf",
+      "url": "https://freeconvert.cloud/word-to-pdf/",
+      "intent": "Export DOCX and Word documents into clean PDF files.",
+      "cluster": "Document conversion",
+      "variants": [
+        "word to pdf converter",
+        "docx to pdf",
+        "convert word document to pdf"
+      ]
+    },
+    {
+      "priority": 10,
+      "keyword": "merge pdf",
+      "url": "https://freeconvert.cloud/merge-pdf/",
+      "intent": "Combine multiple PDF files into one organized document.",
+      "cluster": "PDF editing",
+      "variants": [
+        "merge pdf online",
+        "combine pdf files",
+        "pdf merger"
+      ]
+    },
+    {
+      "priority": 11,
+      "keyword": "split pdf",
+      "url": "https://freeconvert.cloud/split-pdf/",
+      "intent": "Extract selected pages or split a PDF into smaller files.",
+      "cluster": "PDF editing",
+      "variants": [
+        "split pdf online",
+        "extract pdf pages",
+        "pdf splitter"
+      ]
+    },
+    {
+      "priority": 12,
+      "keyword": "image compressor",
+      "url": "https://freeconvert.cloud/image-compressor/",
+      "intent": "Shrink JPG, PNG, and WebP images while keeping useful visual quality.",
+      "cluster": "Image compression",
+      "variants": [
+        "compress image online",
+        "reduce image size",
+        "photo compressor"
+      ]
+    },
+    {
+      "priority": 13,
+      "keyword": "compress image to 100kb",
+      "url": "https://freeconvert.cloud/compress-image-to-100kb/",
+      "intent": "Reduce photos under 100KB for forms, job portals, and application uploads.",
+      "cluster": "Image compression",
+      "variants": [
+        "image compressor to 100kb",
+        "photo size reducer 100kb",
+        "compress jpg to 100kb"
+      ]
+    },
+    {
+      "priority": 14,
+      "keyword": "resize image",
+      "url": "https://freeconvert.cloud/resize-image/",
+      "intent": "Resize images to exact pixel dimensions for websites, social media, and forms.",
+      "cluster": "Image editing",
+      "variants": [
+        "image resizer online",
+        "resize photo online",
+        "change image dimensions"
+      ]
+    },
+    {
+      "priority": 15,
+      "keyword": "png to webp",
+      "url": "https://freeconvert.cloud/png-to-webp/",
+      "intent": "Convert PNG graphics to WebP for faster pages and smaller image delivery.",
+      "cluster": "Image conversion",
+      "variants": [
+        "png to webp converter",
+        "convert png to webp online",
+        "png webp optimizer"
+      ]
+    },
+    {
+      "priority": 16,
+      "keyword": "jpg to webp",
+      "url": "https://freeconvert.cloud/jpg-to-webp/",
+      "intent": "Convert JPG photos into lightweight WebP images for SEO speed gains.",
+      "cluster": "Image conversion",
+      "variants": [
+        "jpg to webp converter",
+        "convert jpg to webp online",
+        "jpeg to webp"
+      ]
+    },
+    {
+      "priority": 17,
+      "keyword": "mp4 to mp3",
+      "url": "https://freeconvert.cloud/mp4-to-mp3/",
+      "intent": "Extract audio from MP4 videos into MP3 files.",
+      "cluster": "Media conversion",
+      "variants": [
+        "mp4 to mp3 converter",
+        "extract audio from mp4",
+        "video to mp3"
+      ]
+    },
+    {
+      "priority": 18,
+      "keyword": "webm to mp4",
+      "url": "https://freeconvert.cloud/webm-to-mp4/",
+      "intent": "Convert WebM videos into widely compatible MP4 files.",
+      "cluster": "Media conversion",
+      "variants": [
+        "webm to mp4 converter",
+        "convert webm to mp4 online",
+        "webm video to mp4"
+      ]
+    },
+    {
+      "priority": 19,
+      "keyword": "json to csv",
+      "url": "https://freeconvert.cloud/json-to-csv/",
+      "intent": "Flatten JSON data into CSV rows for Excel, Sheets, and data imports.",
+      "cluster": "Developer conversion",
+      "variants": [
+        "json to csv converter",
+        "convert json to csv online",
+        "json array to csv"
+      ]
+    },
+    {
+      "priority": 20,
+      "keyword": "qr code generator",
+      "url": "https://freeconvert.cloud/qr-code-generator/",
+      "intent": "Create QR codes for links, menus, contact cards, events, and WiFi access.",
+      "cluster": "Utility tools",
+      "variants": [
+        "free qr code generator",
+        "create qr code online",
+        "qr generator"
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "png-to-jpg",
+      "name": "PNG to JPG",
+      "url": "https://freeconvert.cloud/png-to-jpg/",
+      "category": "Image",
+      "description": "Convert PNG images to JPG instantly.",
+      "title": "PNG to JPG Converter Online",
+      "target_keyword": "png to jpg"
+    },
+    {
+      "id": "jpg-to-png",
+      "name": "JPG to PNG",
+      "url": "https://freeconvert.cloud/jpg-to-png/",
+      "category": "Image",
+      "description": "Transform JPG files with transparency.",
+      "title": "JPG to PNG Converter Online",
+      "target_keyword": "jpg to png"
+    },
+    {
+      "id": "webp-to-jpg",
+      "name": "WebP to JPG",
+      "url": "https://freeconvert.cloud/webp-to-jpg/",
+      "category": "Image",
+      "description": "Convert WebP images to high-quality JPG.",
+      "title": "WebP to JPG Converter Online",
+      "target_keyword": "webp to jpg"
+    },
+    {
+      "id": "heic-to-jpg",
+      "name": "HEIC to JPG",
+      "url": "https://freeconvert.cloud/heic-to-jpg/",
+      "category": "Image",
+      "description": "Convert iPhone HEIC photos to generic JPG.",
+      "title": "HEIC to JPG Converter Online",
+      "target_keyword": "heic to jpg"
+    },
+    {
+      "id": "svg-to-png",
+      "name": "SVG to PNG",
+      "url": "https://freeconvert.cloud/svg-to-png/",
+      "category": "Image",
+      "description": "Render SVG files as high-quality PNG images.",
+      "title": "SVG to PNG Converter - Online Vector Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "palette-extractor",
+      "name": "Color Palette Extractor",
+      "url": "https://freeconvert.cloud/palette-extractor/",
+      "category": "Image",
+      "description": "Extract dominant colors from any image.",
+      "title": "Image Color Palette Generator - Extract Hex Codes",
+      "target_keyword": null
+    },
+    {
+      "id": "ico-converter",
+      "name": "ICO Converter",
+      "url": "https://freeconvert.cloud/ico-converter/",
+      "category": "Image",
+      "description": "Create standard Favicons (.ico) from images.",
+      "title": "Free ICO Converter - Make a Favicon",
+      "target_keyword": null
+    },
+    {
+      "id": "image-to-base64",
+      "name": "Image to Base64",
+      "url": "https://freeconvert.cloud/image-to-base64/",
+      "category": "Designer",
+      "description": "Convert images into Base64 Data URIs.",
+      "title": "Image to Base64 Converter - Online Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "image-compressor",
+      "name": "Image Compressor",
+      "url": "https://freeconvert.cloud/image-compressor/",
+      "category": "Image",
+      "description": "Reduce image file size with zero quality loss.",
+      "title": "Image Compressor Online Free",
+      "target_keyword": "image compressor"
+    },
+    {
+      "id": "compress-image-to-100kb",
+      "name": "Compress Image to 100KB",
+      "url": "https://freeconvert.cloud/compress-image-to-100kb/",
+      "category": "Image",
+      "description": "Reduce image files strictly under 100KB footprint.",
+      "title": "Compress Image to 100KB",
+      "target_keyword": "compress image to 100kb"
+    },
+    {
+      "id": "compress-image-to-200kb",
+      "name": "Compress Image to 200KB",
+      "url": "https://freeconvert.cloud/compress-image-to-200kb/",
+      "category": "Image",
+      "description": "Reduce image files strictly under 200KB footprint.",
+      "title": "Compress Image to 200KB Free - Online Photo Optimizer",
+      "target_keyword": null
+    },
+    {
+      "id": "resize-image",
+      "name": "Resize Image",
+      "url": "https://freeconvert.cloud/resize-image/",
+      "category": "Image",
+      "description": "Resize your images to custom dimensions.",
+      "title": "Resize Image Online Free",
+      "target_keyword": "resize image"
+    },
+    {
+      "id": "resize-image-for-instagram",
+      "name": "Resize Image for Instagram",
+      "url": "https://freeconvert.cloud/resize-image-for-instagram/",
+      "category": "Image",
+      "description": "Resize photos for Instagram Stories and Post grids.",
+      "title": "Resize Image for Instagram Online - Preset Ratio Converter",
+      "target_keyword": null
+    },
+    {
+      "id": "passport-photo-size-converter",
+      "name": "Passport Photo Size Converter",
+      "url": "https://freeconvert.cloud/passport-photo-size-converter/",
+      "category": "Image",
+      "description": "Resize photos to standard passport size requirements.",
+      "title": "Passport Photo Size Converter Online - Custom Maker",
+      "target_keyword": null
+    },
+    {
+      "id": "compress-pdf",
+      "name": "Compress PDF",
+      "url": "https://freeconvert.cloud/compress-pdf/",
+      "category": "PDF Tools",
+      "description": "Reduce PDF byte footprint securely in browser.",
+      "title": "Compress PDF Online Free",
+      "target_keyword": "compress pdf"
+    },
+    {
+      "id": "pdf-to-jpg",
+      "name": "PDF to JPG",
+      "url": "https://freeconvert.cloud/pdf-to-jpg/",
+      "category": "PDF Tools",
+      "description": "Extract PDF pages as high-quality JPG images.",
+      "title": "PDF to JPG Converter Online",
+      "target_keyword": "pdf to jpg"
+    },
+    {
+      "id": "jpg-to-pdf",
+      "name": "JPG to PDF",
+      "url": "https://freeconvert.cloud/jpg-to-pdf/",
+      "category": "PDF Tools",
+      "description": "Compile multiple images into a clean PDF document.",
+      "title": "JPG to PDF Converter Online",
+      "target_keyword": "jpg to pdf"
+    },
+    {
+      "id": "merge-pdf",
+      "name": "Merge PDF",
+      "url": "https://freeconvert.cloud/merge-pdf/",
+      "category": "PDF Tools",
+      "description": "Combine multiple PDF files into one sequential document.",
+      "title": "Merge PDF Online Free",
+      "target_keyword": "merge pdf"
+    },
+    {
+      "id": "split-pdf",
+      "name": "Split PDF",
+      "url": "https://freeconvert.cloud/split-pdf/",
+      "category": "PDF Tools",
+      "description": "Extract selected pages from any PDF document.",
+      "title": "Split PDF Online Free",
+      "target_keyword": "split pdf"
+    },
+    {
+      "id": "pdf-to-word",
+      "name": "PDF to Word",
+      "url": "https://freeconvert.cloud/pdf-to-word/",
+      "category": "PDF Tools",
+      "description": "Convert PDF documents to editable Microsoft Word files.",
+      "title": "PDF to Word Converter Online",
+      "target_keyword": "pdf to word"
+    },
+    {
+      "id": "word-to-pdf",
+      "name": "Word to PDF",
+      "url": "https://freeconvert.cloud/word-to-pdf/",
+      "category": "PDF Tools",
+      "description": "Convert DOCX documents to professional PDF files.",
+      "title": "Word to PDF Converter Online",
+      "target_keyword": "word to pdf"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "url": "https://freeconvert.cloud/json-formatter/",
+      "category": "Developer",
+      "description": "Beautify and indent raw minified JSON structures.",
+      "title": "JSON Formatter Online - Beautify and Clean JSON Data",
+      "target_keyword": null
+    },
+    {
+      "id": "json-validator",
+      "name": "JSON Validator",
+      "url": "https://freeconvert.cloud/json-validator/",
+      "category": "Developer",
+      "description": "Lint and validate JSON syntax in real-time.",
+      "title": "JSON Validator - Real-time JSON Syntax Lint",
+      "target_keyword": null
+    },
+    {
+      "id": "json-to-csv",
+      "name": "JSON to CSV",
+      "url": "https://freeconvert.cloud/json-to-csv/",
+      "category": "Developer",
+      "description": "Convert JSON data to CSV format instantly.",
+      "title": "JSON to CSV Converter Online",
+      "target_keyword": "json to csv"
+    },
+    {
+      "id": "csv-to-json",
+      "name": "CSV to JSON",
+      "url": "https://freeconvert.cloud/csv-to-json/",
+      "category": "Developer",
+      "description": "Convert CSV rows to JSON objects instantly.",
+      "title": "Free CSV to JSON Converter Online - Secure",
+      "target_keyword": null
+    },
+    {
+      "id": "base64-encode",
+      "name": "Base64 Encode",
+      "url": "https://freeconvert.cloud/base64-encode/",
+      "category": "Developer",
+      "description": "Encode plain text to safe Base64 strings.",
+      "title": "Base64 Encode Online - Convert Text to Base64",
+      "target_keyword": null
+    },
+    {
+      "id": "base64-decode",
+      "name": "Base64 Decode",
+      "url": "https://freeconvert.cloud/base64-decode/",
+      "category": "Developer",
+      "description": "Decode Base64 strings back to plain text.",
+      "title": "Base64 Decode Online - Convert Base64 back to Text",
+      "target_keyword": null
+    },
+    {
+      "id": "url-encoder",
+      "name": "URL Encoder",
+      "url": "https://freeconvert.cloud/url-encoder/",
+      "category": "Developer",
+      "description": "Encode text into percent-encoded URL formats.",
+      "title": "URL Encoder Online - Percent-Encode Strings",
+      "target_keyword": null
+    },
+    {
+      "id": "url-decoder",
+      "name": "URL Decoder",
+      "url": "https://freeconvert.cloud/url-decoder/",
+      "category": "Developer",
+      "description": "Decode percent-encoded strings back to plain URLs.",
+      "title": "URL Decoder Online - Decode Percent-Encoded URLs",
+      "target_keyword": null
+    },
+    {
+      "id": "html-formatter",
+      "name": "HTML Formatter",
+      "url": "https://freeconvert.cloud/html-formatter/",
+      "category": "Developer",
+      "description": "Beautify and format messy HTML markup code.",
+      "title": "Online HTML Formatter - Beautify HTML Code",
+      "target_keyword": null
+    },
+    {
+      "id": "css-formatter",
+      "name": "CSS Formatter",
+      "url": "https://freeconvert.cloud/css-formatter/",
+      "category": "Developer",
+      "description": "Format and beautify CSS stylesheets.",
+      "title": "Online CSS Formatter - Clean Up Your Styles",
+      "target_keyword": null
+    },
+    {
+      "id": "javascript-formatter",
+      "name": "JavaScript Formatter",
+      "url": "https://freeconvert.cloud/javascript-formatter/",
+      "category": "Developer",
+      "description": "Beautify minified JS files and code snippets.",
+      "title": "JavaScript Formatter - Beautify JS Code Online",
+      "target_keyword": null
+    },
+    {
+      "id": "sql-formatter",
+      "name": "SQL Formatter",
+      "url": "https://freeconvert.cloud/sql-formatter/",
+      "category": "Developer",
+      "description": "Beautify and format complex database queries.",
+      "title": "Free SQL Formatter - Beautify SQL Online",
+      "target_keyword": null
+    },
+    {
+      "id": "markdown-editor",
+      "name": "Markdown Editor",
+      "url": "https://freeconvert.cloud/markdown-editor/",
+      "category": "Developer",
+      "description": "Write Markdown text with real-time HTML preview.",
+      "title": "Online Markdown Editor with Real-time Preview",
+      "target_keyword": null
+    },
+    {
+      "id": "diff-checker",
+      "name": "Text Diff Checker",
+      "url": "https://freeconvert.cloud/diff-checker/",
+      "category": "Developer",
+      "description": "Compare two texts to spot differences.",
+      "title": "Online Text Diff Checker - Compare Files",
+      "target_keyword": null
+    },
+    {
+      "id": "binary-text-converter",
+      "name": "Binary to Text",
+      "url": "https://freeconvert.cloud/binary-text-converter/",
+      "category": "Developer",
+      "description": "Convert text characters to Binary code.",
+      "title": "Binary to Text Converter - ASCII Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "unicode-converter",
+      "name": "Unicode Converter",
+      "url": "https://freeconvert.cloud/unicode-converter/",
+      "category": "Developer",
+      "description": "Convert plain characters to Unicode blocks.",
+      "title": "Unicode Text Converter - Encode & Decode Online",
+      "target_keyword": null
+    },
+    {
+      "id": "word-counter",
+      "name": "Word Counter",
+      "url": "https://freeconvert.cloud/word-counter/",
+      "category": "Text",
+      "description": "Analyze document lengths and keyword densities.",
+      "title": "Free Online Word Counter - Accuracy Matters",
+      "target_keyword": null
+    },
+    {
+      "id": "character-counter",
+      "name": "Character Counter",
+      "url": "https://freeconvert.cloud/character-counter/",
+      "category": "Text",
+      "description": "Count total letters with and without spaces.",
+      "title": "Character Counter Online - Letter and Word Counter",
+      "target_keyword": null
+    },
+    {
+      "id": "meta-title-checker",
+      "name": "Meta Title Checker",
+      "url": "https://freeconvert.cloud/meta-title-checker/",
+      "category": "Text",
+      "description": "Optimize SEO titles for Google visual constraints.",
+      "title": "Google Meta Title Length Checker - SERP Optimizer",
+      "target_keyword": null
+    },
+    {
+      "id": "meta-description-checker",
+      "name": "Meta Description Checker",
+      "url": "https://freeconvert.cloud/meta-description-checker/",
+      "category": "Text",
+      "description": "Optimize search description widths in real-time.",
+      "title": "Meta Description Length Checker - Google SERP Preview",
+      "target_keyword": null
+    },
+    {
+      "id": "slug-generator",
+      "name": "Slug Generator",
+      "url": "https://freeconvert.cloud/slug-generator/",
+      "category": "Text",
+      "description": "Convert titles into SEO clean URL paths.",
+      "title": "SEO Slug Generator Online - Create Clean URLs",
+      "target_keyword": null
+    },
+    {
+      "id": "case-converter",
+      "name": "Case Converter",
+      "url": "https://freeconvert.cloud/case-converter/",
+      "category": "Text",
+      "description": "Change text layout formats (UPPERCASE, lowercase).",
+      "title": "Online Case Converter - Change Text Case Instantly",
+      "target_keyword": null
+    },
+    {
+      "id": "remove-duplicate-lines",
+      "name": "Remove Duplicate Lines",
+      "url": "https://freeconvert.cloud/remove-duplicate-lines/",
+      "category": "Text",
+      "description": "Clean lists by removing identical repeating rows.",
+      "title": "Remove Duplicate Lines Online - Text Clean Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "text-cleaner",
+      "name": "Text Cleaner",
+      "url": "https://freeconvert.cloud/text-cleaner/",
+      "category": "Text",
+      "description": "Clean spaces, HTML elements, and layout symbols.",
+      "title": "Text Cleaner Online - Strip HTML & Trim Spaces",
+      "target_keyword": null
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "name": "Lorem Ipsum Generator",
+      "url": "https://freeconvert.cloud/lorem-ipsum-generator/",
+      "category": "Utility",
+      "description": "Generate design placeholder text in bulk.",
+      "title": "Lorem Ipsum Generator - Free Dummy Text Creator",
+      "target_keyword": null
+    },
+    {
+      "id": "hashtag-generator",
+      "name": "Hashtag Generator",
+      "url": "https://freeconvert.cloud/hashtag-generator/",
+      "category": "Text",
+      "description": "Create relevant social tags from sentences.",
+      "title": "Hashtag Generator Free - Instagram & Social Media Tags",
+      "target_keyword": null
+    },
+    {
+      "id": "qr-code-generator",
+      "name": "QR Code Generator",
+      "url": "https://freeconvert.cloud/qr-code-generator/",
+      "category": "Utility",
+      "description": "Create custom high-definition QR codes.",
+      "title": "QR Code Generator Online Free",
+      "target_keyword": "qr code generator"
+    },
+    {
+      "id": "barcode-generator",
+      "name": "Barcode Generator",
+      "url": "https://freeconvert.cloud/barcode-generator/",
+      "category": "Utility",
+      "description": "Render standard Code 128 visual barcodes.",
+      "title": "Free Barcode Generator - Create Code 128 Barcodes",
+      "target_keyword": null
+    },
+    {
+      "id": "password-generator",
+      "name": "Password Generator",
+      "url": "https://freeconvert.cloud/password-generator/",
+      "category": "Security",
+      "description": "Create secure cryptographically randomized keys.",
+      "title": "Secure Password Generator - Protect Your Accounts",
+      "target_keyword": null
+    },
+    {
+      "id": "password-strength",
+      "name": "Password Strength",
+      "url": "https://freeconvert.cloud/password-strength/",
+      "category": "Security",
+      "description": "Evaluate password entropy grids in real-time.",
+      "title": "Password Strength Tester - Check Security",
+      "target_keyword": null
+    },
+    {
+      "id": "random-number-generator",
+      "name": "Random Number Generator",
+      "url": "https://freeconvert.cloud/random-number-generator/",
+      "category": "Utility",
+      "description": "Roll randomized numbers within custom bounds.",
+      "title": "Random Number Generator - Pick Numbers Online",
+      "target_keyword": null
+    },
+    {
+      "id": "uuid-generator",
+      "name": "UUID Generator",
+      "url": "https://freeconvert.cloud/uuid-generator/",
+      "category": "Utility",
+      "description": "Create bulk cryptographically secure v4 UUIDs.",
+      "title": "Bulk UUID Generator - Cryptographic v4 UUID Maker",
+      "target_keyword": null
+    },
+    {
+      "id": "timestamp-converter",
+      "name": "Timestamp Converter",
+      "url": "https://freeconvert.cloud/timestamp-converter/",
+      "category": "Utility",
+      "description": "Convert human calendar dates to Unix time.",
+      "title": "Unix Timestamp Converter - Epoch Date Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "unix-time-converter",
+      "name": "Unix Time Converter",
+      "url": "https://freeconvert.cloud/unix-time-converter/",
+      "category": "Utility",
+      "description": "Convert Unix time seconds to humans calendar.",
+      "title": "Unix Time Converter - Human Date to Epoch",
+      "target_keyword": null
+    },
+    {
+      "id": "time-zone-converter",
+      "name": "Time Zone Converter",
+      "url": "https://freeconvert.cloud/time-zone-converter/",
+      "category": "Utility",
+      "description": "Compare global clock times across zones.",
+      "title": "Time Zone Converter - Compare Global Times",
+      "target_keyword": null
+    },
+    {
+      "id": "age-calculator",
+      "name": "Age Calculator",
+      "url": "https://freeconvert.cloud/age-calculator/",
+      "category": "Utility",
+      "description": "Calculate exact age in years, days and hours.",
+      "title": "Age Calculator - Calculate Exact Age Online",
+      "target_keyword": null
+    },
+    {
+      "id": "percentage-calculator",
+      "name": "Percentage Calculator",
+      "url": "https://freeconvert.cloud/percentage-calculator/",
+      "category": "Utility",
+      "description": "Calculate mathematical percentage increases.",
+      "title": "Percentage Calculator - Free Online Math Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "hash-generator",
+      "name": "Hash Generator",
+      "url": "https://freeconvert.cloud/hash-generator/",
+      "category": "Security",
+      "description": "Generate SHA256 and MD5 hashes securely.",
+      "title": "SHA256 & MD5 Hash Generator - Secure Online Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "morse-code",
+      "name": "Morse Code Converter",
+      "url": "https://freeconvert.cloud/morse-code/",
+      "category": "Utility",
+      "description": "Translate letters to Morse code and back.",
+      "title": "Online Morse Code Translator - Text to Morse",
+      "target_keyword": null
+    },
+    {
+      "id": "unit-converter",
+      "name": "Unit Converter",
+      "url": "https://freeconvert.cloud/unit-converter/",
+      "category": "Utility",
+      "description": "Convert weights, distances and lengths.",
+      "title": "All-in-One Unit Converter - Length, Weight, Temp",
+      "target_keyword": null
+    },
+    {
+      "id": "speed-test",
+      "name": "Internet Speed Test",
+      "url": "https://freeconvert.cloud/speed-test/",
+      "category": "Utility",
+      "description": "Test connection latency and bandwidth.",
+      "title": "Simple Internet Speed Test - Check Connectivity",
+      "target_keyword": null
+    },
+    {
+      "id": "stopwatch",
+      "name": "Stopwatch & Timer",
+      "url": "https://freeconvert.cloud/stopwatch/",
+      "category": "Utility",
+      "description": "Accurate stopwatch with lap tracker.",
+      "title": "Free Online Stopwatch and Countdown Timer",
+      "target_keyword": null
+    },
+    {
+      "id": "aspect-ratio-calculator",
+      "name": "Aspect Ratio Calculator",
+      "url": "https://freeconvert.cloud/aspect-ratio-calculator/",
+      "category": "Designer",
+      "description": "Resolve pixel aspect ratio scaling visual grids.",
+      "title": "Free Aspect Ratio Calculator - UI/UX Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "rgb-hex-converter",
+      "name": "RGB to HEX Converter",
+      "url": "https://freeconvert.cloud/rgb-hex-converter/",
+      "category": "Designer",
+      "description": "Translate colors between RGB and HEX codes.",
+      "title": "RGB to HEX Color Converter - Designer Tool",
+      "target_keyword": null
+    },
+    {
+      "id": "mp4-to-mp3",
+      "name": "MP4 to MP3",
+      "url": "https://freeconvert.cloud/mp4-to-mp3/",
+      "category": "Video Converter",
+      "description": "Extract raw audio tracks from video files.",
+      "title": "MP4 to MP3 Converter Online",
+      "target_keyword": "mp4 to mp3"
+    },
+    {
+      "id": "video-compressor",
+      "name": "Video Compressor",
+      "url": "https://freeconvert.cloud/video-compressor/",
+      "category": "Video Converter",
+      "description": "Reduce video clip sizes and bitrates.",
+      "title": "Online Video Compressor - Shrink Video Files",
+      "target_keyword": null
+    },
+    {
+      "id": "webm-to-mp4",
+      "name": "WebM to MP4",
+      "url": "https://freeconvert.cloud/webm-to-mp4/",
+      "category": "Video Converter",
+      "description": "Transcode WebM assets to standard MP4 videos.",
+      "title": "WebM to MP4 Converter Online",
+      "target_keyword": "webm to mp4"
+    },
+    {
+      "id": "jpg-to-webp",
+      "name": "JPG to WebP",
+      "url": "https://freeconvert.cloud/jpg-to-webp/",
+      "category": "Image",
+      "description": "Convert JPG images to next-gen WebP format locally.",
+      "title": "JPG to WebP Converter Online",
+      "target_keyword": "jpg to webp"
+    },
+    {
+      "id": "png-to-webp",
+      "name": "PNG to WebP",
+      "url": "https://freeconvert.cloud/png-to-webp/",
+      "category": "Image",
+      "description": "Convert PNG images to next-gen WebP format locally.",
+      "title": "PNG to WebP Converter Online",
+      "target_keyword": "png to webp"
+    },
+    {
+      "id": "youtube-thumbnail-downloader",
+      "name": "YouTube Thumbnail Downloader",
+      "url": "https://freeconvert.cloud/youtube-thumbnail-downloader/",
+      "category": "Utility",
+      "description": "Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free.",
+      "title": "YouTube Thumbnail Downloader - Free HD Image Grabber",
+      "target_keyword": null
+    },
+    {
+      "id": "yaml-to-json",
+      "name": "YAML to JSON",
+      "url": "https://freeconvert.cloud/yaml-to-json/",
+      "category": "Developer",
+      "description": "Convert YAML configs to clean JSON format online.",
+      "title": "YAML to JSON Converter - Free & Secure",
+      "target_keyword": null
+    },
+    {
+      "id": "json-to-yaml",
+      "name": "JSON to YAML",
+      "url": "https://freeconvert.cloud/json-to-yaml/",
+      "category": "Developer",
+      "description": "Convert JSON strings to readable YAML blocks.",
+      "title": "JSON to YAML Converter - Convert JSON to YAML Online",
+      "target_keyword": null
+    },
+    {
+      "id": "base64-to-image",
+      "name": "Base64 to Image",
+      "url": "https://freeconvert.cloud/base64-to-image/",
+      "category": "Utility",
+      "description": "Convert Base64 code strings into visual images locally.",
+      "title": "Base64 to Image Converter - Online Free Decoder",
+      "target_keyword": null
+    },
+    {
+      "id": "robots-txt-generator",
+      "name": "Robots.txt Generator",
+      "url": "https://freeconvert.cloud/robots-txt-generator/",
+      "category": "Utility",
+      "description": "Generate custom robots.txt crawl directives for SEO optimization.",
+      "title": "Robots.txt Generator Online Free - Custom SEO Crawler Rules",
+      "target_keyword": null
+    },
+    {
+      "id": "html-minifier",
+      "name": "HTML Minifier",
+      "url": "https://freeconvert.cloud/html-minifier/",
+      "category": "Utility",
+      "description": "Compress and minify HTML code footprint for faster page speeds.",
+      "title": "HTML Minifier & Compressor - Optimize Page Speeds Online",
+      "target_keyword": null
+    }
+  ],
+  "discovery": {
+    "sitemap": "https://freeconvert.cloud/sitemap.xml",
+    "rss": "https://freeconvert.cloud/feed.xml",
+    "opensearch": "https://freeconvert.cloud/opensearch.xml",
+    "llms": "https://freeconvert.cloud/llms.txt",
+    "llms_full": "https://freeconvert.cloud/llms-full.txt",
+    "keyword_targets": "https://freeconvert.cloud/seo-keyword-targets.json"
+  }
+}
