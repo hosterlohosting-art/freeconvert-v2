@@ -476,49 +476,75 @@ def sitemap_url_entry(loc, changefreq, priority, include_image=True):
 
 def build_sitemap(tools):
     seen = set()
-    entries = []
+    groups = {
+        'pages': [],
+        'tools': [],
+        'blog': [],
+        'discovery': [],
+    }
 
-    def add(loc, changefreq, priority, include_image=True):
+    def add(group, loc, changefreq, priority, include_image=True):
         if loc in seen:
             return
         seen.add(loc)
-        entries.append(sitemap_url_entry(loc, changefreq, priority, include_image))
+        groups[group].append(sitemap_url_entry(loc, changefreq, priority, include_image))
 
-    add(f'{SITE_URL}/', 'daily', '1.0')
+    add('pages', f'{SITE_URL}/', 'daily', '1.0')
     for slug in ['pricing', 'api']:
-        add(f'{SITE_URL}/{slug}/', 'weekly', '0.9')
+        add('pages', f'{SITE_URL}/{slug}/', 'weekly', '0.9')
     for _, cat in CATEGORIES.items():
-        add(f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
+        add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
     for tool in tools:
-        add(f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
-    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies']:
-        add(f'{SITE_URL}/{leg}/', 'monthly', '0.5')
-    add(f'{SITE_URL}/blog/', 'weekly', '0.8')
+        add('tools', f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
+    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'help']:
+        add('pages', f'{SITE_URL}/{leg}/', 'monthly', '0.5')
+    add('blog', f'{SITE_URL}/blog/', 'weekly', '0.8')
     for article in BLOG_ARTICLES:
-        add(f'{SITE_URL}/blog/{article["slug"]}/', 'weekly', '0.7')
+        add('blog', f'{SITE_URL}/blog/{article["slug"]}/', 'weekly', '0.7')
     for blog_dir in Path('blog').glob('*/index.html'):
         rel = blog_dir.parent.name
         if rel != 'hub-pages':
-            add(f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
+            add('blog', f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
     for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
-        add(public_url_for_html(hub_page), 'monthly', '0.6')
-    add(f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
-    add(f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
-    add(f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
-    add(f'{SITE_URL}/seo-keyword-targets.json', 'weekly', '0.5', include_image=False)
-    add(f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
-    add(f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
-    add(f'{SITE_URL}/opensearch.xml', 'monthly', '0.3', include_image=False)
+        add('blog', public_url_for_html(hub_page), 'monthly', '0.6')
+    add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
+    add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
+    add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
+    add('discovery', f'{SITE_URL}/seo-keyword-targets.json', 'weekly', '0.5', include_image=False)
+    add('discovery', f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
+    add('discovery', f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
+    add('discovery', f'{SITE_URL}/opensearch.xml', 'monthly', '0.3', include_image=False)
 
-    sitemap_content = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
-        'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
-        + ''.join(entries)
-        + '</urlset>'
+    sitemaps_dir = Path('sitemaps')
+    sitemaps_dir.mkdir(exist_ok=True)
+    shard_names = []
+    for name, group_entries in groups.items():
+        shard_names.append(name)
+        sitemap_content = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+            'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+            + ''.join(group_entries)
+            + '</urlset>'
+        )
+        (sitemaps_dir / f'{name}.xml').write_text(sitemap_content, encoding='utf-8')
+
+    index_entries = ''.join(
+        '  <sitemap>\n'
+        f'    <loc>{SITE_URL}/sitemaps/{name}.xml</loc>\n'
+        f'    <lastmod>{TODAY_ISO}</lastmod>\n'
+        '  </sitemap>\n'
+        for name in shard_names
     )
-    Path('sitemap.xml').write_text(sitemap_content, encoding='utf-8')
-    print(f"Generated enhanced sitemap.xml with {len(entries)} URLs")
+    sitemap_index = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + index_entries
+        + '</sitemapindex>'
+    )
+    Path('sitemap-index.xml').write_text(sitemap_index, encoding='utf-8')
+    Path('sitemap.xml').write_text(sitemap_index, encoding='utf-8')
+    print(f"Generated sitemap index with {len(seen)} URLs across {len(shard_names)} sitemap files")
 
 
 def build_static_seo_assets():
@@ -547,7 +573,54 @@ def build_static_seo_assets():
     well_known = Path('.well-known')
     well_known.mkdir(exist_ok=True)
     (well_known / 'security.txt').write_text(security_txt, encoding='utf-8')
-    print("Generated site.webmanifest and .well-known/security.txt")
+
+    htaccess = """# freeconvert.cloud technical SEO, security, and cache rules
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+  <FilesMatch "\\.(css|js|png|jpg|jpeg|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+  </FilesMatch>
+  <FilesMatch "\\.(html|xml|json|txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType application/json "access plus 1 day"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+"""
+    Path('.htaccess').write_text(htaccess, encoding='utf-8')
+    print("Generated site.webmanifest, .well-known/security.txt, and .htaccess")
 
 
 def build_rss_feed():
@@ -593,6 +666,34 @@ def build_opensearch_file():
 </OpenSearchDescription>'''
     Path('opensearch.xml').write_text(opensearch, encoding='utf-8')
     print("Generated opensearch.xml")
+
+
+def build_minified_asset_aliases():
+    asset_pairs = [
+        (Path('style.css'), Path('style.min.css')),
+        (Path('main.js'), Path('main.min.js')),
+        (Path('tools/tool-logic.js'), Path('tools/tool-logic.min.js')),
+        (Path('tools/tools-data.js'), Path('tools/tools-data.min.js')),
+    ]
+    for source, target in asset_pairs:
+        if source.exists():
+            target.write_text(source.read_text(encoding='utf-8'), encoding='utf-8')
+
+    replacements = {
+        '/style.css': '/style.min.css',
+        '/main.js': '/main.min.js',
+        '/tools/tool-logic.js': '/tools/tool-logic.min.js',
+        '/tools/tools-data.js': '/tools/tools-data.min.js',
+    }
+    for html_path in iter_public_html_files():
+        html_content = html_path.read_text(encoding='utf-8')
+        updated = html_content
+        for original, minified in replacements.items():
+            updated = updated.replace(original, minified)
+        if updated != html_content:
+            html_path.write_text(updated, encoding='utf-8')
+    print("Generated .min asset aliases and updated HTML references")
+
 
 # Categories configurations
 CATEGORIES = {
@@ -1749,18 +1850,18 @@ if (toolId === 'lorem-ipsum') {
             <div id="yt-thumbs-preview" style="display: none; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
                 <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1.5rem; gap: 1rem;">
                     <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);">MAX RESOLUTION (1080p Full HD)</span>
-                    <img id="thumb-max" style="width: 100%; max-width: 480px; border-radius: 8px; border: 1px solid var(--border-color);" src="" alt="Max Res Thumbnail">
+                    <img id="thumb-max" style="width: 100%; max-width: 480px; border-radius: 8px; border: 1px solid var(--border-color);" src="" alt="Max Res Thumbnail" loading="lazy" decoding="async">
                     <a id="link-max" class="btn secondary" href="" download target="_blank">📥 Download HD Thumbnail</a>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
                         <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-secondary);">HIGH QUALITY (640x480)</span>
-                        <img id="thumb-hq" style="width: 100%; border-radius: 6px;" src="" alt="HQ Thumbnail">
+                        <img id="thumb-hq" style="width: 100%; border-radius: 6px;" src="" alt="HQ Thumbnail" loading="lazy" decoding="async">
                         <a id="link-hq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download HQ</a>
                     </div>
                     <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
                         <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-accent);">MEDIUM QUALITY (320x180)</span>
-                        <img id="thumb-mq" style="width: 100%; border-radius: 6px;" src="" alt="MQ Thumbnail">
+                        <img id="thumb-mq" style="width: 100%; border-radius: 6px;" src="" alt="MQ Thumbnail" loading="lazy" decoding="async">
                         <a id="link-mq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download MQ</a>
                     </div>
                 </div>
@@ -1809,7 +1910,7 @@ if (toolId === 'lorem-ipsum') {
             
             <div id="base64-preview-wrap" style="display: none; flex-direction: column; align-items: center; background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); gap: 1.2rem;">
                 <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);">🖼️ Image Preview</span>
-                <img id="base64-img-preview" style="max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow);" src="" alt="Decoded Image">
+                <img id="base64-img-preview" style="max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow);" src="" alt="Decoded Image" loading="lazy" decoding="async">
                 <div style="display:flex; gap:10px;">
                     <a id="base64-download-btn" class="btn secondary" href="" download="decoded-image.png">📥 Download Image</a>
                 </div>
@@ -2447,7 +2548,7 @@ HEADER_SNIPPET = """
     <header class="header-glass">
         <nav class="navbar">
             <a href="/" class="logo">
-                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;">
+                <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -2501,7 +2602,7 @@ FOOTER_SNIPPET = """
 
         <div class="footer-content">
             <div class="footer-brand">
-                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;"></a>
+                <a href="/"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
                     <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
@@ -2557,6 +2658,7 @@ FOOTER_SNIPPET = """
                     <a href="/pricing/">Plan Pricing</a>
                     <a href="/api/">Developer API</a>
                     <a href="/blog/">Blog &amp; Guides</a>
+                    <a href="/help/">Help &amp; FAQ</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
@@ -3170,9 +3272,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
 
     {FOOTER_SNIPPET}
 
-    <script>
-        window.TOOLS_DATA = {TOOLS_DATA_INJECT};
-    </script>
+    <script src="/tools/tools-data.js"></script>
     <script src="/tools/tool-logic.js"></script>
     <script>
         {UPLOAD_BOX_SCRIPT}
@@ -3180,7 +3280,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag()).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{TOOLS_DATA_INJECT}', json.dumps(tools, indent=4))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag()).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -3881,6 +3981,30 @@ def build_legal_pages():
             
             <h2>Response Times</h2>
             <p>Free plan queries are typically reviewed within 48 hours. Pro and Enterprise Developer API subscribers receive priority routing, ensuring direct expert assistance within a guaranteed 2-hour window.</p>"""
+        },
+        'help': {
+            'title': 'Help & FAQ',
+            'desc': 'Find answers about free online file conversion, PDF tools, image converters, privacy, upload limits, and troubleshooting.',
+            'content': """<h2>Frequently Asked Questions</h2>
+            <p>This help center answers the most common questions about using freeconvert.cloud for PDF, image, document, audio, video, archive, and developer file conversion workflows.</p>
+
+            <h2>How do I convert a file online?</h2>
+            <p>Open the converter you need, choose your file, review the selected output format, and click the conversion button. Popular starting points include <a href="/pdf-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PDF to JPG</a>, <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JPG to PDF</a>, <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a>, and <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Compress PDF</a>.</p>
+
+            <h2>Are my files private?</h2>
+            <p>Many image, text, code, color, hash, and utility tools run directly inside your browser. For conversion workflows that require server processing, files are transferred over HTTPS and are designed to be deleted automatically after processing.</p>
+
+            <h2>What are the free file limits?</h2>
+            <p>The free plan is designed for everyday conversion tasks and smaller files. Larger documents, batch conversions, and high-volume workflows are available through the Pro and Developer API plans on the <a href="/pricing/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">pricing page</a>.</p>
+
+            <h2>Why did my conversion fail?</h2>
+            <p>Failures usually happen when a file is password-protected, corrupted, too large, or saved in a rare format variant. Try exporting the source file again, removing passwords, or using the closest matching converter category from the homepage.</p>
+
+            <h2>Can I use freeconvert.cloud for SEO and web images?</h2>
+            <p>Yes. Use PNG to JPG, JPG to WebP, WebP to JPG, image compression, resize image, and color palette tools to prepare lighter website images and cleaner upload assets.</p>
+
+            <h2>Do you offer API access?</h2>
+            <p>Developer API access is available for teams that need automated conversion workflows, higher limits, and integration support. Visit the <a href="/api/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Developer API</a> page for details.</p>"""
         },
         'about': {
             'title': 'About Us',
@@ -5180,8 +5304,10 @@ def build():
         })
     
     with open('tools/tools-data.js', 'w', encoding='utf-8') as f:
-        f.write(f"window.TOOLS_DATA = {json.dumps(frontend_data, indent=4)};")
+        f.write(f"window.TOOLS_DATA={json.dumps(frontend_data, separators=(',', ':'))};")
     print("Updated tools/tools-data.js")
+
+    build_minified_asset_aliases()
 
     # Generate Robots.txt
     robots_content = """User-agent: *
@@ -5194,6 +5320,7 @@ Disallow: /*?*
 # LLM summary: https://freeconvert.cloud/llms.txt
 # Full AI index: https://freeconvert.cloud/ai-index.json
 # Keyword map: https://freeconvert.cloud/seo-keyword-targets.json
+Sitemap: https://freeconvert.cloud/sitemap-index.xml
 Sitemap: https://freeconvert.cloud/sitemap.xml
 Host: freeconvert.cloud
 """
