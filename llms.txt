@@ -12,6 +12,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Pricing Plans: https://freeconvert.cloud/pricing/ - Subscriptions, batch allowances, and priority quotas.
 - Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
+- Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
 
 ## Priority Tools (High Content Depth)
 - PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - targets "pdf to jpg"; intent: Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.
@@ -62,4 +63,4 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Full LLM inventory: https://freeconvert.cloud/llms-full.txt
 - AI JSON index: https://freeconvert.cloud/ai-index.json
 - Keyword targets: https://freeconvert.cloud/seo-keyword-targets.json
-- XML sitemap: https://freeconvert.cloud/sitemap.xml
+- XML sitemap index: https://freeconvert.cloud/sitemap-index.xml

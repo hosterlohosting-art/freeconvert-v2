@@ -550,6 +550,8 @@ def build_sitemap(tools):
         add('blog', public_url_for_html(hub_page), 'monthly', '0.6')
     for category_page in sorted(Path('blog/category').glob('*/index.html')):
         add('blog', public_url_for_html(category_page), 'weekly', '0.6')
+    for guide_page in sorted(Path('free-online-converter-guides').glob('**/index.html')):
+        add('blog', public_url_for_html(guide_page), 'weekly', '0.6')
     add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
@@ -996,6 +998,256 @@ def build_growth_landing_pages():
         out_dir.mkdir(exist_ok=True)
         (out_dir / 'index.html').write_text(page, encoding='utf-8')
     print(f"Generated {len(pages)} comparison and seasonal landing pages")
+
+
+def build_daily_seo_landing_pages():
+    pages = [
+        {
+            'slug': 'compress-pdf-to-500kb',
+            'title': 'Compress PDF to 500KB Online Free',
+            'desc': 'Reduce a PDF file to around 500KB for email, portals, school forms, and upload limits using free browser-friendly PDF tools.',
+            'keyword': 'compress PDF to 500KB',
+            'tool': 'compress-pdf',
+            'tool_label': 'Compress PDF',
+            'angle': 'Use this workflow when a website accepts PDFs but rejects files above 500KB. Start by compressing the PDF, then recheck the output size before uploading.'
+        },
+        {
+            'slug': 'compress-pdf-to-100kb',
+            'title': 'Compress PDF to 100KB Online',
+            'desc': 'Shrink PDF files aggressively for strict application forms and document portals that require very small uploads.',
+            'keyword': 'compress PDF to 100KB',
+            'tool': 'compress-pdf',
+            'tool_label': 'Compress PDF',
+            'angle': 'A 100KB target is strict, so image-heavy PDFs may need image downscaling before compression. Keep a readable backup copy if text clarity matters.'
+        },
+        {
+            'slug': 'reduce-image-size-in-kb',
+            'title': 'Reduce Image Size in KB Without Installing Software',
+            'desc': 'Lower JPG, PNG, and WebP image size in KB for websites, emails, forms, and social media uploads.',
+            'keyword': 'reduce image size in KB',
+            'tool': 'image-compressor',
+            'tool_label': 'Image Compressor',
+            'angle': 'For most uploads, reducing pixel dimensions and quality slightly gives the biggest file-size win while keeping the image visually sharp.'
+        },
+        {
+            'slug': 'jpg-to-pdf-merge-images',
+            'title': 'Merge JPG Images Into One PDF Online',
+            'desc': 'Combine multiple JPG photos, scans, or screenshots into one PDF for assignments, invoices, receipts, and applications.',
+            'keyword': 'merge JPG images into PDF',
+            'tool': 'jpg-to-pdf',
+            'tool_label': 'JPG to PDF',
+            'angle': 'This is ideal when portals ask for a single PDF instead of many image uploads. Put the images in the right order before downloading the final PDF.'
+        },
+        {
+            'slug': 'pdf-to-jpg-high-resolution',
+            'title': 'Convert PDF to High-Resolution JPG Images',
+            'desc': 'Extract PDF pages as JPG images for thumbnails, previews, web publishing, and image-based sharing.',
+            'keyword': 'PDF to JPG high resolution',
+            'tool': 'pdf-to-jpg',
+            'tool_label': 'PDF to JPG',
+            'angle': 'Use higher resolution when you need readable text or print-quality previews. Use compression afterward when the exported JPGs are too large.'
+        },
+        {
+            'slug': 'webp-to-png-transparent',
+            'title': 'Convert WebP to PNG With Transparency',
+            'desc': 'Convert WebP graphics into PNG format for design tools, transparent assets, CMS uploads, and compatibility workflows.',
+            'keyword': 'WebP to PNG transparent',
+            'tool': 'jpg-to-png',
+            'tool_label': 'JPG to PNG',
+            'angle': 'PNG is a better target when you need transparency support or editing compatibility, while WebP is usually better for smaller website delivery.'
+        },
+        {
+            'slug': 'jpg-to-png-transparent-background',
+            'title': 'JPG to PNG Transparent Background Guide',
+            'desc': 'Learn what JPG to PNG conversion can and cannot do when you need transparent backgrounds for logos and product images.',
+            'keyword': 'JPG to PNG transparent background',
+            'tool': 'jpg-to-png',
+            'tool_label': 'JPG to PNG',
+            'angle': 'Converting JPG to PNG adds transparency support to the file format, but it does not automatically remove a solid background. Use a background remover first when needed.'
+        },
+        {
+            'slug': 'resize-photo-2x2-inch',
+            'title': 'Resize Photo to 2x2 Inches Online',
+            'desc': 'Prepare a 2x2 inch photo for passport, visa, ID, and document upload requirements.',
+            'keyword': 'resize photo 2x2 inch',
+            'tool': 'passport-photo-size-converter',
+            'tool_label': 'Passport Photo Size Converter',
+            'angle': 'A 2x2 photo usually needs the right crop, head position, and background color. Resize only after choosing the correct crop.'
+        },
+        {
+            'slug': 'instagram-profile-picture-size',
+            'title': 'Resize Image for Instagram Profile Picture',
+            'desc': 'Crop and resize images for Instagram profile photos, posts, stories, reels covers, and clean social media uploads.',
+            'keyword': 'Instagram profile picture size',
+            'tool': 'resize-image-for-instagram',
+            'tool_label': 'Resize Image for Instagram',
+            'angle': 'Instagram displays profile pictures in a circle, so keep faces or logos centered and leave enough safe space around the edges.'
+        },
+        {
+            'slug': 'convert-word-to-pdf-for-email',
+            'title': 'Convert Word to PDF for Email Attachments',
+            'desc': 'Turn DOCX files into professional PDFs for email, resumes, invoices, proposals, assignments, and contracts.',
+            'keyword': 'convert Word to PDF for email',
+            'tool': 'word-to-pdf',
+            'tool_label': 'Word to PDF',
+            'angle': 'PDF is usually better for email because it preserves layout, fonts, and page breaks across devices.'
+        },
+        {
+            'slug': 'json-to-csv-for-excel',
+            'title': 'Convert JSON to CSV for Excel',
+            'desc': 'Flatten JSON data into CSV rows for Excel, Google Sheets, reports, and quick data cleanup.',
+            'keyword': 'JSON to CSV for Excel',
+            'tool': 'json-to-csv',
+            'tool_label': 'JSON to CSV',
+            'angle': 'CSV works well for spreadsheet review, but nested JSON may need flattening into dot-separated columns before Excel can display it clearly.'
+        },
+        {
+            'slug': 'submit-sitemap-to-google-search-console',
+            'title': 'Submit Sitemap to Google Search Console',
+            'desc': 'Learn which sitemap to submit in Google Search Console and how sitemap indexes help Google discover new converter pages.',
+            'keyword': 'submit sitemap to Google Search Console',
+            'tool': 'robots-txt-generator',
+            'tool_label': 'Robots.txt Generator',
+            'angle': 'For freeconvert.cloud, the best sitemap to submit is sitemap-index.xml because it points Google to the split pages, tools, blog, and discovery sitemaps.'
+        },
+    ]
+    base = Path('free-online-converter-guides')
+    base.mkdir(exist_ok=True)
+    hub_cards = []
+    for item in pages:
+        page_url = f"{SITE_URL}/free-online-converter-guides/{item['slug']}/"
+        schema = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebPage",
+                    "name": item['title'],
+                    "url": page_url,
+                    "description": item['desc'],
+                    "dateModified": TODAY_ISO,
+                    "keywords": item['keyword']
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": f"What is the fastest way to handle {item['keyword']}?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": f"Open the recommended freeconvert.cloud tool, upload or paste your file, check the output settings, and download the converted result. {item['angle']}"
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is this free converter workflow private?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Many freeconvert.cloud tools run directly in the browser. When server processing is required for heavy file types, files are handled through encrypted temporary processing."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        related_links = ''.join(
+            f'<a href="/{slug}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(label)}</a>'
+            for slug, label in [
+                (item['tool'], item['tool_label']),
+                ('help', 'Help & FAQ'),
+                ('blog', 'Guides')
+            ]
+        )
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(item['title'])} | freeconvert.cloud</title>
+    <meta name="description" content="{html.escape(item['desc'])}">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{page_url}">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><a href="/free-online-converter-guides/">Converter Guides</a><span>&gt;</span><span>{html.escape(item['keyword'])}</span></nav>
+        <section class="tool-header"><span class="badge">Daily SEO Guide</span><h1>{html.escape(item['title'])}</h1><p>{html.escape(item['desc'])}</p></section>
+        <article class="seo-content">
+            <h2>Quick answer</h2>
+            <p>{html.escape(item['angle'])}</p>
+            <h2>Recommended tool</h2>
+            <p>Use <a href="/{item['tool']}/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">{html.escape(item['tool_label'])}</a> for this workflow. The linked tool page includes the active converter, steps, privacy notes, FAQs, and related format helpers.</p>
+            <h2>Step-by-step workflow</h2>
+            <ol><li>Open the recommended converter tool.</li><li>Add your file or content.</li><li>Choose the output settings that match the upload requirement.</li><li>Download the result and compare quality, file size, and compatibility.</li></ol>
+            <h2>Related free tools</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
+            <h2>Privacy note</h2>
+            <p>Keep the source file saved until the output is verified. Browser-local tools avoid uploads where possible, and heavy conversions use encrypted temporary processing only when the format requires it.</p>
+        </article>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+        out_dir = base / item['slug']
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+        hub_cards.append(f"""
+        <a href="/free-online-converter-guides/{item['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
+            <span class="popular-badge">Daily SEO</span>
+            <div class="tool-card-top"><div class="tool-icon">SEO</div><span class="tool-category-tag">{html.escape(item['keyword'])}</span></div>
+            <div class="tool-card-body">
+                <span role="heading" aria-level="2" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(item['title'])}</span>
+                <p>{html.escape(item['desc'])}</p>
+            </div>
+            <div class="tool-card-footer"><span class="explore-text">Read Guide</span><span class="arrow-icon">-&gt;</span></div>
+        </a>""")
+
+    hub_schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Free Online Converter Guides",
+        "url": f"{SITE_URL}/free-online-converter-guides/",
+        "description": "Daily long-tail converter guides for PDF, image, document, developer, and sitemap workflows.",
+        "dateModified": TODAY_ISO,
+        "numberOfItems": len(pages)
+    }
+    hub = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Converter Guides | freeconvert.cloud</title>
+    <meta name="description" content="Browse daily long-tail converter guides for PDF compression, image resizing, JPG to PDF, WebP compatibility, JSON to CSV, and sitemap submission.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/free-online-converter-guides/">
+    <script type="application/ld+json">{json.dumps(hub_schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content" style="max-width:1200px;">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><span>Converter Guides</span></nav>
+        <section class="tool-header"><span class="badge">Daily SEO Cluster</span><h1>Free Online Converter Guides</h1><p>Fresh long-tail pages that answer specific file conversion, compression, image sizing, document, and Search Console sitemap questions.</p></section>
+        <div class="tool-grid" style="padding:0;">{''.join(hub_cards)}</div>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+    (base / 'index.html').write_text(hub, encoding='utf-8')
+    print(f"Generated {len(pages)} daily SEO converter guide pages")
 
 
 # Categories configurations
@@ -2966,6 +3218,7 @@ FOOTER_SNIPPET = """
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
                     <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/free-online-converter-guides/">Converter Guides</a>
                     <a href="/blog/category/pdf-tools/">PDF Guides</a>
                     <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
@@ -4741,6 +4994,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Pricing Plans: https://freeconvert.cloud/pricing/ - Subscriptions, batch allowances, and priority quotas.
 - Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
+- Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -4761,7 +5015,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Full LLM inventory: https://freeconvert.cloud/llms-full.txt
 - AI JSON index: https://freeconvert.cloud/ai-index.json
 - Keyword targets: https://freeconvert.cloud/seo-keyword-targets.json
-- XML sitemap: https://freeconvert.cloud/sitemap.xml
+- XML sitemap index: https://freeconvert.cloud/sitemap-index.xml
 """
     with open('llms.txt', 'w', encoding='utf-8') as f:
         f.write(llms_content)
@@ -4789,6 +5043,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - RSS feed: {SITE_URL}/feed.xml
 - OpenSearch: {SITE_URL}/opensearch.xml
 - Blog hub: {SITE_URL}/blog/
+- Daily converter guides: {SITE_URL}/free-online-converter-guides/
 - Security: {SITE_URL}/security/
 - Contact: {SITE_URL}/contact/
 """
@@ -4830,7 +5085,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
             for tool in tools
         ],
         "discovery": {
-            "sitemap": f"{SITE_URL}/sitemap.xml",
+            "sitemap": f"{SITE_URL}/sitemap-index.xml",
             "rss": f"{SITE_URL}/feed.xml",
             "opensearch": f"{SITE_URL}/opensearch.xml",
             "llms": f"{SITE_URL}/llms.txt",
@@ -5591,6 +5846,7 @@ def build():
     build_blog_category_pages()
     build_embed_widget_page()
     build_growth_landing_pages()
+    build_daily_seo_landing_pages()
     build_convert_alias_pages(tools)
 
     # Generate discovery files (llms.txt & humans.txt)

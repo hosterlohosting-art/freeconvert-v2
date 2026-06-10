@@ -938,7 +938,7 @@
     }
   ],
   "discovery": {
-    "sitemap": "https://freeconvert.cloud/sitemap.xml",
+    "sitemap": "https://freeconvert.cloud/sitemap-index.xml",
     "rss": "https://freeconvert.cloud/feed.xml",
     "opensearch": "https://freeconvert.cloud/opensearch.xml",
     "llms": "https://freeconvert.cloud/llms.txt",

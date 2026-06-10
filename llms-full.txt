@@ -114,5 +114,6 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - RSS feed: https://freeconvert.cloud/feed.xml
 - OpenSearch: https://freeconvert.cloud/opensearch.xml
 - Blog hub: https://freeconvert.cloud/blog/
+- Daily converter guides: https://freeconvert.cloud/free-online-converter-guides/
 - Security: https://freeconvert.cloud/security/
 - Contact: https://freeconvert.cloud/contact/
