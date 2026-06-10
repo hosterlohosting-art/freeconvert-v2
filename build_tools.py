@@ -11,10 +11,14 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-09'
+TODAY_ISO = '2026-06-10'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
+    '/about-freeconvert/': '/about/',
+    '/contact-us/': '/contact/',
+    '/2025/11/02/hello-world/': '/',
+    '/2025/12/18/qr-codes-on-business-cards/': '/free-online-converter-guides/qr-codes-on-business-cards/',
     '/base64-tool/': '/base64-encode/',
     '/qr-generator/': '/qr-code-generator/',
     '/lorem-ipsum/': '/lorem-ipsum-generator/',
@@ -671,6 +675,12 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteRule ^image-resizer/?$ /resize-image/ [R=301,L]
+  RewriteRule ^about-freeconvert/?$ /about/ [R=301,L]
+  RewriteRule ^contact-us/?$ /contact/ [R=301,L]
+  RewriteRule ^2025/11/02/hello-world/?$ / [R=301,L]
+  RewriteRule ^2025/12/18/qr-codes-on-business-cards/?$ /free-online-converter-guides/qr-codes-on-business-cards/ [R=301,L]
+  RewriteRule ^wp.*\\.php$ - [G,L]
   RewriteRule ^convert/([^/]+)/?$ /$1/ [R=301,L]
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
@@ -861,6 +871,33 @@ def build_convert_alias_pages(tools):
 </html>"""
         (out_dir / 'index.html').write_text(page, encoding='utf-8')
     print(f"Generated {len(tools)} /convert/ redirect alias pages")
+
+
+def build_legacy_redirect_pages():
+    for old_route, new_route in LEGACY_ROUTE_MAP.items():
+        route = old_route.strip('/')
+        if not route:
+            continue
+        out_dir = Path(route)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        title = route.replace('/', ' ').replace('-', ' ').title()
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to freeconvert.cloud</title>
+    <meta name="robots" content="noindex,follow">
+    <meta http-equiv="refresh" content="0; url={new_route}">
+    <link rel="canonical" href="{SITE_URL}{new_route}">
+</head>
+<body>
+    <p>{html.escape(title)} has moved. Continue to <a href="{new_route}">{html.escape(new_route)}</a>.</p>
+    <script>location.replace("{new_route}");</script>
+</body>
+</html>"""
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+    print(f"Generated {len(LEGACY_ROUTE_MAP)} legacy redirect fallback pages")
 
 
 def build_embed_widget_page():
@@ -1109,6 +1146,15 @@ def build_daily_seo_landing_pages():
             'tool': 'robots-txt-generator',
             'tool_label': 'Robots.txt Generator',
             'angle': 'For freeconvert.cloud, the best sitemap to submit is sitemap-index.xml because it points Google to the split pages, tools, blog, and discovery sitemaps.'
+        },
+        {
+            'slug': 'qr-codes-on-business-cards',
+            'title': 'QR Codes on Business Cards: Free Generator Guide',
+            'desc': 'Create a QR code for a business card, vCard, website, portfolio, WhatsApp link, or contact landing page.',
+            'keyword': 'QR codes on business cards',
+            'tool': 'qr-code-generator',
+            'tool_label': 'QR Code Generator',
+            'angle': 'A business-card QR code should point to a stable URL such as a portfolio, contact form, vCard page, menu, or booking page. Test the code on multiple phones before printing.'
         },
     ]
     base = Path('free-online-converter-guides')
@@ -5848,6 +5894,7 @@ def build():
     build_growth_landing_pages()
     build_daily_seo_landing_pages()
     build_convert_alias_pages(tools)
+    build_legacy_redirect_pages()
 
     # Generate discovery files (llms.txt & humans.txt)
     build_discovery_files(tools)

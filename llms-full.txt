@@ -107,7 +107,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Editorial team: freeconvert.cloud Editorial Team.
 - Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-06-09.
+- Update marker: 2026-06-10.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml

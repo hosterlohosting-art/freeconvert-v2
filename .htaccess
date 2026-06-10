@@ -40,6 +40,12 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteRule ^image-resizer/?$ /resize-image/ [R=301,L]
+  RewriteRule ^about-freeconvert/?$ /about/ [R=301,L]
+  RewriteRule ^contact-us/?$ /contact/ [R=301,L]
+  RewriteRule ^2025/11/02/hello-world/?$ / [R=301,L]
+  RewriteRule ^2025/12/18/qr-codes-on-business-cards/?$ /free-online-converter-guides/qr-codes-on-business-cards/ [R=301,L]
+  RewriteRule ^wp.*\.php$ - [G,L]
   RewriteRule ^convert/([^/]+)/?$ /$1/ [R=301,L]
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
