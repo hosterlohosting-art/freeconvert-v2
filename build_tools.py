@@ -540,7 +540,7 @@ def build_sitemap(tools):
         add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
     for tool in tools:
         add('tools', f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
-    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'help', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
+    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'advertising-policy', 'help', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
         add('pages', f'{SITE_URL}/{leg}/', 'monthly', '0.5')
     add('pages', f'{SITE_URL}/tools/embed/', 'monthly', '0.5')
     add('blog', f'{SITE_URL}/blog/', 'weekly', '0.8')
@@ -633,6 +633,15 @@ def build_static_seo_assets():
     well_known.mkdir(exist_ok=True)
     (well_known / 'security.txt').write_text(security_txt, encoding='utf-8')
 
+    ads_txt = "google.com, pub-8997218708343263, DIRECT, f08c47fec0942fa0\n"
+    Path('ads.txt').write_text(ads_txt, encoding='utf-8')
+
+    review_css = (
+        "/* Hide empty ad placeholders until AdSense approval and live ad units are enabled. */\n"
+        "body:not(.ads-enabled) .adsense-placeholder-wrap{display:none!important}\n"
+    )
+    Path('adsense-review.css').write_text(review_css, encoding='utf-8')
+
     htaccess = """# freeconvert.cloud technical SEO, security, and cache rules
 Options -Indexes
 
@@ -687,7 +696,7 @@ Options -Indexes
 </IfModule>
 """
     Path('.htaccess').write_text(htaccess, encoding='utf-8')
-    print("Generated site.webmanifest, .well-known/security.txt, and .htaccess")
+    print("Generated site.webmanifest, ads.txt, adsense-review.css, .well-known/security.txt, and .htaccess")
 
 
 def build_rss_feed():
@@ -757,6 +766,9 @@ def build_minified_asset_aliases():
         updated = html_content
         for original, minified in replacements.items():
             updated = updated.replace(original, minified)
+        review_css_link = '<link rel="stylesheet" href="/adsense-review.css">'
+        if review_css_link not in updated and '</head>' in updated:
+            updated = updated.replace('</head>', f'    {review_css_link}\n</head>')
         if updated != html_content:
             html_path.write_text(updated, encoding='utf-8')
     print("Generated .min asset aliases and updated HTML references")
@@ -3270,6 +3282,7 @@ FOOTER_SNIPPET = """
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
+                    <a href="/advertising-policy/">Advertising Policy</a>
                     <a href="/cookies/">Cookie Policy</a>
                     <a href="/contact/">Contact Us</a>
                     <a href="/dmca/">DMCA Policy</a>
@@ -4648,6 +4661,29 @@ def build_legal_pages():
             
             <h2>Managing Cookie Settings</h2>
             <p>You can choose to disable or selectively turn off our cookies or third-party cookies in your browser settings. However, this can affect how you are able to interact with our platform (such as retaining dark-theme layouts or loading developer sample files).</p>"""
+        },
+        'advertising-policy': {
+            'title': 'Advertising & Editorial Standards',
+            'desc': 'Learn how freeconvert.cloud separates advertising, editorial content, file tools, and user experience.',
+            'content': """<h2>Advertising Review Status</h2>
+            <p>freeconvert.cloud is prepared for responsible advertising, but our priority is always useful tools and original guidance. Advertising placements are not allowed to interrupt file uploads, conversion buttons, downloads, form controls, or educational content.</p>
+
+            <h2>Clear Separation Between Ads and Tools</h2>
+            <p>Any future advertising unit must be clearly labeled and visually separated from conversion workflows. We do not use fake download buttons, misleading alerts, forced redirects, auto-start downloads, pop-under windows, or layouts designed to create accidental ad clicks.</p>
+
+            <h2>Independent Editorial Standards</h2>
+            <p>Our converter pages, tutorials, FAQs, and comparison guides are written to help users solve practical file-format problems. Advertising partners do not influence tool rankings, recommendations, article topics, page titles, conversion instructions, or privacy statements.</p>
+
+            <h2>Minimum Content Quality Checks</h2>
+            <p>Before a page is published, we check that it includes a working utility or a useful educational purpose, clear headings, original instructions, relevant internal links, privacy notes, and no empty placeholder content. Pages that exist only to display ads are not part of our publishing policy.</p>
+
+            <h2>User Experience Commitments</h2>
+            <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; margin-top:0.8rem; margin-bottom:1.5rem; font-size:0.95rem; line-height:1.6;">
+                <li>Conversion tools remain visible and usable before any monetization element.</li>
+                <li>Important pages such as Privacy, Terms, Contact, Security, Help, and DMCA are linked from the footer.</li>
+                <li>We avoid thin doorway pages and redirect old URLs to the most relevant current resource.</li>
+                <li>We keep sitemap, robots.txt, llms.txt, feed.xml, and structured data updated for crawlers.</li>
+            </ul>"""
         }
     }
 

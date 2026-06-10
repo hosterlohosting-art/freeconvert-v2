@@ -1,0 +1,2 @@
+/* Hide empty ad placeholders until AdSense approval and live ad units are enabled. */
+body:not(.ads-enabled) .adsense-placeholder-wrap{display:none!important}
