@@ -558,6 +558,8 @@ def build_sitemap(tools):
         add('blog', public_url_for_html(guide_page), 'weekly', '0.6')
     for popular_page in sorted(Path('popular-conversions').glob('**/index.html')):
         add('blog', public_url_for_html(popular_page), 'weekly', '0.6')
+    for format_page in sorted(Path('file-formats').glob('**/index.html')):
+        add('blog', public_url_for_html(format_page), 'weekly', '0.6')
     add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
@@ -1642,6 +1644,288 @@ def build_popular_conversion_pages():
 </html>"""
     (base / 'index.html').write_text(hub, encoding='utf-8')
     print(f"Generated {len(pages)} popular conversion intent pages")
+
+
+def build_file_format_glossary_pages():
+    formats = [
+        {
+            'slug': 'pdf',
+            'name': 'PDF',
+            'title': 'What Is a PDF File?',
+            'desc': 'Learn what PDF files are used for, when to choose PDF, and which free PDF tools help with conversion, compression, merging, and splitting.',
+            'summary': 'PDF is a fixed-layout document format built for sharing, printing, archiving, contracts, invoices, resumes, and forms.',
+            'best_for': 'Final documents where layout should stay consistent across devices.',
+            'watch_out': 'PDF files can be hard to edit directly and may become large when they contain scans or images.',
+            'tools': [('compress-pdf', 'Compress PDF'), ('pdf-to-word', 'PDF to Word'), ('pdf-to-jpg', 'PDF to JPG'), ('merge-pdf', 'Merge PDF'), ('split-pdf', 'Split PDF')]
+        },
+        {
+            'slug': 'jpg',
+            'name': 'JPG',
+            'title': 'What Is a JPG File?',
+            'desc': 'Understand JPG image files, photo compression, website use cases, and when to convert JPG to PDF, PNG, or WebP.',
+            'summary': 'JPG is a compressed photo format designed for small file sizes and broad compatibility.',
+            'best_for': 'Photos, website images, email attachments, product images, and social media uploads.',
+            'watch_out': 'JPG is lossy and does not support transparency.',
+            'tools': [('jpg-to-pdf', 'JPG to PDF'), ('jpg-to-png', 'JPG to PNG'), ('jpg-to-webp', 'JPG to WebP'), ('image-compressor', 'Image Compressor')]
+        },
+        {
+            'slug': 'png',
+            'name': 'PNG',
+            'title': 'What Is a PNG File?',
+            'desc': 'Learn when to use PNG images for transparency, screenshots, logos, and when to convert PNG to JPG or WebP.',
+            'summary': 'PNG is a lossless image format that supports transparency and crisp graphics.',
+            'best_for': 'Logos, screenshots, UI graphics, transparent images, and design assets.',
+            'watch_out': 'PNG files can be much larger than JPG or WebP for photographs.',
+            'tools': [('png-to-jpg', 'PNG to JPG'), ('png-to-webp', 'PNG to WebP'), ('image-compressor', 'Image Compressor')]
+        },
+        {
+            'slug': 'webp',
+            'name': 'WebP',
+            'title': 'What Is a WebP File?',
+            'desc': 'Learn why WebP images are used for speed, when compatibility matters, and how to convert WebP to JPG.',
+            'summary': 'WebP is a modern web image format that can deliver smaller files than JPG or PNG.',
+            'best_for': 'Fast websites, image-heavy pages, thumbnails, and SEO-focused image delivery.',
+            'watch_out': 'Some older apps, CMS tools, or workflows still prefer JPG or PNG.',
+            'tools': [('webp-to-jpg', 'WebP to JPG'), ('jpg-to-webp', 'JPG to WebP'), ('png-to-webp', 'PNG to WebP')]
+        },
+        {
+            'slug': 'heic',
+            'name': 'HEIC',
+            'title': 'What Is a HEIC File?',
+            'desc': 'Understand iPhone HEIC photos, compatibility problems, and when to convert HEIC to JPG.',
+            'summary': 'HEIC is a high-efficiency photo format used by many iPhones and Apple devices.',
+            'best_for': 'Saving storage space on Apple devices while keeping good image quality.',
+            'watch_out': 'Many Windows apps, websites, and upload portals still prefer JPG.',
+            'tools': [('heic-to-jpg', 'HEIC to JPG'), ('image-compressor', 'Image Compressor'), ('resize-image', 'Resize Image')]
+        },
+        {
+            'slug': 'docx',
+            'name': 'DOCX',
+            'title': 'What Is a DOCX File?',
+            'desc': 'Learn what DOCX files are, when to keep documents editable, and when to convert Word documents to PDF.',
+            'summary': 'DOCX is an editable word-processing document format used for drafts, resumes, reports, and letters.',
+            'best_for': 'Writing, editing, collaborating, and revising text-heavy documents.',
+            'watch_out': 'Formatting can shift between devices, so PDF is better for final submission.',
+            'tools': [('word-to-pdf', 'Word to PDF'), ('pdf-to-word', 'PDF to Word'), ('document-converter', 'Document Tools')]
+        },
+        {
+            'slug': 'svg',
+            'name': 'SVG',
+            'title': 'What Is an SVG File?',
+            'desc': 'Learn how SVG vector files work for logos, icons, and illustrations, and when to export SVG to PNG.',
+            'summary': 'SVG is a vector image format that scales cleanly without losing sharpness.',
+            'best_for': 'Logos, icons, diagrams, interface graphics, and simple illustrations.',
+            'watch_out': 'Some apps and upload forms do not accept SVG, so PNG export is often needed.',
+            'tools': [('svg-to-png', 'SVG to PNG'), ('ico-converter', 'ICO Converter'), ('palette-extractor', 'Color Palette Extractor')]
+        },
+        {
+            'slug': 'mp4',
+            'name': 'MP4',
+            'title': 'What Is an MP4 File?',
+            'desc': 'Understand MP4 video files, compatibility, compression, and when to extract MP3 audio from MP4.',
+            'summary': 'MP4 is a widely supported video container used for phones, websites, social media, and streaming.',
+            'best_for': 'Sharing video across devices, social platforms, websites, and editing tools.',
+            'watch_out': 'Video files can become large, and audio-only use cases should be converted to MP3.',
+            'tools': [('mp4-to-mp3', 'MP4 to MP3'), ('video-compressor', 'Video Compressor'), ('webm-to-mp4', 'WebM to MP4')]
+        },
+        {
+            'slug': 'mp3',
+            'name': 'MP3',
+            'title': 'What Is an MP3 File?',
+            'desc': 'Learn why MP3 is used for audio sharing, podcasts, voice notes, and extracting sound from video.',
+            'summary': 'MP3 is a compressed audio format with broad support across phones, browsers, and media players.',
+            'best_for': 'Music, voice notes, podcast clips, lectures, and compact audio sharing.',
+            'watch_out': 'MP3 is lossy, so keep a higher-quality source file when editing audio.',
+            'tools': [('mp4-to-mp3', 'MP4 to MP3'), ('audio-converter', 'Audio Converter'), ('video-compressor', 'Video Compressor')]
+        },
+        {
+            'slug': 'csv',
+            'name': 'CSV',
+            'title': 'What Is a CSV File?',
+            'desc': 'Understand CSV files for spreadsheets, imports, exports, reports, and converting JSON data to CSV rows.',
+            'summary': 'CSV is a plain-text table format where rows and columns are separated by commas.',
+            'best_for': 'Spreadsheets, database imports, exports, reports, and lightweight tabular data.',
+            'watch_out': 'Nested data needs flattening before it fits neatly into CSV columns.',
+            'tools': [('json-to-csv', 'JSON to CSV'), ('csv-to-json', 'CSV to JSON'), ('json-formatter', 'JSON Formatter')]
+        },
+        {
+            'slug': 'json',
+            'name': 'JSON',
+            'title': 'What Is a JSON File?',
+            'desc': 'Learn what JSON is, why developers use it, and how to format, validate, or convert JSON to CSV.',
+            'summary': 'JSON is a structured data format used by APIs, apps, websites, configuration files, and databases.',
+            'best_for': 'Developer workflows, API responses, configuration, and structured data exchange.',
+            'watch_out': 'Invalid brackets, commas, or quotes can break parsing.',
+            'tools': [('json-formatter', 'JSON Formatter'), ('json-validator', 'JSON Validator'), ('json-to-csv', 'JSON to CSV')]
+        },
+        {
+            'slug': 'base64',
+            'name': 'Base64',
+            'title': 'What Is Base64 Encoding?',
+            'desc': 'Learn how Base64 encoding works for text, images, data URIs, APIs, and developer debugging.',
+            'summary': 'Base64 converts binary or text data into an ASCII-safe string that can travel through text-based systems.',
+            'best_for': 'Data URIs, API payloads, email-safe encoding, and embedding small images or files.',
+            'watch_out': 'Base64 increases size and should not be treated as encryption.',
+            'tools': [('base64-encode', 'Base64 Encode'), ('base64-decode', 'Base64 Decode'), ('base64-to-image', 'Base64 to Image')]
+        },
+        {
+            'slug': 'qr-code',
+            'name': 'QR Code',
+            'title': 'What Is a QR Code?',
+            'desc': 'Learn what QR codes are used for, how they work, and how to create QR codes for links, menus, cards, and WiFi.',
+            'summary': 'A QR code is a scannable 2D barcode that can open links, contact cards, menus, apps, or text.',
+            'best_for': 'Restaurant menus, business cards, product packaging, events, WiFi access, and print-to-web campaigns.',
+            'watch_out': 'Always test QR codes on multiple phones before printing.',
+            'tools': [('qr-code-generator', 'QR Code Generator'), ('barcode-generator', 'Barcode Generator'), ('url-encoder', 'URL Encoder')]
+        },
+        {
+            'slug': 'zip',
+            'name': 'ZIP',
+            'title': 'What Is a ZIP File?',
+            'desc': 'Understand ZIP archives, compression, file packaging, and when archive tools help organize downloads.',
+            'summary': 'ZIP is an archive format that packages one or more files into a single compressed file.',
+            'best_for': 'Sending multiple files together, reducing download size, and organizing project folders.',
+            'watch_out': 'Some upload portals block ZIP files for security reasons.',
+            'tools': [('archive-converter', 'Archive Converter'), ('document-converter', 'Document Tools'), ('compress-pdf', 'Compress PDF')]
+        },
+        {
+            'slug': 'gif',
+            'name': 'GIF',
+            'title': 'What Is a GIF File?',
+            'desc': 'Learn how GIF files work for simple animation, memes, previews, and when video or WebP may be better.',
+            'summary': 'GIF is an older image format best known for short looping animations.',
+            'best_for': 'Simple animations, lightweight previews, and small visual loops.',
+            'watch_out': 'GIF files can be large and low-color compared with modern formats.',
+            'tools': [('video-converter', 'Video Converter'), ('webm-to-mp4', 'WebM to MP4'), ('image-compressor', 'Image Compressor')]
+        },
+    ]
+
+    base = Path('file-formats')
+    base.mkdir(exist_ok=True)
+    hub_cards = []
+    for item in formats:
+        page_url = f"{SITE_URL}/file-formats/{item['slug']}/"
+        schema = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "TechArticle",
+                    "headline": item['title'],
+                    "description": item['desc'],
+                    "url": page_url,
+                    "dateModified": TODAY_ISO,
+                    "about": {"@type": "Thing", "name": item['name']}
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": f"What is {item['name']} best for?",
+                            "acceptedAnswer": {"@type": "Answer", "text": item['best_for']}
+                        },
+                        {
+                            "@type": "Question",
+                            "name": f"What should I watch out for with {item['name']}?",
+                            "acceptedAnswer": {"@type": "Answer", "text": item['watch_out']}
+                        }
+                    ]
+                }
+            ]
+        }
+        tool_links = ''.join(
+            f'<a href="/{slug}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(label)}</a>'
+            for slug, label in item['tools']
+        )
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(item['title'])} | freeconvert.cloud</title>
+    <meta name="description" content="{html.escape(item['desc'])}">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{page_url}">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><a href="/file-formats/">File Formats</a><span>&gt;</span><span>{html.escape(item['name'])}</span></nav>
+        <section class="tool-header"><span class="badge">File Format Guide</span><h1>{html.escape(item['title'])}</h1><p>{html.escape(item['desc'])}</p></section>
+        <article class="seo-content">
+            <h2>Quick definition</h2>
+            <p>{html.escape(item['summary'])}</p>
+            <h2>Best use cases</h2>
+            <p>{html.escape(item['best_for'])}</p>
+            <h2>What to watch out for</h2>
+            <p>{html.escape(item['watch_out'])}</p>
+            <h2>Related converters</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{tool_links}</div>
+            <h2>Conversion tip</h2>
+            <p>Keep the original file, create a converted copy, then compare file size, quality, and compatibility before deleting or uploading the result.</p>
+        </article>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+        out_dir = base / item['slug']
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+        hub_cards.append(f"""
+        <a href="/file-formats/{item['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
+            <div class="tool-card-top"><div class="tool-icon">{html.escape(item['name'][:3])}</div><span class="tool-category-tag">Format Guide</span></div>
+            <div class="tool-card-body">
+                <span role="heading" aria-level="2" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(item['title'])}</span>
+                <p>{html.escape(item['desc'])}</p>
+            </div>
+            <div class="tool-card-footer"><span class="explore-text">Read Format Guide</span><span class="arrow-icon">-&gt;</span></div>
+        </a>""")
+
+    hub_schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "File Format Glossary",
+        "url": f"{SITE_URL}/file-formats/",
+        "description": "Plain-English file format guides for PDF, JPG, PNG, WebP, HEIC, DOCX, SVG, MP4, MP3, CSV, JSON, Base64, QR codes, ZIP, and GIF.",
+        "dateModified": TODAY_ISO,
+        "numberOfItems": len(formats)
+    }
+    hub = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Format Glossary | freeconvert.cloud</title>
+    <meta name="description" content="Learn what common file formats mean, when to use them, what to watch out for, and which free converter to use.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/file-formats/">
+    <script type="application/ld+json">{json.dumps(hub_schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content" style="max-width:1200px;">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><span>File Formats</span></nav>
+        <section class="tool-header"><span class="badge">Glossary Hub</span><h1>File Format Glossary</h1><p>Plain-English explanations for common formats, with direct links to the right converters.</p></section>
+        <div class="tool-grid" style="padding:0;">{''.join(hub_cards)}</div>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+    (base / 'index.html').write_text(hub, encoding='utf-8')
+    print(f"Generated {len(formats)} file format glossary pages")
 
 
 # Categories configurations
@@ -3614,6 +3898,7 @@ FOOTER_SNIPPET = """
                     <a href="/tools/embed/">Embed Widgets</a>
                     <a href="/popular-conversions/">Popular Conversions</a>
                     <a href="/free-online-converter-guides/">Converter Guides</a>
+                    <a href="/file-formats/">File Format Glossary</a>
                     <a href="/blog/category/pdf-tools/">PDF Guides</a>
                     <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
@@ -5415,6 +5700,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
 - Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
 - Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
+- File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -5465,6 +5751,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Blog hub: {SITE_URL}/blog/
 - Daily converter guides: {SITE_URL}/free-online-converter-guides/
 - Popular conversions: {SITE_URL}/popular-conversions/
+- File format glossary: {SITE_URL}/file-formats/
 - Security: {SITE_URL}/security/
 - Contact: {SITE_URL}/contact/
 """
@@ -6269,6 +6556,7 @@ def build():
     build_growth_landing_pages()
     build_daily_seo_landing_pages()
     build_popular_conversion_pages()
+    build_file_format_glossary_pages()
     build_convert_alias_pages(tools)
     build_legacy_redirect_pages()
 
