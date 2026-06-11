@@ -13,6 +13,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
 - Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
+- Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
 
 ## Priority Tools (High Content Depth)
 - PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - targets "pdf to jpg"; intent: Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.

@@ -556,6 +556,8 @@ def build_sitemap(tools):
         add('blog', public_url_for_html(category_page), 'weekly', '0.6')
     for guide_page in sorted(Path('free-online-converter-guides').glob('**/index.html')):
         add('blog', public_url_for_html(guide_page), 'weekly', '0.6')
+    for popular_page in sorted(Path('popular-conversions').glob('**/index.html')):
+        add('blog', public_url_for_html(popular_page), 'weekly', '0.6')
     add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
     add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
@@ -1351,6 +1353,295 @@ def build_daily_seo_landing_pages():
 </html>"""
     (base / 'index.html').write_text(hub, encoding='utf-8')
     print(f"Generated {len(pages)} daily SEO converter guide pages")
+
+
+def build_popular_conversion_pages():
+    pages = [
+        {
+            'slug': 'png-to-jpg-for-website',
+            'title': 'PNG to JPG for Website Images',
+            'desc': 'Convert heavy PNG website images into smaller JPG files for faster page speed, galleries, blog posts, and CMS uploads.',
+            'keyword': 'PNG to JPG for website',
+            'tool': 'png-to-jpg',
+            'tool_label': 'PNG to JPG',
+            'problem': 'Large PNG photos can slow down landing pages, especially when transparency is not needed.',
+            'best_for': 'Use JPG for photographs, screenshots without transparency, blog images, and product previews where smaller delivery matters.'
+        },
+        {
+            'slug': 'jpg-to-pdf-for-school-assignment',
+            'title': 'JPG to PDF for School Assignments',
+            'desc': 'Combine homework photos, handwritten notes, scanned pages, and screenshots into one PDF for online class submission.',
+            'keyword': 'JPG to PDF for school assignment',
+            'tool': 'jpg-to-pdf',
+            'tool_label': 'JPG to PDF',
+            'problem': 'Many school portals reject multiple loose images and ask students to upload one PDF file.',
+            'best_for': 'Use this workflow when you photographed assignment pages and need a single document in the correct order.'
+        },
+        {
+            'slug': 'compress-pdf-for-email',
+            'title': 'Compress PDF for Email Attachments',
+            'desc': 'Reduce PDF file size for Gmail, Outlook, job applications, invoices, contracts, and client document sharing.',
+            'keyword': 'compress PDF for email',
+            'tool': 'compress-pdf',
+            'tool_label': 'Compress PDF',
+            'problem': 'Email providers and company inboxes often reject large PDF attachments or make them slow to send.',
+            'best_for': 'Compress the PDF first, then confirm the file still opens clearly before sending it to a client, teacher, or employer.'
+        },
+        {
+            'slug': 'reduce-photo-size-for-passport-upload',
+            'title': 'Reduce Photo Size for Passport Upload',
+            'desc': 'Resize and compress passport-style photos for visa, ID, profile, and government document upload limits.',
+            'keyword': 'reduce photo size for passport upload',
+            'tool': 'passport-photo-size-converter',
+            'tool_label': 'Passport Photo Size Converter',
+            'problem': 'Passport and visa portals often require exact dimensions, file type, and maximum KB size.',
+            'best_for': 'Crop the face correctly first, then resize and compress until the photo matches the portal requirement.'
+        },
+        {
+            'slug': 'heic-to-jpg-on-windows',
+            'title': 'HEIC to JPG on Windows',
+            'desc': 'Convert iPhone HEIC photos into JPG files for Windows apps, websites, email attachments, and editing tools.',
+            'keyword': 'HEIC to JPG on Windows',
+            'tool': 'heic-to-jpg',
+            'tool_label': 'HEIC to JPG',
+            'problem': 'Windows users sometimes receive iPhone HEIC photos that older editors or upload forms cannot read.',
+            'best_for': 'Convert HEIC to JPG when you need the safest format for sharing, uploading, printing, or editing.'
+        },
+        {
+            'slug': 'webp-to-jpg-for-wordpress',
+            'title': 'WebP to JPG for WordPress Uploads',
+            'desc': 'Convert WebP images to JPG when themes, plugins, social preview tools, or older WordPress workflows need JPEG files.',
+            'keyword': 'WebP to JPG for WordPress',
+            'tool': 'webp-to-jpg',
+            'tool_label': 'WebP to JPG',
+            'problem': 'WebP is efficient, but some legacy plugins, editors, and integrations still expect JPG uploads.',
+            'best_for': 'Use JPG when compatibility matters more than maximum compression, especially for thumbnails and featured images.'
+        },
+        {
+            'slug': 'json-to-csv-for-google-sheets',
+            'title': 'JSON to CSV for Google Sheets',
+            'desc': 'Convert JSON records into CSV rows that can be imported into Google Sheets, Excel, dashboards, and reports.',
+            'keyword': 'JSON to CSV for Google Sheets',
+            'tool': 'json-to-csv',
+            'tool_label': 'JSON to CSV',
+            'problem': 'Raw JSON is hard to scan in spreadsheet tools, especially when data needs sorting, filtering, or sharing.',
+            'best_for': 'Flatten JSON arrays into columns before importing the CSV into Google Sheets.'
+        },
+        {
+            'slug': 'mp4-to-mp3-for-audio',
+            'title': 'MP4 to MP3 for Audio Extraction',
+            'desc': 'Extract MP3 audio from MP4 videos for lectures, voice notes, podcasts, offline listening, and reusable clips.',
+            'keyword': 'MP4 to MP3 audio extraction',
+            'tool': 'mp4-to-mp3',
+            'tool_label': 'MP4 to MP3',
+            'problem': 'Video files are larger than audio files when you only need the spoken or music track.',
+            'best_for': 'Use MP3 when you need a smaller file for listening, sharing, or importing into audio workflows.'
+        },
+        {
+            'slug': 'merge-pdf-scanned-documents',
+            'title': 'Merge PDF Scanned Documents',
+            'desc': 'Combine scanned PDF pages, forms, receipts, statements, and certificates into one organized document.',
+            'keyword': 'merge PDF scanned documents',
+            'tool': 'merge-pdf',
+            'tool_label': 'Merge PDF',
+            'problem': 'Scanned documents often arrive as separate files, which creates messy uploads and email threads.',
+            'best_for': 'Merge PDFs when you need one complete document package with pages in the right order.'
+        },
+        {
+            'slug': 'split-pdf-selected-pages',
+            'title': 'Split PDF Selected Pages',
+            'desc': 'Extract selected PDF pages into a smaller file for forms, contracts, reports, and document sharing.',
+            'keyword': 'split PDF selected pages',
+            'tool': 'split-pdf',
+            'tool_label': 'Split PDF',
+            'problem': 'Sending a full PDF can expose unnecessary pages or create oversized attachments.',
+            'best_for': 'Split out only the pages you need before uploading or emailing the document.'
+        },
+        {
+            'slug': 'pdf-to-word-for-editing',
+            'title': 'PDF to Word for Editing',
+            'desc': 'Convert PDF files into editable Word-style documents for rewriting, formatting, correcting, and republishing.',
+            'keyword': 'PDF to Word for editing',
+            'tool': 'pdf-to-word',
+            'tool_label': 'PDF to Word',
+            'problem': 'PDFs are great for viewing but inconvenient when you need to change text, layout, or formatting.',
+            'best_for': 'Convert to Word when you need editable text and are ready to review formatting after conversion.'
+        },
+        {
+            'slug': 'word-to-pdf-resume',
+            'title': 'Word to PDF for Resume Submission',
+            'desc': 'Convert DOCX resumes into PDF files that preserve layout, fonts, spacing, and page breaks for job applications.',
+            'keyword': 'Word to PDF resume',
+            'tool': 'word-to-pdf',
+            'tool_label': 'Word to PDF',
+            'problem': 'Recruiters may see broken formatting if a resume stays in editable Word format.',
+            'best_for': 'Use PDF for final resume submissions so the layout stays consistent across devices.'
+        },
+        {
+            'slug': 'svg-to-png-logo',
+            'title': 'SVG to PNG Logo Export',
+            'desc': 'Convert SVG logos into PNG images for websites, presentations, social profiles, email signatures, and previews.',
+            'keyword': 'SVG to PNG logo',
+            'tool': 'svg-to-png',
+            'tool_label': 'SVG to PNG',
+            'problem': 'Some apps and CMS fields do not accept SVG uploads even when a logo is available only as vector artwork.',
+            'best_for': 'Export PNG when you need a transparent, widely accepted logo file.'
+        },
+        {
+            'slug': 'base64-to-image-online',
+            'title': 'Base64 to Image Online',
+            'desc': 'Decode Base64 image strings and data URIs into previewable image files for debugging, design, and development.',
+            'keyword': 'Base64 to image online',
+            'tool': 'base64-to-image',
+            'tool_label': 'Base64 to Image',
+            'problem': 'Base64 image data is hard to inspect when it is embedded in HTML, CSS, JSON, or API responses.',
+            'best_for': 'Decode Base64 when you need to preview an embedded image or verify a data URI.'
+        },
+        {
+            'slug': 'qr-code-for-restaurant-menu',
+            'title': 'QR Code for Restaurant Menu',
+            'desc': 'Create a QR code that links guests to a restaurant menu, ordering page, PDF menu, booking form, or social profile.',
+            'keyword': 'QR code for restaurant menu',
+            'tool': 'qr-code-generator',
+            'tool_label': 'QR Code Generator',
+            'problem': 'Printed menus and table tents need a fast scan path to the latest menu or ordering page.',
+            'best_for': 'Use a QR code that points to a stable menu URL so you can update the page without reprinting the code.'
+        },
+    ]
+
+    base = Path('popular-conversions')
+    base.mkdir(exist_ok=True)
+    tools_by_slug = {item['tool']: item['tool_label'] for item in pages}
+    hub_cards = []
+    for item in pages:
+        page_url = f"{SITE_URL}/popular-conversions/{item['slug']}/"
+        schema = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebPage",
+                    "name": item['title'],
+                    "url": page_url,
+                    "description": item['desc'],
+                    "dateModified": TODAY_ISO,
+                    "keywords": item['keyword'],
+                    "isPartOf": {"@type": "CollectionPage", "name": "Popular Conversions", "url": f"{SITE_URL}/popular-conversions/"}
+                },
+                {
+                    "@type": "HowTo",
+                    "name": f"How to use {item['tool_label']} for {item['keyword']}",
+                    "totalTime": "PT1M",
+                    "step": [
+                        {"@type": "HowToStep", "position": 1, "text": f"Open the {item['tool_label']} tool."},
+                        {"@type": "HowToStep", "position": 2, "text": "Add your file or paste your content."},
+                        {"@type": "HowToStep", "position": 3, "text": "Review output settings and convert."},
+                        {"@type": "HowToStep", "position": 4, "text": "Download the result and check quality before sharing."}
+                    ]
+                }
+            ]
+        }
+        related = ''.join(
+            f'<a href="/{slug}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(label)}</a>'
+            for slug, label in [
+                (item['tool'], item['tool_label']),
+                ('free-online-converter-guides', 'Converter Guides'),
+                ('help', 'Help')
+            ]
+        )
+        page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{html.escape(item['title'])} | freeconvert.cloud</title>
+    <meta name="description" content="{html.escape(item['desc'])}">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{page_url}">
+    <script type="application/ld+json">{json.dumps(schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><a href="/popular-conversions/">Popular Conversions</a><span>&gt;</span><span>{html.escape(item['keyword'])}</span></nav>
+        <section class="tool-header"><span class="badge">Popular Conversion</span><h1>{html.escape(item['title'])}</h1><p>{html.escape(item['desc'])}</p></section>
+        <article class="seo-content">
+            <h2>When to use this conversion</h2>
+            <p>{html.escape(item['problem'])}</p>
+            <h2>Best workflow</h2>
+            <p>{html.escape(item['best_for'])}</p>
+            <h2>Use the free tool</h2>
+            <p>Open <a href="/{item['tool']}/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">{html.escape(item['tool_label'])}</a> to complete this task. The tool page includes the active converter, privacy guidance, FAQs, and related formats.</p>
+            <h2>Quality checklist</h2>
+            <ul>
+                <li>Keep your original file until the new file is verified.</li>
+                <li>Check that text, faces, logos, or important details remain readable.</li>
+                <li>Use compression only as much as the upload limit requires.</li>
+                <li>Confirm the output format is accepted by the app, portal, or website.</li>
+            </ul>
+            <h2>Related resources</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related}</div>
+        </article>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+        out_dir = base / item['slug']
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / 'index.html').write_text(page, encoding='utf-8')
+        hub_cards.append(f"""
+        <a href="/popular-conversions/{item['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
+            <div class="tool-card-top"><div class="tool-icon">↗</div><span class="tool-category-tag">{html.escape(item['keyword'])}</span></div>
+            <div class="tool-card-body">
+                <span role="heading" aria-level="2" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(item['title'])}</span>
+                <p>{html.escape(item['desc'])}</p>
+            </div>
+            <div class="tool-card-footer"><span class="explore-text">Open Guide</span><span class="arrow-icon">-&gt;</span></div>
+        </a>""")
+
+    hub_schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Popular Conversions",
+        "url": f"{SITE_URL}/popular-conversions/",
+        "description": "High-intent conversion guides for the most common PDF, image, document, media, developer, and QR workflows.",
+        "dateModified": TODAY_ISO,
+        "numberOfItems": len(pages)
+    }
+    hub = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Online Conversions | freeconvert.cloud</title>
+    <meta name="description" content="Browse popular conversion workflows for PDF, JPG, PNG, WebP, HEIC, Word, JSON, MP4, SVG, Base64, and QR code tasks.">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{SITE_URL}/popular-conversions/">
+    <script type="application/ld+json">{json.dumps(hub_schema, separators=(',', ':'))}</script>
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <main class="tool-content" style="max-width:1200px;">
+        <nav class="breadcrumbs"><a href="/">Home</a><span>&gt;</span><span>Popular Conversions</span></nav>
+        <section class="tool-header"><span class="badge">Search Intent Hub</span><h1>Popular Online Conversions</h1><p>Focused guides for the file conversion workflows people search most often: PDF, image, document, media, developer, and QR tasks.</p></section>
+        <div class="tool-grid" style="padding:0;">{''.join(hub_cards)}</div>
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+</html>"""
+    (base / 'index.html').write_text(hub, encoding='utf-8')
+    print(f"Generated {len(pages)} popular conversion intent pages")
 
 
 # Categories configurations
@@ -3321,6 +3612,7 @@ FOOTER_SNIPPET = """
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
                     <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/popular-conversions/">Popular Conversions</a>
                     <a href="/free-online-converter-guides/">Converter Guides</a>
                     <a href="/blog/category/pdf-tools/">PDF Guides</a>
                     <a href="/blog/category/image-conversion/">Image Guides</a>
@@ -5122,6 +5414,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
 - Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
+- Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -5171,6 +5464,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - OpenSearch: {SITE_URL}/opensearch.xml
 - Blog hub: {SITE_URL}/blog/
 - Daily converter guides: {SITE_URL}/free-online-converter-guides/
+- Popular conversions: {SITE_URL}/popular-conversions/
 - Security: {SITE_URL}/security/
 - Contact: {SITE_URL}/contact/
 """
@@ -5974,6 +6268,7 @@ def build():
     build_embed_widget_page()
     build_growth_landing_pages()
     build_daily_seo_landing_pages()
+    build_popular_conversion_pages()
     build_convert_alias_pages(tools)
     build_legacy_redirect_pages()
 
