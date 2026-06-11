@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-10'
+TODAY_ISO = '2026-06-11'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -393,7 +393,7 @@ def build_keyword_research_file(tools):
             'intent': target['intent'],
             'cluster': target['cluster'],
             'modifiers': target['modifiers'],
-            'source_note': 'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages on 2026-06-09.'
+            'source_note': 'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-11.'
         })
     Path('seo-keyword-targets.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
     print("Generated seo-keyword-targets.json with top 20 targets")
@@ -1167,6 +1167,51 @@ def build_daily_seo_landing_pages():
             'tool': 'qr-code-generator',
             'tool_label': 'QR Code Generator',
             'angle': 'A business-card QR code should point to a stable URL such as a portfolio, contact form, vCard page, menu, or booking page. Test the code on multiple phones before printing.'
+        },
+        {
+            'slug': 'compress-image-to-50kb',
+            'title': 'Compress Image to 50KB Online',
+            'desc': 'Reduce JPG, PNG, and WebP photos toward a 50KB target for strict upload forms, student portals, and ID applications.',
+            'keyword': 'compress image to 50KB',
+            'tool': 'image-compressor',
+            'tool_label': 'Image Compressor',
+            'angle': 'A 50KB image target is very small, so reduce dimensions first, then adjust quality. For passport or ID photos, check that the face remains sharp after compression.'
+        },
+        {
+            'slug': 'pdf-to-jpg-for-whatsapp',
+            'title': 'Convert PDF to JPG for WhatsApp Sharing',
+            'desc': 'Turn PDF pages into easy-to-share JPG images for WhatsApp chats, previews, thumbnails, and quick mobile sharing.',
+            'keyword': 'PDF to JPG for WhatsApp',
+            'tool': 'pdf-to-jpg',
+            'tool_label': 'PDF to JPG',
+            'angle': 'WhatsApp is easier for image previews than multi-page PDFs. Export the important PDF pages as JPG, then compress the images if the chat upload feels slow.'
+        },
+        {
+            'slug': 'jpg-to-pdf-for-documents',
+            'title': 'JPG to PDF for Documents, Receipts, and Forms',
+            'desc': 'Combine document photos, receipts, screenshots, and scanned pages into one clean PDF for email or application uploads.',
+            'keyword': 'JPG to PDF for documents',
+            'tool': 'jpg-to-pdf',
+            'tool_label': 'JPG to PDF',
+            'angle': 'For document uploads, order the JPG pages before conversion and keep the sharpest image version. A single PDF is usually accepted more easily than several loose photos.'
+        },
+        {
+            'slug': 'resize-image-for-website',
+            'title': 'Resize Image for Website Speed and SEO',
+            'desc': 'Resize website images to practical dimensions before compression so pages load faster without looking blurry.',
+            'keyword': 'resize image for website',
+            'tool': 'resize-image',
+            'tool_label': 'Resize Image',
+            'angle': 'Website images should match their display size. Resize oversized photos before compressing them so the browser does not download unnecessary pixels.'
+        },
+        {
+            'slug': 'webp-to-jpg-for-instagram',
+            'title': 'Convert WebP to JPG for Instagram Uploads',
+            'desc': 'Convert WebP images into JPG files for Instagram, social media scheduling tools, older editors, and mobile upload compatibility.',
+            'keyword': 'WebP to JPG for Instagram',
+            'tool': 'webp-to-jpg',
+            'tool_label': 'WebP to JPG',
+            'angle': 'If an app rejects a WebP image, JPG is the safest compatibility format. Keep a high-quality export, then compress only if the upload size is too large.'
         },
     ]
     base = Path('free-online-converter-guides')
