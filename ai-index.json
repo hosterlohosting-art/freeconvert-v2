@@ -865,6 +865,69 @@
       "target_keyword": "webm to mp4"
     },
     {
+      "id": "mov-to-mp4",
+      "name": "MOV to MP4",
+      "url": "https://freeconvert.cloud/mov-to-mp4/",
+      "category": "Video Converter",
+      "description": "Convert Apple MOV videos into universal MP4 files.",
+      "title": "MOV to MP4 Converter Online",
+      "target_keyword": null
+    },
+    {
+      "id": "avi-to-mp4",
+      "name": "AVI to MP4",
+      "url": "https://freeconvert.cloud/avi-to-mp4/",
+      "category": "Video Converter",
+      "description": "Convert older AVI videos into modern MP4 format.",
+      "title": "AVI to MP4 Converter Online",
+      "target_keyword": null
+    },
+    {
+      "id": "mkv-to-mp4",
+      "name": "MKV to MP4",
+      "url": "https://freeconvert.cloud/mkv-to-mp4/",
+      "category": "Video Converter",
+      "description": "Convert MKV video containers into widely supported MP4 files.",
+      "title": "MKV to MP4 Converter Online",
+      "target_keyword": null
+    },
+    {
+      "id": "mp4-to-gif",
+      "name": "MP4 to GIF",
+      "url": "https://freeconvert.cloud/mp4-to-gif/",
+      "category": "Video Converter",
+      "description": "Create animated GIF clips from MP4 videos.",
+      "title": "MP4 to GIF Converter Online",
+      "target_keyword": null
+    },
+    {
+      "id": "video-to-mp3",
+      "name": "Video to MP3",
+      "url": "https://freeconvert.cloud/video-to-mp3/",
+      "category": "Video Converter",
+      "description": "Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos.",
+      "title": "Video to MP3 Converter Online",
+      "target_keyword": null
+    },
+    {
+      "id": "video-trimmer",
+      "name": "Video Trimmer",
+      "url": "https://freeconvert.cloud/video-trimmer/",
+      "category": "Video Converter",
+      "description": "Trim long video clips into shorter shareable segments.",
+      "title": "Video Trimmer Online Free",
+      "target_keyword": null
+    },
+    {
+      "id": "video-resizer",
+      "name": "Video Resizer",
+      "url": "https://freeconvert.cloud/video-resizer/",
+      "category": "Video Converter",
+      "description": "Resize video dimensions for social media, websites, and mobile uploads.",
+      "title": "Video Resizer Online",
+      "target_keyword": null
+    },
+    {
       "id": "jpg-to-webp",
       "name": "JPG to WebP",
       "url": "https://freeconvert.cloud/jpg-to-webp/",

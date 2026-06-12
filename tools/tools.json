@@ -680,6 +680,76 @@
         "seo_desc": "Convert lightweight WebM files into universal MP4 files safely."
     },
     {
+        "id": "mov-to-mp4",
+        "name": "MOV to MP4",
+        "icon": "🎬",
+        "description": "Convert Apple MOV videos into universal MP4 files.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "MOV to MP4 Converter Online",
+        "seo_desc": "Convert MOV files from iPhone, Mac, and cameras to compatible MP4 videos online."
+    },
+    {
+        "id": "avi-to-mp4",
+        "name": "AVI to MP4",
+        "icon": "🎞️",
+        "description": "Convert older AVI videos into modern MP4 format.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "AVI to MP4 Converter Online",
+        "seo_desc": "Convert AVI videos to MP4 for phones, browsers, social media, and modern apps."
+    },
+    {
+        "id": "mkv-to-mp4",
+        "name": "MKV to MP4",
+        "icon": "📼",
+        "description": "Convert MKV video containers into widely supported MP4 files.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "MKV to MP4 Converter Online",
+        "seo_desc": "Convert MKV videos to MP4 for easier sharing, playback, upload, and editing."
+    },
+    {
+        "id": "mp4-to-gif",
+        "name": "MP4 to GIF",
+        "icon": "🎞️",
+        "description": "Create animated GIF clips from MP4 videos.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "MP4 to GIF Converter Online",
+        "seo_desc": "Convert short MP4 video clips into animated GIFs for chat, memes, and previews."
+    },
+    {
+        "id": "video-to-mp3",
+        "name": "Video to MP3",
+        "icon": "🎧",
+        "description": "Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Video to MP3 Converter Online",
+        "seo_desc": "Extract audio from video files and download clean MP3 audio online."
+    },
+    {
+        "id": "video-trimmer",
+        "name": "Video Trimmer",
+        "icon": "✂️",
+        "description": "Trim long video clips into shorter shareable segments.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Video Trimmer Online Free",
+        "seo_desc": "Cut and trim videos online for social media clips, previews, reels, and short highlights."
+    },
+    {
+        "id": "video-resizer",
+        "name": "Video Resizer",
+        "icon": "📐",
+        "description": "Resize video dimensions for social media, websites, and mobile uploads.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "Video Resizer Online",
+        "seo_desc": "Resize videos for Instagram, TikTok, YouTube Shorts, websites, and mobile sharing."
+    },
+    {
         "id": "jpg-to-webp",
         "name": "JPG to WebP",
         "icon": "🕸️",

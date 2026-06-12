@@ -94,6 +94,13 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/ - Extract raw audio tracks from video files. Category: Video Converter.
 - Video Compressor: https://freeconvert.cloud/video-compressor/ - Reduce video clip sizes and bitrates. Category: Video Converter.
 - WebM to MP4: https://freeconvert.cloud/webm-to-mp4/ - Transcode WebM assets to standard MP4 videos. Category: Video Converter.
+- MOV to MP4: https://freeconvert.cloud/mov-to-mp4/ - Convert Apple MOV videos into universal MP4 files. Category: Video Converter.
+- AVI to MP4: https://freeconvert.cloud/avi-to-mp4/ - Convert older AVI videos into modern MP4 format. Category: Video Converter.
+- MKV to MP4: https://freeconvert.cloud/mkv-to-mp4/ - Convert MKV video containers into widely supported MP4 files. Category: Video Converter.
+- MP4 to GIF: https://freeconvert.cloud/mp4-to-gif/ - Create animated GIF clips from MP4 videos. Category: Video Converter.
+- Video to MP3: https://freeconvert.cloud/video-to-mp3/ - Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos. Category: Video Converter.
+- Video Trimmer: https://freeconvert.cloud/video-trimmer/ - Trim long video clips into shorter shareable segments. Category: Video Converter.
+- Video Resizer: https://freeconvert.cloud/video-resizer/ - Resize video dimensions for social media, websites, and mobile uploads. Category: Video Converter.
 - JPG to WebP: https://freeconvert.cloud/jpg-to-webp/ - Convert JPG images to next-gen WebP format locally. Category: Image.
 - PNG to WebP: https://freeconvert.cloud/png-to-webp/ - Convert PNG images to next-gen WebP format locally. Category: Image.
 - YouTube Thumbnail Downloader: https://freeconvert.cloud/youtube-thumbnail-downloader/ - Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free. Category: Utility.

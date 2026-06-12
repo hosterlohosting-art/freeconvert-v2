@@ -3927,11 +3927,10 @@ def build_homepage(tools):
         tools_html = ""
         for tool in tools:
             is_popular = tool['id'] in POPULAR_TOOLS
-            popular_badge = '<span class="popular-badge">⚡ Popular</span>' if is_popular else ''
+            popular_badge = '<span class="popular-badge">⚡ Popular</span>\n                ' if is_popular else ''
             tools_html += f"""
             <a href="/{tool['id']}/" class="tool-card" data-category="{tool['type']}">
-                {popular_badge}
-                <div class="tool-card-top">
+                {popular_badge}<div class="tool-card-top">
                     <div class="tool-icon">{tool['icon']}</div>
                     <span class="tool-category-tag">{tool['category']}</span>
                 </div>
@@ -4624,7 +4623,7 @@ def generate_category_seo_content(cat_slug, cat_name):
         faqs = [
             {"q": f"Are the {cat_name} converters completely free to use?", "a": f"Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity."},
             {"q": "How does freeconvert.cloud guarantee the security of my files?", "a": "Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours."},
-            {"q": "Can I use these {cat_name} tools on my smartphone?", "a": "Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software."}
+            {"q": f"Can I use these {cat_name} tools on my smartphone?", "a": "Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software."}
         ]
         
     # Convert use cases list to HTML
@@ -5616,6 +5615,20 @@ def generate_tool_adsense_content(tool):
                 {"q": f"Does this {t_name} utility support dark theme console layouts?", "a": f"Yes, the developer tools feature a beautiful dark-theme console layout styled with custom syntax glowing borders to reduce eye strain."},
                 {"q": f"Does this work on mobile viewports?", "a": f"Yes, the editor panels scale dynamically into neat stacks on mobile screens, allowing easy debugging."},
                 {"q": f"Can I copy my converted data cleanly?", "a": f"Yes! Simply click the Copy button to immediately save the parsed string to your clipboard."}
+            ]
+        elif t_cat == 'Video Converter' or t_type == 'video':
+            use_cases = [
+                f"Converting {t_name} files for social media uploads, mobile playback, website embeds, and client sharing.",
+                f"Preparing video clips for compatibility across iPhone, Android, Windows, macOS, browsers, and editing tools.",
+                f"Reducing friction when a platform rejects a video because the format, file size, or dimensions are not accepted."
+            ]
+            limitations = f"{t_name} works best with common video containers such as MP4, MOV, AVI, MKV, and WebM. Large files may require temporary encrypted edge processing because browser-only video transcoding can be heavy."
+            faqs = [
+                {"q": f"What is {t_name} best used for?", "a": f"Use {t_name} when you need a more compatible, smaller, or easier-to-share video output for websites, social platforms, messages, or editing tools."},
+                {"q": f"Are uploaded videos private?", "a": "Video files are transferred over HTTPS for temporary processing when transcoding is required. Files are designed to be deleted automatically after processing."},
+                {"q": f"Which video formats are commonly supported?", "a": "Common workflows include MP4, MOV, AVI, MKV, WebM, MP3 audio extraction, GIF clips, trimming, resizing, and compression."},
+                {"q": f"Can I use {t_name} on mobile?", "a": "Yes, the page is responsive and works in modern mobile browsers. For very large videos, desktop browsers usually perform better."},
+                {"q": f"How do I keep video quality high?", "a": "Start with the best original file, avoid repeated conversions, and compress only as much as your upload or sharing limit requires."}
             ]
         elif t_cat == 'Security' or 'security' in t_type:
             use_cases = [
