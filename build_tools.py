@@ -1217,6 +1217,78 @@ def build_daily_seo_landing_pages():
             'tool_label': 'WebP to JPG',
             'angle': 'If an app rejects a WebP image, JPG is the safest compatibility format. Keep a high-quality export, then compress only if the upload size is too large.'
         },
+        {
+            'slug': 'compress-video-for-whatsapp',
+            'title': 'Compress Video for WhatsApp Sharing',
+            'desc': 'Reduce video file size for WhatsApp chats, status uploads, group sharing, and faster mobile delivery.',
+            'keyword': 'compress video for WhatsApp',
+            'tool': 'video-compressor',
+            'tool_label': 'Video Compressor',
+            'angle': 'WhatsApp sharing works best with shorter MP4 clips. Trim the video first if needed, then compress enough to keep motion smooth and text readable.'
+        },
+        {
+            'slug': 'mov-to-mp4-on-iphone',
+            'title': 'Convert MOV to MP4 on iPhone and Mac',
+            'desc': 'Convert Apple MOV videos into MP4 files for Android, Windows, browsers, editors, and social media uploads.',
+            'keyword': 'MOV to MP4 on iPhone',
+            'tool': 'mov-to-mp4',
+            'tool_label': 'MOV to MP4',
+            'angle': 'MOV is common on Apple devices, but MP4 is usually accepted by more apps, websites, and upload forms.'
+        },
+        {
+            'slug': 'avi-to-mp4-for-windows',
+            'title': 'Convert AVI to MP4 for Windows and Phones',
+            'desc': 'Turn older AVI videos into MP4 files for modern playback, browser uploads, social media, and mobile sharing.',
+            'keyword': 'AVI to MP4 for Windows',
+            'tool': 'avi-to-mp4',
+            'tool_label': 'AVI to MP4',
+            'angle': 'AVI files can be difficult for mobile apps and browsers. MP4 is usually the safer format for sharing and upload compatibility.'
+        },
+        {
+            'slug': 'mkv-to-mp4-for-tv',
+            'title': 'Convert MKV to MP4 for TV, Mobile, and Web',
+            'desc': 'Convert MKV video containers into MP4 for smart TVs, phones, tablets, editors, and upload platforms.',
+            'keyword': 'MKV to MP4 for TV',
+            'tool': 'mkv-to-mp4',
+            'tool_label': 'MKV to MP4',
+            'angle': 'MKV can hold many tracks, but MP4 is more broadly accepted. Check subtitles and audio tracks after conversion if the source file is complex.'
+        },
+        {
+            'slug': 'mp4-to-gif-for-discord',
+            'title': 'Convert MP4 to GIF for Discord, Chat, and Previews',
+            'desc': 'Create short looping GIFs from MP4 clips for Discord, social posts, chat replies, tutorials, and quick previews.',
+            'keyword': 'MP4 to GIF for Discord',
+            'tool': 'mp4-to-gif',
+            'tool_label': 'MP4 to GIF',
+            'angle': 'GIF works best for very short clips. Trim the video and reduce dimensions before converting so the animation stays lightweight.'
+        },
+        {
+            'slug': 'video-to-mp3-for-lectures',
+            'title': 'Video to MP3 for Lectures and Voice Notes',
+            'desc': 'Extract MP3 audio from video lectures, meetings, tutorials, recordings, interviews, and voice notes.',
+            'keyword': 'video to MP3 for lectures',
+            'tool': 'video-to-mp3',
+            'tool_label': 'Video to MP3',
+            'angle': 'If you only need the spoken audio, MP3 is easier to store, listen to, and share than the original video file.'
+        },
+        {
+            'slug': 'resize-video-for-instagram-reels',
+            'title': 'Resize Video for Instagram Reels and Stories',
+            'desc': 'Resize videos for Instagram Reels, Stories, posts, square feeds, vertical clips, and mobile-first social uploads.',
+            'keyword': 'resize video for Instagram Reels',
+            'tool': 'video-resizer',
+            'tool_label': 'Video Resizer',
+            'angle': 'Instagram vertical videos usually need a 9:16 frame. Keep faces, captions, and product details away from the top and bottom UI zones.'
+        },
+        {
+            'slug': 'trim-video-online-for-status',
+            'title': 'Trim Video Online for Status and Short Clips',
+            'desc': 'Cut long videos into shorter clips for WhatsApp Status, Instagram Stories, reels, previews, and quick highlights.',
+            'keyword': 'trim video online for status',
+            'tool': 'video-trimmer',
+            'tool_label': 'Video Trimmer',
+            'angle': 'Short clips load faster and perform better in social feeds. Trim dead space from the start and end before compressing or resizing.'
+        },
     ]
     base = Path('free-online-converter-guides')
     base.mkdir(exist_ok=True)
@@ -1509,6 +1581,56 @@ def build_popular_conversion_pages():
             'problem': 'Printed menus and table tents need a fast scan path to the latest menu or ordering page.',
             'best_for': 'Use a QR code that points to a stable menu URL so you can update the page without reprinting the code.'
         },
+        {
+            'slug': 'mov-to-mp4-for-android',
+            'title': 'MOV to MP4 for Android Sharing',
+            'desc': 'Convert iPhone MOV videos to MP4 so they open cleanly on Android phones, Windows laptops, websites, and apps.',
+            'keyword': 'MOV to MP4 for Android',
+            'tool': 'mov-to-mp4',
+            'tool_label': 'MOV to MP4',
+            'problem': 'MOV clips from Apple devices can fail in Android apps, older Windows workflows, and web upload forms.',
+            'best_for': 'Convert MOV to MP4 when you need the safest sharing format for mixed-device groups and upload portals.'
+        },
+        {
+            'slug': 'mkv-to-mp4-without-quality-loss',
+            'title': 'MKV to MP4 Without Losing Quality',
+            'desc': 'Convert MKV videos into MP4 for easier playback while keeping a high-quality source copy for archive or editing.',
+            'keyword': 'MKV to MP4 without losing quality',
+            'tool': 'mkv-to-mp4',
+            'tool_label': 'MKV to MP4',
+            'problem': 'MKV containers are flexible, but many mobile apps, smart TVs, and websites prefer MP4 uploads.',
+            'best_for': 'Use MP4 when compatibility matters, and keep the original MKV if it contains subtitles or multiple audio tracks.'
+        },
+        {
+            'slug': 'compress-video-for-email',
+            'title': 'Compress Video for Email Attachments',
+            'desc': 'Reduce video size for Gmail, Outlook, client previews, classroom uploads, and small attachment limits.',
+            'keyword': 'compress video for email',
+            'tool': 'video-compressor',
+            'tool_label': 'Video Compressor',
+            'problem': 'Email providers often reject large video attachments, especially raw camera clips and long phone recordings.',
+            'best_for': 'Compress video when you need a preview-sized file that can be emailed quickly without using cloud storage.'
+        },
+        {
+            'slug': 'mp4-to-gif-meme',
+            'title': 'MP4 to GIF for Memes and Short Loops',
+            'desc': 'Turn short MP4 clips into GIF animations for memes, chat replies, tutorials, support docs, and social previews.',
+            'keyword': 'MP4 to GIF meme',
+            'tool': 'mp4-to-gif',
+            'tool_label': 'MP4 to GIF',
+            'problem': 'Short video moments are easier to reuse in chats and docs when exported as looping GIFs.',
+            'best_for': 'Trim the MP4 first, then convert only the best few seconds to keep the GIF small and clear.'
+        },
+        {
+            'slug': 'video-to-mp3-audio-extractor',
+            'title': 'Video to MP3 Audio Extractor',
+            'desc': 'Extract MP3 audio from videos for podcasts, lectures, voice notes, interviews, music ideas, and offline listening.',
+            'keyword': 'video to MP3 audio extractor',
+            'tool': 'video-to-mp3',
+            'tool_label': 'Video to MP3',
+            'problem': 'Keeping the full video wastes storage when the audio track is the only useful part.',
+            'best_for': 'Extract MP3 when you want a lightweight listening file from a lecture, meeting, interview, or tutorial.'
+        },
     ]
 
     base = Path('popular-conversions')
@@ -1729,6 +1851,46 @@ def build_file_format_glossary_pages():
             'tools': [('mp4-to-mp3', 'MP4 to MP3'), ('video-compressor', 'Video Compressor'), ('webm-to-mp4', 'WebM to MP4')]
         },
         {
+            'slug': 'mov',
+            'name': 'MOV',
+            'title': 'What Is a MOV File?',
+            'desc': 'Learn why MOV videos are common on iPhone, iPad, and Mac devices, and when to convert MOV to MP4.',
+            'summary': 'MOV is an Apple QuickTime video container often created by iPhones, cameras, and macOS editing apps.',
+            'best_for': 'Apple device recording, editing workflows, camera footage, and high-quality source video storage.',
+            'watch_out': 'MOV files may not upload or play smoothly in every Android, Windows, browser, or social media workflow.',
+            'tools': [('mov-to-mp4', 'MOV to MP4'), ('video-compressor', 'Video Compressor'), ('video-to-mp3', 'Video to MP3')]
+        },
+        {
+            'slug': 'avi',
+            'name': 'AVI',
+            'title': 'What Is an AVI File?',
+            'desc': 'Understand older AVI video files, compatibility limits, and why converting AVI to MP4 helps modern sharing.',
+            'summary': 'AVI is an older Microsoft video container that can store audio and video but is less web-friendly than MP4.',
+            'best_for': 'Legacy video archives, older Windows recordings, and files created by older capture or editing software.',
+            'watch_out': 'AVI files can be large and may fail in mobile apps, web upload forms, or modern browser playback.',
+            'tools': [('avi-to-mp4', 'AVI to MP4'), ('video-compressor', 'Video Compressor'), ('video-to-mp3', 'Video to MP3')]
+        },
+        {
+            'slug': 'mkv',
+            'name': 'MKV',
+            'title': 'What Is an MKV File?',
+            'desc': 'Learn how MKV video containers work, why they are flexible, and when to convert MKV to MP4.',
+            'summary': 'MKV is a flexible video container that can hold video, audio, subtitle, and chapter tracks in one file.',
+            'best_for': 'Archival videos, subtitle-heavy media, high-quality source files, and multi-track playback.',
+            'watch_out': 'Some smart TVs, phones, browsers, and upload portals prefer MP4 and may reject MKV files.',
+            'tools': [('mkv-to-mp4', 'MKV to MP4'), ('video-compressor', 'Video Compressor'), ('video-to-mp3', 'Video to MP3')]
+        },
+        {
+            'slug': 'webm',
+            'name': 'WebM',
+            'title': 'What Is a WebM File?',
+            'desc': 'Learn why WebM videos are used on websites, where compatibility can break, and when WebM to MP4 helps.',
+            'summary': 'WebM is a web-focused video format designed for efficient browser playback and online delivery.',
+            'best_for': 'Web video embeds, lightweight browser playback, HTML5 video, and open web publishing workflows.',
+            'watch_out': 'Some editing apps, older devices, and upload portals still expect MP4 instead of WebM.',
+            'tools': [('webm-to-mp4', 'WebM to MP4'), ('video-compressor', 'Video Compressor'), ('video-resizer', 'Video Resizer')]
+        },
+        {
             'slug': 'mp3',
             'name': 'MP3',
             'title': 'What Is an MP3 File?',
@@ -1893,7 +2055,7 @@ def build_file_format_glossary_pages():
         "@type": "CollectionPage",
         "name": "File Format Glossary",
         "url": f"{SITE_URL}/file-formats/",
-        "description": "Plain-English file format guides for PDF, JPG, PNG, WebP, HEIC, DOCX, SVG, MP4, MP3, CSV, JSON, Base64, QR codes, ZIP, and GIF.",
+        "description": "Plain-English file format guides for PDF, JPG, PNG, WebP, HEIC, DOCX, SVG, MP4, MOV, AVI, MKV, WebM, MP3, CSV, JSON, Base64, QR codes, ZIP, and GIF.",
         "dateModified": TODAY_ISO,
         "numberOfItems": len(formats)
     }
@@ -1903,7 +2065,7 @@ def build_file_format_glossary_pages():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Format Glossary | freeconvert.cloud</title>
-    <meta name="description" content="Learn what common file formats mean, when to use them, what to watch out for, and which free converter to use.">
+    <meta name="description" content="Learn what common file formats mean, including PDF, JPG, PNG, WebP, MP4, MOV, AVI, MKV, WebM, MP3, CSV, JSON, GIF, and ZIP.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
