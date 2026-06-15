@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-11'
+TODAY_ISO = '2026-06-15'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -524,7 +524,6 @@ def build_sitemap(tools):
         'pages': [],
         'tools': [],
         'blog': [],
-        'discovery': [],
     }
 
     def add(group, loc, changefreq, priority, include_image=True):
@@ -560,14 +559,6 @@ def build_sitemap(tools):
         add('blog', public_url_for_html(popular_page), 'weekly', '0.6')
     for format_page in sorted(Path('file-formats').glob('**/index.html')):
         add('blog', public_url_for_html(format_page), 'weekly', '0.6')
-    add('discovery', f'{SITE_URL}/llms.txt', 'weekly', '0.5', include_image=False)
-    add('discovery', f'{SITE_URL}/llms-full.txt', 'weekly', '0.5', include_image=False)
-    add('discovery', f'{SITE_URL}/ai-index.json', 'weekly', '0.5', include_image=False)
-    add('discovery', f'{SITE_URL}/seo-keyword-targets.json', 'weekly', '0.5', include_image=False)
-    add('discovery', f'{SITE_URL}/humans.txt', 'weekly', '0.5', include_image=False)
-    add('discovery', f'{SITE_URL}/feed.xml', 'daily', '0.4', include_image=False)
-    add('discovery', f'{SITE_URL}/opensearch.xml', 'monthly', '0.3', include_image=False)
-
     sitemaps_dir = Path('sitemaps')
     sitemaps_dir.mkdir(exist_ok=True)
     shard_names = []
@@ -1161,7 +1152,7 @@ def build_daily_seo_landing_pages():
             'keyword': 'submit sitemap to Google Search Console',
             'tool': 'robots-txt-generator',
             'tool_label': 'Robots.txt Generator',
-            'angle': 'For freeconvert.cloud, the best sitemap to submit is sitemap-index.xml because it points Google to the split pages, tools, blog, and discovery sitemaps.'
+            'angle': 'For freeconvert.cloud, the best sitemap to submit is sitemap-index.xml because it points Google to the split pages, tools, and blog sitemaps.'
         },
         {
             'slug': 'qr-codes-on-business-cards',
