@@ -1269,7 +1269,147 @@ if (toolId === 'lorem-ipsum') {
         a.download = 'minified.html';
         a.click();
     };
-}
+} else {
+    const labelMap = {
+        'age-calculator': ['Birth date', 'Exact age'],
+        'percentage-calculator': ['Value, percent', 'Percentage result'],
+        'random-number-generator': ['Min, max, count', 'Random numbers'],
+        'uuid-generator': ['Count', 'UUIDs'],
+        'timestamp-converter': ['Date', 'Unix timestamp'],
+        'unix-time-converter': ['Unix timestamp', 'Readable date'],
+        'time-zone-converter': ['Date/time, target zone', 'Converted time'],
+        'slug-generator': ['Title', 'SEO slug'],
+        'remove-duplicate-lines': ['Lines', 'Unique lines'],
+        'text-cleaner': ['Messy text', 'Clean text'],
+        'hashtag-generator': ['Topic', 'Hashtags'],
+        'lorem-ipsum-generator': ['Paragraph count', 'Lorem ipsum'],
+        'barcode-generator': ['Barcode value', 'Barcode preview']
+    };
+    const labels = labelMap[toolId] || ['Input', 'Output'];
+    const defaults = {
+        'age-calculator': '2000-01-01',
+        'percentage-calculator': '200, 15',
+        'random-number-generator': '1, 100, 5',
+        'uuid-generator': '5',
+        'timestamp-converter': new Date().toISOString().slice(0, 10),
+        'unix-time-converter': Math.floor(Date.now() / 1000).toString(),
+        'time-zone-converter': '2026-06-15 12:00, Asia/Karachi',
+        'slug-generator': 'How to Convert JPG to PDF Online Free',
+        'remove-duplicate-lines': 'apple\\nbanana\\napple\\norange\\nbanana',
+        'text-cleaner': '<p>  Hello,   world!  </p>',
+        'hashtag-generator': 'free online file converter',
+        'lorem-ipsum-generator': '3',
+        'barcode-generator': '123456789012'
+    };
+    const multiLine = ['remove-duplicate-lines', 'text-cleaner'].includes(toolId);
+    const dateInput = ['age-calculator', 'timestamp-converter'].includes(toolId);
+    const numberInput = ['uuid-generator', 'lorem-ipsum-generator'].includes(toolId);
+    const inputControl = multiLine
+        ? `<textarea id="utility-fallback-input" class="code-editor-textarea" style="height:150px;">${defaults[toolId] || ''}</textarea>`
+        : `<input id="utility-fallback-input" class="glass-input" type="${dateInput ? 'date' : numberInput ? 'number' : 'text'}" value="${defaults[toolId] || ''}" style="width:100%;">`;
+
+    container.innerHTML = `
+        <div style="display:flex;flex-direction:column;gap:1.5rem;max-width:720px;margin:0 auto;text-align:left;">
+            <div class="editor-pane">
+                <div class="editor-header"><span class="editor-title">${labels[0]}</span><div class="editor-actions"><button type="button" class="editor-btn" onclick="runUtilityFallback()">Process</button><button type="button" class="editor-btn" onclick="clearUtilityFallback()">Clear</button></div></div>
+                ${inputControl}
+            </div>
+            <div class="editor-pane">
+                <div class="editor-header"><span class="editor-title">${labels[1]}</span><div class="editor-actions"><button type="button" class="editor-btn success" onclick="copyUtilityFallback()">Copy</button></div></div>
+                <div id="utility-fallback-visual" style="display:none;padding:1rem;border-bottom:1px solid var(--border-color);background:var(--bg-light);"></div>
+                <textarea id="utility-fallback-output" class="code-editor-textarea" style="height:180px;" readonly></textarea>
+            </div>
+        </div>`;
+
+    const slugify = value => value.toLowerCase().trim().replace(/['"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const parts = value => value.split(',').map(part => part.trim()).filter(Boolean);
+    const uuidv4 = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+
+    window.runUtilityFallback = () => {
+        const input = document.getElementById('utility-fallback-input');
+        const output = document.getElementById('utility-fallback-output');
+        const visual = document.getElementById('utility-fallback-visual');
+        const value = input.value || '';
+        let result = '';
+        visual.style.display = 'none';
+        visual.innerHTML = '';
+
+        if (toolId === 'age-calculator') {
+            const birth = new Date(value);
+            const now = new Date();
+            if (isNaN(birth.getTime()) || birth > now) result = 'Enter a valid birth date.';
+            else {
+                let years = now.getFullYear() - birth.getFullYear();
+                const hadBirthday = now.getMonth() > birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() >= birth.getDate());
+                if (!hadBirthday) years--;
+                const days = Math.floor((now - birth) / 86400000);
+                result = `${years} years old\\n${days} total days\\n${Math.floor(days * 24)} total hours`;
+            }
+        } else if (toolId === 'percentage-calculator') {
+            const [baseRaw, pctRaw] = parts(value);
+            const base = Number(baseRaw), pct = Number(pctRaw);
+            result = isNaN(base) || isNaN(pct) ? 'Enter values like: 200, 15' : `${pct}% of ${base} = ${(base * pct / 100).toFixed(4).replace(/\\.0000$/, '')}`;
+        } else if (toolId === 'random-number-generator') {
+            const [minRaw, maxRaw, countRaw] = parts(value);
+            const min = Number(minRaw || 1), max = Number(maxRaw || 100), count = Math.max(1, Math.min(Number(countRaw || 5), 100));
+            result = Array.from({length: count}, () => Math.floor(Math.random() * (max - min + 1)) + min).join(', ');
+        } else if (toolId === 'uuid-generator') {
+            const count = Math.max(1, Math.min(parseInt(value, 10) || 5, 100));
+            result = Array.from({length: count}, uuidv4).join('\\n');
+        } else if (toolId === 'timestamp-converter') {
+            const date = new Date(value);
+            result = isNaN(date.getTime()) ? 'Enter a valid date.' : Math.floor(date.getTime() / 1000).toString();
+        } else if (toolId === 'unix-time-converter') {
+            const seconds = parseInt(value, 10);
+            result = isNaN(seconds) ? 'Enter a valid Unix timestamp.' : new Date(seconds * 1000).toISOString();
+        } else if (toolId === 'time-zone-converter') {
+            const [dateRaw, zoneRaw] = parts(value);
+            const date = new Date(dateRaw || Date.now());
+            const zone = zoneRaw || 'Asia/Karachi';
+            result = isNaN(date.getTime()) ? 'Enter a valid date/time.' : new Intl.DateTimeFormat('en-US', {dateStyle:'full', timeStyle:'long', timeZone:zone}).format(date) + ` (${zone})`;
+        } else if (toolId === 'slug-generator') {
+            result = slugify(value);
+        } else if (toolId === 'remove-duplicate-lines') {
+            const seen = new Set();
+            result = value.split(/\\r?\\n/).filter(line => {
+                const key = line.trim();
+                if (!key || seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            }).join('\\n');
+        } else if (toolId === 'text-cleaner') {
+            result = value.replace(/<[^>]*>/g, ' ').replace(/\\s+/g, ' ').trim();
+        } else if (toolId === 'hashtag-generator') {
+            result = value.split(/\\s+/).map(word => word.replace(/[^a-zA-Z0-9]/g, '')).filter(Boolean).slice(0, 20).map(word => '#' + word.toLowerCase()).join(' ');
+        } else if (toolId === 'lorem-ipsum-generator') {
+            const count = Math.max(1, Math.min(parseInt(value, 10) || 3, 20));
+            const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.';
+            result = Array.from({length: count}, () => text).join('\\n\\n');
+        } else if (toolId === 'barcode-generator') {
+            const clean = value.trim() || '123456789012';
+            result = clean;
+            visual.style.display = 'block';
+            visual.innerHTML = `<div style="display:flex;align-items:end;gap:3px;height:90px;justify-content:center;background:white;border-radius:12px;border:1px solid var(--border-color);padding:1rem;">${clean.split('').map((char, i) => `<span style="display:block;width:${(char.charCodeAt(0) % 4) + 2}px;height:${35 + ((char.charCodeAt(0) + i) % 45)}px;background:#111827;"></span>`).join('')}</div><p style="text-align:center;font-weight:800;margin:0.7rem 0 0;">${clean}</p>`;
+        } else {
+            result = value;
+        }
+        output.value = result;
+    };
+    window.clearUtilityFallback = () => {
+        document.getElementById('utility-fallback-input').value = '';
+        document.getElementById('utility-fallback-output').value = '';
+        const visual = document.getElementById('utility-fallback-visual');
+        visual.style.display = 'none';
+        visual.innerHTML = '';
+    };
+    window.copyUtilityFallback = () => {
+        const val = document.getElementById('utility-fallback-output').value;
+        if (val) navigator.clipboard.writeText(val).then(() => alert('Copied result to clipboard!'));
+    };
+    window.runUtilityFallback();
 }
 
     </script>
