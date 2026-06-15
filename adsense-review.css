@@ -1,2 +1,47 @@
-/* Hide empty ad placeholders until AdSense approval and live ad units are enabled. */
-body:not(.ads-enabled) .adsense-placeholder-wrap{display:none!important}
+/* AdSense container styles and pre-approval hiding.
+   When AdSense is approved, add class "ads-enabled" to <body> via your CMS/build
+   or remove the :not(.ads-enabled) rule below. */
+
+/* Hide all ad wrappers until approval/live ads are enabled */
+body:not(.ads-enabled) .adsense-placeholder-wrap,
+body:not(.ads-enabled) .adsense-wrap {
+    display: none !important;
+}
+
+/* Base ad wrapper styling (visible after body.ads-enabled is added) */
+.adsense-wrap,
+.adsense-placeholder-wrap {
+    margin: 2rem 0;
+    text-align: center;
+    min-height: 90px;
+}
+
+.adsense-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 0.5rem;
+}
+
+/* Ensure AdSense auto ads don't overlap fixed UI elements */
+ins.adsbygoogle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Leaderboard / display ad sizing helpers */
+.leaderboard-ad {
+    min-height: 90px;
+}
+
+/* Sidebar sticky ad for desktop tool pages */
+@media (min-width: 1024px) {
+    .adsense-sidebar-sticky {
+        position: sticky;
+        top: 100px;
+        margin-bottom: 2rem;
+    }
+}

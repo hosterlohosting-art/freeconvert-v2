@@ -32,7 +32,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.',
         'cluster': 'PDF conversion',
         'priority': 1,
-        'modifiers': ['pdf to jpg converter', 'convert pdf to jpg online', 'pdf pages to jpg']
+        'modifiers': ['pdf to jpg converter', 'convert pdf to jpg online', 'pdf pages to jpg', 'pdf to jpg high quality', 'pdf to jpg free']
     },
     {
         'keyword': 'jpg to pdf',
@@ -40,7 +40,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Combine photos, scans, receipts, and screenshots into one PDF document.',
         'cluster': 'PDF creation',
         'priority': 2,
-        'modifiers': ['jpg to pdf converter', 'convert jpg to pdf online', 'image to pdf']
+        'modifiers': ['jpg to pdf converter', 'convert jpg to pdf online', 'image to pdf', 'jpg to pdf for school', 'merge jpg to pdf']
     },
     {
         'keyword': 'png to jpg',
@@ -48,7 +48,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Turn PNG images into smaller, widely supported JPG files.',
         'cluster': 'Image conversion',
         'priority': 3,
-        'modifiers': ['png to jpg converter', 'convert png to jpg online', 'png image to jpeg']
+        'modifiers': ['png to jpg converter', 'convert png to jpg online', 'png image to jpeg', 'png to jpg for website', 'png to jpg transparent']
     },
     {
         'keyword': 'jpg to png',
@@ -56,7 +56,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert JPG photos into lossless PNG images for editing and design workflows.',
         'cluster': 'Image conversion',
         'priority': 4,
-        'modifiers': ['jpg to png converter', 'convert jpg to png online', 'jpeg to png']
+        'modifiers': ['jpg to png converter', 'convert jpg to png online', 'jpeg to png', 'jpg to png transparent', 'jpg to png no background']
     },
     {
         'keyword': 'webp to jpg',
@@ -64,7 +64,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Make modern WebP images compatible with older apps, CMS uploads, and editors.',
         'cluster': 'Image conversion',
         'priority': 5,
-        'modifiers': ['webp to jpg converter', 'convert webp to jpg online', 'webp image to jpeg']
+        'modifiers': ['webp to jpg converter', 'convert webp to jpg online', 'webp image to jpeg', 'webp to jpg for wordpress']
     },
     {
         'keyword': 'heic to jpg',
@@ -72,7 +72,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert iPhone HEIC photos into universal JPG files.',
         'cluster': 'Image conversion',
         'priority': 6,
-        'modifiers': ['heic to jpg converter', 'iphone photo to jpg', 'convert heic to jpeg']
+        'modifiers': ['heic to jpg converter', 'iphone photo to jpg', 'convert heic to jpeg', 'heic to jpg on windows', 'heic to jpg iphone']
     },
     {
         'keyword': 'compress pdf',
@@ -80,7 +80,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Reduce PDF file size for email, uploads, storage, and document sharing.',
         'cluster': 'PDF compression',
         'priority': 7,
-        'modifiers': ['compress pdf online', 'reduce pdf file size', 'pdf compressor']
+        'modifiers': ['compress pdf online', 'reduce pdf file size', 'pdf compressor', 'compress pdf to 1mb', 'compress pdf for email']
     },
     {
         'keyword': 'pdf to word',
@@ -88,7 +88,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert PDF documents into editable Word DOCX files.',
         'cluster': 'Document conversion',
         'priority': 8,
-        'modifiers': ['pdf to word converter', 'pdf to docx', 'convert pdf to editable word']
+        'modifiers': ['pdf to word converter', 'pdf to docx', 'convert pdf to editable word', 'pdf to word for editing', 'pdf to word free']
     },
     {
         'keyword': 'word to pdf',
@@ -96,7 +96,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Export DOCX and Word documents into clean PDF files.',
         'cluster': 'Document conversion',
         'priority': 9,
-        'modifiers': ['word to pdf converter', 'docx to pdf', 'convert word document to pdf']
+        'modifiers': ['word to pdf converter', 'docx to pdf', 'convert word document to pdf', 'word to pdf online free', 'doc to pdf']
     },
     {
         'keyword': 'merge pdf',
@@ -104,7 +104,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Combine multiple PDF files into one organized document.',
         'cluster': 'PDF editing',
         'priority': 10,
-        'modifiers': ['merge pdf online', 'combine pdf files', 'pdf merger']
+        'modifiers': ['merge pdf online', 'combine pdf files', 'pdf merger', 'merge pdf files free', 'join pdf']
     },
     {
         'keyword': 'split pdf',
@@ -112,7 +112,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Extract selected pages or split a PDF into smaller files.',
         'cluster': 'PDF editing',
         'priority': 11,
-        'modifiers': ['split pdf online', 'extract pdf pages', 'pdf splitter']
+        'modifiers': ['split pdf online', 'extract pdf pages', 'pdf splitter', 'split pdf into pages', 'pdf page extractor']
     },
     {
         'keyword': 'image compressor',
@@ -120,7 +120,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Shrink JPG, PNG, and WebP images while keeping useful visual quality.',
         'cluster': 'Image compression',
         'priority': 12,
-        'modifiers': ['compress image online', 'reduce image size', 'photo compressor']
+        'modifiers': ['compress image online', 'reduce image size', 'photo compressor', 'compress image for website', 'compress jpg online']
     },
     {
         'keyword': 'compress image to 100kb',
@@ -128,7 +128,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Reduce photos under 100KB for forms, job portals, and application uploads.',
         'cluster': 'Image compression',
         'priority': 13,
-        'modifiers': ['image compressor to 100kb', 'photo size reducer 100kb', 'compress jpg to 100kb']
+        'modifiers': ['image compressor to 100kb', 'photo size reducer 100kb', 'compress jpg to 100kb', 'compress image under 100kb', 'image resize 100kb']
     },
     {
         'keyword': 'resize image',
@@ -136,7 +136,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Resize images to exact pixel dimensions for websites, social media, and forms.',
         'cluster': 'Image editing',
         'priority': 14,
-        'modifiers': ['image resizer online', 'resize photo online', 'change image dimensions']
+        'modifiers': ['image resizer online', 'resize photo online', 'change image dimensions', 'resize image for instagram', 'resize image pixels']
     },
     {
         'keyword': 'png to webp',
@@ -144,7 +144,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert PNG graphics to WebP for faster pages and smaller image delivery.',
         'cluster': 'Image conversion',
         'priority': 15,
-        'modifiers': ['png to webp converter', 'convert png to webp online', 'png webp optimizer']
+        'modifiers': ['png to webp converter', 'convert png to webp online', 'png webp optimizer', 'png to webp transparent']
     },
     {
         'keyword': 'jpg to webp',
@@ -152,7 +152,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert JPG photos into lightweight WebP images for SEO speed gains.',
         'cluster': 'Image conversion',
         'priority': 16,
-        'modifiers': ['jpg to webp converter', 'convert jpg to webp online', 'jpeg to webp']
+        'modifiers': ['jpg to webp converter', 'convert jpg to webp online', 'jpeg to webp', 'jpg to webp for website']
     },
     {
         'keyword': 'mp4 to mp3',
@@ -160,7 +160,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Extract audio from MP4 videos into MP3 files.',
         'cluster': 'Media conversion',
         'priority': 17,
-        'modifiers': ['mp4 to mp3 converter', 'extract audio from mp4', 'video to mp3']
+        'modifiers': ['mp4 to mp3 converter', 'extract audio from mp4', 'video to mp3', 'mp4 to mp3 free', 'convert video to audio']
     },
     {
         'keyword': 'webm to mp4',
@@ -168,7 +168,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Convert WebM videos into widely compatible MP4 files.',
         'cluster': 'Media conversion',
         'priority': 18,
-        'modifiers': ['webm to mp4 converter', 'convert webm to mp4 online', 'webm video to mp4']
+        'modifiers': ['webm to mp4 converter', 'convert webm to mp4 online', 'webm video to mp4', 'webm to mp4 free']
     },
     {
         'keyword': 'json to csv',
@@ -176,7 +176,7 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Flatten JSON data into CSV rows for Excel, Sheets, and data imports.',
         'cluster': 'Developer conversion',
         'priority': 19,
-        'modifiers': ['json to csv converter', 'convert json to csv online', 'json array to csv']
+        'modifiers': ['json to csv converter', 'convert json to csv online', 'json array to csv', 'json to csv for excel', 'json to csv free']
     },
     {
         'keyword': 'qr code generator',
@@ -184,7 +184,103 @@ TOP_KEYWORD_TARGETS = [
         'intent': 'Create QR codes for links, menus, contact cards, events, and WiFi access.',
         'cluster': 'Utility tools',
         'priority': 20,
-        'modifiers': ['free qr code generator', 'create qr code online', 'qr generator']
+        'modifiers': ['free qr code generator', 'create qr code online', 'qr generator', 'qr code for menu', 'qr code for wifi']
+    },
+    {
+        'keyword': 'svg to png',
+        'tool_id': 'svg-to-png',
+        'intent': 'Render SVG vector files as high-quality PNG images for design and web use.',
+        'cluster': 'Image conversion',
+        'priority': 21,
+        'modifiers': ['svg to png converter', 'convert svg to png online', 'svg to png transparent', 'svg to png logo']
+    },
+    {
+        'keyword': 'ico converter',
+        'tool_id': 'ico-converter',
+        'intent': 'Create favicon .ico files from PNG or JPG images for websites.',
+        'cluster': 'Image conversion',
+        'priority': 22,
+        'modifiers': ['ico converter', 'png to ico', 'jpg to ico', 'favicon generator', 'create favicon online']
+    },
+    {
+        'keyword': 'mov to mp4',
+        'tool_id': 'mov-to-mp4',
+        'intent': 'Convert Apple MOV videos to universal MP4 format.',
+        'cluster': 'Media conversion',
+        'priority': 23,
+        'modifiers': ['mov to mp4 converter', 'convert mov to mp4 online', 'mov to mp4 free', 'mov to mp4 iphone']
+    },
+    {
+        'keyword': 'mkv to mp4',
+        'tool_id': 'mkv-to-mp4',
+        'intent': 'Convert MKV videos to widely supported MP4 files.',
+        'cluster': 'Media conversion',
+        'priority': 24,
+        'modifiers': ['mkv to mp4 converter', 'convert mkv to mp4 online', 'mkv to mp4 free', 'mkv to mp4 without quality loss']
+    },
+    {
+        'keyword': 'avi to mp4',
+        'tool_id': 'avi-to-mp4',
+        'intent': 'Convert AVI videos to MP4 for better compatibility.',
+        'cluster': 'Media conversion',
+        'priority': 25,
+        'modifiers': ['avi to mp4 converter', 'convert avi to mp4 online', 'avi to mp4 free', 'avi to mp4 for windows']
+    },
+    {
+        'keyword': 'mp4 to gif',
+        'tool_id': 'mp4-to-gif',
+        'intent': 'Turn MP4 video clips into animated GIF images.',
+        'cluster': 'Media conversion',
+        'priority': 26,
+        'modifiers': ['mp4 to gif converter', 'convert mp4 to gif online', 'video to gif', 'mp4 to gif free']
+    },
+    {
+        'keyword': 'csv to json',
+        'tool_id': 'csv-to-json',
+        'intent': 'Convert CSV spreadsheet rows into structured JSON arrays.',
+        'cluster': 'Developer conversion',
+        'priority': 27,
+        'modifiers': ['csv to json converter', 'convert csv to json online', 'csv to json for api', 'excel to json']
+    },
+    {
+        'keyword': 'json formatter',
+        'tool_id': 'json-formatter',
+        'intent': 'Format and beautify JSON data for readability and debugging.',
+        'cluster': 'Developer tools',
+        'priority': 28,
+        'modifiers': ['json formatter', 'json beautifier', 'format json online', 'json pretty print']
+    },
+    {
+        'keyword': 'base64 encode',
+        'tool_id': 'base64-encode',
+        'intent': 'Encode text or files to Base64 strings.',
+        'cluster': 'Developer tools',
+        'priority': 29,
+        'modifiers': ['base64 encode', 'base64 encoder online', 'text to base64', 'encode base64']
+    },
+    {
+        'keyword': 'password generator',
+        'tool_id': 'password-generator',
+        'intent': 'Generate strong, secure passwords with custom length and symbols.',
+        'cluster': 'Security tools',
+        'priority': 30,
+        'modifiers': ['password generator', 'strong password generator', 'random password generator', 'secure password maker']
+    },
+    {
+        'keyword': 'word counter',
+        'tool_id': 'word-counter',
+        'intent': 'Count words, characters, sentences, and reading time for text.',
+        'cluster': 'Text tools',
+        'priority': 31,
+        'modifiers': ['word counter', 'character counter', 'word count online', 'essay word counter']
+    },
+    {
+        'keyword': 'image to base64',
+        'tool_id': 'image-to-base64',
+        'intent': 'Convert images to Base64 data URIs for CSS, HTML, and emails.',
+        'cluster': 'Developer tools',
+        'priority': 32,
+        'modifiers': ['image to base64', 'convert image to base64', 'base64 image encoder', 'img to base64']
     },
 ]
 
@@ -396,7 +492,7 @@ def build_keyword_research_file(tools):
             'source_note': 'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-11.'
         })
     Path('seo-keyword-targets.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
-    print("Generated seo-keyword-targets.json with top 20 targets")
+    print(f"Generated seo-keyword-targets.json with top {len(payload)} targets")
 
 
 def plain_text_from_html(fragment):
@@ -631,11 +727,9 @@ def build_static_seo_assets():
     ads_txt = "google.com, pub-8997218708343263, DIRECT, f08c47fec0942fa0\n"
     Path('ads.txt').write_text(ads_txt, encoding='utf-8')
 
-    review_css = (
-        "/* Hide empty ad placeholders until AdSense approval and live ad units are enabled. */\n"
-        "body:not(.ads-enabled) .adsense-placeholder-wrap{display:none!important}\n"
-    )
-    Path('adsense-review.css').write_text(review_css, encoding='utf-8')
+    # Copy the hand-maintained AdSense CSS file into the build output
+    review_css_source = Path('adsense-review.css').read_text(encoding='utf-8')
+    Path('adsense-review.css').write_text(review_css_source, encoding='utf-8')
 
     htaccess = """# freeconvert.cloud technical SEO, security, and cache rules
 Options -Indexes
@@ -647,7 +741,7 @@ Options -Indexes
   Header always set X-XSS-Protection "1; mode=block"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'self' https://googleads.g.doubleclick.net; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
   <FilesMatch "\\.(css|js|png|jpg|jpeg|webp|svg|ico|woff2?)$">
     Header set Cache-Control "public, max-age=2592000, immutable"
   </FilesMatch>
@@ -1621,6 +1715,106 @@ def build_popular_conversion_pages():
             'tool_label': 'Video to MP3',
             'problem': 'Keeping the full video wastes storage when the audio track is the only useful part.',
             'best_for': 'Extract MP3 when you want a lightweight listening file from a lecture, meeting, interview, or tutorial.'
+        },
+        {
+            'slug': 'jpg-to-png-transparent-background',
+            'title': 'JPG to PNG Transparent Background',
+            'desc': 'Convert JPG images to PNG format so they support transparency for logos, overlays, and design projects.',
+            'keyword': 'JPG to PNG transparent background',
+            'tool': 'jpg-to-png',
+            'tool_label': 'JPG to PNG',
+            'problem': 'JPG images cannot have transparent backgrounds, which limits their use in designs and overlays.',
+            'best_for': 'Convert to PNG when you need transparency, then remove the background in an editor if needed.'
+        },
+        {
+            'slug': 'compress-image-to-200kb-online',
+            'title': 'Compress Image to 200KB Online',
+            'desc': 'Shrink image file size under 200KB for exam forms, job portals, visa uploads, and website performance.',
+            'keyword': 'compress image to 200KB online',
+            'tool': 'compress-image-to-200kb',
+            'tool_label': 'Compress Image to 200KB',
+            'problem': 'Government portals and job sites often reject images larger than 200KB.',
+            'best_for': 'Compress the image, check the final KB, and confirm the face or text remains clear.'
+        },
+        {
+            'slug': 'png-to-jpg-for-instagram',
+            'title': 'PNG to JPG for Instagram Posts',
+            'desc': 'Convert PNG designs and photos to JPG for faster Instagram uploads, stories, and carousel posts.',
+            'keyword': 'PNG to JPG for Instagram',
+            'tool': 'png-to-jpg',
+            'tool_label': 'PNG to JPG',
+            'problem': 'High-resolution PNG posts can be slow to upload and consume more mobile data.',
+            'best_for': 'Use JPG for photo posts where transparency is not needed.'
+        },
+        {
+            'slug': 'pdf-to-jpg-for-whatsapp',
+            'title': 'PDF to JPG for WhatsApp Sharing',
+            'desc': 'Convert PDF pages to JPG images for easy WhatsApp sharing, previews, and status updates.',
+            'keyword': 'PDF to JPG for WhatsApp',
+            'tool': 'pdf-to-jpg',
+            'tool_label': 'PDF to JPG',
+            'problem': 'WhatsApp previews PDFs differently and some contacts prefer image previews.',
+            'best_for': 'Convert key pages to JPG when you need a quick visual share.'
+        },
+        {
+            'slug': 'heic-to-jpg-on-iphone',
+            'title': 'HEIC to JPG on iPhone',
+            'desc': 'Convert iPhone HEIC photos to JPG directly on your phone for sharing, uploading, and editing anywhere.',
+            'keyword': 'HEIC to JPG on iPhone',
+            'tool': 'heic-to-jpg',
+            'tool_label': 'HEIC to JPG',
+            'problem': 'HEIC files may not open on older devices or upload forms.',
+            'best_for': 'Convert to JPG before sending photos to Android users or legacy systems.'
+        },
+        {
+            'slug': 'json-to-csv-for-excel',
+            'title': 'JSON to CSV for Excel',
+            'desc': 'Convert JSON data to CSV format for Excel analysis, pivot tables, and spreadsheet reporting.',
+            'keyword': 'JSON to CSV for Excel',
+            'tool': 'json-to-csv',
+            'tool_label': 'JSON to CSV',
+            'problem': 'Excel cannot import raw JSON arrays without conversion.',
+            'best_for': 'Flatten nested JSON and import the CSV into Excel or Google Sheets.'
+        },
+        {
+            'slug': 'password-generator-strong',
+            'title': 'Strong Password Generator',
+            'desc': 'Generate strong, random passwords with symbols, numbers, and mixed case for secure accounts.',
+            'keyword': 'strong password generator',
+            'tool': 'password-generator',
+            'tool_label': 'Password Generator',
+            'problem': 'Weak passwords are easily cracked by brute force and dictionary attacks.',
+            'best_for': 'Use 16+ characters with symbols for banking, email, and admin accounts.'
+        },
+        {
+            'slug': 'word-counter-for-essays',
+            'title': 'Word Counter for Essays',
+            'desc': 'Count words, characters, and paragraphs for essays, assignments, and social media posts.',
+            'keyword': 'word counter for essays',
+            'tool': 'word-counter',
+            'tool_label': 'Word Counter',
+            'problem': 'School and platform limits require exact word or character counts.',
+            'best_for': 'Paste your draft and check the count before submission.'
+        },
+        {
+            'slug': 'ico-converter-favicon',
+            'title': 'ICO Converter for Website Favicon',
+            'desc': 'Convert PNG or JPG images to ICO format for browser favicons and website bookmarks.',
+            'keyword': 'ICO converter favicon',
+            'tool': 'ico-converter',
+            'tool_label': 'ICO Converter',
+            'problem': 'Browsers require ICO or specific PNG sizes for favicons.',
+            'best_for': 'Upload a square logo and download a multi-size ICO file.'
+        },
+        {
+            'slug': 'image-compressor-for-website',
+            'title': 'Image Compressor for Website Speed',
+            'desc': 'Compress images for faster website loading, better Core Web Vitals, and improved SEO rankings.',
+            'keyword': 'image compressor for website',
+            'tool': 'image-compressor',
+            'tool_label': 'Image Compressor',
+            'problem': 'Large images slow down page load and hurt search rankings.',
+            'best_for': 'Compress hero images, product photos, and blog thumbnails before uploading.'
         },
     ]
 
@@ -4121,12 +4315,16 @@ HEADER_SNIPPET = """
 FOOTER_SNIPPET = """
     <!-- Competitor-level Footer -->
     <footer class="footer-mega">
-        <!-- AdSense Slot: Footer Optional -->
-        <div class="adsense-placeholder-wrap footer-ad-wrap">
+        <!-- AdSense Slot: Footer -->
+        <div class="adsense-wrap footer-ad-wrap">
             <span class="adsense-label">Sponsored Links</span>
-            <div class="adsense-placeholder-box leaderboard-ad">
-                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block;min-height:90px;"
+                 data-ad-client="ca-pub-8997218708343263"
+                 data-ad-slot="REPLACE_SLOT_FOOTER"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="footer-content">
@@ -4456,11 +4654,15 @@ def build_homepage(tools):
     </section>
 
     <!-- AdSense Slot: Homepage Below Hero -->
-    <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
+    <div class="adsense-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
         <span class="adsense-label">Advertisement</span>
-        <div class="adsense-placeholder-box leaderboard-ad">
-            <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
-        </div>
+        <ins class="adsbygoogle"
+             style="display:block;min-height:90px;"
+             data-ad-client="ca-pub-8997218708343263"
+             data-ad-slot="REPLACE_SLOT_HOME_TOP"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <!-- 📈 Personal secure Productivity Dashboard & Log -->
@@ -5093,11 +5295,15 @@ def build_categories(tools):
         </section>
 
         <!-- AdSense Slot: Category Page Mid Content -->
-        <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
+        <div class="adsense-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
             <span class="adsense-label">Advertisement</span>
-            <div class="adsense-placeholder-box leaderboard-ad">
-                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block;min-height:90px;"
+                 data-ad-client="ca-pub-8997218708343263"
+                 data-ad-slot="REPLACE_SLOT_CAT_TOP"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <!-- Help articles -->
@@ -5665,11 +5871,15 @@ def build_legal_pages():
         </section>
 
         <!-- AdSense Slot: Legal Page Mid Content -->
-        <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
+        <div class="adsense-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
             <span class="adsense-label">Advertisement</span>
-            <div class="adsense-placeholder-box leaderboard-ad">
-                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block;min-height:90px;"
+                 data-ad-client="ca-pub-8997218708343263"
+                 data-ad-slot="REPLACE_SLOT_LEGAL_MID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <article class="seo-content">
@@ -6440,12 +6650,16 @@ def build_blog():
             </p>
         </section>
 
-        <!-- AdSense Slot: Blog Hub Page Top ad -->
-        <div class="adsense-placeholder-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
+        <!-- AdSense Slot: Blog Hub Page Top -->
+        <div class="adsense-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
             <span class="adsense-label">Advertisement</span>
-            <div class="adsense-placeholder-box leaderboard-ad">
-                <span class="adsense-indicator">Ad Placement Reserved (AdSense Safe)</span>
-            </div>
+            <ins class="adsbygoogle"
+                 style="display:block;min-height:90px;"
+                 data-ad-client="ca-pub-8997218708343263"
+                 data-ad-slot="REPLACE_SLOT_BLOG_TOP"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="tool-grid" style="padding: 0; margin-bottom: 4rem;">
