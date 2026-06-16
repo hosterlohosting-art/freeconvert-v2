@@ -4,26 +4,38 @@
 freeconvert.cloud provides browser-first online file converters, PDF tools, image tools, media converters, developer utilities, text tools, security generators, and practical conversion guides.
 
 ## Top Keyword Targets
-- pdf to jpg -> https://freeconvert.cloud/pdf-to-jpg/ (PDF conversion; variants: pdf to jpg converter, convert pdf to jpg online, pdf pages to jpg)
-- jpg to pdf -> https://freeconvert.cloud/jpg-to-pdf/ (PDF creation; variants: jpg to pdf converter, convert jpg to pdf online, image to pdf)
-- png to jpg -> https://freeconvert.cloud/png-to-jpg/ (Image conversion; variants: png to jpg converter, convert png to jpg online, png image to jpeg)
-- jpg to png -> https://freeconvert.cloud/jpg-to-png/ (Image conversion; variants: jpg to png converter, convert jpg to png online, jpeg to png)
-- webp to jpg -> https://freeconvert.cloud/webp-to-jpg/ (Image conversion; variants: webp to jpg converter, convert webp to jpg online, webp image to jpeg)
-- heic to jpg -> https://freeconvert.cloud/heic-to-jpg/ (Image conversion; variants: heic to jpg converter, iphone photo to jpg, convert heic to jpeg)
-- compress pdf -> https://freeconvert.cloud/compress-pdf/ (PDF compression; variants: compress pdf online, reduce pdf file size, pdf compressor)
-- pdf to word -> https://freeconvert.cloud/pdf-to-word/ (Document conversion; variants: pdf to word converter, pdf to docx, convert pdf to editable word)
-- word to pdf -> https://freeconvert.cloud/word-to-pdf/ (Document conversion; variants: word to pdf converter, docx to pdf, convert word document to pdf)
-- merge pdf -> https://freeconvert.cloud/merge-pdf/ (PDF editing; variants: merge pdf online, combine pdf files, pdf merger)
-- split pdf -> https://freeconvert.cloud/split-pdf/ (PDF editing; variants: split pdf online, extract pdf pages, pdf splitter)
-- image compressor -> https://freeconvert.cloud/image-compressor/ (Image compression; variants: compress image online, reduce image size, photo compressor)
-- compress image to 100kb -> https://freeconvert.cloud/compress-image-to-100kb/ (Image compression; variants: image compressor to 100kb, photo size reducer 100kb, compress jpg to 100kb)
-- resize image -> https://freeconvert.cloud/resize-image/ (Image editing; variants: image resizer online, resize photo online, change image dimensions)
-- png to webp -> https://freeconvert.cloud/png-to-webp/ (Image conversion; variants: png to webp converter, convert png to webp online, png webp optimizer)
-- jpg to webp -> https://freeconvert.cloud/jpg-to-webp/ (Image conversion; variants: jpg to webp converter, convert jpg to webp online, jpeg to webp)
-- mp4 to mp3 -> https://freeconvert.cloud/mp4-to-mp3/ (Media conversion; variants: mp4 to mp3 converter, extract audio from mp4, video to mp3)
-- webm to mp4 -> https://freeconvert.cloud/webm-to-mp4/ (Media conversion; variants: webm to mp4 converter, convert webm to mp4 online, webm video to mp4)
-- json to csv -> https://freeconvert.cloud/json-to-csv/ (Developer conversion; variants: json to csv converter, convert json to csv online, json array to csv)
-- qr code generator -> https://freeconvert.cloud/qr-code-generator/ (Utility tools; variants: free qr code generator, create qr code online, qr generator)
+- pdf to jpg -> https://freeconvert.cloud/pdf-to-jpg/ (PDF conversion; variants: pdf to jpg converter, convert pdf to jpg online, pdf pages to jpg, pdf to jpg high quality, pdf to jpg free)
+- jpg to pdf -> https://freeconvert.cloud/jpg-to-pdf/ (PDF creation; variants: jpg to pdf converter, convert jpg to pdf online, image to pdf, jpg to pdf for school, merge jpg to pdf)
+- png to jpg -> https://freeconvert.cloud/png-to-jpg/ (Image conversion; variants: png to jpg converter, convert png to jpg online, png image to jpeg, png to jpg for website, png to jpg transparent)
+- jpg to png -> https://freeconvert.cloud/jpg-to-png/ (Image conversion; variants: jpg to png converter, convert jpg to png online, jpeg to png, jpg to png transparent, jpg to png no background)
+- webp to jpg -> https://freeconvert.cloud/webp-to-jpg/ (Image conversion; variants: webp to jpg converter, convert webp to jpg online, webp image to jpeg, webp to jpg for wordpress)
+- heic to jpg -> https://freeconvert.cloud/heic-to-jpg/ (Image conversion; variants: heic to jpg converter, iphone photo to jpg, convert heic to jpeg, heic to jpg on windows, heic to jpg iphone)
+- compress pdf -> https://freeconvert.cloud/compress-pdf/ (PDF compression; variants: compress pdf online, reduce pdf file size, pdf compressor, compress pdf to 1mb, compress pdf for email)
+- pdf to word -> https://freeconvert.cloud/pdf-to-word/ (Document conversion; variants: pdf to word converter, pdf to docx, convert pdf to editable word, pdf to word for editing, pdf to word free)
+- word to pdf -> https://freeconvert.cloud/word-to-pdf/ (Document conversion; variants: word to pdf converter, docx to pdf, convert word document to pdf, word to pdf online free, doc to pdf)
+- merge pdf -> https://freeconvert.cloud/merge-pdf/ (PDF editing; variants: merge pdf online, combine pdf files, pdf merger, merge pdf files free, join pdf)
+- split pdf -> https://freeconvert.cloud/split-pdf/ (PDF editing; variants: split pdf online, extract pdf pages, pdf splitter, split pdf into pages, pdf page extractor)
+- image compressor -> https://freeconvert.cloud/image-compressor/ (Image compression; variants: compress image online, reduce image size, photo compressor, compress image for website, compress jpg online)
+- compress image to 100kb -> https://freeconvert.cloud/compress-image-to-100kb/ (Image compression; variants: image compressor to 100kb, photo size reducer 100kb, compress jpg to 100kb, compress image under 100kb, image resize 100kb)
+- resize image -> https://freeconvert.cloud/resize-image/ (Image editing; variants: image resizer online, resize photo online, change image dimensions, resize image for instagram, resize image pixels)
+- png to webp -> https://freeconvert.cloud/png-to-webp/ (Image conversion; variants: png to webp converter, convert png to webp online, png webp optimizer, png to webp transparent)
+- jpg to webp -> https://freeconvert.cloud/jpg-to-webp/ (Image conversion; variants: jpg to webp converter, convert jpg to webp online, jpeg to webp, jpg to webp for website)
+- mp4 to mp3 -> https://freeconvert.cloud/mp4-to-mp3/ (Media conversion; variants: mp4 to mp3 converter, extract audio from mp4, video to mp3, mp4 to mp3 free, convert video to audio)
+- webm to mp4 -> https://freeconvert.cloud/webm-to-mp4/ (Media conversion; variants: webm to mp4 converter, convert webm to mp4 online, webm video to mp4, webm to mp4 free)
+- json to csv -> https://freeconvert.cloud/json-to-csv/ (Developer conversion; variants: json to csv converter, convert json to csv online, json array to csv, json to csv for excel, json to csv free)
+- qr code generator -> https://freeconvert.cloud/qr-code-generator/ (Utility tools; variants: free qr code generator, create qr code online, qr generator, qr code for menu, qr code for wifi)
+- svg to png -> https://freeconvert.cloud/svg-to-png/ (Image conversion; variants: svg to png converter, convert svg to png online, svg to png transparent, svg to png logo)
+- ico converter -> https://freeconvert.cloud/ico-converter/ (Image conversion; variants: ico converter, png to ico, jpg to ico, favicon generator, create favicon online)
+- mov to mp4 -> https://freeconvert.cloud/mov-to-mp4/ (Media conversion; variants: mov to mp4 converter, convert mov to mp4 online, mov to mp4 free, mov to mp4 iphone)
+- mkv to mp4 -> https://freeconvert.cloud/mkv-to-mp4/ (Media conversion; variants: mkv to mp4 converter, convert mkv to mp4 online, mkv to mp4 free, mkv to mp4 without quality loss)
+- avi to mp4 -> https://freeconvert.cloud/avi-to-mp4/ (Media conversion; variants: avi to mp4 converter, convert avi to mp4 online, avi to mp4 free, avi to mp4 for windows)
+- mp4 to gif -> https://freeconvert.cloud/mp4-to-gif/ (Media conversion; variants: mp4 to gif converter, convert mp4 to gif online, video to gif, mp4 to gif free)
+- csv to json -> https://freeconvert.cloud/csv-to-json/ (Developer conversion; variants: csv to json converter, convert csv to json online, csv to json for api, excel to json)
+- json formatter -> https://freeconvert.cloud/json-formatter/ (Developer tools; variants: json formatter, json beautifier, format json online, json pretty print)
+- base64 encode -> https://freeconvert.cloud/base64-encode/ (Developer tools; variants: base64 encode, base64 encoder online, text to base64, encode base64)
+- password generator -> https://freeconvert.cloud/password-generator/ (Security tools; variants: password generator, strong password generator, random password generator, secure password maker)
+- word counter -> https://freeconvert.cloud/word-counter/ (Text tools; variants: word counter, character counter, word count online, essay word counter)
+- image to base64 -> https://freeconvert.cloud/image-to-base64/ (Developer tools; variants: image to base64, convert image to base64, base64 image encoder, img to base64)
 
 ## Complete Tool Inventory
 - PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - Convert PNG images to JPG instantly. Category: Image.
@@ -114,7 +126,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Editorial team: freeconvert.cloud Editorial Team.
 - Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-06-15.
+- Update marker: 2026-06-16.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml

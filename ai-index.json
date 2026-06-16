@@ -1,7 +1,7 @@
 {
   "name": "freeconvert.cloud",
   "url": "https://freeconvert.cloud/",
-  "updated": "2026-06-15",
+  "updated": "2026-06-16",
   "description": "Privacy-first online file conversion platform with image, PDF, document, media, developer, security, and utility tools.",
   "entity_type": "WebApplication",
   "trust": {
@@ -19,7 +19,9 @@
       "variants": [
         "pdf to jpg converter",
         "convert pdf to jpg online",
-        "pdf pages to jpg"
+        "pdf pages to jpg",
+        "pdf to jpg high quality",
+        "pdf to jpg free"
       ]
     },
     {
@@ -31,7 +33,9 @@
       "variants": [
         "jpg to pdf converter",
         "convert jpg to pdf online",
-        "image to pdf"
+        "image to pdf",
+        "jpg to pdf for school",
+        "merge jpg to pdf"
       ]
     },
     {
@@ -43,7 +47,9 @@
       "variants": [
         "png to jpg converter",
         "convert png to jpg online",
-        "png image to jpeg"
+        "png image to jpeg",
+        "png to jpg for website",
+        "png to jpg transparent"
       ]
     },
     {
@@ -55,7 +61,9 @@
       "variants": [
         "jpg to png converter",
         "convert jpg to png online",
-        "jpeg to png"
+        "jpeg to png",
+        "jpg to png transparent",
+        "jpg to png no background"
       ]
     },
     {
@@ -67,7 +75,8 @@
       "variants": [
         "webp to jpg converter",
         "convert webp to jpg online",
-        "webp image to jpeg"
+        "webp image to jpeg",
+        "webp to jpg for wordpress"
       ]
     },
     {
@@ -79,7 +88,9 @@
       "variants": [
         "heic to jpg converter",
         "iphone photo to jpg",
-        "convert heic to jpeg"
+        "convert heic to jpeg",
+        "heic to jpg on windows",
+        "heic to jpg iphone"
       ]
     },
     {
@@ -91,7 +102,9 @@
       "variants": [
         "compress pdf online",
         "reduce pdf file size",
-        "pdf compressor"
+        "pdf compressor",
+        "compress pdf to 1mb",
+        "compress pdf for email"
       ]
     },
     {
@@ -103,7 +116,9 @@
       "variants": [
         "pdf to word converter",
         "pdf to docx",
-        "convert pdf to editable word"
+        "convert pdf to editable word",
+        "pdf to word for editing",
+        "pdf to word free"
       ]
     },
     {
@@ -115,7 +130,9 @@
       "variants": [
         "word to pdf converter",
         "docx to pdf",
-        "convert word document to pdf"
+        "convert word document to pdf",
+        "word to pdf online free",
+        "doc to pdf"
       ]
     },
     {
@@ -127,7 +144,9 @@
       "variants": [
         "merge pdf online",
         "combine pdf files",
-        "pdf merger"
+        "pdf merger",
+        "merge pdf files free",
+        "join pdf"
       ]
     },
     {
@@ -139,7 +158,9 @@
       "variants": [
         "split pdf online",
         "extract pdf pages",
-        "pdf splitter"
+        "pdf splitter",
+        "split pdf into pages",
+        "pdf page extractor"
       ]
     },
     {
@@ -151,7 +172,9 @@
       "variants": [
         "compress image online",
         "reduce image size",
-        "photo compressor"
+        "photo compressor",
+        "compress image for website",
+        "compress jpg online"
       ]
     },
     {
@@ -163,7 +186,9 @@
       "variants": [
         "image compressor to 100kb",
         "photo size reducer 100kb",
-        "compress jpg to 100kb"
+        "compress jpg to 100kb",
+        "compress image under 100kb",
+        "image resize 100kb"
       ]
     },
     {
@@ -175,7 +200,9 @@
       "variants": [
         "image resizer online",
         "resize photo online",
-        "change image dimensions"
+        "change image dimensions",
+        "resize image for instagram",
+        "resize image pixels"
       ]
     },
     {
@@ -187,7 +214,8 @@
       "variants": [
         "png to webp converter",
         "convert png to webp online",
-        "png webp optimizer"
+        "png webp optimizer",
+        "png to webp transparent"
       ]
     },
     {
@@ -199,7 +227,8 @@
       "variants": [
         "jpg to webp converter",
         "convert jpg to webp online",
-        "jpeg to webp"
+        "jpeg to webp",
+        "jpg to webp for website"
       ]
     },
     {
@@ -211,7 +240,9 @@
       "variants": [
         "mp4 to mp3 converter",
         "extract audio from mp4",
-        "video to mp3"
+        "video to mp3",
+        "mp4 to mp3 free",
+        "convert video to audio"
       ]
     },
     {
@@ -223,7 +254,8 @@
       "variants": [
         "webm to mp4 converter",
         "convert webm to mp4 online",
-        "webm video to mp4"
+        "webm video to mp4",
+        "webm to mp4 free"
       ]
     },
     {
@@ -235,7 +267,9 @@
       "variants": [
         "json to csv converter",
         "convert json to csv online",
-        "json array to csv"
+        "json array to csv",
+        "json to csv for excel",
+        "json to csv free"
       ]
     },
     {
@@ -247,7 +281,166 @@
       "variants": [
         "free qr code generator",
         "create qr code online",
-        "qr generator"
+        "qr generator",
+        "qr code for menu",
+        "qr code for wifi"
+      ]
+    },
+    {
+      "priority": 21,
+      "keyword": "svg to png",
+      "url": "https://freeconvert.cloud/svg-to-png/",
+      "intent": "Render SVG vector files as high-quality PNG images for design and web use.",
+      "cluster": "Image conversion",
+      "variants": [
+        "svg to png converter",
+        "convert svg to png online",
+        "svg to png transparent",
+        "svg to png logo"
+      ]
+    },
+    {
+      "priority": 22,
+      "keyword": "ico converter",
+      "url": "https://freeconvert.cloud/ico-converter/",
+      "intent": "Create favicon .ico files from PNG or JPG images for websites.",
+      "cluster": "Image conversion",
+      "variants": [
+        "ico converter",
+        "png to ico",
+        "jpg to ico",
+        "favicon generator",
+        "create favicon online"
+      ]
+    },
+    {
+      "priority": 23,
+      "keyword": "mov to mp4",
+      "url": "https://freeconvert.cloud/mov-to-mp4/",
+      "intent": "Convert Apple MOV videos to universal MP4 format.",
+      "cluster": "Media conversion",
+      "variants": [
+        "mov to mp4 converter",
+        "convert mov to mp4 online",
+        "mov to mp4 free",
+        "mov to mp4 iphone"
+      ]
+    },
+    {
+      "priority": 24,
+      "keyword": "mkv to mp4",
+      "url": "https://freeconvert.cloud/mkv-to-mp4/",
+      "intent": "Convert MKV videos to widely supported MP4 files.",
+      "cluster": "Media conversion",
+      "variants": [
+        "mkv to mp4 converter",
+        "convert mkv to mp4 online",
+        "mkv to mp4 free",
+        "mkv to mp4 without quality loss"
+      ]
+    },
+    {
+      "priority": 25,
+      "keyword": "avi to mp4",
+      "url": "https://freeconvert.cloud/avi-to-mp4/",
+      "intent": "Convert AVI videos to MP4 for better compatibility.",
+      "cluster": "Media conversion",
+      "variants": [
+        "avi to mp4 converter",
+        "convert avi to mp4 online",
+        "avi to mp4 free",
+        "avi to mp4 for windows"
+      ]
+    },
+    {
+      "priority": 26,
+      "keyword": "mp4 to gif",
+      "url": "https://freeconvert.cloud/mp4-to-gif/",
+      "intent": "Turn MP4 video clips into animated GIF images.",
+      "cluster": "Media conversion",
+      "variants": [
+        "mp4 to gif converter",
+        "convert mp4 to gif online",
+        "video to gif",
+        "mp4 to gif free"
+      ]
+    },
+    {
+      "priority": 27,
+      "keyword": "csv to json",
+      "url": "https://freeconvert.cloud/csv-to-json/",
+      "intent": "Convert CSV spreadsheet rows into structured JSON arrays.",
+      "cluster": "Developer conversion",
+      "variants": [
+        "csv to json converter",
+        "convert csv to json online",
+        "csv to json for api",
+        "excel to json"
+      ]
+    },
+    {
+      "priority": 28,
+      "keyword": "json formatter",
+      "url": "https://freeconvert.cloud/json-formatter/",
+      "intent": "Format and beautify JSON data for readability and debugging.",
+      "cluster": "Developer tools",
+      "variants": [
+        "json formatter",
+        "json beautifier",
+        "format json online",
+        "json pretty print"
+      ]
+    },
+    {
+      "priority": 29,
+      "keyword": "base64 encode",
+      "url": "https://freeconvert.cloud/base64-encode/",
+      "intent": "Encode text or files to Base64 strings.",
+      "cluster": "Developer tools",
+      "variants": [
+        "base64 encode",
+        "base64 encoder online",
+        "text to base64",
+        "encode base64"
+      ]
+    },
+    {
+      "priority": 30,
+      "keyword": "password generator",
+      "url": "https://freeconvert.cloud/password-generator/",
+      "intent": "Generate strong, secure passwords with custom length and symbols.",
+      "cluster": "Security tools",
+      "variants": [
+        "password generator",
+        "strong password generator",
+        "random password generator",
+        "secure password maker"
+      ]
+    },
+    {
+      "priority": 31,
+      "keyword": "word counter",
+      "url": "https://freeconvert.cloud/word-counter/",
+      "intent": "Count words, characters, sentences, and reading time for text.",
+      "cluster": "Text tools",
+      "variants": [
+        "word counter",
+        "character counter",
+        "word count online",
+        "essay word counter"
+      ]
+    },
+    {
+      "priority": 32,
+      "keyword": "image to base64",
+      "url": "https://freeconvert.cloud/image-to-base64/",
+      "intent": "Convert images to Base64 data URIs for CSS, HTML, and emails.",
+      "cluster": "Developer tools",
+      "variants": [
+        "image to base64",
+        "convert image to base64",
+        "base64 image encoder",
+        "img to base64"
       ]
     }
   ],
@@ -295,7 +488,7 @@
       "category": "Image",
       "description": "Render SVG files as high-quality PNG images.",
       "title": "SVG to PNG Converter - Online Vector Tool",
-      "target_keyword": null
+      "target_keyword": "svg to png"
     },
     {
       "id": "palette-extractor",
@@ -313,7 +506,7 @@
       "category": "Image",
       "description": "Create standard Favicons (.ico) from images.",
       "title": "Free ICO Converter - Make a Favicon",
-      "target_keyword": null
+      "target_keyword": "ico converter"
     },
     {
       "id": "image-to-base64",
@@ -322,7 +515,7 @@
       "category": "Designer",
       "description": "Convert images into Base64 Data URIs.",
       "title": "Image to Base64 Converter - Online Tool",
-      "target_keyword": null
+      "target_keyword": "image to base64"
     },
     {
       "id": "image-compressor",
@@ -448,7 +641,7 @@
       "category": "Developer",
       "description": "Beautify and indent raw minified JSON structures.",
       "title": "JSON Formatter Online - Beautify and Clean JSON Data",
-      "target_keyword": null
+      "target_keyword": "json formatter"
     },
     {
       "id": "json-validator",
@@ -475,7 +668,7 @@
       "category": "Developer",
       "description": "Convert CSV rows to JSON objects instantly.",
       "title": "Free CSV to JSON Converter Online - Secure",
-      "target_keyword": null
+      "target_keyword": "csv to json"
     },
     {
       "id": "base64-encode",
@@ -484,7 +677,7 @@
       "category": "Developer",
       "description": "Encode plain text to safe Base64 strings.",
       "title": "Base64 Encode Online - Convert Text to Base64",
-      "target_keyword": null
+      "target_keyword": "base64 encode"
     },
     {
       "id": "base64-decode",
@@ -592,7 +785,7 @@
       "category": "Text",
       "description": "Analyze document lengths and keyword densities.",
       "title": "Free Online Word Counter - Accuracy Matters",
-      "target_keyword": null
+      "target_keyword": "word counter"
     },
     {
       "id": "character-counter",
@@ -700,7 +893,7 @@
       "category": "Security",
       "description": "Create secure cryptographically randomized keys.",
       "title": "Secure Password Generator - Protect Your Accounts",
-      "target_keyword": null
+      "target_keyword": "password generator"
     },
     {
       "id": "password-strength",
@@ -871,7 +1064,7 @@
       "category": "Video Converter",
       "description": "Convert Apple MOV videos into universal MP4 files.",
       "title": "MOV to MP4 Converter Online",
-      "target_keyword": null
+      "target_keyword": "mov to mp4"
     },
     {
       "id": "avi-to-mp4",
@@ -880,7 +1073,7 @@
       "category": "Video Converter",
       "description": "Convert older AVI videos into modern MP4 format.",
       "title": "AVI to MP4 Converter Online",
-      "target_keyword": null
+      "target_keyword": "avi to mp4"
     },
     {
       "id": "mkv-to-mp4",
@@ -889,7 +1082,7 @@
       "category": "Video Converter",
       "description": "Convert MKV video containers into widely supported MP4 files.",
       "title": "MKV to MP4 Converter Online",
-      "target_keyword": null
+      "target_keyword": "mkv to mp4"
     },
     {
       "id": "mp4-to-gif",
@@ -898,7 +1091,7 @@
       "category": "Video Converter",
       "description": "Create animated GIF clips from MP4 videos.",
       "title": "MP4 to GIF Converter Online",
-      "target_keyword": null
+      "target_keyword": "mp4 to gif"
     },
     {
       "id": "video-to-mp3",

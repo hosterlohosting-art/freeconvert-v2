@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-15'
+TODAY_ISO = '2026-06-16'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -489,7 +489,7 @@ def build_keyword_research_file(tools):
             'intent': target['intent'],
             'cluster': target['cluster'],
             'modifiers': target['modifiers'],
-            'source_note': 'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-11.'
+            'source_note': f'Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on {TODAY_ISO}.'
         })
     Path('seo-keyword-targets.json').write_text(json.dumps(payload, indent=2), encoding='utf-8')
     print(f"Generated seo-keyword-targets.json with top {len(payload)} targets")
@@ -629,7 +629,7 @@ def build_sitemap(tools):
         groups[group].append(sitemap_url_entry(loc, changefreq, priority, include_image))
 
     add('pages', f'{SITE_URL}/', 'daily', '1.0')
-    for slug in ['pricing', 'api']:
+    for slug in ['pricing', 'api', 'all-tools']:
         add('pages', f'{SITE_URL}/{slug}/', 'weekly', '0.9')
     for _, cat in CATEGORIES.items():
         add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
@@ -4359,6 +4359,7 @@ FOOTER_SNIPPET = """
             <div class="footer-col">
                 <h4>Tool Categories</h4>
                 <div class="footer-links">
+                    <a href="/all-tools/">All Tools Directory</a>
                     <a href="/image-converter/">Image Converter</a>
                     <a href="/video-converter/">Video Converter</a>
                     <a href="/audio-converter/">Audio Converter</a>
@@ -4801,6 +4802,7 @@ def build_homepage(tools):
             </div>
             <div style="margin-top:2rem;">
                 <a href="/blog/" class="btn secondary">Explore All Guides</a>
+                <a href="/all-tools/" class="btn primary" style="margin-left:0.8rem;">Browse All Tools</a>
             </div>
         </div>
     </section>
@@ -5020,6 +5022,118 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
 </html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag()).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
+
+
+def build_all_tools_directory(tools):
+    """Build a crawl-friendly HTML directory with direct contextual links to every tool."""
+    grouped = {}
+    for tool in tools:
+        grouped.setdefault(tool.get('category', 'Utility'), []).append(tool)
+
+    category_sections = []
+    item_list_elements = []
+    position = 1
+    for category in sorted(grouped):
+        cards = []
+        for tool in sorted(grouped[category], key=lambda item: item['name']):
+            name = html.escape(tool['name'])
+            desc = html.escape(tool.get('seo_desc') or tool.get('description', ''))
+            url = f"/{tool['id']}/"
+            item_list_elements.append({
+                "@type": "ListItem",
+                "position": position,
+                "name": tool['name'],
+                "url": f"{SITE_URL}/{tool['id']}/",
+                "description": tool.get('seo_desc') or tool.get('description', '')
+            })
+            position += 1
+            cards.append(f"""
+                    <a href="{url}" class="tool-card" style="text-align:left;text-decoration:none;">
+                        <div class="tool-card-top">
+                            <div class="tool-icon">{tool['icon']}</div>
+                            <span class="tool-category-tag">{html.escape(category)}</span>
+                        </div>
+                        <div class="tool-card-body">
+                            <span role="heading" aria-level="3" style="display:block;font-size:1.15rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{name}</span>
+                            <p>{desc}</p>
+                        </div>
+                        <div class="tool-card-footer">
+                            <span class="explore-text">Open tool</span>
+                            <span class="arrow-icon">-&gt;</span>
+                        </div>
+                    </a>""")
+        category_sections.append(f"""
+            <section style="margin-top:3rem;">
+                <div style="display:flex;align-items:end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem;">
+                    <div>
+                        <span class="badge">{html.escape(category)} tools</span>
+                        <h2 style="font-size:1.8rem;margin:0.8rem 0 0;">{html.escape(category)} converters and utilities</h2>
+                    </div>
+                    <span style="color:var(--text-muted);font-weight:700;">{len(grouped[category])} pages</span>
+                </div>
+                <div class="tool-grid" style="padding:0;">
+                    {''.join(cards)}
+                </div>
+            </section>""")
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "All free online converter tools",
+        "url": f"{SITE_URL}/all-tools/",
+        "description": "Complete crawl-friendly directory of freeconvert.cloud file converters, PDF tools, video tools, image utilities, developer tools, and calculators.",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(item_list_elements),
+            "itemListElement": item_list_elements
+        }
+    }
+    schema_tag = f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
+
+    Path('all-tools').mkdir(exist_ok=True)
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Free Online Converter Tools | freeconvert.cloud</title>
+    <meta name="description" content="Browse every freeconvert.cloud tool in one crawl-friendly directory: PDF tools, image converters, video converters, audio tools, developer utilities, calculators, and security tools.">
+    <link rel="stylesheet" href="/style.css">
+    <meta property="og:title" content="All Free Online Converter Tools | freeconvert.cloud">
+    <meta property="og:description" content="A complete HTML directory of free online file converters, PDF tools, image utilities, video converters, developer tools, and calculators.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{BRAND_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    {schema_tag}
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <section class="tool-header">
+        <span class="badge">Crawl Directory</span>
+        <h1>All Free Online Converter Tools</h1>
+        <p>Use this complete HTML index to find every converter, compressor, calculator, formatter, generator, and file utility on freeconvert.cloud.</p>
+        <div class="quick-chips" style="margin-top:1.4rem;">
+            <a href="/pdf-tools/" class="quick-chip">PDF tools</a>
+            <a href="/image-converter/" class="quick-chip">Image converters</a>
+            <a href="/video-converter/" class="quick-chip">Video converters</a>
+            <a href="/blog/" class="quick-chip">Guides</a>
+            <a href="/sitemap-index.xml" class="quick-chip">XML sitemap</a>
+        </div>
+    </section>
+
+    <main style="max-width:1440px;margin:0 auto;padding:0 5% 5rem;">
+        <section style="background:white;border:1px solid var(--border-color);border-radius:16px;padding:1.6rem;box-shadow:var(--card-shadow);">
+            <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Why this directory helps users and crawlers</h2>
+            <p style="color:var(--text-muted);line-height:1.7;margin:0;">This page gives visitors and search crawlers a direct, readable path to every important converter page. XML sitemaps help discovery, but HTML directories improve internal linking, crawl depth, and topical context for newly published tools.</p>
+        </section>
+        {''.join(category_sections)}
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/main.js"></script>
+</body>
+</html>"""
+    Path('all-tools/index.html').write_text(html_content, encoding='utf-8')
+    print("Generated all tools crawl directory `/all-tools/index.html` successfully.")
 
 
 def generate_category_seo_content(cat_slug, cat_name):
@@ -5879,7 +5993,7 @@ def build_legal_pages():
                  data-ad-slot="REPLACE_SLOT_LEGAL_MID"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
         </div>
 
         <article class="seo-content">
@@ -6217,6 +6331,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
 - Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
 - File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
+- All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -6659,7 +6774,7 @@ def build_blog():
                  data-ad-slot="REPLACE_SLOT_BLOG_TOP"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
         </div>
 
         <div class="tool-grid" style="padding: 0; margin-bottom: 4rem;">
@@ -7056,6 +7171,7 @@ def build():
 
     # Generate homepage
     build_homepage(tools)
+    build_all_tools_directory(tools)
 
     # Generate 8 category pages
     build_categories(tools)
