@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-16'
+TODAY_ISO = '2026-06-17'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
@@ -629,7 +629,7 @@ def build_sitemap(tools):
         groups[group].append(sitemap_url_entry(loc, changefreq, priority, include_image))
 
     add('pages', f'{SITE_URL}/', 'daily', '1.0')
-    for slug in ['pricing', 'api', 'all-tools']:
+    for slug in ['pricing', 'api', 'all-tools', 'sitemap']:
         add('pages', f'{SITE_URL}/{slug}/', 'weekly', '0.9')
     for _, cat in CATEGORIES.items():
         add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
@@ -4388,6 +4388,7 @@ FOOTER_SNIPPET = """
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
                     <a href="/tools/embed/">Embed Widgets</a>
+                    <a href="/sitemap/">HTML Sitemap</a>
                     <a href="/popular-conversions/">Popular Conversions</a>
                     <a href="/free-online-converter-guides/">Converter Guides</a>
                     <a href="/file-formats/">File Format Glossary</a>
@@ -5117,6 +5118,7 @@ def build_all_tools_directory(tools):
             <a href="/image-converter/" class="quick-chip">Image converters</a>
             <a href="/video-converter/" class="quick-chip">Video converters</a>
             <a href="/blog/" class="quick-chip">Guides</a>
+            <a href="/sitemap/" class="quick-chip">HTML sitemap</a>
             <a href="/sitemap-index.xml" class="quick-chip">XML sitemap</a>
         </div>
     </section>
@@ -5134,6 +5136,160 @@ def build_all_tools_directory(tools):
 </html>"""
     Path('all-tools/index.html').write_text(html_content, encoding='utf-8')
     print("Generated all tools crawl directory `/all-tools/index.html` successfully.")
+
+
+def page_title_from_html(path):
+    try:
+        text = Path(path).read_text(encoding='utf-8')
+    except FileNotFoundError:
+        return Path(path).parent.name.replace('-', ' ').title()
+    if '<title>' in text:
+        title = text.split('<title>', 1)[1].split('</title>', 1)[0]
+        title = html.unescape(title)
+        title = title.replace(' | freeconvert.cloud', '').replace(' | freeconvert.cloud Blog', '')
+        return re.sub(r'\s+', ' ', title).strip()
+    return Path(path).parent.name.replace('-', ' ').title()
+
+
+def html_sitemap_link_list(items):
+    links = []
+    for href, label, desc in items:
+        desc_html = f'<span style="display:block;color:var(--text-muted);font-size:0.86rem;margin-top:0.25rem;line-height:1.45;">{html.escape(desc)}</span>' if desc else ''
+        links.append(
+            f'<li style="break-inside:avoid;margin-bottom:0.75rem;">'
+            f'<a href="{html.escape(href)}" style="color:var(--brand-primary);font-weight:800;text-decoration:none;">{html.escape(label)}</a>'
+            f'{desc_html}</li>'
+        )
+    return '<ul style="list-style:none;padding:0;margin:0;columns:2 260px;">' + ''.join(links) + '</ul>'
+
+
+def build_html_sitemap_page(tools):
+    core_pages = [
+        ('/', 'Home', 'Main free online converter homepage.'),
+        ('/all-tools/', 'All Tools Directory', 'Direct HTML index for every converter and utility.'),
+        ('/pricing/', 'Pricing', 'Conversion limits and plan details.'),
+        ('/api/', 'Developer API', 'API overview for file conversion workflows.'),
+        ('/blog/', 'Blog and Guides', 'Editorial tutorials and conversion guides.'),
+        ('/popular-conversions/', 'Popular Conversions', 'High-intent conversion workflow hub.'),
+        ('/free-online-converter-guides/', 'Free Online Converter Guides', 'Long-tail conversion and sizing guides.'),
+        ('/file-formats/', 'File Format Glossary', 'Plain-English file format definitions.'),
+        ('/help/', 'Help Center', 'Common questions and support information.'),
+        ('/about/', 'About freeconvert.cloud', 'Company and editorial information.'),
+        ('/security/', 'File Security', 'Privacy, sandboxing, and retention information.'),
+        ('/contact/', 'Contact', 'Contact and support details.'),
+    ]
+    category_pages = [
+        (f'/{cat["slug"]}/', cat['name'], cat.get('seo_desc', cat.get('intro', 'Browse related converter tools.')))
+        for cat in CATEGORIES.values()
+    ]
+
+    grouped_tools = {}
+    for tool in tools:
+        grouped_tools.setdefault(tool.get('category', 'Utility'), []).append((
+            f'/{tool["id"]}/',
+            tool['name'],
+            tool.get('seo_desc') or tool.get('description', '')
+        ))
+
+    guide_items = []
+    for path in sorted(Path('free-online-converter-guides').glob('**/index.html')):
+        if path.parent.name == 'free-online-converter-guides':
+            continue
+        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'Step-by-step converter guide.'))
+    for path in sorted(Path('popular-conversions').glob('**/index.html')):
+        if path.parent.name == 'popular-conversions':
+            continue
+        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'Popular conversion workflow.'))
+    for path in sorted(Path('file-formats').glob('**/index.html')):
+        if path.parent.name == 'file-formats':
+            continue
+        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'File format glossary page.'))
+
+    blog_items = [
+        (f'/blog/{article["slug"]}/', article['title'], article.get('description', 'Conversion guide.'))
+        for article in BLOG_ARTICLES
+    ]
+
+    sections = [
+        ('Core Pages', core_pages),
+        ('Tool Categories', category_pages),
+    ]
+    for category in sorted(grouped_tools):
+        sections.append((f'{category} Tools', sorted(grouped_tools[category], key=lambda item: item[1])))
+    sections.append(('Guides, Popular Workflows, and File Formats', guide_items))
+    sections.append(('Blog Articles', blog_items))
+
+    section_html = ''
+    all_items = []
+    for heading, items in sections:
+        all_items.extend(items)
+        section_html += f"""
+        <section style="background:white;border:1px solid var(--border-color);border-radius:16px;padding:1.8rem;margin-bottom:1.4rem;box-shadow:var(--card-shadow);">
+            <h2 style="font-size:1.45rem;margin-bottom:1rem;">{html.escape(heading)}</h2>
+            {html_sitemap_link_list(items)}
+        </section>"""
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "HTML Sitemap",
+        "url": f"{SITE_URL}/sitemap/",
+        "description": "Human-readable sitemap for freeconvert.cloud with direct links to converter pages, category hubs, guides, and policy pages.",
+        "dateModified": TODAY_ISO,
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(all_items),
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": idx,
+                    "name": label,
+                    "url": f"{SITE_URL}{href}" if href.startswith('/') else href
+                }
+                for idx, (href, label, _) in enumerate(all_items, start=1)
+            ]
+        }
+    }
+    schema_tag = f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
+
+    Path('sitemap').mkdir(exist_ok=True)
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Sitemap | freeconvert.cloud</title>
+    <meta name="description" content="Browse the full freeconvert.cloud HTML sitemap with direct links to converter tools, PDF tools, image tools, video tools, guides, and file format pages.">
+    <link rel="stylesheet" href="/style.css">
+    <meta property="og:title" content="HTML Sitemap | freeconvert.cloud">
+    <meta property="og:description" content="A complete human-readable sitemap for freeconvert.cloud converter tools, guides, categories, and policy pages.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{BRAND_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    {schema_tag}
+</head>
+<body>
+    {HEADER_SNIPPET}
+    <section class="tool-header">
+        <span class="badge">HTML Sitemap</span>
+        <h1>freeconvert.cloud Sitemap</h1>
+        <p>Browse every important public page on freeconvert.cloud from one clean, crawl-friendly HTML index.</p>
+        <div class="quick-chips" style="margin-top:1.4rem;">
+            <a href="/all-tools/" class="quick-chip">All tools</a>
+            <a href="/sitemap-index.xml" class="quick-chip">XML sitemap index</a>
+            <a href="/blog/" class="quick-chip">Guides</a>
+            <a href="/popular-conversions/" class="quick-chip">Popular conversions</a>
+        </div>
+    </section>
+    <main style="max-width:1280px;margin:0 auto;padding:0 5% 5rem;">
+        {section_html}
+    </main>
+    {FOOTER_SNIPPET}
+    <script src="/main.js"></script>
+</body>
+</html>"""
+    Path('sitemap/index.html').write_text(html_content, encoding='utf-8')
+    print("Generated HTML sitemap `/sitemap/index.html` successfully.")
 
 
 def generate_category_seo_content(cat_slug, cat_name):
@@ -6332,6 +6488,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
 - File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
+- HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -7195,6 +7352,7 @@ def build():
     build_file_format_glossary_pages()
     build_convert_alias_pages(tools)
     build_legacy_redirect_pages()
+    build_html_sitemap_page(tools)
 
     # Generate discovery files (llms.txt & humans.txt)
     build_discovery_files(tools)
