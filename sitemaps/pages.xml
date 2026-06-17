@@ -221,6 +221,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/press-kit/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/png-vs-jpg/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>

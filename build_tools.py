@@ -692,7 +692,7 @@ def build_sitemap(tools):
         add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
     for tool in tools:
         add('tools', f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
-    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'advertising-policy', 'help', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
+    for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'advertising-policy', 'help', 'press-kit', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
         add('pages', f'{SITE_URL}/{leg}/', 'monthly', '0.5')
     add('pages', f'{SITE_URL}/tools/embed/', 'monthly', '0.5')
     add('blog', f'{SITE_URL}/blog/', 'weekly', '0.8')
@@ -4783,6 +4783,7 @@ FOOTER_SNIPPET = """
                     <a href="/help/">Help &amp; FAQ</a>
                     <a href="/tools/embed/">Embed Widgets</a>
                     <a href="/sitemap/">HTML Sitemap</a>
+                    <a href="/press-kit/">Press Kit</a>
                     <a href="/popular-conversions/">Popular Conversions</a>
                     <a href="/free-online-converter-guides/">Converter Guides</a>
                     <a href="/file-formats/">File Format Glossary</a>
@@ -5571,6 +5572,7 @@ def build_html_sitemap_page(tools):
         ('/about/', 'About freeconvert.cloud', 'Company and editorial information.'),
         ('/security/', 'File Security', 'Privacy, sandboxing, and retention information.'),
         ('/contact/', 'Contact', 'Contact and support details.'),
+        ('/press-kit/', 'Press Kit', 'Brand assets, facts, and media contact information.'),
     ]
     category_pages = [
         (f'/{cat["slug"]}/', cat['name'], cat.get('seo_desc', cat.get('intro', 'Browse related converter tools.')))
@@ -6559,6 +6561,133 @@ def build_legal_pages():
         with open(f"{slug}/index.html", 'w', encoding='utf-8') as f:
             f.write(html_content)
         print(f"Generated legal/trust page: /{slug}/index.html")
+
+def build_press_kit_page():
+    """Generate a public press/media kit for journalists and directory owners."""
+    slug = 'press-kit'
+    title = 'Press Kit'
+    desc = 'Downloadable brand assets, facts, and contact information for freeconvert.cloud.'
+    content = """<h2>About freeconvert.cloud</h2>
+        <p>freeconvert.cloud is a free, browser-based file conversion platform that handles PDF, image, video, audio, document, archive, and developer formats. The platform is built with privacy in mind: most tools run locally in the browser so files never leave the user's device.</p>
+
+        <h2>Quick Facts</h2>
+        <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+            <li><strong>Founded:</strong> 2026</li>
+            <li><strong>Website:</strong> <a href="https://freeconvert.cloud" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">https://freeconvert.cloud</a></li>
+            <li><strong>Pricing:</strong> Free (Pro and API plans available)</li>
+            <li><strong>Platforms:</strong> Web, iOS browser, Android browser</li>
+            <li><strong>Headquarters:</strong> Global, remote-first</li>
+            <li><strong>Contact:</strong> <a href="mailto:press@freeconvert.cloud" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">press@freeconvert.cloud</a></li>
+        </ul>
+
+        <h2>Brand Assets</h2>
+        <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+            <li><strong>Logo (PNG):</strong> <a href="/assets/freeconvert-logo.png" style="color:var(--brand-primary);font-weight:600;text-decoration:none;" download>Download PNG</a></li>
+            <li><strong>Favicon (PNG):</strong> <a href="/assets/favicon.png" style="color:var(--brand-primary);font-weight:600;text-decoration:none;" download>Download favicon</a></li>
+        </ul>
+
+        <h2>Official Description</h2>
+        <p>freeconvert.cloud is a free, browser-based file conversion platform for documents, images, PDFs, videos, audio, archives, and developer files. Most tools run locally in your browser, so your files never leave your device unless the format requires server processing. The platform includes 80+ converters, compressors, format guides, and batch-friendly workflows — all without sign-ups or intrusive ads.</p>
+
+        <h2>Tagline</h2>
+        <p>"Free, privacy-first file converters for every format."</p>
+
+        <h2>Key Features</h2>
+        <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
+            <li>80+ free file converters for PDF, image, video, audio, document, archive, and developer formats</li>
+            <li>Browser-local processing for privacy-sensitive conversions</li>
+            <li>No registration or software installation required</li>
+            <li>Batch-friendly workflows and compression tools</li>
+            <li>Clean, fast UI with mobile support</li>
+            <li>Free guides and format explainers for every workflow</li>
+            <li>Developer API for automated conversions</li>
+        </ul>
+
+        <h2>Categories</h2>
+        <p>File Converter, PDF Tools, Image Converter, Online Tools, Productivity, Developer Tools, Design Tools, Security, Privacy.</p>
+
+        <h2>In the News & Directories</h2>
+        <p>freeconvert.cloud is listed or submitted to Product Hunt, AlternativeTo, G2, Capterra, 10015.io, and leading software directories. For partnership, press, or directory inquiries, contact <a href="mailto:press@freeconvert.cloud" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">press@freeconvert.cloud</a>.</p>
+
+        <h2>Product Hunt Launch</h2>
+        <p>Track our launch on Product Hunt and support the project: <a href="https://www.producthunt.com/products/freeconvert-cloud" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">freeconvert.cloud on Product Hunt</a>.</p>"""
+
+    os.makedirs(slug, exist_ok=True)
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | freeconvert.cloud</title>
+    <meta name="description" content="{desc}">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+
+    <link rel="canonical" href="https://freeconvert.cloud/{slug}/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="freeconvert.cloud">
+    <meta property="og:title" content="{title} | freeconvert.cloud">
+    <meta property="og:description" content="{desc}">
+    <meta property="og:url" content="https://freeconvert.cloud/{slug}/">
+    <meta property="og:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title} | freeconvert.cloud">
+    <meta name="twitter:description" content="{desc}">
+    <meta name="twitter:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
+    <meta name="twitter:site" content="@freeconvertcloud">
+
+    <!-- Preloads -->
+    <link rel="preload" href="/style.css" as="style">
+    <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
+</head>
+
+<body>
+    <!-- Hyper-Luxury Ambient Floating Orbs -->
+    <div class="glass-orb-container">
+        <div class="glass-orb glass-orb-1"></div>
+        <div class="glass-orb glass-orb-2"></div>
+        <div class="glass-orb glass-orb-3"></div>
+    </div>
+
+    {HEADER_SNIPPET}
+
+    <main class="tool-content">
+        <!-- Visual Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <a href="/">Home</a>
+            <span>&gt;</span>
+            <span style="color: var(--text-muted);">{title}</span>
+        </nav>
+
+        <section class="tool-header">
+            <h1>{title}</h1>
+            <p style="margin-top: 0.5rem;">{desc}</p>
+        </section>
+
+        <article class="seo-content">
+            {content}
+        </article>
+    </main>
+
+    {FOOTER_SNIPPET}
+    <script src="/tools/tool-logic.js"></script>
+</body>
+
+</html>"""
+    with open(f"{slug}/index.html", 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print(f"Generated press kit page: /{slug}/index.html")
+
 def generate_tool_adsense_content(tool):
     t_id = tool['id']
     t_name = tool['name']
@@ -6883,6 +7012,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 - HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
+- Press Kit: https://freeconvert.cloud/press-kit/ - Brand assets, facts, and media contact information for journalists and directory owners.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -6934,6 +7064,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Daily converter guides: {SITE_URL}/free-online-converter-guides/
 - Popular conversions: {SITE_URL}/popular-conversions/
 - File format glossary: {SITE_URL}/file-formats/
+- Press kit: {SITE_URL}/press-kit/
 - Security: {SITE_URL}/security/
 - Contact: {SITE_URL}/contact/
 """
@@ -7735,6 +7866,9 @@ def build():
 
     # Generate trust & legal pages (including about and cookies!)
     build_legal_pages()
+
+    # Generate press kit for journalists and directory submissions
+    build_press_kit_page()
 
     # Generate blog pages and articles
     build_blog()

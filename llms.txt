@@ -17,6 +17,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
 - File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 - HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
+- Press Kit: https://freeconvert.cloud/press-kit/ - Brand assets, facts, and media contact information for journalists and directory owners.
 
 ## Priority Tools (High Content Depth)
 - PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - targets "pdf to jpg"; intent: Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.

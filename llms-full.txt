@@ -136,5 +136,6 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Daily converter guides: https://freeconvert.cloud/free-online-converter-guides/
 - Popular conversions: https://freeconvert.cloud/popular-conversions/
 - File format glossary: https://freeconvert.cloud/file-formats/
+- Press kit: https://freeconvert.cloud/press-kit/
 - Security: https://freeconvert.cloud/security/
 - Contact: https://freeconvert.cloud/contact/
