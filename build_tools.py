@@ -323,11 +323,46 @@ def iter_public_html_files():
 
 
 def derive_meta_description(html, title):
-    marker = 'property="og:description" content="'
-    if marker in html:
-        return html.split(marker, 1)[1].split('"', 1)[0]
+    for marker in ('name="description" content="', 'property="og:description" content="'):
+        if marker in html:
+            return html.split(marker, 1)[1].split('"', 1)[0]
     clean_title = title.replace(' | freeconvert.cloud', '').replace(' | freeconvert.cloud Blog', '')
     return f'{clean_title} from freeconvert.cloud. Fast, free, privacy-first online tools for everyday file conversion and productivity tasks.'
+
+
+def truncate_text(text, max_len=60, suffix='...'):
+    """Truncate text to fit SERP limits without cutting mid-word."""
+    if len(text) <= max_len:
+        return text
+    cutoff = max_len - len(suffix)
+    trimmed = text[:cutoff]
+    if ' ' in trimmed:
+        trimmed = trimmed.rsplit(' ', 1)[0]
+    return trimmed + suffix
+
+
+def social_meta_tags(title, desc, url, image=BRAND_IMAGE, og_type='website'):
+    """Return a complete Open Graph + Twitter Card block."""
+    safe_title = html.escape(title)
+    safe_desc = html.escape(desc)
+    safe_url = html.escape(url)
+    safe_image = html.escape(image)
+    return (
+        '    <!-- Open Graph -->\n'
+        f'    <meta property="og:type" content="{og_type}">\n'
+        '    <meta property="og:site_name" content="freeconvert.cloud">\n'
+        f'    <meta property="og:title" content="{safe_title}">\n'
+        f'    <meta property="og:description" content="{safe_desc}">\n'
+        f'    <meta property="og:url" content="{safe_url}">\n'
+        f'    <meta property="og:image" content="{safe_image}">\n'
+        '\n'
+        '    <!-- Twitter Card -->\n'
+        '    <meta name="twitter:card" content="summary_large_image">\n'
+        f'    <meta name="twitter:title" content="{safe_title}">\n'
+        f'    <meta name="twitter:description" content="{safe_desc}">\n'
+        f'    <meta name="twitter:image" content="{safe_image}">\n'
+        '    <meta name="twitter:site" content="@freeconvertcloud">\n'
+    )
 
 
 def website_search_schema_tag():
@@ -369,7 +404,6 @@ def homepage_keyword_hub_html(tools):
                     <div class="tool-card-body">
                         <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(target['keyword'].title())}</span>
                         <p>{html.escape(target['intent'])}</p>
-                        <p style="font-size:0.82rem;margin-top:0.7rem;color:var(--text-light);">Also targets: {html.escape(modifiers)}</p>
                     </div>
                     <div class="tool-card-footer">
                         <span class="explore-text">Open {html.escape(tool['name'])}</span>
@@ -454,24 +488,23 @@ def tool_keyword_content_html(tool, tools):
             or item['cluster'].split()[0] == target['cluster'].split()[0]
         )
     ][:6]
-    modifier_links = ''.join(
-        f'<li><strong>{html.escape(mod)}</strong> - a close variant of the main "{html.escape(target["keyword"])}" search intent.</li>'
-        for mod in target['modifiers']
-    )
     related_links = ''.join(
         f'<a href="/{rel["tool_id"]}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(tools_by_id.get(rel["tool_id"], {}).get("name", rel["keyword"].title()))}</a>'
         for rel in related_targets
     )
+    # Link to use-case guides that target the same tool for stronger internal linking
+    use_case_guides = [g for g in generate_use_case_pages() if g['tool'] == tool['id']][:4]
+    guide_links = ''.join(
+        f'<a href="/free-online-converter-guides/{html.escape(g["slug"])}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(g["title"])}</a>'
+        for g in use_case_guides
+    )
     keyword_section = f"""
             <section style="margin-top:2.2rem;padding:1.8rem;border:1px solid rgba(99,102,241,0.12);border-radius:16px;background:rgba(99,102,241,0.025);">
-                <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Keyword target: {html.escape(target['keyword'])}</h2>
-                <p style="font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">This page is optimized for people searching <strong>{html.escape(target['keyword'])}</strong> and close converter phrases. The intent is simple: {html.escape(target['intent'])}</p>
-                <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Close keyword variants covered</h3>
-                <ul style="padding-left:1.4rem;display:flex;flex-direction:column;gap:0.45rem;font-size:0.9rem;line-height:1.55;margin-bottom:1rem;">
-                    {modifier_links}
-                </ul>
+                <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">What people search for</h2>
+                <p style="font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">This page answers the <strong>{html.escape(target['keyword'])}</strong> search intent and related converter phrases. {html.escape(target['intent'])}</p>
                 <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Related converter searches</h3>
-                <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1rem;">{related_links}</div>
+                {f'<h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Step-by-step guides</h3><div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{guide_links}</div>' if guide_links else ''}
             </section>"""
     return base_intro + comparison + keyword_section + trust
 
@@ -551,20 +584,44 @@ def normalize_generated_html_seo():
             description = derive_meta_description(html, title)
             html = html.replace('<title>' + title + '</title>', '<title>' + title + '</title>\n    <meta name="description" content="' + description + '">', 1)
 
+        # Smart title / description length caps for SERP display
+        original_title = title
+        social_title = title
+        if len(title) > 60:
+            # Preserve brand suffixes so titles do not end mid-word before the brand
+            suffix = None
+            for candidate in (' | freeconvert.cloud Blog', ' | freeconvert.cloud'):
+                if title.endswith(candidate):
+                    suffix = candidate
+                    break
+            if suffix and len(suffix) < 60:
+                prefix = title[:-len(suffix)]
+                new_prefix = truncate_text(prefix, 60 - len(suffix) - 1)
+                new_title = new_prefix + ' ' + suffix.strip()
+            else:
+                new_title = truncate_text(title, 60)
+            html = html.replace('<title>' + title + '</title>', '<title>' + new_title + '</title>', 1)
+            title = new_title
+        if '<meta name="description" content="' in html:
+            current_desc = html.split('<meta name="description" content="', 1)[1].split('"', 1)[0]
+            if len(current_desc) > 160:
+                new_desc = truncate_text(current_desc, 160)
+                html = html.replace('<meta name="description" content="' + current_desc + '">', '<meta name="description" content="' + new_desc + '">', 1)
+
+        # Keep a readable social title; social platforms tolerate longer titles than SERPs
+        social_title = original_title if len(original_title) <= 115 else title
+
         if 'rel="canonical"' not in html:
             html = html.replace('</head>', f'    <link rel="canonical" href="{page_url}" />\n\n</head>', 1)
 
-        if 'property="og:url"' not in html:
-            html = html.replace('</head>', f'    <meta property="og:url" content="{page_url}">\n\n</head>', 1)
-
-        if 'property="og:site_name"' not in html:
-            html = html.replace('</head>', '    <meta property="og:site_name" content="freeconvert.cloud">\n\n</head>', 1)
+        # Inject a complete Open Graph + Twitter Card block when either is missing
+        if 'property="og:title"' not in html or 'name="twitter:card"' not in html:
+            og_type = 'article' if '/blog/' in page_url else 'website'
+            description = derive_meta_description(html, title)
+            html = html.replace('</head>', social_meta_tags(social_title, description, page_url, BRAND_IMAGE, og_type) + '\n</head>', 1)
 
         if 'property="og:locale"' not in html:
             html = html.replace('</head>', '    <meta property="og:locale" content="en_US">\n\n</head>', 1)
-
-        if 'name="twitter:site"' not in html:
-            html = html.replace('</head>', '    <meta name="twitter:site" content="@freeconvertcloud">\n\n</head>', 1)
 
         if 'name="robots"' not in html:
             html = html.replace(
@@ -683,7 +740,19 @@ def build_sitemap(tools):
         + '</sitemapindex>'
     )
     Path('sitemap-index.xml').write_text(sitemap_index, encoding='utf-8')
-    Path('sitemap.xml').write_text(sitemap_index, encoding='utf-8')
+
+    # Build a flat sitemap.xml containing every URL for tools that expect a single root sitemap
+    all_entries = []
+    for group_entries in groups.values():
+        all_entries.extend(group_entries)
+    flat_sitemap = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+        + ''.join(all_entries)
+        + '</urlset>'
+    )
+    Path('sitemap.xml').write_text(flat_sitemap, encoding='utf-8')
     print(f"Generated sitemap index with {len(seen)} URLs across {len(shard_names)} sitemap files")
 
 
@@ -1138,8 +1207,333 @@ def build_growth_landing_pages():
     print(f"Generated {len(pages)} comparison and seasonal landing pages")
 
 
+def generate_use_case_pages():
+    """Return high-intent, use-case focused long-tail landing pages.
+
+    These pages target specific modifiers from seo-keyword-targets.json and
+    connect each search intent to the most relevant freeconvert.cloud tool.
+    """
+    return [
+        {
+            'slug': 'png-to-jpg-for-website',
+            'title': 'Convert PNG to JPG for Websites and Faster Pages',
+            'desc': 'Convert PNG images to smaller JPG files for websites, blogs, CMS uploads, and faster page loading.',
+            'keyword': 'png to jpg for website',
+            'tool': 'png-to-jpg',
+            'tool_label': 'PNG to JPG',
+            'angle': 'JPG files are usually smaller than PNG, which helps pages load faster. Use PNG only when you need transparency or crisp text.'
+        },
+        {
+            'slug': 'png-to-jpg-transparent',
+            'title': 'PNG to JPG Transparent Background Guide',
+            'desc': 'Learn how PNG to JPG conversion handles transparency and when to keep PNG for transparent design assets.',
+            'keyword': 'png to jpg transparent',
+            'tool': 'png-to-jpg',
+            'tool_label': 'PNG to JPG',
+            'angle': 'JPG does not support transparency. If you need a transparent background, keep the PNG or use a tool that removes the background after conversion.'
+        },
+        {
+            'slug': 'jpg-to-png-transparent',
+            'title': 'JPG to PNG Transparent Background Online',
+            'desc': 'Convert JPG images to PNG format to enable transparency support for logos, product photos, and design assets.',
+            'keyword': 'jpg to png transparent',
+            'tool': 'jpg-to-png',
+            'tool_label': 'JPG to PNG',
+            'angle': 'Converting JPG to PNG adds transparency capability to the file format, but it does not automatically remove an existing background.'
+        },
+        {
+            'slug': 'jpg-to-png-no-background',
+            'title': 'JPG to PNG No Background for Logos and Stickers',
+            'desc': 'Create PNG images from JPG photos for stickers, logos, and designs that need a transparent background.',
+            'keyword': 'jpg to png no background',
+            'tool': 'jpg-to-png',
+            'tool_label': 'JPG to PNG',
+            'angle': 'Use a background remover before converting to PNG if the original JPG has a solid background. PNG preserves transparency; JPG does not.'
+        },
+        {
+            'slug': 'webp-to-jpg-wordpress',
+            'title': 'Convert WebP to JPG for WordPress Uploads',
+            'desc': 'Make WebP images compatible with WordPress, older editors, and platforms that still require JPG files.',
+            'keyword': 'webp to jpg for wordpress',
+            'tool': 'webp-to-jpg',
+            'tool_label': 'WebP to JPG',
+            'angle': 'Some WordPress themes and plugins do not accept WebP uploads. Converting to JPG restores broad compatibility while keeping file size reasonable.'
+        },
+        {
+            'slug': 'heic-to-jpg-windows',
+            'title': 'Convert HEIC to JPG on Windows and Android',
+            'desc': 'Open iPhone HEIC photos on Windows, Android, and older apps by converting them to universal JPG format.',
+            'keyword': 'heic to jpg on windows',
+            'tool': 'heic-to-jpg',
+            'tool_label': 'HEIC to JPG',
+            'angle': 'Windows and Android sometimes need a codec to view HEIC files. Converting to JPG makes the photo viewable everywhere without extra software.'
+        },
+        {
+            'slug': 'heic-to-jpg-iphone',
+            'title': 'Convert HEIC to JPG on iPhone for Sharing',
+            'desc': 'Convert iPhone HEIC photos to JPG for email, social media, websites, and apps that prefer the JPG format.',
+            'keyword': 'heic to jpg iphone',
+            'tool': 'heic-to-jpg',
+            'tool_label': 'HEIC to JPG',
+            'angle': 'iPhones save photos as HEIC by default for efficiency. Convert to JPG when an upload form, email client, or social app requests it.'
+        },
+        {
+            'slug': 'compress-pdf-to-1mb',
+            'title': 'Compress PDF to 1MB for Email and Uploads',
+            'desc': 'Reduce PDF file size to around 1MB for email attachments, application portals, and document sharing.',
+            'keyword': 'compress pdf to 1mb',
+            'tool': 'compress-pdf',
+            'tool_label': 'Compress PDF',
+            'angle': 'A 1MB target works for most email providers and upload portals. Compress images inside the PDF first for the biggest size reduction.'
+        },
+        {
+            'slug': 'compress-pdf-for-email',
+            'title': 'Compress PDF for Email Attachments Free',
+            'desc': 'Shrink PDF files so they fit email attachment limits and send faster without losing readability.',
+            'keyword': 'compress pdf for email',
+            'tool': 'compress-pdf',
+            'tool_label': 'Compress PDF',
+            'angle': 'Most email providers allow attachments up to 20-25MB. Compressing PDFs avoids bounce-backs and helps messages send faster.'
+        },
+        {
+            'slug': 'pdf-to-word-for-editing',
+            'title': 'Convert PDF to Word for Editing Online',
+            'desc': 'Turn PDF documents into editable Word files for text changes, formatting fixes, and collaboration.',
+            'keyword': 'pdf to word for editing',
+            'tool': 'pdf-to-word',
+            'tool_label': 'PDF to Word',
+            'angle': 'PDF is great for sharing final documents. Convert to DOCX when you need to edit text, update tables, or change formatting.'
+        },
+        {
+            'slug': 'word-to-pdf-online-free',
+            'title': 'Convert Word to PDF Online Free',
+            'desc': 'Export DOCX and Word documents to clean PDF files for sharing, printing, and professional submissions.',
+            'keyword': 'word to pdf online free',
+            'tool': 'word-to-pdf',
+            'tool_label': 'Word to PDF',
+            'angle': 'PDF preserves fonts, layout, and page breaks across devices, making it the safer choice for final documents.'
+        },
+        {
+            'slug': 'merge-jpg-to-pdf',
+            'title': 'Merge JPG Images to PDF Online',
+            'desc': 'Combine multiple JPG photos, scans, and screenshots into one organized PDF document.',
+            'keyword': 'merge jpg to pdf',
+            'tool': 'jpg-to-pdf',
+            'tool_label': 'JPG to PDF',
+            'angle': 'Upload portals often accept one PDF instead of many JPGs. Arrange the images in order before creating the final document.'
+        },
+        {
+            'slug': 'split-pdf-into-pages',
+            'title': 'Split PDF Into Pages Online Free',
+            'desc': 'Extract individual pages or ranges from a PDF into separate files for sharing and organization.',
+            'keyword': 'split pdf into pages',
+            'tool': 'split-pdf',
+            'tool_label': 'Split PDF',
+            'angle': 'Splitting a PDF is useful when only certain pages are relevant to a recipient or when a large file needs to be divided.'
+        },
+        {
+            'slug': 'image-compressor-for-website',
+            'title': 'Compress Images for Website Speed and SEO',
+            'desc': 'Reduce JPG, PNG, and WebP image size for faster websites, better Core Web Vitals, and improved SEO.',
+            'keyword': 'compress image for website',
+            'tool': 'image-compressor',
+            'tool_label': 'Image Compressor',
+            'angle': 'Large images slow down page load and hurt search rankings. Compress and resize images before uploading to a CMS.'
+        },
+        {
+            'slug': 'compress-jpg-to-100kb',
+            'title': 'Compress JPG to 100KB Online',
+            'desc': 'Shrink JPG photos under 100KB for job portals, application forms, and upload limits.',
+            'keyword': 'compress jpg to 100kb',
+            'tool': 'compress-image-to-100kb',
+            'tool_label': 'Compress Image to 100KB',
+            'angle': 'A 100KB target is strict. Reduce dimensions first, then adjust quality until the file fits the limit while staying readable.'
+        },
+        {
+            'slug': 'resize-image-for-instagram',
+            'title': 'Resize Image for Instagram Posts and Stories',
+            'desc': 'Resize photos for Instagram posts, stories, reels, and profile pictures with common aspect ratios.',
+            'keyword': 'resize image for instagram',
+            'tool': 'resize-image-for-instagram',
+            'tool_label': 'Resize Image for Instagram',
+            'angle': 'Instagram posts often use 1:1 or 4:5 ratios, while stories and reels use 9:16. Resize before posting to avoid awkward cropping.'
+        },
+        {
+            'slug': 'png-to-webp-transparent',
+            'title': 'Convert PNG to WebP With Transparency',
+            'desc': 'Convert transparent PNG graphics to WebP for smaller website assets that keep alpha channels.',
+            'keyword': 'png to webp transparent',
+            'tool': 'png-to-webp',
+            'tool_label': 'PNG to WebP',
+            'angle': 'WebP supports transparency like PNG but usually produces smaller files, which helps pages load faster.'
+        },
+        {
+            'slug': 'jpg-to-webp-for-website',
+            'title': 'Convert JPG to WebP for Faster Websites',
+            'desc': 'Convert JPG photos to WebP for smaller file sizes, faster page loads, and modern browser support.',
+            'keyword': 'jpg to webp for website',
+            'tool': 'jpg-to-webp',
+            'tool_label': 'JPG to WebP',
+            'angle': 'WebP typically compresses better than JPG. Serve WebP to modern browsers and keep JPG as a fallback for older ones.'
+        },
+        {
+            'slug': 'mp4-to-mp3-free',
+            'title': 'Convert MP4 to MP3 Free Online',
+            'desc': 'Extract audio from MP4 videos into MP3 files for podcasts, music, lectures, and voice notes.',
+            'keyword': 'mp4 to mp3 free',
+            'tool': 'mp4-to-mp3',
+            'tool_label': 'MP4 to MP3',
+            'angle': 'MP3 is widely supported across players and devices. Extract audio when you only need the sound track from a video.'
+        },
+        {
+            'slug': 'video-to-mp3',
+            'title': 'Convert Video to MP3 Audio Online',
+            'desc': 'Extract MP3 audio from video files for offline listening, editing, and sharing.',
+            'keyword': 'convert video to audio',
+            'tool': 'mp4-to-mp3',
+            'tool_label': 'MP4 to MP3',
+            'angle': 'Converting video to MP3 creates a smaller file that is easier to store, share, and play on audio-focused devices.'
+        },
+        {
+            'slug': 'json-to-csv-excel',
+            'title': 'Convert JSON to CSV for Excel and Sheets',
+            'desc': 'Flatten JSON arrays into CSV rows for Excel, Google Sheets, and spreadsheet analysis.',
+            'keyword': 'json to csv for excel',
+            'tool': 'json-to-csv',
+            'tool_label': 'JSON to CSV',
+            'angle': 'CSV is easier to read in spreadsheets than nested JSON. Flatten nested objects into dot-separated column names when needed.'
+        },
+        {
+            'slug': 'qr-code-for-menu',
+            'title': 'QR Code Generator for Restaurant Menus',
+            'desc': 'Create a QR code for a restaurant menu, digital catalog, or link that customers can scan with any phone.',
+            'keyword': 'qr code for menu',
+            'tool': 'qr-code-generator',
+            'tool_label': 'QR Code Generator',
+            'angle': 'Menu QR codes should link to a mobile-friendly page. Test the code on iOS and Android before printing.'
+        },
+        {
+            'slug': 'qr-code-for-wifi',
+            'title': 'QR Code Generator for WiFi Login',
+            'desc': 'Generate a QR code that lets guests connect to WiFi without typing the network name or password.',
+            'keyword': 'qr code for wifi',
+            'tool': 'qr-code-generator',
+            'tool_label': 'QR Code Generator',
+            'angle': 'WiFi QR codes use a standard format that most phones recognize from the camera app. Keep the password simple to avoid encoding errors.'
+        },
+        {
+            'slug': 'svg-to-png-transparent',
+            'title': 'Convert SVG to PNG With Transparency',
+            'desc': 'Render SVG vector files as high-quality PNG images that keep transparent backgrounds for logos and icons.',
+            'keyword': 'svg to png transparent',
+            'tool': 'svg-to-png',
+            'tool_label': 'SVG to PNG',
+            'angle': 'PNG exports from SVG keep transparency and crisp edges at any resolution. Choose a large enough size for high-DPI displays.'
+        },
+        {
+            'slug': 'svg-to-png-logo',
+            'title': 'Convert SVG Logo to PNG Online',
+            'desc': 'Export SVG logos to PNG format for websites, social media, presentations, and print-ready assets.',
+            'keyword': 'svg to png logo',
+            'tool': 'svg-to-png',
+            'tool_label': 'SVG to PNG',
+            'angle': 'Logos often start as SVG vectors. Export to PNG when a platform requires a raster image or when you need a specific pixel size.'
+        },
+        {
+            'slug': 'png-to-ico-favicon',
+            'title': 'Convert PNG to ICO Favicon Online',
+            'desc': 'Turn PNG logos and images into ICO favicon files for websites and browser tabs.',
+            'keyword': 'png to ico',
+            'tool': 'ico-converter',
+            'tool_label': 'ICO Converter',
+            'angle': 'ICO files can contain multiple icon sizes. Upload a square PNG and download a favicon ready for most browsers.'
+        },
+        {
+            'slug': 'mov-to-mp4-iphone',
+            'title': 'Convert MOV to MP4 on iPhone and Mac',
+            'desc': 'Convert Apple MOV videos to MP4 for Android, Windows, editors, and social media uploads.',
+            'keyword': 'mov to mp4 iphone',
+            'tool': 'mov-to-mp4',
+            'tool_label': 'MOV to MP4',
+            'angle': 'MOV files work best in Apple ecosystems. MP4 is the universal format for sharing across phones, computers, and websites.'
+        },
+        {
+            'slug': 'mkv-to-mp4-without-quality-loss',
+            'title': 'Convert MKV to MP4 Without Losing Quality',
+            'desc': 'Remux MKV videos to MP4 while preserving video and audio quality for broader device support.',
+            'keyword': 'mkv to mp4 without quality loss',
+            'tool': 'mkv-to-mp4',
+            'tool_label': 'MKV to MP4',
+            'angle': 'When the MKV file uses compatible codecs, remuxing to MP4 avoids re-encoding and keeps the original quality.'
+        },
+        {
+            'slug': 'avi-to-mp4-for-windows',
+            'title': 'Convert AVI to MP4 for Windows and Mobile',
+            'desc': 'Turn older AVI videos into MP4 files for modern playback, editing, and mobile sharing.',
+            'keyword': 'avi to mp4 for windows',
+            'tool': 'avi-to-mp4',
+            'tool_label': 'AVI to MP4',
+            'angle': 'AVI files can be large and unsupported on mobile devices. MP4 offers better compression and compatibility.'
+        },
+        {
+            'slug': 'csv-to-json-api',
+            'title': 'Convert CSV to JSON for APIs and Apps',
+            'desc': 'Turn CSV spreadsheet rows into structured JSON arrays for APIs, web apps, and data pipelines.',
+            'keyword': 'csv to json for api',
+            'tool': 'csv-to-json',
+            'tool_label': 'CSV to JSON',
+            'angle': 'JSON is easier for code to parse than CSV. Add column headers to the CSV so the converter can create named object keys.'
+        },
+        {
+            'slug': 'json-pretty-print',
+            'title': 'JSON Pretty Print and Beautify Online',
+            'desc': 'Format minified JSON into readable, indented text for debugging, documentation, and sharing.',
+            'keyword': 'json pretty print',
+            'tool': 'json-formatter',
+            'tool_label': 'JSON Formatter',
+            'angle': 'Pretty-printed JSON makes nested structures easier to read and debug. Use it before pasting JSON into documentation or messages.'
+        },
+        {
+            'slug': 'text-to-base64',
+            'title': 'Text to Base64 Encode Online',
+            'desc': 'Encode plain text strings to Base64 for data URIs, configuration files, APIs, and safe transport.',
+            'keyword': 'text to base64',
+            'tool': 'base64-encode',
+            'tool_label': 'Base64 Encode',
+            'angle': 'Base64 encodes binary or text data into ASCII characters. It is useful for embedding data in JSON, HTML, or URLs.'
+        },
+        {
+            'slug': 'strong-password-generator',
+            'title': 'Strong Password Generator Online',
+            'desc': 'Create strong, random passwords with letters, numbers, and symbols to protect online accounts.',
+            'keyword': 'strong password generator',
+            'tool': 'password-generator',
+            'tool_label': 'Password Generator',
+            'angle': 'Longer passwords with mixed characters are harder to crack. Use a unique password for every important account.'
+        },
+        {
+            'slug': 'essay-word-counter',
+            'title': 'Essay Word Counter Online',
+            'desc': 'Count words, characters, sentences, and reading time for essays, assignments, and blog posts.',
+            'keyword': 'essay word counter',
+            'tool': 'word-counter',
+            'tool_label': 'Word Counter',
+            'angle': 'Essay limits are usually measured in words. Paste your text to check the count and estimated reading time instantly.'
+        },
+        {
+            'slug': 'image-to-base64-css',
+            'title': 'Convert Image to Base64 for CSS and HTML',
+            'desc': 'Encode images to Base64 data URIs for inline CSS, HTML emails, and small icons.',
+            'keyword': 'convert image to base64',
+            'tool': 'image-to-base64',
+            'tool_label': 'Image to Base64',
+            'angle': 'Base64 images embed directly in code, reducing HTTP requests. Use them only for small images because the encoded string is larger than the original file.'
+        },
+    ]
+
+
 def build_daily_seo_landing_pages():
-    pages = [
+    pages = generate_use_case_pages() + [
         {
             'slug': 'compress-pdf-to-500kb',
             'title': 'Compress PDF to 500KB Online Free',
@@ -5969,7 +6363,7 @@ def build_legal_pages():
         },
         'dmca': {
             'title': 'DMCA & Abuse Report Policy',
-            'desc': 'Submit abuse or copyright infringement notices.',
+            'desc': 'Submit DMCA abuse or copyright infringement notices to freeconvert.cloud for review.',
             'content': """<h2>DMCA Compliance</h2>
             <p>Because freeconvert.cloud processes conversions on-the-fly and permanently purges files immediately after task completion, we do not host, store, or archive public downloadable files on our servers. Therefore, copyright infringement is structurally impossible on our web indexes.</p>
             

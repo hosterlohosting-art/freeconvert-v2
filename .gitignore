@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .gemini/
 download.ps1
+seo_audit_summary.json
+*.log
+/tmp/
+
