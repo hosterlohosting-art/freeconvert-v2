@@ -40,6 +40,22 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Old /tools/*.html URLs -> clean tool URLs (preserve indexed authority)
+  RewriteRule ^tools/image-compressor\.html$ /image-compressor/ [R=301,L]
+  RewriteRule ^tools/image-resizer\.html$ /resize-image/ [R=301,L]
+  RewriteRule ^tools/ico-converter\.html$ /ico-converter/ [R=301,L]
+  RewriteRule ^tools/svg-to-png\.html$ /svg-to-png/ [R=301,L]
+  RewriteRule ^tools/palette-extractor\.html$ /palette-extractor/ [R=301,L]
+  RewriteRule ^tools/html-formatter\.html$ /html-formatter/ [R=301,L]
+  RewriteRule ^tools/password-generator\.html$ /password-generator/ [R=301,L]
+  RewriteRule ^tools/diff-checker\.html$ /diff-checker/ [R=301,L]
+  RewriteRule ^tools/markdown-editor\.html$ /markdown-editor/ [R=301,L]
+  RewriteRule ^tools/word-counter\.html$ /word-counter/ [R=301,L]
+  RewriteRule ^tools/css-formatter\.html$ /css-formatter/ [R=301,L]
+  RewriteRule ^tools/sql-formatter\.html$ /sql-formatter/ [R=301,L]
+  RewriteRule ^tools/qr-generator\.html$ /qr-code-generator/ [R=301,L]
+
   RewriteRule ^image-resizer/?$ /resize-image/ [R=301,L]
   RewriteRule ^about-freeconvert/?$ /about/ [R=301,L]
   RewriteRule ^contact-us/?$ /contact/ [R=301,L]

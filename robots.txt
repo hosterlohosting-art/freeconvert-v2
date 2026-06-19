@@ -8,5 +8,6 @@ Disallow: /blog/blog-template.html
 # Full AI index: https://freeconvert.cloud/ai-index.json
 # Keyword map: https://freeconvert.cloud/seo-keyword-targets.json
 Sitemap: https://freeconvert.cloud/sitemap-index.xml
-Sitemap: https://freeconvert.cloud/sitemap.xml
 Host: freeconvert.cloud
+
+# Removed duplicate root sitemap.xml because sitemap-index.xml already covers all URLs
