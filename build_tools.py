@@ -11,8 +11,26 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-17'
+TODAY_ISO = '2026-06-22'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
+ADSENSE_REVIEW_MODE = True
+UNAVAILABLE_TOOL_IDS = {
+    'heic-to-jpg', 'palette-extractor', 'ico-converter',
+    'compress-pdf', 'pdf-to-jpg', 'jpg-to-pdf', 'merge-pdf', 'split-pdf',
+    'pdf-to-word', 'word-to-pdf', 'barcode-generator', 'speed-test',
+    'mp4-to-mp3', 'video-compressor', 'webm-to-mp4', 'mov-to-mp4',
+    'avi-to-mp4', 'mkv-to-mp4', 'mp4-to-gif', 'video-to-mp3',
+    'video-trimmer', 'video-resizer',
+}
+NOINDEX_PATH_PREFIXES = (
+    'popular-conversions/',
+    'free-online-converter-guides/',
+    'blog/hub-pages/',
+)
+NOINDEX_TOP_LEVEL_SLUGS = {
+    'video-converter', 'audio-converter', 'pdf-tools', 'archive-converter',
+    'ebook-converter', 'pricing', 'api',
+}
 LEGACY_ROUTE_MAP = {
     '/image-resizer/': '/resize-image/',
     '/about-freeconvert/': '/about/',
@@ -24,6 +42,14 @@ LEGACY_ROUTE_MAP = {
     '/lorem-ipsum/': '/lorem-ipsum-generator/',
     '/dev_basic/': '/document-converter/',
 }
+
+
+def is_indexable_tool(tool):
+    return tool['id'] not in UNAVAILABLE_TOOL_IDS
+
+
+def filter_indexable_tools(tools):
+    return [tool for tool in tools if is_indexable_tool(tool)]
 
 TOP_KEYWORD_TARGETS = [
     {
@@ -548,6 +574,61 @@ def normalize_generated_html_seo():
     for html_path in iter_public_html_files():
         html = html_path.read_text(encoding='utf-8')
         original = html
+        rel_path = html_path.as_posix()
+        top_level_slug = rel_path.split('/', 1)[0]
+        should_noindex = (
+            top_level_slug in UNAVAILABLE_TOOL_IDS
+            or top_level_slug in NOINDEX_TOP_LEVEL_SLUGS
+            or any(rel_path.startswith(prefix) for prefix in NOINDEX_PATH_PREFIXES)
+        )
+
+        if ADSENSE_REVIEW_MODE:
+            html = re.sub(
+                r'\s*<script[^>]+pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^>]*></script>',
+                '',
+                html,
+                flags=re.I,
+            )
+            html = re.sub(
+                r'\s*<!-- AdSense Slot:[\s\S]*?<div class="adsense-wrap[^>]*>[\s\S]*?</div>',
+                '',
+                html,
+                flags=re.I,
+            )
+            review_nav = '''<div class="nav-links">
+                <a href="/image-converter/" class="nav-link">Image Tools</a>
+                <a href="/document-converter/" class="nav-link">Developer &amp; Text</a>
+                <a href="/unit-converter/" class="nav-link">Utility Tools</a>
+                <a href="/blog/" class="nav-link">Guides</a>
+                <a href="/all-tools/" class="btn primary" style="padding:0.5rem 1.2rem;font-size:0.8rem;border-radius:8px;">All Tools</a>
+            </div>
+        </nav>'''
+            html = re.sub(
+                r'<div class="nav-links">[\s\S]*?</nav>',
+                review_nav,
+                html,
+                count=1,
+                flags=re.I,
+            )
+            unavailable_routes = '|'.join(re.escape(slug) for slug in sorted(NOINDEX_TOP_LEVEL_SLUGS))
+            html = re.sub(
+                rf'\s*<a\b[^>]*href="/(?:{unavailable_routes})/"[^>]*>[\s\S]*?</a>',
+                '',
+                html,
+                flags=re.I,
+            )
+            if rel_path == 'index.html':
+                html = re.sub(
+                    r'\s*<!-- Developer API Preview Section -->[\s\S]*?</section>',
+                    '',
+                    html,
+                    count=1,
+                    flags=re.I,
+                )
+            html = html.replace(
+                "The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.",
+                "Free browser tools for image conversion, text, code, security, and everyday calculations.",
+            )
         page_url = public_url_for_html(html_path)
         title = html.split('<title>', 1)[1].split('</title>', 1)[0] if '<title>' in html else 'freeconvert.cloud'
 
@@ -623,7 +704,17 @@ def normalize_generated_html_seo():
         if 'property="og:locale"' not in html:
             html = html.replace('</head>', '    <meta property="og:locale" content="en_US">\n\n</head>', 1)
 
-        if 'name="robots"' not in html:
+        if should_noindex:
+            robots_value = 'noindex,follow'
+            if 'name="robots"' in html:
+                html = re.sub(r'<meta name="robots" content="[^"]*">', f'<meta name="robots" content="{robots_value}">', html, count=1)
+            else:
+                html = html.replace('</head>', f'    <meta name="robots" content="{robots_value}">\n\n</head>', 1)
+            if 'name="googlebot"' in html:
+                html = re.sub(r'<meta name="googlebot" content="[^"]*">', f'<meta name="googlebot" content="{robots_value}">', html, count=1)
+            else:
+                html = html.replace('</head>', f'    <meta name="googlebot" content="{robots_value}">\n\n</head>', 1)
+        elif 'name="robots"' not in html:
             html = html.replace(
                 '</head>',
                 '    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">\n'
@@ -686,10 +777,11 @@ def build_sitemap(tools):
         groups[group].append(sitemap_url_entry(loc, changefreq, priority, include_image))
 
     add('pages', f'{SITE_URL}/', 'daily', '1.0')
-    for slug in ['pricing', 'api', 'all-tools', 'sitemap']:
+    for slug in ['all-tools', 'sitemap']:
         add('pages', f'{SITE_URL}/{slug}/', 'weekly', '0.9')
     for _, cat in CATEGORIES.items():
-        add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
+        if cat['slug'] not in NOINDEX_TOP_LEVEL_SLUGS:
+            add('pages', f'{SITE_URL}/{cat["slug"]}/', 'weekly', '0.8')
     for tool in tools:
         add('tools', f'{SITE_URL}/{tool["id"]}/', 'weekly', '0.8')
     for leg in ['privacy', 'terms', 'security', 'dmca', 'contact', 'about', 'cookies', 'advertising-policy', 'help', 'press-kit', 'png-vs-jpg', 'pdf-vs-docx', 'convert-heic-iphone', 'compress-image-for-website']:
@@ -702,14 +794,8 @@ def build_sitemap(tools):
         rel = blog_dir.parent.name
         if rel != 'hub-pages':
             add('blog', f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
-    for hub_page in sorted(Path('blog/hub-pages').glob('*.html')):
-        add('blog', public_url_for_html(hub_page), 'monthly', '0.6')
     for category_page in sorted(Path('blog/category').glob('*/index.html')):
         add('blog', public_url_for_html(category_page), 'weekly', '0.6')
-    for guide_page in sorted(Path('free-online-converter-guides').glob('**/index.html')):
-        add('blog', public_url_for_html(guide_page), 'weekly', '0.6')
-    for popular_page in sorted(Path('popular-conversions').glob('**/index.html')):
-        add('blog', public_url_for_html(popular_page), 'weekly', '0.6')
     for format_page in sorted(Path('file-formats').glob('**/index.html')):
         add('blog', public_url_for_html(format_page), 'weekly', '0.6')
     sitemaps_dir = Path('sitemaps')
@@ -842,6 +928,22 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Old /tools/*.html URLs -> clean tool URLs (preserve indexed authority)
+  RewriteRule ^tools/image-compressor\\.html$ /image-compressor/ [R=301,L]
+  RewriteRule ^tools/image-resizer\\.html$ /resize-image/ [R=301,L]
+  RewriteRule ^tools/ico-converter\\.html$ /ico-converter/ [R=301,L]
+  RewriteRule ^tools/svg-to-png\\.html$ /svg-to-png/ [R=301,L]
+  RewriteRule ^tools/palette-extractor\\.html$ /palette-extractor/ [R=301,L]
+  RewriteRule ^tools/html-formatter\\.html$ /html-formatter/ [R=301,L]
+  RewriteRule ^tools/password-generator\\.html$ /password-generator/ [R=301,L]
+  RewriteRule ^tools/diff-checker\\.html$ /diff-checker/ [R=301,L]
+  RewriteRule ^tools/markdown-editor\\.html$ /markdown-editor/ [R=301,L]
+  RewriteRule ^tools/word-counter\\.html$ /word-counter/ [R=301,L]
+  RewriteRule ^tools/css-formatter\\.html$ /css-formatter/ [R=301,L]
+  RewriteRule ^tools/sql-formatter\\.html$ /sql-formatter/ [R=301,L]
+  RewriteRule ^tools/qr-generator\\.html$ /qr-code-generator/ [R=301,L]
+
   RewriteRule ^image-resizer/?$ /resize-image/ [R=301,L]
   RewriteRule ^about-freeconvert/?$ /about/ [R=301,L]
   RewriteRule ^contact-us/?$ /contact/ [R=301,L]
@@ -6973,6 +7075,7 @@ def generate_tool_adsense_content(tool):
 
 def build_discovery_files(tools):
     tools_by_id = {tool['id']: tool for tool in tools}
+    available_tool_ids = set(tools_by_id)
     priority_tool_lines = []
     for target in TOP_KEYWORD_TARGETS:
         tool = tools_by_id.get(target['tool_id'])
@@ -6990,25 +7093,22 @@ def build_discovery_files(tools):
     keyword_cluster_lines = [
         f"- {target['keyword']} -> {SITE_URL}/{target['tool_id']}/ ({target['cluster']}; variants: {', '.join(target['modifiers'])})"
         for target in TOP_KEYWORD_TARGETS
+        if target['tool_id'] in available_tool_ids
     ]
 
     # 1. llms.txt
     llms_content = f"""# freeconvert.cloud - Privacy-First File Converter Platform
 
 ## Purpose
-freeconvert.cloud is a premium, secure, and fast browser-local file conversion platform designed to transcode documents, images, video, audio, archives, and developer structures cleanly with 100% user data privacy.
+freeconvert.cloud provides practical browser-based image, text, developer, security, and calculation tools with clear limitations and privacy-first processing.
 
 ## Core Conversion Paradigm
-- **Client-Side Sandbox Tools:** Standard converter engines (PNG to JPG, JSON to CSV, Password Generators, hashes, and code formatters) execute completely client-side in the browser RAM using HTML5 Canvas, WebAssembly, and local JS. No binary data is ever transmitted across networks.
-- **Server-Side Transient Edge Sandboxes:** Heavy transcoding tasks (like Word DOCX to PDF or MP4 to MP3 video extraction) utilize secure 256-bit SSL tunnels to transient edge containers. Binary files are shredded completely within 2 hours, generating zero logs, cache, or backups.
+- **Client-Side Tools:** Supported image, text, code, security, and calculation tools run directly in the browser using standard web APIs.
+- **Unavailable Conversions:** Tools that require an unfinished server service are excluded from public directories and search discovery until their output can be verified end to end.
 
 ## Main Navigation Pages
 - Homepage: https://freeconvert.cloud/ - Upload box and unified utility grid.
-- Pricing Plans: https://freeconvert.cloud/pricing/ - Subscriptions, batch allowances, and priority quotas.
-- Developer API: https://freeconvert.cloud/api/ - Node.js and HTTP multipart integrations.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
-- Daily Converter Guides: https://freeconvert.cloud/free-online-converter-guides/ - Long-tail conversion, compression, sizing, and Search Console sitemap guides.
-- Popular Conversions: https://freeconvert.cloud/popular-conversions/ - High-intent conversion workflows tied to active tools.
 - File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 - HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
@@ -7042,7 +7142,7 @@ freeconvert.cloud is a premium, secure, and fast browser-local file conversion p
     llms_full_content = f"""# freeconvert.cloud Full LLM Inventory
 
 ## Site Summary
-freeconvert.cloud provides browser-first online file converters, PDF tools, image tools, media converters, developer utilities, text tools, security generators, and practical conversion guides.
+freeconvert.cloud provides browser-first image tools, developer utilities, text tools, security generators, calculators, and practical guides.
 
 ## Top Keyword Targets
 {chr(10).join(keyword_cluster_lines)}
@@ -7052,7 +7152,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 
 ## Editorial And Trust Signals
 - Editorial team: freeconvert.cloud Editorial Team.
-- Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
+- Privacy model: supported public tools use client-side browser processing where possible.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
 - Update marker: {TODAY_ISO}.
 
@@ -7061,8 +7161,6 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - RSS feed: {SITE_URL}/feed.xml
 - OpenSearch: {SITE_URL}/opensearch.xml
 - Blog hub: {SITE_URL}/blog/
-- Daily converter guides: {SITE_URL}/free-online-converter-guides/
-- Popular conversions: {SITE_URL}/popular-conversions/
 - File format glossary: {SITE_URL}/file-formats/
 - Press kit: {SITE_URL}/press-kit/
 - Security: {SITE_URL}/security/
@@ -7092,6 +7190,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
                 "variants": target["modifiers"]
             }
             for target in TOP_KEYWORD_TARGETS
+            if target['tool_id'] in available_tool_ids
         ],
         "tools": [
             {
@@ -7495,6 +7594,7 @@ def build_blog():
 def build():
     with open(TOOLS_JSON, 'r', encoding='utf-8') as f:
         tools = json.load(f)
+    indexable_tools = filter_indexable_tools(tools)
     
     with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
         template = f.read()
@@ -7609,7 +7709,7 @@ def build():
         html = html.replace('{{USE_CASES}}', use_cases_html)
         html = html.replace('{{LIMITATIONS}}', limitations)
         html = html.replace('{{FAQ_SECTION}}', faq_html)
-        html = html.replace('{{KEYWORD_CONTENT}}', tool_keyword_content_html(tool, tools))
+        html = html.replace('{{KEYWORD_CONTENT}}', tool_keyword_content_html(tool, indexable_tools))
         
         # Inject Glossary box
         _, cat_glossary, _, _, _, _, _ = generate_category_seo_content(cat_slug, cat_name)
@@ -7752,8 +7852,8 @@ def build():
         html = html.replace('{{SCHEMA}}', schema_tag)
 
         # Smart Related Tools (category-aware, card style, 6 links)
-        same_cat = [t for t in tools if t['type'] == t_type and t['id'] != t_id]
-        cross_cat = [t for t in tools if t['id'] != t_id and t not in same_cat]
+        same_cat = [t for t in indexable_tools if t['type'] == t_type and t['id'] != t_id]
+        cross_cat = [t for t in indexable_tools if t['id'] != t_id and t not in same_cat]
         keyword_target = keyword_target_for_tool(t_id)
         keyword_related_ids = []
         if keyword_target:
@@ -7764,7 +7864,7 @@ def build():
                     or target['cluster'].split()[0] == keyword_target['cluster'].split()[0]
                 )
             ]
-        keyword_related = [t for t in tools if t['id'] in keyword_related_ids]
+        keyword_related = [t for t in indexable_tools if t['id'] in keyword_related_ids]
         combined_related = keyword_related + same_cat + cross_cat
         matched_tools = []
         seen_related_ids = set()
@@ -7852,11 +7952,11 @@ def build():
         print(f"Compiled clean URL tool page: /{t_id}/index.html")
 
     # Generate homepage
-    build_homepage(tools)
-    build_all_tools_directory(tools)
+    build_homepage(indexable_tools)
+    build_all_tools_directory(indexable_tools)
 
     # Generate 8 category pages
-    build_categories(tools)
+    build_categories(indexable_tools)
 
     # Generate pricing page
     build_pricing_page()
@@ -7880,22 +7980,22 @@ def build():
     build_file_format_glossary_pages()
     build_convert_alias_pages(tools)
     build_legacy_redirect_pages()
-    build_html_sitemap_page(tools)
+    build_html_sitemap_page(indexable_tools)
 
     # Generate discovery files (llms.txt & humans.txt)
-    build_discovery_files(tools)
+    build_discovery_files(indexable_tools)
 
     # Generate enhanced technical SEO assets
     normalize_generated_html_seo()
     build_static_seo_assets()
     build_rss_feed()
     build_opensearch_file()
-    build_sitemap(tools)
-    build_keyword_research_file(tools)
+    build_sitemap(indexable_tools)
+    build_keyword_research_file(indexable_tools)
 
     # Generate tools-data.js
     frontend_data = []
-    for tool in tools:
+    for tool in indexable_tools:
         frontend_data.append({
             "id": tool["id"],
             "name": tool["name"],

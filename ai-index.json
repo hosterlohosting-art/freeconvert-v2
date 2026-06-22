@@ -1,7 +1,7 @@
 {
   "name": "freeconvert.cloud",
   "url": "https://freeconvert.cloud/",
-  "updated": "2026-06-17",
+  "updated": "2026-06-22",
   "description": "Privacy-first online file conversion platform with image, PDF, document, media, developer, security, and utility tools.",
   "entity_type": "WebApplication",
   "trust": {
@@ -10,34 +10,6 @@
     "ads_policy": "Clearly labeled ads with no fake buttons or deceptive conversion controls."
   },
   "keyword_targets": [
-    {
-      "priority": 1,
-      "keyword": "pdf to jpg",
-      "url": "https://freeconvert.cloud/pdf-to-jpg/",
-      "intent": "Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.",
-      "cluster": "PDF conversion",
-      "variants": [
-        "pdf to jpg converter",
-        "convert pdf to jpg online",
-        "pdf pages to jpg",
-        "pdf to jpg high quality",
-        "pdf to jpg free"
-      ]
-    },
-    {
-      "priority": 2,
-      "keyword": "jpg to pdf",
-      "url": "https://freeconvert.cloud/jpg-to-pdf/",
-      "intent": "Combine photos, scans, receipts, and screenshots into one PDF document.",
-      "cluster": "PDF creation",
-      "variants": [
-        "jpg to pdf converter",
-        "convert jpg to pdf online",
-        "image to pdf",
-        "jpg to pdf for school",
-        "merge jpg to pdf"
-      ]
-    },
     {
       "priority": 3,
       "keyword": "png to jpg",
@@ -77,90 +49,6 @@
         "convert webp to jpg online",
         "webp image to jpeg",
         "webp to jpg for wordpress"
-      ]
-    },
-    {
-      "priority": 6,
-      "keyword": "heic to jpg",
-      "url": "https://freeconvert.cloud/heic-to-jpg/",
-      "intent": "Convert iPhone HEIC photos into universal JPG files.",
-      "cluster": "Image conversion",
-      "variants": [
-        "heic to jpg converter",
-        "iphone photo to jpg",
-        "convert heic to jpeg",
-        "heic to jpg on windows",
-        "heic to jpg iphone"
-      ]
-    },
-    {
-      "priority": 7,
-      "keyword": "compress pdf",
-      "url": "https://freeconvert.cloud/compress-pdf/",
-      "intent": "Reduce PDF file size for email, uploads, storage, and document sharing.",
-      "cluster": "PDF compression",
-      "variants": [
-        "compress pdf online",
-        "reduce pdf file size",
-        "pdf compressor",
-        "compress pdf to 1mb",
-        "compress pdf for email"
-      ]
-    },
-    {
-      "priority": 8,
-      "keyword": "pdf to word",
-      "url": "https://freeconvert.cloud/pdf-to-word/",
-      "intent": "Convert PDF documents into editable Word DOCX files.",
-      "cluster": "Document conversion",
-      "variants": [
-        "pdf to word converter",
-        "pdf to docx",
-        "convert pdf to editable word",
-        "pdf to word for editing",
-        "pdf to word free"
-      ]
-    },
-    {
-      "priority": 9,
-      "keyword": "word to pdf",
-      "url": "https://freeconvert.cloud/word-to-pdf/",
-      "intent": "Export DOCX and Word documents into clean PDF files.",
-      "cluster": "Document conversion",
-      "variants": [
-        "word to pdf converter",
-        "docx to pdf",
-        "convert word document to pdf",
-        "word to pdf online free",
-        "doc to pdf"
-      ]
-    },
-    {
-      "priority": 10,
-      "keyword": "merge pdf",
-      "url": "https://freeconvert.cloud/merge-pdf/",
-      "intent": "Combine multiple PDF files into one organized document.",
-      "cluster": "PDF editing",
-      "variants": [
-        "merge pdf online",
-        "combine pdf files",
-        "pdf merger",
-        "merge pdf files free",
-        "join pdf"
-      ]
-    },
-    {
-      "priority": 11,
-      "keyword": "split pdf",
-      "url": "https://freeconvert.cloud/split-pdf/",
-      "intent": "Extract selected pages or split a PDF into smaller files.",
-      "cluster": "PDF editing",
-      "variants": [
-        "split pdf online",
-        "extract pdf pages",
-        "pdf splitter",
-        "split pdf into pages",
-        "pdf page extractor"
       ]
     },
     {
@@ -232,33 +120,6 @@
       ]
     },
     {
-      "priority": 17,
-      "keyword": "mp4 to mp3",
-      "url": "https://freeconvert.cloud/mp4-to-mp3/",
-      "intent": "Extract audio from MP4 videos into MP3 files.",
-      "cluster": "Media conversion",
-      "variants": [
-        "mp4 to mp3 converter",
-        "extract audio from mp4",
-        "video to mp3",
-        "mp4 to mp3 free",
-        "convert video to audio"
-      ]
-    },
-    {
-      "priority": 18,
-      "keyword": "webm to mp4",
-      "url": "https://freeconvert.cloud/webm-to-mp4/",
-      "intent": "Convert WebM videos into widely compatible MP4 files.",
-      "cluster": "Media conversion",
-      "variants": [
-        "webm to mp4 converter",
-        "convert webm to mp4 online",
-        "webm video to mp4",
-        "webm to mp4 free"
-      ]
-    },
-    {
       "priority": 19,
       "keyword": "json to csv",
       "url": "https://freeconvert.cloud/json-to-csv/",
@@ -297,72 +158,6 @@
         "convert svg to png online",
         "svg to png transparent",
         "svg to png logo"
-      ]
-    },
-    {
-      "priority": 22,
-      "keyword": "ico converter",
-      "url": "https://freeconvert.cloud/ico-converter/",
-      "intent": "Create favicon .ico files from PNG or JPG images for websites.",
-      "cluster": "Image conversion",
-      "variants": [
-        "ico converter",
-        "png to ico",
-        "jpg to ico",
-        "favicon generator",
-        "create favicon online"
-      ]
-    },
-    {
-      "priority": 23,
-      "keyword": "mov to mp4",
-      "url": "https://freeconvert.cloud/mov-to-mp4/",
-      "intent": "Convert Apple MOV videos to universal MP4 format.",
-      "cluster": "Media conversion",
-      "variants": [
-        "mov to mp4 converter",
-        "convert mov to mp4 online",
-        "mov to mp4 free",
-        "mov to mp4 iphone"
-      ]
-    },
-    {
-      "priority": 24,
-      "keyword": "mkv to mp4",
-      "url": "https://freeconvert.cloud/mkv-to-mp4/",
-      "intent": "Convert MKV videos to widely supported MP4 files.",
-      "cluster": "Media conversion",
-      "variants": [
-        "mkv to mp4 converter",
-        "convert mkv to mp4 online",
-        "mkv to mp4 free",
-        "mkv to mp4 without quality loss"
-      ]
-    },
-    {
-      "priority": 25,
-      "keyword": "avi to mp4",
-      "url": "https://freeconvert.cloud/avi-to-mp4/",
-      "intent": "Convert AVI videos to MP4 for better compatibility.",
-      "cluster": "Media conversion",
-      "variants": [
-        "avi to mp4 converter",
-        "convert avi to mp4 online",
-        "avi to mp4 free",
-        "avi to mp4 for windows"
-      ]
-    },
-    {
-      "priority": 26,
-      "keyword": "mp4 to gif",
-      "url": "https://freeconvert.cloud/mp4-to-gif/",
-      "intent": "Turn MP4 video clips into animated GIF images.",
-      "cluster": "Media conversion",
-      "variants": [
-        "mp4 to gif converter",
-        "convert mp4 to gif online",
-        "video to gif",
-        "mp4 to gif free"
       ]
     },
     {
@@ -473,15 +268,6 @@
       "target_keyword": "webp to jpg"
     },
     {
-      "id": "heic-to-jpg",
-      "name": "HEIC to JPG",
-      "url": "https://freeconvert.cloud/heic-to-jpg/",
-      "category": "Image",
-      "description": "Convert iPhone HEIC photos to generic JPG.",
-      "title": "HEIC to JPG Converter Online",
-      "target_keyword": "heic to jpg"
-    },
-    {
       "id": "svg-to-png",
       "name": "SVG to PNG",
       "url": "https://freeconvert.cloud/svg-to-png/",
@@ -489,24 +275,6 @@
       "description": "Render SVG files as high-quality PNG images.",
       "title": "SVG to PNG Converter - Online Vector Tool",
       "target_keyword": "svg to png"
-    },
-    {
-      "id": "palette-extractor",
-      "name": "Color Palette Extractor",
-      "url": "https://freeconvert.cloud/palette-extractor/",
-      "category": "Image",
-      "description": "Extract dominant colors from any image.",
-      "title": "Image Color Palette Generator - Extract Hex Codes",
-      "target_keyword": null
-    },
-    {
-      "id": "ico-converter",
-      "name": "ICO Converter",
-      "url": "https://freeconvert.cloud/ico-converter/",
-      "category": "Image",
-      "description": "Create standard Favicons (.ico) from images.",
-      "title": "Free ICO Converter - Make a Favicon",
-      "target_keyword": "ico converter"
     },
     {
       "id": "image-to-base64",
@@ -570,69 +338,6 @@
       "description": "Resize photos to standard passport size requirements.",
       "title": "Passport Photo Size Converter Online - Custom Maker",
       "target_keyword": null
-    },
-    {
-      "id": "compress-pdf",
-      "name": "Compress PDF",
-      "url": "https://freeconvert.cloud/compress-pdf/",
-      "category": "PDF Tools",
-      "description": "Reduce PDF byte footprint securely in browser.",
-      "title": "Compress PDF Online Free",
-      "target_keyword": "compress pdf"
-    },
-    {
-      "id": "pdf-to-jpg",
-      "name": "PDF to JPG",
-      "url": "https://freeconvert.cloud/pdf-to-jpg/",
-      "category": "PDF Tools",
-      "description": "Extract PDF pages as high-quality JPG images.",
-      "title": "PDF to JPG Converter Online",
-      "target_keyword": "pdf to jpg"
-    },
-    {
-      "id": "jpg-to-pdf",
-      "name": "JPG to PDF",
-      "url": "https://freeconvert.cloud/jpg-to-pdf/",
-      "category": "PDF Tools",
-      "description": "Compile multiple images into a clean PDF document.",
-      "title": "JPG to PDF Converter Online",
-      "target_keyword": "jpg to pdf"
-    },
-    {
-      "id": "merge-pdf",
-      "name": "Merge PDF",
-      "url": "https://freeconvert.cloud/merge-pdf/",
-      "category": "PDF Tools",
-      "description": "Combine multiple PDF files into one sequential document.",
-      "title": "Merge PDF Online Free",
-      "target_keyword": "merge pdf"
-    },
-    {
-      "id": "split-pdf",
-      "name": "Split PDF",
-      "url": "https://freeconvert.cloud/split-pdf/",
-      "category": "PDF Tools",
-      "description": "Extract selected pages from any PDF document.",
-      "title": "Split PDF Online Free",
-      "target_keyword": "split pdf"
-    },
-    {
-      "id": "pdf-to-word",
-      "name": "PDF to Word",
-      "url": "https://freeconvert.cloud/pdf-to-word/",
-      "category": "PDF Tools",
-      "description": "Convert PDF documents to editable Microsoft Word files.",
-      "title": "PDF to Word Converter Online",
-      "target_keyword": "pdf to word"
-    },
-    {
-      "id": "word-to-pdf",
-      "name": "Word to PDF",
-      "url": "https://freeconvert.cloud/word-to-pdf/",
-      "category": "PDF Tools",
-      "description": "Convert DOCX documents to professional PDF files.",
-      "title": "Word to PDF Converter Online",
-      "target_keyword": "word to pdf"
     },
     {
       "id": "json-formatter",
@@ -878,15 +583,6 @@
       "target_keyword": "qr code generator"
     },
     {
-      "id": "barcode-generator",
-      "name": "Barcode Generator",
-      "url": "https://freeconvert.cloud/barcode-generator/",
-      "category": "Utility",
-      "description": "Render standard Code 128 visual barcodes.",
-      "title": "Free Barcode Generator - Create Code 128 Barcodes",
-      "target_keyword": null
-    },
-    {
       "id": "password-generator",
       "name": "Password Generator",
       "url": "https://freeconvert.cloud/password-generator/",
@@ -995,15 +691,6 @@
       "target_keyword": null
     },
     {
-      "id": "speed-test",
-      "name": "Internet Speed Test",
-      "url": "https://freeconvert.cloud/speed-test/",
-      "category": "Utility",
-      "description": "Test connection latency and bandwidth.",
-      "title": "Simple Internet Speed Test - Check Connectivity",
-      "target_keyword": null
-    },
-    {
       "id": "stopwatch",
       "name": "Stopwatch & Timer",
       "url": "https://freeconvert.cloud/stopwatch/",
@@ -1028,96 +715,6 @@
       "category": "Designer",
       "description": "Translate colors between RGB and HEX codes.",
       "title": "RGB to HEX Color Converter - Designer Tool",
-      "target_keyword": null
-    },
-    {
-      "id": "mp4-to-mp3",
-      "name": "MP4 to MP3",
-      "url": "https://freeconvert.cloud/mp4-to-mp3/",
-      "category": "Video Converter",
-      "description": "Extract raw audio tracks from video files.",
-      "title": "MP4 to MP3 Converter Online",
-      "target_keyword": "mp4 to mp3"
-    },
-    {
-      "id": "video-compressor",
-      "name": "Video Compressor",
-      "url": "https://freeconvert.cloud/video-compressor/",
-      "category": "Video Converter",
-      "description": "Reduce video clip sizes and bitrates.",
-      "title": "Online Video Compressor - Shrink Video Files",
-      "target_keyword": null
-    },
-    {
-      "id": "webm-to-mp4",
-      "name": "WebM to MP4",
-      "url": "https://freeconvert.cloud/webm-to-mp4/",
-      "category": "Video Converter",
-      "description": "Transcode WebM assets to standard MP4 videos.",
-      "title": "WebM to MP4 Converter Online",
-      "target_keyword": "webm to mp4"
-    },
-    {
-      "id": "mov-to-mp4",
-      "name": "MOV to MP4",
-      "url": "https://freeconvert.cloud/mov-to-mp4/",
-      "category": "Video Converter",
-      "description": "Convert Apple MOV videos into universal MP4 files.",
-      "title": "MOV to MP4 Converter Online",
-      "target_keyword": "mov to mp4"
-    },
-    {
-      "id": "avi-to-mp4",
-      "name": "AVI to MP4",
-      "url": "https://freeconvert.cloud/avi-to-mp4/",
-      "category": "Video Converter",
-      "description": "Convert older AVI videos into modern MP4 format.",
-      "title": "AVI to MP4 Converter Online",
-      "target_keyword": "avi to mp4"
-    },
-    {
-      "id": "mkv-to-mp4",
-      "name": "MKV to MP4",
-      "url": "https://freeconvert.cloud/mkv-to-mp4/",
-      "category": "Video Converter",
-      "description": "Convert MKV video containers into widely supported MP4 files.",
-      "title": "MKV to MP4 Converter Online",
-      "target_keyword": "mkv to mp4"
-    },
-    {
-      "id": "mp4-to-gif",
-      "name": "MP4 to GIF",
-      "url": "https://freeconvert.cloud/mp4-to-gif/",
-      "category": "Video Converter",
-      "description": "Create animated GIF clips from MP4 videos.",
-      "title": "MP4 to GIF Converter Online",
-      "target_keyword": "mp4 to gif"
-    },
-    {
-      "id": "video-to-mp3",
-      "name": "Video to MP3",
-      "url": "https://freeconvert.cloud/video-to-mp3/",
-      "category": "Video Converter",
-      "description": "Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos.",
-      "title": "Video to MP3 Converter Online",
-      "target_keyword": null
-    },
-    {
-      "id": "video-trimmer",
-      "name": "Video Trimmer",
-      "url": "https://freeconvert.cloud/video-trimmer/",
-      "category": "Video Converter",
-      "description": "Trim long video clips into shorter shareable segments.",
-      "title": "Video Trimmer Online Free",
-      "target_keyword": null
-    },
-    {
-      "id": "video-resizer",
-      "name": "Video Resizer",
-      "url": "https://freeconvert.cloud/video-resizer/",
-      "category": "Video Converter",
-      "description": "Resize video dimensions for social media, websites, and mobile uploads.",
-      "title": "Video Resizer Online",
       "target_keyword": null
     },
     {

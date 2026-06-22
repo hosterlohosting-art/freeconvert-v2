@@ -3,7 +3,7 @@
     "priority": 1,
     "keyword": "pdf to jpg",
     "target_url": "https://freeconvert.cloud/pdf-to-jpg/",
-    "page_title": "PDF to JPG Converter Online",
+    "page_title": "Pdf To Jpg",
     "intent": "Convert PDF pages into JPG images for sharing, thumbnails, uploads, and previews.",
     "cluster": "PDF conversion",
     "modifiers": [
@@ -13,13 +13,13 @@
       "pdf to jpg high quality",
       "pdf to jpg free"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 2,
     "keyword": "jpg to pdf",
     "target_url": "https://freeconvert.cloud/jpg-to-pdf/",
-    "page_title": "JPG to PDF Converter Online",
+    "page_title": "Jpg To Pdf",
     "intent": "Combine photos, scans, receipts, and screenshots into one PDF document.",
     "cluster": "PDF creation",
     "modifiers": [
@@ -29,7 +29,7 @@
       "jpg to pdf for school",
       "merge jpg to pdf"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 3,
@@ -45,7 +45,7 @@
       "png to jpg for website",
       "png to jpg transparent"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 4,
@@ -61,7 +61,7 @@
       "jpg to png transparent",
       "jpg to png no background"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 5,
@@ -76,13 +76,13 @@
       "webp image to jpeg",
       "webp to jpg for wordpress"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 6,
     "keyword": "heic to jpg",
     "target_url": "https://freeconvert.cloud/heic-to-jpg/",
-    "page_title": "HEIC to JPG Converter Online",
+    "page_title": "Heic To Jpg",
     "intent": "Convert iPhone HEIC photos into universal JPG files.",
     "cluster": "Image conversion",
     "modifiers": [
@@ -92,13 +92,13 @@
       "heic to jpg on windows",
       "heic to jpg iphone"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 7,
     "keyword": "compress pdf",
     "target_url": "https://freeconvert.cloud/compress-pdf/",
-    "page_title": "Compress PDF Online Free",
+    "page_title": "Compress Pdf",
     "intent": "Reduce PDF file size for email, uploads, storage, and document sharing.",
     "cluster": "PDF compression",
     "modifiers": [
@@ -108,13 +108,13 @@
       "compress pdf to 1mb",
       "compress pdf for email"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 8,
     "keyword": "pdf to word",
     "target_url": "https://freeconvert.cloud/pdf-to-word/",
-    "page_title": "PDF to Word Converter Online",
+    "page_title": "Pdf To Word",
     "intent": "Convert PDF documents into editable Word DOCX files.",
     "cluster": "Document conversion",
     "modifiers": [
@@ -124,13 +124,13 @@
       "pdf to word for editing",
       "pdf to word free"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 9,
     "keyword": "word to pdf",
     "target_url": "https://freeconvert.cloud/word-to-pdf/",
-    "page_title": "Word to PDF Converter Online",
+    "page_title": "Word To Pdf",
     "intent": "Export DOCX and Word documents into clean PDF files.",
     "cluster": "Document conversion",
     "modifiers": [
@@ -140,13 +140,13 @@
       "word to pdf online free",
       "doc to pdf"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 10,
     "keyword": "merge pdf",
     "target_url": "https://freeconvert.cloud/merge-pdf/",
-    "page_title": "Merge PDF Online Free",
+    "page_title": "Merge Pdf",
     "intent": "Combine multiple PDF files into one organized document.",
     "cluster": "PDF editing",
     "modifiers": [
@@ -156,13 +156,13 @@
       "merge pdf files free",
       "join pdf"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 11,
     "keyword": "split pdf",
     "target_url": "https://freeconvert.cloud/split-pdf/",
-    "page_title": "Split PDF Online Free",
+    "page_title": "Split Pdf",
     "intent": "Extract selected pages or split a PDF into smaller files.",
     "cluster": "PDF editing",
     "modifiers": [
@@ -172,7 +172,7 @@
       "split pdf into pages",
       "pdf page extractor"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 12,
@@ -188,7 +188,7 @@
       "compress image for website",
       "compress jpg online"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 13,
@@ -204,7 +204,7 @@
       "compress image under 100kb",
       "image resize 100kb"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 14,
@@ -220,7 +220,7 @@
       "resize image for instagram",
       "resize image pixels"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 15,
@@ -235,7 +235,7 @@
       "png webp optimizer",
       "png to webp transparent"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 16,
@@ -250,13 +250,13 @@
       "jpeg to webp",
       "jpg to webp for website"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 17,
     "keyword": "mp4 to mp3",
     "target_url": "https://freeconvert.cloud/mp4-to-mp3/",
-    "page_title": "MP4 to MP3 Converter Online",
+    "page_title": "Mp4 To Mp3",
     "intent": "Extract audio from MP4 videos into MP3 files.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -266,13 +266,13 @@
       "mp4 to mp3 free",
       "convert video to audio"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 18,
     "keyword": "webm to mp4",
     "target_url": "https://freeconvert.cloud/webm-to-mp4/",
-    "page_title": "WebM to MP4 Converter Online",
+    "page_title": "Webm To Mp4",
     "intent": "Convert WebM videos into widely compatible MP4 files.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -281,7 +281,7 @@
       "webm video to mp4",
       "webm to mp4 free"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 19,
@@ -297,7 +297,7 @@
       "json to csv for excel",
       "json to csv free"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 20,
@@ -313,7 +313,7 @@
       "qr code for menu",
       "qr code for wifi"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 21,
@@ -328,13 +328,13 @@
       "svg to png transparent",
       "svg to png logo"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 22,
     "keyword": "ico converter",
     "target_url": "https://freeconvert.cloud/ico-converter/",
-    "page_title": "Free ICO Converter - Make a Favicon",
+    "page_title": "Ico Converter",
     "intent": "Create favicon .ico files from PNG or JPG images for websites.",
     "cluster": "Image conversion",
     "modifiers": [
@@ -344,13 +344,13 @@
       "favicon generator",
       "create favicon online"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 23,
     "keyword": "mov to mp4",
     "target_url": "https://freeconvert.cloud/mov-to-mp4/",
-    "page_title": "MOV to MP4 Converter Online",
+    "page_title": "Mov To Mp4",
     "intent": "Convert Apple MOV videos to universal MP4 format.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -359,13 +359,13 @@
       "mov to mp4 free",
       "mov to mp4 iphone"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 24,
     "keyword": "mkv to mp4",
     "target_url": "https://freeconvert.cloud/mkv-to-mp4/",
-    "page_title": "MKV to MP4 Converter Online",
+    "page_title": "Mkv To Mp4",
     "intent": "Convert MKV videos to widely supported MP4 files.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -374,13 +374,13 @@
       "mkv to mp4 free",
       "mkv to mp4 without quality loss"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 25,
     "keyword": "avi to mp4",
     "target_url": "https://freeconvert.cloud/avi-to-mp4/",
-    "page_title": "AVI to MP4 Converter Online",
+    "page_title": "Avi To Mp4",
     "intent": "Convert AVI videos to MP4 for better compatibility.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -389,13 +389,13 @@
       "avi to mp4 free",
       "avi to mp4 for windows"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 26,
     "keyword": "mp4 to gif",
     "target_url": "https://freeconvert.cloud/mp4-to-gif/",
-    "page_title": "MP4 to GIF Converter Online",
+    "page_title": "Mp4 To Gif",
     "intent": "Turn MP4 video clips into animated GIF images.",
     "cluster": "Media conversion",
     "modifiers": [
@@ -404,7 +404,7 @@
       "video to gif",
       "mp4 to gif free"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 27,
@@ -419,7 +419,7 @@
       "csv to json for api",
       "excel to json"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 28,
@@ -434,7 +434,7 @@
       "format json online",
       "json pretty print"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 29,
@@ -449,7 +449,7 @@
       "text to base64",
       "encode base64"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 30,
@@ -464,7 +464,7 @@
       "random password generator",
       "secure password maker"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 31,
@@ -479,7 +479,7 @@
       "word count online",
       "essay word counter"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   },
   {
     "priority": 32,
@@ -494,6 +494,6 @@
       "base64 image encoder",
       "img to base64"
     ],
-    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-17."
+    "source_note": "Selected from visible SERP competitor patterns around FreeConvert-style file, PDF, image, media, and developer converter pages. Refreshed on 2026-06-22."
   }
 ]

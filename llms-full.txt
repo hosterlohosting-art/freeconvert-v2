@@ -1,35 +1,20 @@
 # freeconvert.cloud Full LLM Inventory
 
 ## Site Summary
-freeconvert.cloud provides browser-first online file converters, PDF tools, image tools, media converters, developer utilities, text tools, security generators, and practical conversion guides.
+freeconvert.cloud provides browser-first image tools, developer utilities, text tools, security generators, calculators, and practical guides.
 
 ## Top Keyword Targets
-- pdf to jpg -> https://freeconvert.cloud/pdf-to-jpg/ (PDF conversion; variants: pdf to jpg converter, convert pdf to jpg online, pdf pages to jpg, pdf to jpg high quality, pdf to jpg free)
-- jpg to pdf -> https://freeconvert.cloud/jpg-to-pdf/ (PDF creation; variants: jpg to pdf converter, convert jpg to pdf online, image to pdf, jpg to pdf for school, merge jpg to pdf)
 - png to jpg -> https://freeconvert.cloud/png-to-jpg/ (Image conversion; variants: png to jpg converter, convert png to jpg online, png image to jpeg, png to jpg for website, png to jpg transparent)
 - jpg to png -> https://freeconvert.cloud/jpg-to-png/ (Image conversion; variants: jpg to png converter, convert jpg to png online, jpeg to png, jpg to png transparent, jpg to png no background)
 - webp to jpg -> https://freeconvert.cloud/webp-to-jpg/ (Image conversion; variants: webp to jpg converter, convert webp to jpg online, webp image to jpeg, webp to jpg for wordpress)
-- heic to jpg -> https://freeconvert.cloud/heic-to-jpg/ (Image conversion; variants: heic to jpg converter, iphone photo to jpg, convert heic to jpeg, heic to jpg on windows, heic to jpg iphone)
-- compress pdf -> https://freeconvert.cloud/compress-pdf/ (PDF compression; variants: compress pdf online, reduce pdf file size, pdf compressor, compress pdf to 1mb, compress pdf for email)
-- pdf to word -> https://freeconvert.cloud/pdf-to-word/ (Document conversion; variants: pdf to word converter, pdf to docx, convert pdf to editable word, pdf to word for editing, pdf to word free)
-- word to pdf -> https://freeconvert.cloud/word-to-pdf/ (Document conversion; variants: word to pdf converter, docx to pdf, convert word document to pdf, word to pdf online free, doc to pdf)
-- merge pdf -> https://freeconvert.cloud/merge-pdf/ (PDF editing; variants: merge pdf online, combine pdf files, pdf merger, merge pdf files free, join pdf)
-- split pdf -> https://freeconvert.cloud/split-pdf/ (PDF editing; variants: split pdf online, extract pdf pages, pdf splitter, split pdf into pages, pdf page extractor)
 - image compressor -> https://freeconvert.cloud/image-compressor/ (Image compression; variants: compress image online, reduce image size, photo compressor, compress image for website, compress jpg online)
 - compress image to 100kb -> https://freeconvert.cloud/compress-image-to-100kb/ (Image compression; variants: image compressor to 100kb, photo size reducer 100kb, compress jpg to 100kb, compress image under 100kb, image resize 100kb)
 - resize image -> https://freeconvert.cloud/resize-image/ (Image editing; variants: image resizer online, resize photo online, change image dimensions, resize image for instagram, resize image pixels)
 - png to webp -> https://freeconvert.cloud/png-to-webp/ (Image conversion; variants: png to webp converter, convert png to webp online, png webp optimizer, png to webp transparent)
 - jpg to webp -> https://freeconvert.cloud/jpg-to-webp/ (Image conversion; variants: jpg to webp converter, convert jpg to webp online, jpeg to webp, jpg to webp for website)
-- mp4 to mp3 -> https://freeconvert.cloud/mp4-to-mp3/ (Media conversion; variants: mp4 to mp3 converter, extract audio from mp4, video to mp3, mp4 to mp3 free, convert video to audio)
-- webm to mp4 -> https://freeconvert.cloud/webm-to-mp4/ (Media conversion; variants: webm to mp4 converter, convert webm to mp4 online, webm video to mp4, webm to mp4 free)
 - json to csv -> https://freeconvert.cloud/json-to-csv/ (Developer conversion; variants: json to csv converter, convert json to csv online, json array to csv, json to csv for excel, json to csv free)
 - qr code generator -> https://freeconvert.cloud/qr-code-generator/ (Utility tools; variants: free qr code generator, create qr code online, qr generator, qr code for menu, qr code for wifi)
 - svg to png -> https://freeconvert.cloud/svg-to-png/ (Image conversion; variants: svg to png converter, convert svg to png online, svg to png transparent, svg to png logo)
-- ico converter -> https://freeconvert.cloud/ico-converter/ (Image conversion; variants: ico converter, png to ico, jpg to ico, favicon generator, create favicon online)
-- mov to mp4 -> https://freeconvert.cloud/mov-to-mp4/ (Media conversion; variants: mov to mp4 converter, convert mov to mp4 online, mov to mp4 free, mov to mp4 iphone)
-- mkv to mp4 -> https://freeconvert.cloud/mkv-to-mp4/ (Media conversion; variants: mkv to mp4 converter, convert mkv to mp4 online, mkv to mp4 free, mkv to mp4 without quality loss)
-- avi to mp4 -> https://freeconvert.cloud/avi-to-mp4/ (Media conversion; variants: avi to mp4 converter, convert avi to mp4 online, avi to mp4 free, avi to mp4 for windows)
-- mp4 to gif -> https://freeconvert.cloud/mp4-to-gif/ (Media conversion; variants: mp4 to gif converter, convert mp4 to gif online, video to gif, mp4 to gif free)
 - csv to json -> https://freeconvert.cloud/csv-to-json/ (Developer conversion; variants: csv to json converter, convert csv to json online, csv to json for api, excel to json)
 - json formatter -> https://freeconvert.cloud/json-formatter/ (Developer tools; variants: json formatter, json beautifier, format json online, json pretty print)
 - base64 encode -> https://freeconvert.cloud/base64-encode/ (Developer tools; variants: base64 encode, base64 encoder online, text to base64, encode base64)
@@ -41,10 +26,7 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - Convert PNG images to JPG instantly. Category: Image.
 - JPG to PNG: https://freeconvert.cloud/jpg-to-png/ - Transform JPG files with transparency. Category: Image.
 - WebP to JPG: https://freeconvert.cloud/webp-to-jpg/ - Convert WebP images to high-quality JPG. Category: Image.
-- HEIC to JPG: https://freeconvert.cloud/heic-to-jpg/ - Convert iPhone HEIC photos to generic JPG. Category: Image.
 - SVG to PNG: https://freeconvert.cloud/svg-to-png/ - Render SVG files as high-quality PNG images. Category: Image.
-- Color Palette Extractor: https://freeconvert.cloud/palette-extractor/ - Extract dominant colors from any image. Category: Image.
-- ICO Converter: https://freeconvert.cloud/ico-converter/ - Create standard Favicons (.ico) from images. Category: Image.
 - Image to Base64: https://freeconvert.cloud/image-to-base64/ - Convert images into Base64 Data URIs. Category: Designer.
 - Image Compressor: https://freeconvert.cloud/image-compressor/ - Reduce image file size with zero quality loss. Category: Image.
 - Compress Image to 100KB: https://freeconvert.cloud/compress-image-to-100kb/ - Reduce image files strictly under 100KB footprint. Category: Image.
@@ -52,13 +34,6 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Resize Image: https://freeconvert.cloud/resize-image/ - Resize your images to custom dimensions. Category: Image.
 - Resize Image for Instagram: https://freeconvert.cloud/resize-image-for-instagram/ - Resize photos for Instagram Stories and Post grids. Category: Image.
 - Passport Photo Size Converter: https://freeconvert.cloud/passport-photo-size-converter/ - Resize photos to standard passport size requirements. Category: Image.
-- Compress PDF: https://freeconvert.cloud/compress-pdf/ - Reduce PDF byte footprint securely in browser. Category: PDF Tools.
-- PDF to JPG: https://freeconvert.cloud/pdf-to-jpg/ - Extract PDF pages as high-quality JPG images. Category: PDF Tools.
-- JPG to PDF: https://freeconvert.cloud/jpg-to-pdf/ - Compile multiple images into a clean PDF document. Category: PDF Tools.
-- Merge PDF: https://freeconvert.cloud/merge-pdf/ - Combine multiple PDF files into one sequential document. Category: PDF Tools.
-- Split PDF: https://freeconvert.cloud/split-pdf/ - Extract selected pages from any PDF document. Category: PDF Tools.
-- PDF to Word: https://freeconvert.cloud/pdf-to-word/ - Convert PDF documents to editable Microsoft Word files. Category: PDF Tools.
-- Word to PDF: https://freeconvert.cloud/word-to-pdf/ - Convert DOCX documents to professional PDF files. Category: PDF Tools.
 - JSON Formatter: https://freeconvert.cloud/json-formatter/ - Beautify and indent raw minified JSON structures. Category: Developer.
 - JSON Validator: https://freeconvert.cloud/json-validator/ - Lint and validate JSON syntax in real-time. Category: Developer.
 - JSON to CSV: https://freeconvert.cloud/json-to-csv/ - Convert JSON data to CSV format instantly. Category: Developer.
@@ -86,7 +61,6 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Lorem Ipsum Generator: https://freeconvert.cloud/lorem-ipsum-generator/ - Generate design placeholder text in bulk. Category: Utility.
 - Hashtag Generator: https://freeconvert.cloud/hashtag-generator/ - Create relevant social tags from sentences. Category: Text.
 - QR Code Generator: https://freeconvert.cloud/qr-code-generator/ - Create custom high-definition QR codes. Category: Utility.
-- Barcode Generator: https://freeconvert.cloud/barcode-generator/ - Render standard Code 128 visual barcodes. Category: Utility.
 - Password Generator: https://freeconvert.cloud/password-generator/ - Create secure cryptographically randomized keys. Category: Security.
 - Password Strength: https://freeconvert.cloud/password-strength/ - Evaluate password entropy grids in real-time. Category: Security.
 - Random Number Generator: https://freeconvert.cloud/random-number-generator/ - Roll randomized numbers within custom bounds. Category: Utility.
@@ -99,20 +73,9 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 - Hash Generator: https://freeconvert.cloud/hash-generator/ - Generate SHA256 and MD5 hashes securely. Category: Security.
 - Morse Code Converter: https://freeconvert.cloud/morse-code/ - Translate letters to Morse code and back. Category: Utility.
 - Unit Converter: https://freeconvert.cloud/unit-converter/ - Convert weights, distances and lengths. Category: Utility.
-- Internet Speed Test: https://freeconvert.cloud/speed-test/ - Test connection latency and bandwidth. Category: Utility.
 - Stopwatch & Timer: https://freeconvert.cloud/stopwatch/ - Accurate stopwatch with lap tracker. Category: Utility.
 - Aspect Ratio Calculator: https://freeconvert.cloud/aspect-ratio-calculator/ - Resolve pixel aspect ratio scaling visual grids. Category: Designer.
 - RGB to HEX Converter: https://freeconvert.cloud/rgb-hex-converter/ - Translate colors between RGB and HEX codes. Category: Designer.
-- MP4 to MP3: https://freeconvert.cloud/mp4-to-mp3/ - Extract raw audio tracks from video files. Category: Video Converter.
-- Video Compressor: https://freeconvert.cloud/video-compressor/ - Reduce video clip sizes and bitrates. Category: Video Converter.
-- WebM to MP4: https://freeconvert.cloud/webm-to-mp4/ - Transcode WebM assets to standard MP4 videos. Category: Video Converter.
-- MOV to MP4: https://freeconvert.cloud/mov-to-mp4/ - Convert Apple MOV videos into universal MP4 files. Category: Video Converter.
-- AVI to MP4: https://freeconvert.cloud/avi-to-mp4/ - Convert older AVI videos into modern MP4 format. Category: Video Converter.
-- MKV to MP4: https://freeconvert.cloud/mkv-to-mp4/ - Convert MKV video containers into widely supported MP4 files. Category: Video Converter.
-- MP4 to GIF: https://freeconvert.cloud/mp4-to-gif/ - Create animated GIF clips from MP4 videos. Category: Video Converter.
-- Video to MP3: https://freeconvert.cloud/video-to-mp3/ - Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos. Category: Video Converter.
-- Video Trimmer: https://freeconvert.cloud/video-trimmer/ - Trim long video clips into shorter shareable segments. Category: Video Converter.
-- Video Resizer: https://freeconvert.cloud/video-resizer/ - Resize video dimensions for social media, websites, and mobile uploads. Category: Video Converter.
 - JPG to WebP: https://freeconvert.cloud/jpg-to-webp/ - Convert JPG images to next-gen WebP format locally. Category: Image.
 - PNG to WebP: https://freeconvert.cloud/png-to-webp/ - Convert PNG images to next-gen WebP format locally. Category: Image.
 - YouTube Thumbnail Downloader: https://freeconvert.cloud/youtube-thumbnail-downloader/ - Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free. Category: Utility.
@@ -124,17 +87,15 @@ freeconvert.cloud provides browser-first online file converters, PDF tools, imag
 
 ## Editorial And Trust Signals
 - Editorial team: freeconvert.cloud Editorial Team.
-- Privacy model: client-side browser sandbox where possible; transient encrypted edge processing for heavy conversion jobs.
+- Privacy model: supported public tools use client-side browser processing where possible.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-06-17.
+- Update marker: 2026-06-22.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml
 - RSS feed: https://freeconvert.cloud/feed.xml
 - OpenSearch: https://freeconvert.cloud/opensearch.xml
 - Blog hub: https://freeconvert.cloud/blog/
-- Daily converter guides: https://freeconvert.cloud/free-online-converter-guides/
-- Popular conversions: https://freeconvert.cloud/popular-conversions/
 - File format glossary: https://freeconvert.cloud/file-formats/
 - Press kit: https://freeconvert.cloud/press-kit/
 - Security: https://freeconvert.cloud/security/
