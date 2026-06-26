@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://freeconvert.cloud/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/all-tools/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/sitemap/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/image-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/document-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -52,7 +52,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/unit-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/privacy/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -72,7 +72,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/terms/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/security/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/dmca/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/contact/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -112,7 +112,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/about/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -122,7 +122,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/cookies/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -132,7 +132,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/advertising-policy/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/help/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/press-kit/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/png-vs-jpg/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -172,7 +172,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/pdf-vs-docx/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/convert-heic-iphone/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -192,7 +192,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/compress-image-for-website/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/tools/embed/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <image:image>
@@ -212,7 +212,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/png-to-jpg/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -222,7 +222,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/jpg-to-png/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -232,7 +232,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/webp-to-jpg/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/svg-to-png/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -252,7 +252,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/image-to-base64/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -262,7 +262,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/image-compressor/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -272,7 +272,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/compress-image-to-100kb/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -282,7 +282,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/compress-image-to-200kb/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -292,7 +292,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/resize-image/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -302,7 +302,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/resize-image-for-instagram/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -312,7 +312,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/passport-photo-size-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/json-formatter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -332,7 +332,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/json-validator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -342,7 +342,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/json-to-csv/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -352,7 +352,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/csv-to-json/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -362,7 +362,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/base64-encode/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -372,7 +372,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/base64-decode/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -382,7 +382,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/url-encoder/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/url-decoder/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -402,7 +402,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/html-formatter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -412,7 +412,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/css-formatter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -422,7 +422,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/javascript-formatter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -432,7 +432,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/sql-formatter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -442,7 +442,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/markdown-editor/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -452,7 +452,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/diff-checker/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -462,7 +462,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/binary-text-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -472,7 +472,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/unicode-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -482,7 +482,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/word-counter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -492,7 +492,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/character-counter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -502,7 +502,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/meta-title-checker/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -512,7 +512,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/meta-description-checker/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -522,7 +522,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/slug-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -532,7 +532,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/case-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -542,7 +542,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/remove-duplicate-lines/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -552,7 +552,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/text-cleaner/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -562,7 +562,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/lorem-ipsum-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -572,7 +572,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/hashtag-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -582,7 +582,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/qr-code-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -592,7 +592,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/password-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -602,7 +602,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/password-strength/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -612,7 +612,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/random-number-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -622,7 +622,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/uuid-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -632,7 +632,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/timestamp-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -642,7 +642,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/unix-time-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -652,7 +652,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/time-zone-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -662,7 +662,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/age-calculator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -672,7 +672,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/percentage-calculator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -682,7 +682,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/hash-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -692,7 +692,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/morse-code/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -702,7 +702,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/stopwatch/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -712,7 +712,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/aspect-ratio-calculator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -722,7 +722,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/rgb-hex-converter/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -732,7 +732,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/jpg-to-webp/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -742,7 +742,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/png-to-webp/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -752,7 +752,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/youtube-thumbnail-downloader/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -762,7 +762,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/yaml-to-json/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -772,7 +772,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/json-to-yaml/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -782,7 +782,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/base64-to-image/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -792,7 +792,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/robots-txt-generator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -802,7 +802,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/html-minifier/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -812,7 +812,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -822,7 +822,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-convert-jpg-to-pdf-online/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -832,7 +832,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-convert-png-to-jpg-without-losing-quality/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -842,7 +842,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/jpg-vs-png-which-format-should-you-use/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -852,7 +852,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/pdf-vs-docx-what-is-the-difference/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -862,7 +862,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-compress-images-for-websites/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -872,7 +872,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-convert-json-to-csv-for-spreadsheets/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -882,7 +882,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/mp3-vs-wav-which-audio-format-is-better/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -892,7 +892,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/mp4-vs-webm-best-video-format-for-the-web/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -902,7 +902,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-keep-files-secure-when-using-online-converters/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -912,7 +912,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/best-free-online-file-conversion-tools-for-students-and-professionals/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -922,7 +922,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-compress-images-online-without-losing-quality/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -932,7 +932,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-compress-an-image-to-100kb/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -942,7 +942,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/webp-vs-jpg-which-image-format-should-you-use/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -952,7 +952,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/heic-to-jpg-how-to-convert-iphone-photos-online/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -962,7 +962,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/best-free-online-tools-for-bloggers-and-students/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -972,7 +972,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-use-a-json-formatter-and-validator/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -982,7 +982,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/what-is-a-qr-code-and-how-to-generate-one-safely/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -992,7 +992,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-compress-pdf-under-1mb-online/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1002,7 +1002,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/convert-pdf-to-jpg-high-quality-online/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1012,7 +1012,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/convert-word-to-pdf-online-free/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1022,7 +1022,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/webp-to-jpg-converter-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1032,7 +1032,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/resize-image-for-instagram-without-cropping/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1042,7 +1042,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/passport-photo-size-converter-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1052,7 +1052,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/meta-title-description-checker-google-serp-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1062,7 +1062,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/base64-encode-decode-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1072,7 +1072,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/merge-pdf-files-online-without-losing-pages/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1082,7 +1082,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/split-pdf-extract-pages-online/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1092,7 +1092,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/html-css-javascript-formatter-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/qr-code-for-wifi-password-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1112,7 +1112,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/compress-image-to-200kb-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1122,7 +1122,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/csv-to-json-converter-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1132,7 +1132,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/pdf-to-word-converter-editable-docx-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1142,7 +1142,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/svg-to-png-converter-transparent-background-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1152,7 +1152,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/strong-password-generator-symbols-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1162,7 +1162,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/word-counter-for-essays-seo-and-social-posts/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1172,7 +1172,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/extract-color-palette-from-image-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1182,7 +1182,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/markdown-editor-online-preview-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1192,7 +1192,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-download-youtube-thumbnails-in-full-hd-free-fast/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1202,7 +1202,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-convert-base64-to-image-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1212,7 +1212,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/how-to-generate-robots-txt-for-seo-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1222,7 +1222,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/html-minifier-compress-code-page-speed-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1232,7 +1232,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/mp4-to-mp3-converter-online-audio-extraction-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1242,7 +1242,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/webm-to-mp4-converter-compatibility-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1252,7 +1252,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/json-validator-fix-errors-online-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1262,7 +1262,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/url-encoder-decoder-safe-links-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1272,7 +1272,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/hash-generator-checksum-md5-sha-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1282,7 +1282,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/aspect-ratio-calculator-resize-video-image-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1292,7 +1292,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/remove-duplicate-lines-clean-text-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1302,7 +1302,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/timestamp-converter-unix-time-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1312,7 +1312,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/png-to-webp-converter-page-speed-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1322,7 +1322,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/jpg-to-webp-converter-seo-image-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1332,7 +1332,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/yaml-to-json-converter-config-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1342,7 +1342,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/json-to-yaml-converter-devops-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1352,7 +1352,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/uuid-generator-online-unique-id-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1362,7 +1362,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/sql-formatter-online-query-readable-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1372,7 +1372,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/diff-checker-compare-text-code-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1382,7 +1382,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/barcode-generator-online-product-labels-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1392,7 +1392,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/meta-description-checker-serp-ctr-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1402,7 +1402,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/meta-title-checker-seo-title-length-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1412,7 +1412,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/slug-generator-seo-friendly-url-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1422,7 +1422,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/case-converter-title-case-headline-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1432,7 +1432,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/qr-code-generator-vcard-event-menu-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1442,7 +1442,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/percentage-calculator-discount-growth-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1452,7 +1452,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/unit-converter-metric-imperial-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1462,7 +1462,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/stopwatch-online-productivity-guide/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1472,7 +1472,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/top-5-tools-for-image-optimization/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1482,7 +1482,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/why-png-to-jpg-is-essential-for-seo/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -1492,7 +1492,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/developer-tools/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1502,7 +1502,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/image-conversion/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1512,7 +1512,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/media-conversion/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1522,7 +1522,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/pdf-tools/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1532,7 +1532,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/security-utilities/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1542,7 +1542,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/blog/category/utility-guides/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1552,7 +1552,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/avi/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1562,7 +1562,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/base64/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1572,7 +1572,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/csv/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1582,7 +1582,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/docx/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1592,7 +1592,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/gif/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1602,7 +1602,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/heic/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1612,7 +1612,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1622,7 +1622,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/jpg/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1632,7 +1632,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/json/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1642,7 +1642,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/mkv/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1652,7 +1652,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/mov/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1662,7 +1662,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/mp3/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1672,7 +1672,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/mp4/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1682,7 +1682,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/pdf/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1692,7 +1692,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/png/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1702,7 +1702,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/qr-code/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1712,7 +1712,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/svg/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1722,7 +1722,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/webm/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1732,7 +1732,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/webp/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -1742,7 +1742,7 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/file-formats/zip/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image>

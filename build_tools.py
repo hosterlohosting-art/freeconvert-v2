@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-22'
+TODAY_ISO = '2026-06-26'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -451,13 +451,18 @@ def homepage_keyword_hub_html(tools):
     </section>"""
 
 
-def keyword_target_schema_tag():
+def keyword_target_schema_tag(tools=None):
+    allowed_tool_ids = {tool['id'] for tool in tools} if tools is not None else None
+    targets = [
+        target for target in TOP_KEYWORD_TARGETS
+        if allowed_tool_ids is None or target['tool_id'] in allowed_tool_ids
+    ]
     schema = {
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": "Top free online converter keyword targets",
         "description": "High-intent file conversion searches mapped to freeconvert.cloud converter landing pages.",
-        "numberOfItems": len(TOP_KEYWORD_TARGETS),
+        "numberOfItems": len(targets),
         "itemListElement": [
             {
                 "@type": "ListItem",
@@ -466,7 +471,7 @@ def keyword_target_schema_tag():
                 "url": f"{SITE_URL}/{target['tool_id']}/",
                 "description": target["intent"]
             }
-            for target in TOP_KEYWORD_TARGETS
+            for target in targets
         ]
     }
     return f'<script type="application/ld+json">{json.dumps(schema, separators=(",", ":"))}</script>'
@@ -509,7 +514,7 @@ def tool_keyword_content_html(tool, tools):
     tools_by_id = {item['id']: item for item in tools}
     related_targets = [
         item for item in TOP_KEYWORD_TARGETS
-        if item['tool_id'] != tool['id'] and (
+        if item['tool_id'] in tools_by_id and item['tool_id'] != tool['id'] and (
             item['cluster'] == target['cluster']
             or item['cluster'].split()[0] == target['cluster'].split()[0]
         )
@@ -535,11 +540,108 @@ def tool_keyword_content_html(tool, tools):
     return base_intro + comparison + keyword_section + trust
 
 
+def tool_deep_seo_content_html(tool, tools):
+    """Add unique, practical on-page sections for indexable tool pages."""
+    name = html.escape(tool['name'])
+    t_id = tool['id']
+    t_type = tool.get('type', '')
+    category = html.escape(tool.get('category', 'Utility'))
+    target = keyword_target_for_tool(t_id)
+
+    intent = target['intent'] if target else f"Complete a {category.lower()} task quickly in the browser."
+    modifiers = target['modifiers'] if target else [
+        f"{tool['name']} online",
+        f"free {tool['name']}",
+        f"use {tool['name'].lower()} in browser",
+    ]
+
+    if t_type in ('image', 'image_advanced', 'image_base64'):
+        before = "Large or incompatible image file"
+        after = "Smaller, compatible image ready for upload"
+        quality_tip = "Keep the original image, then export one web-ready copy for publishing or sharing."
+        checks = [
+            "Open the output image and compare edges, colors, and transparency handling.",
+            "Check file size before uploading to WordPress, Shopify, forms, or email.",
+            "Use WebP for speed when your platform supports it; use JPG or PNG for compatibility.",
+        ]
+    elif t_type in ('dev_basic', 'dev_advanced', 'text'):
+        before = "Unformatted text, code, or data"
+        after = "Clean output that is easier to copy, review, or import"
+        quality_tip = "Validate the output with a small sample before processing a large data set."
+        checks = [
+            "Review punctuation, line breaks, encoding, and escaping before copying the result.",
+            "For JSON or CSV, test the output in your target app before deleting the source.",
+            "Avoid pasting secret production keys into any web tool unless local processing is clearly stated.",
+        ]
+    elif t_type in ('security', 'qr'):
+        before = "Manual setup or weak reusable values"
+        after = "Safer, structured output for a real workflow"
+        quality_tip = "Store important generated values in a trusted password manager or project notes."
+        checks = [
+            "Test generated QR codes with a phone camera before printing.",
+            "Use unique passwords for each account and avoid reusing old credentials.",
+            "Confirm the destination URL, WiFi name, or payload before sharing publicly.",
+        ]
+    else:
+        before = "Manual calculation or repetitive browser task"
+        after = "Instant result with fewer copy-paste mistakes"
+        quality_tip = "Double-check important values when the result will be used for finance, legal, or official forms."
+        checks = [
+            "Compare the output against your required format or upload guideline.",
+            "Keep source values available until you have confirmed the final result.",
+            "Use related tools when the task needs formatting, compression, or validation afterward.",
+        ]
+
+    modifier_rows = ''.join(
+        f"<tr><td>{html.escape(phrase)}</td><td>{html.escape(intent)}</td></tr>"
+        for phrase in modifiers[:5]
+    )
+    checklist_items = ''.join(f"<li>{html.escape(item)}</li>" for item in checks)
+    related = [t for t in tools if t['id'] != t_id and t.get('category') == tool.get('category')][:4]
+    if len(related) < 4:
+        related += [t for t in tools if t['id'] != t_id and t not in related][:4 - len(related)]
+    related_links = ''.join(
+        f'<a href="/{rel["id"]}/" style="display:inline-flex;padding:0.5rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-weight:700;font-size:0.84rem;">{html.escape(rel["name"])}</a>'
+        for rel in related
+    )
+
+    return f"""
+            <section style="margin-top:2rem;">
+                <h2>{name} workflow checklist</h2>
+                <p>Use this checklist to decide whether {name} is the right tool for your file, text, or utility task. The page is designed for the practical search intent behind <strong>{html.escape(modifiers[0])}</strong>: get the job done, verify the output, and move on without installing software.</p>
+                <table>
+                    <thead><tr><th>Before</th><th>After</th><th>Best practice</th></tr></thead>
+                    <tbody>
+                        <tr><td>{html.escape(before)}</td><td>{html.escape(after)}</td><td>{html.escape(quality_tip)}</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section style="margin-top:2rem;">
+                <h2>Search intent covered on this page</h2>
+                <p>Google tends to reward pages that answer the user task clearly instead of repeating keywords. This section maps common search phrases to the real action available on the page.</p>
+                <table>
+                    <thead><tr><th>Query variation</th><th>What the visitor needs</th></tr></thead>
+                    <tbody>{modifier_rows}</tbody>
+                </table>
+            </section>
+            <section style="margin-top:2rem;">
+                <h2>Output quality checks</h2>
+                <ul style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.55rem;line-height:1.65;">{checklist_items}</ul>
+            </section>
+            <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(99,102,241,0.035);border:1px solid rgba(99,102,241,0.14);">
+                <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Next useful tools</h2>
+                <p style="margin-bottom:1rem;">Continue the workflow with nearby freeconvert.cloud tools that share similar intent and help Google understand the topical cluster around this page.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
+            </section>"""
+
+
 def build_keyword_research_file(tools):
     tools_by_id = {tool['id']: tool for tool in tools}
     payload = []
     for target in TOP_KEYWORD_TARGETS:
-        tool = tools_by_id.get(target['tool_id'], {})
+        tool = tools_by_id.get(target['tool_id'])
+        if not tool:
+            continue
         payload.append({
             'priority': target['priority'],
             'keyword': target['keyword'],
@@ -590,6 +692,12 @@ def normalize_generated_html_seo():
                 flags=re.I,
             )
             html = re.sub(
+                r'\s*<link[^>]+href="(?:https:)?//pagead2\.googlesyndication\.com"[^>]*>',
+                '',
+                html,
+                flags=re.I,
+            )
+            html = re.sub(
                 r'\s*<!-- AdSense Slot:[\s\S]*?<div class="adsense-wrap[^>]*>[\s\S]*?</div>',
                 '',
                 html,
@@ -610,7 +718,7 @@ def normalize_generated_html_seo():
                 count=1,
                 flags=re.I,
             )
-            unavailable_routes = '|'.join(re.escape(slug) for slug in sorted(NOINDEX_TOP_LEVEL_SLUGS))
+            unavailable_routes = '|'.join(re.escape(slug) for slug in sorted(NOINDEX_TOP_LEVEL_SLUGS | UNAVAILABLE_TOOL_IDS))
             html = re.sub(
                 rf'\s*<a\b[^>]*href="/(?:{unavailable_routes})/"[^>]*>[\s\S]*?</a>',
                 '',
@@ -621,6 +729,102 @@ def normalize_generated_html_seo():
                 html = re.sub(
                     r'\s*<!-- Developer API Preview Section -->[\s\S]*?</section>',
                     '',
+                    html,
+                    count=1,
+                    flags=re.I,
+                )
+                review_description = (
+                    "Free browser tools for image conversion, compression, developer formatting, "
+                    "text utilities, QR codes, passwords, calculators, and file guides."
+                )
+                html = re.sub(
+                    r'<meta property="og:description" content="[^"]*">',
+                    f'<meta property="og:description" content="{review_description}">',
+                    html,
+                    count=1,
+                    flags=re.I,
+                )
+                html = re.sub(
+                    r'<meta name="twitter:description" content="[^"]*">',
+                    f'<meta name="twitter:description" content="{review_description}">',
+                    html,
+                    count=1,
+                    flags=re.I,
+                )
+                html = re.sub(
+                    r'("description":\s*")[^"]*(")',
+                    rf'\1{review_description}\2',
+                    html,
+                    count=2,
+                    flags=re.I,
+                )
+                review_nav_schema = {
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": "freeconvert.cloud Navigation",
+                    "itemListElement": [
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 1,
+                            "name": "Image Converter",
+                            "description": "Browse active image conversion, compression, and resizing tools.",
+                            "url": f"{SITE_URL}/image-converter/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 2,
+                            "name": "PNG to JPG",
+                            "description": "Convert PNG images into lightweight JPG files in the browser.",
+                            "url": f"{SITE_URL}/png-to-jpg/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 3,
+                            "name": "WebP to JPG",
+                            "description": "Convert WebP images to widely compatible JPG files.",
+                            "url": f"{SITE_URL}/webp-to-jpg/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 4,
+                            "name": "Image Compressor",
+                            "description": "Compress JPG, PNG, and WebP images for faster pages.",
+                            "url": f"{SITE_URL}/image-compressor/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 5,
+                            "name": "JSON Formatter",
+                            "description": "Format and clean JSON data inside your browser.",
+                            "url": f"{SITE_URL}/json-formatter/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 6,
+                            "name": "QR Code Generator",
+                            "description": "Create QR codes for URLs, WiFi, menus, and contact details.",
+                            "url": f"{SITE_URL}/qr-code-generator/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 7,
+                            "name": "All Tools",
+                            "description": "Browse active image, developer, text, security, and utility tools.",
+                            "url": f"{SITE_URL}/all-tools/",
+                        },
+                        {
+                            "@type": "SiteNavigationElement",
+                            "position": 8,
+                            "name": "Guides",
+                            "description": "Read practical tutorials for conversion, formatting, privacy, and search workflows.",
+                            "url": f"{SITE_URL}/blog/",
+                        },
+                    ],
+                }
+                html = re.sub(
+                    r'<!-- JSON-LD: SiteNavigationElement \(signals sitelinks to Google\) -->\s*<script type="application/ld\+json">[\s\S]*?</script>',
+                    '<!-- JSON-LD: SiteNavigationElement (signals sitelinks to Google) -->\n    '
+                    f'<script type="application/ld+json">{json.dumps(review_nav_schema, separators=(",", ":"))}</script>',
                     html,
                     count=1,
                     flags=re.I,
@@ -4961,7 +5165,7 @@ def build_homepage(tools):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online File Converter | freeconvert.cloud</title>
-    <meta name="description" content="Convert files online directly in your browser. Supports documents, images, video, audio, and archives with 100% privacy and no software downloads.">
+    <meta name="description" content="Use free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
     
     <!-- Fonts & Preloads -->
@@ -5517,7 +5721,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag()).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag(tools)).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -7709,7 +7913,10 @@ def build():
         html = html.replace('{{USE_CASES}}', use_cases_html)
         html = html.replace('{{LIMITATIONS}}', limitations)
         html = html.replace('{{FAQ_SECTION}}', faq_html)
-        html = html.replace('{{KEYWORD_CONTENT}}', tool_keyword_content_html(tool, indexable_tools))
+        html = html.replace(
+            '{{KEYWORD_CONTENT}}',
+            tool_keyword_content_html(tool, indexable_tools) + tool_deep_seo_content_html(tool, indexable_tools)
+        )
         
         # Inject Glossary box
         _, cat_glossary, _, _, _, _, _ = generate_category_seo_content(cat_slug, cat_name)
@@ -8016,6 +8223,9 @@ def build():
 Allow: /
 Disallow: /tools/tool-template.html
 Disallow: /blog/blog-template.html
+
+# Keep thin review-mode clusters out of crawler priority while meta noindex is being refreshed
+Disallow: /blog/hub-pages/
 
 # AI and search discovery
 # LLM summary: https://freeconvert.cloud/llms.txt

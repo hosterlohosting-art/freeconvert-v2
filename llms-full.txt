@@ -89,7 +89,7 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - Editorial team: freeconvert.cloud Editorial Team.
 - Privacy model: supported public tools use client-side browser processing where possible.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-06-22.
+- Update marker: 2026-06-26.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml
