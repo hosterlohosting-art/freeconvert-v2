@@ -7519,6 +7519,10 @@ BLOG_TOOL_MAP = {
     'percentage-calculator-discount-growth-guide': [('percentage-calculator','Percentage Calculator'),('random-number-generator','Random Number Generator'),('unit-converter','Unit Converter'),('age-calculator','Age Calculator')],
     'unit-converter-metric-imperial-guide': [('unit-converter','Unit Converter'),('percentage-calculator','Percentage Calculator'),('aspect-ratio-calculator','Aspect Ratio Calculator'),('time-zone-converter','Time Zone Converter')],
     'stopwatch-online-productivity-guide': [('stopwatch','Stopwatch'),('timestamp-converter','Timestamp Converter'),('time-zone-converter','Time Zone Converter'),('word-counter','Word Counter')],
+    'image-seo-checklist-compress-convert-resize-webp-jpg-png': [('image-compressor','Image Compressor'),('resize-image','Resize Image'),('png-to-jpg','PNG to JPG'),('jpg-to-webp','JPG to WebP'),('png-to-webp','PNG to WebP')],
+    'json-tools-for-seo-developers-format-validate-convert-csv': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON')],
+    'qr-code-seo-local-business-menu-wifi-vcard-guide': [('qr-code-generator','QR Code Generator'),('url-encoder','URL Encoder'),('password-generator','Password Generator'),('slug-generator','Slug Generator')],
+    'meta-title-description-checklist-improve-google-ctr': [('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
 }
 
 def build_blog():

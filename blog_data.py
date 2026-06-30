@@ -2885,5 +2885,178 @@ BLOG_ARTICLES = [
             {"q": "Can I time study sessions?", "a": "Yes. A stopwatch works well for revision blocks and practice tests."},
             {"q": "Should I record stopwatch results?", "a": "Record results when you need a history for work, training, or experiments."}
         ]
+    },
+    {
+        "slug": "image-seo-checklist-compress-convert-resize-webp-jpg-png",
+        "title": "Image SEO Checklist: Compress, Convert, Resize, and Choose WebP, JPG, or PNG",
+        "description": "Use this image SEO checklist to reduce file size, choose WebP, JPG, or PNG, resize images correctly, improve page speed, and prepare upload-ready visuals.",
+        "date": "June 30, 2026",
+        "toc": "<ul><li><a href='#why'>Why image SEO matters</a></li><li><a href='#formats'>Choosing WebP, JPG, or PNG</a></li><li><a href='#workflow'>Optimization workflow</a></li><li><a href='#tools'>Recommended tools</a></li><li><a href='#mistakes'>Common mistakes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why image SEO matters</h2>
+        <p>Images are often the heaviest assets on a page. A beautiful product photo, blog hero image, screenshot, or social graphic can help users understand your content, but an oversized image can slow the page, increase mobile data usage, and make visitors leave before the main content loads. Search engines use page experience as one part of ranking evaluation, and image weight is one of the easiest technical issues to fix.</p>
+        <p>Good image SEO is not only about adding alt text. It includes file format choice, pixel dimensions, compression settings, descriptive filenames, lazy loading, content relevance, and internal consistency across a site. A 4000px camera photo uploaded into a 700px blog column wastes bandwidth. A transparent logo exported as JPG loses transparency. A screenshot saved as a huge PNG may look crisp but load slowly on mobile. The practical goal is to serve the smallest file that still looks good for the user task.</p>
+        <h2 id="formats">Choosing WebP, JPG, or PNG</h2>
+        <p>Use <strong>JPG</strong> for normal photographs, portraits, screenshots with many colors, and upload forms that require broad compatibility. Use <strong>PNG</strong> when you need sharp text, clean UI screenshots, icons, or transparency. Use <strong>WebP</strong> when your site or CMS supports it and page speed is a priority. WebP often creates smaller files than JPG or PNG while keeping useful quality.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+            <thead><tr><th style="text-align:left;padding:10px;">Task</th><th style="text-align:left;padding:10px;">Recommended format</th><th style="text-align:left;padding:10px;">Why</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px;">Blog photos</td><td style="padding:10px;">JPG or WebP</td><td style="padding:10px;">Smaller files with good visual quality.</td></tr>
+                <tr><td style="padding:10px;">Transparent logo</td><td style="padding:10px;">PNG or SVG</td><td style="padding:10px;">Preserves transparent background and sharp edges.</td></tr>
+                <tr><td style="padding:10px;">Website hero image</td><td style="padding:10px;">WebP</td><td style="padding:10px;">Strong page speed balance for modern browsers.</td></tr>
+                <tr><td style="padding:10px;">Upload forms</td><td style="padding:10px;">JPG</td><td style="padding:10px;">Accepted by almost every portal and app.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="workflow">Image optimization workflow</h2>
+        <ol>
+            <li>Resize the source image to the actual display size before uploading.</li>
+            <li>Convert PNG to JPG when transparency is not needed and file size is too large.</li>
+            <li>Convert JPG or PNG to WebP when your website supports modern formats.</li>
+            <li>Compress the final image and compare the result visually.</li>
+            <li>Rename files with descriptive words, such as <strong>png-to-jpg-converter-interface.webp</strong>.</li>
+            <li>Add useful alt text that describes the image in context.</li>
+        </ol>
+        <h2 id="tools">Recommended freeconvert.cloud tools</h2>
+        <p>Start with <a href="/resize-image/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image</a> when the image dimensions are too large. Use <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> to reduce byte size, <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a> for compatibility, <a href="/jpg-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JPG to WebP</a> for faster pages, and <a href="/png-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to WebP</a> for transparent graphics where supported.</p>
+        <h2 id="mistakes">Common image SEO mistakes</h2>
+        <p>Avoid uploading images directly from a phone or camera without resizing. Do not convert transparent logos to JPG unless you are ready for a solid background. Do not compress screenshots so hard that small text becomes blurry. Do not use generic filenames like <strong>image1.png</strong> when a descriptive filename can help image search and accessibility.</p>
+        """,
+        "faqs": [
+            {"q": "Which image format is best for SEO?", "a": "WebP is often best for page speed, JPG is best for broad photo compatibility, and PNG is best for transparency or sharp graphics."},
+            {"q": "Does compressing images improve rankings?", "a": "Compression can improve page speed and user experience, which can support better organic performance."},
+            {"q": "Should I resize images before uploading?", "a": "Yes. Resize images to the display size so visitors do not download unnecessary pixels."},
+            {"q": "Can I use free online tools for image SEO?", "a": "Yes. Resize, compress, and convert images with browser-based tools before publishing."}
+        ]
+    },
+    {
+        "slug": "json-tools-for-seo-developers-format-validate-convert-csv",
+        "title": "JSON Tools for SEO and Developers: Format, Validate, Convert CSV, and Fix Data",
+        "description": "Learn how JSON formatter, JSON validator, JSON to CSV, and CSV to JSON tools help SEO teams, developers, and content managers clean structured data.",
+        "date": "June 30, 2026",
+        "toc": "<ul><li><a href='#json'>Why JSON matters</a></li><li><a href='#seo'>JSON for SEO</a></li><li><a href='#workflow'>Cleanup workflow</a></li><li><a href='#csv'>JSON and CSV conversion</a></li><li><a href='#privacy'>Privacy notes</a></li></ul>",
+        "content": """
+        <h2 id="json">Why JSON matters</h2>
+        <p>JSON is one of the most common data formats on the web. APIs, analytics exports, configuration files, structured data, product feeds, app settings, and automation tools all use JSON because it is readable, lightweight, and easy for software to parse. But JSON becomes painful when it is minified into one long line, broken by a missing comma, or copied from a tool with hidden characters.</p>
+        <p>For developers, clean JSON saves debugging time. For SEO teams, valid JSON-LD structured data can help search engines understand pages, products, breadcrumbs, FAQs, videos, articles, and local business details. A small syntax error can invalidate an entire schema block, so formatting and validation are not optional.</p>
+        <h2 id="seo">JSON for SEO workflows</h2>
+        <p>SEO teams often work with JSON-LD because it is the recommended structured data format for many website implementations. Typical SEO uses include Article schema, FAQPage schema, BreadcrumbList schema, Product schema, Organization schema, and WebSite SearchAction schema. Before publishing, always validate JSON syntax and test the page with a structured data tool.</p>
+        <h2 id="workflow">JSON cleanup workflow</h2>
+        <ol>
+            <li>Paste the raw JSON into <a href="/json-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Formatter</a> to make it readable.</li>
+            <li>Run the cleaned data through <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a>.</li>
+            <li>Fix commas, quotes, braces, and invalid trailing characters.</li>
+            <li>Minify only after the JSON is valid and ready for production.</li>
+            <li>Keep a formatted copy in documentation or version control for future edits.</li>
+        </ol>
+        <h2 id="csv">JSON and CSV conversion</h2>
+        <p>Many marketing and analytics workflows move between JSON and CSV. Use <a href="/json-to-csv/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON to CSV</a> when you need to review API records in Excel or Google Sheets. Use <a href="/csv-to-json/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">CSV to JSON</a> when spreadsheet rows need to become structured data for an app, import, or automation.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+            <thead><tr><th style="text-align:left;padding:10px;">Task</th><th style="text-align:left;padding:10px;">Tool</th><th style="text-align:left;padding:10px;">Result</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px;">Read minified API output</td><td style="padding:10px;">JSON Formatter</td><td style="padding:10px;">Indented, readable data.</td></tr>
+                <tr><td style="padding:10px;">Find syntax errors</td><td style="padding:10px;">JSON Validator</td><td style="padding:10px;">Error location and cleaner JSON.</td></tr>
+                <tr><td style="padding:10px;">Open records in Sheets</td><td style="padding:10px;">JSON to CSV</td><td style="padding:10px;">Rows and columns.</td></tr>
+                <tr><td style="padding:10px;">Build API payloads</td><td style="padding:10px;">CSV to JSON</td><td style="padding:10px;">Structured arrays.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="privacy">Privacy notes</h2>
+        <p>Do not paste production secrets, private tokens, passwords, or customer data into tools unless you understand how the tool processes data. Browser-local tools are safer for sensitive code because the work happens on your device, but you should still remove credentials before sharing examples publicly.</p>
+        """,
+        "faqs": [
+            {"q": "Can JSON errors affect SEO?", "a": "Yes. Invalid JSON-LD can prevent structured data from being understood by search engines."},
+            {"q": "What is the difference between JSON formatter and validator?", "a": "A formatter makes JSON readable, while a validator checks whether the syntax is valid."},
+            {"q": "Can I convert JSON to CSV?", "a": "Yes. JSON to CSV turns structured records into spreadsheet-friendly rows."},
+            {"q": "Should I paste API keys into JSON tools?", "a": "No. Remove secrets and private credentials before formatting or sharing JSON."}
+        ]
+    },
+    {
+        "slug": "qr-code-seo-local-business-menu-wifi-vcard-guide",
+        "title": "QR Code SEO for Local Businesses: Menus, WiFi, vCards, Flyers, and Tracking",
+        "description": "Create QR codes for local business menus, WiFi access, vCards, flyers, reviews, events, and landing pages with safer tracking and testing tips.",
+        "date": "June 30, 2026",
+        "toc": "<ul><li><a href='#local'>QR codes for local business</a></li><li><a href='#destinations'>Best destinations</a></li><li><a href='#tracking'>Tracking and UTM tips</a></li><li><a href='#testing'>Testing checklist</a></li><li><a href='#trust'>Trust and security</a></li></ul>",
+        "content": """
+        <h2 id="local">QR codes for local business</h2>
+        <p>QR codes are useful because they connect offline attention to online action. A restaurant can send diners to a menu, a salon can link to booking, a real estate agent can share a property page, and an event host can direct visitors to registration. For local SEO, QR codes do not directly create rankings, but they can support engagement, reviews, branded searches, and better customer journeys.</p>
+        <p>The best QR code is not just scannable. It sends users to a helpful, mobile-friendly page that loads quickly and matches the promise printed next to the code. If a flyer says “scan for menu,” the destination should be the menu, not a homepage where users must hunt for it.</p>
+        <h2 id="destinations">Best QR code destinations</h2>
+        <ul>
+            <li><strong>Restaurant menus:</strong> Link directly to a mobile menu page.</li>
+            <li><strong>WiFi access:</strong> Use guest network credentials, never admin networks.</li>
+            <li><strong>vCards:</strong> Share contact details for consultants, agents, and service providers.</li>
+            <li><strong>Review pages:</strong> Guide happy customers to your preferred review destination.</li>
+            <li><strong>Event pages:</strong> Link to schedules, maps, tickets, and reminders.</li>
+            <li><strong>Product packaging:</strong> Link to instructions, warranty, ingredients, or support.</li>
+        </ul>
+        <h2 id="tracking">Tracking and UTM tips</h2>
+        <p>If you use QR codes in marketing, create a clean landing URL first. You can add UTM parameters for campaign tracking, but avoid extremely long messy printed URLs. If possible, use a branded short URL that redirects to the tracked destination. Keep the final page live for as long as the printed material exists.</p>
+        <h2 id="testing">Testing checklist</h2>
+        <ol>
+            <li>Create the code with <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a>.</li>
+            <li>Scan it on at least two phones.</li>
+            <li>Test in bright light and lower light.</li>
+            <li>Print a small sample before mass printing.</li>
+            <li>Confirm the landing page is fast, mobile-friendly, and accurate.</li>
+        </ol>
+        <h2 id="trust">Trust and security</h2>
+        <p>People are becoming more cautious about QR codes, and they should be. Add a short label near the code explaining where it goes, such as “Scan for our menu” or “Scan to book an appointment.” Avoid placing codes over busy backgrounds. Use HTTPS pages and keep the destination domain recognizable.</p>
+        """,
+        "faqs": [
+            {"q": "Can QR codes help local SEO?", "a": "Indirectly, yes. They can improve customer journeys, encourage reviews, and drive engagement with local landing pages."},
+            {"q": "What should a restaurant QR code link to?", "a": "It should link directly to a mobile-friendly menu page."},
+            {"q": "Should I track QR code scans?", "a": "Tracking can help campaign reporting, but keep URLs clean and make sure the destination remains stable."},
+            {"q": "How do I test a QR code before printing?", "a": "Scan it on multiple phones, test lighting, verify the destination, and print a small sample first."}
+        ]
+    },
+    {
+        "slug": "meta-title-description-checklist-improve-google-ctr",
+        "title": "Meta Title and Description Checklist to Improve Google CTR",
+        "description": "Use this meta title and description checklist to write clearer snippets, reduce truncation, match search intent, and improve organic click-through rate.",
+        "date": "June 30, 2026",
+        "toc": "<ul><li><a href='#ctr'>Why CTR matters</a></li><li><a href='#title'>Title checklist</a></li><li><a href='#description'>Description checklist</a></li><li><a href='#examples'>Examples</a></li><li><a href='#testing'>Testing workflow</a></li></ul>",
+        "content": """
+        <h2 id="ctr">Why CTR matters</h2>
+        <p>Impressions alone do not grow a website if nobody clicks. A page can appear in Google but underperform because the title is vague, the description is duplicated, or the snippet promises something the page does not deliver. Improving click-through rate starts with writing search snippets that match the query and clearly explain the benefit of opening the page.</p>
+        <p>Meta titles and descriptions are not magic ranking buttons, but they shape how users understand your result. Google may rewrite snippets, especially when page copy does not match the query, but strong source metadata still gives search engines and users a better starting point.</p>
+        <h2 id="title">Meta title checklist</h2>
+        <ul>
+            <li>Put the main query near the beginning when it reads naturally.</li>
+            <li>Keep the title specific to one page.</li>
+            <li>Avoid repeating the same word three or four times.</li>
+            <li>Use a benefit or use case when space allows.</li>
+            <li>Preview length with <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>.</li>
+        </ul>
+        <h2 id="description">Meta description checklist</h2>
+        <ul>
+            <li>Summarize what the page actually helps the user do.</li>
+            <li>Include one or two natural keyword variations.</li>
+            <li>Avoid generic copy used across many pages.</li>
+            <li>Keep it readable on mobile search results.</li>
+            <li>Preview length with <a href="/meta-description-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Description Checker</a>.</li>
+        </ul>
+        <h2 id="examples">Examples</h2>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+            <thead><tr><th style="text-align:left;padding:10px;">Weak snippet</th><th style="text-align:left;padding:10px;">Better snippet</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px;">Free online tool</td><td style="padding:10px;">PNG to JPG Converter - Convert PNG Images Online</td></tr>
+                <tr><td style="padding:10px;">Best article about images</td><td style="padding:10px;">Image SEO Checklist: Compress, Resize, and Convert WebP</td></tr>
+                <tr><td style="padding:10px;">JSON data online free</td><td style="padding:10px;">JSON Formatter and Validator for Cleaner API Data</td></tr>
+            </tbody>
+        </table>
+        <h2 id="testing">Testing workflow</h2>
+        <ol>
+            <li>Choose one target query per page.</li>
+            <li>Write a clear title and description.</li>
+            <li>Check length and truncation risk.</li>
+            <li>Compare the snippet against the page content.</li>
+            <li>After indexing, watch Search Console impressions, clicks, CTR, and average position.</li>
+        </ol>
+        """,
+        "faqs": [
+            {"q": "Do meta descriptions directly improve rankings?", "a": "They are not a direct ranking shortcut, but better snippets can improve click-through rate."},
+            {"q": "Can Google rewrite my title?", "a": "Yes. Google may rewrite titles when it thinks another snippet better matches the query."},
+            {"q": "How long should a meta title be?", "a": "Keep it concise and preview it because display length depends on pixels, not only characters."},
+            {"q": "Should every page have a unique description?", "a": "Yes. Unique descriptions help users understand why each page is different."}
+        ]
     }
 ]
