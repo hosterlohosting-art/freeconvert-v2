@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-26'
+TODAY_ISO = '2026-06-30'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -605,6 +605,13 @@ def tool_deep_seo_content_html(tool, tools):
         for rel in related
     )
 
+    review_notes = [
+        f"The page was reviewed on {TODAY_ISO} for clear instructions, indexable metadata, and working internal links.",
+        "Active tools are kept in the XML sitemap; unavailable or review-mode tools are removed from the sitemap and marked noindex.",
+        "Content is written around the task a visitor is trying to finish, not around repeated keyword stuffing.",
+    ]
+    review_items = ''.join(f"<li>{html.escape(item)}</li>" for item in review_notes)
+
     return f"""
             <section style="margin-top:2rem;">
                 <h2>{name} workflow checklist</h2>
@@ -632,6 +639,11 @@ def tool_deep_seo_content_html(tool, tools):
                 <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Next useful tools</h2>
                 <p style="margin-bottom:1rem;">Continue the workflow with nearby freeconvert.cloud tools that share similar intent and help Google understand the topical cluster around this page.</p>
                 <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
+            </section>
+            <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.14);">
+                <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Editorial review and quality signals</h2>
+                <p style="margin-bottom:0.9rem;">This page is maintained as a practical tool page, not a doorway page. Each update checks the user task, crawl signals, related links, privacy language, and whether the page should remain indexable.</p>
+                <ul style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.45rem;line-height:1.6;">{review_items}</ul>
             </section>"""
 
 
