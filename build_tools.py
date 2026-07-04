@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-06-30'
+TODAY_ISO = '2026-07-04'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -7523,6 +7523,10 @@ BLOG_TOOL_MAP = {
     'json-tools-for-seo-developers-format-validate-convert-csv': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON')],
     'qr-code-seo-local-business-menu-wifi-vcard-guide': [('qr-code-generator','QR Code Generator'),('url-encoder','URL Encoder'),('password-generator','Password Generator'),('slug-generator','Slug Generator')],
     'meta-title-description-checklist-improve-google-ctr': [('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
+    'png-to-jpg-vs-jpg-to-webp-which-is-better-for-websites': [('png-to-jpg','PNG to JPG'),('jpg-to-webp','JPG to WebP'),('png-to-webp','PNG to WebP'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
+    'free-online-tools-for-small-business-websites': [('image-compressor','Image Compressor'),('qr-code-generator','QR Code Generator'),('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
+    'how-to-prepare-images-for-google-discover-and-social-sharing': [('resize-image','Resize Image'),('image-compressor','Image Compressor'),('jpg-to-webp','JPG to WebP'),('png-to-jpg','PNG to JPG'),('image-to-base64','Image to Base64')],
+    'json-formatter-validator-structured-data-seo-checklist': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON'),('meta-title-checker','Meta Title Checker')],
 }
 
 def build_blog():

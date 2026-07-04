@@ -3058,5 +3058,165 @@ BLOG_ARTICLES = [
             {"q": "How long should a meta title be?", "a": "Keep it concise and preview it because display length depends on pixels, not only characters."},
             {"q": "Should every page have a unique description?", "a": "Yes. Unique descriptions help users understand why each page is different."}
         ]
+    },
+    {
+        "slug": "png-to-jpg-vs-jpg-to-webp-which-is-better-for-websites",
+        "title": "PNG to JPG vs JPG to WebP: Which Is Better for Website Speed?",
+        "description": "Compare PNG to JPG, JPG to WebP, and PNG to WebP workflows for faster websites, smaller image files, ecommerce pages, blogs, and mobile SEO.",
+        "date": "July 4, 2026",
+        "toc": "<ul><li><a href='#quick'>Quick answer</a></li><li><a href='#png-jpg'>When to use PNG to JPG</a></li><li><a href='#webp'>When to use WebP</a></li><li><a href='#workflow'>SEO image workflow</a></li><li><a href='#checklist'>Publishing checklist</a></li></ul>",
+        "content": """
+        <h2 id="quick">Quick answer</h2>
+        <p>If you want the safest image format for uploads, email, and older systems, convert PNG to JPG. If you want faster website loading and your CMS supports modern images, convert JPG to WebP or PNG to WebP. The best choice depends on whether the image needs transparency, how detailed it is, and where it will be used.</p>
+        <p>For SEO, the goal is not to chase one format everywhere. The goal is to keep images sharp enough for users while reducing unnecessary bytes. Smaller image files can improve mobile loading, Core Web Vitals, crawl efficiency, and the chance that users stay on the page long enough to read or convert.</p>
+        <h2 id="png-jpg">When to use PNG to JPG</h2>
+        <p>Use <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a> when you have a large PNG photo or screenshot that does not need transparency. JPG is accepted by almost every website, form, email client, and marketplace. It is especially useful for product photos, blog images, support screenshots, and application uploads.</p>
+        <p>Do not use JPG for transparent logos or icons unless a white or solid background is acceptable. JPG does not preserve transparent pixels, so logos can look unprofessional when placed on colored sections.</p>
+        <h2 id="webp">When to use WebP</h2>
+        <p>Use <a href="/jpg-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JPG to WebP</a> for photos that appear on landing pages, tutorials, product pages, and blog posts. Use <a href="/png-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to WebP</a> when your design image, graphic, or transparent asset can be served as WebP without breaking older workflows.</p>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+            <thead><tr><th style="text-align:left;padding:10px;">Use case</th><th style="text-align:left;padding:10px;">Best format</th><th style="text-align:left;padding:10px;">Reason</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:10px;">Blog hero photo</td><td style="padding:10px;">WebP</td><td style="padding:10px;">Usually smaller for mobile pages.</td></tr>
+                <tr><td style="padding:10px;">Marketplace upload</td><td style="padding:10px;">JPG</td><td style="padding:10px;">Broadest compatibility.</td></tr>
+                <tr><td style="padding:10px;">Transparent logo</td><td style="padding:10px;">PNG or WebP</td><td style="padding:10px;">Keeps transparency.</td></tr>
+                <tr><td style="padding:10px;">Large screenshot</td><td style="padding:10px;">JPG or WebP</td><td style="padding:10px;">Reduces file weight when transparency is not needed.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="workflow">SEO image workflow</h2>
+        <ol>
+            <li>Start with <a href="/resize-image/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image</a> so the file matches the actual page layout.</li>
+            <li>Convert to JPG for broad compatibility or WebP for website speed.</li>
+            <li>Run the result through <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a>.</li>
+            <li>Rename the file with a descriptive phrase, not a camera filename.</li>
+            <li>Write alt text that describes the image and its page context.</li>
+        </ol>
+        <h2 id="checklist">Publishing checklist</h2>
+        <p>Before publishing, preview the image on mobile, desktop, and dark sections of your site. Check that text in screenshots is readable, edges are not fuzzy, and the image is not larger than the visible container. A fast page with blurry visuals is not a good user experience, and a sharp image that loads slowly is also a problem. Balance both.</p>
+        """,
+        "faqs": [
+            {"q": "Is WebP better than JPG for SEO?", "a": "WebP is often better for page speed, but JPG is still useful for compatibility and upload forms."},
+            {"q": "Should I convert every PNG to JPG?", "a": "No. Keep PNG when you need transparency or very sharp graphics."},
+            {"q": "Does image compression help Google rankings?", "a": "It can support better page experience by reducing load time, especially on mobile."},
+            {"q": "What is the best image workflow for blogs?", "a": "Resize first, convert to the right format, compress, then publish with descriptive filenames and alt text."}
+        ]
+    },
+    {
+        "slug": "free-online-tools-for-small-business-websites",
+        "title": "Free Online Tools for Small Business Websites: Images, QR Codes, Text, and SEO",
+        "description": "A practical small business website toolkit for compressing images, creating QR codes, checking meta titles, writing descriptions, counting words, and creating SEO slugs.",
+        "date": "July 4, 2026",
+        "toc": "<ul><li><a href='#why'>Why small businesses need simple tools</a></li><li><a href='#images'>Image tools</a></li><li><a href='#local'>Local marketing tools</a></li><li><a href='#seo'>SEO writing tools</a></li><li><a href='#routine'>Weekly routine</a></li></ul>",
+        "content": """
+        <h2 id="why">Why small businesses need simple tools</h2>
+        <p>Small business websites often lose traffic because of simple fixable problems: oversized photos, weak page titles, duplicate descriptions, messy URLs, thin service pages, and QR codes that point to slow pages. You do not need a huge software stack to fix the basics. You need a repeatable workflow that keeps every page clear, fast, and useful.</p>
+        <p>This checklist is built for local shops, agencies, consultants, restaurants, clinics, tutors, creators, and service providers who publish content without a full technical team.</p>
+        <h2 id="images">Image tools</h2>
+        <p>Use <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> before uploading product photos, menu images, team photos, and blog screenshots. Large images can make a good page feel slow, especially on mobile. If the image is too wide for the page, resize it before compression.</p>
+        <p>For social graphics and local landing pages, keep one clean image workflow: resize, convert if needed, compress, rename, upload, and add alt text.</p>
+        <h2 id="local">Local marketing tools</h2>
+        <p>Use <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a> for menus, appointment links, review pages, event pages, WiFi access, and vCards. A QR code should send users to the exact page promised on the flyer or sign. Do not send menu scans to the homepage and expect users to search.</p>
+        <h2 id="seo">SEO writing tools</h2>
+        <ul>
+            <li><a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>: preview title length and make each page specific.</li>
+            <li><a href="/meta-description-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Description Checker</a>: write clearer snippets for Google results.</li>
+            <li><a href="/slug-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Slug Generator</a>: create short, readable URLs for services and articles.</li>
+            <li><a href="/word-counter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Word Counter</a>: check whether a page has enough helpful detail.</li>
+        </ul>
+        <h2 id="routine">Weekly routine</h2>
+        <ol>
+            <li>Publish or improve one helpful page for a real customer question.</li>
+            <li>Compress all new images before upload.</li>
+            <li>Check the title and description before publishing.</li>
+            <li>Add internal links to related service, tutorial, and contact pages.</li>
+            <li>Review Search Console for pages with impressions but low CTR.</li>
+        </ol>
+        <p>SEO compounds when the site becomes more useful every week. A small business does not need hundreds of weak pages. It needs strong pages that answer real questions, load quickly, and make the next step obvious.</p>
+        """,
+        "faqs": [
+            {"q": "What free tools help a small business website?", "a": "Image compression, QR code generation, meta title checking, meta description checking, slug generation, and word counting are useful basics."},
+            {"q": "Do QR codes help local marketing?", "a": "Yes. They connect printed materials, menus, counters, and events to useful online pages."},
+            {"q": "How often should a small business update SEO content?", "a": "A weekly improvement routine is realistic and can compound over time."},
+            {"q": "Should every service page have unique metadata?", "a": "Yes. Unique titles and descriptions make each page clearer for users and search engines."}
+        ]
+    },
+    {
+        "slug": "how-to-prepare-images-for-google-discover-and-social-sharing",
+        "title": "How to Prepare Images for Google Discover and Social Sharing",
+        "description": "Prepare images for Google Discover, social cards, blog thumbnails, and mobile sharing with better sizing, compression, filenames, alt text, and format choices.",
+        "date": "July 4, 2026",
+        "toc": "<ul><li><a href='#role'>Why image preparation matters</a></li><li><a href='#sizes'>Image sizes and crops</a></li><li><a href='#formats'>Formats and compression</a></li><li><a href='#metadata'>Filenames and alt text</a></li><li><a href='#qa'>Quality assurance</a></li></ul>",
+        "content": """
+        <h2 id="role">Why image preparation matters</h2>
+        <p>Images influence how content looks in search results, social shares, messaging apps, newsletters, and content feeds. A strong article can feel weak if the preview image is blurry, cropped badly, too small, or slow to load. Good image preparation helps users understand the page before they click and helps the page feel polished after they arrive.</p>
+        <p>Google Discover and social platforms look for clear, relevant images that support the page topic. The image should not be a generic decoration. It should help explain the article, product, tutorial, or tool.</p>
+        <h2 id="sizes">Image sizes and crops</h2>
+        <p>Prepare a wide image for article previews and a square or vertical crop for social networks that need it. Use <a href="/resize-image/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image</a> to create clean variations instead of relying on every platform to crop automatically. Automatic cropping can cut off faces, product details, interface labels, or important text.</p>
+        <ul>
+            <li>Use wide images for blog previews and hero sections.</li>
+            <li>Keep important subjects near the center.</li>
+            <li>Avoid tiny text inside thumbnails.</li>
+            <li>Check mobile previews before publishing.</li>
+        </ul>
+        <h2 id="formats">Formats and compression</h2>
+        <p>Use <a href="/jpg-to-webp/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JPG to WebP</a> for website delivery when supported. Use <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a> when a heavy PNG does not need transparency. Run final assets through <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> so pages stay fast on mobile.</p>
+        <h2 id="metadata">Filenames and alt text</h2>
+        <p>Use descriptive filenames that match the page topic. For example, <strong>google-discover-image-size-checklist.webp</strong> is more useful than <strong>IMG_4921.webp</strong>. Alt text should describe the image in context, not stuff keywords. If the image shows a screenshot of an image compressor, say that clearly.</p>
+        <p>For embedded previews, <a href="/image-to-base64/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image to Base64</a> can help developers test small inline assets, but normal page images should usually remain separate optimized files for caching.</p>
+        <h2 id="qa">Quality assurance</h2>
+        <ol>
+            <li>Open the page on mobile and desktop.</li>
+            <li>Check the share preview in social and messaging tools where possible.</li>
+            <li>Confirm the image loads quickly on mobile data.</li>
+            <li>Inspect whether the image supports the page topic.</li>
+            <li>Replace generic stock-like images with specific, useful visuals when possible.</li>
+        </ol>
+        """,
+        "faqs": [
+            {"q": "What images work best for social sharing?", "a": "Clear, topic-specific images with safe central cropping and readable details work best."},
+            {"q": "Should I use WebP for article images?", "a": "WebP is a strong choice for website speed when your CMS and audience browsers support it."},
+            {"q": "Do filenames matter for image SEO?", "a": "Descriptive filenames can help organization and image relevance signals."},
+            {"q": "Should I compress social preview images?", "a": "Yes. Compress images enough to load quickly while keeping important details clear."}
+        ]
+    },
+    {
+        "slug": "json-formatter-validator-structured-data-seo-checklist",
+        "title": "JSON Formatter and Validator Checklist for SEO Structured Data",
+        "description": "Use JSON formatter and validator tools to clean JSON-LD structured data, fix syntax errors, prepare FAQ schema, review article schema, and convert data safely.",
+        "date": "July 4, 2026",
+        "toc": "<ul><li><a href='#structured'>Why structured data needs valid JSON</a></li><li><a href='#errors'>Common JSON-LD errors</a></li><li><a href='#workflow'>Validation workflow</a></li><li><a href='#csv'>CSV and JSON cleanup</a></li><li><a href='#publish'>Before publishing</a></li></ul>",
+        "content": """
+        <h2 id="structured">Why structured data needs valid JSON</h2>
+        <p>Structured data helps search engines understand articles, breadcrumbs, FAQs, organizations, products, videos, and local business pages. Most modern SEO implementations use JSON-LD because it can be added in a script block without changing visible page layout. But JSON-LD only works when the JSON is valid.</p>
+        <p>A missing comma, curly quote, broken bracket, or unescaped character can make the entire schema block fail. That is why formatting and validation should happen before publishing, not after Search Console reports an enhancement issue.</p>
+        <h2 id="errors">Common JSON-LD errors</h2>
+        <ul>
+            <li>Missing commas between properties.</li>
+            <li>Trailing commas after the final item.</li>
+            <li>Using smart quotes instead of straight quotes.</li>
+            <li>Copying HTML into JSON without escaping it.</li>
+            <li>Mixing arrays and objects incorrectly.</li>
+            <li>Adding duplicate properties that make the data confusing.</li>
+        </ul>
+        <h2 id="workflow">Validation workflow</h2>
+        <ol>
+            <li>Paste the schema into <a href="/json-formatter/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Formatter</a> to make it readable.</li>
+            <li>Check the formatted version with <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a>.</li>
+            <li>Fix syntax errors before testing rich result eligibility.</li>
+            <li>Compare schema fields against the visible page content.</li>
+            <li>Keep a clean copy for future page updates.</li>
+        </ol>
+        <h2 id="csv">CSV and JSON cleanup</h2>
+        <p>When structured data starts in a spreadsheet, use <a href="/csv-to-json/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">CSV to JSON</a> to generate a structured draft. When you need to audit existing JSON records in a spreadsheet, use <a href="/json-to-csv/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON to CSV</a>. This is useful for product feeds, FAQ lists, glossary data, and content inventories.</p>
+        <h2 id="publish">Before publishing</h2>
+        <p>Valid JSON is only the first step. The structured data should match the page, avoid misleading claims, and use properties that are relevant to the content. A page with thin content will not become high quality just because schema exists. Use schema to clarify real content, not to decorate weak pages.</p>
+        <p>After publishing, review Search Console enhancements and organic performance. If impressions grow but CTR is weak, pair schema cleanup with better titles and descriptions using <a href="/meta-title-checker/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Meta Title Checker</a>.</p>
+        """,
+        "faqs": [
+            {"q": "Can invalid JSON-LD hurt structured data visibility?", "a": "Yes. Syntax errors can prevent search engines from reading the schema block."},
+            {"q": "Should schema match visible content?", "a": "Yes. Structured data should describe real content visible or clearly available on the page."},
+            {"q": "Can I convert CSV FAQs to JSON?", "a": "Yes. CSV to JSON can help turn spreadsheet rows into a structured draft."},
+            {"q": "Is JSON validation enough for SEO?", "a": "No. Validation checks syntax, but the page still needs useful content, accurate schema, and good user experience."}
+        ]
     }
 ]
