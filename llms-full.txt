@@ -21,6 +21,11 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - password generator -> https://freeconvert.cloud/password-generator/ (Security tools; variants: password generator, strong password generator, random password generator, secure password maker)
 - word counter -> https://freeconvert.cloud/word-counter/ (Text tools; variants: word counter, character counter, word count online, essay word counter)
 - image to base64 -> https://freeconvert.cloud/image-to-base64/ (Developer tools; variants: image to base64, convert image to base64, base64 image encoder, img to base64)
+- sitemap generator -> https://freeconvert.cloud/sitemap-generator/ (SEO tools; variants: xml sitemap generator, create sitemap online, sitemap for google search console, sitemap xml builder)
+- css minifier -> https://freeconvert.cloud/css-minifier/ (Developer tools; variants: minify css online, compress css code, css compressor, css optimizer)
+- javascript minifier -> https://freeconvert.cloud/javascript-minifier/ (Developer tools; variants: js minifier, minify javascript online, compress javascript code, javascript compressor)
+- word to html -> https://freeconvert.cloud/word-to-html/ (Developer tools; variants: word to html converter, convert text to html paragraphs, doc text to html, clean html converter)
+- text to ascii -> https://freeconvert.cloud/text-to-ascii/ (Developer tools; variants: ascii converter, text to ascii codes, ascii code converter, string to ascii)
 
 ## Complete Tool Inventory
 - PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - Convert PNG images to JPG instantly. Category: Image.
@@ -84,12 +89,17 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - Base64 to Image: https://freeconvert.cloud/base64-to-image/ - Convert Base64 code strings into visual images locally. Category: Utility.
 - Robots.txt Generator: https://freeconvert.cloud/robots-txt-generator/ - Generate custom robots.txt crawl directives for SEO optimization. Category: Utility.
 - HTML Minifier: https://freeconvert.cloud/html-minifier/ - Compress and minify HTML code footprint for faster page speeds. Category: Utility.
+- Sitemap Generator: https://freeconvert.cloud/sitemap-generator/ - Create a clean XML sitemap from page URLs. Category: Utility.
+- CSS Minifier: https://freeconvert.cloud/css-minifier/ - Compress CSS code by removing comments and extra spaces. Category: Developer.
+- JavaScript Minifier: https://freeconvert.cloud/javascript-minifier/ - Minify JavaScript snippets for smaller page assets. Category: Developer.
+- Word to HTML: https://freeconvert.cloud/word-to-html/ - Convert pasted Word-style text into clean HTML paragraphs. Category: Developer.
+- Text to ASCII: https://freeconvert.cloud/text-to-ascii/ - Convert text characters into ASCII code values. Category: Developer.
 
 ## Editorial And Trust Signals
 - Editorial team: freeconvert.cloud Editorial Team.
 - Privacy model: supported public tools use client-side browser processing where possible.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-07-04.
+- Update marker: 2026-07-06.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml

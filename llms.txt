@@ -47,6 +47,11 @@ freeconvert.cloud provides practical browser-based image, text, developer, secur
 - password generator -> https://freeconvert.cloud/password-generator/ (Security tools; variants: password generator, strong password generator, random password generator, secure password maker)
 - word counter -> https://freeconvert.cloud/word-counter/ (Text tools; variants: word counter, character counter, word count online, essay word counter)
 - image to base64 -> https://freeconvert.cloud/image-to-base64/ (Developer tools; variants: image to base64, convert image to base64, base64 image encoder, img to base64)
+- sitemap generator -> https://freeconvert.cloud/sitemap-generator/ (SEO tools; variants: xml sitemap generator, create sitemap online, sitemap for google search console, sitemap xml builder)
+- css minifier -> https://freeconvert.cloud/css-minifier/ (Developer tools; variants: minify css online, compress css code, css compressor, css optimizer)
+- javascript minifier -> https://freeconvert.cloud/javascript-minifier/ (Developer tools; variants: js minifier, minify javascript online, compress javascript code, javascript compressor)
+- word to html -> https://freeconvert.cloud/word-to-html/ (Developer tools; variants: word to html converter, convert text to html paragraphs, doc text to html, clean html converter)
+- text to ascii -> https://freeconvert.cloud/text-to-ascii/ (Developer tools; variants: ascii converter, text to ascii codes, ascii code converter, string to ascii)
 
 ## Privacy & Safety Core Documents
 - File Security Info: https://freeconvert.cloud/security/

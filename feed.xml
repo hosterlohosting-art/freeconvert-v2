@@ -7,6 +7,34 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 02 Jun 2026 00:00:00 GMT</lastBuildDate>
     <item>
+      <title>Text to ASCII Converter Guide for Developers and Students</title>
+      <link>https://freeconvert.cloud/blog/text-to-ascii-converter-developer-reference-guide/</link>
+      <guid>https://freeconvert.cloud/blog/text-to-ascii-converter-developer-reference-guide/</guid>
+      <description>Learn how text to ASCII conversion works, when ASCII codes are useful, and how ASCII relates to Unicode, binary, Base64, and debugging.</description>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Word to HTML Converter Guide for Clean Website Publishing</title>
+      <link>https://freeconvert.cloud/blog/word-to-html-clean-content-publishing-guide/</link>
+      <guid>https://freeconvert.cloud/blog/word-to-html-clean-content-publishing-guide/</guid>
+      <description>Convert copied Word document text into clean HTML paragraphs and headings for blogs, CMS pages, landing pages, and documentation.</description>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>CSS, JavaScript, and HTML Minifier Checklist for Page Speed</title>
+      <link>https://freeconvert.cloud/blog/css-javascript-html-minifier-page-speed-checklist/</link>
+      <guid>https://freeconvert.cloud/blog/css-javascript-html-minifier-page-speed-checklist/</guid>
+      <description>Use CSS, JavaScript, and HTML minification to reduce code weight, improve page speed, and clean frontend assets before publishing.</description>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>XML Sitemap Generator Guide for Google Search Console</title>
+      <link>https://freeconvert.cloud/blog/xml-sitemap-generator-google-search-console-guide/</link>
+      <guid>https://freeconvert.cloud/blog/xml-sitemap-generator-google-search-console-guide/</guid>
+      <description>Learn how to create a clean XML sitemap, choose URLs, set lastmod dates, avoid noindex pages, and submit sitemap files in Google Search Console.</description>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>JSON Formatter and Validator Checklist for SEO Structured Data</title>
       <link>https://freeconvert.cloud/blog/json-formatter-validator-structured-data-seo-checklist/</link>
       <guid>https://freeconvert.cloud/blog/json-formatter-validator-structured-data-seo-checklist/</guid>
@@ -117,34 +145,6 @@
       <guid>https://freeconvert.cloud/blog/meta-description-checker-serp-ctr-guide/</guid>
       <description>Check meta descriptions online for length, clarity, search intent, click-through rate, truncation risk, and better SERP snippets.</description>
       <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Barcode Generator Online: Product Labels, Inventory, and Retail Codes</title>
-      <link>https://freeconvert.cloud/blog/barcode-generator-online-product-labels-guide/</link>
-      <guid>https://freeconvert.cloud/blog/barcode-generator-online-product-labels-guide/</guid>
-      <description>Generate barcodes online for product labels, inventory lists, warehouse workflows, retail mockups, IDs, and printable code testing.</description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>Diff Checker Online: Compare Text, Code, Lists, and Drafts</title>
-      <link>https://freeconvert.cloud/blog/diff-checker-compare-text-code-guide/</link>
-      <guid>https://freeconvert.cloud/blog/diff-checker-compare-text-code-guide/</guid>
-      <description>Compare text online with a diff checker for code snippets, SEO copy, keyword lists, config files, article drafts, and changelog review.</description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>SQL Formatter Online: Make Queries Readable Before Debugging</title>
-      <link>https://freeconvert.cloud/blog/sql-formatter-online-query-readable-guide/</link>
-      <guid>https://freeconvert.cloud/blog/sql-formatter-online-query-readable-guide/</guid>
-      <description>Format SQL online to clean SELECT queries, joins, WHERE clauses, migrations, analytics snippets, and database debugging workflows.</description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    </item>
-    <item>
-      <title>UUID Generator Online: Unique IDs for Apps, Databases, and Testing</title>
-      <link>https://freeconvert.cloud/blog/uuid-generator-online-unique-id-guide/</link>
-      <guid>https://freeconvert.cloud/blog/uuid-generator-online-unique-id-guide/</guid>
-      <description>Generate UUIDs online for databases, API testing, sample data, logs, events, records, and developer workflows.</description>
-      <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

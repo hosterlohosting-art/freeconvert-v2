@@ -454,7 +454,7 @@
         "name": "Lorem Ipsum Generator",
         "icon": "📜",
         "description": "Generate design placeholder text in bulk.",
-        "type": "utility",
+        "type": "utility_dev",
         "category": "Utility",
         "seo_title": "Lorem Ipsum Generator - Free Dummy Text Creator",
         "seo_desc": "Generate customizable dummy text for layouts, brochures, and grids."
@@ -514,7 +514,7 @@
         "name": "Random Number Generator",
         "icon": "🎲",
         "description": "Roll randomized numbers within custom bounds.",
-        "type": "utility",
+        "type": "utility_dev",
         "category": "Utility",
         "seo_title": "Random Number Generator - Pick Numbers Online",
         "seo_desc": "Generate secure randomized integer results between custom bounds."
@@ -524,7 +524,7 @@
         "name": "UUID Generator",
         "icon": "🔑",
         "description": "Create bulk cryptographically secure v4 UUIDs.",
-        "type": "utility",
+        "type": "utility_dev",
         "category": "Utility",
         "seo_title": "Bulk UUID Generator - Cryptographic v4 UUID Maker",
         "seo_desc": "Generate unique RFC 4122 compliant version 4 UUIDs instantly."
@@ -534,7 +534,7 @@
         "name": "Timestamp Converter",
         "icon": "⏱️",
         "description": "Convert human calendar dates to Unix time.",
-        "type": "utility",
+        "type": "utility_dev",
         "category": "Utility",
         "seo_title": "Unix Timestamp Converter - Epoch Date Tool",
         "seo_desc": "Translate Epoch seconds into human readable UTC dates instantly."
@@ -828,5 +828,55 @@
         "category": "Utility",
         "seo_title": "HTML Minifier & Compressor - Optimize Page Speeds Online",
         "seo_desc": "Compress your HTML markup code by stripping extra whitespace, HTML comments, and inline code scripts. Improves Core Web Vitals loading metrics instantly."
+    },
+    {
+        "id": "sitemap-generator",
+        "name": "Sitemap Generator",
+        "icon": "XML",
+        "description": "Create a clean XML sitemap from page URLs.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "XML Sitemap Generator Online Free",
+        "seo_desc": "Create a valid XML sitemap from URLs for Google Search Console, Bing, and search engine discovery."
+    },
+    {
+        "id": "css-minifier",
+        "name": "CSS Minifier",
+        "icon": "CSS",
+        "description": "Compress CSS code by removing comments and extra spaces.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "CSS Minifier Online Free - Compress CSS Code",
+        "seo_desc": "Minify CSS code instantly in your browser by removing comments, whitespace, and unnecessary formatting."
+    },
+    {
+        "id": "javascript-minifier",
+        "name": "JavaScript Minifier",
+        "icon": "JS",
+        "description": "Minify JavaScript snippets for smaller page assets.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "JavaScript Minifier Online Free - Compress JS Code",
+        "seo_desc": "Compress JavaScript code in your browser by removing comments and extra whitespace for lighter web pages."
+    },
+    {
+        "id": "word-to-html",
+        "name": "Word to HTML",
+        "icon": "HTML",
+        "description": "Convert pasted Word-style text into clean HTML paragraphs.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "Word to HTML Converter Online Free",
+        "seo_desc": "Convert copied Word document text into clean HTML paragraphs, headings, and line breaks for websites and blogs."
+    },
+    {
+        "id": "text-to-ascii",
+        "name": "Text to ASCII",
+        "icon": "ASCII",
+        "description": "Convert text characters into ASCII code values.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "Text to ASCII Converter Online",
+        "seo_desc": "Convert letters, symbols, and text strings into ASCII decimal codes directly in your browser."
     }
 ]

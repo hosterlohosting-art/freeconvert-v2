@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-07-04'
+TODAY_ISO = '2026-07-06'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -307,6 +307,46 @@ TOP_KEYWORD_TARGETS = [
         'cluster': 'Developer tools',
         'priority': 32,
         'modifiers': ['image to base64', 'convert image to base64', 'base64 image encoder', 'img to base64']
+    },
+    {
+        'keyword': 'sitemap generator',
+        'tool_id': 'sitemap-generator',
+        'intent': 'Create XML sitemap files from URL lists for search engine discovery and indexing.',
+        'cluster': 'SEO tools',
+        'priority': 33,
+        'modifiers': ['xml sitemap generator', 'create sitemap online', 'sitemap for google search console', 'sitemap xml builder']
+    },
+    {
+        'keyword': 'css minifier',
+        'tool_id': 'css-minifier',
+        'intent': 'Compress CSS code to reduce stylesheet size and improve page speed.',
+        'cluster': 'Developer tools',
+        'priority': 34,
+        'modifiers': ['minify css online', 'compress css code', 'css compressor', 'css optimizer']
+    },
+    {
+        'keyword': 'javascript minifier',
+        'tool_id': 'javascript-minifier',
+        'intent': 'Compress JavaScript snippets for lighter browser assets and faster pages.',
+        'cluster': 'Developer tools',
+        'priority': 35,
+        'modifiers': ['js minifier', 'minify javascript online', 'compress javascript code', 'javascript compressor']
+    },
+    {
+        'keyword': 'word to html',
+        'tool_id': 'word-to-html',
+        'intent': 'Convert copied document text into clean HTML for websites, blogs, and CMS editors.',
+        'cluster': 'Developer tools',
+        'priority': 36,
+        'modifiers': ['word to html converter', 'convert text to html paragraphs', 'doc text to html', 'clean html converter']
+    },
+    {
+        'keyword': 'text to ascii',
+        'tool_id': 'text-to-ascii',
+        'intent': 'Convert letters and symbols into ASCII decimal code values for learning and debugging.',
+        'cluster': 'Developer tools',
+        'priority': 37,
+        'modifiers': ['ascii converter', 'text to ascii codes', 'ascii code converter', 'string to ascii']
     },
 ]
 
@@ -3033,7 +3073,7 @@ CATEGORIES = {
         'intro': 'Convert DOC, DOCX, TXT, CSV, JSON, and PDF files quickly.',
         'seo_title': 'Online Document Converter - Convert PDF, Word, Excel',
         'seo_desc': 'Transform PDFs, Microsoft Word files, and developer data formats safely.',
-        'types': ['dev_basic', 'dev_advanced', 'text'],
+        'types': ['dev_basic', 'dev_advanced', 'text', 'utility_dev'],
         'how_to': '<ol><li>Upload your documents.</li><li>Choose the target document format.</li><li>Click Process and download your results.</li></ol>',
         'faq': [
             {"q": "Is my data processed locally?", "a": "Standard developer formatters and data converters process 100% locally on your computer."}
@@ -4471,7 +4511,12 @@ if (toolId === 'lorem-ipsum') {
         'text-cleaner': ['Messy text', 'Clean text'],
         'hashtag-generator': ['Topic', 'Hashtags'],
         'lorem-ipsum-generator': ['Paragraph count', 'Lorem ipsum'],
-        'barcode-generator': ['Barcode value', 'Barcode preview']
+        'barcode-generator': ['Barcode value', 'Barcode preview'],
+        'sitemap-generator': ['Page URLs', 'XML sitemap'],
+        'css-minifier': ['CSS code', 'Minified CSS'],
+        'javascript-minifier': ['JavaScript code', 'Minified JavaScript'],
+        'word-to-html': ['Document text', 'Clean HTML'],
+        'text-to-ascii': ['Text', 'ASCII codes']
     };
     const labels = labelMap[toolId] || ['Input', 'Output'];
     const defaults = {
@@ -4487,9 +4532,14 @@ if (toolId === 'lorem-ipsum') {
         'text-cleaner': '<p>  Hello,   world!  </p>',
         'hashtag-generator': 'free online file converter',
         'lorem-ipsum-generator': '3',
-        'barcode-generator': '123456789012'
+        'barcode-generator': '123456789012',
+        'sitemap-generator': 'https://freeconvert.cloud/\\nhttps://freeconvert.cloud/png-to-jpg/\\nhttps://freeconvert.cloud/image-compressor/',
+        'css-minifier': '/* Hero button */\\n.button {\\n  color: white;\\n  background: #6d5dfc;\\n}',
+        'javascript-minifier': '// Sample script\\nfunction hello(name) {\\n  console.log(\"Hello \" + name);\\n}',
+        'word-to-html': 'Main Heading\\n\\nThis is a paragraph copied from a document.\\n\\nAnother paragraph with useful content.',
+        'text-to-ascii': 'freeconvert'
     };
-    const multiLine = ['remove-duplicate-lines', 'text-cleaner'].includes(toolId);
+    const multiLine = ['remove-duplicate-lines', 'text-cleaner', 'sitemap-generator', 'css-minifier', 'javascript-minifier', 'word-to-html', 'text-to-ascii'].includes(toolId);
     const dateInput = ['age-calculator', 'timestamp-converter'].includes(toolId);
     const numberInput = ['uuid-generator', 'lorem-ipsum-generator'].includes(toolId);
     const inputControl = multiLine
@@ -4581,6 +4631,34 @@ if (toolId === 'lorem-ipsum') {
             result = clean;
             visual.style.display = 'block';
             visual.innerHTML = `<div style="display:flex;align-items:end;gap:3px;height:90px;justify-content:center;background:white;border-radius:12px;border:1px solid var(--border-color);padding:1rem;">${clean.split('').map((char, i) => `<span style="display:block;width:${(char.charCodeAt(0) % 4) + 2}px;height:${35 + ((char.charCodeAt(0) + i) % 45)}px;background:#111827;"></span>`).join('')}</div><p style="text-align:center;font-weight:800;margin:0.7rem 0 0;">${clean}</p>`;
+        } else if (toolId === 'sitemap-generator') {
+            const urls = value.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+            const safeUrls = urls.map(url => url.startsWith('http') ? url : `https://${url.replace(/^\/+/, '')}`);
+            const rows = safeUrls.map(url => `  <url>\n    <loc>${url.replace(/&/g, '&amp;')}</loc>\n    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`).join('\n');
+            result = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>`;
+        } else if (toolId === 'css-minifier') {
+            result = value
+                .replace(/\/\*[\s\S]*?\*\//g, '')
+                .replace(/\s+/g, ' ')
+                .replace(/\s*([{}:;,>])\s*/g, '$1')
+                .replace(/;}/g, '}')
+                .trim();
+        } else if (toolId === 'javascript-minifier') {
+            result = value
+                .replace(/\/\*[\s\S]*?\*\//g, '')
+                .replace(/(^|\n)\s*\/\/.*(?=\n|$)/g, '$1')
+                .replace(/\s+/g, ' ')
+                .replace(/\s*([{}();,:=+\-*/<>])\s*/g, '$1')
+                .trim();
+        } else if (toolId === 'word-to-html') {
+            const escapeHtml = text => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            const blocks = value.split(/\n{2,}/).map(block => block.trim()).filter(Boolean);
+            result = blocks.map((block, index) => {
+                const clean = escapeHtml(block).replace(/\n/g, '<br>');
+                return index === 0 && clean.length < 90 ? `<h2>${clean}</h2>` : `<p>${clean}</p>`;
+            }).join('\n');
+        } else if (toolId === 'text-to-ascii') {
+            result = value.split('').map(char => `${char} = ${char.charCodeAt(0)}`).join('\n');
         } else {
             result = value;
         }
@@ -5083,12 +5161,12 @@ FOOTER_SNIPPET = """
                 </div>
                 <h4 style="margin-top:1.2rem;">New Tools</h4>
                 <div class="footer-links">
-                    <a href="/word-counter/">Word Counter</a>
-                    <a href="/base64-encode/">Base64 Encoder</a>
-                    <a href="/url-encoder/">URL Encoder</a>
-                    <a href="/markdown-editor/">Markdown Editor</a>
-                    <a href="/diff-checker/">Diff Checker</a>
-                    <a href="/uuid-generator/">UUID Generator</a>
+                    <a href="/sitemap-generator/">Sitemap Generator</a>
+                    <a href="/css-minifier/">CSS Minifier</a>
+                    <a href="/javascript-minifier/">JavaScript Minifier</a>
+                    <a href="/word-to-html/">Word to HTML</a>
+                    <a href="/text-to-ascii/">Text to ASCII</a>
+                    <a href="/html-minifier/">HTML Minifier</a>
                 </div>
             </div>
             <div class="footer-col">
@@ -5127,7 +5205,7 @@ FOOTER_SNIPPET = """
 
 
 def build_homepage(tools):
-    POPULAR_TOOLS = ['jpg-to-pdf', 'pdf-to-word', 'png-to-jpg', 'mp4-to-mp3', 'csv-to-json', 'json-to-csv']
+    POPULAR_TOOLS = ['png-to-jpg', 'jpg-to-webp', 'image-compressor', 'sitemap-generator', 'css-minifier', 'javascript-minifier', 'json-to-csv', 'qr-code-generator']
     with open('index.html', 'w', encoding='utf-8') as f:
         # Generate homepage grid tools
         tools_html = ""
@@ -7527,6 +7605,10 @@ BLOG_TOOL_MAP = {
     'free-online-tools-for-small-business-websites': [('image-compressor','Image Compressor'),('qr-code-generator','QR Code Generator'),('meta-title-checker','Meta Title Checker'),('meta-description-checker','Meta Description Checker'),('slug-generator','Slug Generator'),('word-counter','Word Counter')],
     'how-to-prepare-images-for-google-discover-and-social-sharing': [('resize-image','Resize Image'),('image-compressor','Image Compressor'),('jpg-to-webp','JPG to WebP'),('png-to-jpg','PNG to JPG'),('image-to-base64','Image to Base64')],
     'json-formatter-validator-structured-data-seo-checklist': [('json-formatter','JSON Formatter'),('json-validator','JSON Validator'),('json-to-csv','JSON to CSV'),('csv-to-json','CSV to JSON'),('meta-title-checker','Meta Title Checker')],
+    'xml-sitemap-generator-google-search-console-guide': [('sitemap-generator','Sitemap Generator'),('robots-txt-generator','Robots.txt Generator'),('slug-generator','Slug Generator'),('meta-title-checker','Meta Title Checker')],
+    'css-javascript-html-minifier-page-speed-checklist': [('css-minifier','CSS Minifier'),('javascript-minifier','JavaScript Minifier'),('html-minifier','HTML Minifier'),('image-compressor','Image Compressor')],
+    'word-to-html-clean-content-publishing-guide': [('word-to-html','Word to HTML'),('text-cleaner','Text Cleaner'),('html-formatter','HTML Formatter'),('word-counter','Word Counter')],
+    'text-to-ascii-converter-developer-reference-guide': [('text-to-ascii','Text to ASCII'),('unicode-converter','Unicode Converter'),('binary-text-converter','Binary to Text'),('base64-encode','Base64 Encode')],
 }
 
 def build_blog():
@@ -7896,7 +7978,7 @@ def build():
             ui = DEV_ADVANCED_UI
             script = DEV_ADVANCED_SCRIPT.replace('{{ID}}', t_id)
             how_to = "<ol><li>Paste script inside editor.</li><li>Review output formatted preview immediately.</li></ol>"
-        elif t_type == 'utility':
+        elif t_type in ['utility', 'utility_dev']:
             ui = UTILITY_UI
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
             how_to = "<ol><li>Interact with active layout components.</li><li>See responsive results.</li></ol>"
