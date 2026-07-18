@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-07-06'
+TODAY_ISO = '2026-07-18'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -7609,6 +7609,10 @@ BLOG_TOOL_MAP = {
     'css-javascript-html-minifier-page-speed-checklist': [('css-minifier','CSS Minifier'),('javascript-minifier','JavaScript Minifier'),('html-minifier','HTML Minifier'),('image-compressor','Image Compressor')],
     'word-to-html-clean-content-publishing-guide': [('word-to-html','Word to HTML'),('text-cleaner','Text Cleaner'),('html-formatter','HTML Formatter'),('word-counter','Word Counter')],
     'text-to-ascii-converter-developer-reference-guide': [('text-to-ascii','Text to ASCII'),('unicode-converter','Unicode Converter'),('binary-text-converter','Binary to Text'),('base64-encode','Base64 Encode')],
+    'compress-images-for-email-attachments-guide': [('image-compressor','Image Compressor'),('resize-image','Resize Image'),('jpg-to-webp','JPG to WebP'),('png-to-jpg','PNG to JPG')],
+    'linkedin-profile-banner-image-size-guide': [('resize-image','Resize Image'),('image-compressor','Image Compressor'),('png-to-jpg','PNG to JPG'),('jpg-to-webp','JPG to WebP')],
+    'base64-encode-decode-api-json-guide': [('base64-encode','Base64 Encode'),('base64-decode','Base64 Decode'),('json-formatter','JSON Formatter'),('json-validator','JSON Validator')],
+    'qr-code-for-google-reviews-local-business-guide': [('qr-code-generator','QR Code Generator'),('url-encoder','URL Encoder'),('image-compressor','Image Compressor'),('resize-image','Resize Image')],
 }
 
 def build_blog():

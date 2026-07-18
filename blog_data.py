@@ -3357,5 +3357,109 @@ BLOG_ARTICLES = [
             {"q": "Can I convert text to ASCII online?", "a": "Yes. Paste text into Text to ASCII to see decimal code values."},
             {"q": "Is Base64 related to ASCII?", "a": "Base64 uses ASCII-safe characters to represent binary data in text form."}
         ]
+    },
+    {
+        "slug": "compress-images-for-email-attachments-guide",
+        "title": "Compress Images for Email Without Losing Quality",
+        "description": "Compress JPG, PNG, and WebP email attachments, reduce message size, preserve readable detail, and choose practical dimensions and quality settings.",
+        "date": "July 18, 2026",
+        "toc": "<ul><li><a href='#why'>Why email images get rejected</a></li><li><a href='#target'>Choose a useful target size</a></li><li><a href='#workflow'>Compression workflow</a></li><li><a href='#format'>JPG, PNG, or WebP</a></li><li><a href='#quality'>Quality checklist</a></li></ul>",
+        "content": """
+        <h2 id="why">Why email images get rejected</h2>
+        <p>Large phone photos can be several megabytes each. Attach a handful of them and the message may exceed the sender or recipient limit, upload slowly on mobile data, or arrive as a cloud-storage link instead of a normal attachment. The fastest fix is usually a combination of smaller pixel dimensions and moderate image compression.</p>
+        <p>Do not chase the smallest possible file. A product photo, property image, receipt, or ID scan still needs enough detail for the recipient's task. The practical goal is the smallest attachment that remains clear at normal viewing size.</p>
+        <h2 id="target">Choose a useful target size</h2>
+        <p>For ordinary email viewing, an image around 1200 to 1600 pixels on its longest edge is often sufficient. A single photo below about 1 MB is easier to send, while batches may need smaller files. Documents with tiny text need more resolution than casual photos, so inspect the result before deleting the original.</p>
+        <h2 id="workflow">Step-by-step compression workflow</h2>
+        <ol><li>Keep an untouched copy of every original image.</li><li>Use <a href="/resize-image/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image</a> if the photo is much larger than the recipient needs.</li><li>Open <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> and reduce quality gradually.</li><li>Download the result and zoom in to check faces, labels, signatures, or small text.</li><li>Add the compressed files to a draft email and confirm the total attachment size before sending.</li></ol>
+        <h2 id="format">Should email images use JPG, PNG, or WebP?</h2>
+        <p>JPG is the safest default for photographs because it combines small files with broad compatibility. PNG is better for screenshots, diagrams, and graphics that need transparency, but photo-like PNG files can be unnecessarily heavy. WebP can be smaller, although older workflows may not accept it. Use <a href="/png-to-jpg/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">PNG to JPG</a> when a large PNG is really a photograph.</p>
+        <h2 id="quality">Final quality checklist</h2>
+        <ul><li>Open every output file before attaching it.</li><li>Check orientation, color, text readability, and cropping.</li><li>Use descriptive filenames so the recipient understands each image.</li><li>Send sensitive material only to the intended address.</li><li>Keep originals until the recipient confirms successful delivery.</li></ul>
+        """,
+        "faqs": [
+            {"q": "What image format is best for email attachments?", "a": "JPG is usually best for photographs, while PNG is useful for screenshots and transparent graphics."},
+            {"q": "Does resizing an image reduce email attachment size?", "a": "Yes. Reducing excessive pixel dimensions often cuts more file weight than quality compression alone."},
+            {"q": "How do I keep text readable in a compressed scan?", "a": "Use a higher resolution and moderate compression, then zoom in and inspect the downloaded file before sending."},
+            {"q": "Should I delete the original after compression?", "a": "No. Keep the original until the recipient confirms that the attachment is usable."}
+        ]
+    },
+    {
+        "slug": "linkedin-profile-banner-image-size-guide",
+        "title": "LinkedIn Profile Picture and Banner Image Size Guide",
+        "description": "Resize LinkedIn profile photos and banners with practical dimensions, safe cropping, format choices, and a clear pre-upload quality checklist.",
+        "date": "July 18, 2026",
+        "toc": "<ul><li><a href='#sizes'>LinkedIn image dimensions</a></li><li><a href='#profile'>Profile photo tips</a></li><li><a href='#banner'>Banner safe area</a></li><li><a href='#workflow'>Resize workflow</a></li><li><a href='#check'>Upload checklist</a></li></ul>",
+        "content": """
+        <h2 id="sizes">Useful LinkedIn image dimensions</h2>
+        <p>A square image works best for a personal profile photo; 400 by 400 pixels is a practical starting point. A personal background banner uses a wide 4:1-style canvas, commonly prepared at 1584 by 396 pixels. Company assets use different layouts, so confirm the current requirements shown in LinkedIn's uploader before publishing.</p>
+        <p>Exact pixels are only part of the job. LinkedIn displays assets differently across desktop and mobile screens and crops profile photos into a circle. Keep important content away from edges and review the final preview.</p>
+        <h2 id="profile">Prepare a clear profile photo</h2>
+        <p>Start with a sharp, well-lit portrait. Center the face, leave breathing room around the head, and avoid placing important details in the square's corners because the circular crop will hide them. JPG is suitable for photographs; PNG can work for logos or illustrated avatars.</p>
+        <h2 id="banner">Protect the banner safe area</h2>
+        <p>The profile photo overlaps part of the banner, and responsive layouts can crop the outer edges. Keep names, slogans, contact details, and logos near the visual center rather than against the left, right, top, or bottom boundary. Use high contrast so text remains readable on smaller screens.</p>
+        <h2 id="workflow">Resize and compress the image</h2>
+        <ol><li>Open <a href="/resize-image/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Resize Image</a>.</li><li>Enter the intended width and height, preserving the subject inside the crop.</li><li>Download the resized file and inspect it at 100% zoom.</li><li>Use <a href="/image-compressor/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Image Compressor</a> if the file is unnecessarily large.</li><li>Upload it to LinkedIn and check both desktop and mobile previews.</li></ol>
+        <h2 id="check">Pre-upload checklist</h2>
+        <ul><li>No important content sits in a corner or overlap zone.</li><li>The face or logo remains sharp after resizing.</li><li>Banner text is large enough for mobile viewing.</li><li>The file uses RGB color and a broadly supported format.</li><li>The preview contains no accidental stretch or distortion.</li></ul>
+        """,
+        "faqs": [
+            {"q": "What size should a LinkedIn profile picture be?", "a": "A square 400 by 400 pixel image is a practical starting point, but always check the uploader's current guidance."},
+            {"q": "What size is a LinkedIn personal banner?", "a": "A commonly used personal banner size is 1584 by 396 pixels."},
+            {"q": "Why is my LinkedIn banner cropped?", "a": "LinkedIn adapts banners across screen sizes and overlaps part of the image with profile interface elements."},
+            {"q": "Should LinkedIn photos be JPG or PNG?", "a": "Use JPG for photographs and PNG for logos, text-heavy graphics, or transparency."}
+        ]
+    },
+    {
+        "slug": "base64-encode-decode-api-json-guide",
+        "title": "Base64 Encode and Decode for API and JSON Payloads",
+        "description": "Learn when Base64 belongs in JSON and API payloads, how to encode and decode it, account for size overhead, and avoid data URI mistakes.",
+        "date": "July 18, 2026",
+        "toc": "<ul><li><a href='#why'>Why APIs use Base64</a></li><li><a href='#overhead'>Size and security limits</a></li><li><a href='#encode'>Encoding workflow</a></li><li><a href='#decode'>Decoding workflow</a></li><li><a href='#mistakes'>Common mistakes</a></li></ul>",
+        "content": """
+        <h2 id="why">Why APIs use Base64</h2>
+        <p>JSON is designed for text values, so raw binary bytes do not fit cleanly inside a normal JSON string. Base64 represents binary or text data with a restricted set of text-safe characters. That makes it useful for small images, certificates, attachments, hashes, and test fixtures passed through text-oriented systems.</p>
+        <p>Base64 is encoding, not compression and not encryption. Anyone who receives the string can decode it. Do not use it as protection for passwords, tokens, private documents, or confidential customer information.</p>
+        <h2 id="overhead">Understand size and transport limits</h2>
+        <p>Base64 output is roughly one-third larger than the original binary data, before JSON framing and network headers. Large files can therefore exceed API gateway limits, consume more memory, and slow requests. For large uploads, multipart forms, object storage, or signed upload URLs are usually better designs.</p>
+        <h2 id="encode">Encode data for a JSON payload</h2>
+        <ol><li>Confirm that the API explicitly expects Base64.</li><li>Use <a href="/base64-encode/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Base64 Encode</a> for the source value.</li><li>Determine whether the endpoint expects only the encoded characters or a full data URI prefix.</li><li>Place the string in the correct JSON field.</li><li>Check the complete object with <a href="/json-validator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">JSON Validator</a> before sending.</li></ol>
+        <h2 id="decode">Decode and verify a response</h2>
+        <p>Copy only the Base64 value into <a href="/base64-decode/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">Base64 Decode</a>. If the value begins with a data URI such as <code>data:image/png;base64,</code>, remove the prefix unless the decoder handles it. Compare decoded content with the expected text or file type.</p>
+        <h2 id="mistakes">Common Base64 API mistakes</h2>
+        <ul><li>Sending a data URI when the API expects raw Base64.</li><li>Adding line breaks that the receiving parser does not tolerate.</li><li>Encoding text twice.</li><li>Assuming Base64 hides sensitive values.</li><li>Embedding very large files in JSON.</li><li>Forgetting that URL-safe Base64 uses a slightly different alphabet.</li></ul>
+        """,
+        "faqs": [
+            {"q": "Why use Base64 in JSON?", "a": "It represents binary data with text-safe characters that can be stored in a JSON string."},
+            {"q": "Does Base64 make a file smaller?", "a": "No. Base64 normally makes the representation about one-third larger than the original binary data."},
+            {"q": "Is Base64 encryption?", "a": "No. It is reversible encoding and provides no confidentiality."},
+            {"q": "Should large API uploads use Base64?", "a": "Usually not. Multipart uploads or object storage are more efficient for large files."}
+        ]
+    },
+    {
+        "slug": "qr-code-for-google-reviews-local-business-guide",
+        "title": "How to Create a QR Code for Google Reviews",
+        "description": "Create a Google review QR code, verify the destination, design a clear call to action, print it reliably, and request feedback ethically.",
+        "date": "July 18, 2026",
+        "toc": "<ul><li><a href='#link'>Get the correct review link</a></li><li><a href='#create'>Create the QR code</a></li><li><a href='#design'>Design and printing tips</a></li><li><a href='#placement'>Where to place it</a></li><li><a href='#policy'>Ethical review requests</a></li></ul>",
+        "content": """
+        <h2 id="link">Get the correct Google review link</h2>
+        <p>Start from the verified Google Business Profile you manage and copy its customer review link. Open that link in a private browser window and on a phone before turning it into a QR code. It should reach the correct business and lead naturally to the review experience without requiring customers to search again.</p>
+        <p>A QR code permanently represents the destination encoded inside it. If you print a direct review URL and later change the destination, the old code will not update by itself. Test carefully before ordering signs, cards, menus, or packaging.</p>
+        <h2 id="create">Create and test the QR code</h2>
+        <ol><li>Copy the verified review URL.</li><li>Open <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:600;text-decoration:none;">QR Code Generator</a>.</li><li>Paste the URL exactly, with no extra spaces.</li><li>Generate and download a high-contrast code.</li><li>Scan it with at least two different phones before publishing.</li></ol>
+        <h2 id="design">Design and printing tips</h2>
+        <p>Use a dark code on a light background and preserve the blank quiet zone around every edge. Do not stretch, crop, blur, or heavily decorate the code. Print a small sample at its intended size, then scan it from the distance a customer will actually use. Pair it with a plain call to action such as “Share your experience” so people know what happens after scanning.</p>
+        <h2 id="placement">Useful places for a review QR code</h2>
+        <ul><li>Receipts and thank-you cards after a completed service.</li><li>Checkout counters and waiting areas.</li><li>Table tents, menus, or takeaway packaging.</li><li>Post-service email or printed follow-up material.</li><li>Invoices where a customer has already received the product or service.</li></ul>
+        <h2 id="policy">Ask for honest reviews ethically</h2>
+        <p>Invite genuine feedback from customers without offering rewards for positive ratings or selectively asking only happy customers. Do not write the review for them. A neutral request builds more trustworthy feedback and avoids misleading future customers. Review platform policies can change, so check the current Google Business Profile guidance before launching a campaign.</p>
+        """,
+        "faqs": [
+            {"q": "Can I create a QR code that opens Google reviews?", "a": "Yes. Encode the verified review link from the Google Business Profile you manage."},
+            {"q": "Do Google review QR codes expire?", "a": "A static QR code does not expire, but it stops working if the encoded destination URL no longer works."},
+            {"q": "Can I reward customers for five-star reviews?", "a": "Do not incentivize positive-only reviews. Ask neutrally for honest feedback and follow current platform policies."},
+            {"q": "How do I test a printed review QR code?", "a": "Print it at the intended size and scan it from a realistic distance with multiple phones."}
+        ]
     }
 ]
