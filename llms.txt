@@ -52,6 +52,12 @@ freeconvert.cloud provides practical browser-based image, text, developer, secur
 - javascript minifier -> https://freeconvert.cloud/javascript-minifier/ (Developer tools; variants: js minifier, minify javascript online, compress javascript code, javascript compressor)
 - word to html -> https://freeconvert.cloud/word-to-html/ (Developer tools; variants: word to html converter, convert text to html paragraphs, doc text to html, clean html converter)
 - text to ascii -> https://freeconvert.cloud/text-to-ascii/ (Developer tools; variants: ascii converter, text to ascii codes, ascii code converter, string to ascii)
+- json minifier -> https://freeconvert.cloud/json-minifier/ (Developer tools; variants: minify json online, json compressor, remove whitespace from json, compact json, json minify tool)
+- jwt decoder -> https://freeconvert.cloud/jwt-decoder/ (Developer tools; variants: decode jwt token, jwt token decoder online, jwt payload decoder, inspect jwt claims, jwt expiry checker)
+- regex tester -> https://freeconvert.cloud/regex-tester/ (Developer tools; variants: regular expression tester, regex checker online, javascript regex tester, test regex pattern, regex match tester)
+- html entity encoder -> https://freeconvert.cloud/html-entity-encoder/ (Developer tools; variants: html encode online, escape html characters, html special character encoder, text to html entities)
+- html entity decoder -> https://freeconvert.cloud/html-entity-decoder/ (Developer tools; variants: html decode online, unescape html entities, decode ampersand html, html character decoder)
+- url parser -> https://freeconvert.cloud/url-parser/ (Developer tools; variants: parse url online, url query parser, url component analyzer, extract url parameters, url inspector)
 
 ## Privacy & Safety Core Documents
 - File Security Info: https://freeconvert.cloud/security/

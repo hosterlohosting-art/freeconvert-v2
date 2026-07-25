@@ -26,6 +26,12 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - javascript minifier -> https://freeconvert.cloud/javascript-minifier/ (Developer tools; variants: js minifier, minify javascript online, compress javascript code, javascript compressor)
 - word to html -> https://freeconvert.cloud/word-to-html/ (Developer tools; variants: word to html converter, convert text to html paragraphs, doc text to html, clean html converter)
 - text to ascii -> https://freeconvert.cloud/text-to-ascii/ (Developer tools; variants: ascii converter, text to ascii codes, ascii code converter, string to ascii)
+- json minifier -> https://freeconvert.cloud/json-minifier/ (Developer tools; variants: minify json online, json compressor, remove whitespace from json, compact json, json minify tool)
+- jwt decoder -> https://freeconvert.cloud/jwt-decoder/ (Developer tools; variants: decode jwt token, jwt token decoder online, jwt payload decoder, inspect jwt claims, jwt expiry checker)
+- regex tester -> https://freeconvert.cloud/regex-tester/ (Developer tools; variants: regular expression tester, regex checker online, javascript regex tester, test regex pattern, regex match tester)
+- html entity encoder -> https://freeconvert.cloud/html-entity-encoder/ (Developer tools; variants: html encode online, escape html characters, html special character encoder, text to html entities)
+- html entity decoder -> https://freeconvert.cloud/html-entity-decoder/ (Developer tools; variants: html decode online, unescape html entities, decode ampersand html, html character decoder)
+- url parser -> https://freeconvert.cloud/url-parser/ (Developer tools; variants: parse url online, url query parser, url component analyzer, extract url parameters, url inspector)
 
 ## Complete Tool Inventory
 - PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - Convert PNG images to JPG instantly. Category: Image.
@@ -94,12 +100,18 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - JavaScript Minifier: https://freeconvert.cloud/javascript-minifier/ - Minify JavaScript snippets for smaller page assets. Category: Developer.
 - Word to HTML: https://freeconvert.cloud/word-to-html/ - Convert pasted Word-style text into clean HTML paragraphs. Category: Developer.
 - Text to ASCII: https://freeconvert.cloud/text-to-ascii/ - Convert text characters into ASCII code values. Category: Developer.
+- JSON Minifier: https://freeconvert.cloud/json-minifier/ - Minify JSON data and validate its syntax locally. Category: Developer.
+- JWT Decoder: https://freeconvert.cloud/jwt-decoder/ - Decode JWT headers and payloads without uploading tokens. Category: Developer.
+- Regex Tester: https://freeconvert.cloud/regex-tester/ - Test regular expressions and list matching text instantly. Category: Developer.
+- HTML Entity Encoder: https://freeconvert.cloud/html-entity-encoder/ - Encode HTML special characters into safe entities. Category: Developer.
+- HTML Entity Decoder: https://freeconvert.cloud/html-entity-decoder/ - Decode HTML entities back into readable characters. Category: Developer.
+- URL Parser: https://freeconvert.cloud/url-parser/ - Break URLs into protocol, host, path, query, and hash parts. Category: Developer.
 
 ## Editorial And Trust Signals
 - Editorial team: freeconvert.cloud Editorial Team.
 - Privacy model: supported public tools use client-side browser processing where possible.
 - Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-07-18.
+- Update marker: 2026-07-25.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml

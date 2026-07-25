@@ -1,7 +1,7 @@
 {
   "name": "freeconvert.cloud",
   "url": "https://freeconvert.cloud/",
-  "updated": "2026-07-18",
+  "updated": "2026-07-25",
   "description": "Privacy-first online file conversion platform with image, PDF, document, media, developer, security, and utility tools.",
   "entity_type": "WebApplication",
   "trust": {
@@ -301,6 +301,88 @@
         "text to ascii codes",
         "ascii code converter",
         "string to ascii"
+      ]
+    },
+    {
+      "priority": 38,
+      "keyword": "json minifier",
+      "url": "https://freeconvert.cloud/json-minifier/",
+      "intent": "Validate and compress JSON data into a compact single-line representation.",
+      "cluster": "Developer tools",
+      "variants": [
+        "minify json online",
+        "json compressor",
+        "remove whitespace from json",
+        "compact json",
+        "json minify tool"
+      ]
+    },
+    {
+      "priority": 39,
+      "keyword": "jwt decoder",
+      "url": "https://freeconvert.cloud/jwt-decoder/",
+      "intent": "Inspect JWT header and payload claims locally without uploading a token.",
+      "cluster": "Developer tools",
+      "variants": [
+        "decode jwt token",
+        "jwt token decoder online",
+        "jwt payload decoder",
+        "inspect jwt claims",
+        "jwt expiry checker"
+      ]
+    },
+    {
+      "priority": 40,
+      "keyword": "regex tester",
+      "url": "https://freeconvert.cloud/regex-tester/",
+      "intent": "Test regular expression patterns and review matches against sample text.",
+      "cluster": "Developer tools",
+      "variants": [
+        "regular expression tester",
+        "regex checker online",
+        "javascript regex tester",
+        "test regex pattern",
+        "regex match tester"
+      ]
+    },
+    {
+      "priority": 41,
+      "keyword": "html entity encoder",
+      "url": "https://freeconvert.cloud/html-entity-encoder/",
+      "intent": "Escape reserved HTML characters for safe display in markup and CMS fields.",
+      "cluster": "Developer tools",
+      "variants": [
+        "html encode online",
+        "escape html characters",
+        "html special character encoder",
+        "text to html entities"
+      ]
+    },
+    {
+      "priority": 42,
+      "keyword": "html entity decoder",
+      "url": "https://freeconvert.cloud/html-entity-decoder/",
+      "intent": "Convert named and numeric HTML entities back into readable characters.",
+      "cluster": "Developer tools",
+      "variants": [
+        "html decode online",
+        "unescape html entities",
+        "decode ampersand html",
+        "html character decoder"
+      ]
+    },
+    {
+      "priority": 43,
+      "keyword": "url parser",
+      "url": "https://freeconvert.cloud/url-parser/",
+      "intent": "Inspect URL components and extract query parameters for debugging and SEO checks.",
+      "cluster": "Developer tools",
+      "variants": [
+        "parse url online",
+        "url query parser",
+        "url component analyzer",
+        "extract url parameters",
+        "url inspector"
       ]
     }
   ],
@@ -898,6 +980,60 @@
       "description": "Convert text characters into ASCII code values.",
       "title": "Text to ASCII Converter Online",
       "target_keyword": "text to ascii"
+    },
+    {
+      "id": "json-minifier",
+      "name": "JSON Minifier",
+      "url": "https://freeconvert.cloud/json-minifier/",
+      "category": "Developer",
+      "description": "Minify JSON data and validate its syntax locally.",
+      "title": "JSON Minifier Online Free - Compress JSON",
+      "target_keyword": "json minifier"
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "url": "https://freeconvert.cloud/jwt-decoder/",
+      "category": "Developer",
+      "description": "Decode JWT headers and payloads without uploading tokens.",
+      "title": "JWT Decoder Online - Decode JWT Token",
+      "target_keyword": "jwt decoder"
+    },
+    {
+      "id": "regex-tester",
+      "name": "Regex Tester",
+      "url": "https://freeconvert.cloud/regex-tester/",
+      "category": "Developer",
+      "description": "Test regular expressions and list matching text instantly.",
+      "title": "Regex Tester Online - Regular Expression Checker",
+      "target_keyword": "regex tester"
+    },
+    {
+      "id": "html-entity-encoder",
+      "name": "HTML Entity Encoder",
+      "url": "https://freeconvert.cloud/html-entity-encoder/",
+      "category": "Developer",
+      "description": "Encode HTML special characters into safe entities.",
+      "title": "HTML Entity Encoder Online - Escape HTML",
+      "target_keyword": "html entity encoder"
+    },
+    {
+      "id": "html-entity-decoder",
+      "name": "HTML Entity Decoder",
+      "url": "https://freeconvert.cloud/html-entity-decoder/",
+      "category": "Developer",
+      "description": "Decode HTML entities back into readable characters.",
+      "title": "HTML Entity Decoder Online - Unescape HTML",
+      "target_keyword": "html entity decoder"
+    },
+    {
+      "id": "url-parser",
+      "name": "URL Parser",
+      "url": "https://freeconvert.cloud/url-parser/",
+      "category": "Developer",
+      "description": "Break URLs into protocol, host, path, query, and hash parts.",
+      "title": "URL Parser Online - Parse URL Query Parameters",
+      "target_keyword": "url parser"
     }
   ],
   "discovery": {

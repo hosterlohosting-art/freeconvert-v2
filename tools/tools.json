@@ -878,5 +878,65 @@
         "category": "Developer",
         "seo_title": "Text to ASCII Converter Online",
         "seo_desc": "Convert letters, symbols, and text strings into ASCII decimal codes directly in your browser."
+    },
+    {
+        "id": "json-minifier",
+        "name": "JSON Minifier",
+        "icon": "JSON",
+        "description": "Minify JSON data and validate its syntax locally.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "JSON Minifier Online Free - Compress JSON",
+        "seo_desc": "Minify and validate JSON online by removing whitespace and indentation. Private browser-based JSON compression with instant copy."
+    },
+    {
+        "id": "jwt-decoder",
+        "name": "JWT Decoder",
+        "icon": "JWT",
+        "description": "Decode JWT headers and payloads without uploading tokens.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "JWT Decoder Online - Decode JWT Token",
+        "seo_desc": "Decode JWT header and payload data safely in your browser. Inspect token claims, expiry times, and JSON without server uploads."
+    },
+    {
+        "id": "regex-tester",
+        "name": "Regex Tester",
+        "icon": ".*",
+        "description": "Test regular expressions and list matching text instantly.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "Regex Tester Online - Regular Expression Checker",
+        "seo_desc": "Test JavaScript regular expressions online, check regex matches, and inspect captured text instantly with private browser processing."
+    },
+    {
+        "id": "html-entity-encoder",
+        "name": "HTML Entity Encoder",
+        "icon": "&lt;",
+        "description": "Encode HTML special characters into safe entities.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "HTML Entity Encoder Online - Escape HTML",
+        "seo_desc": "Encode HTML special characters into safe entities for code, CMS fields, and web pages directly in your browser."
+    },
+    {
+        "id": "html-entity-decoder",
+        "name": "HTML Entity Decoder",
+        "icon": "&amp;",
+        "description": "Decode HTML entities back into readable characters.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "HTML Entity Decoder Online - Unescape HTML",
+        "seo_desc": "Decode HTML entities such as ampersand, quote, less-than, and numeric character references into readable text online."
+    },
+    {
+        "id": "url-parser",
+        "name": "URL Parser",
+        "icon": "URL",
+        "description": "Break URLs into protocol, host, path, query, and hash parts.",
+        "type": "utility_dev",
+        "category": "Developer",
+        "seo_title": "URL Parser Online - Parse URL Query Parameters",
+        "seo_desc": "Parse any URL into protocol, hostname, port, pathname, query parameters, and hash values with a private browser-based tool."
     }
 ]

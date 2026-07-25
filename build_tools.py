@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-07-18'
+TODAY_ISO = '2026-07-25'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -347,6 +347,54 @@ TOP_KEYWORD_TARGETS = [
         'cluster': 'Developer tools',
         'priority': 37,
         'modifiers': ['ascii converter', 'text to ascii codes', 'ascii code converter', 'string to ascii']
+    },
+    {
+        'keyword': 'json minifier',
+        'tool_id': 'json-minifier',
+        'intent': 'Validate and compress JSON data into a compact single-line representation.',
+        'cluster': 'Developer tools',
+        'priority': 38,
+        'modifiers': ['minify json online', 'json compressor', 'remove whitespace from json', 'compact json', 'json minify tool']
+    },
+    {
+        'keyword': 'jwt decoder',
+        'tool_id': 'jwt-decoder',
+        'intent': 'Inspect JWT header and payload claims locally without uploading a token.',
+        'cluster': 'Developer tools',
+        'priority': 39,
+        'modifiers': ['decode jwt token', 'jwt token decoder online', 'jwt payload decoder', 'inspect jwt claims', 'jwt expiry checker']
+    },
+    {
+        'keyword': 'regex tester',
+        'tool_id': 'regex-tester',
+        'intent': 'Test regular expression patterns and review matches against sample text.',
+        'cluster': 'Developer tools',
+        'priority': 40,
+        'modifiers': ['regular expression tester', 'regex checker online', 'javascript regex tester', 'test regex pattern', 'regex match tester']
+    },
+    {
+        'keyword': 'html entity encoder',
+        'tool_id': 'html-entity-encoder',
+        'intent': 'Escape reserved HTML characters for safe display in markup and CMS fields.',
+        'cluster': 'Developer tools',
+        'priority': 41,
+        'modifiers': ['html encode online', 'escape html characters', 'html special character encoder', 'text to html entities']
+    },
+    {
+        'keyword': 'html entity decoder',
+        'tool_id': 'html-entity-decoder',
+        'intent': 'Convert named and numeric HTML entities back into readable characters.',
+        'cluster': 'Developer tools',
+        'priority': 42,
+        'modifiers': ['html decode online', 'unescape html entities', 'decode ampersand html', 'html character decoder']
+    },
+    {
+        'keyword': 'url parser',
+        'tool_id': 'url-parser',
+        'intent': 'Inspect URL components and extract query parameters for debugging and SEO checks.',
+        'cluster': 'Developer tools',
+        'priority': 43,
+        'modifiers': ['parse url online', 'url query parser', 'url component analyzer', 'extract url parameters', 'url inspector']
     },
 ]
 
@@ -3413,14 +3461,14 @@ const selector = document.getElementById('operation-selector');
 const toolId = '{{ID}}';
 
 // Inject operation controls
-if (toolId === 'base64-tool') {
+if (['base64-tool', 'base64-encode', 'base64-decode'].includes(toolId)) {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
             <option value="encode">🔐 Text to Base64</option>
             <option value="decode">🔓 Base64 to Text</option>
         </select>
     `;
-} else if (toolId === 'url-encoder-decoder') {
+} else if (['url-encoder-decoder', 'url-encoder', 'url-decoder'].includes(toolId)) {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
             <option value="encode">🔗 URL Encode</option>
@@ -3457,14 +3505,14 @@ btn.onclick = () => {
             let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
             csv.unshift(header.join(','));
             output.value = csv.join('\r\n');
-        } else if (toolId === 'base64-tool') {
-            if (mode === 'encode') {
+        } else if (['base64-tool', 'base64-encode', 'base64-decode'].includes(toolId)) {
+            if (toolId === 'base64-encode' || (toolId === 'base64-tool' && mode === 'encode')) {
                 output.value = btoa(unescape(encodeURIComponent(val)));
             } else {
                 output.value = decodeURIComponent(escape(atob(val)));
             }
-        } else if (toolId === 'url-encoder-decoder') {
-            if (mode === 'encode') {
+        } else if (['url-encoder-decoder', 'url-encoder', 'url-decoder'].includes(toolId)) {
+            if (toolId === 'url-encoder' || (toolId === 'url-encoder-decoder' && mode === 'encode')) {
                 output.value = encodeURIComponent(val);
             } else {
                 output.value = decodeURIComponent(val);
@@ -3589,7 +3637,7 @@ btn.onclick = () => {
         output.style.display = 'block';
         preview.style.display = 'none';
         output.value = css_beautify(val, { indent_size: 2 });
-    } else if (toolId === 'js-formatter') {
+    } else if (toolId === 'js-formatter' || toolId === 'javascript-formatter') {
         output.style.display = 'block';
         preview.style.display = 'none';
         output.value = js_beautify(val, { indent_size: 2 });
@@ -3662,7 +3710,7 @@ if (toolId === 'lorem-ipsum') {
         const count = document.getElementById('lorem-count').value;
         const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         let out = "";
-        for(let i=0; i<count; i++) out += text + "\\n\\n";
+        for(let i=0; i<count; i++) out += text + "\n\n";
         document.getElementById('lorem-out').value = out.trim();
     };
 } else if (toolId === 'password-strength') {
@@ -4089,7 +4137,7 @@ if (toolId === 'lorem-ipsum') {
         } else {
             res = val * units[type][from] / units[type][to];
         }
-        document.getElementById('unit-result').textContent = res.toFixed(4).replace(/\\.0000$/, '') + " " + to.toUpperCase();
+        document.getElementById('unit-result').textContent = res.toFixed(4).replace(/\.0000$/, '') + " " + to.toUpperCase();
     };
     document.getElementById('unit-type').onchange = updateSelects;
     ['unit-val', 'unit-from', 'unit-to'].forEach(id => document.getElementById(id).oninput = calc);
@@ -4120,10 +4168,9 @@ if (toolId === 'lorem-ipsum') {
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"><\/script>
     `;
     const hInput = document.getElementById('hash-input');
-    hInput.oninput = () => {
+    hInput.oninput = async () => {
         const v = hInput.value;
         if(!v) {
             document.getElementById('md5-out').textContent = "-";
@@ -4131,9 +4178,11 @@ if (toolId === 'lorem-ipsum') {
             document.getElementById('sha256-out').textContent = "-";
             return;
         }
-        document.getElementById('md5-out').textContent = CryptoJS.MD5(v).toString();
-        document.getElementById('sha1-out').textContent = CryptoJS.SHA1(v).toString();
-        document.getElementById('sha256-out').textContent = CryptoJS.SHA256(v).toString();
+        const bytes = new TextEncoder().encode(v);
+        const toHex = buffer => Array.from(new Uint8Array(buffer)).map(byte => byte.toString(16).padStart(2, '0')).join('');
+        document.getElementById('md5-out').textContent = "MD5 is not supported by the secure Web Crypto API";
+        document.getElementById('sha1-out').textContent = toHex(await crypto.subtle.digest('SHA-1', bytes));
+        document.getElementById('sha256-out').textContent = toHex(await crypto.subtle.digest('SHA-256', bytes));
     };
 } else if (toolId === 'morse-code') {
     const map = {
@@ -4460,12 +4509,12 @@ if (toolId === 'lorem-ipsum') {
         const colInline = document.getElementById('min-inline').checked;
         
         if (remComments) {
-            minified = minified.replace(/<!--[\\s\\S]*?-->/g, '');
+            minified = minified.replace(/<!--[\s\S]*?-->/g, '');
         }
         
         if (colWhitespace) {
-            minified = minified.replace(/\\s+/g, ' ');
-            minified = minified.replace(/>\\s+</g, '><');
+            minified = minified.replace(/\s+/g, ' ');
+            minified = minified.replace(/>\s+</g, '><');
         }
         
         if (colInline) {
@@ -4516,7 +4565,13 @@ if (toolId === 'lorem-ipsum') {
         'css-minifier': ['CSS code', 'Minified CSS'],
         'javascript-minifier': ['JavaScript code', 'Minified JavaScript'],
         'word-to-html': ['Document text', 'Clean HTML'],
-        'text-to-ascii': ['Text', 'ASCII codes']
+        'text-to-ascii': ['Text', 'ASCII codes'],
+        'json-minifier': ['JSON input', 'Minified JSON'],
+        'jwt-decoder': ['JWT token', 'Decoded header and payload'],
+        'regex-tester': ['Pattern, flags, and test text', 'Regex matches'],
+        'html-entity-encoder': ['HTML or text', 'Encoded HTML entities'],
+        'html-entity-decoder': ['HTML entities', 'Decoded text'],
+        'url-parser': ['URL', 'Parsed URL components']
     };
     const labels = labelMap[toolId] || ['Input', 'Output'];
     const defaults = {
@@ -4528,18 +4583,24 @@ if (toolId === 'lorem-ipsum') {
         'unix-time-converter': Math.floor(Date.now() / 1000).toString(),
         'time-zone-converter': '2026-06-15 12:00, Asia/Karachi',
         'slug-generator': 'How to Convert JPG to PDF Online Free',
-        'remove-duplicate-lines': 'apple\\nbanana\\napple\\norange\\nbanana',
+        'remove-duplicate-lines': 'apple\nbanana\napple\norange\nbanana',
         'text-cleaner': '<p>  Hello,   world!  </p>',
         'hashtag-generator': 'free online file converter',
         'lorem-ipsum-generator': '3',
         'barcode-generator': '123456789012',
-        'sitemap-generator': 'https://freeconvert.cloud/\\nhttps://freeconvert.cloud/png-to-jpg/\\nhttps://freeconvert.cloud/image-compressor/',
-        'css-minifier': '/* Hero button */\\n.button {\\n  color: white;\\n  background: #6d5dfc;\\n}',
-        'javascript-minifier': '// Sample script\\nfunction hello(name) {\\n  console.log(\"Hello \" + name);\\n}',
-        'word-to-html': 'Main Heading\\n\\nThis is a paragraph copied from a document.\\n\\nAnother paragraph with useful content.',
-        'text-to-ascii': 'freeconvert'
+        'sitemap-generator': 'https://freeconvert.cloud/\nhttps://freeconvert.cloud/png-to-jpg/\nhttps://freeconvert.cloud/image-compressor/',
+        'css-minifier': '/* Hero button */\n.button {\n  color: white;\n  background: #6d5dfc;\n}',
+        'javascript-minifier': '// Sample script\nfunction hello(name) {\n  console.log(\"Hello \" + name);\n}',
+        'word-to-html': 'Main Heading\n\nThis is a paragraph copied from a document.\n\nAnother paragraph with useful content.',
+        'text-to-ascii': 'freeconvert',
+        'json-minifier': '{\n  "name": "freeconvert",\n  "private": true,\n  "tools": 94\n}',
+        'jwt-decoder': 'eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkZyZWVDb252ZXJ0IiwiZXhwIjo0MTAyNDQ0ODAwfQ.',
+        'regex-tester': 'free\\w+, gi\nFreeConvert makes free conversion tools. Try freeconvert today.',
+        'html-entity-encoder': '<h2>Free & secure</h2>',
+        'html-entity-decoder': '&lt;h2&gt;Free &amp; secure&lt;/h2&gt;',
+        'url-parser': 'https://freeconvert.cloud/json-minifier/?source=tools&utm_medium=internal#examples'
     };
-    const multiLine = ['remove-duplicate-lines', 'text-cleaner', 'sitemap-generator', 'css-minifier', 'javascript-minifier', 'word-to-html', 'text-to-ascii'].includes(toolId);
+    const multiLine = ['remove-duplicate-lines', 'text-cleaner', 'sitemap-generator', 'css-minifier', 'javascript-minifier', 'word-to-html', 'text-to-ascii', 'json-minifier', 'jwt-decoder', 'regex-tester', 'html-entity-encoder', 'html-entity-decoder', 'url-parser'].includes(toolId);
     const dateInput = ['age-calculator', 'timestamp-converter'].includes(toolId);
     const numberInput = ['uuid-generator', 'lorem-ipsum-generator'].includes(toolId);
     const inputControl = multiLine
@@ -4584,19 +4645,19 @@ if (toolId === 'lorem-ipsum') {
                 const hadBirthday = now.getMonth() > birth.getMonth() || (now.getMonth() === birth.getMonth() && now.getDate() >= birth.getDate());
                 if (!hadBirthday) years--;
                 const days = Math.floor((now - birth) / 86400000);
-                result = `${years} years old\\n${days} total days\\n${Math.floor(days * 24)} total hours`;
+            result = `${years} years old\n${days} total days\n${Math.floor(days * 24)} total hours`;
             }
         } else if (toolId === 'percentage-calculator') {
             const [baseRaw, pctRaw] = parts(value);
             const base = Number(baseRaw), pct = Number(pctRaw);
-            result = isNaN(base) || isNaN(pct) ? 'Enter values like: 200, 15' : `${pct}% of ${base} = ${(base * pct / 100).toFixed(4).replace(/\\.0000$/, '')}`;
+            result = isNaN(base) || isNaN(pct) ? 'Enter values like: 200, 15' : `${pct}% of ${base} = ${(base * pct / 100).toFixed(4).replace(/\.0000$/, '')}`;
         } else if (toolId === 'random-number-generator') {
             const [minRaw, maxRaw, countRaw] = parts(value);
             const min = Number(minRaw || 1), max = Number(maxRaw || 100), count = Math.max(1, Math.min(Number(countRaw || 5), 100));
             result = Array.from({length: count}, () => Math.floor(Math.random() * (max - min + 1)) + min).join(', ');
         } else if (toolId === 'uuid-generator') {
             const count = Math.max(1, Math.min(parseInt(value, 10) || 5, 100));
-            result = Array.from({length: count}, uuidv4).join('\\n');
+            result = Array.from({length: count}, uuidv4).join('\n');
         } else if (toolId === 'timestamp-converter') {
             const date = new Date(value);
             result = isNaN(date.getTime()) ? 'Enter a valid date.' : Math.floor(date.getTime() / 1000).toString();
@@ -4612,20 +4673,20 @@ if (toolId === 'lorem-ipsum') {
             result = slugify(value);
         } else if (toolId === 'remove-duplicate-lines') {
             const seen = new Set();
-            result = value.split(/\\r?\\n/).filter(line => {
+            result = value.split(/\r?\n/).filter(line => {
                 const key = line.trim();
                 if (!key || seen.has(key)) return false;
                 seen.add(key);
                 return true;
-            }).join('\\n');
+            }).join('\n');
         } else if (toolId === 'text-cleaner') {
-            result = value.replace(/<[^>]*>/g, ' ').replace(/\\s+/g, ' ').trim();
+            result = value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
         } else if (toolId === 'hashtag-generator') {
-            result = value.split(/\\s+/).map(word => word.replace(/[^a-zA-Z0-9]/g, '')).filter(Boolean).slice(0, 20).map(word => '#' + word.toLowerCase()).join(' ');
+            result = value.split(/\s+/).map(word => word.replace(/[^a-zA-Z0-9]/g, '')).filter(Boolean).slice(0, 20).map(word => '#' + word.toLowerCase()).join(' ');
         } else if (toolId === 'lorem-ipsum-generator') {
             const count = Math.max(1, Math.min(parseInt(value, 10) || 3, 20));
             const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.';
-            result = Array.from({length: count}, () => text).join('\\n\\n');
+            result = Array.from({length: count}, () => text).join('\n\n');
         } else if (toolId === 'barcode-generator') {
             const clean = value.trim() || '123456789012';
             result = clean;
@@ -4659,6 +4720,59 @@ if (toolId === 'lorem-ipsum') {
             }).join('\n');
         } else if (toolId === 'text-to-ascii') {
             result = value.split('').map(char => `${char} = ${char.charCodeAt(0)}`).join('\n');
+        } else if (toolId === 'json-minifier') {
+            try {
+                result = JSON.stringify(JSON.parse(value));
+            } catch (error) {
+                result = `Invalid JSON: ${error.message}`;
+            }
+        } else if (toolId === 'jwt-decoder') {
+            try {
+                const tokenParts = value.trim().split('.');
+                if (tokenParts.length < 2) throw new Error('A JWT must contain header and payload sections.');
+                const decodePart = part => {
+                    const normalized = part.replace(/-/g, '+').replace(/_/g, '/');
+                    const jsonText = decodeURIComponent(Array.from(atob(normalized.padEnd(Math.ceil(normalized.length / 4) * 4, '=')))
+                        .map(char => '%' + char.charCodeAt(0).toString(16).padStart(2, '0')).join(''));
+                    return JSON.parse(jsonText);
+                };
+                const header = decodePart(tokenParts[0]);
+                const payload = decodePart(tokenParts[1]);
+                const expiry = payload.exp ? new Date(payload.exp * 1000).toISOString() : null;
+                result = `HEADER\n${JSON.stringify(header, null, 2)}\n\nPAYLOAD\n${JSON.stringify(payload, null, 2)}${expiry ? `\n\nEXPIRY\n${expiry}` : ''}\n\nNote: decoding does not verify the token signature.`;
+            } catch (error) {
+                result = `Invalid JWT: ${error.message}`;
+            }
+        } else if (toolId === 'regex-tester') {
+            try {
+                const lines = value.split(/\r?\n/);
+                const config = lines.shift() || '';
+                const separator = config.lastIndexOf(',');
+                const pattern = separator >= 0 ? config.slice(0, separator).trim() : config.trim();
+                const flags = separator >= 0 ? config.slice(separator + 1).trim() : 'g';
+                const expression = new RegExp(pattern, flags.includes('g') ? flags : flags + 'g');
+                const testText = lines.join('\n');
+                const matches = Array.from(testText.matchAll(expression));
+                result = matches.length
+                    ? `${matches.length} match${matches.length === 1 ? '' : 'es'}\n\n` + matches.map((match, index) => `#${index + 1} "${match[0]}" at index ${match.index}${match.length > 1 ? `\nGroups: ${match.slice(1).join(' | ')}` : ''}`).join('\n\n')
+                    : 'No matches found.';
+            } catch (error) {
+                result = `Invalid regular expression: ${error.message}`;
+            }
+        } else if (toolId === 'html-entity-encoder') {
+            result = value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        } else if (toolId === 'html-entity-decoder') {
+            const decoder = document.createElement('textarea');
+            decoder.innerHTML = value;
+            result = decoder.value;
+        } else if (toolId === 'url-parser') {
+            try {
+                const parsed = new URL(value.trim());
+                const queryRows = Array.from(parsed.searchParams.entries()).map(([key, val]) => `  ${key}: ${val}`).join('\n') || '  (none)';
+                result = `Protocol: ${parsed.protocol}\nHostname: ${parsed.hostname}\nPort: ${parsed.port || '(default)'}\nOrigin: ${parsed.origin}\nPathname: ${parsed.pathname}\nQuery parameters:\n${queryRows}\nHash: ${parsed.hash || '(none)'}`;
+            } catch (error) {
+                result = 'Enter a complete URL beginning with http:// or https://.';
+            }
         } else {
             result = value;
         }
@@ -5161,6 +5275,11 @@ FOOTER_SNIPPET = """
                 </div>
                 <h4 style="margin-top:1.2rem;">New Tools</h4>
                 <div class="footer-links">
+                    <a href="/json-minifier/">JSON Minifier</a>
+                    <a href="/jwt-decoder/">JWT Decoder</a>
+                    <a href="/regex-tester/">Regex Tester</a>
+                    <a href="/html-entity-encoder/">HTML Entity Encoder</a>
+                    <a href="/url-parser/">URL Parser</a>
                     <a href="/sitemap-generator/">Sitemap Generator</a>
                     <a href="/css-minifier/">CSS Minifier</a>
                     <a href="/javascript-minifier/">JavaScript Minifier</a>
@@ -6280,6 +6399,12 @@ def build_categories(tools):
         }
         schema_tag = f'<script type="application/ld+json">{json.dumps(schema_data)}</script>'
 
+        category_tool_ui = UPLOAD_BOX_UI
+        category_tool_script = UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')
+        if cat['slug'] == 'unit-converter':
+            category_tool_ui = UTILITY_UI
+            category_tool_script = UTILITY_SCRIPT.replace('{{ID}}', 'unit-converter')
+
         html_content = """<!DOCTYPE html>
 <html lang="en">
 
@@ -6414,7 +6539,8 @@ def build_categories(tools):
     </script>
 </body>
 
-</html>""".replace('{SEO_TITLE}', cat['seo_title']).replace('{SEO_DESC}', cat['seo_desc']).replace('{CAT_SLUG}', cat['slug']).replace('{SCHEMA_TAG}', schema_tag).replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{CAT_NAME}', cat['name']).replace('{CAT_INTRO}', cat['intro']).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{GRID_HTML}', grid_html).replace('{CAT_HOW_TO}', cat['how_to']).replace('{FAQ_ACC_HTML}', faq_acc_html).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{CAT_SEO_INTRO}', cat_seo_intro).replace('{CAT_GLOSSARY}', cat_glossary).replace('{CAT_WHY_SECTION}', cat_why_section).replace('{CAT_USE_CASES}', cat_use_cases).replace('{CAT_FORMATS_GUIDE}', cat_formats_guide)
+</html>""".replace('{SEO_TITLE}', cat['seo_title']).replace('{SEO_DESC}', cat['seo_desc']).replace('{CAT_SLUG}', cat['slug']).replace('{SCHEMA_TAG}', schema_tag).replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{CAT_NAME}', cat['name']).replace('{CAT_INTRO}', cat['intro']).replace('{UPLOAD_BOX_UI}', category_tool_ui).replace('{GRID_HTML}', grid_html).replace('{CAT_HOW_TO}', cat['how_to']).replace('{FAQ_ACC_HTML}', faq_acc_html).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{UPLOAD_BOX_SCRIPT}', category_tool_script).replace('{CAT_SEO_INTRO}', cat_seo_intro).replace('{CAT_GLOSSARY}', cat_glossary).replace('{CAT_WHY_SECTION}', cat_why_section).replace('{CAT_USE_CASES}', cat_use_cases).replace('{CAT_FORMATS_GUIDE}', cat_formats_guide)
+        html_content = '\n'.join(line.rstrip() for line in html_content.splitlines()) + '\n'
         with open(f"{cat['slug']}/index.html", 'w', encoding='utf-8') as f:
             f.write(html_content)
         print(f"Generated category page: /{cat['slug']}/index.html")
@@ -7985,7 +8111,15 @@ def build():
         elif t_type in ['utility', 'utility_dev']:
             ui = UTILITY_UI
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
-            how_to = "<ol><li>Interact with active layout components.</li><li>See responsive results.</li></ol>"
+            utility_steps = {
+                'json-minifier': '<ol><li>Paste a JSON object or array into the input editor.</li><li>Select Process to validate the syntax and remove unnecessary whitespace.</li><li>Copy the compact JSON output into your application or API request.</li></ol>',
+                'jwt-decoder': '<ol><li>Paste the complete JWT token into the input editor.</li><li>Select Process to decode its Base64URL header and payload locally.</li><li>Review the claims and expiry time, remembering that decoding does not verify the signature.</li></ol>',
+                'regex-tester': '<ol><li>Enter the regular expression and flags on the first line, separated by a comma.</li><li>Paste the text to test on the following lines.</li><li>Select Process to list every match, position, and captured group.</li></ol>',
+                'html-entity-encoder': '<ol><li>Paste HTML markup or plain text containing reserved characters.</li><li>Select Process to escape ampersands, brackets, quotes, and apostrophes.</li><li>Copy the encoded entities into your HTML, CMS, or code sample.</li></ol>',
+                'html-entity-decoder': '<ol><li>Paste named or numeric HTML entities into the input editor.</li><li>Select Process to convert the entities back into readable characters.</li><li>Copy the decoded text and review it before inserting it into markup.</li></ol>',
+                'url-parser': '<ol><li>Paste a complete URL beginning with HTTP or HTTPS.</li><li>Select Process to separate the protocol, hostname, port, path, query parameters, and fragment.</li><li>Copy the parsed result for debugging, analytics, or SEO review.</li></ol>',
+            }
+            how_to = utility_steps.get(t_id, "<ol><li>Enter the required values in the active tool interface.</li><li>Select Process and review the browser-generated result.</li><li>Copy the output when it meets your needs.</li></ol>")
         elif t_type == 'image_base64':
             ui = UTILITY_UI
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
