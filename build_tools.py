@@ -3180,51 +3180,47 @@ CATEGORIES = {
 # --- DYNAMIC UIs ---
 
 UPLOAD_BOX_UI = """
-<div class="upload-wrapper" style="padding: 0;">
-    <div id="drop-zone" class="drop-zone">
+<div class="upload-wrapper homepage-upload-wrapper">
+    <div id="drop-zone" class="drop-zone upload-drop-compact">
         <div class="drop-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
             </svg>
         </div>
-        <p class="drop-text">Drag & drop files here</p>
-        <span class="or-separator">or</span>
+        <p class="drop-text">Drop an image or text file</p>
+        <span class="upload-helper-text">PNG, JPG, WebP, SVG, TXT, and browser-safe conversions</span>
         <button type="button" class="btn primary choose-btn">Choose Files</button>
+        <div class="upload-format-chips" aria-label="Supported conversions">
+            <span>PNG to JPG</span>
+            <span>JPG to WebP</span>
+            <span>WebP to PNG</span>
+            <span>SVG to PNG</span>
+            <span>Text to Base64</span>
+        </div>
         <input type="file" id="file-input" hidden>
     </div>
-    
-    <!-- Cloud options marked coming soon/inactive -->
-    <div class="cloud-uploads">
-        <button class="cloud-btn" disabled>☁️ Google Drive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
-        <button class="cloud-btn" disabled>📦 Dropbox <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
-        <button class="cloud-btn" disabled>📂 OneDrive <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
-        <button class="cloud-btn" disabled>🔗 URL Upload <span style="font-size:0.7rem; color:var(--text-light);">(Coming Soon)</span></button>
-    </div>
 
-    <!-- Active preview states -->
     <div id="preview-container" class="preview-container" style="display: none;">
         <div class="file-info-card">
             <div style="display: flex; align-items: center; gap: 0.8rem;">
-                <span id="file-type-icon" style="font-size: 2.2rem; display: flex; align-items: center; justify-content: center;">📄</span>
+                <span id="file-type-icon" style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center; font-weight:800; color:var(--brand-primary);">FILE</span>
                 <div>
                     <span class="file-name" id="selected-file-name">-</span>
                     <span class="file-size" id="selected-file-size">-</span>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <label style="font-size: 0.85rem; font-weight: bold; color: var(--text-muted);">Convert to:</label>
-                <select id="output-format" class="glass-input" style="width: auto; padding: 0.4rem 1.2rem; border-radius: 8px; font-weight: bold; background: white;"></select>
+            <div class="output-picker">
+                <label for="output-format">Convert to</label>
+                <select id="output-format" class="glass-input"></select>
             </div>
         </div>
-        <div id="sandbox-badge" style="margin-top: 0.8rem; margin-bottom: 1.2rem; font-size: 0.82rem; font-weight: 700; text-align: left; display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.2rem; border-radius: 12px; background: rgba(99, 102, 241, 0.03); border: 1px solid var(--border-color); line-height: 1.4;"></div>
+        <div id="format-guidance" class="format-guidance"></div>
+        <div id="sandbox-badge" class="sandbox-badge"></div>
 
-        <!-- Advanced settings dropdown accordion -->
         <div class="accordion" id="adv-accordion" style="display: none; margin-bottom: 1.5rem;">
-            <div class="accordion-header">⚙️ Advanced Conversion Settings</div>
+            <div class="accordion-header">Advanced image settings</div>
             <div class="accordion-content">
-                <div id="advanced-settings-controls" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <!-- Controls will be injected dynamically -->
-                </div>
+                <div id="advanced-settings-controls" style="display: flex; flex-direction: column; gap: 1rem;"></div>
             </div>
         </div>
 
@@ -3233,14 +3229,13 @@ UPLOAD_BOX_UI = """
         </div>
         <div id="sw-progress-text" style="display: none; text-align: center; font-weight: bold;">Converting file...</div>
 
-        <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
-            <button id="convert-btn" class="btn primary">🚀 Convert Now</button>
+        <div class="action-buttons upload-actions">
+            <button id="convert-btn" class="btn primary">Convert Now</button>
             <button id="reset-btn" class="btn secondary">Reset</button>
         </div>
     </div>
 </div>
 """
-
 UPLOAD_BOX_SCRIPT = """
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
@@ -3257,6 +3252,7 @@ const progBar = document.getElementById('sw-progress-bar');
 const progText = document.getElementById('sw-progress-text');
 const sandboxBadge = document.getElementById('sandbox-badge');
 const fileTypeIcon = document.getElementById('file-type-icon');
+const formatGuidance = document.getElementById('format-guidance');
 
 dropZone.onclick = () => fileInput.click();
 fileInput.onchange = (e) => handleFiles(e.target.files);
@@ -3283,19 +3279,42 @@ function getFileIcon(fileName) {
 }
 
 function updateSandboxBadge(sourceExt, targetExt) {
-    const isClient = window.ConversionAdapter.isClientSideTool(sourceExt, targetExt);
-    const isBackendConnected = window.ConversionAdapter.config.isBackendConnected;
-    if (isClient) {
-        sandboxBadge.innerHTML = `🛡️ <span style="color: var(--brand-accent);">100% In-Browser Secure Sandbox (No file upload required - mathematically private)</span>`;
-    } else {
-        if (isBackendConnected) {
-            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine (Secure 256-bit SSL Tunnel - Permanent deletion after 2 hours)</span>`;
-        } else {
-            sandboxBadge.innerHTML = `☁️ <span style="color: var(--brand-secondary);">Edge Server Engine <span style="background: rgba(139, 92, 246, 0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-left: 5px;">Secure Sandbox Demo</span> (Fallback offline processing)</span>`;
-        }
-    }
+    sandboxBadge.innerHTML = `<strong>Private conversion:</strong><span>Your file stays in this browser. No cloud upload is used for these outputs.</span>`;
 }
 
+function getSafeOutputFormats(fileName) {
+    const ext = fileName.split('.').pop().toLowerCase();
+    const safeMap = {
+        png: ['jpg', 'webp', 'base64'],
+        jpg: ['png', 'webp', 'base64'],
+        jpeg: ['png', 'webp', 'base64'],
+        webp: ['jpg', 'png', 'base64'],
+        svg: ['png'],
+        txt: ['base64']
+    };
+    return safeMap[ext] || [];
+}
+
+function getFormatHelp(sourceExt, targetExt) {
+    const key = `${sourceExt}-${targetExt}`;
+    const copy = {
+        'png-jpg': 'Best for smaller photos and uploads where transparency is not needed.',
+        'png-webp': 'Best for faster website images with modern browser support.',
+        'png-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'jpg-png': 'Best when you need a PNG copy for editing workflows.',
+        'jpg-webp': 'Best for lightweight website photos and SEO page speed.',
+        'jpg-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'jpeg-png': 'Best when you need a PNG copy for editing workflows.',
+        'jpeg-webp': 'Best for lightweight website photos and SEO page speed.',
+        'jpeg-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'webp-jpg': 'Best for compatibility with older apps and upload forms.',
+        'webp-png': 'Best for editing or platforms that prefer PNG files.',
+        'webp-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'svg-png': 'Best for exporting vector logos and icons as raster images.',
+        'txt-base64': 'Encodes plain text into Base64 for developer workflows.'
+    };
+    return copy[key] || 'This conversion runs locally in your browser when supported.';
+}
 function handleFiles(files) {
     if (files.length === 0) return;
     activeFile = files[0];
@@ -3306,13 +3325,30 @@ function handleFiles(files) {
     fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
     fileTypeIcon.textContent = getFileIcon(activeFile.name);
 
-    // Dynamic output format mapping
-    const formats = window.ConversionAdapter.getOutputFormats(activeFile.name);
-    formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
-
     const ext = activeFile.name.split('.').pop().toLowerCase();
+    const formats = getSafeOutputFormats(activeFile.name);
+    if (formats.length === 0) {
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        formatGuidance.innerHTML = `
+            <strong>This file type is not available in the browser converter yet.</strong>
+            <span>Try PNG, JPG, WebP, SVG, or TXT. You can also browse the dedicated tool cards below.</span>
+        `;
+        sandboxBadge.innerHTML = `<strong>No upload happened.</strong><span>Choose another file or open a matching converter page.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
+
+    formatSelect.disabled = false;
+    convertBtn.disabled = false;
+    formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+    formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
     updateSandboxBadge(ext, formatSelect.value);
-    formatSelect.onchange = () => updateSandboxBadge(ext, formatSelect.value);
+    formatSelect.onchange = () => {
+        formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
+        updateSandboxBadge(ext, formatSelect.value);
+    };
 
     // Inject advanced options if image tool
     if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
@@ -5530,8 +5566,8 @@ def build_homepage(tools):
         <div class="hero-badges">
             <span class="badge">🛡️ Free, secure & browser-based file conversion</span>
         </div>
-        <h1>Convert Files Online — <span class="gradient-text">Fast, Secure & Effortless</span></h1>
-        <p class="hero-subtitle">Convert images, documents, PDFs, audio, video, archives, and developer files in seconds with a privacy-first conversion platform.</p>
+        <h1>Convert Files Online <span class="gradient-text">Without the Confusion</span></h1>
+        <p class="hero-subtitle">Upload an image or text file, pick one clear browser-safe output, and download the result. No cloud buttons, no broken choices.</p>
 
         <!-- Homepage Active Upload box right in the Hero! -->
         <div style="margin-bottom: 2.5rem;">
@@ -5540,7 +5576,7 @@ def build_homepage(tools):
 
         <!-- Search bar for tools -->
         <div style="position: relative; max-width: 600px; margin: 0 auto 1.5rem;">
-            <input type="text" id="tool-search" placeholder="Search 35+ tools (e.g. JPG to PDF, JSON to CSV)..."
+            <input type="text" id="tool-search" placeholder="Search tools (e.g. PNG to JPG, JPG to WebP, JSON to CSV)..."
                 style="width: 100%; padding: 1.1rem 2rem; border-radius: 50px; background: white; border: 1px solid var(--border-color); color: var(--text-primary); font-size: 1.05rem; outline: none; box-shadow: var(--card-shadow); transition: all 0.3s;"
                 onfocus="this.style.borderColor='var(--brand-primary)'; this.style.boxShadow='var(--hover-shadow)';"
                 onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--card-shadow)';">
@@ -5549,11 +5585,11 @@ def build_homepage(tools):
         <!-- Popular Quick Tools Chips -->
         <div class="quick-chips">
             <span class="quick-chip-label">Quick Tools:</span>
-            <a href="/jpg-to-pdf/" class="quick-chip">JPG to PDF</a>
-            <a href="/pdf-to-word/" class="quick-chip">PDF to Word</a>
             <a href="/png-to-jpg/" class="quick-chip">PNG to JPG</a>
-            <a href="/mp4-to-mp3/" class="quick-chip">MP4 to MP3</a>
+            <a href="/jpg-to-webp/" class="quick-chip">JPG to WebP</a>
+            <a href="/image-compressor/" class="quick-chip">Image Compressor</a>
             <a href="/json-to-csv/" class="quick-chip">JSON to CSV</a>
+            <a href="/css-minifier/" class="quick-chip">CSS Minifier</a>
         </div>
 
         <!-- Trust Stats Row -->
