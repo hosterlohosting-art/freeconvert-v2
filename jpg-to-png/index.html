@@ -470,6 +470,24 @@ const progText = document.getElementById('sw-progress-text');
 const sandboxBadge = document.getElementById('sandbox-badge');
 const fileTypeIcon = document.getElementById('file-type-icon');
 const formatGuidance = document.getElementById('format-guidance');
+const PAGE_TOOL_ID = 'jpg-to-png';
+const PAGE_TOOL_NAME = 'JPG to PNG';
+const DEDICATED_BROWSER_CONVERSIONS = {
+    'png-to-jpg': { sources: ['png'], targets: ['jpg'], label: 'PNG to JPG' },
+    'jpg-to-png': { sources: ['jpg', 'jpeg'], targets: ['png'], label: 'JPG to PNG' },
+    'webp-to-jpg': { sources: ['webp'], targets: ['jpg'], label: 'WebP to JPG' },
+    'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
+    'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
+    'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' }
+};
+const MATCHING_TOOL_BY_SOURCE = {
+    'png': '/png-to-jpg/',
+    'jpg': '/jpg-to-png/',
+    'jpeg': '/jpg-to-png/',
+    'webp': '/webp-to-jpg/',
+    'svg': '/svg-to-png/'
+};
 
 dropZone.onclick = () => fileInput.click();
 fileInput.onchange = (e) => handleFiles(e.target.files);
@@ -501,6 +519,10 @@ function updateSandboxBadge(sourceExt, targetExt) {
 
 function getSafeOutputFormats(fileName) {
     const ext = fileName.split('.').pop().toLowerCase();
+    const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+    if (dedicated) {
+        return dedicated.sources.includes(ext) ? dedicated.targets : [];
+    }
     const safeMap = {
         png: ['jpg', 'webp', 'base64'],
         jpg: ['png', 'webp', 'base64'],
@@ -548,6 +570,18 @@ function handleFiles(files) {
         formatSelect.innerHTML = '<option value="">Not available</option>';
         formatSelect.disabled = true;
         convertBtn.disabled = true;
+        const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+        if (dedicated) {
+            const expected = dedicated.sources.map(s => s.toUpperCase()).join(' or ');
+            const betterTool = MATCHING_TOOL_BY_SOURCE[ext];
+            formatGuidance.innerHTML = `
+                <strong>${PAGE_TOOL_NAME} expects ${expected} input.</strong>
+                <span>You uploaded a ${ext.toUpperCase()} file. ${betterTool ? `Open the matching converter: <a href="${betterTool}" style="color:var(--brand-primary);font-weight:800;">${betterTool.replaceAll('/', '').replaceAll('-', ' ').toUpperCase()}</a>.` : 'Choose a supported source file for this page.'}</span>
+            `;
+            sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser. Pick the right source file or open the suggested tool.</span>`;
+            accordion.style.display = 'none';
+            return;
+        }
         formatGuidance.innerHTML = `
             <strong>This file type is not available in the browser converter yet.</strong>
             <span>Try PNG, JPG, WebP, SVG, or TXT. You can also browse the dedicated tool cards below.</span>
@@ -560,6 +594,12 @@ function handleFiles(files) {
     formatSelect.disabled = false;
     convertBtn.disabled = false;
     formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+    if (DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID]) {
+        formatSelect.disabled = true;
+        convertBtn.textContent = `Convert to ${formats[0].toUpperCase()}`;
+    } else {
+        convertBtn.textContent = 'Convert Now';
+    }
     formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
     updateSandboxBadge(ext, formatSelect.value);
     formatSelect.onchange = () => {
@@ -596,11 +636,11 @@ convertBtn.onclick = async () => {
     
     // Simulate multi-stage upload states
     const stages = [
-        { progress: 20, label: "🛰️ Connecting to edge server..." },
-        { progress: 40, label: "📤 Uploading file to security sandbox..." },
-        { progress: 65, label: "⚙️ Converting formats..." },
-        { progress: 85, label: "🗜️ Optimizing layout parameters..." },
-        { progress: 100, label: "✅ Finalizing secure download link..." }
+        { progress: 20, label: "Preparing your file locally..." },
+        { progress: 40, label: "Reading file safely inside this browser..." },
+        { progress: 65, label: "Converting the format..." },
+        { progress: 85, label: "Optimizing output settings..." },
+        { progress: 100, label: "Preparing private download..." }
     ];
 
     for (let stage of stages) {

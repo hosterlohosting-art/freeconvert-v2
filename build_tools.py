@@ -3236,6 +3236,26 @@ UPLOAD_BOX_UI = """
     </div>
 </div>
 """
+
+UNAVAILABLE_TOOL_UI = """
+<div class="upload-wrapper homepage-upload-wrapper">
+    <div class="preview-container" style="display:block;text-align:left;">
+        <div class="format-guidance" style="margin:0 0 1rem;">
+            <strong>This converter is being upgraded.</strong>
+            <span>Some document, PDF, video, audio, and advanced media conversions need secure server processing. We are keeping this page honest while the processing service is unavailable.</span>
+        </div>
+        <div class="sandbox-badge">
+            <strong>No file upload is active on this page right now.</strong>
+            <span>Use the working browser-safe tools below for PNG, JPG, WebP, SVG, Base64, JSON, text, SEO, and utility workflows.</span>
+        </div>
+        <div class="action-buttons upload-actions" style="margin-top:1.25rem;">
+            <a class="btn primary" href="/all-tools/">Browse Working Tools</a>
+            <a class="btn secondary" href="/image-converter/">Open Image Converter</a>
+        </div>
+    </div>
+</div>
+"""
+
 UPLOAD_BOX_SCRIPT = """
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
@@ -3253,6 +3273,24 @@ const progText = document.getElementById('sw-progress-text');
 const sandboxBadge = document.getElementById('sandbox-badge');
 const fileTypeIcon = document.getElementById('file-type-icon');
 const formatGuidance = document.getElementById('format-guidance');
+const PAGE_TOOL_ID = '{{ID}}';
+const PAGE_TOOL_NAME = '{{NAME}}';
+const DEDICATED_BROWSER_CONVERSIONS = {
+    'png-to-jpg': { sources: ['png'], targets: ['jpg'], label: 'PNG to JPG' },
+    'jpg-to-png': { sources: ['jpg', 'jpeg'], targets: ['png'], label: 'JPG to PNG' },
+    'webp-to-jpg': { sources: ['webp'], targets: ['jpg'], label: 'WebP to JPG' },
+    'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
+    'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
+    'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' }
+};
+const MATCHING_TOOL_BY_SOURCE = {
+    'png': '/png-to-jpg/',
+    'jpg': '/jpg-to-png/',
+    'jpeg': '/jpg-to-png/',
+    'webp': '/webp-to-jpg/',
+    'svg': '/svg-to-png/'
+};
 
 dropZone.onclick = () => fileInput.click();
 fileInput.onchange = (e) => handleFiles(e.target.files);
@@ -3284,6 +3322,10 @@ function updateSandboxBadge(sourceExt, targetExt) {
 
 function getSafeOutputFormats(fileName) {
     const ext = fileName.split('.').pop().toLowerCase();
+    const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+    if (dedicated) {
+        return dedicated.sources.includes(ext) ? dedicated.targets : [];
+    }
     const safeMap = {
         png: ['jpg', 'webp', 'base64'],
         jpg: ['png', 'webp', 'base64'],
@@ -3331,6 +3373,18 @@ function handleFiles(files) {
         formatSelect.innerHTML = '<option value="">Not available</option>';
         formatSelect.disabled = true;
         convertBtn.disabled = true;
+        const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+        if (dedicated) {
+            const expected = dedicated.sources.map(s => s.toUpperCase()).join(' or ');
+            const betterTool = MATCHING_TOOL_BY_SOURCE[ext];
+            formatGuidance.innerHTML = `
+                <strong>${PAGE_TOOL_NAME} expects ${expected} input.</strong>
+                <span>You uploaded a ${ext.toUpperCase()} file. ${betterTool ? `Open the matching converter: <a href="${betterTool}" style="color:var(--brand-primary);font-weight:800;">${betterTool.replaceAll('/', '').replaceAll('-', ' ').toUpperCase()}</a>.` : 'Choose a supported source file for this page.'}</span>
+            `;
+            sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser. Pick the right source file or open the suggested tool.</span>`;
+            accordion.style.display = 'none';
+            return;
+        }
         formatGuidance.innerHTML = `
             <strong>This file type is not available in the browser converter yet.</strong>
             <span>Try PNG, JPG, WebP, SVG, or TXT. You can also browse the dedicated tool cards below.</span>
@@ -3343,6 +3397,12 @@ function handleFiles(files) {
     formatSelect.disabled = false;
     convertBtn.disabled = false;
     formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+    if (DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID]) {
+        formatSelect.disabled = true;
+        convertBtn.textContent = `Convert to ${formats[0].toUpperCase()}`;
+    } else {
+        convertBtn.textContent = 'Convert Now';
+    }
     formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
     updateSandboxBadge(ext, formatSelect.value);
     formatSelect.onchange = () => {
@@ -3379,11 +3439,11 @@ convertBtn.onclick = async () => {
     
     // Simulate multi-stage upload states
     const stages = [
-        { progress: 20, label: "🛰️ Connecting to edge server..." },
-        { progress: 40, label: "📤 Uploading file to security sandbox..." },
-        { progress: 65, label: "⚙️ Converting formats..." },
-        { progress: 85, label: "🗜️ Optimizing layout parameters..." },
-        { progress: 100, label: "✅ Finalizing secure download link..." }
+        { progress: 20, label: "Preparing your file locally..." },
+        { progress: 40, label: "Reading file safely inside this browser..." },
+        { progress: 65, label: "Converting the format..." },
+        { progress: 85, label: "Optimizing output settings..." },
+        { progress: 100, label: "Preparing private download..." }
     ];
 
     for (let stage of stages) {
@@ -8221,6 +8281,11 @@ def build():
             ui = UTILITY_UI
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
             how_to = "<ol><li>Input initial values.</li><li>Adjust sliders or settings.</li><li>Review live visual simulations.</li></ol>"
+
+        if t_id in UNAVAILABLE_TOOL_IDS and t_id not in {'barcode-generator', 'speed-test'}:
+            ui = UNAVAILABLE_TOOL_UI
+            script = ""
+            how_to = "<ol><li>Use the links on this page to open a browser-safe working tool.</li><li>Choose PNG, JPG, WebP, SVG, Base64, JSON, text, SEO, or utility tools while this converter is being upgraded.</li><li>Return to this page after secure server processing is enabled.</li></ol>"
 
         # Compile tool template replacement
         html = template.replace('{{NAME}}', tool['name'])
