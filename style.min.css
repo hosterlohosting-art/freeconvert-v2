@@ -2,3 +2,35 @@
 
 /* Upload UX cleanup: clearer, smaller, and only real browser-safe actions. */
 .homepage-upload-wrapper{max-width:760px;margin:0 auto 2rem;padding:0}.upload-drop-compact{padding:2.4rem 1.5rem;gap:.7rem;background:rgba(255,255,255,.72);border-color:rgba(99,102,241,.16)}.upload-drop-compact .drop-icon{width:62px;height:62px;margin-bottom:.3rem}.upload-drop-compact .drop-text{font-size:1.08rem}.upload-helper-text{font-size:.92rem;color:var(--text-muted);font-weight:600;max-width:520px}.upload-format-chips{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:.65rem}.upload-format-chips span{padding:.35rem .7rem;border-radius:999px;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.1);color:var(--brand-primary);font-size:.78rem;font-weight:800}.output-picker{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}.output-picker label{font-size:.78rem;font-weight:850;color:var(--text-light);text-transform:uppercase;letter-spacing:.05em}.output-picker select{width:auto;min-width:138px;padding:.55rem 1rem;border-radius:10px;font-weight:850;background:#fff}.format-guidance,.sandbox-badge{margin:.8rem 0 1rem;display:flex;gap:.45rem;align-items:flex-start;text-align:left;padding:.9rem 1rem;border-radius:14px;border:1px solid rgba(99,102,241,.08);background:rgba(255,255,255,.72);line-height:1.45}.format-guidance{flex-direction:column}.format-guidance strong,.sandbox-badge strong{color:var(--text-primary);font-size:.9rem}.format-guidance span,.sandbox-badge span{color:var(--text-muted);font-size:.88rem;font-weight:650}.sandbox-badge{background:rgba(16,185,129,.06);border-color:rgba(16,185,129,.14)}.upload-actions{display:flex;gap:.8rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}@media (max-width:640px){.file-info-card{align-items:flex-start;flex-direction:column;gap:1rem}.output-picker{justify-content:flex-start}.upload-drop-compact{padding:2rem 1rem}.upload-format-chips span{font-size:.72rem}}
+
+/* Cleaner product-style navigation and mega menu. */
+.navbar{position:relative;max-width:1320px}
+.nav-menu-primary{gap:.45rem}
+.nav-menu-primary>.nav-link,.nav-menu-primary .nav-item>.nav-link{height:42px;padding:.55rem .85rem;border-radius:8px;font-size:.95rem;font-weight:650;color:#1f2937}
+.nav-menu-primary>.nav-link:hover,.nav-menu-primary .nav-item:hover>.nav-link{background:#f5f7ff;color:var(--brand-primary)}
+.nav-caret{font-size:.9rem;color:inherit;margin-left:.15rem}
+.nav-actions{display:flex;align-items:center;gap:.65rem;margin-left:.65rem}
+.nav-search{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f6f7fb;color:#111827;text-decoration:none;font-size:1.45rem;line-height:1;border:1px solid rgba(15,23,42,.04)}
+.nav-search:hover{background:#eef2ff;color:var(--brand-primary)}
+.nav-login{color:#1f2937;text-decoration:none;font-weight:650;padding:.55rem .35rem}
+.nav-signup{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 1rem;border:1px solid rgba(99,102,241,.38);border-radius:8px;color:var(--brand-primary);background:#fff;text-decoration:none;font-weight:750}
+.nav-signup:hover{background:var(--brand-primary);color:#fff}
+.nav-item-mega{position:static}
+.nav-item-mega .nav-dropdown{left:50%;top:100%;transform:translateX(-50%) translateY(8px);background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:8px;box-shadow:0 24px 70px rgba(15,23,42,.14);opacity:0;visibility:hidden;z-index:1200}
+.nav-item-mega:hover .nav-dropdown,.nav-item-mega:focus-within .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.mega-panel{width:min(1180px,calc(100vw - 48px));padding:0;min-width:0;display:block}
+.mega-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.mega-col{padding:1.05rem 1.25rem 1.45rem;border-right:1px solid rgba(15,23,42,.08);min-height:330px}
+.mega-col:last-child{border-right:0}
+.mega-heading{display:flex;align-items:center;gap:.5rem;font-size:1rem;font-weight:850;color:#111827;margin-bottom:1.2rem;white-space:nowrap}
+.mega-icon{width:24px;height:24px;border:1px solid rgba(15,23,42,.12);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:900;color:var(--brand-primary);background:#f8faff}
+.mega-col a,.nav-dropdown-compact a{display:block;padding:.46rem 0;color:#1f2937;text-decoration:none;font-size:.96rem;font-weight:550;line-height:1.35;background:transparent;border:0}
+.mega-col a:hover,.nav-dropdown-compact a:hover{color:var(--brand-primary);background:transparent;transform:none}
+.mega-footer{display:flex;gap:1.4rem;align-items:center;justify-content:flex-end;border-top:1px solid rgba(15,23,42,.08);padding:.9rem 1.25rem;background:#fafbff}
+.mega-footer a{color:var(--brand-primary);font-size:.86rem;font-weight:750;text-decoration:none}
+.nav-dropdown-compact{width:280px;min-width:280px;padding:1rem 1.25rem;display:block}
+@media (max-width:1100px){.nav-actions{display:none}.mega-panel{width:min(960px,calc(100vw - 32px))}.mega-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.mega-col{min-height:auto}.mega-col:nth-child(3){border-right:0}.mega-col:nth-child(n+4){border-top:1px solid rgba(15,23,42,.08)}}
+@media (max-width:992px){.nav-menu-primary{align-items:stretch;justify-content:flex-start;overflow:auto}.nav-menu-primary>.nav-link,.nav-menu-primary .nav-item>.nav-link{height:auto;font-size:1.1rem}.nav-item-mega{position:relative}.nav-item-mega .nav-dropdown{position:static;visibility:visible;opacity:1;transform:none;width:100%;min-width:0;box-shadow:none;border:0;border-top:1px solid rgba(99,102,241,.08);border-radius:0;background:transparent;padding:.7rem 0 0;margin:.25rem 0 0}.mega-grid{grid-template-columns:1fr}.mega-col{border:0;border-top:1px solid rgba(99,102,241,.08);padding:.85rem 0;min-height:auto}.mega-col:first-child{border-top:0}.mega-footer{display:none}.nav-dropdown-compact{width:100%;min-width:0}.nav-actions{display:flex;justify-content:center;margin:0}.nav-search{display:none}}
+
+/* Top nav search should read clearly, not look like a mystery icon. */
+.nav-search{width:auto;min-width:72px;padding:0 .95rem;border-radius:999px;font-size:.9rem;font-weight:750}
