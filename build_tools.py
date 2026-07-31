@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-07-25'
+TODAY_ISO = '2026-07-31'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -573,8 +573,8 @@ def tool_keyword_content_html(tool, tools):
     base_intro = f"""
             <section style="margin-top:2.2rem;">
                 <h2>What is {name}?</h2>
-                <p>{name} is built for users who need a quick, free, and private way to handle {category.lower()} workflows without installing desktop software. {desc} The page combines a working converter, practical instructions, privacy notes, related tools, and common troubleshooting guidance so visitors can complete the task and understand the format decision in the same place.</p>
-                <p>Use it for everyday document preparation, website uploads, email attachments, school work, client deliverables, developer cleanup, and mobile sharing. The experience is browser-first, which means supported local operations run inside your device memory and heavier conversion jobs use temporary secure processing only when a format requires it.</p>
+                <p>{name} is built for users who need a quick, free, and private way to handle {category.lower()} workflows without installing desktop software. {desc} The page combines a working tool, practical instructions, privacy notes, related tools, and common troubleshooting guidance so visitors can complete the task and understand the format decision in the same place.</p>
+                <p>Use it for everyday website uploads, email attachments, school work, client deliverables, developer cleanup, and mobile sharing. Supported browser tools process your input on your device, so the workflow stays clear and predictable from start to finish.</p>
             </section>
             <section style="margin-top:2rem;">
                 <h2>Common {name} scenarios</h2>
@@ -595,7 +595,7 @@ def tool_keyword_content_html(tool, tools):
     trust = f"""
             <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.14);">
                 <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Privacy-first conversion promise</h2>
-                <p style="font-size:0.95rem;line-height:1.65;margin:0;">freeconvert.cloud is designed around clear privacy expectations: browser-local tools avoid uploads, server-required conversions use encrypted transfer, and user files are not treated as public content. For deeper details, read our <a href="/security/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">file security policy</a>.</p>
+                <p style="font-size:0.95rem;line-height:1.65;margin:0;">freeconvert.cloud is designed around clear privacy expectations: active browser tools process supported inputs locally and do not publish user content. For deeper details, read our <a href="/security/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">file security policy</a>.</p>
             </section>"""
     if not target:
         return base_intro + comparison + trust
@@ -8630,7 +8630,6 @@ Disallow: /blog/hub-pages/
 # Full AI index: https://freeconvert.cloud/ai-index.json
 # Keyword map: https://freeconvert.cloud/seo-keyword-targets.json
 Sitemap: https://freeconvert.cloud/sitemap-index.xml
-Sitemap: https://freeconvert.cloud/sitemap.xml
 Host: freeconvert.cloud
 """
     with open('robots.txt', 'w', encoding='utf-8') as f:

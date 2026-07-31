@@ -6,6 +6,12 @@ const path = require('path');
 
 const ROOT = process.cwd();
 const SITE_URL = 'https://freeconvert.cloud';
+const LEGACY_ALIAS_PATHS = new Set([
+    'about-freeconvert/index.html', 'base64-tool/index.html', 'contact-us/index.html',
+    'dev_basic/index.html', 'image-resizer/index.html', 'lorem-ipsum/index.html',
+    'qr-generator/index.html', '2025/11/02/hello-world/index.html',
+    '2025/12/18/qr-codes-on-business-cards/index.html'
+]);
 
 function findHtmlFiles(dir, files = []) {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -35,6 +41,12 @@ const stats = {
     noIndex: 0
 };
 
+function getMetaContent(html, name) {
+    const match = html.match(new RegExp(`<meta\\s+[^>]*(?:name|property)="${name}"[^>]*content="([^"]*)"`, 'i'))
+        || html.match(new RegExp(`<meta\\s+[^>]*content="([^"]*)"[^>]*(?:name|property)="${name}"`, 'i'));
+    return match ? match[1] : '';
+}
+
 for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf-8');
     const rel = path.relative(ROOT, file).replace(/\\/g, '/');
@@ -44,7 +56,19 @@ for (const file of htmlFiles) {
     if (html.includes('<title>')) stats.title++;
     if (html.includes('name="description"')) stats.description++;
     if (html.includes('application/ld+json')) stats.schema++;
-    if (html.includes('name="robots"') && html.includes('noindex')) stats.noIndex++;
+    const robots = getMetaContent(html, 'robots');
+    const canonical = (html.match(/<link\s+[^>]*rel="canonical"[^>]*href="([^"]+)"/i) || [])[1];
+    const expectedCanonical = rel === 'index.html'
+        ? `${SITE_URL}/`
+        : `${SITE_URL}/${rel.replace(/\/index\.html$/, '')}/`;
+    if (/\bnoindex\b/i.test(robots)) stats.noIndex++;
+    const isAlias = rel.startsWith('convert/') || LEGACY_ALIAS_PATHS.has(rel);
+    if (canonical && canonical !== expectedCanonical && !isAlias) {
+        issues.push(`${rel}: canonical mismatch (${canonical})`);
+    }
+    if (isAlias && !/\bnoindex\b/i.test(robots)) {
+        issues.push(`${rel}: alias must remain noindex`);
+    }
 
     // Check for broken internal links (href="/.../" that don't exist)
     const linkMatches = html.match(/href="\/([^"]+)\//g) || [];
@@ -58,6 +82,27 @@ for (const file of htmlFiles) {
             if (!fs.existsSync(filePath)) {
                 issues.push(`${rel}: broken link /${href}/`);
             }
+        }
+    }
+}
+
+// A sitemap must only contain canonical, indexable URLs. This catches the
+// exact issue that wastes crawl attention on duplicate or review-only pages.
+for (const sitemapFile of ['sitemap.xml', 'sitemaps/pages.xml', 'sitemaps/tools.xml', 'sitemaps/blog.xml']) {
+    const sitemapPath = path.join(ROOT, sitemapFile);
+    if (!fs.existsSync(sitemapPath)) continue;
+    const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+    const urls = [...sitemap.matchAll(/<loc>(https:\/\/freeconvert\.cloud\/[^<]*)<\/loc>/g)].map(match => match[1]);
+    for (const url of urls) {
+        const pathname = new URL(url).pathname.replace(/^\//, '').replace(/\/$/, '');
+        const htmlPath = path.join(ROOT, pathname, 'index.html');
+        if (!fs.existsSync(htmlPath)) {
+            issues.push(`${sitemapFile}: missing sitemap target ${url}`);
+            continue;
+        }
+        const targetHtml = fs.readFileSync(htmlPath, 'utf8');
+        if (/\bnoindex\b/i.test(getMetaContent(targetHtml, 'robots'))) {
+            issues.push(`${sitemapFile}: noindex URL submitted ${url}`);
         }
     }
 }
