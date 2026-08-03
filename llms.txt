@@ -10,10 +10,8 @@ freeconvert.cloud provides practical browser-based image, text, developer, secur
 ## Main Navigation Pages
 - Homepage: https://freeconvert.cloud/ - Upload box and unified utility grid.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
-- File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 - HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
-- Press Kit: https://freeconvert.cloud/press-kit/ - Brand assets, facts, and media contact information for journalists and directory owners.
 
 ## Priority Tools (High Content Depth)
 - PNG to JPG: https://freeconvert.cloud/png-to-jpg/ - targets "png to jpg"; intent: Turn PNG images into smaller, widely supported JPG files.

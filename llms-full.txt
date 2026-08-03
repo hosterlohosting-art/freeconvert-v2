@@ -108,17 +108,15 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - URL Parser: https://freeconvert.cloud/url-parser/ - Break URLs into protocol, host, path, query, and hash parts. Category: Developer.
 
 ## Editorial And Trust Signals
-- Editorial team: freeconvert.cloud Editorial Team.
+- Content policy: working tools and practical guides are prioritized; unavailable or duplicate utility pages are not promoted for discovery.
 - Privacy model: supported public tools use client-side browser processing where possible.
-- Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
-- Update marker: 2026-07-31.
+- Advertising model: ads are not currently displayed while the site is under review.
+- Update marker: 2026-08-03.
 
 ## Useful Discovery URLs
 - Sitemap: https://freeconvert.cloud/sitemap.xml
 - RSS feed: https://freeconvert.cloud/feed.xml
 - OpenSearch: https://freeconvert.cloud/opensearch.xml
 - Blog hub: https://freeconvert.cloud/blog/
-- File format glossary: https://freeconvert.cloud/file-formats/
-- Press kit: https://freeconvert.cloud/press-kit/
 - Security: https://freeconvert.cloud/security/
 - Contact: https://freeconvert.cloud/contact/

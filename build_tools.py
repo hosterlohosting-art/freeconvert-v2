@@ -11,7 +11,7 @@ from blog_data import BLOG_ARTICLES
 TOOLS_JSON = 'tools/tools.json'
 TEMPLATE_PATH = 'tools/tool-template.html'
 SITE_URL = 'https://freeconvert.cloud'
-TODAY_ISO = '2026-07-31'
+TODAY_ISO = '2026-08-03'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
@@ -26,6 +26,7 @@ NOINDEX_PATH_PREFIXES = (
     'popular-conversions/',
     'free-online-converter-guides/',
     'blog/hub-pages/',
+    'file-formats/',
 )
 NOINDEX_TOP_LEVEL_SLUGS = {
     'video-converter', 'audio-converter', 'pdf-tools', 'archive-converter',
@@ -41,6 +42,77 @@ LEGACY_ROUTE_MAP = {
     '/qr-generator/': '/qr-code-generator/',
     '/lorem-ipsum/': '/lorem-ipsum-generator/',
     '/dev_basic/': '/document-converter/',
+}
+
+# These pages are deliberately concise and factual. They replace older copy
+# that described services that are not currently available on the site.
+TRUST_PAGE_CONTENT = {
+    'about/index.html': '''
+        <h2>What freeconvert.cloud does</h2>
+        <p>freeconvert.cloud provides browser-based tools for common image, text, code, data, QR, password, and calculator tasks. The goal is simple: help visitors complete a practical task without installing desktop software or creating an account.</p>
+        <h2>How the current tools work</h2>
+        <p>Active browser tools handle supported inputs in the visitor's browser. A tool page explains its supported input and output before the visitor starts. Tools that need a conversion service we do not currently provide are clearly marked unavailable and are not promoted as working converters.</p>
+        <h2>Editorial approach</h2>
+        <p>We publish practical guidance alongside tools when it helps a visitor make a better format, quality, or privacy decision. We aim for clear steps, examples, limits, and links to related tools. We remove or update guidance when it no longer reflects the available product.</p>
+        <h2>Contact and corrections</h2>
+        <p>Found a broken tool, inaccurate instruction, or privacy concern? Use the <a href="/contact/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">contact page</a>. Feedback helps us keep the tool directory focused on useful, working resources.</p>''',
+    'privacy/index.html': '''
+        <h2>Browser-based processing</h2>
+        <p>Many active tools on freeconvert.cloud process supported inputs locally in your browser. For those tools, your text or file stays on your device while the result is created.</p>
+        <h2>Information we receive</h2>
+        <p>Like most websites, the site may receive limited technical information from your browser or analytics provider, such as page requests, device type, and aggregated usage information. We do not ask visitors to create an account to use the free browser tools.</p>
+        <h2>Tool limitations</h2>
+        <p>Not every file format can be processed locally in a browser. Pages for unavailable conversions are labelled accordingly. Do not upload sensitive information to a tool unless you understand the tool's stated processing method.</p>
+        <h2>Questions</h2>
+        <p>For privacy questions or correction requests, visit <a href="/contact/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">Contact</a>.</p>''',
+    'security/index.html': '''
+        <h2>Security model</h2>
+        <p>Supported browser tools run in the normal browser security environment. They use local browser features such as Canvas, Web Crypto, FileReader, and JavaScript rather than a file-processing upload service.</p>
+        <h2>Keep control of your originals</h2>
+        <p>Always keep an original copy until you have checked the result. Avoid entering passwords, API keys, private tokens, financial details, or other secrets into any online tool unless the tool is explicitly designed for that purpose.</p>
+        <h2>Available versus unavailable tools</h2>
+        <p>We do not claim that a tool works when its required processing capability is unavailable. Those pages are marked as being upgraded and point visitors toward working browser tools instead.</p>
+        <h2>Report a concern</h2>
+        <p>Report a suspected security issue through the <a href="/contact/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">contact page</a>.</p>''',
+    'terms/index.html': '''
+        <h2>Using the tools</h2>
+        <p>You are responsible for the files, text, and data you choose to process. Only use content you have the right to use, and check each result before relying on it for a legal, financial, medical, academic, or business-critical purpose.</p>
+        <h2>Availability</h2>
+        <p>Browser tools are provided as-is and may depend on browser support, device memory, file type, and local settings. We may update, improve, or remove a tool when it is not reliable enough to keep available.</p>
+        <h2>No account required</h2>
+        <p>The current browser tools do not require a user account. We do not offer paid conversion plans or an active conversion API through this website at this time.</p>
+        <h2>Questions</h2>
+        <p>For a question about these terms, use the <a href="/contact/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">contact page</a>.</p>''',
+    'help/index.html': '''
+        <h2>Getting started</h2>
+        <p>Choose a tool that matches your task, read the supported input shown on the page, then add your file or text. Review the result before sharing or deleting your original.</p>
+        <h2>Which tools are currently active?</h2>
+        <p>The <a href="/all-tools/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">All Tools directory</a> lists the browser tools currently available for images, text, developer data, security, QR codes, and calculations. If a conversion requires a service we do not provide, the page will say so clearly.</p>
+        <h2>Why did a tool not work?</h2>
+        <p>Common reasons include an unsupported file type, a damaged file, a browser that does not support the required feature, or limited device memory. Try a smaller sample, update your browser, or choose a matching active tool.</p>
+        <h2>Need help?</h2>
+        <p>Use the <a href="/contact/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">contact page</a> with the tool URL, browser, and a short description of the problem.</p>''',
+    'contact/index.html': '''
+        <h2>Contact freeconvert.cloud</h2>
+        <p>Use this page to report a broken tool, flag an inaccurate guide, ask a privacy question, or send a general suggestion. Include the page URL and a short description so we can reproduce the issue.</p>
+        <h2>What to include in a tool report</h2>
+        <ul style="padding-left:1.5rem;line-height:1.7;"><li>The tool page URL.</li><li>Your browser and device type.</li><li>The input format and the step where the issue occurred.</li><li>A screenshot only when it does not contain sensitive information.</li></ul>
+        <h2>Response expectations</h2>
+        <p>We review messages as resources allow. This site does not promise paid support, priority support, or a guaranteed response time.</p>''',
+    'cookies/index.html': '''
+        <h2>Cookies and local storage</h2>
+        <p>Browsers may store small pieces of information to remember local tool preferences or support basic site functions. Your browser also controls third-party cookies and site data through its privacy settings.</p>
+        <h2>Analytics</h2>
+        <p>We may use aggregate analytics to understand which pages are useful and where visitors encounter errors. Analytics data helps us improve navigation and working tools.</p>
+        <h2>Advertising</h2>
+        <p>freeconvert.cloud is currently under advertising review and does not show AdSense placements. If advertising is enabled in the future, this policy will be updated before those changes are made.</p>''',
+    'advertising-policy/index.html': '''
+        <h2>Current advertising status</h2>
+        <p>freeconvert.cloud is not currently displaying AdSense ads. Our immediate focus is improving working browser tools, clear documentation, and visitor trust.</p>
+        <h2>Future advertising principles</h2>
+        <p>Any future ads will be clearly identifiable and kept away from file pickers, conversion controls, downloads, and other actions. We will not use fake download buttons, forced redirects, pop-ups, or language designed to create accidental clicks.</p>
+        <h2>Content comes first</h2>
+        <p>We will only retain pages that provide a working utility or a clearly useful guide. Pages that are unavailable, duplicated, or not useful enough for visitors are excluded from the search index and are not promoted as flagship tools.</p>''',
 }
 
 
@@ -784,6 +856,33 @@ def normalize_generated_html_seo():
             or any(rel_path.startswith(prefix) for prefix in NOINDEX_PATH_PREFIXES)
         )
 
+        # Keep the public trust pages accurate. Older generator copy mentioned
+        # subscription plans and server processing that are not live products.
+        replacement_content = TRUST_PAGE_CONTENT.get(rel_path)
+        if replacement_content:
+            html = re.sub(
+                r'(<article class="seo-content">)[\s\S]*?(</article>)',
+                lambda match: match.group(1) + replacement_content + match.group(2),
+                html,
+                count=1,
+                flags=re.I,
+            )
+
+        # Remove legacy wording that implied services or capabilities which are
+        # not part of the current browser-only product.
+        html = html.replace(
+            'Click Convert and wait for edge process completion.',
+            'Click Convert, review the result, and download it.'
+        )
+        html = html.replace(
+            'Click Convert and wait for edge process completion',
+            'Click Convert, review the result, and download it'
+        )
+        html = html.replace(
+            'Return to this page after secure server processing is enabled.',
+            'Check the All Tools directory for currently supported browser tools.'
+        )
+
         if ADSENSE_REVIEW_MODE:
             html = re.sub(
                 r'\s*<script[^>]+pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^>]*></script>',
@@ -1100,8 +1199,6 @@ def build_sitemap(tools):
             add('blog', f'{SITE_URL}/blog/{rel}/', 'weekly', '0.7')
     for category_page in sorted(Path('blog/category').glob('*/index.html')):
         add('blog', public_url_for_html(category_page), 'weekly', '0.6')
-    for format_page in sorted(Path('file-formats').glob('**/index.html')):
-        add('blog', public_url_for_html(format_page), 'weekly', '0.6')
     sitemaps_dir = Path('sitemaps')
     sitemaps_dir.mkdir(exist_ok=True)
     shard_names = []
@@ -5330,7 +5427,6 @@ HEADER_SNIPPET = """
                         </div>
                         <div class="mega-footer">
                             <a href="/all-tools/">Browse all tools</a>
-                            <a href="/popular-conversions/">Popular conversions</a>
                             <a href="/blog/">Guides and tutorials</a>
                         </div>
                     </div>
@@ -5396,18 +5492,13 @@ FOOTER_SNIPPET = """
             <div class="footer-col">
                 <h4>Popular Tools</h4>
                 <div class="footer-links">
-                    <a href="/jpg-to-pdf/">JPG to PDF</a>
-                    <a href="/pdf-to-word/">PDF to Word</a>
                     <a href="/png-to-jpg/">PNG to JPG</a>
-                    <a href="/mp4-to-mp3/">MP4 to MP3</a>
                     <a href="/csv-to-json/">CSV to JSON</a>
                     <a href="/json-to-csv/">JSON to CSV</a>
-                    <a href="/compress-pdf/">Compress PDF</a>
                     <a href="/image-compressor/">Image Compressor</a>
                     <a href="/compress-image-to-100kb/">Compress to 100KB</a>
                     <a href="/webp-to-jpg/">WebP to JPG</a>
                     <a href="/jpg-to-webp/">JPG to WebP</a>
-                    <a href="/merge-pdf/">Merge PDF</a>
                     <a href="/qr-code-generator/">QR Code Generator</a>
                     <a href="/password-generator/">Password Generator</a>
                     <a href="/json-formatter/">JSON Formatter</a>
@@ -5418,12 +5509,7 @@ FOOTER_SNIPPET = """
                 <div class="footer-links">
                     <a href="/all-tools/">All Tools Directory</a>
                     <a href="/image-converter/">Image Converter</a>
-                    <a href="/video-converter/">Video Converter</a>
-                    <a href="/audio-converter/">Audio Converter</a>
                     <a href="/document-converter/">Document Tools</a>
-                    <a href="/pdf-tools/">PDF Tools</a>
-                    <a href="/archive-converter/">Archive Tools</a>
-                    <a href="/ebook-converter/">eBook Converter</a>
                     <a href="/unit-converter/">Unit Converter</a>
                 </div>
                 <h4 style="margin-top:1.2rem;">New Tools</h4>
@@ -5445,16 +5531,10 @@ FOOTER_SNIPPET = """
                 <h4>Company &amp; Legal</h4>
                 <div class="footer-links">
                     <a href="/about/">About Us</a>
-                    <a href="/pricing/">Plan Pricing</a>
-                    <a href="/api/">Developer API</a>
                     <a href="/blog/">Blog &amp; Guides</a>
                     <a href="/help/">Help &amp; FAQ</a>
                     <a href="/tools/embed/">Embed Widgets</a>
                     <a href="/sitemap/">HTML Sitemap</a>
-                    <a href="/press-kit/">Press Kit</a>
-                    <a href="/popular-conversions/">Popular Conversions</a>
-                    <a href="/free-online-converter-guides/">Converter Guides</a>
-                    <a href="/file-formats/">File Format Glossary</a>
                     <a href="/blog/category/pdf-tools/">PDF Guides</a>
                     <a href="/blog/category/image-conversion/">Image Guides</a>
                     <a href="/privacy/">Privacy Policy</a>
@@ -6145,7 +6225,7 @@ def build_all_tools_directory(tools):
         "@type": "CollectionPage",
         "name": "All free online converter tools",
         "url": f"{SITE_URL}/all-tools/",
-        "description": "Complete crawl-friendly directory of freeconvert.cloud file converters, PDF tools, video tools, image utilities, developer tools, and calculators.",
+        "description": "Complete directory of currently available browser tools for images, text, developer data, security, and calculations.",
         "mainEntity": {
             "@type": "ItemList",
             "numberOfItems": len(item_list_elements),
@@ -6161,10 +6241,10 @@ def build_all_tools_directory(tools):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Free Online Converter Tools | freeconvert.cloud</title>
-    <meta name="description" content="Browse every freeconvert.cloud tool in one crawl-friendly directory: PDF tools, image converters, video converters, audio tools, developer utilities, calculators, and security tools.">
+    <meta name="description" content="Browse currently available browser tools for images, text, developer data, QR codes, security, and calculations on freeconvert.cloud.">
     <link rel="stylesheet" href="/style.css">
     <meta property="og:title" content="All Free Online Converter Tools | freeconvert.cloud">
-    <meta property="og:description" content="A complete HTML directory of free online file converters, PDF tools, image utilities, video converters, developer tools, and calculators.">
+    <meta property="og:description" content="A complete HTML directory of currently available browser tools, image utilities, developer tools, QR codes, and calculators.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{BRAND_IMAGE}">
     <meta name="twitter:card" content="summary_large_image">
@@ -6174,12 +6254,11 @@ def build_all_tools_directory(tools):
     {HEADER_SNIPPET}
     <section class="tool-header">
         <span class="badge">Crawl Directory</span>
-        <h1>All Free Online Converter Tools</h1>
-        <p>Use this complete HTML index to find every converter, compressor, calculator, formatter, generator, and file utility on freeconvert.cloud.</p>
+        <h1>All Available Browser Tools</h1>
+        <p>Find the currently available image, text, developer, QR, security, calculator, and file utility tools on freeconvert.cloud.</p>
         <div class="quick-chips" style="margin-top:1.4rem;">
-            <a href="/pdf-tools/" class="quick-chip">PDF tools</a>
             <a href="/image-converter/" class="quick-chip">Image converters</a>
-            <a href="/video-converter/" class="quick-chip">Video converters</a>
+            <a href="/json-formatter/" class="quick-chip">Developer tools</a>
             <a href="/blog/" class="quick-chip">Guides</a>
             <a href="/sitemap/" class="quick-chip">HTML sitemap</a>
             <a href="/sitemap-index.xml" class="quick-chip">XML sitemap</a>
@@ -6188,8 +6267,8 @@ def build_all_tools_directory(tools):
 
     <main style="max-width:1440px;margin:0 auto;padding:0 5% 5rem;">
         <section style="background:white;border:1px solid var(--border-color);border-radius:16px;padding:1.6rem;box-shadow:var(--card-shadow);">
-            <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Why this directory helps users and crawlers</h2>
-            <p style="color:var(--text-muted);line-height:1.7;margin:0;">This page gives visitors and search crawlers a direct, readable path to every important converter page. XML sitemaps help discovery, but HTML directories improve internal linking, crawl depth, and topical context for newly published tools.</p>
+            <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">Find tools that are ready to use</h2>
+            <p style="color:var(--text-muted);line-height:1.7;margin:0;">This directory highlights tools that are currently available in the browser. It helps visitors find the right task quickly and keeps the public tool collection focused on useful, working pages.</p>
         </section>
         {''.join(category_sections)}
     </main>
@@ -6230,17 +6309,11 @@ def build_html_sitemap_page(tools):
     core_pages = [
         ('/', 'Home', 'Main free online converter homepage.'),
         ('/all-tools/', 'All Tools Directory', 'Direct HTML index for every converter and utility.'),
-        ('/pricing/', 'Pricing', 'Conversion limits and plan details.'),
-        ('/api/', 'Developer API', 'API overview for file conversion workflows.'),
         ('/blog/', 'Blog and Guides', 'Editorial tutorials and conversion guides.'),
-        ('/popular-conversions/', 'Popular Conversions', 'High-intent conversion workflow hub.'),
-        ('/free-online-converter-guides/', 'Free Online Converter Guides', 'Long-tail conversion and sizing guides.'),
-        ('/file-formats/', 'File Format Glossary', 'Plain-English file format definitions.'),
         ('/help/', 'Help Center', 'Common questions and support information.'),
         ('/about/', 'About freeconvert.cloud', 'Company and editorial information.'),
         ('/security/', 'File Security', 'Privacy, sandboxing, and retention information.'),
         ('/contact/', 'Contact', 'Contact and support details.'),
-        ('/press-kit/', 'Press Kit', 'Brand assets, facts, and media contact information.'),
     ]
     category_pages = [
         (f'/{cat["slug"]}/', cat['name'], cat.get('seo_desc', cat.get('intro', 'Browse related converter tools.')))
@@ -6255,20 +6328,6 @@ def build_html_sitemap_page(tools):
             tool.get('seo_desc') or tool.get('description', '')
         ))
 
-    guide_items = []
-    for path in sorted(Path('free-online-converter-guides').glob('**/index.html')):
-        if path.parent.name == 'free-online-converter-guides':
-            continue
-        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'Step-by-step converter guide.'))
-    for path in sorted(Path('popular-conversions').glob('**/index.html')):
-        if path.parent.name == 'popular-conversions':
-            continue
-        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'Popular conversion workflow.'))
-    for path in sorted(Path('file-formats').glob('**/index.html')):
-        if path.parent.name == 'file-formats':
-            continue
-        guide_items.append((public_url_for_html(path).replace(SITE_URL, ''), page_title_from_html(path), 'File format glossary page.'))
-
     blog_items = [
         (f'/blog/{article["slug"]}/', article['title'], article.get('description', 'Conversion guide.'))
         for article in BLOG_ARTICLES
@@ -6280,7 +6339,6 @@ def build_html_sitemap_page(tools):
     ]
     for category in sorted(grouped_tools):
         sections.append((f'{category} Tools', sorted(grouped_tools[category], key=lambda item: item[1])))
-    sections.append(('Guides, Popular Workflows, and File Formats', guide_items))
     sections.append(('Blog Articles', blog_items))
 
     section_html = ''
@@ -7682,10 +7740,8 @@ freeconvert.cloud provides practical browser-based image, text, developer, secur
 ## Main Navigation Pages
 - Homepage: https://freeconvert.cloud/ - Upload box and unified utility grid.
 - Blog Hub: https://freeconvert.cloud/blog/ - Fact-checked guides and tutorials.
-- File Format Glossary: https://freeconvert.cloud/file-formats/ - Plain-English format definitions that connect users to the right converters.
 - All Tools Directory: https://freeconvert.cloud/all-tools/ - Crawl-friendly HTML index linking to every converter and utility page.
 - HTML Sitemap: https://freeconvert.cloud/sitemap/ - Human-readable crawl hub covering tools, guides, categories, and support pages.
-- Press Kit: https://freeconvert.cloud/press-kit/ - Brand assets, facts, and media contact information for journalists and directory owners.
 
 ## Priority Tools (High Content Depth)
 {chr(10).join(priority_tool_lines[:12])}
@@ -7724,9 +7780,9 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 {chr(10).join(all_tool_lines)}
 
 ## Editorial And Trust Signals
-- Editorial team: freeconvert.cloud Editorial Team.
+- Content policy: working tools and practical guides are prioritized; unavailable or duplicate utility pages are not promoted for discovery.
 - Privacy model: supported public tools use client-side browser processing where possible.
-- Advertising model: clearly labeled ads, no fake download buttons, no deceptive conversion CTAs.
+- Advertising model: ads are not currently displayed while the site is under review.
 - Update marker: {TODAY_ISO}.
 
 ## Useful Discovery URLs
@@ -7734,8 +7790,6 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
 - RSS feed: {SITE_URL}/feed.xml
 - OpenSearch: {SITE_URL}/opensearch.xml
 - Blog hub: {SITE_URL}/blog/
-- File format glossary: {SITE_URL}/file-formats/
-- Press kit: {SITE_URL}/press-kit/
 - Security: {SITE_URL}/security/
 - Contact: {SITE_URL}/contact/
 """
