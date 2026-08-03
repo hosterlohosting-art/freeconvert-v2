@@ -115,6 +115,27 @@ TRUST_PAGE_CONTENT = {
         <p>We will only retain pages that provide a working utility or a clearly useful guide. Pages that are unavailable, duplicated, or not useful enough for visitors are excluded from the search index and are not promoted as flagship tools.</p>''',
 }
 
+# The homepage should explain the product in plain language. It replaces an
+# older generated block that made unsupported claims about APIs, paid plans,
+# server processing, and advertising.
+HOMEPAGE_VALUE_CONTENT = '''
+    <section style="background:var(--bg-light);border-top:1px solid var(--border-color);padding:4.5rem 5%;">
+        <div style="max-width:1000px;margin:0 auto;" class="seo-content">
+            <h2 style="text-align:center;font-size:2rem;margin-bottom:1rem;">Useful browser tools for everyday tasks</h2>
+            <p style="font-size:1.05rem;line-height:1.7;text-align:center;max-width:760px;margin:0 auto 2.5rem;">freeconvert.cloud focuses on straightforward tools for image conversion, compression, text and developer formatting, QR codes, passwords, and calculations. Choose a tool, review its supported input, and check the result before sharing it.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+                <a href="/png-to-jpg/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>PNG to JPG</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Create a JPG copy for wider compatibility.</span></a>
+                <a href="/image-compressor/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>Image Compressor</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Reduce image size before uploading or sharing.</span></a>
+                <a href="/json-formatter/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>JSON Formatter</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Format and inspect JSON data in the browser.</span></a>
+                <a href="/qr-code-generator/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>QR Code Generator</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Create a QR code, then test it before printing.</span></a>
+            </div>
+            <h3 style="font-size:1.35rem;margin:2.5rem 0 .7rem;">What is currently available</h3>
+            <p style="line-height:1.7;">The <a href="/all-tools/" style="color:var(--brand-primary);font-weight:700;">All Tools directory</a> lists the browser tools currently available. Some complex media and document conversions need a processing service we do not offer; those pages are labelled unavailable rather than presented as working tools.</p>
+            <h3 style="font-size:1.35rem;margin:2rem 0 .7rem;">Privacy and feedback</h3>
+            <p style="line-height:1.7;">Supported browser tools process their stated inputs locally. Keep an original copy until you have checked the output, and do not enter sensitive data unless you understand the page's processing notes. Report a broken tool or inaccurate instruction through <a href="/contact/" style="color:var(--brand-primary);font-weight:700;">Contact</a>.</p>
+        </div>
+    </section>'''
+
 
 def is_indexable_tool(tool):
     return tool['id'] not in UNAVAILABLE_TOOL_IDS
@@ -574,41 +595,8 @@ def keyword_target_for_tool(tool_id):
 
 
 def homepage_keyword_hub_html(tools):
-    tools_by_id = {tool['id']: tool for tool in tools}
-    cards = []
-    for target in TOP_KEYWORD_TARGETS:
-        tool = tools_by_id.get(target['tool_id'])
-        if not tool:
-            continue
-        modifiers = ', '.join(target['modifiers'][:2])
-        cards.append(f"""
-                <a href="/{target['tool_id']}/" class="tool-card" style="text-align:left;text-decoration:none;">
-                    <div class="tool-card-top">
-                        <div class="tool-icon">{target['priority']}</div>
-                        <span class="tool-category-tag">{html.escape(target['cluster'])}</span>
-                    </div>
-                    <div class="tool-card-body">
-                        <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{html.escape(target['keyword'].title())}</span>
-                        <p>{html.escape(target['intent'])}</p>
-                    </div>
-                    <div class="tool-card-footer">
-                        <span class="explore-text">Open {html.escape(tool['name'])}</span>
-                        <span class="arrow-icon">-&gt;</span>
-                    </div>
-                </a>""")
-    return f"""
-    <section style="background:white;border-top:1px solid var(--border-color);padding:5rem 5%;">
-        <div style="max-width:1440px;margin:0 auto;">
-            <div style="text-align:center;max-width:820px;margin:0 auto 2.5rem;">
-                <span class="badge">Top Searched Converter Keywords</span>
-                <h2 style="font-size:2.2rem;margin-top:1rem;margin-bottom:0.8rem;">High-intent file conversion keywords we target</h2>
-                <p style="font-size:1rem;color:var(--text-muted);">These are the core transactional searches for free online converters: PDF to JPG, JPG to PDF, PNG to JPG, image compression, document conversion, video extraction, and developer data tools.</p>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;">
-                {''.join(cards)}
-            </div>
-        </div>
-    </section>"""
+    # Keyword research guides editorial planning, not public-facing copy.
+    return ''
 
 
 def keyword_target_schema_tag(tools=None):
@@ -638,7 +626,6 @@ def keyword_target_schema_tag(tools=None):
 
 
 def tool_keyword_content_html(tool, tools):
-    target = keyword_target_for_tool(tool['id'])
     name = html.escape(tool['name'])
     desc = html.escape(tool.get('description', ''))
     category = html.escape(tool.get('category', 'Utility'))
@@ -669,35 +656,7 @@ def tool_keyword_content_html(tool, tools):
                 <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Privacy-first conversion promise</h2>
                 <p style="font-size:0.95rem;line-height:1.65;margin:0;">freeconvert.cloud is designed around clear privacy expectations: active browser tools process supported inputs locally and do not publish user content. For deeper details, read our <a href="/security/" style="color:var(--brand-primary);font-weight:700;text-decoration:none;">file security policy</a>.</p>
             </section>"""
-    if not target:
-        return base_intro + comparison + trust
-    tools_by_id = {item['id']: item for item in tools}
-    related_targets = [
-        item for item in TOP_KEYWORD_TARGETS
-        if item['tool_id'] in tools_by_id and item['tool_id'] != tool['id'] and (
-            item['cluster'] == target['cluster']
-            or item['cluster'].split()[0] == target['cluster'].split()[0]
-        )
-    ][:6]
-    related_links = ''.join(
-        f'<a href="/{rel["tool_id"]}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(tools_by_id.get(rel["tool_id"], {}).get("name", rel["keyword"].title()))}</a>'
-        for rel in related_targets
-    )
-    # Link to use-case guides that target the same tool for stronger internal linking
-    use_case_guides = [g for g in generate_use_case_pages() if g['tool'] == tool['id']][:4]
-    guide_links = ''.join(
-        f'<a href="/free-online-converter-guides/{html.escape(g["slug"])}/" style="display:inline-flex;padding:0.45rem 0.85rem;border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--brand-primary);font-size:0.84rem;font-weight:700;">{html.escape(g["title"])}</a>'
-        for g in use_case_guides
-    )
-    keyword_section = f"""
-            <section style="margin-top:2.2rem;padding:1.8rem;border:1px solid rgba(99,102,241,0.12);border-radius:16px;background:rgba(99,102,241,0.025);">
-                <h2 style="font-size:1.35rem;margin-bottom:0.8rem;">What people search for</h2>
-                <p style="font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">This page answers the <strong>{html.escape(target['keyword'])}</strong> search intent and related converter phrases. {html.escape(target['intent'])}</p>
-                <h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Related converter searches</h3>
-                <div style="display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1rem;">{related_links}</div>
-                {f'<h3 style="font-size:1.05rem;margin-bottom:0.6rem;">Step-by-step guides</h3><div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{guide_links}</div>' if guide_links else ''}
-            </section>"""
-    return base_intro + comparison + keyword_section + trust
+    return base_intro + comparison + trust
 
 
 def tool_deep_seo_content_html(tool, tools):
@@ -706,14 +665,6 @@ def tool_deep_seo_content_html(tool, tools):
     t_id = tool['id']
     t_type = tool.get('type', '')
     category = html.escape(tool.get('category', 'Utility'))
-    target = keyword_target_for_tool(t_id)
-
-    intent = target['intent'] if target else f"Complete a {category.lower()} task quickly in the browser."
-    modifiers = target['modifiers'] if target else [
-        f"{tool['name']} online",
-        f"free {tool['name']}",
-        f"use {tool['name'].lower()} in browser",
-    ]
 
     if t_type in ('image', 'image_advanced', 'image_base64'):
         before = "Large or incompatible image file"
@@ -752,10 +703,6 @@ def tool_deep_seo_content_html(tool, tools):
             "Use related tools when the task needs formatting, compression, or validation afterward.",
         ]
 
-    modifier_rows = ''.join(
-        f"<tr><td>{html.escape(phrase)}</td><td>{html.escape(intent)}</td></tr>"
-        for phrase in modifiers[:5]
-    )
     checklist_items = ''.join(f"<li>{html.escape(item)}</li>" for item in checks)
     related = [t for t in tools if t['id'] != t_id and t.get('category') == tool.get('category')][:4]
     if len(related) < 4:
@@ -765,17 +712,10 @@ def tool_deep_seo_content_html(tool, tools):
         for rel in related
     )
 
-    review_notes = [
-        f"The page was reviewed on {TODAY_ISO} for clear instructions, indexable metadata, and working internal links.",
-        "Active tools are kept in the XML sitemap; unavailable or review-mode tools are removed from the sitemap and marked noindex.",
-        "Content is written around the task a visitor is trying to finish, not around repeated keyword stuffing.",
-    ]
-    review_items = ''.join(f"<li>{html.escape(item)}</li>" for item in review_notes)
-
     return f"""
             <section style="margin-top:2rem;">
                 <h2>{name} workflow checklist</h2>
-                <p>Use this checklist to decide whether {name} is the right tool for your file, text, or utility task. The page is designed for the practical search intent behind <strong>{html.escape(modifiers[0])}</strong>: get the job done, verify the output, and move on without installing software.</p>
+                <p>Use this checklist to decide whether {name} is the right tool for your file, text, or utility task. Complete the task, verify the output, and keep the source available until you are satisfied with the result.</p>
                 <table>
                     <thead><tr><th>Before</th><th>After</th><th>Best practice</th></tr></thead>
                     <tbody>
@@ -784,26 +724,13 @@ def tool_deep_seo_content_html(tool, tools):
                 </table>
             </section>
             <section style="margin-top:2rem;">
-                <h2>Search intent covered on this page</h2>
-                <p>Google tends to reward pages that answer the user task clearly instead of repeating keywords. This section maps common search phrases to the real action available on the page.</p>
-                <table>
-                    <thead><tr><th>Query variation</th><th>What the visitor needs</th></tr></thead>
-                    <tbody>{modifier_rows}</tbody>
-                </table>
-            </section>
-            <section style="margin-top:2rem;">
                 <h2>Output quality checks</h2>
                 <ul style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.55rem;line-height:1.65;">{checklist_items}</ul>
             </section>
             <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(99,102,241,0.035);border:1px solid rgba(99,102,241,0.14);">
                 <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Next useful tools</h2>
-                <p style="margin-bottom:1rem;">Continue the workflow with nearby freeconvert.cloud tools that share similar intent and help Google understand the topical cluster around this page.</p>
+                <p style="margin-bottom:1rem;">Continue with a related browser tool when you need to format, compress, validate, or share the result.</p>
                 <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">{related_links}</div>
-            </section>
-            <section style="margin-top:2rem;padding:1.5rem;border-radius:14px;background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.14);">
-                <h2 style="font-size:1.25rem;margin-bottom:0.7rem;">Editorial review and quality signals</h2>
-                <p style="margin-bottom:0.9rem;">This page is maintained as a practical tool page, not a doorway page. Each update checks the user task, crawl signals, related links, privacy language, and whether the page should remain indexable.</p>
-                <ul style="padding-left:1.5rem;display:flex;flex-direction:column;gap:0.45rem;line-height:1.6;">{review_items}</ul>
             </section>"""
 
 
@@ -868,6 +795,15 @@ def normalize_generated_html_seo():
                 flags=re.I,
             )
 
+        if rel_path == 'index.html':
+            html = re.sub(
+                r'\s*<!-- Complete SEO Content Expansion & E-E-A-T Signal Block -->[\s\S]*?(?=\s*<!-- Developer API Preview Section -->)',
+                HOMEPAGE_VALUE_CONTENT,
+                html,
+                count=1,
+                flags=re.I,
+            )
+
         # Remove legacy wording that implied services or capabilities which are
         # not part of the current browser-only product.
         html = html.replace(
@@ -902,6 +838,13 @@ def normalize_generated_html_seo():
                 html,
                 flags=re.I,
             )
+            # Keep the official account-verification script in the head without
+            # adding display-ad units while the site is under content review.
+            adsense_verification = (
+                '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8997218708343263" '
+                'crossorigin="anonymous"></script>'
+            )
+            html = html.replace('</head>', f'    {adsense_verification}\n</head>', 1)
             review_nav = '''<div class="nav-links">
                 <a href="/image-converter/" class="nav-link">Image Tools</a>
                 <a href="/document-converter/" class="nav-link">Developer &amp; Text</a>
@@ -1147,6 +1090,7 @@ def normalize_generated_html_seo():
             html = html.replace('</head>', f'    {website_search_schema_tag()}\n\n</head>', 1)
 
         if html != original:
+            html = re.sub(r'[ \t]+\n', '\n', html)
             html_path.write_text(html, encoding='utf-8')
     print("Normalized site-wide HTML SEO tags")
 
@@ -5598,7 +5542,7 @@ def build_homepage(tools):
                     </div>
                 </a>"""
 
-        keyword_hub_html = homepage_keyword_hub_html(tools)
+        keyword_hub_html = ''
 
         html_content = """<!DOCTYPE html>
 <html lang="en">
@@ -6163,7 +6107,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', keyword_target_schema_tag(tools)).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', '').replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
