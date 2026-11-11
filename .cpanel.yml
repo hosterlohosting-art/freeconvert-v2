@@ -1,0 +1,16 @@
+---
+# freeconvert.cloud — cPanel auto-deploy config
+# How it works: cPanel Git Version Control pulls this repo, then runs the
+# tasks below. With the GitHub webhook set (GitHub repo Settings -> Webhooks
+# -> cPanel deployment URL), every push to main deploys automatically.
+# DEPLOYPATH uses $HOME so no cPanel username is hard-coded here.
+# If your host does not expand $HOME, replace it with /home/YOUR_CPANEL_USERNAME
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp -R .well-known $DEPLOYPATH
+    - /bin/rm -f $DEPLOYPATH/freeconvert-production-package.zip
+    - /bin/rm -f $DEPLOYPATH/*.md $DEPLOYPATH/*.py $DEPLOYPATH/DEPLOYMENT-INSTRUCTIONS.txt
+    - /bin/chmod 755 $DEPLOYPATH
