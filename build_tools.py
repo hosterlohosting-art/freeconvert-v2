@@ -15,13 +15,17 @@ TODAY_ISO = '2026-08-03'
 BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
-    'heic-to-jpg', 'palette-extractor', 'ico-converter',
-    'compress-pdf', 'pdf-to-jpg', 'jpg-to-pdf', 'merge-pdf', 'split-pdf',
+    'palette-extractor', 'ico-converter',
+    'merge-pdf', 'split-pdf',
     'pdf-to-word', 'word-to-pdf', 'barcode-generator', 'speed-test',
     'mp4-to-mp3', 'video-compressor', 'webm-to-mp4', 'mov-to-mp4',
     'avi-to-mp4', 'mkv-to-mp4', 'mp4-to-gif', 'video-to-mp3',
     'video-trimmer', 'video-resizer',
 }
+# NOTE 2026-11-12: pdf-to-jpg, jpg-to-pdf, heic-to-jpg, compress-pdf were
+# removed from UNAVAILABLE_TOOL_IDS — they are real working tools now
+# (index,follow, in the sitemaps). A generator run must not flip them
+# back to noindex.
 NOINDEX_PATH_PREFIXES = (
     'popular-conversions/',
     'free-online-converter-guides/',
