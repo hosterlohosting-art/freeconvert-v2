@@ -1861,6 +1861,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/merge-pdf/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/blog/compress-pdf-online-free-no-upload/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
