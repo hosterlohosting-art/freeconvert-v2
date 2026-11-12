@@ -299,14 +299,13 @@
         <!-- Help articles -->
         <article class="seo-content">
             <h2>About our Unit Converter Hub</h2>
-            <p>Welcome to the high-performance Unit Converter directory on freeconvert.cloud. Our platform is engineered to deliver enterprise-grade conversion, calculation, formatting, and compression tools. Navigating incompatible file extensions, heavy media payloads, or complex coding scripts represents a daily productivity bottleneck for professionals and students alike. We optimize this workflow by offering client-side browser local tools and secure edge server sandboxes, unlocking lightning-fast transcoding speeds while respecting your data privacy.</p>
+            <p>Welcome to the high-performance Unit Converter directory on freeconvert.cloud. Our platform is engineered to deliver enterprise-grade conversion, calculation, formatting, and compression tools. Navigating incompatible file extensions, heavy media payloads, or complex coding scripts represents a daily productivity bottleneck for professionals and students alike. We optimize this workflow by offering client-side browser tools that run entirely on your device, with fast conversion and no uploads.</p>
 
 
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
             <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> Unit Converter Glossary & Standards</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
-            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
         </div>
 
             <h2>Why Choose freeconvert.cloud for Unit Converter?</h2>
@@ -624,113 +623,6 @@ if (toolId === 'lorem-ipsum') {
 
         lapDiv.innerHTML = `<span>⏱ Lap ${lapCount}</span><span style="font-family: monospace; color:var(--text-primary); font-weight:bold;">${hStr}:${mStr}:${sStr}.${msStr}</span>`;
         lapsBox.insertBefore(lapDiv, lapsBox.firstChild);
-    };
-} else if (toolId === 'speed-test') {
-    container.innerHTML = `
-        <div class="speedtest-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div class="speedometer" style="position: relative; width: 250px; height: 150px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
-                <svg style="width: 250px; height: 250px; position: absolute; top: 0; left: 0;">
-                    <circle cx="125" cy="125" r="100" stroke="rgba(99,102,241,0.05)" stroke-width="12" fill="transparent" stroke-dasharray="314 314" stroke-dashoffset="0" style="transform: rotate(180deg); transform-origin: 125px 125px;" />
-                    <circle cx="125" cy="125" r="100" stroke="url(#speedGrad)" stroke-width="12" fill="transparent" stroke-dasharray="314 314" stroke-dashoffset="314" id="speed-progress" style="transform: rotate(180deg); transform-origin: 125px 125px; transition: stroke-dashoffset 0.2s ease-out;" />
-                    <defs>
-                        <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="var(--brand-primary)" />
-                            <stop offset="100%" stop-color="var(--brand-secondary)" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div id="speed-pointer" style="position: absolute; bottom: 0; left: 50%; width: 6px; height: 95px; background: var(--brand-accent); transform-origin: bottom center; transform: rotate(-90deg); transition: transform 0.2s ease-out; border-radius: 4px; box-shadow: 0 0 10px rgba(16,185,129,0.3);"></div>
-                <div style="text-align: center; z-index: 2; margin-bottom: 5px;">
-                    <h2 id="speed-number" style="font-size: 2.5rem; font-weight: 850; color: var(--text-primary); margin: 0; line-height: 1;">0</h2>
-                    <p style="font-size: 0.85rem; color: var(--brand-secondary); text-transform: uppercase; font-weight: bold; margin: 0; letter-spacing: 0.1em;">Mbps</p>
-                </div>
-            </div>
-            <div style="margin-top: 2.5rem; text-align: center;">
-                <button class="btn primary" id="speed-test-btn" onclick="runSpeed()">Start Speed Test</button>
-                <p id="speed-status" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">Ready to test connection speed</p>
-            </div>
-        </div>
-    `;
-    window.runSpeed = async () => {
-        const testBtn = document.getElementById('speed-test-btn');
-        const statusEl = document.getElementById('speed-status');
-        const speedNum = document.getElementById('speed-number');
-        const speedProg = document.getElementById('speed-progress');
-        const speedPointer = document.getElementById('speed-pointer');
-
-        testBtn.disabled = true;
-        statusEl.innerText = "Connecting to nearest edge server...";
-        speedNum.innerText = "0";
-        speedProg.style.strokeDashoffset = 314;
-        speedPointer.style.transform = "rotate(-90deg)";
-
-        let tempSpeed = 0;
-        let sweepInterval = setInterval(() => {
-            tempSpeed = Math.random() * 8 + 2;
-            speedNum.innerText = tempSpeed.toFixed(1);
-            const rotPercent = tempSpeed / 100;
-            const rot = -90 + rotPercent * 180;
-            speedPointer.style.transform = `rotate(\${rot}deg)`;
-            speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-        }, 150);
-
-        setTimeout(async () => {
-            clearInterval(sweepInterval);
-            statusEl.innerText = "Testing download throughput...";
-            const start = Date.now();
-            try {
-                const images = [
-                    'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-                    'https://www.gstatic.com/webp/gallery/1.webp',
-                    'https://www.gstatic.com/webp/gallery/2.webp'
-                ];
-                let fetchCount = 0;
-
-                let simulatedMax = Math.random() * 40 + 35;
-                let currentSimSpeed = 0;
-                let climbInterval = setInterval(() => {
-                    if (currentSimSpeed < simulatedMax) {
-                        currentSimSpeed += (simulatedMax - currentSimSpeed) * 0.15 + Math.random() * 2;
-                        if (currentSimSpeed > simulatedMax) currentSimSpeed = simulatedMax;
-                        speedNum.innerText = currentSimSpeed.toFixed(1);
-                        const rotPercent = Math.min(currentSimSpeed / 100, 1);
-                        const rot = -90 + rotPercent * 180;
-                        speedPointer.style.transform = `rotate(\${rot}deg)`;
-                        speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-                    }
-                }, 100);
-
-                for(let url of images) {
-                    await fetch(url + '?cache=' + Math.random());
-                    fetchCount++;
-                }
-
-                clearInterval(climbInterval);
-                const duration = (Date.now() - start) / 1000;
-                let actualSpeed = (45 / duration);
-                if (actualSpeed > 100) actualSpeed = 95.8 + Math.random() * 4;
-                if (actualSpeed < 1) actualSpeed = 4.2;
-
-                speedNum.innerText = actualSpeed.toFixed(1);
-                const rotPercent = Math.min(actualSpeed / 100, 1);
-                const rot = -90 + rotPercent * 180;
-                speedPointer.style.transform = `rotate(\${rot}deg)`;
-                speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-
-                statusEl.innerText = "Speed test complete! Zero data stored.";
-                testBtn.disabled = false;
-            } catch (e) {
-                clearInterval(sweepInterval);
-                statusEl.innerText = "CORS restriction blocked actual measurement. Simulated result:";
-                const mockSpeed = 68.4 + Math.random() * 5;
-                speedNum.innerText = mockSpeed.toFixed(1);
-                const rotPercent = mockSpeed / 100;
-                const rot = -90 + rotPercent * 180;
-                speedPointer.style.transform = `rotate(\${rot}deg)`;
-                speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-                testBtn.disabled = false;
-            }
-        }, 1500);
     };
 } else if (toolId === 'image-to-base64') {
     container.innerHTML = `
