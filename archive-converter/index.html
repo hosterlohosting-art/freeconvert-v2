@@ -276,7 +276,7 @@
 
 
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
-            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📝 Archive Converter Glossary & Standards</h3>
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> Archive Converter Glossary & Standards</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
@@ -300,19 +300,19 @@
             <p style="margin-bottom:1rem;">Have questions about converting files inside our Archive Converter directory? Read our comprehensive FAQ below:</p>
 
         <div class="accordion">
-            <div class="accordion-header">❓ Are the Archive Converter converters completely free to use?</div>
+            <div class="accordion-header"> Are the Archive Converter converters completely free to use?</div>
             <div class="accordion-content">
                 <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity.</p>
             </div>
         </div>
         <div class="accordion">
-            <div class="accordion-header">❓ How does freeconvert.cloud guarantee the security of my files?</div>
+            <div class="accordion-header"> How does freeconvert.cloud guarantee the security of my files?</div>
             <div class="accordion-content">
                 <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours.</p>
             </div>
         </div>
         <div class="accordion">
-            <div class="accordion-header">❓ Can I use these Archive Converter tools on my smartphone?</div>
+            <div class="accordion-header"> Can I use these Archive Converter tools on my smartphone?</div>
             <div class="accordion-content">
                 <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software.</p>
             </div>
@@ -323,8 +323,8 @@
         <div style="text-align: center; margin-bottom: 2rem;">
             <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing:-0.02em;">Explore Related Categories</h3>
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/image-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">🖼️ Image Converter</a>
-                <a href="/document-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">📄 Document Converter</a>
+                <a href="/image-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> Image Converter</a>
+                <a href="/document-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> Document Converter</a>
             </div>
         </div>
     </main>
@@ -338,7 +338,7 @@
                 <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>Free browser tools for image conversion, text, code, security, and everyday calculations.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
-                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a> &nbsp;|&nbsp;
                 </div>
             </div>
             <div class="footer-col">
@@ -461,12 +461,7 @@ function getFileIcon(fileName) {
     const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
     const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
 
-    if (imageExts.includes(ext)) return '🖼️';
-    if (videoExts.includes(ext)) return '🎥';
-    if (audioExts.includes(ext)) return '🎵';
-    if (documentExts.includes(ext)) return '📄';
-    if (archiveExts.includes(ext)) return '🗜️';
-    return '📄';
+    return ext.toUpperCase();
 }
 
 function updateSandboxBadge(sourceExt, targetExt) {
@@ -641,7 +636,7 @@ convertBtn.onclick = async () => {
         const dLink = document.createElement('a');
         dLink.className = "btn primary";
         dLink.style.marginTop = "1rem";
-        dLink.textContent = "📥 Download Converted File";
+        dLink.textContent = " Download Converted File";
         dLink.href = URL.createObjectURL(resultBlob);
 
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
@@ -666,18 +661,6 @@ convertBtn.onclick = async () => {
             );
         }
 
-        // Trigger delight particles!
-        if (window.triggerBrandParticles) {
-            setTimeout(() => {
-                const checkmark = document.querySelector('.success-checkmark');
-                if (checkmark) {
-                    const rect = checkmark.getBoundingClientRect();
-                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
-                } else {
-                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
-                }
-            }, 100);
-        }
 
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');
@@ -692,7 +675,7 @@ convertBtn.onclick = async () => {
         actButtons.appendChild(anotherBtn);
 
     } catch (e) {
-        progText.textContent = "❌ Error: " + e.message;
+        progText.textContent = " Error: " + e.message;
         progText.style.color = "var(--brand-danger)";
         convertBtn.style.display = 'inline-block';
         resetBtn.style.display = 'inline-block';

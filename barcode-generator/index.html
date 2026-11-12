@@ -167,8 +167,8 @@
         </div>
     </div>
     <div class="editor-actions" style="justify-content:center;">
-        <button type="button" class="editor-btn" onclick="loadBarcodeSample()">⚡ Try an example</button>
-        <button type="button" class="editor-btn" onclick="clearBarcode()">🗑️ Clear</button>
+        <button type="button" class="editor-btn" onclick="loadBarcodeSample()"> Try an example</button>
+        <button type="button" class="editor-btn" onclick="clearBarcode()"> Clear</button>
     </div>
 </div>
 <div id="barcode-error" role="alert" style="display:none; max-width:560px; margin:0 auto 1.5rem; padding:0.9rem 1.1rem; border-radius:12px; border:1px solid rgba(220,38,38,0.35); background:rgba(220,38,38,0.06); color:#b91c1c; font-weight:600; font-size:0.92rem; line-height:1.5;"></div>
@@ -176,10 +176,10 @@
     <span style="color:var(--text-light); font-weight:500;">Your barcode will render here</span>
 </div>
 <p id="barcode-encoded-note" style="font-size:0.88rem; color:var(--text-muted); line-height:1.5; margin:0 0 1.5rem; text-align:center;"></p>
-<button id="generate-barcode-btn" class="btn primary" style="width:100%; justify-content:center;">⚡ Generate Barcode</button>
+<button id="generate-barcode-btn" class="btn primary" style="width:100%; justify-content:center;"> Generate Barcode</button>
 <div style="display:flex; gap:0.75rem; margin-top:0.75rem;">
-    <button type="button" id="download-barcode-png" class="btn primary" style="flex:1; justify-content:center; display:none;">⬇️ Download PNG</button>
-    <button type="button" id="download-barcode-svg" class="btn primary" style="flex:1; justify-content:center; display:none;">⬇️ Download SVG</button>
+    <button type="button" id="download-barcode-png" class="btn primary" style="flex:1; justify-content:center; display:none;"> Download PNG</button>
+    <button type="button" id="download-barcode-svg" class="btn primary" style="flex:1; justify-content:center; display:none;"> Download SVG</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.12.3/JsBarcode.all.min.js"></script>
 
@@ -328,27 +328,21 @@
             <h2 style="margin-bottom:1.2rem;font-size:1.35rem;">Related Tools You May Like</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;" id="related-tools-box">
                 <a href="/qr-code-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">🧱</span>
   <strong style="font-size:0.88rem;">QR Code Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Create custom high-definition QR codes.</span>
 </a><a href="/uuid-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">🔑</span>
   <strong style="font-size:0.88rem;">UUID Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Create bulk cryptographically secure v4 UUIDs.</span>
 </a><a href="/random-number-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">🎲</span>
   <strong style="font-size:0.88rem;">Random Number Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Roll randomized numbers within custom bounds.</span>
 </a><a href="/password-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">🔑</span>
   <strong style="font-size:0.88rem;">Password Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Create secure cryptographically randomized keys.</span>
 </a><a href="/hash-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">🔒</span>
   <strong style="font-size:0.88rem;">Hash Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Generate SHA256 and MD5 hashes securely.</span>
 </a><a href="/lorem-ipsum-generator/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">📜</span>
   <strong style="font-size:0.88rem;">Lorem Ipsum Generator</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Generate design placeholder text in bulk.</span>
 </a>
@@ -357,9 +351,9 @@
 
         <!-- Blog Resources (internal linking to articles) -->
         <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-light);border-radius:14px;border:1px solid var(--border-color);">
-            <h3 style="margin-bottom:1rem;font-size:1.1rem;">📖 Learn More — Guides & Resources</h3>
+            <h3 style="margin-bottom:1rem;font-size:1.1rem;"> Learn More — Guides & Resources</h3>
             <div style="display:flex;flex-wrap:wrap;gap:0.6rem;" id="blog-links-box">
-                <a href="/blog/barcode-generator-online-product-labels-guide/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 Barcode Generator Guide for Product Labels</a><a href="/blog/what-is-a-qr-code-and-how-to-generate-one-safely/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 What Is a QR Code & How to Generate One Safely</a><a href="/blog/best-free-online-tools-for-bloggers-and-students/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 Best Free Online Tools</a>
+                <a href="/blog/barcode-generator-online-product-labels-guide/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'"> Barcode Generator Guide for Product Labels</a><a href="/blog/what-is-a-qr-code-and-how-to-generate-one-safely/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'"> What Is a QR Code & How to Generate One Safely</a><a href="/blog/best-free-online-tools-for-bloggers-and-students/" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'"> Best Free Online Tools</a>
             </div>
         </section>
     </main>
@@ -373,7 +367,7 @@
                 <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>Free browser tools for image conversion, text, code, security, and everyday calculations.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
-                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a> &nbsp;|&nbsp;
                 </div>
             </div>
             <div class="footer-col">

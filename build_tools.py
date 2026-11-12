@@ -3357,12 +3357,12 @@ function getFileIcon(fileName) {
     const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
     const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
     
-    if (imageExts.includes(ext)) return '🖼️';
-    if (videoExts.includes(ext)) return '🎥';
-    if (audioExts.includes(ext)) return '🎵';
-    if (documentExts.includes(ext)) return '📄';
-    if (archiveExts.includes(ext)) return '🗜️';
-    return '📄';
+    if (imageExts.includes(ext)) return '';
+    if (videoExts.includes(ext)) return '';
+    if (audioExts.includes(ext)) return '';
+    if (documentExts.includes(ext)) return '';
+    if (archiveExts.includes(ext)) return '';
+    return '';
 }
 
 function updateSandboxBadge(sourceExt, targetExt) {
@@ -3537,7 +3537,7 @@ convertBtn.onclick = async () => {
         const dLink = document.createElement('a');
         dLink.className = "btn primary";
         dLink.style.marginTop = "1rem";
-        dLink.textContent = "📥 Download Converted File";
+        dLink.textContent = " Download Converted File";
         dLink.href = URL.createObjectURL(resultBlob);
         
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
@@ -3562,18 +3562,6 @@ convertBtn.onclick = async () => {
             );
         }
         
-        // Trigger delight particles!
-        if (window.triggerBrandParticles) {
-            setTimeout(() => {
-                const checkmark = document.querySelector('.success-checkmark');
-                if (checkmark) {
-                    const rect = checkmark.getBoundingClientRect();
-                    window.triggerBrandParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
-                } else {
-                    window.triggerBrandParticles(window.innerWidth / 2, window.innerHeight / 2);
-                }
-            }, 100);
-        }
         
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');
@@ -3588,7 +3576,7 @@ convertBtn.onclick = async () => {
         actButtons.appendChild(anotherBtn);
         
     } catch (e) {
-        progText.textContent = "❌ Error: " + e.message;
+        progText.textContent = " Error: " + e.message;
         progText.style.color = "var(--brand-danger)";
         convertBtn.style.display = 'inline-block';
         resetBtn.style.display = 'inline-block';
@@ -3609,29 +3597,29 @@ const toolId = '{{ID}}';
 if (['base64-tool', 'base64-encode', 'base64-decode'].includes(toolId)) {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
-            <option value="encode">🔐 Text to Base64</option>
-            <option value="decode">🔓 Base64 to Text</option>
+            <option value="encode"> Text to Base64</option>
+            <option value="decode"> Base64 to Text</option>
         </select>
     `;
 } else if (['url-encoder-decoder', 'url-encoder', 'url-decoder'].includes(toolId)) {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
-            <option value="encode">🔗 URL Encode</option>
-            <option value="decode">🔓 URL Decode</option>
+            <option value="encode"> URL Encode</option>
+            <option value="decode"> URL Decode</option>
         </select>
     `;
 } else if (toolId === 'binary-text-converter') {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
-            <option value="text2bin">✍️ Text to Binary</option>
-            <option value="bin2text">🤖 Binary to Text</option>
+            <option value="text2bin"> Text to Binary</option>
+            <option value="bin2text"> Binary to Text</option>
         </select>
     `;
 } else if (toolId === 'unicode-converter') {
     selector.innerHTML = `
         <select id="op-mode" class="glass-input" style="width: 100%; margin-bottom: 0.5rem; text-align: center; font-weight: bold; background: white;">
-            <option value="text2uni">🔡 Text to Unicode</option>
-            <option value="uni2text">🔤 Unicode to Text</option>
+            <option value="text2uni"> Text to Unicode</option>
+            <option value="uni2text"> Unicode to Text</option>
         </select>
     `;
 }
@@ -3718,17 +3706,17 @@ if (toolId === 'diff-checker') {
     document.getElementById('editor-container').innerHTML = `
         <div class="editor-pane">
             <div class="editor-header">
-                <span class="editor-title">📥 Original Text</span>
+                <span class="editor-title"> Original Text</span>
                 <div class="editor-actions">
-                    <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                    <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                    <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                    <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                 </div>
             </div>
             <textarea id="adv-input" class="code-editor-textarea" style="height: 250px;" placeholder="Paste original text here..."></textarea>
         </div>
         <div class="editor-pane">
             <div class="editor-header">
-                <span class="editor-title">📥 Modified Text</span>
+                <span class="editor-title"> Modified Text</span>
             </div>
             <textarea id="adv-input-2" class="code-editor-textarea" style="height: 250px;" placeholder="Paste modified text here..."></textarea>
         </div>
@@ -3770,9 +3758,9 @@ btn.onclick = () => {
         preview.style.display = 'none';
         try {
             JSON.parse(val);
-            output.value = "🟢 Valid JSON! The syntax is correct and well-formed.";
+            output.value = " Valid JSON! The syntax is correct and well-formed.";
         } catch (err) {
-            output.value = "🔴 Invalid JSON syntax:\n" + err.message;
+            output.value = " Invalid JSON syntax:\n" + err.message;
         }
     } else if (toolId === 'html-formatter') {
         output.style.display = 'block';
@@ -3838,14 +3826,14 @@ if (toolId === 'lorem-ipsum') {
                 <label style="font-weight: 800; font-size: 0.94rem;">Paragraphs Count: </label>
                 <input type="number" id="lorem-count" class="glass-input" value="3" min="1" max="20" style="width: 80px; text-align: center; padding: 0.4rem;">
             </div>
-            <button class="btn primary" onclick="generateLorem()" style="justify-content: center;">⚡ Generate Lorem Ipsum</button>
+            <button class="btn primary" onclick="generateLorem()" style="justify-content: center;"> Generate Lorem Ipsum</button>
         </div>
         <div class="editor-pane" style="margin-top: 2rem;">
             <div class="editor-header">
-                <span class="editor-title">📤 Generated Text</span>
+                <span class="editor-title"> Generated Text</span>
                 <div class="editor-actions">
-                    <button type="button" class="editor-btn success" onclick="copyOutputText()">📋 Copy</button>
-                    <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                    <button type="button" class="editor-btn success" onclick="copyOutputText()"> Copy</button>
+                    <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                 </div>
             </div>
             <textarea id="lorem-out" class="code-editor-textarea" style="height: 300px;" readonly placeholder="Lorem Ipsum text will render here..."></textarea>
@@ -3865,7 +3853,7 @@ if (toolId === 'lorem-ipsum') {
                 <label style="font-weight: 800; font-size: 0.94rem; color: var(--text-muted);">Enter Password to Check:</label>
                 <div style="position: relative; display: flex; align-items: center; width: 100%;">
                     <input type="password" id="pass-input" class="glass-input" placeholder="Type a password here..." style="width: 100%; padding-right: 3rem;">
-                    <span style="position: absolute; right: 1rem; cursor: pointer; user-select: none;" id="toggle-pass-visibility">👁️</span>
+                    <span style="position: absolute; right: 1rem; cursor: pointer; user-select: none;" id="toggle-pass-visibility"></span>
                 </div>
             </div>
             
@@ -3875,8 +3863,8 @@ if (toolId === 'lorem-ipsum') {
             <h3 id="strength-text" style="color: var(--text-muted); text-align: center; font-size: 1.2rem; font-weight: 800;">Enter Password</h3>
             
             <div class="editor-actions" style="justify-content: center;">
-                <button type="button" class="editor-btn" onclick="loadSampleData()">⚡ Test Strong Example</button>
-                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                <button type="button" class="editor-btn" onclick="loadSampleData()"> Test Strong Example</button>
+                <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
             </div>
         </div>
     `;
@@ -3885,10 +3873,10 @@ if (toolId === 'lorem-ipsum') {
     eye.onclick = () => {
         if (pInput.type === 'password') {
             pInput.type = 'text';
-            eye.textContent = '🔒';
+            eye.textContent = '';
         } else {
             pInput.type = 'password';
-            eye.textContent = '👁️';
+            eye.textContent = '';
         }
     };
     
@@ -3905,11 +3893,11 @@ if (toolId === 'lorem-ipsum') {
         const text = document.getElementById('strength-text');
         
         let color = 'red';
-        let label = 'Weak Strength 🔴';
+        let label = 'Weak Strength ';
         let percent = (score / 5) * 100;
         
-        if (score > 2) { color = 'orange'; label = 'Medium Strength 🟡'; }
-        if (score > 4) { color = '#10b981'; label = 'Strong / AdSense Secure 🟢'; }
+        if (score > 2) { color = 'orange'; label = 'Medium Strength '; }
+        if (score > 4) { color = '#10b981'; label = 'Strong / AdSense Secure '; }
         
         if (val.length === 0) { percent = 0; label = 'Enter Password'; color = 'var(--text-light)'; }
         
@@ -4013,7 +4001,7 @@ if (toolId === 'lorem-ipsum') {
         const sStr = String(Math.floor(elapsedTime / 1000) % 60).padStart(2, '0');
         const msStr = String(elapsedTime % 1000).padStart(3, '0');
         
-        lapDiv.innerHTML = `<span>⏱️ Lap ${lapCount}</span><span style="font-family: monospace; color:var(--text-primary); font-weight:bold;">${hStr}:${mStr}:${sStr}.${msStr}</span>`;
+        lapDiv.innerHTML = `<span>⏱ Lap ${lapCount}</span><span style="font-family: monospace; color:var(--text-primary); font-weight:bold;">${hStr}:${mStr}:${sStr}.${msStr}</span>`;
         lapsBox.insertBefore(lapDiv, lapsBox.firstChild);
     };
         } else if (toolId === 'speed-test') {
@@ -4124,16 +4112,16 @@ if (toolId === 'lorem-ipsum') {
 } else if (toolId === 'image-to-base64') {
     container.innerHTML = `
         <div id="drop-zone" class="drop-zone">
-            <div class="drop-icon">📁</div>
+            <div class="drop-icon"></div>
             <p class="drop-text">Upload Image to get Base64</p>
             <input type="file" id="file-input" hidden>
         </div>
         <div class="editor-pane" style="margin-top:20px;">
             <div class="editor-header">
-                <span class="editor-title">📤 Base64 Data URI</span>
+                <span class="editor-title"> Base64 Data URI</span>
                 <div class="editor-actions">
-                    <button type="button" class="editor-btn success" onclick="copyOutputText()">📋 Copy</button>
-                    <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                    <button type="button" class="editor-btn success" onclick="copyOutputText()"> Copy</button>
+                    <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                 </div>
             </div>
             <textarea id="base64-out" class="code-editor-textarea" style="height: 200px;" readonly placeholder="Data URI will appear here..."></textarea>
@@ -4290,10 +4278,10 @@ if (toolId === 'lorem-ipsum') {
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="editor-pane">
                 <div class="editor-header">
-                    <span class="editor-title">📥 Input Text</span>
+                    <span class="editor-title"> Input Text</span>
                     <div class="editor-actions">
-                        <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                        <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                        <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                        <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                     </div>
                 </div>
                 <textarea id="hash-input" class="code-editor-textarea" placeholder="Enter text to hash..." style="height: 100px;"></textarea>
@@ -4341,10 +4329,10 @@ if (toolId === 'lorem-ipsum') {
     container.innerHTML = `
         <div class="editor-pane">
             <div class="editor-header">
-                <span class="editor-title">📥 Morse / Text Input</span>
+                <span class="editor-title"> Morse / Text Input</span>
                 <div class="editor-actions">
-                    <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                    <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                    <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                    <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                 </div>
             </div>
             <textarea id="morse-input" class="code-editor-textarea" placeholder="Enter Text or Morse Code here..." style="height: 150px;"></textarea>
@@ -4369,24 +4357,24 @@ if (toolId === 'lorem-ipsum') {
                 <input type="text" id="yt-url" class="glass-input" placeholder="e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="width: 100%;">
             </div>
             
-            <button class="btn primary" onclick="getThumbnails()" style="justify-content: center;">⚡ Get Thumbnails</button>
+            <button class="btn primary" onclick="getThumbnails()" style="justify-content: center;"> Get Thumbnails</button>
             
             <div id="yt-thumbs-preview" style="display: none; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem;">
                 <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1.5rem; gap: 1rem;">
                     <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);">MAX RESOLUTION (1080p Full HD)</span>
                     <img id="thumb-max" style="width: 100%; max-width: 480px; border-radius: 8px; border: 1px solid var(--border-color);" src="" alt="Max Res Thumbnail" loading="lazy" decoding="async">
-                    <a id="link-max" class="btn secondary" href="" download target="_blank">📥 Download HD Thumbnail</a>
+                    <a id="link-max" class="btn secondary" href="" download target="_blank"> Download HD Thumbnail</a>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
                         <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-secondary);">HIGH QUALITY (640x480)</span>
                         <img id="thumb-hq" style="width: 100%; border-radius: 6px;" src="" alt="HQ Thumbnail" loading="lazy" decoding="async">
-                        <a id="link-hq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download HQ</a>
+                        <a id="link-hq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;"> Download HQ</a>
                     </div>
                     <div class="glass-input" style="display: flex; flex-direction: column; align-items: center; background: white; padding: 1rem; gap: 0.8rem;">
                         <span style="font-weight: 800; font-size: 0.8rem; color: var(--brand-accent);">MEDIUM QUALITY (320x180)</span>
                         <img id="thumb-mq" style="width: 100%; border-radius: 6px;" src="" alt="MQ Thumbnail" loading="lazy" decoding="async">
-                        <a id="link-mq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">📥 Download MQ</a>
+                        <a id="link-mq" class="btn secondary" href="" download target="_blank" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;"> Download MQ</a>
                     </div>
                 </div>
             </div>
@@ -4421,22 +4409,22 @@ if (toolId === 'lorem-ipsum') {
         <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
             <div class="editor-pane">
                 <div class="editor-header">
-                    <span class="editor-title">📥 Enter Base64 Code String</span>
+                    <span class="editor-title"> Enter Base64 Code String</span>
                     <div class="editor-actions">
-                        <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                        <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                        <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                        <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                     </div>
                 </div>
                 <textarea id="base64-input" class="code-editor-textarea" placeholder="Paste your base64 string here (e.g., data:image/png;base64,iVBORw0...)" style="height: 150px;"></textarea>
             </div>
             
-            <button class="btn primary" onclick="decodeBase64()" style="justify-content: center;">⚡ Decode & Generate Image</button>
+            <button class="btn primary" onclick="decodeBase64()" style="justify-content: center;"> Decode & Generate Image</button>
             
             <div id="base64-preview-wrap" style="display: none; flex-direction: column; align-items: center; background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); gap: 1.2rem;">
-                <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);">🖼️ Image Preview</span>
+                <span style="font-weight: 800; font-size: 0.9rem; color: var(--brand-primary);"> Image Preview</span>
                 <img id="base64-img-preview" style="max-width: 100%; max-height: 400px; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow);" src="" alt="Decoded Image" loading="lazy" decoding="async">
                 <div style="display:flex; gap:10px;">
-                    <a id="base64-download-btn" class="btn secondary" href="" download="decoded-image.png">📥 Download Image</a>
+                    <a id="base64-download-btn" class="btn secondary" href="" download="decoded-image.png"> Download Image</a>
                 </div>
             </div>
         </div>
@@ -4486,7 +4474,7 @@ if (toolId === 'lorem-ipsum') {
     container.innerHTML = `
         <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 650px; margin: 0 auto; text-align: left;">
             <div class="glass-input" style="display: flex; flex-direction: column; gap: 1rem; background: white; padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-color);">
-                <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">🤖 Robots.txt Directives Builder</h3>
+                <h3 style="margin: 0; font-size: 1.1rem; color: var(--text-primary); font-weight: 800;"> Robots.txt Directives Builder</h3>
                 
                 <div style="display: flex; flex-direction: column; gap: 0.4rem;">
                     <label style="font-weight: 700; font-size: 0.85rem; color: var(--text-muted);">Default Crawl Permission (User-agent: *):</label>
@@ -4517,15 +4505,15 @@ if (toolId === 'lorem-ipsum') {
                 </div>
             </div>
             
-            <button class="btn primary" onclick="generateRobotsTxt()" style="justify-content: center;">⚡ Generate Robots.txt</button>
+            <button class="btn primary" onclick="generateRobotsTxt()" style="justify-content: center;"> Generate Robots.txt</button>
             
             <div id="robots-result-wrap" style="display: none; flex-direction: column; gap: 1rem; margin-top: 1rem;">
                 <div class="editor-pane">
                     <div class="editor-header">
-                        <span class="editor-title">📤 Output Robots.txt File Content</span>
+                        <span class="editor-title"> Output Robots.txt File Content</span>
                         <div class="editor-actions">
-                            <button type="button" class="editor-btn success" onclick="copyRobotsTxt()">📋 Copy</button>
-                            <a id="robots-download-btn" class="editor-btn" href="" download="robots.txt">📥 Download</a>
+                            <button type="button" class="editor-btn success" onclick="copyRobotsTxt()"> Copy</button>
+                            <a id="robots-download-btn" class="editor-btn" href="" download="robots.txt"> Download</a>
                         </div>
                     </div>
                     <textarea id="robots-output" class="code-editor-textarea" style="height: 180px;" readonly></textarea>
@@ -4579,17 +4567,17 @@ if (toolId === 'lorem-ipsum') {
     };
     window.copyRobotsTxt = () => {
         const val = document.getElementById('robots-output').value;
-        navigator.clipboard.writeText(val).then(() => alert("📋 Copied robots.txt securely to clipboard!"));
+        navigator.clipboard.writeText(val).then(() => alert(" Copied robots.txt securely to clipboard!"));
     };
 } else if (toolId === 'html-minifier') {
     container.innerHTML = `
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div class="editor-pane">
                 <div class="editor-header">
-                    <span class="editor-title">📥 Enter Raw HTML Code</span>
+                    <span class="editor-title"> Enter Raw HTML Code</span>
                     <div class="editor-actions">
-                        <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                        <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                        <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                        <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
                     </div>
                 </div>
                 <textarea id="html-raw-input" class="code-editor-textarea" placeholder="Paste your HTML code here..." style="height: 180px;"></textarea>
@@ -4610,7 +4598,7 @@ if (toolId === 'lorem-ipsum') {
                 </div>
             </div>
             
-            <button class="btn primary" onclick="minifyHTMLCode()" style="justify-content: center;">⚡ Minify HTML Code</button>
+            <button class="btn primary" onclick="minifyHTMLCode()" style="justify-content: center;"> Minify HTML Code</button>
             
             <div id="html-min-result-wrap" style="display: none; flex-direction: column; gap: 1.5rem;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -4626,10 +4614,10 @@ if (toolId === 'lorem-ipsum') {
                 
                 <div class="editor-pane">
                     <div class="editor-header">
-                        <span class="editor-title">📤 Minified Output Code</span>
+                        <span class="editor-title"> Minified Output Code</span>
                         <div class="editor-actions">
-                            <button type="button" class="editor-btn success" onclick="copyMinifiedHTML()">📋 Copy</button>
-                            <button type="button" class="editor-btn" onclick="downloadMinifiedHTML()">📥 Download</button>
+                            <button type="button" class="editor-btn success" onclick="copyMinifiedHTML()"> Copy</button>
+                            <button type="button" class="editor-btn" onclick="downloadMinifiedHTML()"> Download</button>
                         </div>
                     </div>
                     <textarea id="html-min-output" class="code-editor-textarea" style="height: 200px;" readonly></textarea>
@@ -4679,7 +4667,7 @@ if (toolId === 'lorem-ipsum') {
     };
     window.copyMinifiedHTML = () => {
         const val = document.getElementById('html-min-output').value;
-        navigator.clipboard.writeText(val).then(() => alert("📋 Copied minified HTML securely to clipboard!"));
+        navigator.clipboard.writeText(val).then(() => alert(" Copied minified HTML securely to clipboard!"));
     };
     window.downloadMinifiedHTML = () => {
         const val = document.getElementById('html-min-output').value;
@@ -4962,10 +4950,10 @@ TEXT_UI = """
 <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
     <div class="editor-pane" style="width: 100%;">
         <div class="editor-header">
-            <span class="editor-title">📥 Input Text</span>
+            <span class="editor-title"> Input Text</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
             </div>
         </div>
         <textarea id="text-input" class="code-editor-textarea" style="height: 220px;" placeholder="Paste your text here..."></textarea>
@@ -4989,7 +4977,7 @@ TEXT_UI = """
         </div>
     </div>
     <div style="background: white; border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem; margin-top: 1rem;">
-        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;">📌 Common Social Media Limits</h4>
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;"> Common Social Media Limits</h4>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; font-size: 0.85rem; text-align: center;">
             <div style="padding: 0.8rem; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border-color);" id="limit-tw">
                 <strong>Twitter (X)</strong><br><span style="color:var(--brand-primary); font-weight:800;" id="tw-fill">0 / 280</span>
@@ -5042,16 +5030,16 @@ METACHECKER_UI = """
 <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 0 auto; text-align: left;">
     <div class="editor-pane" style="width: 100%;">
         <div class="editor-header">
-            <span class="editor-title" id="checker-input-title">📥 Enter SEO Title</span>
+            <span class="editor-title" id="checker-input-title"> Enter SEO Title</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-                <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+                <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+                <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
             </div>
         </div>
         <textarea id="checker-input" class="code-editor-textarea" style="height: 100px;" placeholder="Type your text here..."></textarea>
     </div>
     <div style="background: white; border: 1px solid var(--border-color); border-radius: 18px; padding: 1.5rem;">
-        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;">🔍 Google SERP Desktop Preview</h4>
+        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 800;"> Google SERP Desktop Preview</h4>
         <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: #fff; font-family: arial, sans-serif; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.02); overflow: hidden;">
             <div style="font-size: 12px; color: #202124; line-height: 1.3; display: flex; align-items: center; gap: 4px; margin-bottom: 4px;">
                 <span>https://freeconvert.cloud</span><span style="font-size:10px; color:#5f6368;">› ...</span>
@@ -5088,12 +5076,12 @@ const path = window.location.pathname.replace(/\\//g, '');
 const isTitle = path === 'meta-title-checker';
 
 if (isTitle) {
-    document.getElementById('checker-input-title').textContent = "📥 Enter Meta Title";
+    document.getElementById('checker-input-title').textContent = " Enter Meta Title";
     chInput.placeholder = "Enter your meta title here (e.g. Free File Converter Online)...";
     document.getElementById('checker-char-limit').textContent = "Limit: 60 Chars";
     document.getElementById('checker-pixel-limit').textContent = "Limit: 600px";
 } else {
-    document.getElementById('checker-input-title').textContent = "📥 Enter Meta Description";
+    document.getElementById('checker-input-title').textContent = " Enter Meta Description";
     chInput.placeholder = "Enter your meta description here (e.g. Convert documents, images, video and archives safely inside your browser)...";
     document.getElementById('checker-char-limit').textContent = "Limit: 160 Chars";
     document.getElementById('checker-pixel-limit').textContent = "Limit: 960px";
@@ -5136,13 +5124,13 @@ chInput.addEventListener('input', () => {
         statusAlert.style.color = 'var(--brand-accent)';
         statusAlert.style.background = 'rgba(16,185,129,0.05)';
         statusAlert.style.borderColor = 'rgba(16,185,129,0.15)';
-        statusAlert.textContent = "🟢 Perfect Length! Your meta tag fits beautifully in Google's SERP container.";
+        statusAlert.textContent = " Perfect Length! Your meta tag fits beautifully in Google's SERP container.";
     } else {
         statusAlert.className = 'glass-input';
         statusAlert.style.color = 'var(--brand-danger)';
         statusAlert.style.background = 'rgba(239,68,68,0.05)';
         statusAlert.style.borderColor = 'rgba(239,68,68,0.15)';
-        statusAlert.textContent = `🔴 Too Long! Exceeds standard limits (${count}/${maxChars} chars, ${pxWidth}/${maxPx}px). Google will truncate it with "..."`;
+        statusAlert.textContent = ` Too Long! Exceeds standard limits (${count}/${maxChars} chars, ${pxWidth}/${maxPx}px). Google will truncate it with "..."`;
     }
 });
 """
@@ -5151,10 +5139,10 @@ chInput.addEventListener('input', () => {
 CASE_UI = """
 <div class="editor-pane" style="width: 100%;">
     <div class="editor-header">
-        <span class="editor-title">📥 Input Text</span>
+        <span class="editor-title"> Input Text</span>
         <div class="editor-actions">
-            <button type="button" class="editor-btn" onclick="loadSampleData()">✨ Load Sample</button>
-            <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+            <button type="button" class="editor-btn" onclick="loadSampleData()"> Load Sample</button>
+            <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
         </div>
     </div>
     <textarea id="text-input" class="code-editor-textarea" style="height: 250px;" placeholder="Paste your text here..."></textarea>
@@ -5163,7 +5151,7 @@ CASE_UI = """
     <button id="upper-btn" class="btn secondary">UPPERCASE</button>
     <button id="lower-btn" class="btn secondary">lowercase</button>
     <button id="title-btn" class="btn secondary">Title Case</button>
-    <button class="btn secondary success" onclick="copyOutputText()">📋 Copy</button>
+    <button class="btn secondary success" onclick="copyOutputText()"> Copy</button>
 </div>
 """
 
@@ -5187,9 +5175,9 @@ SECURITY_UI = """
 </div>
 <div class="result-box" style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:18px; padding:1.5rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:1.8rem; box-shadow:inset 0 2px 8px rgba(0,0,0,0.01);">
     <span id="password-result" style="font-family:monospace; font-size:1.4rem; font-weight:bold; color:var(--brand-primary); word-break:break-all;">********</span>
-    <button id="copy-btn" class="btn secondary" style="padding:0.4rem 1.2rem; text-transform:none; font-size: 0.8rem; border-radius: 8px;">📋 Copy</button>
+    <button id="copy-btn" class="btn secondary" style="padding:0.4rem 1.2rem; text-transform:none; font-size: 0.8rem; border-radius: 8px;"> Copy</button>
 </div>
-<button id="generate-btn" class="btn primary" style="width:100%; justify-content:center;">⚡ Generate Strong Password</button>
+<button id="generate-btn" class="btn primary" style="width:100%; justify-content:center;"> Generate Strong Password</button>
 """
 
 SECURITY_SCRIPT = """
@@ -5218,7 +5206,7 @@ generateBtn.onclick = () => {
 copyBtn.onclick = () => {
     if(charDisplay.textContent.includes('***')) return;
     navigator.clipboard.writeText(charDisplay.textContent);
-    alert('📋 Password Copied securely to clipboard!');
+    alert(' Password Copied securely to clipboard!');
 };
 """
 
@@ -5226,14 +5214,14 @@ QR_UI = """
 <div class="config-panel" style="margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
     <input type="text" id="qr-data" class="glass-input" style="min-height: 52px; text-align:center; width: 100%; max-width: 500px;" placeholder="Enter link or text here...">
     <div class="editor-actions" style="margin-top: 10px;">
-        <button type="button" class="editor-btn" onclick="loadSampleData()">⚡ Test Example Link</button>
-        <button type="button" class="editor-btn" onclick="clearInput()">🗑️ Clear</button>
+        <button type="button" class="editor-btn" onclick="loadSampleData()"> Test Example Link</button>
+        <button type="button" class="editor-btn" onclick="clearInput()"> Clear</button>
     </div>
 </div>
 <div id="qr-result" class="qr-container" style="display: flex; justify-content: center; padding: 1.5rem; background:var(--bg-light); border-radius:18px; border:1px solid var(--border-color); margin-bottom: 1.5rem; min-height: 288px; align-items: center;">
     <span style="color:var(--text-light); font-weight:500;">Your QR Code will render here</span>
 </div>
-<button id="generate-qr-btn" class="btn primary" style="width:100%; justify-content:center;">⚡ Generate Custom QR Code</button>
+<button id="generate-qr-btn" class="btn primary" style="width:100%; justify-content:center;"> Generate Custom QR Code</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 """
 
@@ -5262,10 +5250,10 @@ DEV_BASIC_UI = """
 <div class="code-editor-module">
     <div class="editor-pane">
         <div class="editor-header">
-            <span class="editor-title">📥 Input Data</span>
+            <span class="editor-title"> Input Data</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn" id="btn-load-sample" onclick="loadSampleData()">✨ Load Sample</button>
-                <button type="button" class="editor-btn" id="btn-clear-input" onclick="clearInput()">🗑️ Clear</button>
+                <button type="button" class="editor-btn" id="btn-load-sample" onclick="loadSampleData()"> Load Sample</button>
+                <button type="button" class="editor-btn" id="btn-clear-input" onclick="clearInput()"> Clear</button>
             </div>
         </div>
         <textarea id="dev-input" class="code-editor-textarea" placeholder="Paste or type your data here..."></textarea>
@@ -5273,14 +5261,14 @@ DEV_BASIC_UI = """
     
     <div class="editor-middle-control">
         <div id="operation-selector" class="op-select-wrap" style="width: 100%; max-width: 320px;"></div>
-        <button id="action-btn" class="btn primary convert-action-btn">⚡ Process & Convert</button>
+        <button id="action-btn" class="btn primary convert-action-btn"> Process & Convert</button>
     </div>
     
     <div class="editor-pane">
         <div class="editor-header">
-            <span class="editor-title">📤 Output Results</span>
+            <span class="editor-title"> Output Results</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn success" id="btn-copy-output" onclick="copyOutputText()">📋 Copy</button>
+                <button type="button" class="editor-btn success" id="btn-copy-output" onclick="copyOutputText()"> Copy</button>
             </div>
         </div>
         <textarea id="dev-output" class="code-editor-textarea output-area" placeholder="Converted results will appear here..." readonly></textarea>
@@ -5293,10 +5281,10 @@ DEV_ADVANCED_UI = """
 <div class="code-editor-module advanced-module" id="editor-container">
     <div class="editor-pane">
         <div class="editor-header">
-            <span class="editor-title">📥 Code Editor</span>
+            <span class="editor-title"> Code Editor</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn" id="btn-load-sample-adv" onclick="loadSampleData()">✨ Load Sample</button>
-                <button type="button" class="editor-btn" id="btn-clear-input-adv" onclick="clearInput()">🗑️ Clear</button>
+                <button type="button" class="editor-btn" id="btn-load-sample-adv" onclick="loadSampleData()"> Load Sample</button>
+                <button type="button" class="editor-btn" id="btn-clear-input-adv" onclick="clearInput()"> Clear</button>
             </div>
         </div>
         <textarea id="adv-input" class="code-editor-textarea" placeholder="Paste code here..."></textarea>
@@ -5304,9 +5292,9 @@ DEV_ADVANCED_UI = """
     
     <div class="editor-pane">
         <div class="editor-header">
-            <span class="editor-title">🔍 Output / Preview</span>
+            <span class="editor-title"> Output / Preview</span>
             <div class="editor-actions">
-                <button type="button" class="editor-btn success" id="btn-copy-output-adv" onclick="copyOutputText()">📋 Copy</button>
+                <button type="button" class="editor-btn success" id="btn-copy-output-adv" onclick="copyOutputText()"> Copy</button>
             </div>
         </div>
         <div id="adv-preview" class="code-editor-textarea preview-box" style="display:none; overflow-y:auto; background: #0f172a; border: 1px solid #1e293b; color: #f1f5f9; padding: 1.25rem;"></div>
@@ -5315,7 +5303,7 @@ DEV_ADVANCED_UI = """
 </div>
 
 <div class="editor-bottom-control">
-    <button id="adv-action-btn" class="btn primary convert-action-btn" style="margin-top: 1.5rem;">⚡ Format & Run</button>
+    <button id="adv-action-btn" class="btn primary convert-action-btn" style="margin-top: 1.5rem;"> Format & Run</button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.7/beautify-css.min.js"></script>
@@ -5457,8 +5445,8 @@ FOOTER_SNIPPET = """
                 <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
-                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;">📖 Read Our Guides</a> &nbsp;|&nbsp;
-                    <a href="/pricing/" style="color:var(--brand-primary);text-decoration:none;">💎 Upgrade to Pro</a>
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a> &nbsp;|&nbsp;
+                    <a href="/pricing/" style="color:var(--brand-primary);text-decoration:none;"> Upgrade to Pro</a>
                 </div>
             </div>
             <div class="footer-col">
@@ -5535,7 +5523,7 @@ def build_homepage(tools):
         tools_html = ""
         for tool in tools:
             is_popular = tool['id'] in POPULAR_TOOLS
-            popular_badge = '<span class="popular-badge">⚡ Popular</span>\n                ' if is_popular else ''
+            popular_badge = '<span class="popular-badge"> Popular</span>\n                ' if is_popular else ''
             tools_html += f"""
             <a href="/{tool['id']}/" class="tool-card" data-category="{tool['type']}">
                 {popular_badge}<div class="tool-card-top">
@@ -5733,7 +5721,7 @@ def build_homepage(tools):
 
     <section class="hero-section">
         <div class="hero-badges">
-            <span class="badge">🛡️ Free, secure & browser-based file conversion</span>
+            <span class="badge"> Free, secure & browser-based file conversion</span>
         </div>
         <h1>Convert Files Online <span class="gradient-text">Without the Confusion</span></h1>
         <p class="hero-subtitle">Upload an image or text file, pick one clear browser-safe output, and download the result. No cloud buttons, no broken choices.</p>
@@ -5763,10 +5751,10 @@ def build_homepage(tools):
 
         <!-- Trust Stats Row -->
         <div class="trust-stats-row">
-            <div class="stat-badge">⚡ 35+ Tools</div>
-            <div class="stat-badge">🔒 Privacy-First</div>
-            <div class="stat-badge">💻 No Software Needed</div>
-            <div class="stat-badge">🧼 Clean Processing</div>
+            <div class="stat-badge"> 35+ Tools</div>
+            <div class="stat-badge"> Privacy-First</div>
+            <div class="stat-badge"> No Software Needed</div>
+            <div class="stat-badge"> Clean Processing</div>
         </div>
     </section>
 
@@ -5782,12 +5770,12 @@ def build_homepage(tools):
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- 📈 Personal secure Productivity Dashboard & Log -->
+    <!--  Personal secure Productivity Dashboard & Log -->
     <section class="dashboard-section">
         <div class="dashboard-card">
             <div class="dashboard-header">
-                <h3 class="dashboard-title">📈 Your Local Sandbox Analytics</h3>
-                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()">🗑️ Reset Logs</button>
+                <h3 class="dashboard-title"> Your Local Sandbox Analytics</h3>
+                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()"> Reset Logs</button>
             </div>
             
             <div class="dashboard-stats-grid">
@@ -5806,16 +5794,16 @@ def build_homepage(tools):
             </div>
 
             <div class="history-section">
-                <h4 class="history-title">🕒 Recent Operations History</h4>
+                <h4 class="history-title"> Recent Operations History</h4>
                 <div class="history-list" id="dash-history-list">
                     <div class="empty-history-state">
-                        🌱 Your secure operations log is clean. Start converting files to see metrics in real-time!
+                         Your secure operations log is clean. Start converting files to see metrics in real-time!
                     </div>
                 </div>
             </div>
             
             <p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top: 1rem; line-height: 1.4;">
-                🔒 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
+                 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
             </p>
         </div>
     </section>
@@ -5825,12 +5813,12 @@ def build_homepage(tools):
         <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
         <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
         <div class="category-tabs">
-            <button class="category-tab active" data-category="all">🔮 All Tools</button>
-            <button class="category-tab" data-category="image">🖼️ Image</button>
-            <button class="category-tab" data-category="developer">🌐 Developer</button>
-            <button class="category-tab" data-category="designer">🎨 Designer</button>
-            <button class="category-tab" data-category="security">🛡️ Security</button>
-            <button class="category-tab" data-category="utility">🚀 Utility</button>
+            <button class="category-tab active" data-category="all"> All Tools</button>
+            <button class="category-tab" data-category="image"> Image</button>
+            <button class="category-tab" data-category="developer"> Developer</button>
+            <button class="category-tab" data-category="designer"> Designer</button>
+            <button class="category-tab" data-category="security"> Security</button>
+            <button class="category-tab" data-category="utility"> Utility</button>
         </div>
     </div>
 
@@ -5847,19 +5835,19 @@ def build_homepage(tools):
             <h2 style="font-size: 2.2rem; margin-bottom: 3.5rem; letter-spacing:-0.03em;">Why Choose freeconvert.cloud?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                 <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-primary); margin-bottom: 0.8rem; font-size: 1.3rem;">🔒 Private by Design</h3>
+                    <h3 style="color: var(--brand-primary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Private by Design</h3>
                     <p style="font-size: 0.94rem; line-height: 1.6;">All standard converter operations execute in your browser's local sandbox memory. Your files are completely safe and never uploaded.</p>
                 </div>
                 <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-secondary); margin-bottom: 0.8rem; font-size: 1.3rem;">⚡ Fast Browser Tools</h3>
+                    <h3 style="color: var(--brand-secondary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Fast Browser Tools</h3>
                     <p style="font-size: 0.94rem; line-height: 1.6;">Powered by modern WebAssembly and Canvas client-side libraries. Converting files takes milliseconds with absolutely zero network delay.</p>
                 </div>
                 <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-accent); margin-bottom: 0.8rem; font-size: 1.3rem;">💎 Clean Output Quality</h3>
+                    <h3 style="color: var(--brand-accent); margin-bottom: 0.8rem; font-size: 1.3rem;"> Clean Output Quality</h3>
                     <p style="font-size: 0.94rem; line-height: 1.6;">High-definition conversions with zero loss of formatting, transparency, or pixel density. Premium and optimized.</p>
                 </div>
                 <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1.3rem;">🖥️ Works Everywhere</h3>
+                    <h3 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1.3rem;"> Works Everywhere</h3>
                     <p style="font-size: 0.94rem; line-height: 1.6;">A fully responsive browser-based SaaS converter that runs smoothly on Mac, Windows, iOS, Android, and Linux without setups.</p>
                 </div>
             </div>
@@ -5874,32 +5862,32 @@ def build_homepage(tools):
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
                 <a href="/image-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">🖼️</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">Image Converter</h3>
                     <p>Convert PNG, JPG, WebP, SVG, and HEIC images safely in your browser.</p>
                 </a>
                 <a href="/pdf-tools/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">📄</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">PDF Tools</h3>
                     <p>Compress, format, split, and merge PDF files in a single click.</p>
                 </a>
                 <a href="/document-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">📄</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">Document Converter</h3>
                     <p>Process Microsoft Word docx, Excel sheets, and developer code bases.</p>
                 </a>
                 <a href="/video-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">🎥</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">Video Converter</h3>
                     <p>Transcode MP4, WebM, AVI, and MOV video file dimensions online.</p>
                 </a>
                 <a href="/audio-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">🎵</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">Audio Converter</h3>
                     <p>Convert MP3, WAV, OGG, and FLAC audios with high quality preservation.</p>
                 </a>
                 <a href="/unit-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">📏</div>
+                    <div class="tool-icon"></div>
                     <h3 style="color:var(--text-primary);">Utility & Units</h3>
                     <p>Calculate aspect ratios, test connectivity speeds, and measure metrics.</p>
                 </a>
@@ -5970,19 +5958,19 @@ def build_homepage(tools):
             </p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-bottom: 3rem;">
                 <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-primary); margin-bottom: 0.6rem;">🌐 Software Developers</h4>
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-primary); margin-bottom: 0.6rem;"> Software Developers</h4>
                     <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
                         Engineers and DevOps professionals rely on our sandboxed developer tools to flatten API JSON payloads into CSV sheets, prettify minified SQL queries, format active HTML, CSS, and JS blocks, extract raw cryptographic SHA hashes, and decode complex URL/Base64 strings locally without exposing client databases or proprietary source codes to external server APIs.
                     </p>
                 </div>
                 <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-secondary); margin-bottom: 0.6rem;">🖼️ Creative Designers</h4>
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-secondary); margin-bottom: 0.6rem;"> Creative Designers</h4>
                     <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
                         Graphics designers and content publishers utilize our browser-local compressors and resizers to shrink pixel weights, convert heavy Apple HEIC camera photographs to standard compressed JPG format, scale transparent vector SVG elements to high-resolution PNG screens, and extract dominant color palettes from design comps in milliseconds.
                     </p>
                 </div>
                 <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 0.6rem;">💼 Business Teams & Students</h4>
+                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 0.6rem;"> Business Teams & Students</h4>
                     <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
                         Office workers, copywriters, and academic students use our document processors to combine sequential homework scans or corporate invoices into single, organized multi-page PDFs, convert read-only PDF reports to editable MS Word DOCX models, track character/sentence statistics in real-time, and generate secure cryptographically sound password keys.
                     </p>
@@ -6040,7 +6028,7 @@ def build_homepage(tools):
             </h3>
             <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
                 <div class="accordion">
-                    <div class="accordion-header">❓ How does freeconvert.cloud ensure absolute file security and privacy?</div>
+                    <div class="accordion-header"> How does freeconvert.cloud ensure absolute file security and privacy?</div>
                     <div class="accordion-content">
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
                             Our platform utilizes local browser-based execution. Converting formats (e.g. PNG to JPG), checking passwords, or formatting code occurs client-side inside your browser sandbox memory using WebAssembly and HTML5 Canvas. Your raw file binary payloads never leave your machine or travel over the internet, rendering server-side hacking and data breaches structurally impossible.
@@ -6048,7 +6036,7 @@ def build_homepage(tools):
                     </div>
                 </div>
                 <div class="accordion">
-                    <div class="accordion-header">❓ Do some converters require cloud server processing?</div>
+                    <div class="accordion-header"> Do some converters require cloud server processing?</div>
                     <div class="accordion-content">
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
                             Yes. Heavy transcoding operations (like converting Microsoft Word DOCX to PDF or extracting MP3 audio tracks from high-definition MP4 videos) require high computing cluster power. For these tasks, files are transmitted via secure 256-bit SSL pipelines to isolated transient edge sandboxes. The converted data is instantly returned to you, and both the source and target files are shredded completely from our servers within 2 hours.
@@ -6056,7 +6044,7 @@ def build_homepage(tools):
                     </div>
                 </div>
                 <div class="accordion">
-                    <div class="accordion-header">❓ Are there file size limits or cost constraints on the tools?</div>
+                    <div class="accordion-header"> Are there file size limits or cost constraints on the tools?</div>
                     <div class="accordion-content">
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
                             All tools on freeconvert.cloud are 100% free with absolutely zero subscription barriers or watermarks. To keep system cache processing smooth and prevent network bottlenecks, free users are capped at files up to 50MB per conversion. Uncapped queue limits, API developer endpoints, and larger batch processing limits are easily accessible on our flexible Pro tiers.
@@ -6064,7 +6052,7 @@ def build_homepage(tools):
                     </div>
                 </div>
                 <div class="accordion">
-                    <div class="accordion-header">❓ Do you display advertisements on the converter pages?</div>
+                    <div class="accordion-header"> Do you display advertisements on the converter pages?</div>
                     <div class="accordion-content">
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
                             Yes. To sustain our server clusters and provide our utilities completely free, we display Google AdSense advertisement layouts. We strictly adhere to AdSense Policy Guidelines: ads are clearly marked as 'Advertisement' or 'Sponsored Links', and we enforce safe margins to prevent ads from being placed inside or too close to drag-and-drop zones, file upload inputs, or conversion CTAs.
@@ -6072,7 +6060,7 @@ def build_homepage(tools):
                     </div>
                 </div>
                 <div class="accordion">
-                    <div class="accordion-header">❓ Which operating systems and web browsers are supported?</div>
+                    <div class="accordion-header"> Which operating systems and web browsers are supported?</div>
                     <div class="accordion-content">
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
                             Since our platform operates using standard modern web protocols, it is fully cross-platform and responsive. It works flawlessly inside Safari on Apple iPhones and iPads, Google Chrome on Android devices, Mozilla Firefox, Microsoft Edge, and Chrome on Windows, macOS, and Linux without requiring any software installations or browser extensions.
@@ -6087,7 +6075,7 @@ def build_homepage(tools):
     <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
         <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: center;">
             <div style="text-align: left;">
-                <span class="badge" style="margin-bottom:1rem;">⚡ High Scalability</span>
+                <span class="badge" style="margin-bottom:1rem;"> High Scalability</span>
                 <h2 style="font-size: 2.2rem; margin-bottom: 1.2rem; letter-spacing:-0.03em;">Modern Developer API</h2>
                 <p style="font-size: 1.02rem; margin-bottom: 2rem;">Integrate clean conversion clusters directly into your applications. Fast multipart responses with secure API key validations.</p>
                 <div style="display:flex; gap:1rem;">
@@ -6100,7 +6088,7 @@ def build_homepage(tools):
             <div class="code-editor-module" style="text-align: left;">
                 <div class="editor-pane" style="grid-column: span 2;">
                     <div class="editor-header">
-                        <span class="editor-title">💻 API Integration (Node.js)</span>
+                        <span class="editor-title"> API Integration (Node.js)</span>
                         <div class="editor-actions">
                             <span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-accent);">● Live</span>
                         </div>
@@ -6400,7 +6388,7 @@ def generate_category_seo_content(cat_slug, cat_name):
         
         glossary_box = """
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
-            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">🖼️ Image Formats Glossary & Definitions</h3>
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> Image Formats Glossary & Definitions</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>PNG (Portable Network Graphics):</strong> A lossless compressed raster format that records pixel data exactly as created. It supports full alpha transparency, making it the perfect choice for logos, typography, and clean graphic assets.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>JPG / JPEG (Joint Photographic Experts Group):</strong> A lossy compressed raster format optimized for photograph color depth. It compresses file weights aggressively by discarding visually subtle variations, speeding up webpage loading.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>WebP (Web Picture Format):</strong> Google's next-gen lossy and lossless image standard. It compresses image weights by 30% more than traditional JPEGs, directly boosting Google Core Web Vitals rankings.</p>
@@ -6432,7 +6420,7 @@ def generate_category_seo_content(cat_slug, cat_name):
         
         glossary_box = """
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
-            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📄 Document Formats Glossary & Definitions</h3>
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> Document Formats Glossary & Definitions</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>PDF (Portable Document Format):</strong> Adobe's fixed-layout document standard. It embeds fonts, vector graphics, and raster images identically, ensuring document formatting never shifts regardless of operating system or screen size.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>DOCX (Word Document):</strong> Microsoft's fluid XML-based editing container. Perfect for drafting and copywriting, but susceptible to formatting shifts if opened on systems lacking the author's local fonts.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>File Compression:</strong> The algorithmic optimization of document sizes, which identifies duplicate data arrays and compacts graphic payloads to fit strict email file constraints.</p>
@@ -6462,7 +6450,7 @@ def generate_category_seo_content(cat_slug, cat_name):
         
         glossary_box = f"""
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
-            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;">📝 {cat_name} Glossary & Standards</h3>
+            <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> {cat_name} Glossary & Standards</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
@@ -6493,7 +6481,7 @@ def generate_category_seo_content(cat_slug, cat_name):
     for f in faqs:
         faq_html += f"""
         <div class="accordion">
-            <div class="accordion-header">❓ {f['q']}</div>
+            <div class="accordion-header"> {f['q']}</div>
             <div class="accordion-content">
                 <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">{f['a']}</p>
             </div>
@@ -6706,10 +6694,10 @@ def build_categories(tools):
         <div style="text-align: center; margin-bottom: 2rem;">
             <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing:-0.02em;">Explore Related Categories</h3>
             <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-                <a href="/image-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">🖼️ Image Converter</a>
-                <a href="/pdf-tools/" class="category-tab active" style="box-shadow:none; text-decoration:none;">📄 PDF Tools</a>
-                <a href="/document-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">📄 Document Converter</a>
-                <a href="/video-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;">🎥 Video Converter</a>
+                <a href="/image-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> Image Converter</a>
+                <a href="/pdf-tools/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> PDF Tools</a>
+                <a href="/document-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> Document Converter</a>
+                <a href="/video-converter/" class="category-tab active" style="box-shadow:none; text-decoration:none;"> Video Converter</a>
             </div>
         </div>
     </main>
@@ -6802,10 +6790,10 @@ def build_pricing_page():
                 <div class="pricing-price">$0<span>/month</span></div>
                 <hr style="border-color: var(--border-color); border-style: solid;">
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem; padding-left:0;">
-                    <li>✅ Up to 50 MB File Size</li>
-                    <li>✅ Browser Local Sandbox Tools</li>
-                    <li>✅ Standard Conversion Speed</li>
-                    <li>✅ 15 conversions per day</li>
+                    <li> Up to 50 MB File Size</li>
+                    <li> Browser Local Sandbox Tools</li>
+                    <li> Standard Conversion Speed</li>
+                    <li> 15 conversions per day</li>
                 </ul>
                 <button class="btn secondary" style="margin-top: auto; justify-content: center;">Current Plan</button>
             </div>
@@ -6816,11 +6804,11 @@ def build_pricing_page():
                 <div class="pricing-price" id="pro-price-display">$9.99<span>/month</span></div>
                 <hr style="border-color: var(--border-color); border-style: solid;">
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem; padding-left:0;">
-                    <li>✅ Up to 2 GB File Size Limit</li>
-                    <li>✅ 50 batch conversions simultaneously</li>
-                    <li>✅ Priority cloud conversion queue</li>
-                    <li>✅ Unlimited conversions per day</li>
-                    <li>✅ Zero Ad Experience</li>
+                    <li> Up to 2 GB File Size Limit</li>
+                    <li> 50 batch conversions simultaneously</li>
+                    <li> Priority cloud conversion queue</li>
+                    <li> Unlimited conversions per day</li>
+                    <li> Zero Ad Experience</li>
                 </ul>
                 <button class="btn primary" style="margin-top: auto; justify-content: center;">Get Started</button>
             </div>
@@ -6831,10 +6819,10 @@ def build_pricing_page():
                 <div class="pricing-price">$29<span>/month</span></div>
                 <hr style="border-color: var(--border-color); border-style: solid;">
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.9rem; padding-left:0;">
-                    <li>✅ SDK for Node.js, Python, and Ruby</li>
-                    <li>✅ 10,000 API Conversion Credits</li>
-                    <li>✅ Dedicated high-performance clusters</li>
-                    <li>✅ 24/7 Priority Support</li>
+                    <li> SDK for Node.js, Python, and Ruby</li>
+                    <li> 10,000 API Conversion Credits</li>
+                    <li> Dedicated high-performance clusters</li>
+                    <li> 24/7 Priority Support</li>
                 </ul>
                 <a href="/api/" class="btn secondary" style="margin-top: auto; justify-content: center;">Integrate Now</a>
             </div>
@@ -6930,9 +6918,9 @@ def build_api_page():
                 <p>We provide standard endpoints that accept multipart file payloads and convert formats with absolute safety.</p>
                 <h4 style="margin-top:1rem;">API Use Cases:</h4>
                 <ul style="padding-left:1.2rem; font-size:0.9rem; display:flex; flex-direction:column; gap:0.5rem;">
-                    <li>📁 Automating PDF generation from HTML templates.</li>
-                    <li>🖼️ Compressing user photo uploads to WebP formats on backend.</li>
-                    <li>🎥 Converting videos in the background of web applications.</li>
+                    <li> Automating PDF generation from HTML templates.</li>
+                    <li> Compressing user photo uploads to WebP formats on backend.</li>
+                    <li> Converting videos in the background of web applications.</li>
                 </ul>
                 <div style="margin-top: 2rem; display: flex; gap: 1rem;">
                     <a href="/pricing/" class="btn primary" style="font-size:0.8rem; text-transform:none;">Create API Token</a>
@@ -7086,9 +7074,9 @@ def build_legal_pages():
             <h2>Contact Channels</h2>
             <p>You can reach us through any of the following active support addresses:</p>
             <ul style="padding-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;">
-                <li>📧 <strong>Support Email:</strong> support@freeconvert.cloud</li>
-                <li>⚡ <strong>API Developer Sales:</strong> api@freeconvert.cloud</li>
-                <li>🛡️ <strong>DMCA / Abuse Reports:</strong> abuse@freeconvert.cloud</li>
+                <li> <strong>Support Email:</strong> support@freeconvert.cloud</li>
+                <li> <strong>API Developer Sales:</strong> api@freeconvert.cloud</li>
+                <li> <strong>DMCA / Abuse Reports:</strong> abuse@freeconvert.cloud</li>
             </ul>
             
             <h2>Response Times</h2>
@@ -7612,7 +7600,7 @@ def generate_tool_adsense_content(tool):
             limitations = f"Calculated locally using parser libraries. Text inputs larger than 10MB of raw {t_name} scripts may cause a brief browser freeze during syntax highlighting."
             faqs = [
                 {"q": f"Is my code or private text secure when using {t_name}?", "a": f"Absolutely. The {t_name} processor runs entirely within your browser window. Zero code, text, or database strings are sent over the internet, making it safe for corporate use."},
-                {"q": f"Can I load sample data to test the {t_name} tool?", "a": f"Yes! We provide a '✨ Load Sample' button right above the editor panel so you can quickly see how the {t_name} parser formats outputs."},
+                {"q": f"Can I load sample data to test the {t_name} tool?", "a": f"Yes! We provide a ' Load Sample' button right above the editor panel so you can quickly see how the {t_name} parser formats outputs."},
                 {"q": f"Does this {t_name} utility support dark theme console layouts?", "a": f"Yes, the developer tools feature a beautiful dark-theme console layout styled with custom syntax glowing borders to reduce eye strain."},
                 {"q": f"Does this work on mobile viewports?", "a": f"Yes, the editor panels scale dynamically into neat stacks on mobile screens, allowing easy debugging."},
                 {"q": f"Can I copy my converted data cleanly?", "a": f"Yes! Simply click the Copy button to immediately save the parsed string to your clipboard."}
@@ -7667,7 +7655,7 @@ def generate_tool_adsense_content(tool):
     for f in faqs:
         faq_html += f"""
         <div class="accordion">
-            <div class="accordion-header">❓ {f['q']}</div>
+            <div class="accordion-header"> {f['q']}</div>
             <div class="accordion-content">
                 <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">{f['a']}</p>
             </div>
@@ -7941,7 +7929,7 @@ def build_blog():
         if "author-box" not in content:
             author_box_html = f"""
         <div class="author-box" style="background: rgba(99, 102, 241, 0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
-            <div style="font-size: 2rem;">✍️</div>
+            <div style="font-size: 2rem;"></div>
             <div>
                 <strong>Author / Reviewer:</strong> freeconvert.cloud Editorial Team<br>
                 <small><strong>Editorial Note:</strong> This guide was created by the freeconvert.cloud Editorial Team to help users understand file conversion, file privacy, and safe online tools. We review our guides regularly to keep them accurate, useful, and beginner-friendly.</small><br>
@@ -7968,7 +7956,7 @@ def build_blog():
         for f_item in faqs:
             faq_html += f"""
             <div class="accordion">
-                <div class="accordion-header">❓ {f_item['q']}</div>
+                <div class="accordion-header"> {f_item['q']}</div>
                 <div class="accordion-content">
                     <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">{f_item['a']}</p>
                 </div>
@@ -7986,12 +7974,12 @@ def build_blog():
         # Inject "Try These Tools" box from contextual map
         tool_links_for_blog = BLOG_TOOL_MAP.get(slug, [('image-compressor','Image Compressor'),('jpg-to-pdf','JPG to PDF'),('json-formatter','JSON Formatter')])
         tool_links_html = "".join(
-            f'''<a href="/{tid}/" style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.5rem 1rem;background:var(--brand-primary);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">⚡ {tname}</a>'''
+            f'''<a href="/{tid}/" style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.5rem 1rem;background:var(--brand-primary);color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1"> {tname}</a>'''
             for tid, tname in tool_links_for_blog
         )
         tool_links_box = f'''
         <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:14px;">
-            <p style="font-size:0.85rem;font-weight:700;margin-bottom:0.8rem;color:var(--brand-primary);">⚡ Try These Free Tools</p>
+            <p style="font-size:0.85rem;font-weight:700;margin-bottom:0.8rem;color:var(--brand-primary);"> Try These Free Tools</p>
             <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">{tool_links_html}</div>
         </div>'''
         # Insert after author box
@@ -8004,7 +7992,7 @@ def build_blog():
         related_articles = [art for art in BLOG_ARTICLES if art['slug'] != slug][:4]
         related_blogs_html = ""
         for rel in related_articles:
-            related_blogs_html += f'<a href="/blog/{rel["slug"]}/" class="category-tab" style="box-shadow:none; text-decoration:none;">📝 {rel["title"]}</a>'
+            related_blogs_html += f'<a href="/blog/{rel["slug"]}/" class="category-tab" style="box-shadow:none; text-decoration:none;"> {rel["title"]}</a>'
 
         schema_data = {
             "@context": "https://schema.org",
@@ -8082,9 +8070,9 @@ def build_blog():
     for article in BLOG_ARTICLES:
         blog_cards += f"""
         <a href="/blog/{article['slug']}/" class="tool-card" style="text-decoration:none; text-align:left;">
-            <span class="popular-badge">📖 Guide</span>
+            <span class="popular-badge"> Guide</span>
             <div class="tool-card-top">
-                <div class="tool-icon">📝</div>
+                <div class="tool-icon"></div>
                 <span class="tool-category-tag">{article['date']}</span>
             </div>
             <div class="tool-card-body">
@@ -8154,7 +8142,7 @@ def build_blog():
         </nav>
 
         <section class="tool-header" style="margin-bottom:3.5rem; text-align:center;">
-            <span class="badge" style="margin-bottom:0.8rem;">📖 Resource Hub</span>
+            <span class="badge" style="margin-bottom:0.8rem;"> Resource Hub</span>
             <h1>Guides &amp; Tutorials</h1>
             <p style="margin-top: 0.5rem; color:var(--text-muted); font-size:1.1rem; max-width:680px; margin-left:auto; margin-right:auto;">
                 Explore free, 100% fact-checked, high-value guides and tutorials on file conversions, privacy, developer workflows, and designer productivity written by the freeconvert.cloud Editorial Team.
@@ -8569,7 +8557,7 @@ def build():
             ('/blog/how-to-keep-files-secure-when-using-online-converters/', 'File Security Guide'),
         ])
         blog_links_html = "".join(
-            f'''<a href="{url}" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'">📖 {label}</a>'''
+            f'''<a href="{url}" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 0.9rem;background:var(--bg-dark,#0f0f1a);border:1px solid var(--border-color);border-radius:8px;font-size:0.82rem;color:var(--brand-primary);text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='var(--brand-primary)';this.style.color='#fff'" onmouseout="this.style.background='var(--bg-dark,#0f0f1a)';this.style.color='var(--brand-primary)'"> {label}</a>'''
             for url, label in blog_links_list
         )
         html = html.replace('{{BLOG_LINKS}}', blog_links_html)
