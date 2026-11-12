@@ -16,13 +16,15 @@ BRAND_IMAGE = f'{SITE_URL}/assets/freeconvert-logo.png'
 ADSENSE_REVIEW_MODE = True
 UNAVAILABLE_TOOL_IDS = {
     'palette-extractor', 'ico-converter',
-    'pdf-to-word', 'word-to-pdf', 'barcode-generator', 'speed-test',
-    'mp4-to-mp3', 'video-compressor', 'webm-to-mp4', 'mov-to-mp4',
-    'avi-to-mp4', 'mkv-to-mp4', 'mp4-to-gif', 'video-to-mp3',
+    'pdf-to-word', 'word-to-pdf',
+    'video-compressor', 'webm-to-mp4', 'mov-to-mp4',
+    'avi-to-mp4', 'mkv-to-mp4', 'video-to-mp3',
     'video-trimmer', 'video-resizer',
 }
 # NOTE 2026-11-12: pdf-to-jpg, jpg-to-pdf, heic-to-jpg, compress-pdf,
+# mp4-to-gif removed 2026-11-12 — real working tool now (index,follow, in sitemaps).
 # merge-pdf, split-pdf were removed from UNAVAILABLE_TOOL_IDS — they are real
+# barcode-generator removed 2026-11-12 — real working tool now (JsBarcode, index,follow, in sitemaps).
 # working tools now (index,follow, in the sitemaps). A generator run
 # must not flip them back to noindex.
 NOINDEX_PATH_PREFIXES = (
@@ -31,8 +33,12 @@ NOINDEX_PATH_PREFIXES = (
     'blog/hub-pages/',
     'file-formats/',
 )
+# NOTE 2026-11-12: 'audio-converter', 'pdf-tools' and 'video-converter' were
+# removed from this set — all three are real working hub pages now
+# (index,follow, in the sitemaps). A generator run must not flip them back to
+# noindex or drop them from the sitemap.
 NOINDEX_TOP_LEVEL_SLUGS = {
-    'video-converter', 'audio-converter', 'pdf-tools', 'archive-converter',
+    'archive-converter',
     'ebook-converter', 'pricing', 'api',
 }
 LEGACY_ROUTE_MAP = {
@@ -3137,26 +3143,25 @@ CATEGORIES = {
     'video-converter': {
         'name': 'Video Converter',
         'slug': 'video-converter',
-        'intro': 'Convert MP4, WebM, AVI, and MOV video files online safely.',
-        'seo_title': 'Online Video Converter - Convert Video Files Free',
-        'seo_desc': 'Easily convert MP4, WebM, and other video file formats with optimal conversion quality.',
+        'intro': 'Convert video files in your browser — MP4 to MP3, MP4 to GIF. Free, private, no upload.',
+        'seo_title': 'Video Converter - MP4 to MP3, MP4 to GIF | freeconvert.cloud',
+        'seo_desc': 'Convert video files in your browser — MP4 to MP3, MP4 to GIF. Free, private, no upload.',
         'types': ['video'],
-        'how_to': '<ol><li>Select your video file from your computer or cloud drive.</li><li>Select your preferred output format.</li><li>Click Convert and wait for the download link.</li></ol>',
+        'how_to': '<ol><li>Open the tool for the conversion you need — for example, MP4 to MP3.</li><li>Drop your video file into the tool (one file, up to 100 MB).</li><li>Pick your settings, then click Convert and download.</li></ol>',
         'faq': [
-            {"q": "What is the maximum file size limit?", "a": "Free users can convert files up to 50MB. Upgrade to Pro for unlimited sizes."},
-            {"q": "How long are converted video files kept?", "a": "All files are automatically deleted after 2 hours."}
+            {"q": "Do my video files leave my computer?", "a": "No. The video tools run entirely in your browser with ffmpeg.wasm. Your file is never uploaded."}
         ]
     },
     'audio-converter': {
         'name': 'Audio Converter',
         'slug': 'audio-converter',
-        'intro': 'Convert audio tracks between MP3, WAV, FLAC, and OGG formats.',
-        'seo_title': 'Free Audio Converter Online - MP3, WAV, FLAC',
-        'seo_desc': 'Convert audio files online instantly. Fast, private, and works on all devices.',
+        'intro': 'Convert audio in your browser — MP3 to WAV, WAV to MP3, OGG to MP3, M4A to MP3, FLAC to MP3. Free, private, no upload.',
+        'seo_title': 'Audio Converter Online Free - MP3, WAV',
+        'seo_desc': 'Convert audio files in your browser — MP3 to WAV, WAV to MP3, OGG to MP3, M4A to MP3, FLAC to MP3. Free, private, no upload.',
         'types': ['audio'],
-        'how_to': '<ol><li>Upload your audio file.</li><li>Choose output bitrates and audio format.</li><li>Click Convert and download.</li></ol>',
+        'how_to': '<ol><li>Open the tool for the conversion you need — for example, WAV to MP3.</li><li>Drop your audio file into the tool (one file, up to 100 MB).</li><li>Pick a quality if the tool offers one, then click Convert and download.</li></ol>',
         'faq': [
-            {"q": "Can I convert video files to MP3?", "a": "Yes! You can upload an MP4 file and convert it directly to MP3."}
+            {"q": "Do my audio files leave my computer?", "a": "No. The audio tools run entirely in your browser with ffmpeg.wasm. Your file is never uploaded."}
         ]
     },
     'document-converter': {
@@ -4011,8 +4016,12 @@ if (toolId === 'lorem-ipsum') {
         lapDiv.innerHTML = `<span>⏱️ Lap ${lapCount}</span><span style="font-family: monospace; color:var(--text-primary); font-weight:bold;">${hStr}:${mStr}:${sStr}.${msStr}</span>`;
         lapsBox.insertBefore(lapDiv, lapsBox.firstChild);
     };
-} else if (toolId === 'speed-test') {
-    container.innerHTML = `
+        } else if (toolId === 'speed-test') {
+            // REAL speed test (2026-11-12): ping + download speed measured live
+            // against cdnjs with timed fetches. Nothing simulated. Upload is
+            // not measured (no upload endpoint). The full tool page
+            // (speed-test/index.html) has the same logic with live updates.
+            container.innerHTML = `
         <div class="speedtest-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <div class="speedometer" style="position: relative; width: 250px; height: 150px; overflow: hidden; display: flex; align-items: flex-end; justify-content: center;">
                 <svg style="width: 250px; height: 250px; position: absolute; top: 0; left: 0;">
@@ -4033,90 +4042,84 @@ if (toolId === 'lorem-ipsum') {
             </div>
             <div style="margin-top: 2.5rem; text-align: center;">
                 <button class="btn primary" id="speed-test-btn" onclick="runSpeed()">Start Speed Test</button>
-                <p id="speed-status" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">Ready to test connection speed</p>
+                <p id="speed-status" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">Ready — about 15 seconds, uses up to ~30 MB of data.</p>
             </div>
+            <p id="speed-detail" style="margin-top: 0.5rem; font-size: 0.88rem; color: var(--text-muted); text-align: center;"></p>
         </div>
     `;
     window.runSpeed = async () => {
         const testBtn = document.getElementById('speed-test-btn');
         const statusEl = document.getElementById('speed-status');
+        const detailEl = document.getElementById('speed-detail');
         const speedNum = document.getElementById('speed-number');
         const speedProg = document.getElementById('speed-progress');
         const speedPointer = document.getElementById('speed-pointer');
-        
+        const bust = () => Math.random().toString(36).slice(2) + Date.now().toString(36);
+        const setGauge = (mbps) => {
+            const shown = Math.min(mbps, 100);
+            const rot = -90 + (shown / 100) * 180;
+            speedNum.innerText = mbps >= 100 ? Math.round(mbps).toString() : mbps.toFixed(1);
+            speedPointer.style.transform = `rotate(${rot}deg)`;
+            speedProg.style.strokeDashoffset = 314 - (314 * (shown / 100));
+        };
         testBtn.disabled = true;
-        statusEl.innerText = "Connecting to nearest edge server...";
-        speedNum.innerText = "0";
-        speedProg.style.strokeDashoffset = 314;
-        speedPointer.style.transform = "rotate(-90deg)";
-        
-        let tempSpeed = 0;
-        let sweepInterval = setInterval(() => {
-            tempSpeed = Math.random() * 8 + 2;
-            speedNum.innerText = tempSpeed.toFixed(1);
-            const rotPercent = tempSpeed / 100;
-            const rot = -90 + rotPercent * 180;
-            speedPointer.style.transform = `rotate(\${rot}deg)`;
-            speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-        }, 150);
-
-        setTimeout(async () => {
-            clearInterval(sweepInterval);
-            statusEl.innerText = "Testing download throughput...";
-            const start = Date.now();
-            try {
-                const images = [
-                    'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-                    'https://www.gstatic.com/webp/gallery/1.webp',
-                    'https://www.gstatic.com/webp/gallery/2.webp'
-                ];
-                let fetchCount = 0;
-                
-                let simulatedMax = Math.random() * 40 + 35;
-                let currentSimSpeed = 0;
-                let climbInterval = setInterval(() => {
-                    if (currentSimSpeed < simulatedMax) {
-                        currentSimSpeed += (simulatedMax - currentSimSpeed) * 0.15 + Math.random() * 2;
-                        if (currentSimSpeed > simulatedMax) currentSimSpeed = simulatedMax;
-                        speedNum.innerText = currentSimSpeed.toFixed(1);
-                        const rotPercent = Math.min(currentSimSpeed / 100, 1);
-                        const rot = -90 + rotPercent * 180;
-                        speedPointer.style.transform = `rotate(\${rot}deg)`;
-                        speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-                    }
-                }, 100);
-
-                for(let url of images) {
-                    await fetch(url + '?cache=' + Math.random());
-                    fetchCount++;
-                }
-                
-                clearInterval(climbInterval);
-                const duration = (Date.now() - start) / 1000;
-                let actualSpeed = (45 / duration);
-                if (actualSpeed > 100) actualSpeed = 95.8 + Math.random() * 4;
-                if (actualSpeed < 1) actualSpeed = 4.2;
-
-                speedNum.innerText = actualSpeed.toFixed(1);
-                const rotPercent = Math.min(actualSpeed / 100, 1);
-                const rot = -90 + rotPercent * 180;
-                speedPointer.style.transform = `rotate(\${rot}deg)`;
-                speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-                
-                statusEl.innerText = "Speed test complete! Zero data stored.";
-                testBtn.disabled = false;
-            } catch (e) {
-                clearInterval(sweepInterval);
-                statusEl.innerText = "CORS restriction blocked actual measurement. Simulated result:";
-                const mockSpeed = 68.4 + Math.random() * 5;
-                speedNum.innerText = mockSpeed.toFixed(1);
-                const rotPercent = mockSpeed / 100;
-                const rot = -90 + rotPercent * 180;
-                speedPointer.style.transform = `rotate(\${rot}deg)`;
-                speedProg.style.strokeDashoffset = 314 - (314 * rotPercent);
-                testBtn.disabled = false;
+        statusEl.innerText = 'Measuring ping…';
+        setGauge(0);
+        try {
+            let best = Infinity, ok = 0;
+            for (let i = 0; i < 5; i++) {
+                const t0 = performance.now();
+                const res = await fetch('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js?ping=' + bust(), { cache: 'no-store' });
+                const ms = performance.now() - t0;
+                if (res.ok) { ok++; if (ms < best) best = ms; }
+                try { await res.arrayBuffer(); } catch (e) {}
             }
-        }, 1500);
+            if (!ok) throw new Error('ping failed');
+            const pingMs = Math.round(best);
+            statusEl.innerText = 'Ping ' + pingMs + ' ms — measuring download speed…';
+            const controller = new AbortController();
+            const state = { bytes: 0 };
+            const started = performance.now();
+            const timer = setTimeout(() => { try { controller.abort(); } catch (e) {} }, 10000);
+            const live = setInterval(() => {
+                const el = (performance.now() - started) / 1000;
+                if (el > 0) setGauge((state.bytes * 8) / el / 1e6);
+            }, 200);
+            const one = async (n) => {
+                try {
+                    const res = await fetch('https://cdnjs.cloudflare.com/ajax/libs/ffmpeg-core/0.11.0/ffmpeg-core.wasm?dl=' + bust() + '&s=' + n, { cache: 'no-store', signal: controller.signal });
+                    if (!res.ok) return;
+                    if (!res.body || !res.body.getReader) {
+                        const buf = await res.arrayBuffer();
+                        state.bytes += buf.byteLength;
+                        return;
+                    }
+                    const reader = res.body.getReader();
+                    for (;;) {
+                        const r = await reader.read();
+                        if (r.done) break;
+                        state.bytes += r.value.byteLength;
+                        if (state.bytes >= 30 * 1024 * 1024) { try { controller.abort(); } catch (e) {} break; }
+                    }
+                } catch (e) { if (!e || e.name !== 'AbortError') throw e; }
+            };
+            const settled = await Promise.allSettled([0, 1, 2].map(one));
+            clearTimeout(timer);
+            clearInterval(live);
+            const elapsed = (performance.now() - started) / 1000;
+            if (!settled.some(r => r.status === 'fulfilled') || state.bytes < 1024) throw new Error('download failed');
+            const mbps = (state.bytes * 8) / elapsed / 1e6;
+            setGauge(mbps);
+            statusEl.innerText = 'Done — your real download speed, measured just now.';
+            detailEl.innerText = 'Ping ' + pingMs + ' ms · ' + (state.bytes / 1048576).toFixed(1) + ' MB downloaded in ' + elapsed.toFixed(1) + ' s · Upload speed is not measured (this site has no upload server).';
+            testBtn.disabled = false;
+            testBtn.innerText = 'Test Again';
+        } catch (e) {
+            statusEl.innerText = 'Test failed.';
+            detailEl.innerText = 'Could not reach the test server (cdnjs). Check your connection and try again.';
+            testBtn.disabled = false;
+            testBtn.innerText = 'Test Again';
+        }
     };
 } else if (toolId === 'image-to-base64') {
     container.innerHTML = `
@@ -4828,10 +4831,32 @@ if (toolId === 'lorem-ipsum') {
             const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.';
             result = Array.from({length: count}, () => text).join('\n\n');
         } else if (toolId === 'barcode-generator') {
+            // REAL barcode (2026-11-12): JsBarcode 3.12.3 from cdnjs draws a
+            // scannable CODE128. The generator's utility UI has no format
+            // selector, so this is CODE128 only; the full tool page
+            // (barcode-generator/index.html) offers all 5 formats.
             const clean = value.trim() || '123456789012';
             result = clean;
             visual.style.display = 'block';
-            visual.innerHTML = `<div style="display:flex;align-items:end;gap:3px;height:90px;justify-content:center;background:white;border-radius:12px;border:1px solid var(--border-color);padding:1rem;">${clean.split('').map((char, i) => `<span style="display:block;width:${(char.charCodeAt(0) % 4) + 2}px;height:${35 + ((char.charCodeAt(0) + i) % 45)}px;background:#111827;"></span>`).join('')}</div><p style="text-align:center;font-weight:800;margin:0.7rem 0 0;">${clean}</p>`;
+            const drawBarcode = () => {
+                try {
+                    visual.innerHTML = '';
+                    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    visual.appendChild(svg);
+                    JsBarcode(svg, clean, { format: 'CODE128', width: 2, height: 100, displayValue: true, margin: 10 });
+                } catch (e) {
+                    output.value = 'Could not draw that barcode. Use letters, numbers and symbols (1-80 characters).';
+                }
+            };
+            if (typeof JsBarcode === 'undefined') {
+                const bcLib = document.createElement('script');
+                bcLib.src = 'https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.12.3/JsBarcode.all.min.js';
+                bcLib.onload = drawBarcode;
+                bcLib.onerror = () => { output.value = 'Could not load the barcode library. Check your connection and reload the page.'; };
+                document.head.appendChild(bcLib);
+            } else {
+                drawBarcode();
+            }
         } else if (toolId === 'sitemap-generator') {
             const urls = value.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
             const safeUrls = urls.map(url => url.startsWith('http') ? url : `https://${url.replace(/^\/+/, '')}`);
@@ -8250,10 +8275,10 @@ def build():
                 ui = QR_UI
                 script = QR_SCRIPT
                 how_to = "<ol><li>Enter your destination link or text in the search container.</li><li>Generate QR.</li><li>Download or share image code.</li></ol>"
-            else: # barcode-generator
+            else: # barcode-generator — real tool: JsBarcode renders a scannable CODE128 (2026-11-12)
                 ui = UTILITY_UI
                 script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
-                how_to = "<ol><li>Enter code number or characters in the input field.</li><li>Click generate barcode to render SVG.</li><li>Download barcode vector cleanly.</li></ol>"
+                how_to = "<ol><li>Type the text or number to encode in the input field.</li><li>Click Generate to draw a real CODE128 barcode.</li><li>Check the preview and the number printed under the bars.</li></ol>"
         elif t_type == 'dev_basic':
             ui = DEV_BASIC_UI
             script = DEV_BASIC_SCRIPT.replace('{{ID}}', t_id)
@@ -8283,7 +8308,7 @@ def build():
             script = UTILITY_SCRIPT.replace('{{ID}}', t_id)
             how_to = "<ol><li>Input initial values.</li><li>Adjust sliders or settings.</li><li>Review live visual simulations.</li></ol>"
 
-        if t_id in UNAVAILABLE_TOOL_IDS and t_id not in {'barcode-generator', 'speed-test'}:
+        if t_id in UNAVAILABLE_TOOL_IDS:
             ui = UNAVAILABLE_TOOL_UI
             script = ""
             how_to = "<ol><li>Use the links on this page to open a browser-safe working tool.</li><li>Choose PNG, JPG, WebP, SVG, Base64, JSON, text, SEO, or utility tools while this converter is being upgraded.</li><li>Return to this page after secure server processing is enabled.</li></ol>"

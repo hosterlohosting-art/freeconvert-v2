@@ -103,11 +103,11 @@
         "id": "image-compressor",
         "name": "Image Compressor",
         "icon": "🤐",
-        "description": "Reduce image file size with zero quality loss.",
+        "description": "Reduce image file size in your browser. JPG and WebP shrink a lot.",
         "type": "image_advanced",
         "category": "Image",
         "seo_title": "Image Compressor Online Free",
-        "seo_desc": "Reduce image size while maintaining perfect quality. Save storage and speed up your site."
+        "seo_desc": "Reduce image size and speed up your site. Works in your browser, no upload."
     },
     {
         "id": "compress-image-to-100kb",
@@ -147,7 +147,7 @@
         "type": "image_advanced",
         "category": "Image",
         "seo_title": "Resize Image for Instagram Online - Preset Ratio Converter",
-        "seo_desc": "Crop or scale photos for Instagram posts, square grids, and stories without distortion."
+        "seo_desc": "Resize photos for Instagram posts, square grids, and stories. Preset sizes for posts and stories."
     },
     {
         "id": "passport-photo-size-converter",
@@ -158,6 +158,26 @@
         "category": "Image",
         "seo_title": "Passport Photo Size Converter Online - Custom Maker",
         "seo_desc": "Convert photo dimensions to official US, UK, and EU passport standards (2x2 inches or 35x45mm)."
+    },
+    {
+        "id": "rotate-image",
+        "name": "Rotate Image",
+        "icon": "🔄",
+        "description": "Rotate or flip photos 90, 180, or 270 degrees in your browser — no upload.",
+        "type": "image_advanced",
+        "category": "Image",
+        "seo_title": "Rotate Image Online Free",
+        "seo_desc": "Rotate or flip JPG, PNG and WebP images 90, 180 or 270 degrees in your browser — no upload. Free and private."
+    },
+    {
+        "id": "gif-maker",
+        "name": "GIF Maker",
+        "icon": "🎞️",
+        "description": "Make an animated GIF from your photos in your browser — no upload.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "GIF Maker Online Free",
+        "seo_desc": "Turn your photos into an animated GIF in your browser — no upload. Free, private, set frame speed and size."
     },
     {
         "id": "compress-pdf",
@@ -478,6 +498,26 @@
         "category": "Utility",
         "seo_title": "QR Code Generator Online Free",
         "seo_desc": "Compile high-quality custom QR codes with color sliders and logos."
+    },
+    {
+        "id": "barcode-generator",
+        "name": "Barcode Generator",
+        "icon": "🏷️",
+        "description": "Generate scannable CODE128, EAN-13, UPC and CODE39 barcodes.",
+        "type": "qr",
+        "category": "Utility",
+        "seo_title": "Barcode Generator Online Free",
+        "seo_desc": "Create scannable barcodes in your browser — CODE128, EAN-13, UPC-A, CODE39. Free, private, no upload."
+    },
+    {
+        "id": "speed-test",
+        "name": "Internet Speed Test",
+        "icon": "📶",
+        "description": "Measure your real download speed and ping in your browser.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Internet Speed Test Online Free",
+        "seo_desc": "Test your internet speed in your browser — real download speed and ping. Free, no sign-up, no upload."
     },
     {
         "id": "password-generator",
@@ -838,5 +878,75 @@
         "category": "Developer",
         "seo_title": "URL Parser Online - Parse URL Query Parameters",
         "seo_desc": "Parse any URL into protocol, hostname, port, pathname, query parameters, and hash values with a private browser-based tool."
+    },
+    {
+        "id": "mp4-to-mp3",
+        "name": "MP4 to MP3",
+        "icon": "🎬",
+        "description": "Extract MP3 audio from MP4 videos in your browser — no upload.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "MP4 to MP3 Converter Online Free",
+        "seo_desc": "Convert MP4 videos to MP3 audio in your browser — no upload. Free, private, works with MP4, MOV, AVI, MKV and WebM."
+    },
+    {
+        "id": "mp4-to-gif",
+        "name": "MP4 to GIF",
+        "icon": "🎬",
+        "description": "Turn short MP4 clips into looping GIFs in your browser — no upload.",
+        "type": "video",
+        "category": "Video Converter",
+        "seo_title": "MP4 to GIF Converter Online Free",
+        "seo_desc": "Convert MP4 video clips to animated GIFs in your browser — no upload. Free, private, short clips up to 10 seconds."
+    },
+    {
+        "id": "mp3-to-wav",
+        "name": "MP3 to WAV",
+        "icon": "🎵",
+        "description": "Convert MP3 audio to WAV in your browser — no upload.",
+        "type": "audio",
+        "category": "Audio Converter",
+        "seo_title": "MP3 to WAV Converter Online Free",
+        "seo_desc": "Convert MP3 audio to uncompressed WAV in your browser — no upload. Free, private, keeps full CD quality sound."
+    },
+    {
+        "id": "wav-to-mp3",
+        "name": "WAV to MP3",
+        "icon": "🎵",
+        "description": "Convert WAV audio to MP3 in your browser — no upload.",
+        "type": "audio",
+        "category": "Audio Converter",
+        "seo_title": "WAV to MP3 Converter Online Free",
+        "seo_desc": "Convert WAV audio to MP3 in your browser — no upload. Free, private, pick 128, 192 or 320 kbps."
+    },
+    {
+        "id": "ogg-to-mp3",
+        "name": "OGG to MP3",
+        "icon": "🎵",
+        "description": "Convert OGG audio to MP3 in your browser — no upload.",
+        "type": "audio",
+        "category": "Audio Converter",
+        "seo_title": "OGG to MP3 Converter Online Free",
+        "seo_desc": "Convert OGG audio to MP3 in your browser — no upload. Free, private, pick 128, 192 or 320 kbps."
+    },
+    {
+        "id": "m4a-to-mp3",
+        "name": "M4A to MP3",
+        "icon": "🎵",
+        "description": "Convert M4A audio from iPhone to MP3 in your browser — no upload.",
+        "type": "audio",
+        "category": "Audio Converter",
+        "seo_title": "M4A to MP3 Converter Online Free",
+        "seo_desc": "Convert M4A audio from iPhone to MP3 in your browser — no upload. Free, private, pick 128, 192 or 320 kbps."
+    },
+    {
+        "id": "flac-to-mp3",
+        "name": "FLAC to MP3",
+        "icon": "🎵",
+        "description": "Convert FLAC audio to MP3 in your browser — no upload.",
+        "type": "audio",
+        "category": "Audio Converter",
+        "seo_title": "FLAC to MP3 Converter Online Free",
+        "seo_desc": "Convert FLAC audio to MP3 in your browser — no upload. Free, private, pick 128, 192 or 320 kbps."
     }
 ]

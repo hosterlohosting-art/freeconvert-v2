@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // list is defence in depth in case a stale cached copy still contains them.
     const HIDDEN_TOOL_IDS = new Set([
         "avi-to-mp4", "mkv-to-mp4", "mov-to-mp4", "webm-to-mp4",
-        "mp4-to-gif", "mp4-to-mp3", "video-to-mp3", "video-compressor",
+        "video-to-mp3", "video-compressor",
         "video-resizer", "video-trimmer", "pdf-to-word", "word-to-pdf",
-        "ico-converter", "palette-extractor", "barcode-generator", "speed-test",
+        "ico-converter", "palette-extractor", "speed-test",
         "archive-converter", "audio-converter", "ebook-converter",
         "video-converter", "pdf-tools", "document-converter"
     ]);
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const category = (tool.category || "").toLowerCase();
         if (category === "pdf tools") return "pdf";
         if (category === "video converter") return "video";
+        if (category === "audio converter") return "audio";
         if (category === "text") return "utility";
         return category;
     };
