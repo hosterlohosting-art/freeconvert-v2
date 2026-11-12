@@ -235,6 +235,7 @@
         </div>
         <h1>Convert Files Online <span class="gradient-text">Without the Confusion</span></h1>
         <p class="hero-subtitle">Upload an image or text file, pick one clear browser-safe output, and download the result. No cloud buttons, no broken choices.</p>
+        <p style="font-weight:700;color:var(--text-primary);margin:0 0 1.5rem;font-size:1rem;">Free · No sign-up · No credits · Files never leave your device</p>
 
         <!-- Homepage Active Upload box right in the Hero! -->
         <div style="margin-bottom: 2.5rem;">
@@ -246,15 +247,17 @@
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
             </svg>
         </div>
-        <p class="drop-text">Drop an image or text file</p>
-        <span class="upload-helper-text">PNG, JPG, WebP, SVG, TXT, and browser-safe conversions</span>
+        <p class="drop-text">Drop any file to find its tool</p>
+        <span class="upload-helper-text">PDF, HEIC, PNG, JPG, WebP, SVG, TXT — we point you to the right browser tool</span>
         <button type="button" class="btn primary choose-btn">Choose Files</button>
         <div class="upload-format-chips" aria-label="Supported conversions">
-            <span>PNG to JPG</span>
-            <span>JPG to WebP</span>
-            <span>WebP to PNG</span>
-            <span>SVG to PNG</span>
-            <span>Text to Base64</span>
+            <a href="/png-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>PNG to JPG</span></a>
+            <a href="/jpg-to-webp/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>JPG to WebP</span></a>
+            <a href="/webp-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>WebP to PNG</span></a>
+            <a href="/svg-to-png/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>SVG to PNG</span></a>
+            <a href="/pdf-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>PDF to JPG</span></a>
+            <a href="/heic-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>HEIC to JPG</span></a>
+            <a href="/base64-encode/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>Text to Base64</span></a>
         </div>
         <input type="file" id="file-input" hidden>
     </div>
@@ -274,6 +277,7 @@
             </div>
         </div>
         <div id="format-guidance" class="format-guidance"></div>
+        <div id="drop-suggestion" class="format-guidance" style="display:none;"></div>
         <div id="sandbox-badge" class="sandbox-badge"></div>
 
         <div class="accordion" id="adv-accordion" style="display: none; margin-bottom: 1.5rem;">
@@ -313,6 +317,8 @@
             <a href="/image-compressor/" class="quick-chip">Image Compressor</a>
             <a href="/json-to-csv/" class="quick-chip">JSON to CSV</a>
             <a href="/css-minifier/" class="quick-chip">CSS Minifier</a>
+            <a href="/pdf-to-jpg/" class="quick-chip">PDF to JPG</a>
+            <a href="/merge-pdf/" class="quick-chip">Merge PDF</a>
         </div>
 
         <!-- Trust Stats Row -->
@@ -369,6 +375,7 @@
         <div class="category-tabs">
             <button class="category-tab active" data-category="all">🔮 All Tools</button>
             <button class="category-tab" data-category="image">🖼️ Image</button>
+            <button class="category-tab" data-category="pdf">📄 PDF</button>
             <button class="category-tab" data-category="developer">🌐 Developer</button>
             <button class="category-tab" data-category="designer">🎨 Designer</button>
             <button class="category-tab" data-category="security">🛡️ Security</button>
@@ -422,7 +429,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/svg-to-png/" class="tool-card" data-category="image_advanced">
+            <a href="/svg-to-png/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">📐</div>
                     <span class="tool-category-tag">Image</span>
@@ -436,7 +443,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/image-to-base64/" class="tool-card" data-category="image_base64">
+            <a href="/image-to-base64/" class="tool-card" data-category="designer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🖼️</div>
                     <span class="tool-category-tag">Designer</span>
@@ -450,7 +457,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/image-compressor/" class="tool-card" data-category="image_advanced">
+            <a href="/image-compressor/" class="tool-card" data-category="image">
                 <span class="popular-badge">⚡ Popular</span>
                 <div class="tool-card-top">
                     <div class="tool-icon">🤐</div>
@@ -465,7 +472,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/compress-image-to-100kb/" class="tool-card" data-category="image_advanced">
+            <a href="/compress-image-to-100kb/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">🗜️</div>
                     <span class="tool-category-tag">Image</span>
@@ -479,7 +486,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/compress-image-to-200kb/" class="tool-card" data-category="image_advanced">
+            <a href="/compress-image-to-200kb/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">🗜️</div>
                     <span class="tool-category-tag">Image</span>
@@ -493,7 +500,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/resize-image/" class="tool-card" data-category="image_advanced">
+            <a href="/resize-image/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">📐</div>
                     <span class="tool-category-tag">Image</span>
@@ -507,7 +514,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/resize-image-for-instagram/" class="tool-card" data-category="image_advanced">
+            <a href="/resize-image-for-instagram/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">📸</div>
                     <span class="tool-category-tag">Image</span>
@@ -521,7 +528,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/passport-photo-size-converter/" class="tool-card" data-category="image_advanced">
+            <a href="/passport-photo-size-converter/" class="tool-card" data-category="image">
                 <div class="tool-card-top">
                     <div class="tool-icon">🛂</div>
                     <span class="tool-category-tag">Image</span>
@@ -535,7 +542,91 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/json-formatter/" class="tool-card" data-category="dev_advanced">
+            <a href="/heic-to-jpg/" class="tool-card" data-category="image">
+                <div class="tool-card-top">
+                    <div class="tool-icon">🍏</div>
+                    <span class="tool-category-tag">Image</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">HEIC to JPG</span>
+                    <p>Convert iPhone HEIC photos to generic JPG.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/pdf-to-jpg/" class="tool-card" data-category="pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon">🖼️</div>
+                    <span class="tool-category-tag">PDF Tools</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">PDF to JPG</span>
+                    <p>Extract PDF pages as high-quality JPG images.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/jpg-to-pdf/" class="tool-card" data-category="pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon">📄</div>
+                    <span class="tool-category-tag">PDF Tools</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">JPG to PDF</span>
+                    <p>Compile multiple images into a clean PDF document.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/compress-pdf/" class="tool-card" data-category="pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon">🤐</div>
+                    <span class="tool-category-tag">PDF Tools</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Compress PDF</span>
+                    <p>Reduce PDF byte footprint securely in browser.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/merge-pdf/" class="tool-card" data-category="pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon">🔗</div>
+                    <span class="tool-category-tag">PDF Tools</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Merge PDF</span>
+                    <p>Combine multiple PDF files into one sequential document.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/split-pdf/" class="tool-card" data-category="pdf">
+                <div class="tool-card-top">
+                    <div class="tool-icon">✂️</div>
+                    <span class="tool-category-tag">PDF Tools</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Split PDF</span>
+                    <p>Extract selected pages from any PDF document.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/json-formatter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">👁️</div>
                     <span class="tool-category-tag">Developer</span>
@@ -549,7 +640,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/json-validator/" class="tool-card" data-category="dev_advanced">
+            <a href="/json-validator/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🛡️</div>
                     <span class="tool-category-tag">Developer</span>
@@ -563,7 +654,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/json-to-csv/" class="tool-card" data-category="dev_basic">
+            <a href="/json-to-csv/" class="tool-card" data-category="developer">
                 <span class="popular-badge">⚡ Popular</span>
                 <div class="tool-card-top">
                     <div class="tool-icon">📊</div>
@@ -578,7 +669,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/csv-to-json/" class="tool-card" data-category="dev_basic">
+            <a href="/csv-to-json/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">📊</div>
                     <span class="tool-category-tag">Developer</span>
@@ -592,7 +683,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/base64-encode/" class="tool-card" data-category="dev_basic">
+            <a href="/base64-encode/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔐</div>
                     <span class="tool-category-tag">Developer</span>
@@ -606,7 +697,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/base64-decode/" class="tool-card" data-category="dev_basic">
+            <a href="/base64-decode/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔓</div>
                     <span class="tool-category-tag">Developer</span>
@@ -620,7 +711,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/url-encoder/" class="tool-card" data-category="dev_basic">
+            <a href="/url-encoder/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔗</div>
                     <span class="tool-category-tag">Developer</span>
@@ -634,7 +725,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/url-decoder/" class="tool-card" data-category="dev_basic">
+            <a href="/url-decoder/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔓</div>
                     <span class="tool-category-tag">Developer</span>
@@ -648,7 +739,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/html-formatter/" class="tool-card" data-category="dev_advanced">
+            <a href="/html-formatter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🌐</div>
                     <span class="tool-category-tag">Developer</span>
@@ -662,7 +753,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/css-formatter/" class="tool-card" data-category="dev_advanced">
+            <a href="/css-formatter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🎨</div>
                     <span class="tool-category-tag">Developer</span>
@@ -676,7 +767,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/javascript-formatter/" class="tool-card" data-category="dev_advanced">
+            <a href="/javascript-formatter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">📜</div>
                     <span class="tool-category-tag">Developer</span>
@@ -690,7 +781,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/sql-formatter/" class="tool-card" data-category="dev_advanced">
+            <a href="/sql-formatter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">💾</div>
                     <span class="tool-category-tag">Developer</span>
@@ -704,7 +795,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/markdown-editor/" class="tool-card" data-category="dev_advanced">
+            <a href="/markdown-editor/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">✍️</div>
                     <span class="tool-category-tag">Developer</span>
@@ -718,7 +809,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/diff-checker/" class="tool-card" data-category="dev_advanced">
+            <a href="/diff-checker/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">⚖️</div>
                     <span class="tool-category-tag">Developer</span>
@@ -732,7 +823,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/binary-text-converter/" class="tool-card" data-category="dev_basic">
+            <a href="/binary-text-converter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🤖</div>
                     <span class="tool-category-tag">Developer</span>
@@ -746,7 +837,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/unicode-converter/" class="tool-card" data-category="dev_basic">
+            <a href="/unicode-converter/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔡</div>
                     <span class="tool-category-tag">Developer</span>
@@ -760,7 +851,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/word-counter/" class="tool-card" data-category="text">
+            <a href="/word-counter/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">✍️</div>
                     <span class="tool-category-tag">Text</span>
@@ -774,7 +865,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/character-counter/" class="tool-card" data-category="text">
+            <a href="/character-counter/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">✍️</div>
                     <span class="tool-category-tag">Text</span>
@@ -788,7 +879,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/meta-title-checker/" class="tool-card" data-category="text">
+            <a href="/meta-title-checker/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔍</div>
                     <span class="tool-category-tag">Text</span>
@@ -802,7 +893,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/meta-description-checker/" class="tool-card" data-category="text">
+            <a href="/meta-description-checker/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔍</div>
                     <span class="tool-category-tag">Text</span>
@@ -816,7 +907,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/slug-generator/" class="tool-card" data-category="text">
+            <a href="/slug-generator/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🐌</div>
                     <span class="tool-category-tag">Text</span>
@@ -830,7 +921,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/case-converter/" class="tool-card" data-category="text">
+            <a href="/case-converter/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔤</div>
                     <span class="tool-category-tag">Text</span>
@@ -844,7 +935,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/remove-duplicate-lines/" class="tool-card" data-category="text">
+            <a href="/remove-duplicate-lines/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🧼</div>
                     <span class="tool-category-tag">Text</span>
@@ -858,7 +949,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/text-cleaner/" class="tool-card" data-category="text">
+            <a href="/text-cleaner/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🧼</div>
                     <span class="tool-category-tag">Text</span>
@@ -872,7 +963,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/lorem-ipsum-generator/" class="tool-card" data-category="utility_dev">
+            <a href="/lorem-ipsum-generator/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">📜</div>
                     <span class="tool-category-tag">Utility</span>
@@ -886,7 +977,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/hashtag-generator/" class="tool-card" data-category="text">
+            <a href="/hashtag-generator/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">#</div>
                     <span class="tool-category-tag">Text</span>
@@ -900,7 +991,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/qr-code-generator/" class="tool-card" data-category="qr">
+            <a href="/qr-code-generator/" class="tool-card" data-category="utility">
                 <span class="popular-badge">⚡ Popular</span>
                 <div class="tool-card-top">
                     <div class="tool-icon">🧱</div>
@@ -943,7 +1034,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/random-number-generator/" class="tool-card" data-category="utility_dev">
+            <a href="/random-number-generator/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🎲</div>
                     <span class="tool-category-tag">Utility</span>
@@ -957,7 +1048,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/uuid-generator/" class="tool-card" data-category="utility_dev">
+            <a href="/uuid-generator/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔑</div>
                     <span class="tool-category-tag">Utility</span>
@@ -971,7 +1062,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/timestamp-converter/" class="tool-card" data-category="utility_dev">
+            <a href="/timestamp-converter/" class="tool-card" data-category="utility">
                 <div class="tool-card-top">
                     <div class="tool-icon">⏱️</div>
                     <span class="tool-category-tag">Utility</span>
@@ -1041,7 +1132,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/hash-generator/" class="tool-card" data-category="utility">
+            <a href="/hash-generator/" class="tool-card" data-category="security">
                 <div class="tool-card-top">
                     <div class="tool-icon">🔒</div>
                     <span class="tool-category-tag">Security</span>
@@ -1097,7 +1188,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/aspect-ratio-calculator/" class="tool-card" data-category="utility_advanced">
+            <a href="/aspect-ratio-calculator/" class="tool-card" data-category="designer">
                 <div class="tool-card-top">
                     <div class="tool-icon">📏</div>
                     <span class="tool-category-tag">Designer</span>
@@ -1111,7 +1202,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/rgb-hex-converter/" class="tool-card" data-category="utility_advanced">
+            <a href="/rgb-hex-converter/" class="tool-card" data-category="designer">
                 <div class="tool-card-top">
                     <div class="tool-icon">🌈</div>
                     <span class="tool-category-tag">Designer</span>
@@ -1168,7 +1259,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/yaml-to-json/" class="tool-card" data-category="dev_basic">
+            <a href="/yaml-to-json/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">📜</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1182,7 +1273,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/json-to-yaml/" class="tool-card" data-category="dev_basic">
+            <a href="/json-to-yaml/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">📜</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1253,7 +1344,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/css-minifier/" class="tool-card" data-category="utility_dev">
+            <a href="/css-minifier/" class="tool-card" data-category="developer">
                 <span class="popular-badge">⚡ Popular</span>
                 <div class="tool-card-top">
                     <div class="tool-icon">CSS</div>
@@ -1268,7 +1359,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/javascript-minifier/" class="tool-card" data-category="utility_dev">
+            <a href="/javascript-minifier/" class="tool-card" data-category="developer">
                 <span class="popular-badge">⚡ Popular</span>
                 <div class="tool-card-top">
                     <div class="tool-icon">JS</div>
@@ -1283,7 +1374,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/word-to-html/" class="tool-card" data-category="utility_dev">
+            <a href="/word-to-html/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">HTML</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1297,7 +1388,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/text-to-ascii/" class="tool-card" data-category="utility_dev">
+            <a href="/text-to-ascii/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">ASCII</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1311,7 +1402,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/json-minifier/" class="tool-card" data-category="utility_dev">
+            <a href="/json-minifier/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">JSON</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1325,7 +1416,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/jwt-decoder/" class="tool-card" data-category="utility_dev">
+            <a href="/jwt-decoder/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">JWT</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1339,7 +1430,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/regex-tester/" class="tool-card" data-category="utility_dev">
+            <a href="/regex-tester/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">.*</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1353,7 +1444,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/html-entity-encoder/" class="tool-card" data-category="utility_dev">
+            <a href="/html-entity-encoder/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">&lt;</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1367,7 +1458,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/html-entity-decoder/" class="tool-card" data-category="utility_dev">
+            <a href="/html-entity-decoder/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">&amp;</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1381,7 +1472,7 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
-            <a href="/url-parser/" class="tool-card" data-category="utility_dev">
+            <a href="/url-parser/" class="tool-card" data-category="developer">
                 <div class="tool-card-top">
                     <div class="tool-icon">URL</div>
                     <span class="tool-category-tag">Developer</span>
@@ -1436,15 +1527,15 @@
                     <h3 style="color:var(--text-primary);">Image Converter</h3>
                     <p>Convert PNG, JPG, WebP, SVG, and HEIC images safely in your browser.</p>
                 </a>
-                <a href="/document-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon">📄</div>
-                    <h3 style="color:var(--text-primary);">Document Converter</h3>
-                    <p>Process Microsoft Word docx, Excel sheets, and developer code bases.</p>
+                <a href="/all-tools/" style="text-decoration:none;" class="tool-card">
+                    <div class="tool-icon">🧰</div>
+                    <h3 style="color:var(--text-primary);">All Tools</h3>
+                    <p>Browse every working browser tool — PDF, image, developer, text, and security.</p>
                 </a>
                 <a href="/unit-converter/" style="text-decoration:none;" class="tool-card">
                     <div class="tool-icon">📏</div>
                     <h3 style="color:var(--text-primary);">Utility & Units</h3>
-                    <p>Calculate aspect ratios, test connectivity speeds, and measure metrics.</p>
+                    <p>Calculate aspect ratios, convert units, and measure metrics.</p>
                 </a>
             </div>
         </div>
@@ -1701,7 +1792,6 @@
     </footer>
 
 
-    <script src="/tools/tools-data.min.js"></script>
     <script src="/tools/tool-logic.min.js"></script>
     <script>
 
@@ -1721,6 +1811,7 @@ const progText = document.getElementById('sw-progress-text');
 const sandboxBadge = document.getElementById('sandbox-badge');
 const fileTypeIcon = document.getElementById('file-type-icon');
 const formatGuidance = document.getElementById('format-guidance');
+const dropSuggestion = document.getElementById('drop-suggestion');
 const PAGE_TOOL_ID = '';
 const PAGE_TOOL_NAME = '';
 const DEDICATED_BROWSER_CONVERSIONS = {
@@ -1739,6 +1830,56 @@ const MATCHING_TOOL_BY_SOURCE = {
     'webp': '/webp-to-jpg/',
     'svg': '/svg-to-png/'
 };
+
+// Drop-box suggestions: a dropped file the box above cannot convert gets a
+// link to the real tool that can. Only real, working tools are ever suggested.
+const DROP_SUGGESTIONS = {
+    pdf: '<strong>PDF file detected.</strong><span>Open a PDF tool: <a href="/pdf-to-jpg/" style="color:var(--brand-primary);font-weight:800;">PDF to JPG</a> · <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:800;">Compress PDF</a> · <a href="/merge-pdf/" style="color:var(--brand-primary);font-weight:800;">Merge PDF</a> · <a href="/split-pdf/" style="color:var(--brand-primary);font-weight:800;">Split PDF</a></span>',
+    heic: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    heif: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    jpg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    jpeg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    png: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    mp4: '<strong>Video files do not convert in the browser yet.</strong><span>We do not offer video conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    mov: '<strong>Video files do not convert in the browser yet.</strong><span>We do not offer video conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    avi: '<strong>Video files do not convert in the browser yet.</strong><span>We do not offer video conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    mkv: '<strong>Video files do not convert in the browser yet.</strong><span>We do not offer video conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    webm: '<strong>Video files do not convert in the browser yet.</strong><span>We do not offer video conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    mp3: '<strong>Audio files do not convert in the browser yet.</strong><span>We do not offer audio conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    wav: '<strong>Audio files do not convert in the browser yet.</strong><span>We do not offer audio conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    ogg: '<strong>Audio files do not convert in the browser yet.</strong><span>We do not offer audio conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    flac: '<strong>Audio files do not convert in the browser yet.</strong><span>We do not offer audio conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    m4a: '<strong>Audio files do not convert in the browser yet.</strong><span>We do not offer audio conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    doc: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    docx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xls: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xlsx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    ppt: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    pptx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    zip: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    rar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    '7z': '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    tar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    gz: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>'
+};
+// File types the box above already converts in place: no suggestion needed.
+const DROP_NO_SUGGESTION = ['webp', 'svg', 'txt'];
+function showDropSuggestion(ext) {
+    if (!dropSuggestion) return;
+    if (DROP_NO_SUGGESTION.includes(ext)) {
+        dropSuggestion.innerHTML = '';
+        dropSuggestion.style.display = 'none';
+        return;
+    }
+    const tip = DROP_SUGGESTIONS[ext];
+    if (tip) {
+        dropSuggestion.innerHTML = tip;
+        dropSuggestion.style.display = 'flex';
+        return;
+    }
+    dropSuggestion.innerHTML = '<strong>No matching browser tool for .' + ext.toUpperCase() + ' files yet.</strong><span>We do not convert that file type here. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a>.</span>';
+    dropSuggestion.style.display = 'flex';
+}
 
 dropZone.onclick = () => fileInput.click();
 fileInput.onchange = (e) => handleFiles(e.target.files);
@@ -1816,6 +1957,7 @@ function handleFiles(files) {
     fileTypeIcon.textContent = getFileIcon(activeFile.name);
 
     const ext = activeFile.name.split('.').pop().toLowerCase();
+    showDropSuggestion(ext);
     const formats = getSafeOutputFormats(activeFile.name);
     if (formats.length === 0) {
         formatSelect.innerHTML = '<option value="">Not available</option>';
@@ -1834,8 +1976,8 @@ function handleFiles(files) {
             return;
         }
         formatGuidance.innerHTML = `
-            <strong>This file type is not available in the browser converter yet.</strong>
-            <span>Try PNG, JPG, WebP, SVG, or TXT. You can also browse the dedicated tool cards below.</span>
+            <strong>This file type is not converted in the box above.</strong>
+            <span>Try PNG, JPG, WebP, SVG, or TXT — or open the suggested tool below.</span>
         `;
         sandboxBadge.innerHTML = `<strong>No upload happened.</strong><span>Choose another file or open a matching converter page.</span>`;
         accordion.style.display = 'none';

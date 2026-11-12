@@ -50,26 +50,6 @@
         "seo_desc": "Convert Scalable Vector Graphics (SVG) to PNG images instantly."
     },
     {
-        "id": "palette-extractor",
-        "name": "Color Palette Extractor",
-        "icon": "🎨",
-        "description": "Extract dominant colors from any image.",
-        "type": "image_advanced",
-        "category": "Image",
-        "seo_title": "Image Color Palette Generator - Extract Hex Codes",
-        "seo_desc": "Upload an image and get the top 5 dominant colors and their hex codes."
-    },
-    {
-        "id": "ico-converter",
-        "name": "ICO Converter",
-        "icon": "⭐",
-        "description": "Create standard Favicons (.ico) from images.",
-        "type": "image_advanced",
-        "category": "Image",
-        "seo_title": "Free ICO Converter - Make a Favicon",
-        "seo_desc": "Convert PNG or JPG images to .ico format for website favicons."
-    },
-    {
         "id": "image-to-base64",
         "name": "Image to Base64",
         "icon": "🖼️",
@@ -188,26 +168,6 @@
         "category": "PDF Tools",
         "seo_title": "Split PDF Online Free",
         "seo_desc": "Split PDF chapters or extract specific pages to new PDF files easily."
-    },
-    {
-        "id": "pdf-to-word",
-        "name": "PDF to Word",
-        "icon": "📝",
-        "description": "Convert PDF documents to editable Microsoft Word files.",
-        "type": "pdf",
-        "category": "PDF Tools",
-        "seo_title": "PDF to Word Converter Online",
-        "seo_desc": "Transform PDFs into editable Word (.docx) files with maximum layout preservation."
-    },
-    {
-        "id": "word-to-pdf",
-        "name": "Word to PDF",
-        "icon": "📄",
-        "description": "Convert DOCX documents to professional PDF files.",
-        "type": "pdf",
-        "category": "PDF Tools",
-        "seo_title": "Word to PDF Converter Online",
-        "seo_desc": "Convert Microsoft Word files to standard PDF format instantly and securely."
     },
     {
         "id": "json-formatter",
@@ -480,16 +440,6 @@
         "seo_desc": "Compile high-quality custom QR codes with color sliders and logos."
     },
     {
-        "id": "barcode-generator",
-        "name": "Barcode Generator",
-        "icon": "🪪",
-        "description": "Render standard Code 128 visual barcodes.",
-        "type": "qr",
-        "category": "Utility",
-        "seo_title": "Free Barcode Generator - Create Code 128 Barcodes",
-        "seo_desc": "Generate Code 128 standard retail barcode graphics instantly."
-    },
-    {
         "id": "password-generator",
         "name": "Password Generator",
         "icon": "🔑",
@@ -610,16 +560,6 @@
         "seo_desc": "Translate metrics between imperial and metric systems easily."
     },
     {
-        "id": "speed-test",
-        "name": "Internet Speed Test",
-        "icon": "🚀",
-        "description": "Test connection latency and bandwidth.",
-        "type": "utility",
-        "category": "Utility",
-        "seo_title": "Simple Internet Speed Test - Check Connectivity",
-        "seo_desc": "Evaluate download throughput rates directly inside the browser."
-    },
-    {
         "id": "stopwatch",
         "name": "Stopwatch & Timer",
         "icon": "⏱️",
@@ -648,106 +588,6 @@
         "category": "Designer",
         "seo_title": "RGB to HEX Color Converter - Designer Tool",
         "seo_desc": "Convert color systems instantly for designs and CSS styles."
-    },
-    {
-        "id": "mp4-to-mp3",
-        "name": "MP4 to MP3",
-        "icon": "🎵",
-        "description": "Extract raw audio tracks from video files.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "MP4 to MP3 Converter Online",
-        "seo_desc": "Convert heavy video files into lightweight audio format instantly."
-    },
-    {
-        "id": "video-compressor",
-        "name": "Video Compressor",
-        "icon": "🎥",
-        "description": "Reduce video clip sizes and bitrates.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "Online Video Compressor - Shrink Video Files",
-        "seo_desc": "Optimize and shrink video file dimensions with secure edge limits."
-    },
-    {
-        "id": "webm-to-mp4",
-        "name": "WebM to MP4",
-        "icon": "🎥",
-        "description": "Transcode WebM assets to standard MP4 videos.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "WebM to MP4 Converter Online",
-        "seo_desc": "Convert lightweight WebM files into universal MP4 files safely."
-    },
-    {
-        "id": "mov-to-mp4",
-        "name": "MOV to MP4",
-        "icon": "🎬",
-        "description": "Convert Apple MOV videos into universal MP4 files.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "MOV to MP4 Converter Online",
-        "seo_desc": "Convert MOV files from iPhone, Mac, and cameras to compatible MP4 videos online."
-    },
-    {
-        "id": "avi-to-mp4",
-        "name": "AVI to MP4",
-        "icon": "🎞️",
-        "description": "Convert older AVI videos into modern MP4 format.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "AVI to MP4 Converter Online",
-        "seo_desc": "Convert AVI videos to MP4 for phones, browsers, social media, and modern apps."
-    },
-    {
-        "id": "mkv-to-mp4",
-        "name": "MKV to MP4",
-        "icon": "📼",
-        "description": "Convert MKV video containers into widely supported MP4 files.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "MKV to MP4 Converter Online",
-        "seo_desc": "Convert MKV videos to MP4 for easier sharing, playback, upload, and editing."
-    },
-    {
-        "id": "mp4-to-gif",
-        "name": "MP4 to GIF",
-        "icon": "🎞️",
-        "description": "Create animated GIF clips from MP4 videos.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "MP4 to GIF Converter Online",
-        "seo_desc": "Convert short MP4 video clips into animated GIFs for chat, memes, and previews."
-    },
-    {
-        "id": "video-to-mp3",
-        "name": "Video to MP3",
-        "icon": "🎧",
-        "description": "Extract MP3 audio from MP4, MOV, AVI, MKV, and WebM videos.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "Video to MP3 Converter Online",
-        "seo_desc": "Extract audio from video files and download clean MP3 audio online."
-    },
-    {
-        "id": "video-trimmer",
-        "name": "Video Trimmer",
-        "icon": "✂️",
-        "description": "Trim long video clips into shorter shareable segments.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "Video Trimmer Online Free",
-        "seo_desc": "Cut and trim videos online for social media clips, previews, reels, and short highlights."
-    },
-    {
-        "id": "video-resizer",
-        "name": "Video Resizer",
-        "icon": "📐",
-        "description": "Resize video dimensions for social media, websites, and mobile uploads.",
-        "type": "video",
-        "category": "Video Converter",
-        "seo_title": "Video Resizer Online",
-        "seo_desc": "Resize videos for Instagram, TikTok, YouTube Shorts, websites, and mobile sharing."
     },
     {
         "id": "jpg-to-webp",
