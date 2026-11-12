@@ -210,7 +210,7 @@
             </svg>
         </div>
         <p class="drop-text">Drop an image or text file</p>
-        <span class="upload-helper-text">PNG, JPG, WebP, SVG, TXT, and browser-safe conversions</span>
+        <span class="upload-helper-text">PNG, JPG, WebP, AVIF, SVG, TXT, and browser-safe conversions</span>
         <button type="button" class="btn primary choose-btn">Choose Files</button>
         <div class="upload-format-chips" aria-label="Supported conversions">
             <span>PNG to JPG</span>
@@ -218,6 +218,7 @@
             <span>WebP to PNG</span>
             <span>SVG to PNG</span>
             <span>Text to Base64</span>
+            <span>AVIF to JPG</span>
         </div>
         <input type="file" id="file-input" hidden>
     </div>
@@ -330,6 +331,36 @@
                 <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">PNG to WebP</span>
                 <p>Convert PNG images to next-gen WebP format locally.</p>
             </a>
+            <a href="/jpg-to-avif/" class="tool-card">
+                <div class="tool-icon">✨</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">JPG to AVIF</span>
+                <p>Convert JPG images to AVIF instantly.</p>
+            </a>
+            <a href="/png-to-avif/" class="tool-card">
+                <div class="tool-icon">✨</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">PNG to AVIF</span>
+                <p>Convert PNG images to AVIF instantly.</p>
+            </a>
+            <a href="/avif-to-png/" class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">AVIF to PNG</span>
+                <p>Convert AVIF images to PNG instantly.</p>
+            </a>
+            <a href="/avif-to-jpg/" class="tool-card">
+                <div class="tool-icon">🖼️</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">AVIF to JPG</span>
+                <p>Convert AVIF images to JPG instantly.</p>
+            </a>
+            <a href="/svg-to-jpg/" class="tool-card">
+                <div class="tool-icon">📐</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">SVG to JPG</span>
+                <p>Convert SVG files to JPG instantly.</p>
+            </a>
+            <a href="/webp-to-png/" class="tool-card">
+                <div class="tool-icon">🕸️</div>
+                <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">WebP to PNG</span>
+                <p>Convert WebP images to PNG instantly.</p>
+            </a>
             </div>
         </section>
 
@@ -356,10 +387,10 @@
             </ul>
 
             <h2>Supported Formats and Guides</h2>
-            <p>We support standard raster, vector, next-generation, and camera container formats, including PNG, JPG, JPEG, WebP, SVG, HEIC, and ICO files. Standard operations, including resizing, compressing, palette extracting, and format translations, run 100% locally in your browser memory.</p>
+            <p>We support standard raster, vector, next-generation, and camera container formats, including PNG, JPG, JPEG, WebP, AVIF, SVG, and HEIC files. Standard operations, including resizing, compressing, and format translations, run 100% locally in your browser memory.</p>
 
             <h2>How does our Image Converter tool work?</h2>
-            <ol><li>Drag and drop your images into the upload box.</li><li>Select output format (PNG, JPG, WebP).</li><li>Click Convert and download your files.</li></ol>
+            <ol><li>Drag and drop your images into the upload box.</li><li>Select output format (PNG, JPG, WebP, AVIF).</li><li>Click Convert and download your files.</li></ol>
 
             <h2>Frequently Asked Questions</h2>
             <p style="margin-bottom:1rem;">Have questions about converting files inside our Image Converter directory? Read our comprehensive FAQ below:</p>
@@ -512,14 +543,21 @@ const DEDICATED_BROWSER_CONVERSIONS = {
     'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
     'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
     'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
-    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' }
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' },
+    'webp-to-png': { sources: ['webp'], targets: ['png'], label: 'WebP to PNG' },
+    'svg-to-jpg': { sources: ['svg'], targets: ['jpg'], label: 'SVG to JPG' },
+    'avif-to-jpg': { sources: ['avif'], targets: ['jpg'], label: 'AVIF to JPG' },
+    'avif-to-png': { sources: ['avif'], targets: ['png'], label: 'AVIF to PNG' },
+    'png-to-avif': { sources: ['png'], targets: ['avif'], label: 'PNG to AVIF' },
+    'jpg-to-avif': { sources: ['jpg', 'jpeg'], targets: ['avif'], label: 'JPG to AVIF' }
 };
 const MATCHING_TOOL_BY_SOURCE = {
     'png': '/png-to-jpg/',
     'jpg': '/jpg-to-png/',
     'jpeg': '/jpg-to-png/',
     'webp': '/webp-to-jpg/',
-    'svg': '/svg-to-png/'
+    'svg': '/svg-to-png/',
+    'avif': '/avif-to-jpg/'
 };
 
 dropZone.onclick = () => fileInput.click();
@@ -557,11 +595,12 @@ function getSafeOutputFormats(fileName) {
         return dedicated.sources.includes(ext) ? dedicated.targets : [];
     }
     const safeMap = {
-        png: ['jpg', 'webp', 'base64'],
-        jpg: ['png', 'webp', 'base64'],
-        jpeg: ['png', 'webp', 'base64'],
+        png: ['jpg', 'webp', 'avif', 'base64'],
+        jpg: ['png', 'webp', 'avif', 'base64'],
+        jpeg: ['png', 'webp', 'avif', 'base64'],
         webp: ['jpg', 'png', 'base64'],
-        svg: ['png'],
+        svg: ['png', 'jpg'],
+        avif: ['jpg', 'png', 'base64'],
         txt: ['base64']
     };
     return safeMap[ext] || [];
@@ -583,13 +622,33 @@ function getFormatHelp(sourceExt, targetExt) {
         'webp-png': 'Best for editing or platforms that prefer PNG files.',
         'webp-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
         'svg-png': 'Best for exporting vector logos and icons as raster images.',
-        'txt-base64': 'Encodes plain text into Base64 for developer workflows.'
+        'txt-base64': 'Encodes plain text into Base64 for developer workflows.',
+        'png-avif': 'Best for much smaller website images with modern browser support.',
+        'jpg-avif': 'Best for much smaller photos with modern browser support.',
+        'jpeg-avif': 'Best for much smaller photos with modern browser support.',
+        'svg-jpg': 'Best for sharing vector logos and icons as JPG photos.',
+        'avif-jpg': 'Best for opening AVIF photos anywhere JPG works.',
+        'avif-png': 'Best for editing AVIF images as PNG files.'
     };
     return copy[key] || 'This conversion runs locally in your browser when supported.';
 }
 function handleFiles(files) {
     if (files.length === 0) return;
     activeFile = files[0];
+    if (activeFile.size > 50 * 1024 * 1024) {
+        dropZone.style.display = 'none';
+        previewContainer.style.display = 'block';
+        fileNameEl.textContent = activeFile.name;
+        fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+        fileTypeIcon.textContent = getFileIcon(activeFile.name);
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        formatGuidance.innerHTML = `<strong>File too large.</strong><span>This tool accepts files up to 50 MB. Your file is ${(activeFile.size / 1024 / 1024).toFixed(1)} MB — please use a smaller file.</span>`;
+        sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
     dropZone.style.display = 'none';
     previewContainer.style.display = 'block';
 
@@ -641,7 +700,7 @@ function handleFiles(files) {
     };
 
     // Inject advanced options if image tool
-    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp' || ext === 'svg' || ext === 'avif') {
         accordion.style.display = 'block';
         controlsBox.innerHTML = `
             <div style="display: flex; gap: 1rem; width: 100%;">
@@ -653,6 +712,30 @@ function handleFiles(files) {
         const slider = document.getElementById('opt-quality');
         if (slider) {
             slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
+        }
+        if (ext === 'svg') {
+            activeFile.text().then((svgText) => {
+                const wInput = document.getElementById('opt-width');
+                const hInput = document.getElementById('opt-height');
+                if (!wInput || !hInput) return;
+                const num = (s) => { const m = s && s.match(/(\d+(?:\.\d+)?)/); return m ? Math.round(parseFloat(m[1])) : null; };
+                const tag = svgText.match(/<svg[^>]*>/i);
+                const attrs = tag ? tag[0] : '';
+                const wM = attrs.match(/\swidth=["']([^"']+)["']/i);
+                const hM = attrs.match(/\sheight=["']([^"']+)["']/i);
+                const vM = attrs.match(/\sviewBox=["']([\d.\s-]+)["']/i);
+                let vw = num(wM && wM[1]);
+                let vh = num(hM && hM[1]);
+                if ((!vw || !vh) && vM) {
+                    const parts = vM[1].trim().split(/\s+/);
+                    if (parts.length === 4) {
+                        vw = vw || Math.round(parseFloat(parts[2]));
+                        vh = vh || Math.round(parseFloat(parts[3]));
+                    }
+                }
+                if (vw) wInput.value = vw;
+                if (vh) hInput.value = vh;
+            }).catch(() => {});
         }
     } else {
         accordion.style.display = 'none';

@@ -30,6 +30,16 @@
         "seo_desc": "Easily convert WebP images to JPG format for better compatibility."
     },
     {
+        "id": "webp-to-png",
+        "name": "WebP to PNG",
+        "icon": "🕸️",
+        "description": "Convert WebP images to PNG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "WebP to PNG Converter Online",
+        "seo_desc": "Convert WebP images to PNG online free. Keeps transparency, works in your browser, no upload."
+    },
+    {
         "id": "heic-to-jpg",
         "name": "HEIC to JPG",
         "icon": "🍏",
@@ -40,6 +50,26 @@
         "seo_desc": "Convert HEIC images to JPG directly in your browser. Fast and privacy-focused."
     },
     {
+        "id": "avif-to-jpg",
+        "name": "AVIF to JPG",
+        "icon": "🖼️",
+        "description": "Convert AVIF images to JPG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "AVIF to JPG Converter Online",
+        "seo_desc": "Convert AVIF images to JPG online free. Works in your browser, no upload. Needs a modern browser."
+    },
+    {
+        "id": "avif-to-png",
+        "name": "AVIF to PNG",
+        "icon": "🖼️",
+        "description": "Convert AVIF images to PNG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "AVIF to PNG Converter Online",
+        "seo_desc": "Convert AVIF images to PNG online free. Keeps transparency, works in your browser, no upload."
+    },
+    {
         "id": "svg-to-png",
         "name": "SVG to PNG",
         "icon": "📐",
@@ -48,6 +78,16 @@
         "category": "Image",
         "seo_title": "SVG to PNG Converter - Online Vector Tool",
         "seo_desc": "Convert Scalable Vector Graphics (SVG) to PNG images instantly."
+    },
+    {
+        "id": "svg-to-jpg",
+        "name": "SVG to JPG",
+        "icon": "📐",
+        "description": "Convert SVG files to JPG instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "SVG to JPG Converter Online",
+        "seo_desc": "Convert SVG vector graphics to JPG online free. Set size and quality, works in your browser, no upload."
     },
     {
         "id": "image-to-base64",
@@ -600,6 +640,16 @@
         "seo_desc": "Convert JPG images to WebP format instantly in your browser. Blazing fast, 100% private, no server uploads."
     },
     {
+        "id": "jpg-to-avif",
+        "name": "JPG to AVIF",
+        "icon": "✨",
+        "description": "Convert JPG images to AVIF instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "JPG to AVIF Converter Online",
+        "seo_desc": "Convert JPG images to AVIF online free. Much smaller files, works in your browser, no upload."
+    },
+    {
         "id": "png-to-webp",
         "name": "PNG to WebP",
         "icon": "🕸️",
@@ -608,6 +658,16 @@
         "category": "Image",
         "seo_title": "PNG to WebP Converter Online",
         "seo_desc": "Convert PNG images to WebP online with transparency support. Safe browser-local processing, no uploads required."
+    },
+    {
+        "id": "png-to-avif",
+        "name": "PNG to AVIF",
+        "icon": "✨",
+        "description": "Convert PNG images to AVIF instantly.",
+        "type": "image",
+        "category": "Image",
+        "seo_title": "PNG to AVIF Converter Online",
+        "seo_desc": "Convert PNG images to AVIF online free. Smaller files, works in your browser, no upload."
     },
     {
         "id": "youtube-thumbnail-downloader",

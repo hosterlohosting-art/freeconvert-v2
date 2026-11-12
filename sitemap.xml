@@ -231,8 +231,28 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/webp-to-png/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/svg-to-png/</loc>
     <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/svg-to-jpg/</loc>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -731,8 +751,28 @@
     </image:image>
   </url>
   <url>
+    <loc>https://freeconvert.cloud/jpg-to-avif/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://freeconvert.cloud/png-to-webp/</loc>
     <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/png-to-avif/</loc>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -1832,6 +1872,26 @@
   </url>
   <url>
     <loc>https://freeconvert.cloud/heic-to-jpg/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/avif-to-jpg/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://freeconvert.cloud/assets/freeconvert-logo.png</image:loc>
+      <image:title>freeconvert.cloud online file converter</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://freeconvert.cloud/avif-to-png/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

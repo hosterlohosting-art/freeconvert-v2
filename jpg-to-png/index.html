@@ -264,7 +264,7 @@
             <!-- Limitations Section -->
             <div style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px; background: rgba(239, 68, 68, 0.03); border: 1px solid rgba(239, 68, 68, 0.1);">
                 <h3 style="color: var(--brand-danger); display: flex; align-items: center; gap: 0.5rem; font-size: 1.15rem;">⚠️ System Constraints & Limitations</h3>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6;">Because PNG is a lossless format, converting a JPG to PNG will usually increase the resulting file size. Furthermore, format conversion alone does not magically make a solid white background transparent.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; line-height: 1.6;">Because PNG is a lossless format, converting a JPG to PNG will usually increase the resulting file size. Furthermore, format conversion alone does not magically make a solid white background transparent. Files larger than 50 MB are not accepted.</p>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -337,6 +337,10 @@
   <span style="font-size:1.4rem;">📐</span>
   <strong style="font-size:0.88rem;">Resize Image</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Resize your images to custom dimensions....</span>
+</a><a href="/jpg-to-avif/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
+  <span style="font-size:1.4rem;">✨</span>
+  <strong style="font-size:0.88rem;">JPG to AVIF</strong>
+  <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">Convert JPG images to AVIF instantly....</span>
 </a>
             </div>
         </section>
@@ -456,14 +460,21 @@ const DEDICATED_BROWSER_CONVERSIONS = {
     'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
     'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
     'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
-    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' }
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' },
+    'webp-to-png': { sources: ['webp'], targets: ['png'], label: 'WebP to PNG' },
+    'svg-to-jpg': { sources: ['svg'], targets: ['jpg'], label: 'SVG to JPG' },
+    'avif-to-jpg': { sources: ['avif'], targets: ['jpg'], label: 'AVIF to JPG' },
+    'avif-to-png': { sources: ['avif'], targets: ['png'], label: 'AVIF to PNG' },
+    'png-to-avif': { sources: ['png'], targets: ['avif'], label: 'PNG to AVIF' },
+    'jpg-to-avif': { sources: ['jpg', 'jpeg'], targets: ['avif'], label: 'JPG to AVIF' }
 };
 const MATCHING_TOOL_BY_SOURCE = {
     'png': '/png-to-jpg/',
     'jpg': '/jpg-to-png/',
     'jpeg': '/jpg-to-png/',
     'webp': '/webp-to-jpg/',
-    'svg': '/svg-to-png/'
+    'svg': '/svg-to-png/',
+    'avif': '/avif-to-jpg/'
 };
 
 dropZone.onclick = () => fileInput.click();
@@ -501,11 +512,12 @@ function getSafeOutputFormats(fileName) {
         return dedicated.sources.includes(ext) ? dedicated.targets : [];
     }
     const safeMap = {
-        png: ['jpg', 'webp', 'base64'],
-        jpg: ['png', 'webp', 'base64'],
-        jpeg: ['png', 'webp', 'base64'],
+        png: ['jpg', 'webp', 'avif', 'base64'],
+        jpg: ['png', 'webp', 'avif', 'base64'],
+        jpeg: ['png', 'webp', 'avif', 'base64'],
         webp: ['jpg', 'png', 'base64'],
-        svg: ['png'],
+        svg: ['png', 'jpg'],
+        avif: ['jpg', 'png', 'base64'],
         txt: ['base64']
     };
     return safeMap[ext] || [];
@@ -527,13 +539,33 @@ function getFormatHelp(sourceExt, targetExt) {
         'webp-png': 'Best for editing or platforms that prefer PNG files.',
         'webp-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
         'svg-png': 'Best for exporting vector logos and icons as raster images.',
-        'txt-base64': 'Encodes plain text into Base64 for developer workflows.'
+        'txt-base64': 'Encodes plain text into Base64 for developer workflows.',
+        'png-avif': 'Best for much smaller website images with modern browser support.',
+        'jpg-avif': 'Best for much smaller photos with modern browser support.',
+        'jpeg-avif': 'Best for much smaller photos with modern browser support.',
+        'svg-jpg': 'Best for sharing vector logos and icons as JPG photos.',
+        'avif-jpg': 'Best for opening AVIF photos anywhere JPG works.',
+        'avif-png': 'Best for editing AVIF images as PNG files.'
     };
     return copy[key] || 'This conversion runs locally in your browser when supported.';
 }
 function handleFiles(files) {
     if (files.length === 0) return;
     activeFile = files[0];
+    if (activeFile.size > 50 * 1024 * 1024) {
+        dropZone.style.display = 'none';
+        previewContainer.style.display = 'block';
+        fileNameEl.textContent = activeFile.name;
+        fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+        fileTypeIcon.textContent = getFileIcon(activeFile.name);
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        formatGuidance.innerHTML = `<strong>File too large.</strong><span>This tool accepts files up to 50 MB. Your file is ${(activeFile.size / 1024 / 1024).toFixed(1)} MB — please use a smaller file.</span>`;
+        sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
     dropZone.style.display = 'none';
     previewContainer.style.display = 'block';
 
@@ -585,7 +617,7 @@ function handleFiles(files) {
     };
 
     // Inject advanced options if image tool
-    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp' || ext === 'svg' || ext === 'avif') {
         accordion.style.display = 'block';
         controlsBox.innerHTML = `
             <div style="display: flex; gap: 1rem; width: 100%;">
@@ -597,6 +629,30 @@ function handleFiles(files) {
         const slider = document.getElementById('opt-quality');
         if (slider) {
             slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
+        }
+        if (ext === 'svg') {
+            activeFile.text().then((svgText) => {
+                const wInput = document.getElementById('opt-width');
+                const hInput = document.getElementById('opt-height');
+                if (!wInput || !hInput) return;
+                const num = (s) => { const m = s && s.match(/(\d+(?:\.\d+)?)/); return m ? Math.round(parseFloat(m[1])) : null; };
+                const tag = svgText.match(/<svg[^>]*>/i);
+                const attrs = tag ? tag[0] : '';
+                const wM = attrs.match(/\swidth=["']([^"']+)["']/i);
+                const hM = attrs.match(/\sheight=["']([^"']+)["']/i);
+                const vM = attrs.match(/\sviewBox=["']([\d.\s-]+)["']/i);
+                let vw = num(wM && wM[1]);
+                let vh = num(hM && hM[1]);
+                if ((!vw || !vh) && vM) {
+                    const parts = vM[1].trim().split(/\s+/);
+                    if (parts.length === 4) {
+                        vw = vw || Math.round(parseFloat(parts[2]));
+                        vh = vh || Math.round(parseFloat(parts[3]));
+                    }
+                }
+                if (vw) wInput.value = vw;
+                if (vh) hInput.value = vh;
+            }).catch(() => {});
         }
     } else {
         accordion.style.display = 'none';
