@@ -2,7 +2,7 @@
     {
         "id": "png-to-jpg",
         "name": "PNG to JPG",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Convert PNG images to JPG instantly.",
         "type": "image",
         "category": "Image",
@@ -12,7 +12,7 @@
     {
         "id": "jpg-to-png",
         "name": "JPG to PNG",
-        "icon": "🌌",
+        "icon": "",
         "description": "Transform JPG files with transparency.",
         "type": "image",
         "category": "Image",
@@ -22,7 +22,7 @@
     {
         "id": "webp-to-jpg",
         "name": "WebP to JPG",
-        "icon": "🕸️",
+        "icon": "",
         "description": "Convert WebP images to high-quality JPG.",
         "type": "image",
         "category": "Image",
@@ -32,7 +32,7 @@
     {
         "id": "webp-to-png",
         "name": "WebP to PNG",
-        "icon": "🕸️",
+        "icon": "",
         "description": "Convert WebP images to PNG instantly.",
         "type": "image",
         "category": "Image",
@@ -42,7 +42,7 @@
     {
         "id": "heic-to-jpg",
         "name": "HEIC to JPG",
-        "icon": "🍏",
+        "icon": "",
         "description": "Convert iPhone HEIC photos to generic JPG.",
         "type": "image_advanced",
         "category": "Image",
@@ -52,7 +52,7 @@
     {
         "id": "avif-to-jpg",
         "name": "AVIF to JPG",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Convert AVIF images to JPG instantly.",
         "type": "image",
         "category": "Image",
@@ -62,7 +62,7 @@
     {
         "id": "avif-to-png",
         "name": "AVIF to PNG",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Convert AVIF images to PNG instantly.",
         "type": "image",
         "category": "Image",
@@ -72,7 +72,7 @@
     {
         "id": "svg-to-png",
         "name": "SVG to PNG",
-        "icon": "📐",
+        "icon": "",
         "description": "Render SVG files as high-quality PNG images.",
         "type": "image_advanced",
         "category": "Image",
@@ -82,7 +82,7 @@
     {
         "id": "svg-to-jpg",
         "name": "SVG to JPG",
-        "icon": "📐",
+        "icon": "",
         "description": "Convert SVG files to JPG instantly.",
         "type": "image",
         "category": "Image",
@@ -92,7 +92,7 @@
     {
         "id": "image-to-base64",
         "name": "Image to Base64",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Convert images into Base64 Data URIs.",
         "type": "image_base64",
         "category": "Designer",
@@ -102,7 +102,7 @@
     {
         "id": "image-compressor",
         "name": "Image Compressor",
-        "icon": "🤐",
+        "icon": "",
         "description": "Reduce image file size in your browser. JPG and WebP shrink a lot.",
         "type": "image_advanced",
         "category": "Image",
@@ -112,7 +112,7 @@
     {
         "id": "compress-image-to-100kb",
         "name": "Compress Image to 100KB",
-        "icon": "🗜️",
+        "icon": "",
         "description": "Reduce image files strictly under 100KB footprint.",
         "type": "image_advanced",
         "category": "Image",
@@ -122,7 +122,7 @@
     {
         "id": "compress-image-to-200kb",
         "name": "Compress Image to 200KB",
-        "icon": "🗜️",
+        "icon": "",
         "description": "Reduce image files strictly under 200KB footprint.",
         "type": "image_advanced",
         "category": "Image",
@@ -132,7 +132,7 @@
     {
         "id": "resize-image",
         "name": "Resize Image",
-        "icon": "📐",
+        "icon": "",
         "description": "Resize your images to custom dimensions.",
         "type": "image_advanced",
         "category": "Image",
@@ -142,7 +142,7 @@
     {
         "id": "resize-image-for-instagram",
         "name": "Resize Image for Instagram",
-        "icon": "📸",
+        "icon": "",
         "description": "Resize photos for Instagram Stories and Post grids.",
         "type": "image_advanced",
         "category": "Image",
@@ -152,7 +152,7 @@
     {
         "id": "passport-photo-size-converter",
         "name": "Passport Photo Size Converter",
-        "icon": "🛂",
+        "icon": "",
         "description": "Resize photos to standard passport size requirements.",
         "type": "image_advanced",
         "category": "Image",
@@ -162,7 +162,7 @@
     {
         "id": "rotate-image",
         "name": "Rotate Image",
-        "icon": "🔄",
+        "icon": "",
         "description": "Rotate or flip photos 90, 180, or 270 degrees in your browser — no upload.",
         "type": "image_advanced",
         "category": "Image",
@@ -172,7 +172,7 @@
     {
         "id": "gif-maker",
         "name": "GIF Maker",
-        "icon": "🎞️",
+        "icon": "",
         "description": "Make an animated GIF from your photos in your browser — no upload.",
         "type": "image",
         "category": "Image",
@@ -182,7 +182,7 @@
     {
         "id": "compress-pdf",
         "name": "Compress PDF",
-        "icon": "🤐",
+        "icon": "",
         "description": "Reduce PDF byte footprint securely in browser.",
         "type": "pdf",
         "category": "PDF Tools",
@@ -192,7 +192,7 @@
     {
         "id": "pdf-to-jpg",
         "name": "PDF to JPG",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Extract PDF pages as high-quality JPG images.",
         "type": "pdf",
         "category": "PDF Tools",
@@ -202,7 +202,7 @@
     {
         "id": "jpg-to-pdf",
         "name": "JPG to PDF",
-        "icon": "📄",
+        "icon": "",
         "description": "Compile multiple images into a clean PDF document.",
         "type": "pdf",
         "category": "PDF Tools",
@@ -212,7 +212,7 @@
     {
         "id": "merge-pdf",
         "name": "Merge PDF",
-        "icon": "🔗",
+        "icon": "",
         "description": "Combine multiple PDF files into one sequential document.",
         "type": "pdf",
         "category": "PDF Tools",
@@ -222,7 +222,7 @@
     {
         "id": "split-pdf",
         "name": "Split PDF",
-        "icon": "✂️",
+        "icon": "",
         "description": "Extract selected pages from any PDF document.",
         "type": "pdf",
         "category": "PDF Tools",
@@ -232,7 +232,7 @@
     {
         "id": "json-formatter",
         "name": "JSON Formatter",
-        "icon": "👁️",
+        "icon": "",
         "description": "Beautify and indent raw minified JSON structures.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -242,7 +242,7 @@
     {
         "id": "json-validator",
         "name": "JSON Validator",
-        "icon": "🛡️",
+        "icon": "",
         "description": "Lint and validate JSON syntax in real-time.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -252,7 +252,7 @@
     {
         "id": "json-to-csv",
         "name": "JSON to CSV",
-        "icon": "📊",
+        "icon": "",
         "description": "Convert JSON data to CSV format instantly.",
         "type": "dev_basic",
         "category": "Developer",
@@ -262,7 +262,7 @@
     {
         "id": "csv-to-json",
         "name": "CSV to JSON",
-        "icon": "📊",
+        "icon": "",
         "description": "Convert CSV rows to JSON objects instantly.",
         "type": "dev_basic",
         "category": "Developer",
@@ -272,7 +272,7 @@
     {
         "id": "base64-encode",
         "name": "Base64 Encode",
-        "icon": "🔐",
+        "icon": "",
         "description": "Encode plain text to safe Base64 strings.",
         "type": "dev_basic",
         "category": "Developer",
@@ -282,7 +282,7 @@
     {
         "id": "base64-decode",
         "name": "Base64 Decode",
-        "icon": "🔓",
+        "icon": "",
         "description": "Decode Base64 strings back to plain text.",
         "type": "dev_basic",
         "category": "Developer",
@@ -292,7 +292,7 @@
     {
         "id": "url-encoder",
         "name": "URL Encoder",
-        "icon": "🔗",
+        "icon": "",
         "description": "Encode text into percent-encoded URL formats.",
         "type": "dev_basic",
         "category": "Developer",
@@ -302,7 +302,7 @@
     {
         "id": "url-decoder",
         "name": "URL Decoder",
-        "icon": "🔓",
+        "icon": "",
         "description": "Decode percent-encoded strings back to plain URLs.",
         "type": "dev_basic",
         "category": "Developer",
@@ -312,7 +312,7 @@
     {
         "id": "html-formatter",
         "name": "HTML Formatter",
-        "icon": "🌐",
+        "icon": "",
         "description": "Beautify and format messy HTML markup code.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -322,7 +322,7 @@
     {
         "id": "css-formatter",
         "name": "CSS Formatter",
-        "icon": "🎨",
+        "icon": "",
         "description": "Format and beautify CSS stylesheets.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -332,7 +332,7 @@
     {
         "id": "javascript-formatter",
         "name": "JavaScript Formatter",
-        "icon": "📜",
+        "icon": "",
         "description": "Beautify minified JS files and code snippets.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -342,7 +342,7 @@
     {
         "id": "sql-formatter",
         "name": "SQL Formatter",
-        "icon": "💾",
+        "icon": "",
         "description": "Beautify and format complex database queries.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -352,7 +352,7 @@
     {
         "id": "markdown-editor",
         "name": "Markdown Editor",
-        "icon": "✍️",
+        "icon": "",
         "description": "Write Markdown text with real-time HTML preview.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -362,7 +362,7 @@
     {
         "id": "diff-checker",
         "name": "Text Diff Checker",
-        "icon": "⚖️",
+        "icon": "",
         "description": "Compare two texts to spot differences.",
         "type": "dev_advanced",
         "category": "Developer",
@@ -372,7 +372,7 @@
     {
         "id": "binary-text-converter",
         "name": "Binary to Text",
-        "icon": "🤖",
+        "icon": "",
         "description": "Convert text characters to Binary code.",
         "type": "dev_basic",
         "category": "Developer",
@@ -382,7 +382,7 @@
     {
         "id": "unicode-converter",
         "name": "Unicode Converter",
-        "icon": "🔡",
+        "icon": "",
         "description": "Convert plain characters to Unicode blocks.",
         "type": "dev_basic",
         "category": "Developer",
@@ -392,7 +392,7 @@
     {
         "id": "word-counter",
         "name": "Word Counter",
-        "icon": "✍️",
+        "icon": "",
         "description": "Analyze document lengths and keyword densities.",
         "type": "text",
         "category": "Text",
@@ -402,7 +402,7 @@
     {
         "id": "character-counter",
         "name": "Character Counter",
-        "icon": "✍️",
+        "icon": "",
         "description": "Count total letters with and without spaces.",
         "type": "text",
         "category": "Text",
@@ -412,7 +412,7 @@
     {
         "id": "meta-title-checker",
         "name": "Meta Title Checker",
-        "icon": "🔍",
+        "icon": "",
         "description": "Optimize SEO titles for Google visual constraints.",
         "type": "text",
         "category": "Text",
@@ -422,7 +422,7 @@
     {
         "id": "meta-description-checker",
         "name": "Meta Description Checker",
-        "icon": "🔍",
+        "icon": "",
         "description": "Optimize search description widths in real-time.",
         "type": "text",
         "category": "Text",
@@ -432,7 +432,7 @@
     {
         "id": "slug-generator",
         "name": "Slug Generator",
-        "icon": "🐌",
+        "icon": "",
         "description": "Convert titles into SEO clean URL paths.",
         "type": "text",
         "category": "Text",
@@ -442,7 +442,7 @@
     {
         "id": "case-converter",
         "name": "Case Converter",
-        "icon": "🔤",
+        "icon": "",
         "description": "Change text layout formats (UPPERCASE, lowercase).",
         "type": "text",
         "category": "Text",
@@ -452,7 +452,7 @@
     {
         "id": "remove-duplicate-lines",
         "name": "Remove Duplicate Lines",
-        "icon": "🧼",
+        "icon": "",
         "description": "Clean lists by removing identical repeating rows.",
         "type": "text",
         "category": "Text",
@@ -462,7 +462,7 @@
     {
         "id": "text-cleaner",
         "name": "Text Cleaner",
-        "icon": "🧼",
+        "icon": "",
         "description": "Clean spaces, HTML elements, and layout symbols.",
         "type": "text",
         "category": "Text",
@@ -472,7 +472,7 @@
     {
         "id": "lorem-ipsum-generator",
         "name": "Lorem Ipsum Generator",
-        "icon": "📜",
+        "icon": "",
         "description": "Generate design placeholder text in bulk.",
         "type": "utility_dev",
         "category": "Utility",
@@ -492,7 +492,7 @@
     {
         "id": "qr-code-generator",
         "name": "QR Code Generator",
-        "icon": "🧱",
+        "icon": "",
         "description": "Create custom high-definition QR codes.",
         "type": "qr",
         "category": "Utility",
@@ -502,7 +502,7 @@
     {
         "id": "barcode-generator",
         "name": "Barcode Generator",
-        "icon": "🏷️",
+        "icon": "",
         "description": "Generate scannable CODE128, EAN-13, UPC and CODE39 barcodes.",
         "type": "qr",
         "category": "Utility",
@@ -512,7 +512,7 @@
     {
         "id": "speed-test",
         "name": "Internet Speed Test",
-        "icon": "📶",
+        "icon": "",
         "description": "Measure your real download speed and ping in your browser.",
         "type": "utility",
         "category": "Utility",
@@ -522,7 +522,7 @@
     {
         "id": "password-generator",
         "name": "Password Generator",
-        "icon": "🔑",
+        "icon": "",
         "description": "Create secure cryptographically randomized keys.",
         "type": "security",
         "category": "Security",
@@ -532,7 +532,7 @@
     {
         "id": "password-strength",
         "name": "Password Strength",
-        "icon": "🛡️",
+        "icon": "",
         "description": "Evaluate password entropy grids in real-time.",
         "type": "security",
         "category": "Security",
@@ -542,7 +542,7 @@
     {
         "id": "random-number-generator",
         "name": "Random Number Generator",
-        "icon": "🎲",
+        "icon": "",
         "description": "Roll randomized numbers within custom bounds.",
         "type": "utility_dev",
         "category": "Utility",
@@ -552,7 +552,7 @@
     {
         "id": "uuid-generator",
         "name": "UUID Generator",
-        "icon": "🔑",
+        "icon": "",
         "description": "Create bulk cryptographically secure v4 UUIDs.",
         "type": "utility_dev",
         "category": "Utility",
@@ -562,7 +562,7 @@
     {
         "id": "timestamp-converter",
         "name": "Timestamp Converter",
-        "icon": "⏱️",
+        "icon": "⏱",
         "description": "Convert human calendar dates to Unix time.",
         "type": "utility_dev",
         "category": "Utility",
@@ -572,7 +572,7 @@
     {
         "id": "unix-time-converter",
         "name": "Unix Time Converter",
-        "icon": "⏱️",
+        "icon": "⏱",
         "description": "Convert Unix time seconds to humans calendar.",
         "type": "utility",
         "category": "Utility",
@@ -582,7 +582,7 @@
     {
         "id": "time-zone-converter",
         "name": "Time Zone Converter",
-        "icon": "🌎",
+        "icon": "",
         "description": "Compare global clock times across zones.",
         "type": "utility",
         "category": "Utility",
@@ -592,7 +592,7 @@
     {
         "id": "age-calculator",
         "name": "Age Calculator",
-        "icon": "🎂",
+        "icon": "",
         "description": "Calculate exact age in years, days and hours.",
         "type": "utility",
         "category": "Utility",
@@ -602,7 +602,7 @@
     {
         "id": "percentage-calculator",
         "name": "Percentage Calculator",
-        "icon": "📊",
+        "icon": "",
         "description": "Calculate mathematical percentage increases.",
         "type": "utility",
         "category": "Utility",
@@ -612,7 +612,7 @@
     {
         "id": "hash-generator",
         "name": "Hash Generator",
-        "icon": "🔒",
+        "icon": "",
         "description": "Generate SHA256 and MD5 hashes securely.",
         "type": "utility",
         "category": "Security",
@@ -622,7 +622,7 @@
     {
         "id": "morse-code",
         "name": "Morse Code Converter",
-        "icon": "📟",
+        "icon": "",
         "description": "Translate letters to Morse code and back.",
         "type": "utility",
         "category": "Utility",
@@ -632,7 +632,7 @@
     {
         "id": "unit-converter",
         "name": "Unit Converter",
-        "icon": "📏",
+        "icon": "",
         "description": "Convert weights, distances and lengths.",
         "type": "utility",
         "category": "Utility",
@@ -642,7 +642,7 @@
     {
         "id": "stopwatch",
         "name": "Stopwatch & Timer",
-        "icon": "⏱️",
+        "icon": "⏱",
         "description": "Accurate stopwatch with lap tracker.",
         "type": "utility",
         "category": "Utility",
@@ -652,7 +652,7 @@
     {
         "id": "aspect-ratio-calculator",
         "name": "Aspect Ratio Calculator",
-        "icon": "📏",
+        "icon": "",
         "description": "Resolve pixel aspect ratio scaling visual grids.",
         "type": "utility_advanced",
         "category": "Designer",
@@ -662,7 +662,7 @@
     {
         "id": "rgb-hex-converter",
         "name": "RGB to HEX Converter",
-        "icon": "🌈",
+        "icon": "",
         "description": "Translate colors between RGB and HEX codes.",
         "type": "utility_advanced",
         "category": "Designer",
@@ -672,17 +672,17 @@
     {
         "id": "jpg-to-webp",
         "name": "JPG to WebP",
-        "icon": "🕸️",
+        "icon": "",
         "description": "Convert JPG images to next-gen WebP format locally.",
         "type": "image",
         "category": "Image",
         "seo_title": "JPG to WebP Converter Online",
-        "seo_desc": "Convert JPG images to WebP format instantly in your browser. Blazing fast, 100% private, no server uploads."
+        "seo_desc": "Convert JPG images to WebP format instantly in your browser. Fast, 100% private, no server uploads."
     },
     {
         "id": "jpg-to-avif",
         "name": "JPG to AVIF",
-        "icon": "✨",
+        "icon": "",
         "description": "Convert JPG images to AVIF instantly.",
         "type": "image",
         "category": "Image",
@@ -692,7 +692,7 @@
     {
         "id": "png-to-webp",
         "name": "PNG to WebP",
-        "icon": "🕸️",
+        "icon": "",
         "description": "Convert PNG images to next-gen WebP format locally.",
         "type": "image",
         "category": "Image",
@@ -702,7 +702,7 @@
     {
         "id": "png-to-avif",
         "name": "PNG to AVIF",
-        "icon": "✨",
+        "icon": "",
         "description": "Convert PNG images to AVIF instantly.",
         "type": "image",
         "category": "Image",
@@ -712,7 +712,7 @@
     {
         "id": "youtube-thumbnail-downloader",
         "name": "YouTube Thumbnail Downloader",
-        "icon": "📺",
+        "icon": "",
         "description": "Download YouTube video thumbnail images in all sizes (HD, HQ, standard) free.",
         "type": "utility",
         "category": "Utility",
@@ -722,7 +722,7 @@
     {
         "id": "yaml-to-json",
         "name": "YAML to JSON",
-        "icon": "📜",
+        "icon": "",
         "description": "Convert YAML configs to clean JSON format online.",
         "type": "dev_basic",
         "category": "Developer",
@@ -732,7 +732,7 @@
     {
         "id": "json-to-yaml",
         "name": "JSON to YAML",
-        "icon": "📜",
+        "icon": "",
         "description": "Convert JSON strings to readable YAML blocks.",
         "type": "dev_basic",
         "category": "Developer",
@@ -742,7 +742,7 @@
     {
         "id": "base64-to-image",
         "name": "Base64 to Image",
-        "icon": "🖼️",
+        "icon": "",
         "description": "Convert Base64 code strings into visual images locally.",
         "type": "utility",
         "category": "Utility",
@@ -752,7 +752,7 @@
     {
         "id": "robots-txt-generator",
         "name": "Robots.txt Generator",
-        "icon": "🤖",
+        "icon": "",
         "description": "Generate custom robots.txt crawl directives for SEO optimization.",
         "type": "utility",
         "category": "Utility",
@@ -762,7 +762,7 @@
     {
         "id": "html-minifier",
         "name": "HTML Minifier",
-        "icon": "🗜️",
+        "icon": "",
         "description": "Compress and minify HTML code footprint for faster page speeds.",
         "type": "utility",
         "category": "Utility",
@@ -882,7 +882,7 @@
     {
         "id": "mp4-to-mp3",
         "name": "MP4 to MP3",
-        "icon": "🎬",
+        "icon": "",
         "description": "Extract MP3 audio from MP4 videos in your browser — no upload.",
         "type": "video",
         "category": "Video Converter",
@@ -892,7 +892,7 @@
     {
         "id": "mp4-to-gif",
         "name": "MP4 to GIF",
-        "icon": "🎬",
+        "icon": "",
         "description": "Turn short MP4 clips into looping GIFs in your browser — no upload.",
         "type": "video",
         "category": "Video Converter",
@@ -902,7 +902,7 @@
     {
         "id": "mp3-to-wav",
         "name": "MP3 to WAV",
-        "icon": "🎵",
+        "icon": "",
         "description": "Convert MP3 audio to WAV in your browser — no upload.",
         "type": "audio",
         "category": "Audio Converter",
@@ -912,7 +912,7 @@
     {
         "id": "wav-to-mp3",
         "name": "WAV to MP3",
-        "icon": "🎵",
+        "icon": "",
         "description": "Convert WAV audio to MP3 in your browser — no upload.",
         "type": "audio",
         "category": "Audio Converter",
@@ -922,7 +922,7 @@
     {
         "id": "ogg-to-mp3",
         "name": "OGG to MP3",
-        "icon": "🎵",
+        "icon": "",
         "description": "Convert OGG audio to MP3 in your browser — no upload.",
         "type": "audio",
         "category": "Audio Converter",
@@ -932,7 +932,7 @@
     {
         "id": "m4a-to-mp3",
         "name": "M4A to MP3",
-        "icon": "🎵",
+        "icon": "",
         "description": "Convert M4A audio from iPhone to MP3 in your browser — no upload.",
         "type": "audio",
         "category": "Audio Converter",
@@ -942,7 +942,7 @@
     {
         "id": "flac-to-mp3",
         "name": "FLAC to MP3",
-        "icon": "🎵",
+        "icon": "",
         "description": "Convert FLAC audio to MP3 in your browser — no upload.",
         "type": "audio",
         "category": "Audio Converter",
