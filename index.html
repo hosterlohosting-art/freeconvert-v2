@@ -117,22 +117,11 @@
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
-
     <!-- SaaS Header -->
-    <header class="header-glass">
+    <header class="header-glass header-dark">
         <nav class="navbar">
             <a href="/" class="logo">
-                <picture>
-                    <source srcset="/assets/freeconvert-logo.webp" type="image/webp">
-                    <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
-                </picture>
+                <img src="/assets/logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -229,17 +218,13 @@
     </header>
 
 
-    <section class="hero-section">
-        <div class="hero-badges">
-            <span class="badge"> Free, secure & browser-based file conversion</span>
-        </div>
+    <section class="hero-section hero-dark">
         <h1>Free Online File Converter</h1>
         <p class="hero-subtitle">Convert images, PDFs, audio, video, and more — right in your browser. Your files never leave your device. No sign-up, no cost.</p>
-        <p style="font-weight:700;color:var(--text-primary);margin:0 0 1.5rem;font-size:1rem;">Free · No sign-up · No credits · Files never leave your device</p>
+        <p class="hero-trust">Free · No sign-up · No credits · Files never leave your device</p>
 
-        <!-- Homepage Active Upload box right in the Hero! -->
-        <div style="margin-bottom: 2.5rem;">
-
+        <!-- Converter card: white, overlaps the hero/body boundary -->
+        <div class="hero-converter-card">
 <div class="upload-wrapper homepage-upload-wrapper">
     <div id="drop-zone" class="drop-zone upload-drop-compact">
         <div class="drop-icon">
@@ -249,7 +234,7 @@
         </div>
         <p class="drop-text">Drop any file to find its tool</p>
         <span class="upload-helper-text">PDF, HEIC, PNG, JPG, WebP, AVIF, SVG, TXT — we point you to the right browser tool</span>
-        <button type="button" class="btn primary choose-btn">Choose Files</button>
+        <button type="button" class="btn primary choose-btn">Select File</button>
         <div class="upload-format-chips" aria-label="Supported conversions">
             <a href="/png-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>PNG to JPG</span></a>
             <a href="/jpg-to-webp/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>JPG to WebP</span></a>
@@ -272,6 +257,7 @@
                     <span class="file-size" id="selected-file-size">-</span>
                 </div>
             </div>
+            <span class="hero-tile-arrow" aria-hidden="true">→</span>
             <div class="output-picker">
                 <label for="output-format">Convert to</label>
                 <select id="output-format" class="glass-input"></select>
@@ -299,80 +285,24 @@
         </div>
     </div>
 </div>
-
         </div>
+    </section>
 
-        <!-- Search bar for tools -->
+    
+
+    <!-- Dynamic Category Switcher pills -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
+        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
+        <div class="directory-search">
+<!-- Search bar for tools -->
         <div style="position: relative; max-width: 600px; margin: 0 auto 1.5rem;">
             <input type="text" id="tool-search" placeholder="Search tools (e.g. PNG to JPG, JPG to WebP, JSON to CSV)..."
                 style="width: 100%; padding: 1.1rem 2rem; border-radius: 50px; background: white; border: 1px solid var(--border-color); color: var(--text-primary); font-size: 1.05rem; outline: none; box-shadow: var(--card-shadow); transition: all 0.3s;"
                 onfocus="this.style.borderColor='var(--brand-primary)'; this.style.boxShadow='var(--hover-shadow)';"
                 onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--card-shadow)';">
         </div>
-
-        <!-- Popular Quick Tools Chips -->
-        <div class="quick-chips">
-            <span class="quick-chip-label">Quick Tools:</span>
-            <a href="/png-to-jpg/" class="quick-chip">PNG to JPG</a>
-            <a href="/jpg-to-webp/" class="quick-chip">JPG to WebP</a>
-            <a href="/image-compressor/" class="quick-chip">Image Compressor</a>
-            <a href="/json-to-csv/" class="quick-chip">JSON to CSV</a>
-            <a href="/css-minifier/" class="quick-chip">CSS Minifier</a>
-            <a href="/pdf-to-jpg/" class="quick-chip">PDF to JPG</a>
-            <a href="/merge-pdf/" class="quick-chip">Merge PDF</a>
         </div>
-
-        <!-- Trust Stats Row -->
-        <div class="trust-stats-row">
-            <div class="stat-badge"> 35+ Tools</div>
-            <div class="stat-badge"> Privacy-First</div>
-            <div class="stat-badge"> No Software Needed</div>
-            <div class="stat-badge"> Clean Processing</div>
-        </div>
-    </section>
-
-    <!--  Personal secure Productivity Dashboard & Log -->
-    <section class="dashboard-section">
-        <div class="dashboard-card">
-            <div class="dashboard-header">
-                <h3 class="dashboard-title"> Your Local Sandbox Analytics</h3>
-                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()"> Reset Logs</button>
-            </div>
-
-            <div class="dashboard-stats-grid">
-                <div class="stat-card">
-                    <div class="stat-num" id="dash-files-count">0</div>
-                    <div class="stat-label">Files Processed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" id="dash-savings-count">0.00 KB</div>
-                    <div class="stat-label">Storage Saved</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" style="color: var(--brand-accent); background: linear-gradient(135deg, var(--brand-accent) 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">100%</div>
-                    <div class="stat-label">Privacy Score</div>
-                </div>
-            </div>
-
-            <div class="history-section">
-                <h4 class="history-title"> Recent Operations History</h4>
-                <div class="history-list" id="dash-history-list">
-                    <div class="empty-history-state">
-                         Your secure operations log is clean. Start converting files to see metrics in real-time!
-                    </div>
-                </div>
-            </div>
-
-            <p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top: 1rem; line-height: 1.4;">
-                 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
-            </p>
-        </div>
-    </section>
-
-    <!-- Dynamic Category Switcher pills -->
-    <div style="text-align: center; margin-bottom: 2rem;">
-        <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
-        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
         <div class="category-tabs">
             <button class="category-tab active" data-category="all"> All Tools</button>
             <button class="category-tab" data-category="image"> Image</button>
@@ -1121,6 +1051,34 @@
                     <span class="arrow-icon">→</span>
                 </div>
             </a>
+            <a href="/create-zip/" class="tool-card" data-category="utility">
+                <div class="tool-card-top">
+                    
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Create ZIP</span>
+                    <p>Pack several files into one ZIP archive in your browser.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
+            <a href="/extract-zip/" class="tool-card" data-category="utility">
+                <div class="tool-card-top">
+                    
+                    <span class="tool-category-tag">Utility</span>
+                </div>
+                <div class="tool-card-body">
+                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">Extract ZIP</span>
+                    <p>Open a ZIP archive and download its files in your browser.</p>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="explore-text">Explore Tool</span>
+                    <span class="arrow-icon">→</span>
+                </div>
+            </a>
             <a href="/password-generator/" class="tool-card" data-category="security">
                 <div class="tool-card-top">
                     
@@ -1732,52 +1690,209 @@
 
 
     <!-- Why Choose Us Grid -->
-    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 3.5rem; letter-spacing:-0.03em;">Why Choose freeconvert.cloud?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-primary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Private by Design</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">All standard converter operations execute in your browser's local sandbox memory. Your files are completely safe and never uploaded.</p>
+        <!-- Three benefits -->
+    <section class="benefits-section">
+        <div class="benefits-inner">
+            <div class="benefits-3col">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
+                    <h3>Convert Any File</h3>
+                    <p>97 free tools for images, PDFs, audio, video, documents, and developer files. Every one runs in your browser — pick a tool, drop a file, download the result.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-secondary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Fast Browser Tools</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">Powered by modern WebAssembly and Canvas client-side libraries. Converting files takes milliseconds with absolutely zero network delay.</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <h3>Works Anywhere</h3>
+                    <p>Windows, Mac, Linux, iPhone, and Android — any modern browser, nothing to install, nothing to sign up for.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-accent); margin-bottom: 0.8rem; font-size: 1.3rem;"> Clean Output Quality</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">High-definition conversions with zero loss of formatting, transparency, or pixel density. Premium and optimized.</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3>Privacy Guaranteed</h3>
+                    <p>Files never leave your device. Nothing is uploaded, nothing is stored, nothing is sold. Close the tab and everything is gone.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1.3rem;"> Works Everywhere</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">A fully responsive browser-based SaaS converter that runs smoothly on Mac, Windows, iOS, Android, and Linux without setups.</p>
+            </div>
+            <div class="privacy-card">
+                <h2>Your Data, Our Priority</h2>
+                <p>Every tool on this site runs inside your browser. Your files are processed in your device&rsquo;s memory and never sent to a server. We do not see your files, store them, or sell them.</p>
+                <div class="privacy-rows">
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing uploaded</strong><span>Conversions happen on your device, not on our servers.</span></div></div>
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing stored</strong><span>We keep no copies of your files after you leave the page.</span></div></div>
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing sold</strong><span>Your files are not shared with advertisers or anyone else.</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Popular Conversion Categories Grid -->
-    <section style="background: var(--bg-light); border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Popular Conversion Hubs</h2>
-            <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">Explore comprehensive conversion directories and batch processing hubs.</p>
+        <!-- Format catalogue -->
+    <section class="catalogue-section">
+        <div class="catalogue-inner">
+            <h2>Format catalogue</h2>
+            <p class="catalogue-intro">97 tools across 9 categories. Every chip below opens a real tool that runs in your browser — no uploads, no sign-up.</p>
+            <div class="cat-block">
+                <h3 class="cat-title">Developer <span class="cat-count">28 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/base64-decode/">Base64 Decode</a>
+                    <a class="format-chip" href="/base64-encode/">Base64 Encode</a>
+                    <a class="format-chip" href="/binary-text-converter/">Binary to Text</a>
+                    <a class="format-chip" href="/css-formatter/">CSS Formatter</a>
+                    <a class="format-chip" href="/css-minifier/">CSS Minifier</a>
+                    <a class="format-chip" href="/csv-to-json/">CSV to JSON</a>
+                    <a class="format-chip" href="/html-entity-decoder/">HTML Entity Decoder</a>
+                    <a class="format-chip" href="/html-entity-encoder/">HTML Entity Encoder</a>
+                    <a class="format-chip" href="/html-formatter/">HTML Formatter</a>
+                    <a class="format-chip" href="/javascript-formatter/">JavaScript Formatter</a>
+                    <a class="format-chip" href="/javascript-minifier/">JavaScript Minifier</a>
+                    <a class="format-chip" href="/json-formatter/">JSON Formatter</a>
+                    <a class="format-chip" href="/json-minifier/">JSON Minifier</a>
+                    <a class="format-chip" href="/json-to-csv/">JSON to CSV</a>
+                    <a class="format-chip" href="/json-to-yaml/">JSON to YAML</a>
+                    <a class="format-chip" href="/json-validator/">JSON Validator</a>
+                    <a class="format-chip" href="/jwt-decoder/">JWT Decoder</a>
+                    <a class="format-chip" href="/markdown-editor/">Markdown Editor</a>
+                    <a class="format-chip" href="/regex-tester/">Regex Tester</a>
+                    <a class="format-chip" href="/sql-formatter/">SQL Formatter</a>
+                    <a class="format-chip" href="/diff-checker/">Text Diff Checker</a>
+                    <a class="format-chip" href="/text-to-ascii/">Text to ASCII</a>
+                    <a class="format-chip" href="/unicode-converter/">Unicode Converter</a>
+                    <a class="format-chip" href="/url-decoder/">URL Decoder</a>
+                    <a class="format-chip" href="/url-encoder/">URL Encoder</a>
+                    <a class="format-chip" href="/url-parser/">URL Parser</a>
+                    <a class="format-chip" href="/word-to-html/">Word to HTML</a>
+                    <a class="format-chip" href="/yaml-to-json/">YAML to JSON</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Image <span class="cat-count">21 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/avif-to-jpg/">AVIF to JPG</a>
+                    <a class="format-chip" href="/avif-to-png/">AVIF to PNG</a>
+                    <a class="format-chip" href="/compress-image-to-100kb/">Compress Image to 100KB</a>
+                    <a class="format-chip" href="/compress-image-to-200kb/">Compress Image to 200KB</a>
+                    <a class="format-chip" href="/gif-maker/">GIF Maker</a>
+                    <a class="format-chip" href="/heic-to-jpg/">HEIC to JPG</a>
+                    <a class="format-chip" href="/image-compressor/">Image Compressor</a>
+                    <a class="format-chip" href="/jpg-to-avif/">JPG to AVIF</a>
+                    <a class="format-chip" href="/jpg-to-png/">JPG to PNG</a>
+                    <a class="format-chip" href="/jpg-to-webp/">JPG to WebP</a>
+                    <a class="format-chip" href="/passport-photo-size-converter/">Passport Photo Size Converter</a>
+                    <a class="format-chip" href="/png-to-avif/">PNG to AVIF</a>
+                    <a class="format-chip" href="/png-to-jpg/">PNG to JPG</a>
+                    <a class="format-chip" href="/png-to-webp/">PNG to WebP</a>
+                    <a class="format-chip" href="/resize-image/">Resize Image</a>
+                    <a class="format-chip" href="/resize-image-for-instagram/">Resize Image for Instagram</a>
+                    <a class="format-chip" href="/rotate-image/">Rotate Image</a>
+                    <a class="format-chip" href="/svg-to-jpg/">SVG to JPG</a>
+                    <a class="format-chip" href="/svg-to-png/">SVG to PNG</a>
+                    <a class="format-chip" href="/webp-to-jpg/">WebP to JPG</a>
+                    <a class="format-chip" href="/webp-to-png/">WebP to PNG</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Utility <span class="cat-count">21 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/age-calculator/">Age Calculator</a>
+                    <a class="format-chip" href="/barcode-generator/">Barcode Generator</a>
+                    <a class="format-chip" href="/base64-to-image/">Base64 to Image</a>
+                    <a class="format-chip" href="/create-zip/">Create ZIP</a>
+                    <a class="format-chip" href="/extract-zip/">Extract ZIP</a>
+                    <a class="format-chip" href="/html-minifier/">HTML Minifier</a>
+                    <a class="format-chip" href="/speed-test/">Internet Speed Test</a>
+                    <a class="format-chip" href="/lorem-ipsum-generator/">Lorem Ipsum Generator</a>
+                    <a class="format-chip" href="/morse-code/">Morse Code Converter</a>
+                    <a class="format-chip" href="/percentage-calculator/">Percentage Calculator</a>
+                    <a class="format-chip" href="/qr-code-generator/">QR Code Generator</a>
+                    <a class="format-chip" href="/random-number-generator/">Random Number Generator</a>
+                    <a class="format-chip" href="/robots-txt-generator/">Robots.txt Generator</a>
+                    <a class="format-chip" href="/sitemap-generator/">Sitemap Generator</a>
+                    <a class="format-chip" href="/stopwatch/">Stopwatch &amp; Timer</a>
+                    <a class="format-chip" href="/time-zone-converter/">Time Zone Converter</a>
+                    <a class="format-chip" href="/timestamp-converter/">Timestamp Converter</a>
+                    <a class="format-chip" href="/unit-converter/">Unit Converter</a>
+                    <a class="format-chip" href="/unix-time-converter/">Unix Time Converter</a>
+                    <a class="format-chip" href="/uuid-generator/">UUID Generator</a>
+                    <a class="format-chip" href="/youtube-thumbnail-downloader/">YouTube Thumbnail Downloader</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Text <span class="cat-count">9 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/case-converter/">Case Converter</a>
+                    <a class="format-chip" href="/character-counter/">Character Counter</a>
+                    <a class="format-chip" href="/hashtag-generator/">Hashtag Generator</a>
+                    <a class="format-chip" href="/meta-description-checker/">Meta Description Checker</a>
+                    <a class="format-chip" href="/meta-title-checker/">Meta Title Checker</a>
+                    <a class="format-chip" href="/remove-duplicate-lines/">Remove Duplicate Lines</a>
+                    <a class="format-chip" href="/slug-generator/">Slug Generator</a>
+                    <a class="format-chip" href="/text-cleaner/">Text Cleaner</a>
+                    <a class="format-chip" href="/word-counter/">Word Counter</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">PDF Tools <span class="cat-count">5 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/compress-pdf/">Compress PDF</a>
+                    <a class="format-chip" href="/jpg-to-pdf/">JPG to PDF</a>
+                    <a class="format-chip" href="/merge-pdf/">Merge PDF</a>
+                    <a class="format-chip" href="/pdf-to-jpg/">PDF to JPG</a>
+                    <a class="format-chip" href="/split-pdf/">Split PDF</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Audio Converter <span class="cat-count">5 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/flac-to-mp3/">FLAC to MP3</a>
+                    <a class="format-chip" href="/m4a-to-mp3/">M4A to MP3</a>
+                    <a class="format-chip" href="/mp3-to-wav/">MP3 to WAV</a>
+                    <a class="format-chip" href="/ogg-to-mp3/">OGG to MP3</a>
+                    <a class="format-chip" href="/wav-to-mp3/">WAV to MP3</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Designer <span class="cat-count">3 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/aspect-ratio-calculator/">Aspect Ratio Calculator</a>
+                    <a class="format-chip" href="/image-to-base64/">Image to Base64</a>
+                    <a class="format-chip" href="/rgb-hex-converter/">RGB to HEX Converter</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Security <span class="cat-count">3 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/hash-generator/">Hash Generator</a>
+                    <a class="format-chip" href="/password-generator/">Password Generator</a>
+                    <a class="format-chip" href="/password-strength/">Password Strength</a>
+                </div>
+            </div>
+            <div class="cat-block">
+                <h3 class="cat-title">Video Converter <span class="cat-count">2 tools</span></h3>
+                <div class="cat-chips">
+                    <a class="format-chip" href="/mp4-to-gif/">MP4 to GIF</a>
+                    <a class="format-chip" href="/mp4-to-mp3/">MP4 to MP3</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
-                <a href="/image-converter/" style="text-decoration:none;" class="tool-card">
-                    
-                    <h3 style="color:var(--text-primary);">Image Converter</h3>
-                    <p>Convert PNG, JPG, WebP, SVG, and HEIC images safely in your browser.</p>
-                </a>
-                <a href="/all-tools/" style="text-decoration:none;" class="tool-card">
-                    
-                    <h3 style="color:var(--text-primary);">All Tools</h3>
-                    <p>Browse every working browser tool — PDF, image, developer, text, and security.</p>
-                </a>
-                <a href="/unit-converter/" style="text-decoration:none;" class="tool-card">
-                    
-                    <h3 style="color:var(--text-primary);">Utility & Units</h3>
-                    <p>Calculate aspect ratios, convert units, and measure metrics.</p>
-                </a>
+    <!-- Popular conversions -->
+    <section class="popular-section">
+        <div class="popular-inner">
+            <h2>Popular conversions</h2>
+            <p class="popular-intro">The conversions people use most — all free, all in your browser.</p>
+            <div class="popular-grid">
+                <a class="popular-link" href="/png-to-jpg/"><span>PNG to JPG</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/jpg-to-pdf/"><span>JPG to PDF</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/pdf-to-jpg/"><span>PDF to JPG</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/mp4-to-mp3/"><span>MP4 to MP3</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/heic-to-jpg/"><span>HEIC to JPG</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/jpg-to-webp/"><span>JPG to WebP</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/png-to-webp/"><span>PNG to WebP</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/webp-to-jpg/"><span>WebP to JPG</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/mp3-to-wav/"><span>MP3 to WAV</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/wav-to-mp3/"><span>WAV to MP3</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/merge-pdf/"><span>Merge PDF</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/compress-pdf/"><span>Compress PDF</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/create-zip/"><span>Create ZIP</span><span class="popular-arrow">→</span></a>
+                <a class="popular-link" href="/extract-zip/"><span>Extract ZIP</span><span class="popular-arrow">→</span></a>
             </div>
         </div>
     </section>
@@ -1956,7 +2071,7 @@
     </section>
 
 
-    <!-- Competitor-level Footer -->
+    <!-- Footer -->
     <footer class="footer-mega">
 
         <div class="footer-content">
@@ -1964,64 +2079,58 @@
                 <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
                 <p>Free browser tools for image conversion, text, code, security, and everyday calculations.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
-                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a> &nbsp;|&nbsp;
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Popular Tools</h4>
+                <h4>Image &amp; PDF</h4>
                 <div class="footer-links">
                     <a href="/png-to-jpg/">PNG to JPG</a>
-                    <a href="/csv-to-json/">CSV to JSON</a>
-                    <a href="/json-to-csv/">JSON to CSV</a>
+                    <a href="/jpg-to-pdf/">JPG to PDF</a>
+                    <a href="/pdf-to-jpg/">PDF to JPG</a>
+                    <a href="/heic-to-jpg/">HEIC to JPG</a>
                     <a href="/image-compressor/">Image Compressor</a>
-                    <a href="/compress-image-to-100kb/">Compress to 100KB</a>
-                    <a href="/webp-to-jpg/">WebP to JPG</a>
-                    <a href="/jpg-to-webp/">JPG to WebP</a>
-                    <a href="/qr-code-generator/">QR Code Generator</a>
-                    <a href="/password-generator/">Password Generator</a>
-                    <a href="/json-formatter/">JSON Formatter</a>
+                    <a href="/compress-pdf/">Compress PDF</a>
+                    <a href="/merge-pdf/">Merge PDF</a>
+                    <a href="/split-pdf/">Split PDF</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Tool Categories</h4>
+                <h4>Audio, Video &amp; Archives</h4>
                 <div class="footer-links">
-                    <a href="/all-tools/">All Tools Directory</a>
-                    <a href="/image-converter/">Image Converter</a>
-                    <a href="/document-converter/">Document Tools</a>
-                    <a href="/unit-converter/">Unit Converter</a>
+                    <a href="/mp4-to-mp3/">MP4 to MP3</a>
+                    <a href="/mp4-to-gif/">MP4 to GIF</a>
+                    <a href="/mp3-to-wav/">MP3 to WAV</a>
+                    <a href="/wav-to-mp3/">WAV to MP3</a>
+                    <a href="/flac-to-mp3/">FLAC to MP3</a>
+                    <a href="/create-zip/">Create ZIP</a>
+                    <a href="/extract-zip/">Extract ZIP</a>
                 </div>
-                <h4 style="margin-top:1.2rem;">New Tools</h4>
+            </div>
+            <div class="footer-col">
+                <h4>Developer &amp; Text</h4>
                 <div class="footer-links">
-                    <a href="/json-minifier/">JSON Minifier</a>
-                    <a href="/jwt-decoder/">JWT Decoder</a>
-                    <a href="/regex-tester/">Regex Tester</a>
-                    <a href="/html-entity-encoder/">HTML Entity Encoder</a>
-                    <a href="/url-parser/">URL Parser</a>
-                    <a href="/sitemap-generator/">Sitemap Generator</a>
+                    <a href="/json-formatter/">JSON Formatter</a>
+                    <a href="/json-to-csv/">JSON to CSV</a>
                     <a href="/css-minifier/">CSS Minifier</a>
                     <a href="/javascript-minifier/">JavaScript Minifier</a>
-                    <a href="/word-to-html/">Word to HTML</a>
-                    <a href="/text-to-ascii/">Text to ASCII</a>
-                    <a href="/html-minifier/">HTML Minifier</a>
+                    <a href="/word-counter/">Word Counter</a>
+                    <a href="/base64-encode/">Base64 Encode</a>
+                    <a href="/qr-code-generator/">QR Code Generator</a>
+                    <a href="/password-generator/">Password Generator</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4>Company &amp; Legal</h4>
                 <div class="footer-links">
                     <a href="/about/">About Us</a>
-                    <a href="/blog/">Blog &amp; Guides</a>
-                    <a href="/help/">Help &amp; FAQ</a>
-                    <a href="/tools/embed/">Embed Widgets</a>
-                    <a href="/sitemap/">HTML Sitemap</a>
-                    <a href="/blog/category/pdf-tools/">PDF Guides</a>
-                    <a href="/blog/category/image-conversion/">Image Guides</a>
+                    <a href="/blog/">Blog & Guides</a>
+                    <a href="/help/">Help & FAQ</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
-                    <a href="/advertising-policy/">Advertising Policy</a>
-                    <a href="/cookies/">Cookie Policy</a>
                     <a href="/contact/">Contact Us</a>
-                    <a href="/dmca/">DMCA Policy</a>
+                    <a href="/sitemap/">HTML Sitemap</a>
                 </div>
             </div>
         </div>
@@ -2086,7 +2195,8 @@ const MATCHING_TOOL_BY_SOURCE = {
     'wav': '/wav-to-mp3/',
     'ogg': '/ogg-to-mp3/',
     'm4a': '/m4a-to-mp3/',
-    'flac': '/flac-to-mp3/'
+    'flac': '/flac-to-mp3/',
+    'zip': '/extract-zip/'
 };
 
 // Drop-box suggestions: a dropped file the box above cannot convert gets a
@@ -2114,7 +2224,7 @@ const DROP_SUGGESTIONS = {
     xlsx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
     ppt: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
     pptx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
-    zip: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    zip: '<strong>ZIP file detected.</strong><span>Open it with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a> or pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a> — free, in your browser, no upload.</span>',
     rar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
     '7z': '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
     tar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',

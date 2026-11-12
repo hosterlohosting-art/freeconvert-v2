@@ -33,12 +33,11 @@ NOINDEX_PATH_PREFIXES = (
     'blog/hub-pages/',
     'file-formats/',
 )
-# NOTE 2026-11-12: 'audio-converter', 'pdf-tools' and 'video-converter' were
-# removed from this set — all three are real working hub pages now
-# (index,follow, in the sitemaps). A generator run must not flip them back to
-# noindex or drop them from the sitemap.
+# NOTE 2026-11-12: 'audio-converter', 'pdf-tools', 'video-converter' and
+# 'archive-converter' were removed from this set — all four are real working
+# hub pages now (index,follow, in the sitemaps). A generator run must not flip
+# them back to noindex or drop them from the sitemap.
 NOINDEX_TOP_LEVEL_SLUGS = {
-    'archive-converter',
     'ebook-converter', 'pricing', 'api',
 }
 LEGACY_ROUTE_MAP = {
@@ -3191,13 +3190,14 @@ CATEGORIES = {
     'archive-converter': {
         'name': 'Archive Converter',
         'slug': 'archive-converter',
-        'intro': 'Extract or compress ZIP, RAR, 7Z, and TAR archives.',
-        'seo_title': 'Online Archive Converter - ZIP, RAR, 7Z Compression',
-        'seo_desc': 'Compress files to ZIP or extract contents easily directly in your web browser.',
+        'intro': 'Create ZIP archives and extract ZIP files in your browser.',
+        'seo_title': 'Archive Converter Online Free - ZIP',
+        'seo_desc': 'Create ZIP archives and extract ZIP files in your browser — no upload. Free, private, works with ZIP only.',
         'types': ['archive'],
-        'how_to': '<ol><li>Upload your file archive.</li><li>Select target zip/unzip format.</li><li>Process and download.</li></ol>',
+        'how_to': '<ol><li>Choose Create ZIP or Extract ZIP.</li><li>Drop your files into the tool.</li><li>Download the result.</li></ol>',
         'faq': [
-            {"q": "Can I batch compress files?", "a": "Yes, batch zip processing is supported on all major platforms."}
+            {"q": "Can I open RAR or 7Z files here?", "a": "No. This hub works with ZIP files only."},
+            {"q": "Can I open a password-protected ZIP?", "a": "No. Password-protected ZIP files cannot be opened here — the browser tool cannot decrypt them."}
         ]
     },
     'ebook-converter': {
@@ -3236,15 +3236,18 @@ UPLOAD_BOX_UI = """
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
             </svg>
         </div>
-        <p class="drop-text">Drop an image or text file</p>
-        <span class="upload-helper-text">PNG, JPG, WebP, SVG, TXT, and browser-safe conversions</span>
-        <button type="button" class="btn primary choose-btn">Choose Files</button>
+        <p class="drop-text">Drop any file to find its tool</p>
+        <span class="upload-helper-text">PDF, HEIC, PNG, JPG, WebP, AVIF, SVG, TXT — we point you to the right browser tool</span>
+        <button type="button" class="btn primary choose-btn">Select File</button>
         <div class="upload-format-chips" aria-label="Supported conversions">
-            <span>PNG to JPG</span>
-            <span>JPG to WebP</span>
-            <span>WebP to PNG</span>
-            <span>SVG to PNG</span>
-            <span>Text to Base64</span>
+            <a href="/png-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>PNG to JPG</span></a>
+            <a href="/jpg-to-webp/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>JPG to WebP</span></a>
+            <a href="/webp-to-png/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>WebP to PNG</span></a>
+            <a href="/svg-to-png/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>SVG to PNG</span></a>
+            <a href="/pdf-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>PDF to JPG</span></a>
+            <a href="/heic-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>HEIC to JPG</span></a>
+            <a href="/base64-encode/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>Text to Base64</span></a>
+            <a href="/avif-to-jpg/" style="text-decoration:none;" onclick="event.stopPropagation();"><span>AVIF to JPG</span></a>
         </div>
         <input type="file" id="file-input" hidden>
     </div>
@@ -3258,12 +3261,14 @@ UPLOAD_BOX_UI = """
                     <span class="file-size" id="selected-file-size">-</span>
                 </div>
             </div>
+            <span class="hero-tile-arrow" aria-hidden="true">→</span>
             <div class="output-picker">
                 <label for="output-format">Convert to</label>
                 <select id="output-format" class="glass-input"></select>
             </div>
         </div>
         <div id="format-guidance" class="format-guidance"></div>
+        <div id="drop-suggestion" class="format-guidance" style="display:none;"></div>
         <div id="sandbox-badge" class="sandbox-badge"></div>
 
         <div class="accordion" id="adv-accordion" style="display: none; margin-bottom: 1.5rem;">
@@ -3305,7 +3310,8 @@ UNAVAILABLE_TOOL_UI = """
 </div>
 """
 
-UPLOAD_BOX_SCRIPT = """
+UPLOAD_BOX_SCRIPT = r"""
+
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
 const previewContainer = document.getElementById('preview-container');
@@ -3322,6 +3328,7 @@ const progText = document.getElementById('sw-progress-text');
 const sandboxBadge = document.getElementById('sandbox-badge');
 const fileTypeIcon = document.getElementById('file-type-icon');
 const formatGuidance = document.getElementById('format-guidance');
+const dropSuggestion = document.getElementById('drop-suggestion');
 const PAGE_TOOL_ID = '{{ID}}';
 const PAGE_TOOL_NAME = '{{NAME}}';
 const DEDICATED_BROWSER_CONVERSIONS = {
@@ -3331,15 +3338,83 @@ const DEDICATED_BROWSER_CONVERSIONS = {
     'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
     'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
     'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
-    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' }
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' },
+    'webp-to-png': { sources: ['webp'], targets: ['png'], label: 'WebP to PNG' },
+    'svg-to-jpg': { sources: ['svg'], targets: ['jpg'], label: 'SVG to JPG' },
+    'avif-to-jpg': { sources: ['avif'], targets: ['jpg'], label: 'AVIF to JPG' },
+    'avif-to-png': { sources: ['avif'], targets: ['png'], label: 'AVIF to PNG' },
+    'png-to-avif': { sources: ['png'], targets: ['avif'], label: 'PNG to AVIF' },
+    'jpg-to-avif': { sources: ['jpg', 'jpeg'], targets: ['avif'], label: 'JPG to AVIF' }
 };
 const MATCHING_TOOL_BY_SOURCE = {
     'png': '/png-to-jpg/',
     'jpg': '/jpg-to-png/',
     'jpeg': '/jpg-to-png/',
     'webp': '/webp-to-jpg/',
-    'svg': '/svg-to-png/'
+    'svg': '/svg-to-png/',
+    'avif': '/avif-to-jpg/',
+    'mp4': '/mp4-to-mp3/',
+    'mov': '/mp4-to-mp3/',
+    'avi': '/mp4-to-mp3/',
+    'mkv': '/mp4-to-mp3/',
+    'webm': '/mp4-to-mp3/',
+    'mp3': '/mp3-to-wav/',
+    'wav': '/wav-to-mp3/',
+    'ogg': '/ogg-to-mp3/',
+    'm4a': '/m4a-to-mp3/',
+    'flac': '/flac-to-mp3/',
+    'zip': '/extract-zip/'
 };
+
+// Drop-box suggestions: a dropped file the box above cannot convert gets a
+// link to the real tool that can. Only real, working tools are ever suggested.
+const DROP_SUGGESTIONS = {
+    pdf: '<strong>PDF file detected.</strong><span>Open a PDF tool: <a href="/pdf-to-jpg/" style="color:var(--brand-primary);font-weight:800;">PDF to JPG</a> · <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:800;">Compress PDF</a> · <a href="/merge-pdf/" style="color:var(--brand-primary);font-weight:800;">Merge PDF</a> · <a href="/split-pdf/" style="color:var(--brand-primary);font-weight:800;">Split PDF</a></span>',
+    heic: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    heif: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    jpg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    jpeg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    png: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    mp4: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mov: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    avi: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mkv: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    webm: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mp3: '<strong>MP3 file detected.</strong><span>Convert it with <a href="/mp3-to-wav/" style="color:var(--brand-primary);font-weight:800;">MP3 to WAV</a> — free, in your browser, no upload.</span>',
+    wav: '<strong>WAV file detected.</strong><span>Convert it with <a href="/wav-to-mp3/" style="color:var(--brand-primary);font-weight:800;">WAV to MP3</a> — free, in your browser, no upload.</span>',
+    ogg: '<strong>OGG file detected.</strong><span>Convert it with <a href="/ogg-to-mp3/" style="color:var(--brand-primary);font-weight:800;">OGG to MP3</a> — free, in your browser, no upload.</span>',
+    flac: '<strong>FLAC file detected.</strong><span>Convert it with <a href="/flac-to-mp3/" style="color:var(--brand-primary);font-weight:800;">FLAC to MP3</a> — free, in your browser, no upload.</span>',
+    m4a: '<strong>M4A file detected.</strong><span>Convert it with <a href="/m4a-to-mp3/" style="color:var(--brand-primary);font-weight:800;">M4A to MP3</a> — free, in your browser, no upload. Works with iPhone voice memos.</span>',
+    doc: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    docx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xls: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xlsx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    ppt: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    pptx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    zip: '<strong>ZIP file detected.</strong><span>Open it with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a> or pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a> — free, in your browser, no upload.</span>',
+    rar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    '7z': '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    tar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>',
+    gz: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not offer archive conversion. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a> instead.</span>'
+};
+// File types the box above already converts in place: no suggestion needed.
+const DROP_NO_SUGGESTION = ['webp', 'svg', 'avif', 'txt'];
+function showDropSuggestion(ext) {
+    if (!dropSuggestion) return;
+    if (DROP_NO_SUGGESTION.includes(ext)) {
+        dropSuggestion.innerHTML = '';
+        dropSuggestion.style.display = 'none';
+        return;
+    }
+    const tip = DROP_SUGGESTIONS[ext];
+    if (tip) {
+        dropSuggestion.innerHTML = tip;
+        dropSuggestion.style.display = 'flex';
+        return;
+    }
+    dropSuggestion.innerHTML = '<strong>No matching browser tool for .' + ext.toUpperCase() + ' files yet.</strong><span>We do not convert that file type here. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> or <a href="/qr-code-generator/" style="color:var(--brand-primary);font-weight:800;">create a QR code</a>.</span>';
+    dropSuggestion.style.display = 'flex';
+}
 
 dropZone.onclick = () => fileInput.click();
 fileInput.onchange = (e) => handleFiles(e.target.files);
@@ -3356,13 +3431,8 @@ function getFileIcon(fileName) {
     const audioExts = ['mp3', 'wav', 'ogg', 'flac', 'm4a'];
     const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
     const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
-    
-    if (imageExts.includes(ext)) return '';
-    if (videoExts.includes(ext)) return '';
-    if (audioExts.includes(ext)) return '';
-    if (documentExts.includes(ext)) return '';
-    if (archiveExts.includes(ext)) return '';
-    return '';
+
+    return ext.toUpperCase();
 }
 
 function updateSandboxBadge(sourceExt, targetExt) {
@@ -3376,11 +3446,12 @@ function getSafeOutputFormats(fileName) {
         return dedicated.sources.includes(ext) ? dedicated.targets : [];
     }
     const safeMap = {
-        png: ['jpg', 'webp', 'base64'],
-        jpg: ['png', 'webp', 'base64'],
-        jpeg: ['png', 'webp', 'base64'],
+        png: ['jpg', 'webp', 'avif', 'base64'],
+        jpg: ['png', 'webp', 'avif', 'base64'],
+        jpeg: ['png', 'webp', 'avif', 'base64'],
         webp: ['jpg', 'png', 'base64'],
-        svg: ['png'],
+        svg: ['png', 'jpg'],
+        avif: ['jpg', 'png', 'base64'],
         txt: ['base64']
     };
     return safeMap[ext] || [];
@@ -3402,21 +3473,42 @@ function getFormatHelp(sourceExt, targetExt) {
         'webp-png': 'Best for editing or platforms that prefer PNG files.',
         'webp-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
         'svg-png': 'Best for exporting vector logos and icons as raster images.',
-        'txt-base64': 'Encodes plain text into Base64 for developer workflows.'
+        'txt-base64': 'Encodes plain text into Base64 for developer workflows.',
+        'png-avif': 'Best for much smaller website images with modern browser support.',
+        'jpg-avif': 'Best for much smaller photos with modern browser support.',
+        'jpeg-avif': 'Best for much smaller photos with modern browser support.',
+        'svg-jpg': 'Best for sharing vector logos and icons as JPG photos.',
+        'avif-jpg': 'Best for opening AVIF photos anywhere JPG works.',
+        'avif-png': 'Best for editing AVIF images as PNG files.'
     };
     return copy[key] || 'This conversion runs locally in your browser when supported.';
 }
 function handleFiles(files) {
     if (files.length === 0) return;
     activeFile = files[0];
+    if (activeFile.size > 50 * 1024 * 1024) {
+        dropZone.style.display = 'none';
+        previewContainer.style.display = 'block';
+        fileNameEl.textContent = activeFile.name;
+        fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+        fileTypeIcon.textContent = getFileIcon(activeFile.name);
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        formatGuidance.innerHTML = `<strong>File too large.</strong><span>This tool accepts files up to 50 MB. Your file is ${(activeFile.size / 1024 / 1024).toFixed(1)} MB — please use a smaller file.</span>`;
+        sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
     dropZone.style.display = 'none';
     previewContainer.style.display = 'block';
-    
+
     fileNameEl.textContent = activeFile.name;
     fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
     fileTypeIcon.textContent = getFileIcon(activeFile.name);
 
     const ext = activeFile.name.split('.').pop().toLowerCase();
+    showDropSuggestion(ext);
     const formats = getSafeOutputFormats(activeFile.name);
     if (formats.length === 0) {
         formatSelect.innerHTML = '<option value="">Not available</option>';
@@ -3435,8 +3527,8 @@ function handleFiles(files) {
             return;
         }
         formatGuidance.innerHTML = `
-            <strong>This file type is not available in the browser converter yet.</strong>
-            <span>Try PNG, JPG, WebP, SVG, or TXT. You can also browse the dedicated tool cards below.</span>
+            <strong>This file type is not converted in the box above.</strong>
+            <span>Try PNG, JPG, WebP, SVG, or TXT — or open the suggested tool below.</span>
         `;
         sandboxBadge.innerHTML = `<strong>No upload happened.</strong><span>Choose another file or open a matching converter page.</span>`;
         accordion.style.display = 'none';
@@ -3460,7 +3552,7 @@ function handleFiles(files) {
     };
 
     // Inject advanced options if image tool
-    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp') {
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp' || ext === 'svg' || ext === 'avif') {
         accordion.style.display = 'block';
         controlsBox.innerHTML = `
             <div style="display: flex; gap: 1rem; width: 100%;">
@@ -3473,6 +3565,30 @@ function handleFiles(files) {
         if (slider) {
             slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
         }
+        if (ext === 'svg') {
+            activeFile.text().then((svgText) => {
+                const wInput = document.getElementById('opt-width');
+                const hInput = document.getElementById('opt-height');
+                if (!wInput || !hInput) return;
+                const num = (s) => { const m = s && s.match(/(\d+(?:\.\d+)?)/); return m ? Math.round(parseFloat(m[1])) : null; };
+                const tag = svgText.match(/<svg[^>]*>/i);
+                const attrs = tag ? tag[0] : '';
+                const wM = attrs.match(/\swidth=["']([^"']+)["']/i);
+                const hM = attrs.match(/\sheight=["']([^"']+)["']/i);
+                const vM = attrs.match(/\sviewBox=["']([\d.\s-]+)["']/i);
+                let vw = num(wM && wM[1]);
+                let vh = num(hM && hM[1]);
+                if ((!vw || !vh) && vM) {
+                    const parts = vM[1].trim().split(/\s+/);
+                    if (parts.length === 4) {
+                        vw = vw || Math.round(parseFloat(parts[2]));
+                        vh = vh || Math.round(parseFloat(parts[3]));
+                    }
+                }
+                if (vw) wInput.value = vw;
+                if (vh) hInput.value = vh;
+            }).catch(() => {});
+        }
     } else {
         accordion.style.display = 'none';
     }
@@ -3480,12 +3596,12 @@ function handleFiles(files) {
 
 convertBtn.onclick = async () => {
     if (!activeFile) return;
-    
+
     convertBtn.style.display = 'none';
     resetBtn.style.display = 'none';
     progWrap.style.display = 'block';
     progText.style.display = 'block';
-    
+
     // Simulate multi-stage upload states
     const stages = [
         { progress: 20, label: "Preparing your file locally..." },
@@ -3503,22 +3619,22 @@ convertBtn.onclick = async () => {
 
     try {
         const targetFormat = formatSelect.value;
-        
+
         // Gather custom options
         const opts = {};
         const qEl = document.getElementById('opt-quality');
         const wEl = document.getElementById('opt-width');
         const hEl = document.getElementById('opt-height');
-        
+
         if (qEl) opts.quality = parseFloat(qEl.value) / 100;
         if (wEl && wEl.value) opts.width = parseInt(wEl.value);
         if (hEl && hEl.value) opts.height = parseInt(hEl.value);
 
         const resultBlob = await window.ConversionAdapter.convert(activeFile, targetFormat, opts);
-        
+
         // Render completed download state with beautiful success alerts and checklist animations
         progWrap.style.display = 'none';
-        
+
         progText.innerHTML = `
             <div class="success-alert">
                 <div class="success-icon-wrap">
@@ -3533,21 +3649,21 @@ convertBtn.onclick = async () => {
                 </div>
             </div>
         `;
-        
+
         const dLink = document.createElement('a');
         dLink.className = "btn primary";
         dLink.style.marginTop = "1rem";
         dLink.textContent = " Download Converted File";
         dLink.href = URL.createObjectURL(resultBlob);
-        
+
         const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
         dLink.download = `${cleanName}-converted.${targetFormat}`;
-        
+
         // Record conversion history
         if (window.recordConversionHistory) {
-            let activeToolId = '{{ID}}';
-            let activeToolName = '{{NAME}}';
-            if (!activeToolId || activeToolId === '{{ID}}') {
+            let activeToolId = '';
+            let activeToolName = '';
+            if (!activeToolId || activeToolId === '') {
                 const srcExt = activeFile.name.split('.').pop().toLowerCase();
                 const tgtExt = targetFormat.toLowerCase();
                 activeToolId = `${srcExt}-to-${tgtExt}`;
@@ -3561,20 +3677,20 @@ convertBtn.onclick = async () => {
                 resultBlob.size
             );
         }
-        
-        
+
+
         // Insert download button cleanly
         const actButtons = document.querySelector('.action-buttons');
         actButtons.innerHTML = '';
         actButtons.appendChild(dLink);
-        
+
         const anotherBtn = document.createElement('button');
         anotherBtn.className = "btn secondary";
         anotherBtn.style.marginTop = "1rem";
         anotherBtn.textContent = "Convert Another File";
         anotherBtn.onclick = () => location.reload();
         actButtons.appendChild(anotherBtn);
-        
+
     } catch (e) {
         progText.textContent = " Error: " + e.message;
         progText.style.color = "var(--brand-danger)";
@@ -3584,7 +3700,8 @@ convertBtn.onclick = async () => {
 };
 
 resetBtn.onclick = () => location.reload();
-"""
+
+    """
 
 DEV_BASIC_SCRIPT = r"""
 const input = document.getElementById('dev-input');
@@ -5322,13 +5439,10 @@ UTILITY_UI = """
 # Reusable Header and Footer snippets
 HEADER_SNIPPET = """
     <!-- SaaS Header -->
-    <header class="header-glass">
+    <header class="header-glass header-dark">
         <nav class="navbar">
             <a href="/" class="logo">
-                <picture>
-                    <source srcset="/assets/freeconvert-logo.webp" type="image/webp">
-                    <img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
-                </picture>
+                <img src="/assets/logo.png" alt="freeconvert.cloud privacy-first online file converter" class="logo-img" style="height:38px;width:auto;display:block;" decoding="async" fetchpriority="high">
             </a>
             <div class="mobile-toggle" id="mobile-toggle">
                 <span></span><span></span><span></span>
@@ -5426,84 +5540,66 @@ HEADER_SNIPPET = """
 """
 
 FOOTER_SNIPPET = """
-    <!-- Competitor-level Footer -->
+    <!-- Footer -->
     <footer class="footer-mega">
-        <!-- AdSense Slot: Footer -->
-        <div class="adsense-wrap footer-ad-wrap">
-            <span class="adsense-label">Sponsored Links</span>
-            <ins class="adsbygoogle"
-                 style="display:block;min-height:90px;"
-                 data-ad-client="ca-pub-8997218708343263"
-                 data-ad-slot="REPLACE_SLOT_FOOTER"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
 
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/"><picture><source srcset="/assets/freeconvert-logo.webp" type="image/webp"><img src="/assets/freeconvert-logo.png" alt="freeconvert.cloud privacy-first online file converter" style="height:36px;width:auto;margin-bottom:0.75rem;display:block;" loading="lazy" decoding="async"></picture></a>
-                <p>The world's most beautiful, privacy-first SaaS conversion platform. Convert images, PDFs, video, audio, and developer files in your browser.</p>
+                <p>Free browser tools for image conversion, text, code, security, and everyday calculations.</p>
                 <div style="margin-top:0.8rem;font-size:0.78rem;color:var(--text-muted);">
-                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a> &nbsp;|&nbsp;
-                    <a href="/pricing/" style="color:var(--brand-primary);text-decoration:none;"> Upgrade to Pro</a>
+                    <a href="/blog/" style="color:var(--brand-primary);text-decoration:none;"> Read Our Guides</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Popular Tools</h4>
+                <h4>Image &amp; PDF</h4>
                 <div class="footer-links">
                     <a href="/png-to-jpg/">PNG to JPG</a>
-                    <a href="/csv-to-json/">CSV to JSON</a>
-                    <a href="/json-to-csv/">JSON to CSV</a>
+                    <a href="/jpg-to-pdf/">JPG to PDF</a>
+                    <a href="/pdf-to-jpg/">PDF to JPG</a>
+                    <a href="/heic-to-jpg/">HEIC to JPG</a>
                     <a href="/image-compressor/">Image Compressor</a>
-                    <a href="/compress-image-to-100kb/">Compress to 100KB</a>
-                    <a href="/webp-to-jpg/">WebP to JPG</a>
-                    <a href="/jpg-to-webp/">JPG to WebP</a>
-                    <a href="/qr-code-generator/">QR Code Generator</a>
-                    <a href="/password-generator/">Password Generator</a>
-                    <a href="/json-formatter/">JSON Formatter</a>
+                    <a href="/compress-pdf/">Compress PDF</a>
+                    <a href="/merge-pdf/">Merge PDF</a>
+                    <a href="/split-pdf/">Split PDF</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Tool Categories</h4>
+                <h4>Audio, Video &amp; Archives</h4>
                 <div class="footer-links">
-                    <a href="/all-tools/">All Tools Directory</a>
-                    <a href="/image-converter/">Image Converter</a>
-                    <a href="/document-converter/">Document Tools</a>
-                    <a href="/unit-converter/">Unit Converter</a>
+                    <a href="/mp4-to-mp3/">MP4 to MP3</a>
+                    <a href="/mp4-to-gif/">MP4 to GIF</a>
+                    <a href="/mp3-to-wav/">MP3 to WAV</a>
+                    <a href="/wav-to-mp3/">WAV to MP3</a>
+                    <a href="/flac-to-mp3/">FLAC to MP3</a>
+                    <a href="/create-zip/">Create ZIP</a>
+                    <a href="/extract-zip/">Extract ZIP</a>
                 </div>
-                <h4 style="margin-top:1.2rem;">New Tools</h4>
+            </div>
+            <div class="footer-col">
+                <h4>Developer &amp; Text</h4>
                 <div class="footer-links">
-                    <a href="/json-minifier/">JSON Minifier</a>
-                    <a href="/jwt-decoder/">JWT Decoder</a>
-                    <a href="/regex-tester/">Regex Tester</a>
-                    <a href="/html-entity-encoder/">HTML Entity Encoder</a>
-                    <a href="/url-parser/">URL Parser</a>
-                    <a href="/sitemap-generator/">Sitemap Generator</a>
+                    <a href="/json-formatter/">JSON Formatter</a>
+                    <a href="/json-to-csv/">JSON to CSV</a>
                     <a href="/css-minifier/">CSS Minifier</a>
                     <a href="/javascript-minifier/">JavaScript Minifier</a>
-                    <a href="/word-to-html/">Word to HTML</a>
-                    <a href="/text-to-ascii/">Text to ASCII</a>
-                    <a href="/html-minifier/">HTML Minifier</a>
+                    <a href="/word-counter/">Word Counter</a>
+                    <a href="/base64-encode/">Base64 Encode</a>
+                    <a href="/qr-code-generator/">QR Code Generator</a>
+                    <a href="/password-generator/">Password Generator</a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4>Company &amp; Legal</h4>
                 <div class="footer-links">
                     <a href="/about/">About Us</a>
-                    <a href="/blog/">Blog &amp; Guides</a>
-                    <a href="/help/">Help &amp; FAQ</a>
-                    <a href="/tools/embed/">Embed Widgets</a>
-                    <a href="/sitemap/">HTML Sitemap</a>
-                    <a href="/blog/category/pdf-tools/">PDF Guides</a>
-                    <a href="/blog/category/image-conversion/">Image Guides</a>
+                    <a href="/blog/">Blog & Guides</a>
+                    <a href="/help/">Help & FAQ</a>
                     <a href="/privacy/">Privacy Policy</a>
                     <a href="/terms/">Terms of Service</a>
                     <a href="/security/">File Security</a>
-                    <a href="/advertising-policy/">Advertising Policy</a>
-                    <a href="/cookies/">Cookie Policy</a>
                     <a href="/contact/">Contact Us</a>
-                    <a href="/dmca/">DMCA Policy</a>
+                    <a href="/sitemap/">HTML Sitemap</a>
                 </div>
             </div>
         </div>
@@ -5527,7 +5623,6 @@ def build_homepage(tools):
             tools_html += f"""
             <a href="/{tool['id']}/" class="tool-card" data-category="{tool['type']}">
                 {popular_badge}<div class="tool-card-top">
-                    <div class="tool-icon">{tool['icon']}</div>
                     <span class="tool-category-tag">{tool['category']}</span>
                 </div>
                 <div class="tool-card-body">
@@ -5559,6 +5654,53 @@ def build_homepage(tools):
                 </a>"""
 
         keyword_hub_html = ''
+
+        # Format catalogue + popular conversions (front-end rebuild 2026-11-12):
+        # built from tools.json so chips/links can never go stale or 404.
+        cat_order = ['Developer', 'Image', 'Utility', 'Text', 'PDF Tools',
+                     'Audio Converter', 'Designer', 'Security', 'Video Converter']
+        cats = {c: [] for c in cat_order}
+        for tool in tools:
+            if tool['category'] in cats:
+                cats[tool['category']].append(tool)
+        for c in cats:
+            cats[c].sort(key=lambda t: t['name'].lower())
+        catalogue_parts = [
+            '    <!-- Format catalogue -->',
+            '    <section class="catalogue-section">',
+            '        <div class="catalogue-inner">',
+            '            <h2>Format catalogue</h2>',
+            '            <p class="catalogue-intro">{TOOL_COUNT} tools across {CAT_COUNT} categories. Every chip below opens a real tool that runs in your browser — no uploads, no sign-up.</p>',
+        ]
+        for c, items in cats.items():
+            if not items:
+                continue
+            catalogue_parts.append('            <div class="cat-block">')
+            catalogue_parts.append(f'                <h3 class="cat-title">{c} <span class="cat-count">{len(items)} tools</span></h3>')
+            catalogue_parts.append('                <div class="cat-chips">')
+            for t in items:
+                catalogue_parts.append(f'                    <a class="format-chip" href="/{t["id"]}/">{t["name"].replace("&", "&amp;")}</a>')
+            catalogue_parts.append('                </div>')
+            catalogue_parts.append('            </div>')
+        catalogue_parts += ['        </div>', '    </section>']
+        catalogue_html = '\n'.join(catalogue_parts)
+        popular_ids = ['png-to-jpg', 'jpg-to-pdf', 'pdf-to-jpg', 'mp4-to-mp3', 'heic-to-jpg',
+                       'jpg-to-webp', 'png-to-webp', 'webp-to-jpg', 'mp3-to-wav', 'wav-to-mp3',
+                       'merge-pdf', 'compress-pdf', 'create-zip', 'extract-zip']
+        tools_by_id = {t['id']: t for t in tools}
+        popular_parts = [
+            '    <!-- Popular conversions -->',
+            '    <section class="popular-section">',
+            '        <div class="popular-inner">',
+            '            <h2>Popular conversions</h2>',
+            '            <p class="popular-intro">The conversions people use most — all free, all in your browser.</p>',
+            '            <div class="popular-grid">',
+        ]
+        for pid in popular_ids:
+            if pid in tools_by_id:
+                popular_parts.append(f'                <a class="popular-link" href="/{pid}/"><span>{tools_by_id[pid]["name"].replace("&", "&amp;")}</span><span class="popular-arrow">→</span></a>')
+        popular_parts += ['            </div>', '        </div>', '    </section>']
+        popular_html = '\n'.join(popular_parts)
 
         html_content = """<!DOCTYPE html>
 <html lang="en">
@@ -5710,111 +5852,40 @@ def build_homepage(tools):
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
-    <section class="hero-section">
-        <div class="hero-badges">
-            <span class="badge"> Free, secure & browser-based file conversion</span>
-        </div>
-        <h1>Convert Files Online <span class="gradient-text">Without the Confusion</span></h1>
-        <p class="hero-subtitle">Upload an image or text file, pick one clear browser-safe output, and download the result. No cloud buttons, no broken choices.</p>
+    <section class="hero-section hero-dark">
+        <h1>Free Online File Converter</h1>
+        <p class="hero-subtitle">Convert images, PDFs, audio, video, and more — right in your browser. Your files never leave your device. No sign-up, no cost.</p>
+        <p class="hero-trust">Free · No sign-up · No credits · Files never leave your device</p>
 
-        <!-- Homepage Active Upload box right in the Hero! -->
-        <div style="margin-bottom: 2.5rem;">
+        <!-- Converter card: white, overlaps the hero/body boundary -->
+        <div class="hero-converter-card">
             {UPLOAD_BOX_UI}
         </div>
+    </section>
 
-        <!-- Search bar for tools -->
+    
+
+    <!-- Dynamic Category Switcher pills -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
+        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
+        <div class="directory-search">
+<!-- Search bar for tools -->
         <div style="position: relative; max-width: 600px; margin: 0 auto 1.5rem;">
             <input type="text" id="tool-search" placeholder="Search tools (e.g. PNG to JPG, JPG to WebP, JSON to CSV)..."
                 style="width: 100%; padding: 1.1rem 2rem; border-radius: 50px; background: white; border: 1px solid var(--border-color); color: var(--text-primary); font-size: 1.05rem; outline: none; box-shadow: var(--card-shadow); transition: all 0.3s;"
                 onfocus="this.style.borderColor='var(--brand-primary)'; this.style.boxShadow='var(--hover-shadow)';"
                 onblur="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--card-shadow)';">
         </div>
-
-        <!-- Popular Quick Tools Chips -->
-        <div class="quick-chips">
-            <span class="quick-chip-label">Quick Tools:</span>
-            <a href="/png-to-jpg/" class="quick-chip">PNG to JPG</a>
-            <a href="/jpg-to-webp/" class="quick-chip">JPG to WebP</a>
-            <a href="/image-compressor/" class="quick-chip">Image Compressor</a>
-            <a href="/json-to-csv/" class="quick-chip">JSON to CSV</a>
-            <a href="/css-minifier/" class="quick-chip">CSS Minifier</a>
         </div>
-
-        <!-- Trust Stats Row -->
-        <div class="trust-stats-row">
-            <div class="stat-badge"> 35+ Tools</div>
-            <div class="stat-badge"> Privacy-First</div>
-            <div class="stat-badge"> No Software Needed</div>
-            <div class="stat-badge"> Clean Processing</div>
-        </div>
-    </section>
-
-    <!-- AdSense Slot: Homepage Below Hero -->
-    <div class="adsense-wrap" style="margin-top: 0; margin-bottom: 3.5rem;">
-        <span class="adsense-label">Advertisement</span>
-        <ins class="adsbygoogle"
-             style="display:block;min-height:90px;"
-             data-ad-client="ca-pub-8997218708343263"
-             data-ad-slot="REPLACE_SLOT_HOME_TOP"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!--  Personal secure Productivity Dashboard & Log -->
-    <section class="dashboard-section">
-        <div class="dashboard-card">
-            <div class="dashboard-header">
-                <h3 class="dashboard-title"> Your Local Sandbox Analytics</h3>
-                <button type="button" class="dashboard-reset-btn" onclick="resetDashboardStats()"> Reset Logs</button>
-            </div>
-            
-            <div class="dashboard-stats-grid">
-                <div class="stat-card">
-                    <div class="stat-num" id="dash-files-count">0</div>
-                    <div class="stat-label">Files Processed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" id="dash-savings-count">0.00 KB</div>
-                    <div class="stat-label">Storage Saved</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-num" style="color: var(--brand-accent); background: linear-gradient(135deg, var(--brand-accent) 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">100%</div>
-                    <div class="stat-label">Privacy Score</div>
-                </div>
-            </div>
-
-            <div class="history-section">
-                <h4 class="history-title"> Recent Operations History</h4>
-                <div class="history-list" id="dash-history-list">
-                    <div class="empty-history-state">
-                         Your secure operations log is clean. Start converting files to see metrics in real-time!
-                    </div>
-                </div>
-            </div>
-            
-            <p style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-top: 1rem; line-height: 1.4;">
-                 All telemetry is computed and stored 100% locally on your computer using browser sandbox storage. Zero server uploads.
-            </p>
-        </div>
-    </section>
-
-    <!-- Dynamic Category Switcher pills -->
-    <div style="text-align: center; margin-bottom: 2rem;">
-        <h2 style="font-size: 2.1rem; letter-spacing: -0.03em;">Browse Online Converters</h2>
-        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.4rem;">Select a category to filter the utility converters grid instantly.</p>
         <div class="category-tabs">
             <button class="category-tab active" data-category="all"> All Tools</button>
             <button class="category-tab" data-category="image"> Image</button>
+            <button class="category-tab" data-category="pdf"> PDF</button>
+            <button class="category-tab" data-category="video"> Video</button>
+            <button class="category-tab" data-category="audio"> Audio</button>
             <button class="category-tab" data-category="developer"> Developer</button>
             <button class="category-tab" data-category="designer"> Designer</button>
             <button class="category-tab" data-category="security"> Security</button>
@@ -5830,70 +5901,42 @@ def build_homepage(tools):
     {KEYWORD_HUB_HTML}
 
     <!-- Why Choose Us Grid -->
-    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 3.5rem; letter-spacing:-0.03em;">Why Choose freeconvert.cloud?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-primary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Private by Design</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">All standard converter operations execute in your browser's local sandbox memory. Your files are completely safe and never uploaded.</p>
+        <!-- Three benefits -->
+    <section class="benefits-section">
+        <div class="benefits-inner">
+            <div class="benefits-3col">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></div>
+                    <h3>Convert Any File</h3>
+                    <p>{TOOL_COUNT} free tools for images, PDFs, audio, video, documents, and developer files. Every one runs in your browser — pick a tool, drop a file, download the result.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-secondary); margin-bottom: 0.8rem; font-size: 1.3rem;"> Fast Browser Tools</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">Powered by modern WebAssembly and Canvas client-side libraries. Converting files takes milliseconds with absolutely zero network delay.</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                    <h3>Works Anywhere</h3>
+                    <p>Windows, Mac, Linux, iPhone, and Android — any modern browser, nothing to install, nothing to sign up for.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: var(--brand-accent); margin-bottom: 0.8rem; font-size: 1.3rem;"> Clean Output Quality</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">High-definition conversions with zero loss of formatting, transparency, or pixel density. Premium and optimized.</p>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3>Privacy Guaranteed</h3>
+                    <p>Files never leave your device. Nothing is uploaded, nothing is stored, nothing is sold. Close the tab and everything is gone.</p>
                 </div>
-                <div style="background: var(--bg-light); border: 1px solid var(--border-color); padding: 2.5rem 2rem; border-radius: 24px; text-align: left; transition: all 0.3s;" class="saas-card">
-                    <h3 style="color: #06b6d4; margin-bottom: 0.8rem; font-size: 1.3rem;"> Works Everywhere</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.6;">A fully responsive browser-based SaaS converter that runs smoothly on Mac, Windows, iOS, Android, and Linux without setups.</p>
+            </div>
+            <div class="privacy-card">
+                <h2>Your Data, Our Priority</h2>
+                <p>Every tool on this site runs inside your browser. Your files are processed in your device&rsquo;s memory and never sent to a server. We do not see your files, store them, or sell them.</p>
+                <div class="privacy-rows">
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing uploaded</strong><span>Conversions happen on your device, not on our servers.</span></div></div>
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing stored</strong><span>We keep no copies of your files after you leave the page.</span></div></div>
+                    <div class="privacy-row"><span class="privacy-check">&#10003;</span><div><strong>Nothing sold</strong><span>Your files are not shared with advertisers or anyone else.</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Popular Conversion Categories Grid -->
-    <section style="background: var(--bg-light); border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Popular Conversion Hubs</h2>
-            <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">Explore comprehensive conversion directories and batch processing hubs.</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
-                <a href="/image-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">Image Converter</h3>
-                    <p>Convert PNG, JPG, WebP, SVG, and HEIC images safely in your browser.</p>
-                </a>
-                <a href="/pdf-tools/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">PDF Tools</h3>
-                    <p>Compress, format, split, and merge PDF files in a single click.</p>
-                </a>
-                <a href="/document-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">Document Converter</h3>
-                    <p>Process Microsoft Word docx, Excel sheets, and developer code bases.</p>
-                </a>
-                <a href="/video-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">Video Converter</h3>
-                    <p>Transcode MP4, WebM, AVI, and MOV video file dimensions online.</p>
-                </a>
-                <a href="/audio-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">Audio Converter</h3>
-                    <p>Convert MP3, WAV, OGG, and FLAC audios with high quality preservation.</p>
-                </a>
-                <a href="/unit-converter/" style="text-decoration:none;" class="tool-card">
-                    <div class="tool-icon"></div>
-                    <h3 style="color:var(--text-primary);">Utility & Units</h3>
-                    <p>Calculate aspect ratios, test connectivity speeds, and measure metrics.</p>
-                </a>
-            </div>
-        </div>
-    </section>
+    {CATALOGUE_HTML}
+
+{POPULAR_HTML}
 
     <!-- Latest Guides Internal Linking Section -->
     <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
@@ -6123,7 +6166,7 @@ axios.post('https://api.freeconvert.cloud/v1/convert', form, {
     <script src="/main.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', '').replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', ''))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', '').replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{CATALOGUE_HTML}', catalogue_html).replace('{POPULAR_HTML}', popular_html).replace('{TOOL_COUNT}', str(len(tools))).replace('{CAT_COUNT}', str(len([c for c in cats if cats[c]])))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -6617,13 +6660,6 @@ def build_categories(tools):
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content">
@@ -6758,13 +6794,6 @@ def build_pricing_page():
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px;">
@@ -6896,13 +6925,6 @@ def build_api_page():
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px;">
@@ -7207,13 +7229,6 @@ def build_legal_pages():
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content">
@@ -7345,13 +7360,6 @@ def build_press_kit_page():
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content">
@@ -8124,13 +8132,6 @@ def build_blog():
 </head>
 
 <body>
-    <!-- Hyper-Luxury Ambient Floating Orbs -->
-    <div class="glass-orb-container">
-        <div class="glass-orb glass-orb-1"></div>
-        <div class="glass-orb glass-orb-2"></div>
-        <div class="glass-orb glass-orb-3"></div>
-    </div>
-
     {HEADER_SNIPPET}
 
     <main class="tool-content" style="max-width: 1200px; margin: 0 auto; padding: 2rem 5% 5.5rem;">

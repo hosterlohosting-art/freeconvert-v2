@@ -520,6 +520,26 @@
         "seo_desc": "Test your internet speed in your browser — real download speed and ping. Free, no sign-up, no upload."
     },
     {
+        "id": "create-zip",
+        "name": "Create ZIP",
+        "icon": "",
+        "description": "Pack several files into one ZIP archive in your browser.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Create ZIP Online Free",
+        "seo_desc": "Pack files into a ZIP archive online free — no upload, no sign-up."
+    },
+    {
+        "id": "extract-zip",
+        "name": "Extract ZIP",
+        "icon": "",
+        "description": "Open a ZIP archive and download its files in your browser.",
+        "type": "utility",
+        "category": "Utility",
+        "seo_title": "Extract ZIP Online Free",
+        "seo_desc": "Open a ZIP file online free and download its contents — no upload."
+    },
+    {
         "id": "password-generator",
         "name": "Password Generator",
         "icon": "",
@@ -562,7 +582,7 @@
     {
         "id": "timestamp-converter",
         "name": "Timestamp Converter",
-        "icon": "⏱",
+        "icon": "",
         "description": "Convert human calendar dates to Unix time.",
         "type": "utility_dev",
         "category": "Utility",
@@ -572,7 +592,7 @@
     {
         "id": "unix-time-converter",
         "name": "Unix Time Converter",
-        "icon": "⏱",
+        "icon": "",
         "description": "Convert Unix time seconds to humans calendar.",
         "type": "utility",
         "category": "Utility",
@@ -642,7 +662,7 @@
     {
         "id": "stopwatch",
         "name": "Stopwatch & Timer",
-        "icon": "⏱",
+        "icon": "",
         "description": "Accurate stopwatch with lap tracker.",
         "type": "utility",
         "category": "Utility",

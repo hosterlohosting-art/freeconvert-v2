@@ -34,3 +34,84 @@
 
 /* Top nav search should read clearly, not look like a mystery icon. */
 .nav-search{width:auto;min-width:72px;padding:0 .95rem;border-radius:999px;font-size:.9rem;font-weight:750}
+
+/* ---- Front-end rebuild 2026-11-12 (MIX: clean like CloudConvert, rich like FreeConvert) ---- */
+/* Dark header: white links on #0f172a. Light logo asset (assets/logo.png) is used in the markup. */
+.header-dark{background:#0f172a;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(2,6,23,.25)}
+.header-dark .mobile-toggle span{background:#fff}
+.header-dark .nav-search{background:rgba(255,255,255,.08);color:#e2e8f0;border-color:rgba(255,255,255,.12)}
+.header-dark .nav-search:hover{background:rgba(255,255,255,.16);color:#fff}
+.header-dark .nav-signup{background:var(--brand-primary);color:#fff;border-color:var(--brand-primary)}
+.header-dark .nav-signup:hover{background:#4f46e5;color:#fff}
+@media (min-width:993px){
+.header-dark .nav-link{color:#e2e8f0}
+.header-dark .nav-link:hover{background:rgba(255,255,255,.08);color:#fff}
+.header-dark .nav-menu-primary>.nav-link:hover,.header-dark .nav-menu-primary .nav-item:hover>.nav-link{background:rgba(255,255,255,.08);color:#fff}
+.header-dark .nav-login{color:#e2e8f0}
+.header-dark .nav-caret{color:#94a3b8}
+}
+/* Dark hero: full-bleed, white H1, muted subtitle. The converter card overlaps the boundary. */
+.hero-dark{background:#0f172a;color:#fff;padding:9.5rem 5% 6.5rem;text-align:center;max-width:none;margin:0}
+.hero-dark h1{color:#fff}
+.hero-dark .hero-subtitle{color:#cbd5e1}
+.hero-trust{font-weight:700;color:#e2e8f0;margin:0 0 2.5rem;font-size:1rem}
+.hero-converter-card{max-width:860px;margin:0 auto -5.5rem;position:relative;z-index:2;background:#fff;border-radius:24px;box-shadow:0 30px 60px -15px rgba(2,6,23,.35);padding:1.5rem;text-align:left}
+.hero-converter-card .upload-wrapper{margin:0 auto;padding:0;max-width:none}
+.hero-converter-card .drop-zone{padding:3rem 1.5rem}
+.hero-converter-card .preview-container{margin-top:0}
+.hero-converter-card .file-info-card{background:#f8fafc}
+.hero-converter-card #file-type-icon{background:#0f172a;color:#fff!important;border-radius:12px;min-width:64px;height:56px;font-size:1.1rem!important}
+.hero-tile-arrow{font-size:1.6rem;font-weight:800;color:var(--brand-primary);line-height:1;flex:none}
+.hero-converter-card .output-picker select{background:#fff;border:1px solid var(--border-color);border-radius:12px;font-weight:800;color:var(--text-primary);padding:.7rem 1rem;min-width:140px}
+/* Benefits: three equal columns + privacy card */
+.benefits-section{background:#fff;padding:8rem 5% 4rem}
+.benefits-inner{max-width:1200px;margin:0 auto}
+.benefits-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:3rem}
+.benefit-card{background:var(--bg-light);border:1px solid var(--border-color);border-radius:24px;padding:2.5rem 2rem;text-align:left}
+.benefit-icon{width:48px;height:48px;border-radius:12px;background:var(--brand-primary-light);color:var(--brand-primary);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.benefit-icon svg{width:24px;height:24px}
+.benefit-card h3{margin-bottom:.6rem;font-size:1.25rem}
+.benefit-card p{font-size:.95rem}
+.privacy-card{background:var(--bg-light);border:1px solid var(--border-color);border-radius:24px;padding:3rem;max-width:1000px;margin:0 auto;text-align:left}
+.privacy-card h2{margin-bottom:.8rem}
+.privacy-card>p{margin-bottom:2rem}
+.privacy-rows{display:flex;flex-direction:column;gap:1.2rem}
+.privacy-row{display:flex;gap:1rem;align-items:flex-start}
+.privacy-check{color:var(--brand-primary);font-weight:900;font-size:1.2rem;line-height:1.4}
+.privacy-row strong{display:block;color:var(--text-primary)}
+.privacy-row div span{display:block;color:var(--text-muted);font-size:.92rem;margin-top:.15rem}
+/* Format catalogue: text-only chips, grouped by category */
+.catalogue-section{background:var(--bg-light);border-top:1px solid var(--border-color);padding:5rem 5%}
+.catalogue-inner{max-width:1200px;margin:0 auto}
+.catalogue-inner h2{text-align:center}
+.catalogue-intro{text-align:center;max-width:760px;margin:.6rem auto 3rem}
+.cat-block{margin-bottom:2.2rem}
+.cat-title{font-size:1.15rem;margin-bottom:.9rem;text-align:left}
+.cat-count{color:var(--text-muted);font-weight:600;font-size:.9rem;margin-left:.4rem}
+.cat-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.format-chip{display:inline-block;background:#fff;border:1px solid var(--border-color);border-radius:999px;padding:.45rem .95rem;font-size:.88rem;font-weight:600;color:var(--text-primary);text-decoration:none}
+.format-chip:hover{background:var(--brand-primary);border-color:var(--brand-primary);color:#fff}
+/* Popular conversions */
+.popular-section{background:#fff;border-top:1px solid var(--border-color);padding:5rem 5%}
+.popular-inner{max-width:1200px;margin:0 auto}
+.popular-inner h2{text-align:center}
+.popular-intro{text-align:center;color:var(--text-muted);margin:.6rem auto 2.5rem}
+.popular-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.popular-link{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border-color);border-radius:12px;padding:1.1rem 1.35rem;text-decoration:none;color:var(--text-primary);font-weight:700}
+.popular-link:hover{border-color:var(--brand-primary);color:var(--brand-primary)}
+.popular-arrow{color:var(--brand-primary)}
+/* Directory search sits above the tabs now */
+.directory-search{max-width:600px;margin:0 auto 2rem}
+/* Footer: brand + 4 link columns on wide screens */
+@media (min-width:993px){.footer-content{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}}
+/* Mobile */
+@media (max-width:640px){
+.hero-dark{padding:8rem 5% 5rem}
+.hero-dark h1{font-size:2.3rem}
+.hero-converter-card{margin-bottom:-4rem;padding:1rem}
+.hero-converter-card .drop-zone{padding:2rem 1rem}
+.benefits-section{padding:6.5rem 5% 3rem}
+.benefits-3col{grid-template-columns:1fr}
+.privacy-card{padding:2rem 1.5rem}
+.format-chip{font-size:.8rem;padding:.4rem .8rem}
+}
