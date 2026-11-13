@@ -5456,7 +5456,7 @@ HEADER_SNIPPET = """
                                 <div class="mega-heading"><span class="mega-icon">VA</span> Video &amp; Media</div>
                                 <a href="/youtube-thumbnail-downloader/">YouTube Thumbnail Downloader</a>
                                 <a href="/aspect-ratio-calculator/">Aspect Ratio Calculator</a>
-                                <a href="/image-compressor/">Media Image Compressor</a>
+                                <a href="/image-compressor/">Image Compressor</a>
                                 <a href="/resize-image/">Resize Image</a>
                                 <a href="/jpg-to-webp/">JPG to WebP</a>
                                 <a href="/png-to-webp/">PNG to WebP</a>

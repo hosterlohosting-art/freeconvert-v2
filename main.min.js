@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Tools that must never appear in the grid or in search results: pages with
     // no working in-browser tool (video converters, Word/PDF converters,
-    // barcode generator, speed test, and the hub pages that only list tools).
+    // barcode generator, and the hub pages that only list tools).
     // tools/tools.json is the clean source of truth (stubs removed there); this
     // list is defence in depth in case a stale cached copy still contains them.
     const HIDDEN_TOOL_IDS = new Set([
         "avi-to-mp4", "mkv-to-mp4", "mov-to-mp4", "webm-to-mp4",
         "video-to-mp3", "video-compressor",
         "video-resizer", "video-trimmer", "pdf-to-word", "word-to-pdf",
-        "ico-converter", "palette-extractor", "speed-test",
+        "ico-converter", "palette-extractor",
         "archive-converter", "audio-converter", "ebook-converter",
         "video-converter", "pdf-tools", "document-converter"
     ]);
@@ -57,11 +57,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const cardHtml = (tool) => `
             <a href="/${tool.id}/" class="tool-card" data-category="${tabOf(tool)}">
                 <div class="tool-card-top">
-                    <div class="tool-icon">${tool.icon}</div>
                     <span class="tool-category-tag">${tool.category}</span>
                 </div>
                 <div class="tool-card-body">
-                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">${tool.name}</span>
+                    <h3 style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin:0 0 0.5rem;line-height:1.25;">${tool.name}</h3>
                     <p>${tool.description}</p>
                 </div>
                 <div class="tool-card-footer">
