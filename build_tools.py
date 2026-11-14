@@ -123,17 +123,23 @@ TRUST_PAGE_CONTENT = {
         <p>We will only retain pages that provide a working utility or a clearly useful guide. Pages that are unavailable, duplicated, or not useful enough for visitors are excluded from the search index and are not promoted as flagship tools.</p>''',
 }
 
-# The homepage should explain the product in plain language. It replaces an
+# The homepage value section, exactly as it ships on disk index.html
+# (9 cards: PNG to JPG, Image Compressor, the 5 PDF tools, JSON Formatter,
+# QR Code Generator). build_homepage() emits it verbatim; it replaces an
 # older generated block that made unsupported claims about APIs, paid plans,
 # server processing, and advertising.
-HOMEPAGE_VALUE_CONTENT = '''
-    <section style="background:var(--bg-light);border-top:1px solid var(--border-color);padding:4.5rem 5%;">
+HOMEPAGE_VALUE_CONTENT = '''    <section style="background:var(--bg-light);border-top:1px solid var(--border-color);padding:4.5rem 5%;">
         <div style="max-width:1000px;margin:0 auto;" class="seo-content">
             <h2 style="text-align:center;font-size:2rem;margin-bottom:1rem;">Useful browser tools for everyday tasks</h2>
             <p style="font-size:1.05rem;line-height:1.7;text-align:center;max-width:760px;margin:0 auto 2.5rem;">freeconvert.cloud focuses on straightforward tools for image conversion, compression, text and developer formatting, QR codes, passwords, and calculations. Choose a tool, review its supported input, and check the result before sharing it.</p>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
                 <a href="/png-to-jpg/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>PNG to JPG</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Create a JPG copy for wider compatibility.</span></a>
                 <a href="/image-compressor/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>Image Compressor</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Reduce image size before uploading or sharing.</span></a>
+                <a href="/pdf-to-jpg/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>PDF to JPG</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Turn PDF pages into JPG images in your browser — no upload.</span></a>
+                <a href="/jpg-to-pdf/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>JPG to PDF</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Combine JPG or PNG images into one PDF in your browser — no upload.</span></a>
+                <a href="/heic-to-jpg/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>HEIC to JPG</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Convert iPhone HEIC photos to JPG in your browser — no upload.</span></a>
+                <a href="/compress-pdf/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>Compress PDF</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Shrink PDF file size in your browser — no upload.</span></a>
+                <a href="/merge-pdf/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>Merge PDF</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Combine PDF files into one PDF in your browser — no upload.</span></a>
                 <a href="/json-formatter/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>JSON Formatter</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Format and inspect JSON data in the browser.</span></a>
                 <a href="/qr-code-generator/" style="display:block;background:white;border:1px solid var(--border-color);border-radius:12px;padding:1.35rem;text-decoration:none;color:var(--text-primary);"><strong>QR Code Generator</strong><span style="display:block;margin-top:.45rem;color:var(--text-muted);line-height:1.55;">Create a QR code, then test it before printing.</span></a>
             </div>
@@ -828,12 +834,16 @@ def normalize_generated_html_seo():
         )
 
         if ADSENSE_REVIEW_MODE:
-            html = re.sub(
-                r'\s*<script[^>]+pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^>]*></script>',
-                '',
-                html,
-                flags=re.I,
-            )
+            # NOTE 2026-11-14 (Run 4): if the verification script is already in
+            # the head, leave it exactly where it is. The old code removed it
+            # and re-inserted it just before </head>, which moved the homepage
+            # script from its disk position on every full build.
+            if 'adsbygoogle.js' not in html:
+                adsense_verification = (
+                    '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8997218708343263" '
+                    'crossorigin="anonymous"></script>'
+                )
+                html = html.replace('</head>', f'    {adsense_verification}\n</head>', 1)
             html = re.sub(
                 r'\s*<link[^>]+href="(?:https:)?//pagead2\.googlesyndication\.com"[^>]*>',
                 '',
@@ -846,13 +856,6 @@ def normalize_generated_html_seo():
                 html,
                 flags=re.I,
             )
-            # Keep the official account-verification script in the head without
-            # adding display-ad units while the site is under content review.
-            adsense_verification = (
-                '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8997218708343263" '
-                'crossorigin="anonymous"></script>'
-            )
-            html = html.replace('</head>', f'    {adsense_verification}\n</head>', 1)
             review_nav = '''<div class="nav-links">
                 <a href="/image-converter/" class="nav-link">Image Tools</a>
                 <a href="/document-converter/" class="nav-link">Developer &amp; Text</a>
@@ -1089,8 +1092,13 @@ def normalize_generated_html_seo():
             html = html.replace('</head>', '    <link rel="search" type="application/opensearchdescription+xml" title="freeconvert.cloud Search" href="/opensearch.xml">\n\n</head>', 1)
 
         updated_time_tag = f'<meta property="og:updated_time" content="{TODAY_ISO}T00:00:00+00:00">'
+        # NOTE 2026-11-14 (Run 4): never regress a newer date. The old code
+        # stamped every page with TODAY_ISO (2026-08-03), which moved the
+        # homepage back from its real 2026-11-13 update date on every build.
         if 'property="og:updated_time"' in html:
-            html = re.sub(r'<meta property="og:updated_time" content="[^"]*">', updated_time_tag, html, count=1)
+            m = re.search(r'<meta property="og:updated_time" content="([^"]*)">', html)
+            if m and m.group(1)[:10] < TODAY_ISO:
+                html = re.sub(r'<meta property="og:updated_time" content="[^"]*">', updated_time_tag, html, count=1)
         else:
             html = html.replace('</head>', f'    {updated_time_tag}\n\n</head>', 1)
 
@@ -3811,6 +3819,390 @@ btn.onclick = () => {
 };
 """
 
+# NOTE 2026-11-14 (Run 4): the homepage hero runs the HONEST variant of the
+# upload-box script (Run 2 hand-fix on disk index.html): no fake multi-stage
+# progress, no "create a QR code" suggestion for archives/unknown files.
+# The shared UPLOAD_BOX_SCRIPT still carries the old stages/QR wording and
+# is used by tool pages and category hubs; do not swap them silently.
+HOMEPAGE_UPLOAD_BOX_SCRIPT = r"""
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const previewContainer = document.getElementById('preview-container');
+const fileNameEl = document.getElementById('selected-file-name');
+const fileSizeEl = document.getElementById('selected-file-size');
+const formatSelect = document.getElementById('output-format');
+const convertBtn = document.getElementById('convert-btn');
+const resetBtn = document.getElementById('reset-btn');
+const accordion = document.getElementById('adv-accordion');
+const controlsBox = document.getElementById('advanced-settings-controls');
+const progWrap = document.getElementById('sw-progress-wrap');
+const progText = document.getElementById('sw-progress-text');
+const sandboxBadge = document.getElementById('sandbox-badge');
+const fileTypeIcon = document.getElementById('file-type-icon');
+const formatGuidance = document.getElementById('format-guidance');
+const dropSuggestion = document.getElementById('drop-suggestion');
+const PAGE_TOOL_ID = '';
+const PAGE_TOOL_NAME = '';
+const DEDICATED_BROWSER_CONVERSIONS = {
+    'png-to-jpg': { sources: ['png'], targets: ['jpg'], label: 'PNG to JPG' },
+    'jpg-to-png': { sources: ['jpg', 'jpeg'], targets: ['png'], label: 'JPG to PNG' },
+    'webp-to-jpg': { sources: ['webp'], targets: ['jpg'], label: 'WebP to JPG' },
+    'svg-to-png': { sources: ['svg'], targets: ['png'], label: 'SVG to PNG' },
+    'jpg-to-webp': { sources: ['jpg', 'jpeg'], targets: ['webp'], label: 'JPG to WebP' },
+    'png-to-webp': { sources: ['png'], targets: ['webp'], label: 'PNG to WebP' },
+    'image-to-base64': { sources: ['png', 'jpg', 'jpeg', 'webp', 'svg'], targets: ['base64'], label: 'Image to Base64' },
+    'webp-to-png': { sources: ['webp'], targets: ['png'], label: 'WebP to PNG' },
+    'svg-to-jpg': { sources: ['svg'], targets: ['jpg'], label: 'SVG to JPG' },
+    'avif-to-jpg': { sources: ['avif'], targets: ['jpg'], label: 'AVIF to JPG' },
+    'avif-to-png': { sources: ['avif'], targets: ['png'], label: 'AVIF to PNG' },
+    'png-to-avif': { sources: ['png'], targets: ['avif'], label: 'PNG to AVIF' },
+    'jpg-to-avif': { sources: ['jpg', 'jpeg'], targets: ['avif'], label: 'JPG to AVIF' }
+};
+const MATCHING_TOOL_BY_SOURCE = {
+    'png': '/png-to-jpg/',
+    'jpg': '/jpg-to-png/',
+    'jpeg': '/jpg-to-png/',
+    'webp': '/webp-to-jpg/',
+    'svg': '/svg-to-png/',
+    'avif': '/avif-to-jpg/',
+    'mp4': '/mp4-to-mp3/',
+    'mov': '/mp4-to-mp3/',
+    'avi': '/mp4-to-mp3/',
+    'mkv': '/mp4-to-mp3/',
+    'webm': '/mp4-to-mp3/',
+    'mp3': '/mp3-to-wav/',
+    'wav': '/wav-to-mp3/',
+    'ogg': '/ogg-to-mp3/',
+    'm4a': '/m4a-to-mp3/',
+    'flac': '/flac-to-mp3/',
+    'zip': '/extract-zip/'
+};
+
+// Drop-box suggestions: a dropped file the box above cannot convert gets a
+// link to the real tool that can. Only real, working tools are ever suggested.
+const DROP_SUGGESTIONS = {
+    pdf: '<strong>PDF file detected.</strong><span>Open a PDF tool: <a href="/pdf-to-jpg/" style="color:var(--brand-primary);font-weight:800;">PDF to JPG</a> · <a href="/compress-pdf/" style="color:var(--brand-primary);font-weight:800;">Compress PDF</a> · <a href="/merge-pdf/" style="color:var(--brand-primary);font-weight:800;">Merge PDF</a> · <a href="/split-pdf/" style="color:var(--brand-primary);font-weight:800;">Split PDF</a></span>',
+    heic: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    heif: '<strong>HEIC photo detected.</strong><span>Convert it with <a href="/heic-to-jpg/" style="color:var(--brand-primary);font-weight:800;">HEIC to JPG</a> — free, in your browser, no upload.</span>',
+    jpg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    jpeg: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    png: '<strong>Tip:</strong><span>Want one PDF instead of an image? Combine images with <a href="/jpg-to-pdf/" style="color:var(--brand-primary);font-weight:800;">JPG to PDF</a>.</span>',
+    mp4: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mov: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    avi: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mkv: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    webm: '<strong>Video file detected.</strong><span>Extract its audio with <a href="/mp4-to-mp3/" style="color:var(--brand-primary);font-weight:800;">MP4 to MP3</a> or turn a clip into a GIF with <a href="/mp4-to-gif/" style="color:var(--brand-primary);font-weight:800;">MP4 to GIF</a> — free, in your browser, no upload. Works with MP4, MOV, AVI, MKV and WebM.</span>',
+    mp3: '<strong>MP3 file detected.</strong><span>Convert it with <a href="/mp3-to-wav/" style="color:var(--brand-primary);font-weight:800;">MP3 to WAV</a> — free, in your browser, no upload.</span>',
+    wav: '<strong>WAV file detected.</strong><span>Convert it with <a href="/wav-to-mp3/" style="color:var(--brand-primary);font-weight:800;">WAV to MP3</a> — free, in your browser, no upload.</span>',
+    ogg: '<strong>OGG file detected.</strong><span>Convert it with <a href="/ogg-to-mp3/" style="color:var(--brand-primary);font-weight:800;">OGG to MP3</a> — free, in your browser, no upload.</span>',
+    flac: '<strong>FLAC file detected.</strong><span>Convert it with <a href="/flac-to-mp3/" style="color:var(--brand-primary);font-weight:800;">FLAC to MP3</a> — free, in your browser, no upload.</span>',
+    m4a: '<strong>M4A file detected.</strong><span>Convert it with <a href="/m4a-to-mp3/" style="color:var(--brand-primary);font-weight:800;">M4A to MP3</a> — free, in your browser, no upload. Works with iPhone voice memos.</span>',
+    doc: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    docx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xls: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    xlsx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    ppt: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    pptx: '<strong>Word, Excel, and PowerPoint files do not convert in the browser yet.</strong><span>Try a text or developer tool instead. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a>.</span>',
+    zip: '<strong>ZIP file detected.</strong><span>Open it with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a> or pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a> — free, in your browser, no upload.</span>',
+    rar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not open RAR, 7Z, TAR or GZ files. ZIP files open with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a>, and you can pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a>.</span>',
+    '7z': '<strong>Archive files do not convert in the browser yet.</strong><span>We do not open RAR, 7Z, TAR or GZ files. ZIP files open with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a>, and you can pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a>.</span>',
+    tar: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not open RAR, 7Z, TAR or GZ files. ZIP files open with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a>, and you can pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a>.</span>',
+    gz: '<strong>Archive files do not convert in the browser yet.</strong><span>We do not open RAR, 7Z, TAR or GZ files. ZIP files open with <a href="/extract-zip/" style="color:var(--brand-primary);font-weight:800;">Extract ZIP</a>, and you can pack files with <a href="/create-zip/" style="color:var(--brand-primary);font-weight:800;">Create ZIP</a>.</span>'
+};
+// File types the box above already converts in place: no suggestion needed.
+const DROP_NO_SUGGESTION = ['webp', 'svg', 'avif', 'txt'];
+function showDropSuggestion(ext) {
+    if (!dropSuggestion) return;
+    if (DROP_NO_SUGGESTION.includes(ext)) {
+        dropSuggestion.innerHTML = '';
+        dropSuggestion.style.display = 'none';
+        return;
+    }
+    const tip = DROP_SUGGESTIONS[ext];
+    if (tip) {
+        dropSuggestion.innerHTML = tip;
+        dropSuggestion.style.display = 'flex';
+        return;
+    }
+    dropSuggestion.innerHTML = '<strong>No matching browser tool for .' + ext.toUpperCase() + ' files yet.</strong><span>We do not convert that file type here. <a href="/all-tools/" style="color:var(--brand-primary);font-weight:800;">Browse all tools</a> to see what we do convert.</span>';
+    dropSuggestion.style.display = 'flex';
+}
+
+dropZone.onclick = () => fileInput.click();
+fileInput.onchange = (e) => handleFiles(e.target.files);
+dropZone.ondragover = (e) => { e.preventDefault(); dropZone.classList.add('active'); };
+dropZone.ondragleave = () => dropZone.classList.remove('active');
+dropZone.ondrop = (e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); };
+
+let activeFile = null;
+
+function getFileIcon(fileName) {
+    const ext = fileName.split('.').pop().toLowerCase();
+    const imageExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg', 'heic'];
+    const videoExts = ['mp4', 'mov', 'avi', 'mkv', 'webm'];
+    const audioExts = ['mp3', 'wav', 'ogg', 'flac', 'm4a'];
+    const documentExts = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv'];
+    const archiveExts = ['zip', 'rar', '7z', 'tar', 'gz'];
+
+    return ext.toUpperCase();
+}
+
+function updateSandboxBadge(sourceExt, targetExt) {
+    sandboxBadge.innerHTML = `<strong>Private conversion:</strong><span>Your file stays in this browser. No cloud upload is used for these outputs.</span>`;
+}
+
+function getSafeOutputFormats(fileName) {
+    const ext = fileName.split('.').pop().toLowerCase();
+    const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+    if (dedicated) {
+        return dedicated.sources.includes(ext) ? dedicated.targets : [];
+    }
+    const safeMap = {
+        png: ['jpg', 'webp', 'avif', 'base64'],
+        jpg: ['png', 'webp', 'avif', 'base64'],
+        jpeg: ['png', 'webp', 'avif', 'base64'],
+        webp: ['jpg', 'png', 'base64'],
+        svg: ['png', 'jpg'],
+        avif: ['jpg', 'png', 'base64'],
+        txt: ['base64']
+    };
+    return safeMap[ext] || [];
+}
+
+function getFormatHelp(sourceExt, targetExt) {
+    const key = `${sourceExt}-${targetExt}`;
+    const copy = {
+        'png-jpg': 'Best for smaller photos and uploads where transparency is not needed.',
+        'png-webp': 'Best for faster website images with modern browser support.',
+        'png-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'jpg-png': 'Best when you need a PNG copy for editing workflows.',
+        'jpg-webp': 'Best for lightweight website photos and SEO page speed.',
+        'jpg-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'jpeg-png': 'Best when you need a PNG copy for editing workflows.',
+        'jpeg-webp': 'Best for lightweight website photos and SEO page speed.',
+        'jpeg-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'webp-jpg': 'Best for compatibility with older apps and upload forms.',
+        'webp-png': 'Best for editing or platforms that prefer PNG files.',
+        'webp-base64': 'Creates a text data URI for HTML, CSS, and developer testing.',
+        'svg-png': 'Best for exporting vector logos and icons as raster images.',
+        'txt-base64': 'Encodes plain text into Base64 for developer workflows.',
+        'png-avif': 'Best for much smaller website images with modern browser support.',
+        'jpg-avif': 'Best for much smaller photos with modern browser support.',
+        'jpeg-avif': 'Best for much smaller photos with modern browser support.',
+        'svg-jpg': 'Best for sharing vector logos and icons as JPG photos.',
+        'avif-jpg': 'Best for opening AVIF photos anywhere JPG works.',
+        'avif-png': 'Best for editing AVIF images as PNG files.'
+    };
+    return copy[key] || 'This conversion runs locally in your browser when supported.';
+}
+function handleFiles(files) {
+    if (files.length === 0) return;
+    activeFile = files[0];
+    if (activeFile.size > 50 * 1024 * 1024) {
+        dropZone.style.display = 'none';
+        previewContainer.style.display = 'block';
+        fileNameEl.textContent = activeFile.name;
+        fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+        fileTypeIcon.textContent = getFileIcon(activeFile.name);
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        formatGuidance.innerHTML = `<strong>File too large.</strong><span>This tool accepts files up to 50 MB. Your file is ${(activeFile.size / 1024 / 1024).toFixed(1)} MB — please use a smaller file.</span>`;
+        sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
+    dropZone.style.display = 'none';
+    previewContainer.style.display = 'block';
+
+    fileNameEl.textContent = activeFile.name;
+    fileSizeEl.textContent = `(${(activeFile.size / 1024 / 1024).toFixed(2)} MB)`;
+    fileTypeIcon.textContent = getFileIcon(activeFile.name);
+
+    const ext = activeFile.name.split('.').pop().toLowerCase();
+    showDropSuggestion(ext);
+    const formats = getSafeOutputFormats(activeFile.name);
+    if (formats.length === 0) {
+        formatSelect.innerHTML = '<option value="">Not available</option>';
+        formatSelect.disabled = true;
+        convertBtn.disabled = true;
+        const dedicated = DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID];
+        if (dedicated) {
+            const expected = dedicated.sources.map(s => s.toUpperCase()).join(' or ');
+            const betterTool = MATCHING_TOOL_BY_SOURCE[ext];
+            formatGuidance.innerHTML = `
+                <strong>${PAGE_TOOL_NAME} expects ${expected} input.</strong>
+                <span>You uploaded a ${ext.toUpperCase()} file. ${betterTool ? `Open the matching converter: <a href="${betterTool}" style="color:var(--brand-primary);font-weight:800;">${betterTool.replaceAll('/', '').replaceAll('-', ' ').toUpperCase()}</a>.` : 'Choose a supported source file for this page.'}</span>
+            `;
+            sandboxBadge.innerHTML = `<strong>No conversion started.</strong><span>Your file stayed in this browser. Pick the right source file or open the suggested tool.</span>`;
+            accordion.style.display = 'none';
+            return;
+        }
+        formatGuidance.innerHTML = `
+            <strong>This file type is not converted in the box above.</strong>
+            <span>Try PNG, JPG, WebP, SVG, or TXT — or open the suggested tool below.</span>
+        `;
+        sandboxBadge.innerHTML = `<strong>No upload happened.</strong><span>Choose another file or open a matching converter page.</span>`;
+        accordion.style.display = 'none';
+        return;
+    }
+
+    formatSelect.disabled = false;
+    convertBtn.disabled = false;
+    formatSelect.innerHTML = formats.map(f => `<option value="${f}">${f.toUpperCase()}</option>`).join('');
+    if (DEDICATED_BROWSER_CONVERSIONS[PAGE_TOOL_ID]) {
+        formatSelect.disabled = true;
+        convertBtn.textContent = `Convert to ${formats[0].toUpperCase()}`;
+    } else {
+        convertBtn.textContent = 'Convert Now';
+    }
+    formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
+    updateSandboxBadge(ext, formatSelect.value);
+    formatSelect.onchange = () => {
+        formatGuidance.innerHTML = `<strong>${ext.toUpperCase()} detected.</strong><span>${getFormatHelp(ext, formatSelect.value)}</span>`;
+        updateSandboxBadge(ext, formatSelect.value);
+    };
+
+    // Inject advanced options if image tool
+    if (ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'webp' || ext === 'svg' || ext === 'avif') {
+        accordion.style.display = 'block';
+        controlsBox.innerHTML = `
+            <div style="display: flex; gap: 1rem; width: 100%;">
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Width (px): <input type="number" id="opt-width" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+                <label style="flex: 1; font-weight: 700; font-size: 0.85rem;">Height (px): <input type="number" id="opt-height" class="glass-input" style="background:var(--bg-light); border-radius:8px; width: 100%; margin-top: 5px;" placeholder="Original"></label>
+            </div>
+            <label style="font-weight: 700; font-size: 0.85rem;">Image Quality: <input type="range" id="opt-quality" min="10" max="100" value="90" style="width: 100%; margin-top: 5px;"> <span id="qual-label" style="color:var(--brand-primary);">90%</span></label>
+        `;
+        const slider = document.getElementById('opt-quality');
+        if (slider) {
+            slider.oninput = (e) => document.getElementById('qual-label').textContent = e.target.value + '%';
+        }
+        if (ext === 'svg') {
+            activeFile.text().then((svgText) => {
+                const wInput = document.getElementById('opt-width');
+                const hInput = document.getElementById('opt-height');
+                if (!wInput || !hInput) return;
+                const num = (s) => { const m = s && s.match(/(\d+(?:\.\d+)?)/); return m ? Math.round(parseFloat(m[1])) : null; };
+                const tag = svgText.match(/<svg[^>]*>/i);
+                const attrs = tag ? tag[0] : '';
+                const wM = attrs.match(/\swidth=["']([^"']+)["']/i);
+                const hM = attrs.match(/\sheight=["']([^"']+)["']/i);
+                const vM = attrs.match(/\sviewBox=["']([\d.\s-]+)["']/i);
+                let vw = num(wM && wM[1]);
+                let vh = num(hM && hM[1]);
+                if ((!vw || !vh) && vM) {
+                    const parts = vM[1].trim().split(/\s+/);
+                    if (parts.length === 4) {
+                        vw = vw || Math.round(parseFloat(parts[2]));
+                        vh = vh || Math.round(parseFloat(parts[3]));
+                    }
+                }
+                if (vw) wInput.value = vw;
+                if (vh) hInput.value = vh;
+            }).catch(() => {});
+        }
+    } else {
+        accordion.style.display = 'none';
+    }
+}
+
+convertBtn.onclick = async () => {
+    if (!activeFile) return;
+
+    convertBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    progText.style.display = 'block';
+
+    // Honest progress: the conversion runs as one step in the browser and
+    // reports no percentage, so no bar is shown — just what is really happening.
+    progText.textContent = 'Converting in your browser…';
+
+    try {
+        const targetFormat = formatSelect.value;
+
+        // Gather custom options
+        const opts = {};
+        const qEl = document.getElementById('opt-quality');
+        const wEl = document.getElementById('opt-width');
+        const hEl = document.getElementById('opt-height');
+
+        if (qEl) opts.quality = parseFloat(qEl.value) / 100;
+        if (wEl && wEl.value) opts.width = parseInt(wEl.value);
+        if (hEl && hEl.value) opts.height = parseInt(hEl.value);
+
+        const resultBlob = await window.ConversionAdapter.convert(activeFile, targetFormat, opts);
+
+        // Render completed download state with beautiful success alerts and checklist animations
+        progWrap.style.display = 'none';
+
+        progText.innerHTML = `
+            <div class="success-alert">
+                <div class="success-icon-wrap">
+                    <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <div class="success-message">
+                    <h4>Conversion Completed Successfully!</h4>
+                    <p>Your file has been securely processed and is ready for download.</p>
+                </div>
+            </div>
+        `;
+
+        const dLink = document.createElement('a');
+        dLink.className = "btn primary";
+        dLink.style.marginTop = "1rem";
+        dLink.textContent = " Download Converted File";
+        dLink.href = URL.createObjectURL(resultBlob);
+
+        const cleanName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
+        dLink.download = `${cleanName}-converted.${targetFormat}`;
+
+        // Record conversion history
+        if (window.recordConversionHistory) {
+            let activeToolId = '';
+            let activeToolName = '';
+            if (!activeToolId || activeToolId === '') {
+                const srcExt = activeFile.name.split('.').pop().toLowerCase();
+                const tgtExt = targetFormat.toLowerCase();
+                activeToolId = `${srcExt}-to-${tgtExt}`;
+                activeToolName = `${srcExt.toUpperCase()} to ${tgtExt.toUpperCase()} Converter`;
+            }
+            window.recordConversionHistory(
+                activeToolId,
+                activeToolName,
+                activeFile.name,
+                activeFile.size,
+                resultBlob.size
+            );
+        }
+
+
+        // Insert download button cleanly
+        const actButtons = document.querySelector('.action-buttons');
+        actButtons.innerHTML = '';
+        actButtons.appendChild(dLink);
+
+        const anotherBtn = document.createElement('button');
+        anotherBtn.className = "btn secondary";
+        anotherBtn.style.marginTop = "1rem";
+        anotherBtn.textContent = "Convert Another File";
+        anotherBtn.onclick = () => location.reload();
+        actButtons.appendChild(anotherBtn);
+
+    } catch (e) {
+        progText.textContent = " Error: " + e.message;
+        progText.style.color = "var(--brand-danger)";
+        convertBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'inline-block';
+    }
+};
+
+resetBtn.onclick = () => location.reload();
+
+"""
+
 DEV_ADVANCED_SCRIPT = r"""
 const input = document.getElementById('adv-input');
 const preview = document.getElementById('adv-preview');
@@ -5612,21 +6004,149 @@ FOOTER_SNIPPET = """
 """
 
 
+# NOTE 2026-11-14 (Run 4): the static homepage grid order below is the order
+# hand-maintained on disk index.html. build_homepage() emits cards in exactly
+# this order so a regen matches disk; tools.json order differs (heic/avif and
+# the late-added image tools sit elsewhere). New tools must be added here.
+HOMEPAGE_GRID_ORDER = [
+    'png-to-jpg',
+    'jpg-to-png',
+    'webp-to-jpg',
+    'webp-to-png',
+    'svg-to-png',
+    'svg-to-jpg',
+    'image-to-base64',
+    'image-compressor',
+    'compress-image-to-100kb',
+    'compress-image-to-200kb',
+    'resize-image',
+    'resize-image-for-instagram',
+    'passport-photo-size-converter',
+    'rotate-image',
+    'gif-maker',
+    'heic-to-jpg',
+    'avif-to-png',
+    'avif-to-jpg',
+    'pdf-to-jpg',
+    'jpg-to-pdf',
+    'compress-pdf',
+    'merge-pdf',
+    'split-pdf',
+    'json-formatter',
+    'json-validator',
+    'json-to-csv',
+    'csv-to-json',
+    'base64-encode',
+    'base64-decode',
+    'url-encoder',
+    'url-decoder',
+    'html-formatter',
+    'css-formatter',
+    'javascript-formatter',
+    'sql-formatter',
+    'markdown-editor',
+    'diff-checker',
+    'binary-text-converter',
+    'unicode-converter',
+    'word-counter',
+    'character-counter',
+    'meta-title-checker',
+    'meta-description-checker',
+    'slug-generator',
+    'case-converter',
+    'remove-duplicate-lines',
+    'text-cleaner',
+    'lorem-ipsum-generator',
+    'hashtag-generator',
+    'qr-code-generator',
+    'barcode-generator',
+    'speed-test',
+    'create-zip',
+    'extract-zip',
+    'password-generator',
+    'password-strength',
+    'random-number-generator',
+    'uuid-generator',
+    'timestamp-converter',
+    'unix-time-converter',
+    'time-zone-converter',
+    'age-calculator',
+    'percentage-calculator',
+    'hash-generator',
+    'morse-code',
+    'unit-converter',
+    'stopwatch',
+    'aspect-ratio-calculator',
+    'rgb-hex-converter',
+    'jpg-to-webp',
+    'jpg-to-avif',
+    'png-to-webp',
+    'png-to-avif',
+    'youtube-thumbnail-downloader',
+    'yaml-to-json',
+    'json-to-yaml',
+    'base64-to-image',
+    'robots-txt-generator',
+    'html-minifier',
+    'sitemap-generator',
+    'css-minifier',
+    'javascript-minifier',
+    'word-to-html',
+    'text-to-ascii',
+    'json-minifier',
+    'jwt-decoder',
+    'regex-tester',
+    'html-entity-encoder',
+    'html-entity-decoder',
+    'url-parser',
+    'mp4-to-mp3',
+    'mp4-to-gif',
+    'mp3-to-wav',
+    'wav-to-mp3',
+    'ogg-to-mp3',
+    'm4a-to-mp3',
+    'flac-to-mp3',
+]
+
+
+def homepage_tab_for_tool(tool):
+    """Map a tools.json category to the homepage tab name (mirrors main.js tabOf).
+
+    "PDF Tools" gets its own tab; "Text" lives under the Utility tab; every
+    other category lower-cases to its tab name. Verified against the disk
+    static grid: all 97 cards match.
+    """
+    category = (tool.get('category') or '').lower()
+    if category == 'pdf tools':
+        return 'pdf'
+    if category == 'video converter':
+        return 'video'
+    if category == 'audio converter':
+        return 'audio'
+    if category == 'text':
+        return 'utility'
+    return category
+
+
 def build_homepage(tools):
     POPULAR_TOOLS = ['png-to-jpg', 'jpg-to-webp', 'image-compressor', 'sitemap-generator', 'css-minifier', 'javascript-minifier', 'json-to-csv', 'qr-code-generator']
     with open('index.html', 'w', encoding='utf-8') as f:
-        # Generate homepage grid tools
+        # Generate homepage grid tools in the disk static-grid order
+        # (HOMEPAGE_GRID_ORDER). Cards match main.js cardHtml exactly, including
+        # the blank line where the tool-icon div was removed (Run 2).
+        tools_by_id = {t['id']: t for t in tools}
+        ordered_tools = [tools_by_id[tid] for tid in HOMEPAGE_GRID_ORDER if tid in tools_by_id]
+        ordered_tools += [t for t in tools if t['id'] not in HOMEPAGE_GRID_ORDER]
         tools_html = ""
-        for tool in tools:
-            is_popular = tool['id'] in POPULAR_TOOLS
-            popular_badge = '<span class="popular-badge"> Popular</span>\n                ' if is_popular else ''
+        for tool in ordered_tools:
             tools_html += f"""
-            <a href="/{tool['id']}/" class="tool-card" data-category="{tool['type']}">
-                {popular_badge}<div class="tool-card-top">
+            <a href="/{tool['id']}/" class="tool-card" data-category="{homepage_tab_for_tool(tool)}">
+                <div class="tool-card-top">
+                    
                     <span class="tool-category-tag">{tool['category']}</span>
                 </div>
                 <div class="tool-card-body">
-                    <span role="heading" aria-level="3" style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin-bottom:0.5rem;line-height:1.25;">{tool['name']}</span>
+                    <h3 style="display:block;font-size:1.25rem;color:var(--text-primary);font-weight:800;margin:0 0 0.5rem;line-height:1.25;">{tool['name']}</h3>
                     <p>{tool['description']}</p>
                 </div>
                 <div class="tool-card-footer">
@@ -5640,7 +6160,7 @@ def build_homepage(tools):
             latest_guides_html += f"""
                 <a href="/blog/{article['slug']}/" class="tool-card" style="text-decoration:none;text-align:left;">
                     <div class="tool-card-top">
-                        <div class="tool-icon">Guide</div>
+                        
                         <span class="tool-category-tag">SEO Guide</span>
                     </div>
                     <div class="tool-card-body">
@@ -5706,19 +6226,28 @@ def build_homepage(tools):
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XCZT6R7PL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8XCZT6R7PL');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Online File Converter | freeconvert.cloud</title>
     <meta name="description" content="Use free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.">
     <link rel="icon" type="image/png" href="/assets/favicon.png">
-    
+
     <!-- Fonts & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" href="/style.css" as="style">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="preload" href="/assets/freeconvert-logo.png" as="image">
+    <link rel="preload" href="/style.min.css" as="style">
+    <link rel="stylesheet" href="/style.min.css">
+    <link rel="preload" href="/assets/logo.png" as="image">
 
     <!-- Canonical tag -->
     <link rel="canonical" href="https://freeconvert.cloud/" />
@@ -5726,7 +6255,7 @@ def build_homepage(tools):
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="freeconvert.cloud — Free Online File Converter">
-    <meta property="og:description" content="Convert images, documents, PDFs, video, audio and developer files online — free, fast, and 100% private.">
+    <meta property="og:description" content="Free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.">
     <meta property="og:url" content="https://freeconvert.cloud/">
     <meta property="og:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
     <meta property="og:site_name" content="freeconvert.cloud">
@@ -5734,7 +6263,7 @@ def build_homepage(tools):
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="freeconvert.cloud — Free Online File Converter">
-    <meta name="twitter:description" content="Convert images, documents, PDFs, video, audio and developer files online — free, fast, and 100% private.">
+    <meta name="twitter:description" content="Free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.">
     <meta name="twitter:image" content="https://freeconvert.cloud/assets/freeconvert-logo.png">
 
     <!-- JSON-LD: WebSite + SearchAction (Sitelinks Searchbox) -->
@@ -5745,7 +6274,7 @@ def build_homepage(tools):
       "name": "freeconvert.cloud",
       "alternateName": "FreeConvert Cloud",
       "url": "https://freeconvert.cloud/",
-      "description": "Free online file converter — convert images, PDFs, video, audio, documents, and developer files directly in your browser with 100% privacy.",
+      "description": "Free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -5770,7 +6299,7 @@ def build_homepage(tools):
         "width": 512,
         "height": 512
       },
-      "description": "Free, privacy-first online file conversion platform supporting images, PDFs, video, audio, archives, and developer tools.",
+      "description": "Free browser tools for image conversion, compression, developer formatting, text utilities, QR codes, passwords, calculators, and file guides.",
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
@@ -5782,77 +6311,36 @@ def build_homepage(tools):
     </script>
 
     <!-- JSON-LD: SiteNavigationElement (signals sitelinks to Google) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "freeconvert.cloud Navigation",
-      "itemListElement": [
-        {
-          "@type": "SiteNavigationElement",
-          "position": 1,
-          "name": "Image Converter",
-          "description": "Convert PNG, JPG, WebP, HEIC and other image formats online free.",
-          "url": "https://freeconvert.cloud/image-converter/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 2,
-          "name": "PDF Tools",
-          "description": "Compress, merge, split, and convert PDF files online for free.",
-          "url": "https://freeconvert.cloud/pdf-tools/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 3,
-          "name": "MP4 to MP3",
-          "description": "Extract audio from video files and convert MP4 to MP3 online.",
-          "url": "https://freeconvert.cloud/mp4-to-mp3/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 4,
-          "name": "Image Compressor",
-          "description": "Compress images online without losing quality — free and private.",
-          "url": "https://freeconvert.cloud/image-compressor/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 5,
-          "name": "JPG to PDF",
-          "description": "Convert JPG images to PDF documents online in seconds.",
-          "url": "https://freeconvert.cloud/jpg-to-pdf/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 6,
-          "name": "Document Converter",
-          "description": "Convert Word, PDF, and document formats online for free.",
-          "url": "https://freeconvert.cloud/document-converter/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 7,
-          "name": "Video Converter",
-          "description": "Convert MP4, WebM, AVI and other video formats online.",
-          "url": "https://freeconvert.cloud/video-converter/"
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "position": 8,
-          "name": "Pricing",
-          "description": "View freeconvert.cloud plans and pricing options.",
-          "url": "https://freeconvert.cloud/pricing/"
-        }
-      ]
-    }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"freeconvert.cloud Navigation","itemListElement":[{"@type":"SiteNavigationElement","position":1,"name":"Image Converter","description":"Browse active image conversion, compression, and resizing tools.","url":"https://freeconvert.cloud/image-converter/"},{"@type":"SiteNavigationElement","position":2,"name":"PNG to JPG","description":"Convert PNG images into lightweight JPG files in the browser.","url":"https://freeconvert.cloud/png-to-jpg/"},{"@type":"SiteNavigationElement","position":3,"name":"WebP to JPG","description":"Convert WebP images to widely compatible JPG files.","url":"https://freeconvert.cloud/webp-to-jpg/"},{"@type":"SiteNavigationElement","position":4,"name":"Image Compressor","description":"Compress JPG, PNG, and WebP images for faster pages.","url":"https://freeconvert.cloud/image-compressor/"},{"@type":"SiteNavigationElement","position":5,"name":"JSON Formatter","description":"Format and clean JSON data inside your browser.","url":"https://freeconvert.cloud/json-formatter/"},{"@type":"SiteNavigationElement","position":6,"name":"QR Code Generator","description":"Create QR codes for URLs, WiFi, menus, and contact details.","url":"https://freeconvert.cloud/qr-code-generator/"},{"@type":"SiteNavigationElement","position":7,"name":"All Tools","description":"Browse active image, developer, text, security, and utility tools.","url":"https://freeconvert.cloud/all-tools/"},{"@type":"SiteNavigationElement","position":8,"name":"Guides","description":"Read practical tutorials for conversion, formatting, privacy, and search workflows.","url":"https://freeconvert.cloud/blog/"}]}</script>
 
-    {KEYWORD_TARGET_SCHEMA}
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8997218708343263" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
+    <meta property="og:locale" content="en_US">
+
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+    <meta name="theme-color" content="#6366f1">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+    <link rel="alternate" type="application/rss+xml" title="freeconvert.cloud Guides" href="/feed.xml">
+
+    <link rel="search" type="application/opensearchdescription+xml" title="freeconvert.cloud Search" href="/opensearch.xml">
+
+    <meta property="og:updated_time" content="2026-11-13T00:00:00+00:00">
+
+    <link rel="stylesheet" href="/adsense-review.css">
 </head>
 
-<body>
-    {HEADER_SNIPPET}
+<body>{HEADER_SNIPPET}
 
     <section class="hero-section hero-dark">
         <h1>Free Online File Converter</h1>
@@ -5860,9 +6348,7 @@ def build_homepage(tools):
         <p class="hero-trust">Free · No sign-up · No credits · Files never leave your device</p>
 
         <!-- Converter card: white, overlaps the hero/body boundary -->
-        <div class="hero-converter-card">
-            {UPLOAD_BOX_UI}
-        </div>
+        <div class="hero-converter-card">{UPLOAD_BOX_UI}        </div>
     </section>
 
     
@@ -5881,24 +6367,24 @@ def build_homepage(tools):
         </div>
         </div>
         <div class="category-tabs">
-            <button class="category-tab active" data-category="all"> All Tools</button>
-            <button class="category-tab" data-category="image"> Image</button>
-            <button class="category-tab" data-category="pdf"> PDF</button>
-            <button class="category-tab" data-category="video"> Video</button>
-            <button class="category-tab" data-category="audio"> Audio</button>
-            <button class="category-tab" data-category="developer"> Developer</button>
-            <button class="category-tab" data-category="designer"> Designer</button>
-            <button class="category-tab" data-category="security"> Security</button>
-            <button class="category-tab" data-category="utility"> Utility</button>
+            <button class="category-tab active" data-category="all">All Tools</button>
+            <button class="category-tab" data-category="image">Image</button>
+            <button class="category-tab" data-category="pdf">PDF</button>
+            <button class="category-tab" data-category="video">Video</button>
+            <button class="category-tab" data-category="audio">Audio</button>
+            <button class="category-tab" data-category="developer">Developer</button>
+            <button class="category-tab" data-category="designer">Designer</button>
+            <button class="category-tab" data-category="security">Security</button>
+            <button class="category-tab" data-category="utility">Utility</button>
         </div>
     </div>
 
     <!-- Unified Tool Grid -->
     <main id="tools" class="tool-grid">
-        {tools_html}
+{tools_html}
     </main>
 
-    {KEYWORD_HUB_HTML}
+{KEYWORD_HUB_HTML}
 
     <!-- Why Choose Us Grid -->
         <!-- Three benefits -->
@@ -5945,7 +6431,7 @@ def build_homepage(tools):
             <h2 style="font-size: 2.2rem; margin-bottom: 1rem; letter-spacing:-0.03em;">Latest Conversion Guides</h2>
             <p style="color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem;">High-intent tutorials for PDF compression, image resizing, WebP conversion, passport photos, Base64, and search snippet optimization.</p>
             <div class="tool-grid" style="padding:0;">
-                {LATEST_GUIDES_HTML}
+{LATEST_GUIDES_HTML}
             </div>
             <div style="margin-top:2rem;">
                 <a href="/blog/" class="btn secondary">Explore All Guides</a>
@@ -5967,206 +6453,27 @@ def build_homepage(tools):
                 <div style="text-align: center;">
                     <div style="font-size: 1.8rem; font-weight: 900; background: rgba(139, 92, 246, 0.08); color: var(--brand-secondary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; border: 1px solid rgba(139,92,246,0.15);">2</div>
                     <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Choose Target Format</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.55;">Select your compatible high-definition target output format and adjust advanced custom sliders.</p>
+                    <p style="font-size: 0.94rem; line-height: 1.55;">Select your target output format.</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 1.8rem; font-weight: 900; background: var(--brand-accent-light); color: var(--brand-accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; border: 1px solid rgba(16,185,129,0.15);">3</div>
                     <h3 style="font-size: 1.25rem; margin-bottom: 0.6rem;">Convert and Download</h3>
-                    <p style="font-size: 0.94rem; line-height: 1.55;">Execute the safe sandbox conversion instantly and download your pristine results securely.</p>
+                    <p style="font-size: 0.94rem; line-height: 1.55;">Convert the file in your browser and download the result.</p>
                 </div>
             </div>
         </div>
     </section>
+{HOMEPAGE_VALUE_CONTENT}
 
-    <!-- Complete SEO Content Expansion & E-E-A-T Signal Block -->
-    <section style="background: var(--bg-light); border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1000px; margin: 0 auto; text-align: left;" class="seo-content">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; letter-spacing: -0.03em; text-align: center; color: var(--text-primary);">
-                The Future of Secure, Browser-Based File Conversion
-            </h2>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 2rem;">
-                Welcome to <strong>freeconvert.cloud</strong>, a next-generation SaaS file conversion platform built for security, speed, and privacy. Traditional online utility websites function by uploading your private files, documents, and assets to external cloud servers, storing your content in database cache repositories and exposing your personal records to substantial hacking vulnerabilities. At freeconvert.cloud, we are spearheading a paradigm shift in web-based operations. 
-            </p>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 2.5rem;">
-                By utilizing advanced client-side technologies—including <strong>HTML5 Canvas APIs</strong>, <strong>WebAssembly modules</strong>, and <strong>local JavaScript compilation engines</strong>—our core converter tools process all calculations, rasterizations, hash generations, and text transformations directly in your device's web browser RAM sandbox. Your raw files are never transmitted across external networks, ensuring 100% data secrecy, absolute confidentiality, and zero risk of data leaks.
-            </p>
+{FOOTER_SNIPPET}
 
-            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;">
-
-            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: -0.02em;">
-                Who Benefits from freeconvert.cloud?
-            </h3>
-            <p style="margin-bottom: 1.5rem;">
-                Our secure web utility ecosystem is custom-engineered to optimize workflows for a diverse grid of professional, developer, creative, and academic roles:
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-bottom: 3rem;">
-                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-primary); margin-bottom: 0.6rem;"> Software Developers</h4>
-                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
-                        Engineers and DevOps professionals rely on our sandboxed developer tools to flatten API JSON payloads into CSV sheets, prettify minified SQL queries, format active HTML, CSS, and JS blocks, extract raw cryptographic SHA hashes, and decode complex URL/Base64 strings locally without exposing client databases or proprietary source codes to external server APIs.
-                    </p>
-                </div>
-                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-secondary); margin-bottom: 0.6rem;"> Creative Designers</h4>
-                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
-                        Graphics designers and content publishers utilize our browser-local compressors and resizers to shrink pixel weights, convert heavy Apple HEIC camera photographs to standard compressed JPG format, scale transparent vector SVG elements to high-resolution PNG screens, and extract dominant color palettes from design comps in milliseconds.
-                    </p>
-                </div>
-                <div style="background: white; border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; box-shadow: var(--card-shadow);" class="saas-card">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; color: var(--brand-accent); margin-bottom: 0.6rem;"> Business Teams & Students</h4>
-                    <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
-                        Office workers, copywriters, and academic students use our document processors to combine sequential homework scans or corporate invoices into single, organized multi-page PDFs, convert read-only PDF reports to editable MS Word DOCX models, track character/sentence statistics in real-time, and generate secure cryptographically sound password keys.
-                    </p>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
-                Why Local Sandbox Processing is a Security Imperative
-            </h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.6; font-size: 0.96rem; color: var(--text-muted);">
-                Every time you upload an invoice, scanned tax document, company ID, or client ledger to a legacy online converter, that document is sent to an unregulated server database. It can sit in cached cloud files for weeks or even months. For organizations complying with strict regulatory frameworks such as GDPR, HIPAA, or SOC 2, these data trails represent severe security and compliance liabilities.
-            </p>
-            <p style="margin-bottom: 3rem; line-height: 1.6; font-size: 0.96rem; color: var(--text-muted);">
-                freeconvert.cloud completely eliminates these liabilities. Standard operations run client-side, meaning your local files never leave your device. For heavy calculations that require isolated edge container conversions (such as document reflows or video transcoding), we utilize secure 256-bit SSL tunnels to route data to transient virtual machines. Once compiled, the edge storage runs automatic cron routines that securely shred and wipe all binaries within 2 hours, maintaining zero database logs or long-term backups.
-            </p>
-
-            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.2rem; letter-spacing: -0.02em;">
-                Standard Web Formats Glossary (LLM SEO Optimized)
-            </h3>
-            <div style="background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 2rem; margin-bottom: 3.5rem; box-shadow: var(--card-shadow);">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                    <div>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>JPG / JPEG:</strong> A highly compatible raster image container using lossy compression optimized for photographs, which trims unnoticeable color scales to keep size small.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>PNG:</strong> A lossless compressed raster graphic format that records colors exactly as designed and supports full transparent alpha background layers.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>PDF:</strong> Adobe's fixed-layout document standard. It embeds text fonts, images, and vectors identically across all screens, devices, and printers.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
-                            <strong>DOCX:</strong> Microsoft Word's fluid, XML-based editing container optimized for drafting copy, but prone to formatting shifts if system fonts are missing.
-                        </p>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>CSV:</strong> A simple flat database format that records tabular entries separated by commas, allowing easy importing into spreadsheet tools like Excel.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>JSON:</strong> JavaScript Object Notation, a lightweight web data exchange container storing structured objects, database values, and API grids.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-muted);">
-                            <strong>MP4:</strong> The global standard digital multimedia container, utilizing H.264 compression to store high-definition audio and video tracks.
-                        </p>
-                        <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; color: var(--text-muted);">
-                            <strong>File Compression:</strong> The mathematical compaction of file structures to reduce storage footprints, boosting network speeds and email limit compliances.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <h3 style="font-size: 1.6rem; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: -0.02em; text-align: center;">
-                Frequently Asked Questions
-            </h3>
-            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-                <div class="accordion">
-                    <div class="accordion-header"> How does freeconvert.cloud ensure absolute file security and privacy?</div>
-                    <div class="accordion-content">
-                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-                            Our platform utilizes local browser-based execution. Converting formats (e.g. PNG to JPG), checking passwords, or formatting code occurs client-side inside your browser sandbox memory using WebAssembly and HTML5 Canvas. Your raw file binary payloads never leave your machine or travel over the internet, rendering server-side hacking and data breaches structurally impossible.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header"> Do some converters require cloud server processing?</div>
-                    <div class="accordion-content">
-                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-                            Yes. Heavy transcoding operations (like converting Microsoft Word DOCX to PDF or extracting MP3 audio tracks from high-definition MP4 videos) require high computing cluster power. For these tasks, files are transmitted via secure 256-bit SSL pipelines to isolated transient edge sandboxes. The converted data is instantly returned to you, and both the source and target files are shredded completely from our servers within 2 hours.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header"> Are there file size limits or cost constraints on the tools?</div>
-                    <div class="accordion-content">
-                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-                            All tools on freeconvert.cloud are 100% free with absolutely zero subscription barriers or watermarks. To keep system cache processing smooth and prevent network bottlenecks, free users are capped at files up to 50MB per conversion. Uncapped queue limits, API developer endpoints, and larger batch processing limits are easily accessible on our flexible Pro tiers.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header"> Do you display advertisements on the converter pages?</div>
-                    <div class="accordion-content">
-                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-                            Yes. To sustain our server clusters and provide our utilities completely free, we display Google AdSense advertisement layouts. We strictly adhere to AdSense Policy Guidelines: ads are clearly marked as 'Advertisement' or 'Sponsored Links', and we enforce safe margins to prevent ads from being placed inside or too close to drag-and-drop zones, file upload inputs, or conversion CTAs.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="accordion-header"> Which operating systems and web browsers are supported?</div>
-                    <div class="accordion-content">
-                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-                            Since our platform operates using standard modern web protocols, it is fully cross-platform and responsive. It works flawlessly inside Safari on Apple iPhones and iPads, Google Chrome on Android devices, Mozilla Firefox, Microsoft Edge, and Chrome on Windows, macOS, and Linux without requiring any software installations or browser extensions.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Developer API Preview Section -->
-    <section style="background: white; border-top: 1px solid var(--border-color); padding: 5.5rem 5%;">
-        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: center;">
-            <div style="text-align: left;">
-                <span class="badge" style="margin-bottom:1rem;"> High Scalability</span>
-                <h2 style="font-size: 2.2rem; margin-bottom: 1.2rem; letter-spacing:-0.03em;">Modern Developer API</h2>
-                <p style="font-size: 1.02rem; margin-bottom: 2rem;">Integrate clean conversion clusters directly into your applications. Fast multipart responses with secure API key validations.</p>
-                <div style="display:flex; gap:1rem;">
-                    <a href="/api/" class="btn primary">Explore API</a>
-                    <a href="/pricing/" class="btn secondary">Pricing Plans</a>
-                </div>
-            </div>
-
-            <!-- Code Preview Terminal Card -->
-            <div class="code-editor-module" style="text-align: left;">
-                <div class="editor-pane" style="grid-column: span 2;">
-                    <div class="editor-header">
-                        <span class="editor-title"> API Integration (Node.js)</span>
-                        <div class="editor-actions">
-                            <span style="font-size: 0.75rem; font-weight: bold; color: var(--brand-accent);">● Live</span>
-                        </div>
-                    </div>
-                    <pre style="margin: 0; font-family: monospace; font-size: 0.85rem; color: #a5b4fc; overflow-x: auto; line-height: 1.6;">
-const axios = require('axios');
-const fs = require('fs');
-const FormData = require('form-data');
-
-const form = new FormData();
-form.append('file', fs.createReadStream('report.docx'));
-form.append('target', 'pdf');
-
-axios.post('https://api.freeconvert.cloud/v1/convert', form, {
-  headers: {
-    'Authorization': 'Bearer YOUR_SECRET_API_KEY',
-    ...form.getHeaders()
-  }
-}).then(res => console.log('Job ID:', res.data.job_id));</pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {FOOTER_SNIPPET}
-
-    <script src="/tools/tools-data.js"></script>
-    <script src="/tools/tool-logic.js"></script>
+    <script src="/tools/tool-logic.min.js"></script>
     <script>
-        {UPLOAD_BOX_SCRIPT}
-    </script>
-    <script src="/main.js"></script>
+{HOMEPAGE_UPLOAD_BOX_SCRIPT}    </script>
+    <script src="/main.min.js"></script>
 </body>
 
-</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{KEYWORD_TARGET_SCHEMA}', '').replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{UPLOAD_BOX_SCRIPT}', UPLOAD_BOX_SCRIPT.replace('{{ID}}', '').replace('{{NAME}}', '')).replace('{CATALOGUE_HTML}', catalogue_html).replace('{POPULAR_HTML}', popular_html).replace('{TOOL_COUNT}', str(len(tools))).replace('{CAT_COUNT}', str(len([c for c in cats if cats[c]])))
+</html>""".replace('{HEADER_SNIPPET}', HEADER_SNIPPET).replace('{FOOTER_SNIPPET}', FOOTER_SNIPPET).replace('{HOMEPAGE_VALUE_CONTENT}', HOMEPAGE_VALUE_CONTENT).replace('{tools_html}', tools_html).replace('{LATEST_GUIDES_HTML}', latest_guides_html).replace('{KEYWORD_HUB_HTML}', keyword_hub_html).replace('{UPLOAD_BOX_UI}', UPLOAD_BOX_UI).replace('{HOMEPAGE_UPLOAD_BOX_SCRIPT}', HOMEPAGE_UPLOAD_BOX_SCRIPT).replace('{CATALOGUE_HTML}', catalogue_html).replace('{POPULAR_HTML}', popular_html).replace('{TOOL_COUNT}', str(len(tools))).replace('{CAT_COUNT}', str(len([c for c in cats if cats[c]])))
         f.write(html_content)
     print("Redesigned and wrote homepage `/index.html` successfully with active Hero Uploadbox & AdSense slots.")
 
@@ -6452,14 +6759,14 @@ def generate_category_seo_content(cat_slug, cat_name):
         formats_guide = "We support standard raster, vector, next-generation, and camera container formats, including PNG, JPG, JPEG, WebP, SVG, HEIC, and ICO files. Standard operations, including resizing, compressing, palette extracting, and format translations, run 100% locally in your browser memory."
         
         faqs = [
-            {"q": "Is my image quality preserved during format conversions?", "a": "Yes. Our conversion compiler uses lossless local pixel translating algorithms. Converting between lossless formats (like PNG or SVG) preserves pixel states perfectly, while lossy exports (like WebP or JPG) can be quality-locked up to 100% using our advanced sliders."},
+            {"q": "Is my image quality preserved during format conversions?", "a": "Converting between lossless formats (like PNG or SVG) preserves pixels exactly. Lossy formats like JPG and WebP lose some detail — use the quality slider to choose the balance for your file."},
             {"q": "Does your image converter upload my photos to your servers?", "a": "No, never. All image conversions, resizes, and compression routines run client-side inside your browser sandbox. Your visual files never leave your computer, securing absolute confidentiality."},
-            {"q": "Can I convert multiple photos simultaneously in a batch?", "a": "Yes! Our drag-and-drop boxes support multi-file queues. You can select an entire collection of images, adjust standard dimensions, and batch-transcode them instantly."},
-            {"q": "How does freeconvert.cloud replace transparent backgrounds during JPG conversions?", "a": "Because the JPG format does not support transparency, our local rendering context automatically overlays a solid white background layer behind transparent pixels, preventing ugly black box corruptions common in legacy converters."},
+            {"q": "Can I convert multiple photos simultaneously in a batch?", "a": "No — one file at a time. Pick a single image, set its size or quality, and download the result. Converting one file at a time keeps the tool fast in your browser."},
+            {"q": "How does freeconvert.cloud replace transparent backgrounds during JPG conversions?", "a": "JPG does not support transparency, so transparent areas turn black when saved as JPG. Use PNG or WebP if you need to keep transparency."},
             {"q": "Do I need to sign up or install software to use these tools?", "a": "No. Our tools are 100% web-based, free, and accessible on all responsive viewports, including Safari on iPhones, Chrome on Android, macOS, and Windows."}
         ]
     elif cat_slug == 'pdf-tools':
-        intro_p = "Welcome to freeconvert.cloud's professional PDF Tools suite. Our workspace offers a collection of secure, document processing utilities engineered to compress, split, format, and package PDF papers. PDF is the global standard for formal contracts, resumes, e-books, and commercial attachments. Managing PDF layouts cleanly is crucial for business professionals, writers, and students. Our tools are designed to streamline document workflows while enforcing strict encryption and automated cluster shredding to protect your records."
+        intro_p = "Welcome to freeconvert.cloud's professional PDF Tools suite. Our workspace offers a collection of secure, document processing utilities engineered to compress, split, format, and package PDF papers. PDF is the global standard for formal contracts, resumes, e-books, and commercial attachments. Managing PDF layouts cleanly is crucial for business professionals, writers, and students. Our tools are designed to streamline document workflows, and they run in your browser so your files never leave your device."
         
         glossary_box = """
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
@@ -6469,7 +6776,7 @@ def generate_category_seo_content(cat_slug, cat_name):
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>File Compression:</strong> The algorithmic optimization of document sizes, which identifies duplicate data arrays and compacts graphic payloads to fit strict email file constraints.</p>
         </div>"""
         
-        why_section = "Typical document portals log your private PDF uploads on foreign database servers, presenting significant compliance and data leak risks. freeconvert.cloud secures your files by splitting tasks between browser-local tools (like local QR generators and text counters) and secure SSL edge sandboxes. Any file uploaded for heavy document formatting is routed through 256-bit SSL tunnels, compiled within a temporary container, and shredded completely from edge storage within 2 hours. We maintain zero database logs or backups."
+        why_section = "Typical document portals upload your private PDFs to their servers, presenting a real data leak risk. freeconvert.cloud's working PDF tools run in your browser, so your files never leave your device. Conversions the browser cannot do are marked unavailable instead of uploaded."
         
         use_cases = [
             "Compiling scanned classroom homework pictures sequentially into a single multi-page PDF document for school submissions.",
@@ -6482,21 +6789,20 @@ def generate_category_seo_content(cat_slug, cat_name):
         formats_guide = "We support standard PDF documents, scanned JPG/PNG pictures, Microsoft Word DOCX files, QR code assets, and basic developer data formats. Standard layouts let you adjust orientation, margins, and compression levels."
         
         faqs = [
-            {"q": "Is it safe to upload confidential business contracts to your PDF tools?", "a": "Yes. All file transfers utilize secure 256-bit SSL encryption. Documents are processed in automated temporary edge sandboxes and permanently deleted from our drives within 2 hours, guaranteeing complete security and compliance."},
+            {"q": "Is it safe to upload confidential business contracts to your PDF tools?", "a": "Yes. The working PDF tools run entirely in your browser — your files never leave your device. No file is uploaded, stored, or logged."},
             {"q": "Does compressing a PDF degrade the text quality?", "a": "No. Our compression engine compacts image pixels and removes unnecessary metadata layers while keeping vector fonts and letter styling sharp and legible."},
-            {"q": "Can I convert Word documents to PDF on this platform?", "a": "Yes! We offer a highly accurate DOCX to PDF converter that preserves font structures, tables, lists, and formatting margins identically."},
-            {"q": "Does this platform support batch document processing?", "a": "Yes, our queue managers allow you to upload multiple files at once, enabling you to process batches of documents in a single session."},
-            {"q": "Is there a file size limit for free document tools?", "a": "To ensure lightning-fast processing speeds and avoid server queue delays, free users can upload files up to 50MB per document."}
+            {"q": "Can I convert Word documents to PDF on this platform?", "a": "Not yet. There is no DOCX to PDF converter on this page — use the working PDF tools listed here instead."},
+            {"q": "Does this platform support batch document processing?", "a": "No — each working tool converts one file at a time. Pick a file, convert it, download it, then convert the next one."},
+            {"q": "Is there a file size limit for free document tools?", "a": "Working PDF tools accept files up to 50 MB, one at a time. No sign-up, no daily limit."}
         ]
     else:
-        intro_p = f"Welcome to the high-performance {cat_name} directory on freeconvert.cloud. Our platform is engineered to deliver enterprise-grade conversion, calculation, formatting, and compression tools. Navigating incompatible file extensions, heavy media payloads, or complex coding scripts represents a daily productivity bottleneck for professionals and students alike. We optimize this workflow by offering client-side browser local tools and secure edge server sandboxes, unlocking lightning-fast transcoding speeds while respecting your data privacy."
+        intro_p = f"Welcome to the high-performance {cat_name} directory on freeconvert.cloud. Our platform is engineered to deliver enterprise-grade conversion, calculation, formatting, and compression tools. Navigating incompatible file extensions, heavy media payloads, or complex coding scripts represents a daily productivity bottleneck for professionals and students alike. We optimize this workflow by offering tools that run in your browser, so your files never leave your device."
         
         glossary_box = f"""
         <div style="background:var(--bg-light); border:1px solid var(--border-color); border-radius:16px; padding:1.8rem; margin:2rem auto; text-align:left; box-shadow:var(--card-shadow);">
             <h3 style="margin-top:0; font-size:1.15rem; color:var(--text-primary); letter-spacing:-0.02em;"> {cat_name} Glossary & Standards</h3>
             <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Format Transcoding:</strong> The process of translating a digital file from one coding structure to another, ensuring compatibility across different operating systems, media players, and devices.</p>
-            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:1rem; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
-            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>SSL Secure Gateway:</strong> An encrypted network pipeline that utilizes 256-bit SSL tunnels to safely transmit files to edge containers, shredding files immediately after processing.</p>
+            <p style="font-size:0.92rem; line-height:1.6; margin-bottom:0; color:var(--text-muted);"><strong>Local Sandbox Execution:</strong> A secure, isolated runtime environment inside the web browser that processes file conversions locally on your computer memory without sending data to servers.</p>
         </div>"""
         
         why_section = f"At freeconvert.cloud, we monetize strictly through non-intrusive AdSense advertising. Unlike spammy online tools directories, we maintain a clean visual separation between ad layouts and converter modules, completely eliminating accidental clicks or deceptive download redirect pathways. We believe in providing original, human-written content layers, detailed use cases, and robust guides that deliver real value to our visitors."
@@ -6512,7 +6818,7 @@ def generate_category_seo_content(cat_slug, cat_name):
         
         faqs = [
             {"q": f"Are the {cat_name} converters completely free to use?", "a": f"Yes. All utility converters on freeconvert.cloud are 100% free with no sign-ups, registrations, or monthly limits, ensuring immediate productivity."},
-            {"q": "How does freeconvert.cloud guarantee the security of my files?", "a": "Image, calculation, and developer text converters run entirely inside your browser's local sandbox memory. Audio, video, and documents use encrypted SSL edge servers that shred data within 2 hours."},
+            {"q": "How does freeconvert.cloud guarantee the security of my files?", "a": "Every working tool on this site runs entirely inside your browser's local sandbox memory — files never leave your device. Conversions the browser cannot do are marked unavailable instead of uploaded."},
             {"q": f"Can I use these {cat_name} tools on my smartphone?", "a": "Yes! Our platform is fully responsive and runs seamlessly on iOS Safari, Android Chrome, tablet web browsers, and desktop systems without installing any software."}
         ]
         
@@ -7049,10 +7355,10 @@ def build_legal_pages():
             <p>At freeconvert.cloud, we take data privacy and file security extremely seriously. Standard tools like image converters, case converters, and data calculators process 100% locally in your device's browser memory via Canvas, local JavaScript, or CSS engines, meaning your raw files never touch external networks or servers.</p>
             
             <h2>What Data Do We Collect?</h2>
-            <p>We do not collect or archive personal data, nor do we require registrations to utilize our free tools. The only data processed is the binary payloads you explicitly submit during conversion workflows, which run securely under sandbox policies.</p>
+            <p>We do not collect or archive personal data, nor do we require registrations to use our free tools. The tools run in your browser; no file you convert is sent to us.</p>
             
             <h2>File Retention Policy</h2>
-            <p>For tools requiring backend conversions (e.g. Doc to PDF), files are uploaded via secure 256-bit SSL tunnels and permanently deleted from our clusters immediately after conversion or after a maximum queue delay of 2 hours. We guarantee zero database archiving or backup generation of your file binaries.</p>"""
+            <p>There are no backend conversions on this site. Working tools run in your browser, so your files are never uploaded, stored, or logged. Conversions the browser cannot do are marked unavailable instead of uploaded.</p>"""
         },
         'terms': {
             'title': 'Terms of Service',
@@ -7068,15 +7374,15 @@ def build_legal_pages():
         },
         'security': {
             'title': 'File Security Infrastructure',
-            'desc': 'Learn about our SSL encryptions and secure local browser execution.',
+            'desc': 'Learn how our tools keep your files on your device.',
             'content': """<h2>Enterprise-Grade Cryptography</h2>
-            <p>Our platform enforces strict transport security (HSTS) and encrypts all network transmissions using 256-bit SSL tunnels, shielding your file uploads from sniffing or external routing attacks.</p>
+            <p>The site itself is served over HTTPS. Your files are never uploaded — working tools process them in your browser, so there is no file transfer to protect.</p>
             
             <h2>Browser Sandbox Isolation</h2>
             <p>Standard developer and image tools operate inside a secure browser sandbox. Executions are completely decoupled from network interfaces, making client-side processes mathematically isolated from data breaches.</p>
             
             <h2>Cluster Purging</h2>
-            <p>Our server clusters execute automatic cron processes that securely wipe and shred uploaded binaries from system drives every 2 hours, ensuring no trace of your documents is preserved.</p>"""
+            <p>We do not run file-processing servers. Working tools run in your browser, so there is nothing to store, purge, or delete on our side.</p>"""
         },
         'dmca': {
             'title': 'DMCA & Abuse Report Policy',
@@ -7295,7 +7601,7 @@ def build_press_kit_page():
         </ul>
 
         <h2>Official Description</h2>
-        <p>freeconvert.cloud is a free, browser-based file conversion platform for documents, images, PDFs, videos, audio, archives, and developer files. Most tools run locally in your browser, so your files never leave your device unless the format requires server processing. The platform includes 80+ converters, compressors, format guides, and batch-friendly workflows — all without sign-ups or intrusive ads.</p>
+        <p>freeconvert.cloud is a free, browser-based file conversion platform for documents, images, PDFs, videos, audio, archives, and developer files. Most tools run locally in your browser, so your files never leave your device. The platform includes 80+ converters, compressors, format guides, and workflows — all without sign-ups or intrusive ads.</p>
 
         <h2>Tagline</h2>
         <p>"Free, privacy-first file converters for every format."</p>
@@ -7408,12 +7714,15 @@ def generate_tool_adsense_content(tool):
             "Batch-converting image files inside developer environments to standard high-definition compressed photo targets."
         ]
         limitations = "This tool executes 100% locally in your web browser memory using the HTML5 Canvas API. Processing extremely large files (e.g. over 50MB) may cause brief browser tab freezes depending on your computer's RAM and CPU capabilities."
+        # NOTE 2026-11-14 (Run 4): FAQ answers below are the honest ones from
+        # disk (Run 1): transparent areas become BLACK, one file at a time.
+        # The old answers claimed a white background and batch queues.
         faqs = [
-            {"q": "Will my output JPG image retain transparent layers from the PNG source?", "a": "No, the JPG format does not support transparency. Any transparent background pixels in your original PNG image will automatically be converted to a solid white background color by our local rendering engine."},
+            {"q": "Will my output JPG image retain transparent layers from the PNG source?", "a": "No, the JPG format does not support transparency. Any transparent background pixels in your original PNG image become black in the JPG, because this tool does not add a background colour."},
             {"q": "Are my uploaded photos safe and secure?", "a": "Absolutely. This converter processes files entirely client-side using JavaScript. Your files never touch external networks, internet servers, or third-party databases. It is 100% private and secure."},
-            {"q": "Can I convert multiple PNG files at once?", "a": "Yes! Our conversion framework supports multi-file queues. You can drag and drop several PNG files together into the upload section and click Convert to process them in a batch instantly."},
-            {"q": "Will my PNG background turn black during conversion?", "a": "No. Typical poor converters render transparent PNG layers as black fields in JPG. freeconvert.cloud automatically applies a solid, clean white background layer behind transparent coordinates."},
-            {"q": "Is there a limit on file page sizes for free users?", "a": "No, free users can convert batch photos under 50MB instantly. We keep zero logs and enforce no registrations."}
+            {"q": "Can I convert multiple PNG files at once?", "a": "No — this tool converts one file at a time. Pick a file, convert it, download it, then convert the next one."},
+            {"q": "Will my PNG background turn black during conversion?", "a": "Yes. JPG does not support transparency, so transparent areas in your PNG become black in the JPG. This tool does not add a white background."},
+            {"q": "Is there a limit on file page sizes for free users?", "a": "Files up to 50 MB convert free, one at a time. No sign-up, no daily limit, no logs."}
         ]
     elif t_id == 'jpg-to-png':
         use_cases = [
@@ -7466,7 +7775,7 @@ def generate_tool_adsense_content(tool):
         limitations = "Image scaling utilizes the HTML5 Canvas 2D context. Resizing extremely high-resolution files (e.g., raw DSLR images above 8000x8000 pixels) might result in slight browser stuttering during pixel interpolation."
         faqs = [
             {"q": "Can I lock the aspect ratio while resizing my images?", "a": "Yes, our image resizer includes a smart aspect ratio lock checkbox. When checked, changing the width automatically recalculates the height proportionally to prevent distortion."},
-            {"q": "Does this resizer reduce the quality of my images?", "a": "No, you can adjust the quality slider to 100% for lossless scaling, or lower the quality slider to save on output file size. The process is completely transparent and customizable."},
+            {"q": "Does this resizer reduce the quality of my images?", "a": "It depends on the output format. PNG output keeps pixels exact; JPG and WebP are lossy, so use the quality slider to choose the balance."},
             {"q": "Is my uploaded image sent to a server?", "a": "No. All scaling, resizing, and aspect ratio interpolations are executed inside your browser. No files are uploaded to our servers, keeping your photos entirely private."},
             {"q": "Does resizing help website speed optimization?", "a": "Absolutely. Scaling massive photos down to the exact size they will be displayed on your webpage prevents heavy data downloads, dramatically boosting page loading speed and Core Web Vitals."},
             {"q": "Can I resize by custom percentage?", "a": "Yes, the resizer handles exact custom pixel inputs for width and height instantly."}
@@ -7519,12 +7828,12 @@ def generate_tool_adsense_content(tool):
             "Formatting Apple HEIF photos to share easily on WhatsApp, email, or digital photo frames.",
             "Transcoding HEIC photos to standard formats for simple web publishing."
         ]
-        limitations = "Requires moderate CPU power to unpack modern HEIF encodings in-browser. Converting multiple high-resolution photos may take a few seconds."
+        limitations = "This tool runs 100% locally in your web browser using the heic2any library. Your photos are never uploaded. Each file must be under 50MB, and you can convert up to 20 files at a time. Very large photos may take a few seconds. A few HEIC files with unusual encoding may fail to convert — if one fails, try re-exporting it from your iPhone."
         faqs = [
             {"q": "Why does Apple use HEIC format instead of JPG?", "a": "HEIC (High Efficiency Image Container) uses advanced compression to store photos at half the file size of JPG while maintaining identical image quality. However, it is not supported on older platforms."},
             {"q": "Does this conversion delete the original photo from my iPhone?", "a": "No, your original HEIC photos remain completely untouched on your device. The tool simply processes a copy in memory and outputs a fresh JPG for download."},
             {"q": "Are my high-resolution photos sent to any server?", "a": "Absolutely not. All HEIC parsing, decoding, and JPG rendering are carried out locally on your computer using client-side libraries."},
-            {"q": "Does the HEIC to JPG converter preserve metadata?", "a": "Yes. Our local conversion engine translates image dimensions and colors identically without stripping standard EXIF data tags."},
+            {"q": "Does the HEIC to JPG converter preserve metadata?", "a": "No. The converter transfers the photo itself — its pixels, dimensions, and colors — but camera metadata such as EXIF settings is not carried over to the JPG. Keep your original HEIC file if you need that data."},
             {"q": "Can I bulk convert HEIC photos?", "a": "Yes, batch selection is supported, allowing you to convert groups of iPhone HEIF photos simultaneously."}
         ]
     elif t_id == 'webp-to-jpg':
@@ -7536,10 +7845,10 @@ def generate_tool_adsense_content(tool):
         limitations = "This tool processes 100% client-side in the browser. Animated WebP images will only have their first frame converted to a static JPG photo."
         faqs = [
             {"q": "Will the image quality drop when converting WebP to JPG?", "a": "WebP is a highly optimized format. When converting to JPG, minor quality loss might happen due to lossy JPG compression. You can adjust the quality slider to 100% to maximize resolution."},
-            {"q": "Can I convert multiple WebP files together?", "a": "Yes! Batch selection is fully supported. You can upload several WebP images at once and convert them instantly with a single click."},
+            {"q": "Can I convert multiple WebP files together?", "a": "No — this tool converts one file at a time. Pick a file, convert it, download it, then convert the next one."},
             {"q": "Does this WebP tool require internet data uploads?", "a": "No. The transcoding is executed completely in your local browser sandbox RAM, keeping your data private and saving your mobile bandwidth."},
-            {"q": "Will it support transparent WebP images?", "a": "Yes. Because JPG lacks transparency, our local rendering overlay applies a solid white background layer behind transparent WebP pixels."},
-            {"q": "What is the file size limit?", "a": "We recommend keeping batch uploads under 50MB to ensure fluid, fast rendering in local memory."}
+            {"q": "Will it support transparent WebP images?", "a": "It converts them, but JPG does not support transparency, so transparent areas become black in the JPG."},
+            {"q": "What is the file size limit?", "a": "Files up to 50 MB convert free, one at a time. No sign-up, no daily limit, no logs."}
         ]
     elif t_id == 'jpg-to-pdf':
         use_cases = [
@@ -7550,7 +7859,7 @@ def generate_tool_adsense_content(tool):
         limitations = "Processed entirely client-side inside browser sandbox memory. For optimal speeds, keep batch image file uploads under 50MB."
         faqs = [
             {"q": "Can I combine multiple JPG files into a single PDF document?", "a": "Yes! freeconvert.cloud supports multi-page compiling. Simply select multiple JPG images and compile them into a beautifully ordered multi-page PDF."},
-            {"q": "Does converting JPG to PDF reduce image resolution?", "a": "No. Our local compiler maps pixel details identically without downscaling, unless you explicitly select margins or compression levels to meet strict HR guidelines."},
+            {"q": "Does converting JPG to PDF reduce image resolution?", "a": "No. With the Best quality setting your images are placed at full resolution. A page size smaller than the image only scales it to fit the page — the original image data is kept. If you choose the Smaller file setting, photos are recompressed to JPEG quality 80%, which makes the PDF smaller but can soften fine detail."},
             {"q": "Are my private scanned documents safe from data leaks?", "a": "Absolutely. Because this converter operates client-side in your local browser memory, your scanned receipts or tax records are never uploaded to any server."},
             {"q": "Do I need Adobe Acrobat to perform this PDF compile?", "a": "No, our utility runs natively inside modern browsers (Safari, Chrome) without requiring plugins, apps, or setups."},
             {"q": "Does the converter work on iPhones and Android systems?", "a": "Yes, our web platform is fully responsive and optimized for mobile devices, letting you compile JPGs on-the-go."}
@@ -7561,27 +7870,27 @@ def generate_tool_adsense_content(tool):
             "Extracting flat tabular arrays from PDF reports into editable Word rows.",
             "Re-editing personal resumes without losing original visual coordinates."
         ]
-        limitations = "Complex PDF documents containing heavy vector layouts or hand-drawn sketches might reflow slightly during Microsoft Word translation, requiring brief manual reviews."
+        limitations = "This converter is being upgraded. No file is processed on this page."
         faqs = [
-            {"q": "Can I edit the output Word document directly?", "a": "Yes, the converted output is exported as a standard Microsoft Word Open XML (.docx) file, which is fully editable in MS Word, LibreOffice, and Google Docs."},
-            {"q": "Are my uploaded PDF contracts secure?", "a": "Yes. All file transfers utilize secure 256-bit SSL tunnels. Documents are processed in temporary sandboxed containers and permanently shredded from our drives within 2 hours."},
-            {"q": "Does the converter preserve PDF tables and forms?", "a": "Yes, our converter accurately translates grid margins and cell borders into editable Word table cells, saving you substantial formatting time."},
-            {"q": "Is there a limit on PDF page counts?", "a": "Free users can process PDF documents up to 50MB and 100 pages cleanly per session. Priority limits are unlocked on Pro plan tiers."},
-            {"q": "How long does a typical PDF to Word conversion take?", "a": "Most documents are processed on our secure edge queues in under 10 seconds, delivering instant downloads."}
+            {"q": "Can I edit the output Word document directly?", "a": "Not yet. PDF to Word is being upgraded, so there is no output to edit. Use the working PDF tools linked on this page instead."},
+            {"q": "Are my uploaded PDF contracts secure?", "a": "Yes. No file upload is active on this page. The working tools linked here run entirely in your browser, so your files never leave your device."},
+            {"q": "Does the converter preserve PDF tables and forms?", "a": "It cannot convert anything yet. PDF to Word is being upgraded — use the working PDF tools linked on this page instead."},
+            {"q": "Is there a limit on PDF page counts?", "a": "This converter is being upgraded, so there is no page limit to hit. The working PDF tools linked here accept files up to 50 MB, one at a time."},
+            {"q": "How long does a typical PDF to Word conversion take?", "a": "It cannot convert anything yet. PDF to Word is being upgraded — use the working PDF tools linked on this page instead."}
         ]
     elif t_id == 'mp4-to-mp3':
         use_cases = [
-            "Extracting high-definition audio tracks from video files for background music players.",
-            "Converting digital lectures and webinars into MP3 podcasts for offline learning.",
-            "Freeing up substantial storage space by converting visual clips to audio files."
+            "Extracting the audio track from a video to listen to it as music or a podcast.",
+            "Converting digital lectures and webinars into MP3 files for offline learning.",
+            "Freeing up storage space by keeping just the audio from a long video clip."
         ]
-        limitations = "Video files are heavy payloads. Processing files requires edge cluster transcoding; ensure you remain under the 50MB free quota limit."
+        limitations = "This tool converts in your browser with ffmpeg.wasm, so it has real limits. Files must be 100 MB or smaller — bigger files need too much browser memory and can crash the tab. The first conversion downloads the converter code (about 24 MB), so it takes longer the first time; later conversions in the same tab start right away. Short clips convert fastest. It needs a modern desktop browser with enough free memory. Videos with no audio track cannot become an MP3, and the tool will say so plainly. Only the audio track is kept — the picture is dropped — and MP3 is a lossy format, so some sound detail is lost."
         faqs = [
-            {"q": "Can I extract audio from videos in high quality?", "a": "Yes, you can choose custom bitrates up to 320kbps for pristine audio fidelity."},
-            {"q": "Is it secure to upload my recordings here?", "a": "Yes, uploaded securely through SSL and permanently shredded within 2 hours."},
-            {"q": "Which video containers are supported for extraction?", "a": "We support MP4, WebM, AVI, MOV, and MKV files."},
-            {"q": "Does converting video to MP3 save storage space?", "a": "Yes, can reduce the file weight by up to 95%."},
-            {"q": "Does it work on smartphones?", "a": "Yes, fully web-based and runs on mobile browsers without setups."}
+            {"q": "Is my video uploaded to a server?", "a": "No. The whole conversion runs in your browser with ffmpeg.wasm. Your video never leaves your device."},
+            {"q": "Which video files can I convert?", "a": "MP4, MOV, AVI, MKV, WebM, FLV, WMV and 3GP. Only the audio track is kept — the picture is dropped, and the result is always an MP3 file."},
+            {"q": "Why does the first conversion take so long?", "a": "The first conversion downloads the ffmpeg converter code (about 24 MB) into your browser. After that first download, later conversions start right away. Short clips convert fastest."},
+            {"q": "What if my video has no sound?", "a": "Videos with no audio track cannot become an MP3. The tool tells you plainly when it finds no audio, instead of giving you an empty file."},
+            {"q": "How big can my video be?", "a": "Up to 100 MB per file. Bigger files need too much browser memory and can crash the tab, so the tool stops them with a clear message."}
         ]
     # General category-based dynamic content generation for fallback coverage
     else:
@@ -7589,7 +7898,7 @@ def generate_tool_adsense_content(tool):
             use_cases = [
                 f"Optimizing {t_name} layouts to scale down loading times and reduce page sizes on web platforms.",
                 f"Converting image assets into compatible {t_name} formats for graphic design and digital media campaigns.",
-                f"Batch transcoding image formats locally with zero resolution loss or pixel blurring."
+                f"Converting image formats locally in your browser, one file at a time."
             ]
             limitations = f"This {t_name} converter is executed locally in your web browser sandbox using modern Canvas APIs. For optimal performance, the recommended file size is capped at 50MB."
             faqs = [
@@ -7597,7 +7906,7 @@ def generate_tool_adsense_content(tool):
                 {"q": f"What is the benefit of using client-side {t_name} processing?", "a": f"Because it runs client-side, the {t_name} process is exceptionally fast, respects your privacy, and saves you network bandwidth since you do not have to upload files."},
                 {"q": f"Can I use this responsive {t_name} converter on my mobile phone?", "a": f"Yes! Our interface is fully optimized for mobile devices. The {t_name} tool works perfectly on Safari, Chrome, and Firefox on iOS and Android."},
                 {"q": f"How is E-E-A-T trust maintained?", "a": f"All tools are fact-checked and maintained under strict data safety protocols by the freeconvert.cloud Editorial Team."},
-                {"q": f"What is the file size limit?", "a": f"We recommend keeping batch uploads under 50MB to ensure fluid, fast rendering in local memory."}
+                {"q": f"What is the file size limit?", "a": f"Files up to 50 MB convert free, one at a time. No sign-up, no daily limit, no logs."}
             ]
         elif t_cat == 'Developer' or 'dev_' in t_type or t_type in ['dev_basic', 'dev_advanced']:
             use_cases = [
@@ -7619,10 +7928,10 @@ def generate_tool_adsense_content(tool):
                 f"Preparing video clips for compatibility across iPhone, Android, Windows, macOS, browsers, and editing tools.",
                 f"Reducing friction when a platform rejects a video because the format, file size, or dimensions are not accepted."
             ]
-            limitations = f"{t_name} works best with common video containers such as MP4, MOV, AVI, MKV, and WebM. Large files may require temporary encrypted edge processing because browser-only video transcoding can be heavy."
+            limitations = f"{t_name} runs in your browser with ffmpeg.wasm. Large files need a lot of browser memory — files over 100 MB are not accepted."
             faqs = [
                 {"q": f"What is {t_name} best used for?", "a": f"Use {t_name} when you need a more compatible, smaller, or easier-to-share video output for websites, social platforms, messages, or editing tools."},
-                {"q": f"Are uploaded videos private?", "a": "Video files are transferred over HTTPS for temporary processing when transcoding is required. Files are designed to be deleted automatically after processing."},
+                {"q": f"Are uploaded videos private?", "a": "Your video never leaves your device. Conversion runs in your browser with ffmpeg.wasm, so nothing is uploaded, stored, or logged."},
                 {"q": f"Which video formats are commonly supported?", "a": "Common workflows include MP4, MOV, AVI, MKV, WebM, MP3 audio extraction, GIF clips, trimming, resizing, and compression."},
                 {"q": f"Can I use {t_name} on mobile?", "a": "Yes, the page is responsive and works in modern mobile browsers. For very large videos, desktop browsers usually perform better."},
                 {"q": f"How do I keep video quality high?", "a": "Start with the best original file, avoid repeated conversions, and compress only as much as your upload or sharing limit requires."}
@@ -7772,7 +8081,7 @@ freeconvert.cloud provides browser-first image tools, developer utilities, text 
         "entity_type": "WebApplication",
         "trust": {
             "editorial_team": "freeconvert.cloud Editorial Team",
-            "privacy_model": "Client-side browser sandbox for standard tools; encrypted transient edge sandboxes for heavy conversion jobs.",
+            "privacy_model": "Client-side browser sandbox for all working tools; conversions the browser cannot do are marked unavailable.",
             "ads_policy": "Clearly labeled ads with no fake buttons or deceptive conversion controls."
         },
         "keyword_targets": [
@@ -8203,6 +8512,13 @@ def build():
     with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
         template = f.read()
 
+    # NOTE 2026-11-14 (Run 4): the tool template carries a stale fork of the
+    # header with the P13 label "Media Image Compressor" (fixed in
+    # HEADER_SNIPPET in Run 2). The template file is out of scope for this run,
+    # so the label is corrected here at generation time. Run 3 should make the
+    # template use HEADER_SNIPPET instead of its own copy.
+    template = template.replace('Media Image Compressor', 'Image Compressor')
+
     # Create folder directories and index.html for each individual tool page
     for tool in tools:
         ui = ""
@@ -8224,11 +8540,17 @@ def build():
         if t_type == 'image':
             ui = UPLOAD_BOX_UI
             script = UPLOAD_BOX_SCRIPT
-            how_to = f"<ol><li>Upload your {t_id.split('-to-')[0].upper()} file in the dotted drag-and-drop zone.</li><li>Choose {t_id.split('-to-')[1].upper()} as target output.</li><li>Adjust optional dimensions or quality scale in advanced settings.</li><li>Click Convert and wait for edge process completion.</li></ol>"
+            # NOTE 2026-11-14 (Run 4): honest last step (was "wait for edge process
+            # completion" — no edge processing exists) and a guard for image tools
+            # without "-to-" in the id (gif-maker crashed build() with IndexError).
+            if '-to-' in t_id:
+                how_to = f"<ol><li>Upload your {t_id.split('-to-')[0].upper()} file in the dotted drag-and-drop zone.</li><li>Choose {t_id.split('-to-')[1].upper()} as target output.</li><li>Adjust optional dimensions or quality scale in advanced settings.</li><li>Click Convert, review the result, and download it.</li></ol>"
+            else:
+                how_to = "<ol><li>Upload your file in the dotted drag-and-drop zone.</li><li>Choose your output settings.</li><li>Click Convert, review the result, and download it.</li></ol>"
         elif t_type in ['pdf', 'video', 'audio', 'archive', 'ebook']:
             ui = UPLOAD_BOX_UI
             script = UPLOAD_BOX_SCRIPT
-            how_to = f"<ol><li>Select or drag your input file into the upload box.</li><li>Adjust formatting settings and parameters if available.</li><li>Click the Convert button to begin secure edge processing.</li><li>Wait for the download link to download your converted file.</li></ol>"
+            how_to = f"<ol><li>Select or drag your input file into the upload box.</li><li>Adjust formatting settings and parameters if available.</li><li>Click the Convert button to convert in your browser.</li><li>Wait for the download link to download your converted file.</li></ol>"
         elif t_type == 'text':
             if t_id in ['word-counter', 'character-counter']:
                 ui = TEXT_UI
@@ -8300,7 +8622,7 @@ def build():
         if t_id in UNAVAILABLE_TOOL_IDS:
             ui = UNAVAILABLE_TOOL_UI
             script = ""
-            how_to = "<ol><li>Use the links on this page to open a browser-safe working tool.</li><li>Choose PNG, JPG, WebP, SVG, Base64, JSON, text, SEO, or utility tools while this converter is being upgraded.</li><li>Return to this page after secure server processing is enabled.</li></ol>"
+            how_to = "<ol><li>Use the links on this page to open a browser-safe working tool.</li><li>Choose PNG, JPG, WebP, SVG, Base64, JSON, text, SEO, or utility tools while this converter is being upgraded.</li><li>Check the All Tools directory for currently supported browser tools.</li></ol>"
 
         # Compile tool template replacement
         html = template.replace('{{NAME}}', tool['name'])
@@ -8497,9 +8819,11 @@ def build():
                 break
         related_html = ""
         for r_tool in matched_tools:
+            # Run 4 (2026-11-14): tools.json icons are all empty now — emitting the span
+            # left a blank icon line on every related card; disk pages dropped it.
+            icon_span = f'  <span style="font-size:1.4rem;">{r_tool["icon"]}</span>\n' if r_tool.get('icon') else ''
             related_html += f"""<a href="/{r_tool['id']}/" style="display:flex;flex-direction:column;gap:0.3rem;padding:1rem 1.2rem;background:var(--bg-light);border:1px solid var(--border-color);border-radius:12px;text-decoration:none;color:var(--text-primary);transition:all 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='var(--brand-primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform=''">
-  <span style="font-size:1.4rem;">{r_tool['icon']}</span>
-  <strong style="font-size:0.88rem;">{r_tool['name']}</strong>
+{icon_span}  <strong style="font-size:0.88rem;">{r_tool['name']}</strong>
   <span style="font-size:0.78rem;color:var(--text-muted);line-height:1.3;">{r_tool['description'][:60]}...</span>
 </a>"""
         html = html.replace('{{RELATED_LINKS}}', related_html)
